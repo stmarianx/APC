@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "expanded_name": "AI Poker Coach",
+  "updated_at": "2026-08-03T01:25:16+03:00",
+  "overall_status": "not_ready_for_visible_table_training",
+  "next_gate": "T",
+  "gates": {
+    "foundation_contract": {
+      "status": "passed",
+      "required": [
+        "model specification",
+        "frame annotation schema",
+        "dataset manifest schema",
+        "machine validation tests"
+      ],
+      "evidence": [
+        "APC_MODEL_SPEC.md",
+        "schemas/frame_annotation.schema.json",
+        "schemas/dataset_manifest.schema.json",
+        "tools/validate_dataset.py",
+        "tests/test_validate_dataset.py: 3 passing tests"
+      ],
+      "missing": []
+    },
+    "K_knowledge_curriculum": {
+      "status": "passed",
+      "required": [
+        "all verified course lessons represented",
+        "timestamped evidence provenance",
+        "verified math tier",
+        "group-exclusive lesson splits",
+        "no unsupported exact strategy labels",
+        "deterministic curriculum fingerprint"
+      ],
+      "evidence": [
+        "curriculum/generated/course_curriculum.jsonl: 224 examples",
+        "curriculum/generated/curriculum_manifest.json",
+        "curriculum/generated/curriculum_manifest.json: curriculum_sha256=9703c0c13f33833d7cbcf97adef5aa2193d79e45d80bcd3365d3a0ee9f4451ce",
+        "tests/test_course_curriculum.py: 4 passing tests"
+      ],
+      "missing": []
+    },
+    "T_visible_training": {
+      "status": "in_progress",
+      "required": [
+        "capture and annotation tool",
+        "export and validation pipeline",
+        "minimum verified dataset",
+        "group-exclusive split audit",
+        "reproducible training entry point",
+        "training smoke checkpoint",
+        "held-out evaluation command"
+      ],
+      "evidence": [
+        "annotator/project.py: immutable PNG import, SHA-256 deduplication, templates, validation and grouped export",
+        "capture/screen_capture.py: explicit-region read-only pixel acquisition with interval timestamps, frame/plan fingerprints, new-destination guard and no input/network behavior",
+        "annotator/cli.py: init/import/template/save/status/export workflow",
+        "annotator/project.py and cli.py import-folder: natural-order bulk session import, configurable intervals/subsampling, monotonic timestamps and deduplication",
+        "annotator/suggestions.py: fingerprinted frame-bound model suggestions stored separately from verified annotations; review required, never auto-applied, and read-only when inspected",
+        "annotator/web.py and annotator/web_assets/: local annotation workbench",
+        "tools/validate_dataset.py: annotation, split, fingerprint and minimum-dataset audit; --require-ready exits 3 for a valid manifest below Gate T",
+        "tools/merge_datasets.py: deterministic validated source merge with dataset/session/table/hand namespacing, provenance fingerprints, duplicate-frame rejection and fresh group-exclusive export",
+        "synthetic/render_hand_sequences.py: session-isolated deterministic generation, immutable resume plan, bounded chunks and duplicate-safe idempotent completion",
+        "data/processed/synthetic-handseq-gate-v2: 2000 verified temporal frames, 250 complete hands, 125 group-exclusive sessions, 3 layouts and 2 themes; annotations_sha256=91f2340a4ec0e7cbd911f62244fe1fd7cf360e4e4106908116be3498ce6d1f94",
+        "runs/synthetic-handseq-gate-v2/sequence_audit.json: 2000/2000 frames and 250/250 hand starts passed continuity; sequence_audit_sha256=c8ed9c6778b967b1f6d56029fa21cacdb0c355ee658ed051fdd47b33b6972a6d",
+        "runs/synthetic-handseq-gate-v2/gate_t_validation.json: all minimums pass except controlled-visible frames/sessions; report_sha256=9ddf9d530469c2bb6ef7f07841124498e2e74151b1113c9a130d629547649c78",
+        "tests/: 102 passing APC tests",
+        "annotator/web_assets/: browser-verified normalized overlay, drag-to-box editor, object-field merge and canonical-state synchronization; zero browser console errors",
+        "runs/workbench-suggestion-smoke-20260803/browser_audit.json: frozen-reference browser audit passed review-only suggestion display and explicit unsaved-draft application; 0 saved/verified annotations and 0 console errors",
+        "data/processed/synthetic-smoke-v2: 36 verified frames, 9 group-exclusive sessions, 3 layouts, 2 themes",
+        "data/processed/synthetic-smoke-v2: annotations_sha256=19dcd38314da8ad467c414e8bf3633acdda1f8df1456758f7ce9d032dd9e5c1c",
+        "perception/baseline.py: deterministic pixel trainer, fingerprinted checkpoint and held-out evaluator",
+        "perception/baselines/synthetic_smoke_v2.model_card.json: four supported heads at 100% on the four-frame held-out synthetic smoke session; p95=97.68 ms; not promotion eligible",
+        "perception/card_baseline.py: learned card-slot geometry, rank exemplars, suit head, held-out leakage rejection and confusion slices",
+        "perception/baselines/synthetic_audit_v1.model_card.json: frozen one-pass audit on an independent 48-frame/12-session synthetic dataset; all base heads and 20/20 visible cards exact; card-pipeline p95=173.37 ms; not promotion eligible",
+        "synthetic renderer v2: visible and machine-equal call price enforced by dataset validation",
+        "perception/baselines/synthetic_state_v1.model_card.json: untouched synthetic table-state test exact for hero/dealer/pot/to-call on 4/4 frames; p95=181.02 ms",
+        "perception/stack_baseline.py: segmented stack-digit learner; untouched synthetic test exact on 24/24 stacks across 4 frames; p95=223.31 ms",
+        "perception/event_baseline.py: paired before/after event learner with actor, action and BB amount validation",
+        "data/processed/synthetic-events-audit-v1: 144 verified temporal frames, 72 pairs, 18 group-exclusive sessions and 12 examples per action class",
+        "perception/baselines/synthetic_stack_event_v1.model_card.json: independent event audit validation and untouched test each reconstructed 8/8 complete events exactly; test p95=384.02 ms; not promotion eligible",
+        "perception/composite.py: one-pass BB-only visible state including per-seat stacks, checkpoint provenance and mandatory abstention when effective stack/player identity/action history are missing",
+        "perception/temporal_composite.py: paired-frame observed action, chip/pot conservation audit, heads-up effective-stack derivation and evidence-gated history completeness",
+        "perception/evaluate_temporal.py: group-exclusive end-to-end evaluator with exact supported-state and abstention metrics",
+        "perception/baselines/synthetic_temporal_composite_v1.model_card.json: 8/8 held-out validation transitions exact after 64/64 stack tokens; p95=1105.03 ms; not promotion eligible",
+        "synthetic/render_hand_sequences.py: stable cards, board prefixes, carried stacks/pot, cumulative histories, player names and explicit hand starts",
+        "data/processed/synthetic-handseq-dev-v1: 192 verified temporal frames, 24 complete hands, 12 group-exclusive sessions, 3 layouts and 2 themes",
+        "tools/validate_sequences.py: 192/192-frame continuity audit passed; sequence_audit_sha256=7a7737cc2811f105e6f8ef6850e60bf80130f768eec428f9e9c72e5c0ec600af",
+        "perception/boundary_baseline.py and hand_tracker.py: learned hand reset, generated hand IDs, cross-street continuity and complete action histories",
+        "player_identity.py: fingerprinted uncertainty-aware persistent identity association with collision and duplicate-frame gates",
+        "perception/baselines/synthetic_hand_sequence_v1.model_card.json: development validation exact on 2/2 hands; untouched test only 1/2 exact hands (50%) and explicitly failed; not promotion eligible"
+        ,"perception/baselines/synthetic_hand_sequence_gate_v2.model_card.json: fresh train/validation/test checkpoint family; 96/96 test pairs and 24/24 complete hands exact, p95=1322.10 ms; real normalized OOD remains 1/6 exact; not promotion eligible"
+      ],
+      "missing": [
+        "500 verified controlled visible-table frames from at least 2 sessions"
+      ]
+    },
+    "P_perception_integration": {
+      "status": "in_progress",
+      "evidence": [
+        "perception/baselines/synthetic_audit_v1.model_card.json: base and card smoke checkpoints with untouched synthetic audit metrics",
+        "synthetic audit card-pipeline p95=173.37 ms on declared local runtime",
+        "perception/baselines/synthetic_state_v1.model_card.json: renderer-v2 hero/dealer/pot/to-call smoke metrics",
+        "perception/baselines/synthetic_stack_event_v1.model_card.json: renderer-v2 segmented stack OCR and paired temporal-event smoke metrics",
+        "perception/baselines/synthetic_temporal_composite_v1.model_card.json: exact held-out validation for paired cards/state/stacks/action/conservation/effective-stack policy",
+        "perception/composite.py and perception/temporal_composite.py: one-frame and paired-frame integration with explicit incomplete-state abstention",
+        "perception/hand_tracker.py: complete-history accumulation, hand-boundary gating, generated hand IDs and cross-street invariant rejection",
+        "player_identity.py: persistent candidate probabilities, stable profile keys, collision rejection, duplicate-frame protection and fingerprinted snapshots",
+        "backend_adapter.py: strict BB-only tracked-state conversion with dealer-relative positions, structured action normalization, provenance preservation and abstention on ambiguity",
+        "visual_identity_signature.py and evaluate_visual_identity.py: 144 pixel observations for 9 validation players were stable with zero collisions and 9/9 pseudonymous profile resolution; not OCR",
+        "perception/baselines/synthetic_visual_identity_stack_context_v1.model_card.json: explicit development-only evidence, 8/8 tracked pairs, 2/2 validation hands and exact per-opponent stacks; no test promotion claim",
+        "data/reference/controlled-reference-v1 and runs/controlled-reference-v1/ood_audit.json: frozen user-provided virtual-chip OOD frame matched 1/6 verified fields; safe abstention and duplicate-card rejection passed; excluded from training and gate counts",
+        "perception/viewport.py and controlled-reference-v1/viewport_profile.json: fingerprinted detected-or-manual table-box to canonical-geometry contract with affine and image-integrity audits",
+        "perception/baselines/table_locator_v1.model_card.json: frozen synthetic test detected 192/192 frames at mean IoU=0.8413 and p95=136.36 ms; one-pass real OOD reference IoU=0.8178 at 103.71 ms; uncalibrated and not promotion eligible",
+        "runs/controlled-reference-v1/normalized_ood_audit.json and normalized_temporal_abstention.json: calibrated derivative remained 1/6 exact, table numeric head failed independently, and temporal path abstained before event inference",
+        "../analysis/development_document_assessment.json: supplied DOCX reviewed structurally; useful architecture ideas mapped, unsupported reward shaping/platform automation rejected, render QA unavailable because LibreOffice is missing",
+        "perception/baselines/synthetic_hand_sequence_v1.model_card.json: exact two-hand validation but 50% exact untouched test, preserving the failed promotion result"
+        ,"perception/baselines/synthetic_hand_sequence_gate_v2.model_card.json: new numeric-shape architecture and fresh independent complete-hand audit passed 24/24 exact synthetic test hands without test tuning"
+      ],
+      "missing": ["controlled-visible trained perception checkpoint", "controlled-visible table-localization calibration", "human-readable visual player-name OCR or verified aliasing for the pseudonymous signature registry", "controlled-visible hand-boundary/history evaluation", "arbitrary-font/occlusion numeric OCR", "banner-free multi-action temporal reconstruction", "calibration report", "multi-frame controlled-visible out-of-distribution report", "interactive latency optimization and controlled-visible latency report"]
+    },
+    "C_coaching_prototype": {
+      "status": "in_progress",
+      "evidence": [
+        "../coach/src/poker_coach/visual_capture.py: confidence/stability-gated visual observation adapter",
+        "../coach/src/poker_coach/state_transition.py: revision, board, action-history, pot and effective-stack invariants",
+        "../coach/src/poker_coach/live_state.py: normalized BB state and solver-node matching",
+        "../coach/src/poker_coach/profiles.py and exploit.py: uncertainty-aware player evidence and exploit gating",
+        "../coach/: 165 passing application-core tests from the current core verification",
+        "perception/hand_tracker.py: temporally complete structured action history and stable internal hand IDs",
+        "player_identity.py and evaluate_identity_registry.py: persistent association layer resolved 9/9 labeled validation seats; no visual-OCR claim",
+        "backend_adapter.py and tests/test_backend_adapter.py: tracked APC state round-trips through the visual contract and reaches an exact sample solver node while recommendation_allowed remains false",
+        "evaluate_coaching_bridge.py: 8 pixel transitions; 6 identity gates passed, 3 backend observations crossed the visual contract, 3 strict raise-semantic abstentions, and 0 recommendation-gate violations",
+        "temporal_composite.py and backend_adapter.py: per-active-opponent effective stacks preserved; multiway scalar defaults to abstention and requires an explicit solver policy",
+        "visual_identity_signature.py and hand_tracker.py: repeated name-band pixels can feed collision-gated pseudonymous identities while human_readable_names remains false",
+        "../coach/src/poker_coach/state_transition.py: normalized BB all-in history accepted without weakening temporal invariants",
+        "APC/coaching cross-package verification: 102 APC tests and 165 coaching-core tests passing"
+      ],
+      "missing": ["human-readable visual name OCR or verified aliasing", "calibrated controlled-visible bridge promotion", "end-to-end BB recommendation evaluation", "solver coverage audit", "interactive latency gate"]
+    },
+    "S_self_learning": {
+      "status": "not_started",
+      "evidence": [],
+      "missing": ["versioned replay dataset", "candidate training pipeline", "paired promotion evaluation", "rollback test"]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "profile_id": "controlled-reference-v1-manual",
+  "source_size": [1657, 706],
+  "observed_table_box": {
+    "x": 0.18527459263729631,
+    "y": 0.15155807365439095,
+    "width": 0.6433313216656609,
+    "height": 0.7053824362606232
+  },
+  "canonical_size": [1280, 720],
+  "canonical_table_box": {
+    "x": 0.08984375,
+    "y": 0.18055555555555555,
+    "width": 0.8203125,
+    "height": 0.6180555555555556
+  },
+  "source_kind": "verified_manual_table_box",
+  "affine": {
+    "scale_x": 0.9849906191369606,
+    "scale_y": 0.893574297188755,
+    "translate_x": -187.39212007504693,
+    "translate_y": 34.387550200803204
+  },
+  "profile_sha256": "eefbf6aca24cb71088f53d6dd754ff89bf9b4e6a97a1942af408173109c1aec9"
+}

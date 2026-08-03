@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic complete-hand sequence v1",
+  "status": "untouched_test_partial_failure_not_promotion_eligible",
+  "dataset": {
+    "dataset_id": "apc-synthetic-hand-sequences-8675309",
+    "verified_frames": 192,
+    "capture_sessions": 12,
+    "hands": 24,
+    "hand_start_frames": 24,
+    "layouts": 3,
+    "themes": 2,
+    "controlled_visible_frames": 0,
+    "fingerprints": {
+      "annotations_sha256": "c0b700f1bb97056480c8a03c0af199820726813d17b28de7319f468940b7f8fd",
+      "split_sha256": "4faf5f780be1c7b11761f59b07f402995fa45c5e9e071af35cd7f59c0ba9604d",
+      "duplicate_audit_sha256": "9f76bcae1bb5fc86caf362e4de7c5f2b9f5f071e743918e194388643cb1b9dde",
+      "sequence_audit_sha256": "7a7737cc2811f105e6f8ef6850e60bf80130f768eec428f9e9c72e5c0ec600af"
+    }
+  },
+  "checkpoint_provenance": {
+    "base_sha256": "6ed7edfe6a7d180566b3f0ae43058bdd1b0a0e2db4f5278ada99e4b3710fac66",
+    "card_sha256": "83ca47db1896f2ed30121542d5abb6004249e50692a07b8ab65b842dc6f6bc08",
+    "table_state_sha256": "b37a69671a196f323d6e59fad3710cac058bccf836b04c2b65ced166f3e30e6b",
+    "stack_sha256": "41e5b4474475fb5a9a5de52450322728c550647fe58655558cedcd4ba8c25477",
+    "event_sha256": "8233c4f3b0cf0ea6b108fbd22a9b4cc61cad6df9780a37a25004b1304d38791e",
+    "boundary_sha256": "cd4746214d0331a0482f75ecdf4edb16cab8d63e140ccc6ea1b9f19c419852af"
+  },
+  "held_out_validation": {
+    "capture_sessions": ["handseq-0008"],
+    "training_session_overlap": {},
+    "frames": 16,
+    "pairs": 8,
+    "completed_hands": 2,
+    "base_joint_accuracy": 1.0,
+    "visible_cards": 80,
+    "complete_card_state_accuracy": 1.0,
+    "table_state_joint_accuracy": 1.0,
+    "stack_examples": 144,
+    "stack_exact_accuracy": 1.0,
+    "complete_event_accuracy": 1.0,
+    "boundary_confusion": {"tp": 1, "tn": 6, "fp": 0, "fn": 0},
+    "complete_tracked_pair_accuracy": 1.0,
+    "completed_hand_exact_accuracy": 1.0,
+    "tracker_latency_ms_p95": 1330.7923049869714,
+    "prediction_sha256": "6f2f7dc7e820daf998b9b4dbcd051dd8bf92dcf3d43d5249179498937d9ac59d"
+  },
+  "untouched_test": {
+    "capture_sessions": ["handseq-0004"],
+    "training_session_overlap": {},
+    "frames": 16,
+    "pairs": 8,
+    "completed_hands": 2,
+    "pair_state_acceptance_accuracy": 1.0,
+    "history_exact_accuracy": 1.0,
+    "revision_exact_accuracy": 1.0,
+    "hand_id_stability_accuracy": 1.0,
+    "boundary_confusion": {"tp": 1, "tn": 6, "fp": 0, "fn": 0},
+    "visible_state_exact_accuracy": 0.5,
+    "complete_tracked_pair_accuracy": 0.5,
+    "completed_hand_exact_accuracy": 0.5,
+    "tracker_latency_ms_p95": 1064.29130002507,
+    "prediction_sha256": "e71a664c6538f16476bae91feb6dbbdb47353ea4303281ce5515ca97124a10e3",
+    "disposition": "Failed. All four pairs in the first test hand missed exact visible-state equality. The test split will not be used for tuning; a later architecture requires a fresh independent audit."
+  },
+  "identity_association_validation": {
+    "input_kind": "verified_annotation_names_not_visual_ocr",
+    "name_observations": 144,
+    "final_seats": 9,
+    "final_resolution_accuracy": 1.0,
+    "unique_identity_rate": 1.0,
+    "registry_snapshot_sha256": "4bc2ac9b65cba264f6eb38723b08cd2359a6c8c2745a245e5d1e99b852e88a0f"
+  },
+  "development_history": [
+    "The first complete-hand validation exposed whole-value pot/call classification on an unseen 109 BB pot and 100 BB call price.",
+    "Pot and call recognition were replaced by value-independent token-shape and character segmentation with tight-glyph normalization.",
+    "Complete-hand development validation then passed both hands exactly before the test split was evaluated once.",
+    "The untouched test retained exact boundaries and histories but failed exact visual state on one of two hands; this failure is preserved and no test-specific tuning is permitted."
+  ],
+  "limitations": [
+    "All pixel evidence is synthetic and uncalibrated; this checkpoint cannot open Gate P.",
+    "The untouched complete-hand test failed at 50% exact hand accuracy.",
+    "Visual player-name OCR is not implemented; identity association evidence uses verified labels.",
+    "Action recognition still depends on adjacent frames and a fixed synthetic event banner.",
+    "Reference latency is over one second per pair because features and images are repeatedly recomputed.",
+    "No solver recommendation is emitted, and all incomplete or uncalibrated states remain abstentions."
+  ]
+}

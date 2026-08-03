@@ -1,0 +1,275 @@
+[00:06.00-00:10.00] So most of the concepts we talk about involve you in a heads-up situation, right?
+[00:10.02-00:11.68] so a lot of poker today
+[00:11.70-00:13.20] You'll find heads up pots
+[00:13.20-00:17.72] But you're also going to find yourself in a lot of multiway parts where there's three people in the hand
+[00:17.76-00:21.08] To as many as eight or nine and it's very important to notice that
+[00:21.80-00:25.96] everything changes frankly from how often you should continuation bet
+[00:26.16-00:27.08] too
+[00:27.24-00:33.32] How strong your hand needs to be to continue against a bed. The average strength of the winning by the winning hand buy the likelihood
+[00:36.00-00:39.72] hitting the flop, all that changes drastically and we have to adjust our
+[00:39.74-00:43.72] frequencies accordingly. So for example you know if there's seven-way pot
+[00:43.72-00:46.96] in the flopp comes 789 of hearts and you have Ace King of Spades
+[00:46.96-00:51.00] Ace king spades a very pretty hand it is no longer worth a penny
+[00:51.00-00:55.00] It is no longer worth anything you just can chuck that hand in
+[00:55.00-00:59.00] and don't want to waste any chips trying to bluff at a 789 a heartflop
+[01:07.04-01:09.44] You'll hear the term polarized a lot essentially what that means is you know a bet for
+[01:09.44-01:10.44] the most polarized a lot.
+[01:11.44-01:12.44] And essentially what that means is, you know
+[01:12.44-01:14.44] A bet for example after the flop
+[01:14.44-01:16.44] Is going to be sometimes polarized where it's like
+[01:16.44-01:18.44] either this player has like
+[01:18.44-01:20.44] really really strong hand or absolutely nothing
+[01:20.44-01:22.44] It means basically they're not usually betting
+[01:22.44-01:24.44] The middle hands now typically
+[01:39.44-01:42.00] It's just way stronger, right?
+[01:42.00-01:44.56] Because overall if you're betting into seven people
+[01:44.56-01:47.12] You can just need to have a stronger hand because by the river
+[01:47.14-01:52.16] The average hand that you're gonna win with is much stronger when there's many
+[01:52.18-02:01.30] People in a pot so obviously, you know
+[02:01.38-02:04.62] In multiway pots peoples ranges are much more honest.
+[02:04.62-02:08.10] You know they're not going to be bluffing as often and that holds true even
+[02:08.10-02:12.10] More So when you're talking about a player on a player who-a-in
+[02:12.10-02:14.26] is 2000 after a bunch of lips.
+[02:14.26-02:18.50] And, a player goes all in for like his last 400.
+[02:18.50-02:19.86] Like he's not bluffing.
+[02:19.86-02:22.26] He clearly likes something on that board
+[02:22.26-02:24.50] otherwise probably would have went checkfold
+[02:24.50-02:27.78] so you can extrapolate information from stack size
+[02:27.78-02:32.22] as well as multiway being that the ranges are gonna be more honest
+[02:32.30-02:34.92] and especially when you combine both of them then
+[02:35.42-02:36.58] you can just assume that that player who's betting its last chips
+[02:36.58-02:40.58] is going to have something that at least has some equity
+[02:40.60-02:51.72] going forward past the flop. So as we've established, when you're in a multiway pot
+[02:51.72-02:55.78] You want to be bluffing less but not zero percent necessarily because if your
+[02:55.78-02:58.42] bluffing 0% guess what? Now everyone knows when you bet
+[02:58.42-03:03.42] you have a super strong hand so what you wanna incorporate into your bluffing range here
+[03:03.42-03:07.42] is what we call semi-bluffs. So semi Bluffs are bets on the come
+[03:07.42-03:09.42] where you know where you have an open and straight's...
+[03:13.42-03:14.82] some equity and sum out.
+[03:14.84-03:17.70] So that accompanied with your strong hands
+[03:17.70-03:20.18] is enough in a multi-way pot to give you
+[03:20.18-03:22.06] enough texture and balance
+[03:22.06-03:24.30] to your betting range, because again
+[03:24.30-03:25.94] obviously everyone knows well
+[03:25.94-03:27.18] you bet into seven players
+[03:27.18-03:28.94] you're more likely have a strong hand
+[03:28.94-03:38.57] than if you just bet into one or two players.
+[03:38.57-03:40.45] Some of the time in multiple way pots
+[03:40.49-03:42.81] you can use another player
+[03:43.81-03:44.25] their tendencies to get the best handout
+[03:45.45-03:46.45] and play against the worst hand.
+[03:50.05-03:55.05] cash game and the flop came Queen Jack 3.
+[03:55.29-03:56.21] It was checked to me,
+[03:56.21-03:58.13] And I bluffed with five six of diamonds
+[03:58.13-03:59.37] I didn't really have anything
+[03:59.37-04:01.05] I just thought it was a good spot to bluff
+[04:01.05-04:03.57] The player in this small line is very good player
+[04:03.57-04:04.41] and he called
+[04:04.41-04:06.45] then the other player who limped in
+[04:06.45-04:08.37] in late position also call
+[04:08.37-04:11.73] so I felt like the player on my immediate left
+[04:11.73-04:13.57] a strong player He probably had
+[04:13.81-04:14.17] a pair of a pair of jacks or maybe a queen
+[04:14.37-04:18.37] or something along those lines
+[04:20.05-04:22.65] exactly, you know going to be the best hand.
+[04:22.67-04:24.97] However I thought there's a very good chance that
+[04:24.97-04:28.25] The player in this small line has me beat with
+[04:28.25-04:30.65] the jack or a queen and the other player could have a draw
+[04:30.65-04:33.01] So my pair of five is ahead of the drop but not
+[04:33.01-04:34.17] ahead of the draw
+[04:34.17-04:36.13] But not ahead of the pair of queens are Jacks so in this situation what
+[04:36.13-04:38.01] I did was, I made a pretty large bet,
+[04:38.01-04:41.17] a pretty substantial bet to put this player in the middle.
+[04:41.17-04:43.49] So this player now has to worry about my bet
+[04:43.49-04:44.49] and he also has to worry
+[04:44.49-04:45.93] about the other player behind him
+[04:45.93-04:47.21] which puts a lot more pressure
+[04:47.21-04:48.21] and stress on him.
+[04:48.21-04:49.61] So in this situation what happened
+[04:49.61-04:52.41] was that player did fold the pair
+[04:52.41-04:55.69] and the other player called with the draw, missed the draw,
+[04:55.69-04:58.93] and I won the pot in a spot where I wouldn't have won
+[05:13.10-05:16.10] interesting things that happens when you're in multi-way pots is people
+[05:16.10-05:19.98] play what I call more true right so when they have a hand,
+[05:19.98-05:22.22] they're usually gonna bet it and you know they're not going to slow plays
+[05:22.22-05:25.42] off because there's six or seven way action. So when you're in position
+[05:25.42-05:26.58] this actually can open up some situations where your
+[05:26.58-05:28.54] open up some situations where
+[05:28.70-05:30.14] your bluffs could work a little more often.
+[05:30.22-05:33.58] If 6 people already checked to you and they all had an opportunity to bet if
+[05:33.58-05:36.46] to bet, if they would have had something pretty good chances are
+[05:36.46-05:40.86] they would've bet. So if you do bed in position again it's never a good idea
+[05:40.86-05:43.82] to do a lot of bluffing and multiway pots but sometimes when you
+[05:43.82-05:46.54] have all that added information of six people checking
+[05:46.54-05:48.86] you can bet there and if you're not check-raised
+[05:48.90-05:52.38] you can essentially assume that the range you're up against is capped and
+[05:54.38-05:54.86] you know what that means if their range is cap
+[05:54.88-05:57.46] They can't have that strong hand, you potentially could
+[06:03.58-06:06.22] But the fact that you're in position means
+[06:06.24-06:07.78] that you should probably bluff more than
+[06:07.78-06:09.54] you certainly should from early possession.
+[06:09.54-06:10.94] If you're in a small blind,
+[06:10.94-06:12.38] in a seven-way pot,
+[06:12.38-06:15.22] you bluffing at it on the flop is just a disaster.
+[06:15.22-06:16.90] You have no idea what's going to happen behind you
+[06:16.90-06:19.38] or have any information of what players have.
+[06:19.38-06:20.06] So not ideal.
+[06:21.06-06:30.87] You want to be in position if you're gonna bluff multi way.
+[06:30.87-06:30.91] .
+[06:40.59-06:42.09] Which situation do you think
+[06:42.11-06:44.67] You'll likely extract more value from?
+[06:44.67-06:46.43] Well, it just makes logical sense
+[06:46.43-06:48.07] that the more players in the hand
+[06:48.07-06:50.15] the more likely at least one or two of them
+[06:50.15-06:51.69] has flopped something they like.
+[06:51.69-06:53.11] So when you do have a nut in hand
+[06:53.11-06:55.55] and a multiway pot your likelihood
+[06:55.55-06:56.71] of getting action and your equity
+[06:56.71-06:57.99] is going to be a lot stronger
+[06:57.99-07:00.15] and a lot better especially at lower limit poker where
+[07:00.15-07:01.71] you're gonna see most the multiway pots.
+[07:02.71-07:02.83] parts.
+[07:02.83-07:06.83] you're talking about typically like higher level play and,
+[07:06.85-07:09.83] you know not as many opportunities to extract equity because if that one
+[07:09.85-07:13.43] player doesn't have anything well so what? You have four of a kind big deal
+[07:13.43-07:14.59] no-one has nothing but
+[07:14.59-07:15.83] If there's seven players in the pot
+[07:15.83-07:18.83] There's a much better chance that at least one of them will call
+[07:18.83-07:19.83] So what.
+[07:20.83-07:23.83] We don't really need to slow play as often in a multiway
+[07:23.83-07:24.83] you can go ahead
+[07:32.83-07:40.92] more honest.
+[07:40.92-07:42.32] So we talk a lot about putting
+[07:42.32-07:43.88] a player on a range of hands,
+[07:43.88-07:45.44] and you know when your head's up pot
+[07:45.44-07:46.64] it's a lot easier to do it than
+[07:46.64-07:48.28] is when you're in a multiway situation.
+[07:48.28-07:49.16] It's not like when you're
+[07:49.16-07:50.76] in a seven-way pot there's
+[07:50.76-07:52.32] a lot of value in saying yourself
+[07:52.32-07:54.08] on this flop I put this player
+[07:54.08-07:55.96] on this range or this player just what
+[07:55.96-07:56.72] what you essentially do?
+[08:09.68-08:11.48] betting year or the like. So,
+[08:11.56-08:13.52] The more players that are in the pot
+[08:13.68-08:16.56] the more you're like sort of steering away from trying
+[08:16.56-08:18.48] to identify specific ranges until
+[08:18.52-08:19.76] you see an action right?
+[08:19.84-08:21.84] So if you bet and you've been called now
+[08:21.96-08:24.00] You can start to narrow that player's range down but
+[08:24.04-08:25.28] you don't want to waste a lot of time
+[08:25.28-08:27.28] at energy trying to think about what is
+[08:27.32-08:29.96] the range of all seven players you think collectively
+[08:29.96-08:32.16] as a whole how does my hand do against
+[08:32.16-08:41.58] all the ranges possible.
+[08:41.58-08:43.18] So when you're thinking about what hands to play
+[08:43.18-08:44.22] and how to play them,
+[08:44.22-08:45.38] the type of game that you're in
+[08:45.38-08:48.38] and how often five or six way action happens
+[08:48.38-08:50.22] should really weigh into your decisions
+[08:50.22-08:51.94] because some hands play much better
+[08:51.94-08:53.30] in multiway pots
+[08:53.30-08:55.34] and some play better heads up.
+[08:55.34-08:59.02] For example if I'm in a head's-up situation in position
+[08:59.02-09:03.02] I would have ace eight off suit than I would
+[09:03.50-09:04.50] four six of diamonds.
+[09:09.26-09:11.98] connects a lot better, the Ace 8 is more difficult to play.
+[09:12.00-09:13.98] If I flop an ace and somebody will be worried about kickers
+[09:13.98-09:15.98] and things like that so if i had a hand
+[09:15.98-09:17.34] like ACE-8 offsuit
+[09:17.34-09:19.26] I would want to get that hands heads up
+[09:19.26-09:21.02] whereas with four six of diamonds
+[09:21.02-09:23.46] I'm happy to play a hand like that multiway
+[09:23.46-09:26.86] So also from a value perspective you look at little pairs right now
+[09:26.86-09:29.54] Little pair like a pair reduces does pretty fine
+[09:29.54-09:32.46] as fine head's up not as well three way or four away
+[09:32.46-09:37.10] because it's so likely that overcards are going to come and you're not getting as good of a price.
+[09:37.14-09:38.90] But if there is like nine-way action,
+[09:38.92-09:39.94] And you have a little pair of threes
+[09:39.96-09:41.86] It's a fantastic hand to see a flop with
+[09:41.90-09:46.34] Because it's a hit or miss situation and very easy to play when you're in multi way pots
+[09:46.58-09:49.46] You really want to focus more on playing hands that are easier to play
+[09:49.50-09:56.58] So suited connectors baby pairs much easier than hands like ace ten off suit King king kang 10 you know Jack Ten off those
+[09:56.58-10:00.50] Jack Ten Off. Those are hands that can get you into a lot of trouble because
+[10:00.74-10:04.02] You know, it's very hard to make nutted hands with them and the great thing about
+[10:04.34-10:07.98] The six seven suited in pocket threes is if you miss the flop
+[10:08.14-10:10.18] It's very easy to fold there's not much of a decision to me
+[10:10.50-10:22.00] So depending where you are in your poker career in terms of like what stakes you play
+[10:22.04-10:23.16] What you'll generally see as a trend?
+[10:23.16-10:26.44] see is a trend, okay? The higher the stakes
+[10:26.46-10:29.32] the short more shorthand it becomes in terms of how many players
+[10:29.32-10:32.08] see a flop. So this game is supposed to be played pretty
+[10:32.08-10:34.20] conservatively you're not supposed to play half
+[10:34.20-10:36.60] the hands you're not supposed to pay 35% of the hand
+[10:36.60-10:37.80] you should play you know
+[10:37.80-10:40.76] a lower spectrum depending on how many players are there so what
+[10:40.76-10:43.16] you see at lower limits often is you get seven or eight
+[10:43.16-10:48.20] just calling the
+[10:53.16-10:57.16] Adjusting to this dynamic is very important depending on where you're at.
+[10:57.18-11:01.48] So a lot of questions I get, frankly are like people saying
+[11:01.50-11:03.48] You know how do i
+[11:03.48-11:06.20] Get up into the higher limits where they respect my raise?
+[11:06.22-11:09.16] I can't beat these bad players and that's not how this works
+[11:09.24-11:13.64] The fact that other players were playing poorly and limping a lot actually makes it easy for you
+[11:14.64-11:18.56] What you don't have to force anymore or mistakes by your opponents with big bluffss or anything like that
+[11:23.16-11:28.16] You know, you can be more aggressive or set better traps that's going to get the maximum value in situations.
+[11:29.16-11:30.16] What happens at higher stakes?
+[11:31.16-11:32.16] You don't see seven-or eight way pots.
+[11:33.16-11:35.16] You're gonna see heads up situation we have to be one opponent
+[11:35.16-11:36.16] when that is the case,
+[11:36.16-11:38.16] the odds of one having
+[11:38.16-11:39.16] The Nuts decreases significantly.
+[11:40.16-11:41.16] So it's usually the person that, you know
+[11:42.16-11:44.16] can be more aggressive or set better traps
+[11:44.16-11:46.16] That's going to get the maximum value in situations
+[11:46.16-11:48.16] so its vast difference
+[11:48.16-11:49.16] In terms of how you want to play when I'm
+[11:49.16-11:51.00] how you want to play. When I played tournaments and
+[11:51.02-11:54.20] I play these high roller events against all the young geniuses today,
+[11:54.20-11:56.52] I go in there knowing that I'm gonna have to force them
+[11:56.52-11:58.48] to make mistakes in order for me to win.
+[11:58.48-12:00.04] I can't just sit back wait for
+[12:00.04-12:02.36] the cards to come to me and expect to win. That's how
+[12:02.36-12:05.40] I will play though if I am playing like a $300 buying tournament.
+[12:05.48-12:06.56] I'm not going to do any bluffing.
+[12:06.80-12:08.92] kind of like take advantage or the fact that people are calling too often,
+[12:10.04-12:10.40] ,
+[12:10.40-12:14.40] playing too many hands and just giving me value in that regard.
+[12:21.92-12:23.92] So probably one of the most difficult parts
+[12:23.92-12:25.80] of being a professional poker player,
+[12:25.80-12:28.44] even recreational is like you get pocket Aces
+[12:28.48-12:30.16] and you lose now
+[12:30.16-12:33.00] sorta math on this and statistics on it
+[12:33.04-12:36.08] aren't all that understood right?
+[12:36.08-12:38.20] If you're in a heads-up situation against one opponent
+[12:38.20-12:39.92] and you get only with pocket Aces
+[12:39.92-12:41.08] You know you'll win
+[12:41.92-12:42.52] a good 80 something percent at the time
+[12:42.72-12:43.12] Right however
+[12:43.12-12:46.12] However, the more players that enter the pot
+[12:46.14-12:51.96] The lower frequency you're actually going to hold those aces. So if you're up against seven opponents
+[12:51.98-12:52.96] When you have pocket aces
+[12:53.68-12:55.72] You're gonna win less than half the time right which seems
+[12:55.80-13:00.16] Right which seems crazy to most people are like well how can that be? Aces are the best hand of the deck
+[13:00.24-13:02.50] Well unless you went all in before the flop
+[13:02.72-13:06.12] Sometimes you're gonna get 7 or 8 way action and in that case
+[13:06.12-13:07.12] -or the fact
+[13:07.12-13:09.28] the fact that just because I had aces before
+[13:09.30-13:11.16] The Flop, this isn't a situation where
+[13:11.18-13:12.48] I automatically win.
+[13:12.48-13:13.48] Right?
+[13:13.48-13:14.16] So a lot of people think well
+[13:14.16-13:15.48] I've just got bad luck and
+[13:15.48-13:16.88] That's usually a case
+[13:16.88-13:18.48] of people remembering
+[13:18.48-13:19.68] the worst times
+[13:19.68-13:21.28] And forgetting all the time they won
+[13:21.28-13:23.12] in also setting expectation
+[13:23.12-13:24.88] that is realistic you know if
+[13:25.12-13:26.24] You're getting ases in a game
+[13:26.28-13:28.72] were typically seven or eight people play
+[13:29.72-13:34.72] you should expect to like
+[13:37.12-13:42.92] focus on fundamental logic, math and reality
+[13:42.94-13:44.08] to not allow yourself
+[13:44.08-13:45.96] to play the game of woe is me.
+[13:45.96-13:47.12] I'm just unlucky

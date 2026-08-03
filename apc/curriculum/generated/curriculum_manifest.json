@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0.0",
+  "curriculum_id": "apc-negreanu-and-math-v1",
+  "units": "BB",
+  "sources": {
+    "course_evidence_index": {
+      "path": "C:\\Users\\st_ma\\Documents\\Negreanu\\analysis\\transcript_evidence_index.json",
+      "sha256": "b7574743bbfddea0f1951abd9974666dfa2a9b01c7e4975e519dc50c2d739836"
+    },
+    "verified_math": {
+      "path": "C:\\Users\\st_ma\\Documents\\Negreanu\\apc\\curriculum\\math_primitives.json",
+      "sha256": "e49be628c2788733e55d16ec4bf59e2dfaebdbc753641cc8ea9b1d4e255c26de"
+    }
+  },
+  "examples": 224,
+  "knowledge_tiers": {
+    "course_evidence": 214,
+    "verified_math": 10
+  },
+  "concept_counts": {
+    "Bayesian inference": 1,
+    "aggression": 9,
+    "bet sizing": 5,
+    "bluffing": 24,
+    "board texture": 33,
+    "cash games": 7,
+    "combinatorics": 2,
+    "equity and odds": 11,
+    "expected value": 3,
+    "game and bankroll": 7,
+    "mixed strategy": 14,
+    "multiway": 3,
+    "player modeling": 24,
+    "position": 25,
+    "psychology and meta": 8,
+    "ranges": 27,
+    "stack depth": 1,
+    "study process": 11,
+    "tells and live reads": 10,
+    "tournaments": 11
+  },
+  "splits": {
+    "train": {
+      "examples": 184,
+      "course_lessons": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        31,
+        32,
+        37,
+        38
+      ]
+    },
+    "validation": {
+      "examples": 28,
+      "course_lessons": [
+        21,
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    "test": {
+      "examples": 12,
+      "course_lessons": [
+        7,
+        30
+      ]
+    }
+  },
+  "exact_strategy_targets": 0,
+  "curriculum_sha256": "9703c0c13f33833d7cbcf97adef5aa2193d79e45d80bcd3365d3a0ee9f4451ce",
+  "split_policy": {
+    "group_key": "lesson_ordinal",
+    "group_exclusive": true,
+    "algorithm": "sha256_mod10",
+    "salt": "apc-course-split-v1",
+    "math_primitives": "train_only"
+  },
+  "limitations": [
+    "Course evidence is suitable for grounded explanation and concept retrieval, not exact action-frequency labels.",
+    "Exact GTO action targets require a fully specified game and solver provenance."
+  ]
+}

@@ -1,0 +1,1071 @@
+{
+  "video_count": 38,
+  "total_duration_seconds": 27621.413,
+  "total_duration_hours": 7.673,
+  "videos": [
+    {
+      "ordinal": 1,
+      "file": "01 Introduction.MP4",
+      "size_bytes": 84620395,
+      "duration_seconds": 172.167,
+      "duration_minutes": 2.87,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 3800899,
+          "width": 1920,
+          "height": 1080,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127972,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 2,
+      "file": "02-Understanding Position.mp4",
+      "size_bytes": 179461419,
+      "duration_seconds": 750.208,
+      "duration_minutes": 12.5,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1812564,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95769,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 3,
+      "file": "03-Hand Ranges and Board Texture.mp4",
+      "size_bytes": 413378065,
+      "duration_seconds": 1672.918,
+      "duration_minutes": 27.88,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1875330,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95987,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 4,
+      "file": "04-Ranges Hand Review.mp4",
+      "size_bytes": 99698558,
+      "duration_seconds": 734.251,
+      "duration_minutes": 12.24,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 985068,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95815,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 5,
+      "file": "05-Game Theory and Math.mp4",
+      "size_bytes": 154277335,
+      "duration_seconds": 669.526,
+      "duration_minutes": 11.16,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1742137,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95972,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 6,
+      "file": "06-C-Betting.mp4",
+      "size_bytes": 255007823,
+      "duration_seconds": 956.288,
+      "duration_minutes": 15.94,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1999905,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127982,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 7,
+      "file": "07-Check-Raising.mp4",
+      "size_bytes": 103733250,
+      "duration_seconds": 428.523,
+      "duration_minutes": 7.14,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1835888,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95541,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 8,
+      "file": "08-Three-Betting.mp4",
+      "size_bytes": 150427189,
+      "duration_seconds": 549.334,
+      "duration_minutes": 9.16,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 2089593,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95969,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 9,
+      "file": "09-Three-Betting Hand Review.mp4",
+      "size_bytes": 31300103,
+      "duration_seconds": 263.915,
+      "duration_minutes": 4.4,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 815602,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127850,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 10,
+      "file": "10-Detecting and Executing the Bluff.mp4",
+      "size_bytes": 242451597,
+      "duration_seconds": 871.36,
+      "duration_minutes": 14.52,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 2124767,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95975,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 11,
+      "file": "11-Executing the Bluff Hand Reviews.mp4",
+      "size_bytes": 272490833,
+      "duration_seconds": 1825.792,
+      "duration_minutes": 30.43,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1092478,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95965,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 12,
+      "file": "12-Bet Sizing.mp4",
+      "size_bytes": 119070324,
+      "duration_seconds": 424.982,
+      "duration_minutes": 7.08,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 2140194,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95947,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 13,
+      "file": "13-Overbetting.mp4",
+      "size_bytes": 152382316,
+      "duration_seconds": 632.747,
+      "duration_minutes": 10.55,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1793374,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127987,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 14,
+      "file": "14-Multi-way Dynamics.mp4",
+      "size_bytes": 244774580,
+      "duration_seconds": 827.2,
+      "duration_minutes": 13.79,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 2233906,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127962,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 15,
+      "file": "15-Mixed Strategy.mp4",
+      "size_bytes": 262655516,
+      "duration_seconds": 1109.782,
+      "duration_minutes": 18.5,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1759937,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127972,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 16,
+      "file": "16 Mixed Strategy. Hand Review.MP4",
+      "size_bytes": 144411603,
+      "duration_seconds": 293.792,
+      "duration_minutes": 4.9,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 3800021,
+          "width": 1920,
+          "height": 1080,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127889,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 17,
+      "file": "17-Pre- and Postflop Mistakes.mp4",
+      "size_bytes": 164039916,
+      "duration_seconds": 608.32,
+      "duration_minutes": 10.14,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 2056095,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95967,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 18,
+      "file": "18 Tournament Strategy. Early and Middle Stages.MP4",
+      "size_bytes": 366223796,
+      "duration_seconds": 744.75,
+      "duration_minutes": 12.41,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 3800520,
+          "width": 1920,
+          "height": 1080,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127960,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 19,
+      "file": "19 Tournament Strategy. On the Bubble.MP4",
+      "size_bytes": 303406364,
+      "duration_seconds": 616.792,
+      "duration_minutes": 10.28,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 3802018,
+          "width": 1920,
+          "height": 1080,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127951,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 20,
+      "file": "20-Tournament Strategy Late Stages and Final Table.mp4",
+      "size_bytes": 176920978,
+      "duration_seconds": 617.536,
+      "duration_minutes": 10.29,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 2190863,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95919,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 21,
+      "file": "21-Universal Tournament Strategy.mp4",
+      "size_bytes": 134162375,
+      "duration_seconds": 572.907,
+      "duration_minutes": 9.55,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1772117,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95937,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 22,
+      "file": "22-Cash Games.mp4",
+      "size_bytes": 218015656,
+      "duration_seconds": 701.078,
+      "duration_minutes": 11.68,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 2386483,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95960,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 23,
+      "file": "23 Masking Tells.MP4",
+      "size_bytes": 359580013,
+      "duration_seconds": 731.375,
+      "duration_minutes": 12.19,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 3799810,
+          "width": 1920,
+          "height": 1080,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127956,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 24,
+      "file": "24 Spotting Tells, Part 1.MP4",
+      "size_bytes": 333880850,
+      "duration_seconds": 680.125,
+      "duration_minutes": 11.34,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 3793969,
+          "width": 1920,
+          "height": 1080,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127947,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 25,
+      "file": "25-Spotting Tells, Part 2.mp4",
+      "size_bytes": 99488265,
+      "duration_seconds": 558.528,
+      "duration_minutes": 9.31,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1323708,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95964,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 26,
+      "file": "26-Spotting Tells Hand Reviews.mp4",
+      "size_bytes": 83627503,
+      "duration_seconds": 843.819,
+      "duration_minutes": 14.06,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 659628,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127747,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 27,
+      "file": "27-Table Talk.mp4",
+      "size_bytes": 105068688,
+      "duration_seconds": 629.483,
+      "duration_minutes": 10.49,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1233907,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95946,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 28,
+      "file": "28-How to Think at the Poker Table.mp4",
+      "size_bytes": 102958533,
+      "duration_seconds": 674.283,
+      "duration_minutes": 11.24,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1120090,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95982,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 29,
+      "file": "29-Managing and Exploiting Tilt.mp4",
+      "size_bytes": 265798896,
+      "duration_seconds": 1150.784,
+      "duration_minutes": 19.18,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1714310,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127985,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 30,
+      "file": "30-Table Image and Metagame.mp4",
+      "size_bytes": 178786082,
+      "duration_seconds": 952.982,
+      "duration_minutes": 15.88,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1399379,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95978,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 31,
+      "file": "31-Table Image and Metagame Hand Reviews.mp4",
+      "size_bytes": 89001333,
+      "duration_seconds": 809.323,
+      "duration_minutes": 13.49,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 746358,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127967,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 32,
+      "file": "32-Player Profiling.mp4",
+      "size_bytes": 245282080,
+      "duration_seconds": 856.235,
+      "duration_minutes": 14.27,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 2190454,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95960,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 33,
+      "file": "33-Game Selection.mp4",
+      "size_bytes": 173745857,
+      "duration_seconds": 784.0,
+      "duration_minutes": 13.07,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1671520,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95977,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 34,
+      "file": "34-Bankroll Management.mp4",
+      "size_bytes": 143163425,
+      "duration_seconds": 678.827,
+      "duration_minutes": 11.31,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1585888,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 95976,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 35,
+      "file": "35 Off-Felt Training.MP4",
+      "size_bytes": 408147244,
+      "duration_seconds": 830.125,
+      "duration_minutes": 13.84,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 3799864,
+          "width": 1920,
+          "height": 1080,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127981,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 36,
+      "file": "36-Life as a Poker Player.mp4",
+      "size_bytes": 207262661,
+      "duration_seconds": 860.331,
+      "duration_minutes": 14.34,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1793991,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127954,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 37,
+      "file": "37-Closing.mp4",
+      "size_bytes": 26023770,
+      "duration_seconds": 189.483,
+      "duration_minutes": 3.16,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1000869,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 92655,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    },
+    {
+      "ordinal": 38,
+      "file": "38-Bonus Material Online Play.mp4",
+      "size_bytes": 84915961,
+      "duration_seconds": 347.542,
+      "duration_minutes": 5.79,
+      "streams": [
+        {
+          "index": 0,
+          "type": "video",
+          "codec": "h264",
+          "language": "und",
+          "bit_rate": 1821747,
+          "width": 1280,
+          "height": 720,
+          "average_rate": 24.0
+        },
+        {
+          "index": 1,
+          "type": "audio",
+          "codec": "aac",
+          "language": "und",
+          "bit_rate": 127960,
+          "sample_rate": 48000,
+          "channels": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic table-state baseline v1",
+  "status": "synthetic_table_state_audit_passed_not_promotion_eligible",
+  "dataset": {
+    "dataset_id": "apc-synthetic-118092",
+    "renderer": "apc-synthetic-renderer-v2",
+    "verified_frames": 48,
+    "capture_sessions": 12,
+    "controlled_visible_frames": 0,
+    "annotations_sha256": "087048bf3ba49d2cdc3badd59ecaee540ed118914cdcf40dba4cf92600f3884a",
+    "split_sha256": "5661c1da4018bd5d663cf53b4214296a806ca21e469eb1fb33f34c827ab08895",
+    "duplicate_audit_sha256": "1cf59c86b11fd64fb7a7b941f9a4fc14d94f089dae31e6067da4f1e8ad621d71"
+  },
+  "checkpoints": {
+    "base_sha256": "4baf634c98f30627d5a6e73ecdba27d8cace13452e54891f6929e81d83429947",
+    "table_state_sha256": "330da07e0aa0cf7be74fa33e87bb5f6465844e4c4cbdad9d5f49540f1b5276e7"
+  },
+  "untouched_test": {
+    "capture_sessions": ["synthetic-0010"],
+    "training_session_overlap": [],
+    "frames": 4,
+    "accuracy": {
+      "hero_seat": 1.0,
+      "dealer_seat": 1.0,
+      "pot_bb": 1.0,
+      "to_call_bb": 1.0,
+      "joint_supported_state": 1.0
+    },
+    "latency_ms_p95": 181.0173650155775,
+    "prediction_sha256": "627260f48552e881d1d98dc8aa6d1c1b4ab7959444359960354ed5b09e571cd9"
+  },
+  "composite_smoke": {
+    "status": "abstain_incomplete_state",
+    "frame_sha256": "ffea79a6f99721a174d0af90c06831c43a03b9ca078e027f39e5b76ade5bb70b",
+    "exact_visible_state": {
+      "hero_cards": ["Tc", "7s"],
+      "street": "preflop",
+      "hero_seat": 1,
+      "dealer_seat": 1,
+      "pot_bb": "1.5",
+      "to_call_bb": "0.5",
+      "legal_actions": ["call", "fold", "raise"]
+    },
+    "latency_ms": 147.3499999847263
+  },
+  "unsupported_critical_outputs": [
+    "seat_stacks_bb",
+    "effective_stack_bb",
+    "player_identities",
+    "action_history",
+    "observed_action"
+  ],
+  "limitations": [
+    "Pot and call-price recognition is closed-vocabulary synthetic classification, not general OCR.",
+    "All geometry comes from one deterministic renderer.",
+    "Confidence is uncalibrated and the composite is required to abstain.",
+    "This checkpoint cannot pass Gate P or produce coaching recommendations."
+  ]
+}

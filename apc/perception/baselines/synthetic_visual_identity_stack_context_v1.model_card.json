@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic visual identity and stack context v1",
+  "status": "development_validation_only_not_promotion_eligible",
+  "created_at": "2026-08-02T23:37:38+03:00",
+  "components": [
+    "visual name-band pseudonymous signature",
+    "uncertainty-aware profile association",
+    "Hero-versus-opponent effective-stack map",
+    "explicit solver-declared multiway scalar policy",
+    "strict perception-to-coaching adapter"
+  ],
+  "dataset": {
+    "dataset_id": "apc-synthetic-hand-sequences-8675309",
+    "split": "validation",
+    "capture_sessions": ["handseq-0008"],
+    "frames": 16,
+    "annotations_sha256": "c0b700f1bb97056480c8a03c0af199820726813d17b28de7319f468940b7f8fd",
+    "split_sha256": "4faf5f780be1c7b11761f59b07f402995fa45c5e9e071af35cd7f59c0ba9604d"
+  },
+  "visual_identity_validation": {
+    "signature_observations": 144,
+    "expected_player_names": 9,
+    "stable_signature_rate": 1.0,
+    "token_collision_count": 0,
+    "final_seat_resolution_rate": 1.0,
+    "minimum_uncalibrated_quality_score": 0.99,
+    "prediction_sha256": "6e51db50b706f0ad9dda44611113cb4ee30fc3524a9c7b33f47c0f6dfe802009",
+    "registry_snapshot_sha256": "c0d06db5c338582a1ebe125f27e719a9a177d7826b4e8946281ecad0b5464f24",
+    "report_file_sha256": "87f9e4d574bc3a8eb1e55cdf554ef1dd739f3d47d94c55ab71123cec36a72dcd",
+    "registry_file_sha256": "1e2c11ce2c1b613f114937b7eeffa8ee37d8145cd8abbb2337f52c07dc9b8d56"
+  },
+  "complete_hand_validation": {
+    "pairs": 8,
+    "completed_hands": 2,
+    "complete_tracked_pair_accuracy": 1.0,
+    "completed_hand_exact_accuracy": 1.0,
+    "opponent_effective_stacks_exact_accuracy": 1.0,
+    "boundary_accuracy": 1.0,
+    "latency_ms_p95": 2109.725699981209,
+    "prediction_sha256": "cd2d81556d31945c928a21d03a4c7d7c6e857cb49b28635b69c0d7a8f6dc0323",
+    "report_file_sha256": "932c9d999bf00fc35d4fdeedef74fd9b83e2e97a67d008fcd70677bed9d5c4b1"
+  },
+  "backend_contract": {
+    "units": "BB",
+    "position_mapping": "dealer-relative occupied-seat map",
+    "multiway_default": "abstain",
+    "supported_explicit_policy": "minimum_active_opponent",
+    "raise_default": "to_amount_only",
+    "uncalibrated_recommendation_allowed": false,
+    "exact_sample_solver_node_dry_run": true
+  },
+  "pixel_to_backend_validation": {
+    "pairs": 8,
+    "identity_gate_passed": 6,
+    "backend_observations_ready": 3,
+    "visual_contract_states_ready": 3,
+    "backend_unmatched_expected_from_heads_up_only_solver": 3,
+    "strict_raise_semantic_abstentions": 3,
+    "strict_gate_violations": 0,
+    "latency_ms_p95": 1431.2674749584403,
+    "prediction_sha256": "a50077b6a3ac84880100c19b4dd054a82a7639b6330129e5cb7e3135273fad10",
+    "report_file_sha256": "b03ff1b0c98249ffdec0b334bac1d77fa8a28d8b16f6110c1f5f11ef3d9b0b68"
+  },
+  "frozen_visible_ood_reference": {
+    "reference_id": "user-play-money-flop-abcaa035",
+    "image_sha256": "abcaa03594d592f4608bc3f43b8f7f7a0a803b38635324c0bdc25ced7ce946ef",
+    "use_policy": "audit_only_not_training_or_gate_count",
+    "verified_fields": 6,
+    "exact_fields": 1,
+    "exact_field_accuracy": 0.16666666666666666,
+    "image_integrity_verified": true,
+    "safe_abstention": true,
+    "invalid_cards_rejected": true,
+    "comparison_sha256": "ede74ede524f0e6e54f032c390e79ca41d2136f09655c65fd89a96da58f541b8",
+    "prediction_file_sha256": "68b0023f408e963b29299eff302379c1d848ea7ee2748b1f1b7fbc469d4dd801",
+    "report_file_sha256": "6172ba2a6ef592013dd63a2cd44c04af5dee88d8cdb6ff41ba151a238ec12f9e"
+  },
+  "frozen_viewport_calibration_audit": {
+    "profile_sha256": "eefbf6aca24cb71088f53d6dd754ff89bf9b4e6a97a1942af408173109c1aec9",
+    "normalized_image_sha256": "e1278b5b0cf2713594a71477e78303b2e8c445d132e47de2439a0a6b8bb7b17d",
+    "use_policy": "one_pass_audit_only_not_training_or_gate_count",
+    "exact_fields": 1,
+    "verified_fields": 6,
+    "safe_abstention": true,
+    "single_frame_status": "abstain_perception_head_failure",
+    "temporal_status": "abstain_frame_perception_rejected",
+    "viewport_report_file_sha256": "961fae5adf01c2d14e02b3b45adf1823f03882cb7d9c017a630835a367c035ce",
+    "prediction_file_sha256": "c7c7caa8e34c714e8a077c622b382232e21e1a715d4edeaa7b950b78535947a9",
+    "audit_file_sha256": "1ba559fdda4ae18f47787e841995abe5a6698a44bfa38e9d4ffd4ca4179e6d02",
+    "temporal_abstention_file_sha256": "239f172aeccc636b160308bc90991145115ec96a5e29279fdbf9cf4d817c97c0"
+  },
+  "test_policy": {
+    "apc_tests_passing": 102,
+    "previous_untouched_complete_hand_test": "preserved at 50% exact complete-hand accuracy",
+    "test_split_reused_for_tuning": false,
+    "fresh_independent_audit_required": true
+  },
+  "limitations": [
+    "The visual identity component hashes normalized username glyph pixels and does not read human-readable text.",
+    "Seat geometry is supplied by the synthetic stack checkpoint; arbitrary table localization is not proven.",
+    "The validation font, layout family and rendering are synthetic and materially narrower than controlled visible-table variation.",
+    "Quality scores are uncalibrated and cannot open a coaching recommendation gate.",
+    "Multiway scalar reduction is solver-bundle semantics, not a universal poker-state truth.",
+    "The reference pipeline is not interactive at the measured p95 latency.",
+    "No untouched-test or promotion claim is made after this development change."
+  ]
+}

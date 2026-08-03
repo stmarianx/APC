@@ -1,0 +1,604 @@
+{
+  "file": "09-Three-Betting Hand Review.mp4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 263.9146875,
+  "duration_after_vad_seconds": 243.84,
+  "transcription_elapsed_seconds": 162.157,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 2,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 13.55,
+      "end": 18.11,
+      "text": "And then we're going to look at here, takes place in Barcelona and it represents a",
+      "avg_logprob": -0.36191,
+      "no_speech_prob": 0.01037,
+      "compression_ratio": 1.47159
+    },
+    {
+      "start": 18.11,
+      "end": 21.67,
+      "text": "situation that you should find yourself in decent amount.",
+      "avg_logprob": -0.36191,
+      "no_speech_prob": 0.01037,
+      "compression_ratio": 1.47159
+    },
+    {
+      "start": 21.67,
+      "end": 25.03,
+      "text": "It's gonna involve the three bet and four bet and how we react",
+      "avg_logprob": -0.36191,
+      "no_speech_prob": 0.01037,
+      "compression_ratio": 1.47159
+    },
+    {
+      "start": 25.03,
+      "end": 28.88,
+      "text": "and let's just play the hand and we'll talk it through.",
+      "avg_logprob": -0.36191,
+      "no_speech_prob": 0.01037,
+      "compression_ratio": 1.47159
+    },
+    {
+      "start": 44.74,
+      "end": 45.74,
+      "text": "10 for Daniel.",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 45.74,
+      "end": 48.58,
+      "text": "Danio could very well three bet here, I think in position he just flats but",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 48.58,
+      "end": 51.9,
+      "text": "in this spot he'd probably rather get some folds than play too many pots out of",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 51.9,
+      "end": 53.36,
+      "text": "position",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 53.36,
+      "end": 56.28,
+      "text": "so in a situation like this you're gonna find yourself often",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 56.28,
+      "end": 58.84,
+      "text": "in the small blind against the button raised now one thing we",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 58.84,
+      "end": 61.6,
+      "text": "understand about the button player is the Button players range",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 61.6,
+      "end": 65.6,
+      "text": "far wider then everywhere else at table so",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 65.68,
+      "end": 68.56,
+      "text": "the button may be opening",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 68.56,
+      "end": 72.12,
+      "text": "in the neighborhood 50% percent of fifty-ofity",
+      "avg_logprob": -0.41994,
+      "no_speech_prob": 0.02917,
+      "compression_ratio": 1.69366
+    },
+    {
+      "start": 74.8,
+      "end": 77.64,
+      "text": "player so he's gonna have a wide range. Now the question is with a hand-like",
+      "avg_logprob": -0.33773,
+      "no_speech_prob": 0.02175,
+      "compression_ratio": 1.64211
+    },
+    {
+      "start": 77.64,
+      "end": 81.76,
+      "text": "Ace Ten Off suit, it doesn't play that well postflop. It's not",
+      "avg_logprob": -0.33773,
+      "no_speech_prob": 0.02175,
+      "compression_ratio": 1.64211
+    },
+    {
+      "start": 81.76,
+      "end": 86.56,
+      "text": "a hand that is connected or suited that you know could develop into something",
+      "avg_logprob": -0.33773,
+      "no_speech_prob": 0.02175,
+      "compression_ratio": 1.64211
+    },
+    {
+      "start": 86.56,
+      "end": 90.28,
+      "text": "big. It is one of those hands where I'm definitely way ahead",
+      "avg_logprob": -0.33773,
+      "no_speech_prob": 0.02175,
+      "compression_ratio": 1.64211
+    },
+    {
+      "start": 90.28,
+      "end": 94.92,
+      "text": "of Rankineir's range and the question is in not whether I'm going to fold it but",
+      "avg_logprob": -0.33773,
+      "no_speech_prob": 0.02175,
+      "compression_ratio": 1.64211
+    },
+    {
+      "start": 96.04,
+      "end": 103.6,
+      "text": "am i going to just call here or take initiative? And I decide especially with my image against Rankineerimic",
+      "avg_logprob": -0.33773,
+      "no_speech_prob": 0.02175,
+      "compression_ratio": 1.64211
+    },
+    {
+      "start": 104.8,
+      "end": 108.63,
+      "text": "So I decide here to three bet it to 18,000.",
+      "avg_logprob": -0.44521,
+      "no_speech_prob": 0.00539,
+      "compression_ratio": 1.57143
+    },
+    {
+      "start": 108.63,
+      "end": 111.63,
+      "text": "He's 3 bets from the small blind to 18 thousand",
+      "avg_logprob": -0.44521,
+      "no_speech_prob": 0.00539,
+      "compression_ratio": 1.57143
+    },
+    {
+      "start": 111.63,
+      "end": 114.59,
+      "text": "Stephen Silverman has Ace Jack suited in the big blind",
+      "avg_logprob": -0.44521,
+      "no_speech_prob": 0.00539,
+      "compression_ratio": 1.57143
+    },
+    {
+      "start": 114.59,
+      "end": 116.15,
+      "text": "and this is probably right around",
+      "avg_logprob": -0.44521,
+      "no_speech_prob": 0.00539,
+      "compression_ratio": 1.57143
+    },
+    {
+      "start": 116.15,
+      "end": 117.79,
+      "text": "the bottom of Steve four betting range",
+      "avg_logprob": -0.44521,
+      "no_speech_prob": 0.00539,
+      "compression_ratio": 1.57143
+    },
+    {
+      "start": 117.79,
+      "end": 120.46,
+      "text": "you could probably go either way here",
+      "avg_logprob": -0.44521,
+      "no_speech_prob": 0.00539,
+      "compression_ratio": 1.57143
+    },
+    {
+      "start": 120.46,
+      "end": 123.72,
+      "text": "he does have position on the three better",
+      "avg_logprob": -0.44521,
+      "no_speech_prob": 0.00539,
+      "compression_ratio": 1.57143
+    },
+    {
+      "start": 123.72,
+      "end": 128.12,
+      "text": "that is a forebet to 45K Reinkamiez out so interesting decision",
+      "avg_logprob": -0.44521,
+      "no_speech_prob": 0.00539,
+      "compression_ratio": 1.57143
+    },
+    {
+      "start": 130.12,
+      "end": 130.48,
+      "text": "from silvermen as you can see so",
+      "avg_logprob": -0.44521,
+      "no_speech_prob": 0.00539,
+      "compression_ratio": 1.57143
+    },
+    {
+      "start": 130.48,
+      "end": 134.0,
+      "text": "He is paying attention to what's developed here.",
+      "avg_logprob": -0.48956,
+      "no_speech_prob": 0.00788,
+      "compression_ratio": 1.51376
+    },
+    {
+      "start": 134.0,
+      "end": 135.28,
+      "text": "Where the raises come from,",
+      "avg_logprob": -0.48956,
+      "no_speech_prob": 0.00788,
+      "compression_ratio": 1.51376
+    },
+    {
+      "start": 135.28,
+      "end": 138.16,
+      "text": "what position has a huge impact on how you play a hand?",
+      "avg_logprob": -0.48956,
+      "no_speech_prob": 0.00788,
+      "compression_ratio": 1.51376
+    },
+    {
+      "start": 138.16,
+      "end": 141.32,
+      "text": "So for example if in this situation",
+      "avg_logprob": -0.48956,
+      "no_speech_prob": 0.00788,
+      "compression_ratio": 1.51376
+    },
+    {
+      "start": 141.32,
+      "end": 144.0,
+      "text": "rank my raise under the gun and I'd re-raised",
+      "avg_logprob": -0.48956,
+      "no_speech_prob": 0.00788,
+      "compression_ratio": 1.51376
+    },
+    {
+      "start": 145.0,
+      "end": 145.8,
+      "text": "so that he'll fold his hand",
+      "avg_logprob": -0.48956,
+      "no_speech_prob": 0.00788,
+      "compression_ratio": 1.51376
+    },
+    {
+      "start": 145.8,
+      "end": 147.36,
+      "text": "he's not even gonna consider calling",
+      "avg_logprob": -0.48956,
+      "no_speech_prob": 0.00788,
+      "compression_ratio": 1.51376
+    },
+    {
+      "start": 147.36,
+      "end": 149.96,
+      "text": "with a hand as strong as H Jack suited but because",
+      "avg_logprob": -0.48956,
+      "no_speech_prob": 0.00788,
+      "compression_ratio": 1.51376
+    },
+    {
+      "start": 149.96,
+      "end": 154.28,
+      "text": "the race came from the button, we know that's a wide range. Then factor in my three",
+      "avg_logprob": -0.28293,
+      "no_speech_prob": 0.0067,
+      "compression_ratio": 1.05063
+    },
+    {
+      "start": 179.96,
+      "end": 184.24,
+      "text": "and you're just gonna have a much stronger hand on average.",
+      "avg_logprob": -0.34155,
+      "no_speech_prob": 0.0039,
+      "compression_ratio": 1.37415
+    },
+    {
+      "start": 184.24,
+      "end": 185.04,
+      "text": "Steve could,",
+      "avg_logprob": -0.34155,
+      "no_speech_prob": 0.0039,
+      "compression_ratio": 1.37415
+    },
+    {
+      "start": 185.04,
+      "end": 186.64,
+      "text": "just be getting out of line here sometimes",
+      "avg_logprob": -0.34155,
+      "no_speech_prob": 0.0039,
+      "compression_ratio": 1.37415
+    },
+    {
+      "start": 186.64,
+      "end": 188.88,
+      "text": "and looking for good spot but Daniel's still",
+      "avg_logprob": -0.34155,
+      "no_speech_prob": 0.0039,
+      "compression_ratio": 1.37415
+    },
+    {
+      "start": 188.88,
+      "end": 190.92,
+      "text": "at a position now this pot is even bigger",
+      "avg_logprob": -0.34155,
+      "no_speech_prob": 0.0039,
+      "compression_ratio": 1.37415
+    },
+    {
+      "start": 190.92,
+      "end": 196.45,
+      "text": "Is that binding?",
+      "avg_logprob": -0.37646,
+      "no_speech_prob": 0.01086,
+      "compression_ratio": 1.43678
+    },
+    {
+      "start": 198.02,
+      "end": 199.02,
+      "text": "You got it.",
+      "avg_logprob": -0.37646,
+      "no_speech_prob": 0.01086,
+      "compression_ratio": 1.43678
+    },
+    {
+      "start": 200.02,
+      "end": 201.02,
+      "text": "So the decision I have here really, and",
+      "avg_logprob": -0.37646,
+      "no_speech_prob": 0.01086,
+      "compression_ratio": 1.43678
+    },
+    {
+      "start": 201.02,
+      "end": 202.02,
+      "text": "I looked over at Silverman to see if",
+      "avg_logprob": -0.37646,
+      "no_speech_prob": 0.01086,
+      "compression_ratio": 1.43678
+    },
+    {
+      "start": 202.02,
+      "end": 204.02,
+      "text": "can get a read because there are situations",
+      "avg_logprob": -0.37646,
+      "no_speech_prob": 0.01086,
+      "compression_ratio": 1.43678
+    },
+    {
+      "start": 204.02,
+      "end": 206.02,
+      "text": "that I could exploit myself so",
+      "avg_logprob": -0.37646,
+      "no_speech_prob": 0.01086,
+      "compression_ratio": 1.43678
+    },
+    {
+      "start": 206.02,
+      "end": 207.02,
+      "text": "you know we know that",
+      "avg_logprob": -0.37646,
+      "no_speech_prob": 0.01086,
+      "compression_ratio": 1.43678
+    },
+    {
+      "start": 207.02,
+      "end": 209.02,
+      "text": "The button raised a wide range my three-betting",
+      "avg_logprob": -0.37646,
+      "no_speech_prob": 0.01086,
+      "compression_ratio": 1.43678
+    },
+    {
+      "start": 209.02,
+      "end": 211.02,
+      "text": "betting range is pretty wide, which means what?",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 211.02,
+      "end": 212.46,
+      "text": "Silverman's forebetting range",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 212.46,
+      "end": 214.22,
+      "text": "is actually wider as well.",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 214.22,
+      "end": 216.1,
+      "text": "So if I pick up on some weakness or",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 216.1,
+      "end": 217.26,
+      "text": "some kind of a tell",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 217.26,
+      "end": 219.82,
+      "text": "I could turn my hand into a real solid bluff",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 219.82,
+      "end": 221.94,
+      "text": "by making a five bet to somewhere in the neighborhood",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 221.94,
+      "end": 224.62,
+      "text": "of 100 or even 90 thousand.",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 224.62,
+      "end": 226.74,
+      "text": "Calling is not the option that you want to take.",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 226.74,
+      "end": 230.33,
+      "text": "In this situation, you kinda have to either",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 232.33,
+      "end": 232.97,
+      "text": "have the guts to put in a 5-in a five-a-by",
+      "avg_logprob": -0.38293,
+      "no_speech_prob": 0.00641,
+      "compression_ratio": 1.60227
+    },
+    {
+      "start": 232.97,
+      "end": 235.33,
+      "text": "doing in a tournament, maybe more so occasionally",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 235.33,
+      "end": 236.37,
+      "text": "in a cash game.",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 236.37,
+      "end": 238.73,
+      "text": "But in this case every one of the players",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 238.73,
+      "end": 240.97,
+      "text": "essentially played the hand correctly.",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 240.97,
+      "end": 244.69,
+      "text": "So the lesson here really is also that I want you to take away",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 244.69,
+      "end": 247.57,
+      "text": "is once you've put a plan together",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 247.57,
+      "end": 249.61,
+      "text": "to make a three bet and it was right decision",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 249.61,
+      "end": 253.17,
+      "text": "you don't have to continue once you've gotten some resistance",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 253.17,
+      "end": 253.89,
+      "text": "from another player.",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 254.21,
+      "end": 256.85,
+      "text": "So with Silverman jumping in and forbidding and forebetting it yeah sure",
+      "avg_logprob": -0.31922,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.69582
+    },
+    {
+      "start": 256.85,
+      "end": 260.89,
+      "text": "Maybe he's bluffing sometimes, but I don't have the kind of hand that strong enough in",
+      "avg_logprob": -0.13687,
+      "no_speech_prob": 0.01298,
+      "compression_ratio": 1.03614
+    }
+  ]
+}

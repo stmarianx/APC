@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>APC Annotation Workbench</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <div><span class="eyebrow">AI Poker Coach</span><h1>Visible-table annotation workbench</h1></div>
+    <div id="projectSummary" class="summary">Loading project…</div>
+  </header>
+  <main>
+    <aside>
+      <section>
+        <h2>Import PNG frames</h2>
+        <label>Capture session <input id="sessionId" value="session-001"></label>
+        <label>Starting timestamp (ms) <input id="timestampMs" type="number" min="0" value="0"></label>
+        <label>Absolute paths, one per line <textarea id="framePaths" rows="5" spellcheck="false"></textarea></label>
+        <button id="importButton">Import</button>
+      </section>
+      <section>
+        <div class="section-head"><h2>Frames</h2><button id="refreshButton" class="quiet">Refresh</button></div>
+        <div id="frameList" class="frame-list"></div>
+      </section>
+      <section>
+        <h2>Dataset export</h2>
+        <label>Version <input id="datasetVersion" value="0.1.0"></label>
+        <button id="exportButton">Validate and export</button>
+      </section>
+    </aside>
+    <section class="workspace">
+      <div class="preview">
+        <div class="section-head"><div><span class="eyebrow">Selected frame</span><h2 id="selectedTitle">None</h2></div><span id="frameBadge" class="badge">pending</span></div>
+        <div class="image-stage"><div id="imageSurface" class="image-surface"><img id="frameImage" alt="Selected virtual-chip poker frame"><canvas id="boxCanvas" aria-label="Annotation box overlay"></canvas></div></div>
+        <section class="box-tools" aria-label="Graphical box editor">
+          <div class="section-head"><div><span class="eyebrow">Graphical helper</span><h2>Draw a normalized object box</h2></div><span id="boxReadout" class="summary">No box drawn</span></div>
+          <div class="tool-grid">
+            <label>Object type
+              <select id="objectType">
+                <option value="table">Table</option>
+                <option value="seat">Seat</option>
+                <option value="hero_card">Hero card</option>
+                <option value="board_card">Board card</option>
+                <option value="pot">Pot</option>
+                <option value="action_button">Action button</option>
+              </select>
+            </label>
+            <label>Array index <input id="objectIndex" type="number" min="1" max="10" value="1"></label>
+          </div>
+          <label>Fields merged with the drawn box <textarea id="objectFields" rows="6" spellcheck="false"></textarea></label>
+          <div class="actions"><button id="syncStateButton" class="quiet">Sync canonical state</button><button id="applyBoxButton" disabled>Apply box and fields</button></div>
+        </section>
+        <p class="hint">Drag on the image to draw a region. Boxes are normalized to the immutable source image. Saving still runs image-hash, BB, card, seat, action and state-consistency validation.</p>
+      </div>
+      <div class="editor">
+        <div class="section-head"><div><span class="eyebrow">Canonical target</span><h2>Annotation JSON</h2></div><button id="formatButton" class="quiet">Format</button></div>
+        <section id="suggestionPanel" class="suggestion-panel" hidden>
+          <div class="section-head"><div><span class="eyebrow">Review aid only</span><h2>Model suggestion</h2></div><span id="suggestionConfidence" class="badge">unreviewed</span></div>
+          <p class="hint">This output is unverified. Applying it only copies supported fields into the local draft; it never saves or verifies an annotation.</p>
+          <pre id="suggestionPreview" class="suggestion-preview"></pre>
+          <button id="applySuggestionButton" class="quiet">Apply suggested fields to draft</button>
+        </section>
+        <textarea id="annotationEditor" spellcheck="false" aria-label="Annotation JSON"></textarea>
+        <div class="actions"><button id="reloadButton" class="quiet">Reload</button><button id="saveButton">Validate and save</button></div>
+        <pre id="message" class="message">Choose a frame to begin.</pre>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

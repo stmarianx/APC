@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic perception audit v1",
+  "status": "synthetic_pipeline_audit_passed_not_promotion_eligible",
+  "audit_policy": {
+    "development_dataset": "apc-synthetic-20260802",
+    "audit_dataset": "apc-synthetic-73190217",
+    "hyperparameters_frozen_before_audit_test": true,
+    "audit_test_evaluations": 1
+  },
+  "dataset": {
+    "verified_frames": 48,
+    "capture_sessions": 12,
+    "layouts": 3,
+    "themes": 2,
+    "controlled_visible_frames": 0,
+    "train_sessions": [
+      "synthetic-0001",
+      "synthetic-0002",
+      "synthetic-0003",
+      "synthetic-0004",
+      "synthetic-0005",
+      "synthetic-0006",
+      "synthetic-0007",
+      "synthetic-0008",
+      "synthetic-0009",
+      "synthetic-0011"
+    ],
+    "validation_sessions": ["synthetic-0000"],
+    "test_sessions": ["synthetic-0010"],
+    "annotations_sha256": "e61386ff41fd5c6bcade56866e8a933973f2b8052394fed4d4d505a4c0702a1a",
+    "split_sha256": "5661c1da4018bd5d663cf53b4214296a806ca21e469eb1fb33f34c827ab08895",
+    "duplicate_audit_sha256": "ad9abb3dd2973f64f9b130edbc9294fe828194b93cbedb1b70f0052f42049894"
+  },
+  "checkpoints": {
+    "base_sha256": "461f2d940d5501590c6f4322730ad335cb1442153c070f11b92fbde87226964d",
+    "card_sha256": "34f9c22beffda0e524cb1464a8ef7bc7839462f6433ccd3c67fe446ef211ea8e"
+  },
+  "untouched_test": {
+    "frames": 4,
+    "visible_cards": 20,
+    "training_session_overlap": [],
+    "accuracy": {
+      "layout_id": 1.0,
+      "legal_actions": 1.0,
+      "street": 1.0,
+      "theme_id": 1.0,
+      "card_rank": 1.0,
+      "card_suit": 1.0,
+      "card_rank_suit_exact": 1.0,
+      "complete_visible_card_state": 1.0
+    },
+    "base_latency_ms_p95": 79.46475501812527,
+    "card_pipeline_latency_ms_p95": 173.37038995465264,
+    "base_prediction_sha256": "e75b3d1ad6939e418e1da5bc52c98504fb3af7dc9d9903443ed8b75996bf7235",
+    "card_prediction_sha256": "e226e2d1dcdaa30b48229bc28f7642bf1795b66ef918164eba6650e96b136491"
+  },
+  "supported_outputs": [
+    "layout_id",
+    "theme_id",
+    "street",
+    "legal_actions",
+    "hero_cards",
+    "board_cards"
+  ],
+  "unsupported_critical_outputs": [
+    "seat_stacks_bb",
+    "pot_bb",
+    "to_call_bb",
+    "dealer_seat",
+    "observed_action"
+  ],
+  "limitations": [
+    "All audit images come from one deterministic synthetic renderer.",
+    "The audit test contains only four frames and 20 visible cards.",
+    "Learned card geometry does not yet generalize to controlled visible tables.",
+    "Confidence is not calibrated and out-of-distribution abstention is not implemented.",
+    "This checkpoint cannot pass Gate P or drive recommendations."
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0.0",
+  "scenarios": [
+    {
+      "scenario_id": "bb_defend_kqs",
+      "title": "Big blind defense with KQs",
+      "category": "Preflop defense",
+      "difficulty": "Foundation",
+      "street": "preflop",
+      "hero_position": "BB",
+      "villain_position": "BTN",
+      "hero_cards": ["Kc", "Qs"],
+      "board": [],
+      "pot_bb": "4.0",
+      "to_call_bb": "1.5",
+      "effective_stack_bb": "97.5",
+      "action_history": ["SB posts 0.5bb", "Hero posts 1bb", "BTN raises to 2.5bb", "SB folds"],
+      "actions": [
+        {"action_id": "fold", "label": "Fold", "frequency": "0.02", "ev_bb": "0.00"},
+        {"action_id": "call", "label": "Call 1.5bb", "frequency": "0.73", "ev_bb": "0.31", "amount_bb": "1.5"},
+        {"action_id": "raise_11", "label": "3-bet to 11bb", "frequency": "0.25", "ev_bb": "0.28", "amount_bb": "10"}
+      ],
+      "concepts": ["pot odds", "range defense", "mixed strategy", "position"],
+      "explanation": "KQs is far too strong to fold against a standard button open. Calling preserves dominated hands and realizes suited equity; raising remains a meaningful mixed action with blocker and value properties.",
+      "provenance": {"tier": "educational_baseline", "source": "Negreanu course synthesis + mathematical sanity checks", "version": "baseline-2026.08", "solver_verified": false, "source_refs": ["02 Understanding Position", "03 Hand Ranges and Board Texture", "08 Three-Betting"]}
+    },
+    {
+      "scenario_id": "btn_cbet_a72r",
+      "title": "Button continuation bet on A-7-2 rainbow",
+      "category": "Flop c-betting",
+      "difficulty": "Foundation",
+      "street": "flop",
+      "hero_position": "BTN",
+      "villain_position": "BB",
+      "hero_cards": ["Kc", "Qd"],
+      "board": ["Ah", "7s", "2c"],
+      "pot_bb": "5.5",
+      "to_call_bb": "0",
+      "effective_stack_bb": "97.5",
+      "action_history": ["BTN raises to 2.5bb", "BB calls", "BB checks"],
+      "actions": [
+        {"action_id": "check", "label": "Check", "frequency": "0.24", "ev_bb": "2.01"},
+        {"action_id": "bet_1_3", "label": "Bet 1.8bb", "frequency": "0.66", "ev_bb": "2.10", "amount_bb": "1.8"},
+        {"action_id": "bet_3_4", "label": "Bet 4.1bb", "frequency": "0.10", "ev_bb": "1.91", "amount_bb": "4.1"}
+      ],
+      "concepts": ["range advantage", "small sizing", "board texture", "backdoor equity"],
+      "explanation": "The preflop raiser retains a strong ace advantage on this static board. A small bet applies broad range pressure cheaply; KQ without a made hand can still use backdoor and overcard equity. Checking is defensible, while the large size is inefficient for much of the range.",
+      "provenance": {"tier": "educational_baseline", "source": "Negreanu course synthesis + mathematical sanity checks", "version": "baseline-2026.08", "solver_verified": false, "source_refs": ["03 Hand Ranges and Board Texture", "06 C-Betting", "12 Bet Sizing"]}
+    },
+    {
+      "scenario_id": "bb_checkraise_nut_draw",
+      "title": "Check-raise a nut-flush draw",
+      "category": "Flop check-raising",
+      "difficulty": "Intermediate",
+      "street": "flop",
+      "hero_position": "BB",
+      "villain_position": "BTN",
+      "hero_cards": ["As", "5s"],
+      "board": ["Ks", "8s", "3d"],
+      "pot_bb": "8.4",
+      "to_call_bb": "1.9",
+      "effective_stack_bb": "96.5",
+      "action_history": ["BTN raises to 2.5bb", "BB calls", "BB checks", "BTN bets 1.9bb"],
+      "actions": [
+        {"action_id": "fold", "label": "Fold", "frequency": "0.00", "ev_bb": "0.00"},
+        {"action_id": "call", "label": "Call 1.9bb", "frequency": "0.55", "ev_bb": "2.62", "amount_bb": "1.9"},
+        {"action_id": "raise_7_5", "label": "Raise to 7.5bb", "frequency": "0.45", "ev_bb": "2.66", "amount_bb": "7.5"}
+      ],
+      "concepts": ["semi-bluff", "equity realization", "range construction", "blockers"],
+      "explanation": "The nut-flush draw has enough equity to continue and blocks the strongest flush draws. Mixing calls and check-raises protects both branches: calls retain dominated draws, while raises create fold equity and support value raises.",
+      "provenance": {"tier": "educational_baseline", "source": "Negreanu course synthesis + mathematical sanity checks", "version": "baseline-2026.08", "solver_verified": false, "source_refs": ["07 Check-Raising", "10 Detecting and Executing the Bluff", "15 Mixed Strategy"]}
+    },
+    {
+      "scenario_id": "turn_polar_barrel",
+      "title": "Turn polar barrel with combo draw",
+      "category": "Turn barreling",
+      "difficulty": "Advanced",
+      "street": "turn",
+      "hero_position": "BTN",
+      "villain_position": "BB",
+      "hero_cards": ["Jh", "Th"],
+      "board": ["Kh", "8c", "3h", "9s"],
+      "pot_bb": "9.1",
+      "to_call_bb": "0",
+      "effective_stack_bb": "92.8",
+      "action_history": ["BTN raises, BB calls", "BB checks, BTN bets 33%, BB calls", "BB checks turn"],
+      "actions": [
+        {"action_id": "check", "label": "Check", "frequency": "0.30", "ev_bb": "5.20"},
+        {"action_id": "bet_2_3", "label": "Bet 6.1bb", "frequency": "0.48", "ev_bb": "5.39", "amount_bb": "6.1"},
+        {"action_id": "overbet_1_25", "label": "Bet 11.4bb", "frequency": "0.22", "ev_bb": "5.34", "amount_bb": "11.4"}
+      ],
+      "concepts": ["polarization", "semi-bluff", "nut advantage", "overbetting"],
+      "explanation": "JT of hearts combines a strong draw, blockers, and poor showdown value. It belongs naturally in aggressive turn branches. Medium and overbet sizes both pressure capped pairs; checking retains equity and prevents the checking range from becoming empty of strong river candidates.",
+      "provenance": {"tier": "educational_baseline", "source": "Negreanu course synthesis + mathematical sanity checks", "version": "baseline-2026.08", "solver_verified": false, "source_refs": ["10 Detecting and Executing the Bluff", "12 Bet Sizing", "13 Overbetting", "15 Mixed Strategy"]}
+    },
+    {
+      "scenario_id": "river_bluffcatcher",
+      "title": "River bluff-catcher facing two-thirds pot",
+      "category": "River defense",
+      "difficulty": "Intermediate",
+      "street": "river",
+      "hero_position": "BB",
+      "villain_position": "BTN",
+      "hero_cards": ["Ac", "Qd"],
+      "board": ["As", "9h", "6c", "2s", "Kd"],
+      "pot_bb": "28.0",
+      "to_call_bb": "11.2",
+      "effective_stack_bb": "54.0",
+      "action_history": ["BTN raises, BB calls", "Flop bet-call", "Turn bet-call", "BB checks river", "BTN bets 11.2bb"],
+      "actions": [
+        {"action_id": "fold", "label": "Fold", "frequency": "0.42", "ev_bb": "0.00"},
+        {"action_id": "call", "label": "Call 11.2bb", "frequency": "0.58", "ev_bb": "0.06", "amount_bb": "11.2"}
+      ],
+      "concepts": ["pot odds", "minimum defense frequency", "bluff catching", "blockers"],
+      "explanation": "AQ is a bluff-catcher: it rarely beats value but is high in the one-pair range. The price requires roughly 28.6% equity. Calling and folding are close in this baseline, so blocker effects and the opponent model can legitimately shift the mix.",
+      "provenance": {"tier": "educational_baseline", "source": "Negreanu course synthesis + mathematical sanity checks", "version": "baseline-2026.08", "solver_verified": false, "source_refs": ["05 Game Theory and Math", "10 Detecting and Executing the Bluff", "15 Mixed Strategy"]}
+    },
+    {
+      "scenario_id": "river_polar_bluff",
+      "title": "Choose a river bluff size",
+      "category": "River bluffing",
+      "difficulty": "Advanced",
+      "street": "river",
+      "hero_position": "BTN",
+      "villain_position": "BB",
+      "hero_cards": ["Qs", "Js"],
+      "board": ["As", "Tc", "7d", "2h", "2c"],
+      "pot_bb": "24.0",
+      "to_call_bb": "0",
+      "effective_stack_bb": "64.0",
+      "action_history": ["BTN raises, BB calls", "Flop bet-call", "Turn checks through", "BB checks river"],
+      "actions": [
+        {"action_id": "check", "label": "Check", "frequency": "0.38", "ev_bb": "0.00"},
+        {"action_id": "bet_3_4", "label": "Bet 18bb", "frequency": "0.18", "ev_bb": "0.05", "amount_bb": "18"},
+        {"action_id": "overbet_1_25", "label": "Bet 30bb", "frequency": "0.44", "ev_bb": "0.14", "amount_bb": "30"}
+      ],
+      "concepts": ["polarization", "blockers", "overbetting", "bluff-to-value ratio"],
+      "explanation": "QJ has no showdown value and blocks broadway continues while leaving many bluff-catchers available. A polar overbet tells a coherent nuts-or-air story and creates greater fold pressure; checking remains part of the mix because not every missed draw can bluff.",
+      "provenance": {"tier": "educational_baseline", "source": "Negreanu course synthesis + mathematical sanity checks", "version": "baseline-2026.08", "solver_verified": false, "source_refs": ["10 Detecting and Executing the Bluff", "12 Bet Sizing", "13 Overbetting"]}
+    }
+  ]
+}

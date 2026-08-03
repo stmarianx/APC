@@ -1,0 +1,8 @@
+PokerStars Hand #94000000001: Hold'em No Limit (0.50/1 Play Money) - 2026/08/01 21:00:00 ET
+Table 'Sample Live Tail' 2-max Seat #1 is the button
+Seat 1: Hero (100 in chips)
+Seat 2: Villain (100 in chips)
+Hero: posts small blind 0.50
+Villain: posts big blind 1
+*** HOLE CARDS ***
+Dealt to Hero [As Kd]

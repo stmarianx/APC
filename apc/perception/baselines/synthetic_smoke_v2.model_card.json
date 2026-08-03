@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic perception smoke baseline v2",
+  "model_kind": "nearest_centroid_pixel_baseline",
+  "status": "pipeline_verified_not_promotion_eligible",
+  "dataset": {
+    "dataset_id": "apc-synthetic-20260802",
+    "verified_frames": 36,
+    "capture_sessions": 9,
+    "layouts": 3,
+    "themes": 2,
+    "controlled_visible_frames": 0,
+    "annotations_sha256": "19dcd38314da8ad467c414e8bf3633acdda1f8df1456758f7ce9d032dd9e5c1c",
+    "split_sha256": "313744b362aaae0775da68b0fc8c27ece146147a2105e5c3d84a0e03b305f0aa",
+    "duplicate_audit_sha256": "823cfa3b5609ec9d8760ff2015a0c0cf70136ae61f8d7526d213cf8611ed6804"
+  },
+  "training": {
+    "seed": 20260802,
+    "examples": 28,
+    "checkpoint_sha256": "48aec18ca3d788e8c3adb169e834e70a5d8fe7fee96ab1ddca5d45d659a1a4b0",
+    "capture_sessions": [
+      "synthetic-0001",
+      "synthetic-0002",
+      "synthetic-0003",
+      "synthetic-0005",
+      "synthetic-0006",
+      "synthetic-0007",
+      "synthetic-0008"
+    ]
+  },
+  "held_out_test": {
+    "capture_sessions": ["synthetic-0000"],
+    "training_session_overlap": [],
+    "examples": 4,
+    "accuracy": {
+      "layout_id": 1.0,
+      "legal_actions": 1.0,
+      "street": 1.0,
+      "theme_id": 1.0
+    },
+    "joint_supported_state_accuracy": 1.0,
+    "latency_ms_p95": 97.67944996419826,
+    "prediction_sha256": "c46acf824b8acba547cd5675b7b81332b58aa2b8bfd524830ab10af4635672a8"
+  },
+  "supported_outputs": ["layout_id", "legal_actions", "street", "theme_id"],
+  "unsupported_critical_outputs": [
+    "hero_cards",
+    "board_cards",
+    "seat_stacks_bb",
+    "pot_bb",
+    "to_call_bb",
+    "dealer_seat",
+    "observed_action"
+  ],
+  "limitations": [
+    "Synthetic renderer only; it contains no controlled visible-table captures.",
+    "This baseline verifies train, checkpoint and held-out evaluation plumbing only.",
+    "Its confidence margins are uncalibrated.",
+    "It is not eligible for Gate P or recommendation use."
+  ]
+}

@@ -1,0 +1,44 @@
+:root { color-scheme: dark; --bg:#090d0c; --panel:#101614; --line:#26312e; --text:#eff5f1; --muted:#91a09a; --lime:#b8f171; --gold:#f3c86a; --red:#ff7f7f; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:14px/1.45 Inter,Segoe UI,sans-serif; }
+header { min-height:90px; padding:20px 28px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:20px; }
+h1,h2 { margin:0; font-weight:650; }
+h1 { font-size:22px; } h2 { font-size:14px; }
+.eyebrow { display:block; color:var(--lime); font-size:10px; text-transform:uppercase; letter-spacing:.12em; margin-bottom:5px; }
+.summary { color:var(--muted); font-family:Cascadia Code,Consolas,monospace; font-size:11px; }
+main { display:grid; grid-template-columns:300px 1fr; min-height:calc(100vh - 90px); }
+aside { border-right:1px solid var(--line); padding:18px; overflow:auto; }
+aside section { border-bottom:1px solid var(--line); padding:0 0 18px; margin-bottom:18px; }
+label { display:grid; gap:5px; color:var(--muted); font-size:11px; margin-top:12px; }
+input,textarea,select { width:100%; border:1px solid var(--line); background:#0b100f; color:var(--text); border-radius:7px; padding:9px; font:11px Cascadia Code,Consolas,monospace; }
+button { border:0; border-radius:7px; padding:9px 12px; background:var(--lime); color:#12200c; font-weight:700; cursor:pointer; margin-top:12px; }
+button.quiet { background:#1a2421; color:var(--text); margin:0; }
+button:disabled { opacity:.45; cursor:default; }
+.section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.frame-list { display:grid; gap:6px; margin-top:10px; }
+.frame-row { width:100%; text-align:left; margin:0; background:#131c19; color:var(--text); border:1px solid transparent; }
+.frame-row.active { border-color:var(--lime); }
+.frame-row strong,.frame-row small { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.frame-row small { color:var(--muted); margin-top:3px; }
+.workspace { display:grid; grid-template-columns:minmax(420px,1.15fr) minmax(380px,.85fr); min-width:0; }
+.preview,.editor { padding:22px; min-width:0; }
+.preview { border-right:1px solid var(--line); }
+.image-stage { margin-top:16px; background:#050706; min-height:420px; border:1px solid var(--line); border-radius:10px; display:grid; place-items:center; overflow:auto; }
+.image-surface { position:relative; display:inline-block; max-width:100%; line-height:0; }
+.image-stage img { display:block; max-width:100%; max-height:70vh; }
+#boxCanvas { position:absolute; inset:0; cursor:crosshair; touch-action:none; }
+.box-tools { margin-top:14px; padding:14px; border:1px solid var(--line); border-radius:10px; background:#0d1311; }
+.tool-grid { display:grid; grid-template-columns:1fr 120px; gap:10px; }
+.box-tools label { margin-top:8px; }
+.badge { border:1px solid var(--gold); color:var(--gold); border-radius:99px; padding:4px 8px; font-size:9px; text-transform:uppercase; }
+.badge.verified { border-color:var(--lime); color:var(--lime); }
+.hint { color:var(--muted); font-size:11px; }
+.editor { display:flex; flex-direction:column; }
+.suggestion-panel { margin-top:16px; padding:14px; border:1px solid rgba(243,200,106,.45); border-radius:10px; background:#15130d; }
+.suggestion-preview { max-height:190px; overflow:auto; white-space:pre-wrap; color:var(--muted); font:10px/1.45 Cascadia Code,Consolas,monospace; }
+#annotationEditor { flex:1; min-height:500px; margin-top:16px; resize:none; line-height:1.5; }
+.actions { display:flex; justify-content:flex-end; gap:8px; }
+.message { min-height:54px; white-space:pre-wrap; border:1px solid var(--line); border-radius:8px; padding:10px; color:var(--muted); overflow:auto; }
+.message.error { color:var(--red); border-color:rgba(255,127,127,.4); }
+.message.ok { color:var(--lime); border-color:rgba(184,241,113,.4); }
+@media(max-width:1050px){ main{grid-template-columns:250px 1fr}.workspace{grid-template-columns:1fr}.preview{border-right:0;border-bottom:1px solid var(--line)} }

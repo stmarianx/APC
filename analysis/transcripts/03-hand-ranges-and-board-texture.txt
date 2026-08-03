@@ -1,0 +1,529 @@
+[00:06.00-00:12.32] Poker has evolved a lot obviously or last 20 years since I've played and one of the main ways that it's changed is just
+[00:12.34-00:15.40] The way that you read hands, right? So when I started out
+[00:15.56-00:20.42] The common theory was okay. What is my hand right so you understand what you have
+[00:20.56-00:22.44] The strength of your hand based on the board
+[00:22.44-00:27.28] And then the second question is what hand do I think my opponent has right very simple
+[00:27.28-00:31.40] ? What do I have? What do I think my opponent my opponent has well that developed through the years to the year
+[00:36.00-00:39.44] of hands could that opponent have? Could he have, you know a pair of sixes
+[00:39.44-00:42.48] or could he have three aces so now and you're not putting them on one
+[00:42.48-00:46.60] specific hand. You're putting him on a range of hands well that's evolved even
+[00:46.60-00:52.44] further now to a point where poker is at sort of really game theory based
+[00:52.44-00:59.92] place where now I'm focusing on in a situation what range of hands could i
+[00:59.92-01:05.00] have that my opponent may think I have had as my opponent has been his own
+[01:06.00-01:08.00] which was the very elementary version,
+[01:08.02-01:09.60] My Hand versus Your hand
+[01:09.60-01:12.36] which became my hand vs your range
+[01:12.36-01:13.68] which ultimately becomes
+[01:13.68-01:15.72] My Range versus your range.
+[01:15.72-01:17.32] And this is gonna become important
+[01:17.32-01:18.84] when we talk about situations
+[01:18.84-01:20.88] where you'll have a range advantage
+[01:20.88-01:22.24] certain boards where
+[01:22.28-01:24.40] You know you're more likely to have stronger hands
+[01:24.40-01:25.92] in your opponent it's very important
+[01:25.92-01:29.52] to know this kind of stuff because it's going affect how often were betting
+[01:29.52-01:33.80] what frequencies we're deciding to go with based on understanding
+[01:33.82-01:34.80] We have a range.
+[01:34.82-01:36.92] They don't know exactly what we have they have us
+[01:36.92-01:37.64] On a range,
+[01:37.64-01:39.08] we can have them on a range and
+[01:39.08-01:40.08] we need to play accordingly
+[01:47.77-01:49.17] When you're trying to break down an opponent's hand
+[01:49.17-01:50.89] You don't just throw out a dart
+[01:50.89-01:53.01] And be like you must have King five now
+[01:53.01-01:57.01] you may have seen me do this on television in the old days but essentially I was
+[01:57.09-01:58.01] were still doing the same thing
+[01:59.01-02:04.01] being back then
+[02:04.01-02:09.21] so obvious back then and they had such a honest way of playing that I was able to pinpoint
+[02:09.21-02:10.21] the exact cards.
+[02:10.21-02:14.69] Now, ideally you want to narrow it down to the smallest number of hands you can
+[02:14.69-02:20.09] and sometimes against some specific players you can specifically figure out their
+[02:20.09-02:25.85] exact two cards but ideally what you just figured out is okay how many combinations
+[02:25.85-02:30.01] of value hand so they have versus how many combinations of bluffs because that's all that's going
+[02:30.01-02:31.29] Because that's all that is going to matter.
+[02:31.29-02:33.55] You don't need to know exactly what the bluff
+[02:33.55-02:34.69] is, you don't need to know
+[02:34.69-02:36.41] exactly what the value hand is.
+[02:36.41-02:39.29] You just have to gauge whether or not your hand
+[02:39.29-02:41.01] is good enough to beat the value hands
+[02:41.01-02:43.41] or whether or not your opponent is bluffing
+[02:43.41-02:51.34] or not.
+[03:07.14-03:10.42] different situations and there are a lot of variables. So obviously the more
+[03:10.42-03:11.50] hands you see,
+[03:11.50-03:15.38] the better you will be at gauging someone's range of hands but I would say that
+[03:15.38-03:18.02] after you've played about 100 hands with somebody
+[03:18.02-03:21.74] you'll get a general sense of for example do they play
+[03:21.74-03:24.54] more or less than what they're supposed to play? Like
+[03:24.54-03:27.26] do they play a lot of hands from under the gun or are they playing too tight
+[03:27.26-03:27.94] two-tight from the button?
+[03:28.02-03:31.02] After one hand you get a general sense you get a general sense
+[03:31.02-03:32.54] in an
+[03:33.02-03:33.14] and no obviously
+[03:33.22-03:34.46] and then
+[03:36.46-03:37.02] and so as well...
+[03:37.14-03:46.05] what their range looks like.
+[03:46.05-03:47.53] When interpreting someone's range,
+[03:47.53-03:49.69] it's also important when there are three bets,
+[03:49.69-03:50.69] four bets and five bets
+[03:50.69-03:54.01] and six bets to understand that with each raise
+[03:54.01-03:56.01] the range gets more polarized
+[03:56.01-03:58.41] and more narrow so a 3 bet we know people
+[03:58.41-03:59.57] or 3 betting these days right?
+[03:59.57-04:00.33] So they're three vetting
+[04:00.49-04:02.49] with 7-8 suited in a lot of different hands.
+[04:02.57-04:04.73] well for bed but they don't do quite as often
+[04:04.73-04:05.89] quite as often.
+[04:05.89-04:08.85] Now if someone's, you know four bet and another player five bets
+[04:08.85-04:11.49] it's an even smaller range of hands how about a six bet?
+[04:11.49-04:14.17] How often is the sixth bet going to be anything but
+[04:14.17-04:18.63] Aces Kings Queens or Ace King maybe that's on
+[04:18.63-04:21.27] the borderline so the point being for each race
+[04:21.27-04:22.39] in re-rays preflop
+[04:22.39-04:34.25] the ranges get more and more narrow and more polarized back in the old days
+[04:35.05-04:36.49] You know in first position under the gun
+[04:36.57-04:38.57] The players who played usually had very very very very
+[04:42.57-04:44.57] Well Harry raised under the gun.
+[04:44.59-04:50.41] So now I know when Harry raised into the gun, he's got paragacks, queens, kings, aces or
+[04:50.41-04:53.45] ase king like he doesn't play any other hand from there.
+[04:53.45-04:57.05] He is very conservative so now i'm you know in the big blind and
+[04:57.05-05:00.89] I decide to call with like a pair of fours okay?
+[05:00.89-05:03.49] The flop comes 853.
+[05:03.49-05:06.45] I check and Harry checks.
+[05:06.53-05:09.89] Now I know Harry would not check if Harry had a pair here had a pair.
+[05:12.57-05:16.41] There's not a range of hands I put him on, it's one specific hand.
+[05:16.41-05:19.69] He has got Ace King for sure and i know that because first
+[05:19.69-05:23.29] and foremost I know what range of hands he opened with from under the gun
+[05:23.29-05:25.13] And I know what range of ends
+[05:25.13-05:27.97] That he would check the flop with so he's narrowed it down
+[05:27.97-05:30.41] We don't want to do that we don't wanna become that readable
+[05:30.41-05:32.57] and the reason poker is more difficult today
+[05:32.57-05:36.57] and why math is playing a big role in these situations
+[05:42.57-05:45.37] Sometimes I should check ACEs too, to fool my opponent.
+[05:45.37-05:47.65] Even though it seems like a good situation
+[05:47.65-05:49.69] to bet if you always bet or
+[05:49.69-05:52.33] you always check in any specific situation
+[05:52.33-05:54.53] you become exploitable especially when people
+[05:54.53-05:55.77] pick up on those patterns.
+[05:55.77-05:57.73] It was far easier when I started out
+[05:57.73-05:58.89] in the late 90's
+[05:58.93-06:02.77] to pinpoint these hands very specifically than it is now.
+[06:02.77-06:06.69] So it's very important to understand how range versus range equity
+[06:06.69-06:15.63] equity works.
+[06:15.63-06:18.71] So the more accurately you can pinpoint an opponent's range,
+[06:18.71-06:20.51] the more sophisticated decisions
+[06:20.51-06:21.51] you can make are going to be
+[06:21.51-06:23.07] The more accurate they're gonna be
+[06:23.07-06:25.43] so let's take a look at an example here
+[06:25.43-06:27.11] where you're playing in a tournament
+[06:27.11-06:29.23] the blinds or 500 1,000
+[06:29.23-06:29.87] You're on the button
+[06:29.87-06:31.39] you pick up a nice pair of jacks
+[06:31.39-06:33.47] and you decide to make it 3,000.
+[06:33.47-06:34.63] Now the small blind,
+[06:34.63-06:35.63] Let's just say for this example for this example
+[06:35.63-06:41.31] we know this small blind really well. He's got 15 big blinds and in
+[06:41.31-06:42.51] this situation,
+[06:42.51-06:48.35] we know he'd only go all-in with aces kings or asking okay?
+[06:48.35-06:51.71] So the question is when he goes all in for the fifteen big
+[06:51.71-06:56.51] lines should you call or should you fold? The way we attack this problem
+[06:56.51-06:59.63] is let's count the combinations of cards that we beat versus the combination
+[07:01.63-07:03.63] commine of cards that we lose to so how many combinations of ace king are there!
+[07:05.63-07:07.26] That's the one we be.
+[07:07.26-07:10.38] There are four aces in the deck, each one goes with three kings
+[07:10.38-07:12.10] that adds up to 16
+[07:12.10-07:15.18] We also know there is six combinations of aces
+[07:15.18-07:17.02] and six combination of Kings
+[07:17.02-07:19.46] So we got sixteen combos of ace king
+[07:19.46-07:22.34] 12 comboes of aces or kings so
+[07:22.34-07:24.82] In this situation sometimes he's gonna show up
+[07:24.82-07:26.14] but the aces or kings
+[07:26.14-07:29.66] and you're going to lose, but you are mathematically getting the right price
+[07:29.66-07:32.86] to call against that range with a hand like Jack's.
+[07:32.86-07:37.34] Now what happens in this equation if let's say for example we take out
+[07:37.34-07:39.98] those 16 combos of Ace King? So all that is left
+[07:39.98-07:44.54] or Aces or Kings. In this case there are no combo as You'd
+[07:44.54-07:47.74] so you should fold Jacks, you should fold Queens!
+[07:49.74-07:50.86] Actually you should even full pocket kings!
+[07:50.86-07:54.46] And the reason for that is there's only one combination of kings left,
+[07:54.46-07:59.42] but they're still six combinations of aces. So 6 out of 7 times
+[07:59.42-08:02.46] he's going to have the aces and you're in trouble so it's rare when
+[08:02.54-08:04.54] you're gonna fold pocket Kings before the flop
+[08:04.54-08:07.98] But if you have read so specific on an opponent where they can
+[08:07.98-08:12.54] only have a very small margin of hands, It's actually possible and it's been done
+[08:12.54-08:22.86] So we talk a little bit about, you know sort of the old school way
+[08:22.86-08:26.62] of hand reading right where it's my hand versus your hand which became
+[08:26.62-08:29.58] My Hand vs Your range. Which is now your
+[08:29.58-08:32.78] range versus their range and let's look at an example here
+[08:32.78-08:37.58] of why that's important to understand so imagine you're in a situation
+[08:37.58-08:42.26] you're in a cash game and you raise under the gun okay? In a nine-handed game
+[08:42.26-08:46.34] Now, typically that's going to be a pretty small range of hands you do
+[08:46.36-08:49.70] with. So let's take a look here for example at some of the hands
+[08:49.70-08:51.86] that you may raise from that position okay?
+[08:51.88-08:54.26] so now you've raised it's folded around
+[08:54.26-08:58.26] in the player on the button and the player in the button elects to call
+[08:58.26-09:02.02] well the button is a position of power while you're in the worst position
+[09:02.02-09:06.14] based on you know where your are seated at the table
+[09:06.14-09:09.30] which allows that player to play a lot more hands.
+[09:09.32-09:12.18] So let's take a look maybe at a range of hands
+[09:12.18-09:14.70] that the button might call with, okay?
+[09:14.70-09:16.78] So now it's heads up to the flop
+[09:16.78-09:20.14] and the flopp comes deuce-dews three
+[09:20.14-09:21.22] with no flush draw.
+[09:21.22-09:27.26] So first question here is who has a range advantage right now?
+[09:27.34-09:31.74] Who's range of hands is more likely to be stronger after this flock?
+[09:31.74-09:38.21] Okay, so if we take a closer look at some of the stronger hands in each range.
+[09:38.23-09:41.34] Well you'll look at the button right here and the button
+[09:41.36-09:44.44] The strongest hand they have is much weaker than the strongest
+[09:44.44-09:45.84] Hands that the under-the-gun player has
+[09:45.94-09:47.04] the under-the- gun has
+[09:47.14-09:50.14] Aces and kings where sure it's possible remember
+[09:50.14-09:51.34] We don't talk an absolutes
+[09:51.54-09:54.14] It's possible the button has a hand as strong as
+[09:54.14-09:55.14] Ases or Aices are Kings?
+[10:03.34-10:08.06] gun, right? Duce-duce three is very unlikely to help the button at all. Right
+[10:08.06-10:11.34] it's not a lot of hands with two or three they're going to call with before
+[10:11.34-10:14.38] the flop sure maybe if they have Ace duce suited
+[10:14.38-10:17.26] or 3 4 suited and as a looser player
+[10:17.38-10:21.18] They may have those hands but rest assured most likely
+[10:21.20-10:25.42] The under-the-gun player is going to have a range advantage in a typical situation
+[10:33.19-10:35.19] So what does that mean exactly for you? Exactly for you Well one you understand this
+[10:35.23-10:38.23] You should understand that the person with the range advantage
+[10:39.67-10:40.67] the driver of
+[10:40.67-10:44.87] action. So you should be betting more often than your checking now it's
+[10:44.87-10:47.55] important to note there's no always, there's no never
+[10:47.55-10:49.31] You don't always bet here
+[10:49.35-10:51.95] You just bet more often then you check so
+[10:51.95-10:56.99] There's gonna be a frequency which will depend a little bit upon on who your opponent is maybe
+[10:56.99-10:59.95] or up against the player on the button who's really kind of crazy
+[10:59.95-11:04.55] you know they never believe you know They're
+[11:04.55-11:06.67] and you know they never fold so if you do have one of the weaker
+[11:10.67-11:15.27] Maybe this is one where you would lean to checking more often against the player like that.
+[11:15.29-11:18.27] If it's a more timid player and you've missed this board,
+[11:18.29-11:19.79] You want to bet more often so
+[11:19.89-11:22.15] You're always adjusting but it's important to note
+[11:22.17-11:24.31] And to understand that this is a flop
+[11:24.35-11:27.11] Where the under-the-gun player is going to have range advantage
+[11:27.27-11:31.39] and should be betting more often than checking from a game theory perspective
+[11:38.79-11:40.95] So looking at this exact same example or
+[11:40.95-11:42.95] under the gun player and then we have
+[11:42.97-11:45.95] The button calling. Let's take a look at how
+[11:45.97-11:47.71] different board might affect
+[11:47.71-11:50.11] the action differently so let's say it wasn't
+[11:50.15-11:52.31] deuce three but instead
+[11:52.31-11:56.59] The flop came seven eight nine with two spades now I'll ask you
+[11:56.59-12:00.23] that same question again who has range advantage? Now
+[12:02.23-12:03.27] okay, so we see the type of hands
+[12:05.27-12:08.27] that the button can have position is powerful as well So that's a board
+[12:10.95-12:14.58] that under the gun player should be a lot more wary of.
+[12:14.62-12:17.26] Because, that board texture is very draw heavy
+[12:17.26-12:19.30] it also hits a lot of hands
+[12:19.30-12:20.86] that they're gonna call you
+[12:20.86-12:21.90] 10 Jack-suits,
+[12:21.90-12:22.82] the pocket 9s,
+[12:22.82-12:23.74] the Pocket 8s,
+[12:23.74-12:25.02] The Pocket 7's and
+[12:25.02-12:28.26] The other thing to consider is even the hands that let's say you have under
+[12:28.26-12:29.82] the gun, you have the aces.
+[12:29.82-12:31.98] There are a lot of cards they can come on that turn
+[12:31.98-12:34.42] and even if your opponent doesn't have anything yet
+[12:34.42-12:36.66] They can either make a better hand than you or
+[12:36.66-12:40.90] they can pretend to have it and put you in a really tough spot so this
+[12:40.90-12:45.30] situation the board texture influences who has range advantage.
+[12:45.32-12:48.90] So as you can see under the gun has a tighter range right?
+[12:48.90-12:49.40] right?
+[12:49.40-12:52.60] which is going to hit this flop less often than the button caller.
+[12:52.62-12:55.60] So you have to play accordingly, so in a spot like this
+[12:55.62-12:58.44] if you have ACEs should you bet more often or
+[12:58.44-13:01.83] Should you check more often?
+[13:01.83-13:03.07] The correct answer should be
+[13:03.09-13:04.91] You should be checking more often because
+[13:04.91-13:07.15] This is a situation where your entire range of hands
+[13:07.19-13:08.75] you could have is weaker
+[13:08.79-13:10.35] then what your opponent could have now.
+[13:10.91-13:11.87] Now this is a situation
+[13:11.95-13:14.27] were many beginning and even intermediate players make
+[13:14.27-13:16.77] a huge mistake, right? You have pocketases.
+[13:17.27-13:19.87] Oh my gosh! The flop's seven eight nine with two spades I gotta protect
+[13:19.87-13:20.27] my hand...
+[13:20.31-13:22.95] oh you know bad things could happen so they bet
+[13:22.95-13:23.59] huge
+[13:23.59-13:26.59] They bet like the entire pot or even bet more
+[13:26.59-13:28.59] they might even go all in in some cases
+[13:28.59-13:31.39] well this isn't good for your entire range
+[13:31.39-13:35.55] because again first of all that's a flopp that very very dangerous
+[13:36.59-13:40.67] for your hands so rather than be worried-or-
+[13:44.27-13:48.75] stack on the situation. You want to play a little more carefully out of position because it is
+[13:48.75-13:54.19] a scary board, especially if you're playing in tournaments where each chip represents
+[13:54.19-14:06.14] survival and your life in the game. Let's take a look at another example again we are
+[14:06.14-14:11.34] in a nine-handed game, it's a cash game, and you know what will actually tell you
+[14:11.34-14:16.46] what you have. You have ace jack of spades pretty good hand so you decide to raise it up?
+[14:17.50-14:19.50] Well now Sally Sally over here in second position she's under the gun plus one plus 1 plus one!
+[14:21.18-14:23.18] with a whole bunch of players behind you.
+[14:23.18-14:25.18] And, you know Sally's is very conservative player
+[14:25.18-14:27.18] so she calls your raise and that
+[14:27.18-14:29.18] means her range is very tight
+[14:29.18-14:30.18] She wouldn't do that
+[14:30.18-14:31.18] with six seven suited
+[14:31.18-14:32.18] she would not do that
+[14:32.18-14:33.18] With pocket three
+[14:33.18-14:35.18] So she's gonna have two big cards
+[14:35.18-14:37.18] That are suited or pretty big pair
+[14:37.18-14:39.18] So imagine now everyone else folds
+[14:39.18-14:40.18] in the flop comes
+[14:41.18-14:42.18] duce-dous-dree
+[14:44.18-14:45.18] Well now with your racejacki
+[14:45.18-14:50.30] How does that hand specifically do against the range of hands? It's Sally is probably going to call with there.
+[14:50.32-14:51.38] Not very good
+[14:51.40-14:54.50] What are you beat right, maybe she has King Queen suited
+[14:54.52-14:55.50] You're ahead of that
+[14:55.52-14:59.98] Maybe sometimes he plays queen Jack suited 10 Jack suited more likely
+[15:00.06-15:02.30] You're gonna be up against a player who has pocket 9s
+[15:02.32-15:06.68] Pocket tens may be Samais king so you're gonna be behind the range of
+[15:07.68-15:09.30] Maybe Sally's you know crafty enough
+[15:09.50-15:13.06] To just called Aces or
+[15:15.18-15:21.50] you have to realize that tendency, player tendency also affects range advantage in a big way.
+[15:21.52-15:26.22] Now if that player instead of Sally was another player who's much more loose and wild
+[15:26.22-15:31.58] do plays all kinds of goofy hands well you don't have to be as afraid of aboard like Duce-Duce-Twree
+[15:31.58-15:36.22] because you'll still maintain range advantage so in a situation like this the tighter
+[15:38.22-15:38.94] the opponent whose under the gun plus one calls you?
+[15:38.94-15:42.94] The less likely you're going to flop like Dus two or three!
+[15:52.35-15:57.15] is more like chess than it is checkers in that you have to think several moves ahead.
+[15:57.17-16:00.35] So let's say your own situation and you do have the ace jack of spades,
+[16:00.35-16:03.35] and you put Sally who called under the gun with a tight range,
+[16:03.35-16:04.35] you put her on hand like tens or nines,
+[16:04.35-16:05.35] You put her on a hand like 10s or 9s,
+[16:05.35-16:08.39] you know what? If I, how am i going to win this pot if
+[16:08.39-16:10.79] I decide I want to bluff it right. You think about okay well
+[16:10.79-16:13.99] if I bet this flop... Sally's not gonna fold so
+[16:14.03-16:15.91] I'll probably have to bet the turn as well
+[16:15.93-16:17.35] that she probably won't fold there
+[16:17.35-16:18.35] So it will cost me what we call
+[16:18.35-16:21.19] me what we call three bullets. I'm going to have to bet the flap, bet
+[16:21.19-16:24.79] to turn and bet the river so now you have to gauge whether or not it's an
+[16:24.79-16:28.27] investment that's worthwhile or it's better to just wave the wide flag
+[16:28.27-16:30.83] and say you know what? Sally's got a better hand here
+[16:30.83-16:34.19] i'm not gonna represent it and i'm gonna let her take it in this situation
+[16:54.94-16:56.62] in a row you raise under the gun and
+[16:56.64-17:00.62] you turn over six four suited Jack Five of Diamonds,
+[17:00.62-17:03.98] You know King Three suited all hands that are probably way too loose from those
+[17:03.98-17:05.74] positions. Well now your opponents
+[17:05.74-17:06.54] are going to be on to you
+[17:06.54-17:08.30] And they're gonna start re-raising more if
+[17:08.30-17:09.30] you continue to raise from that position so what it's
+[17:09.30-17:09.82] If you continue to raise from That position
+[17:09.82-17:12.58] So what would require for you is an adjustment
+[17:12.58-17:14.70] so your opponents are going to think you're playing two loosely
+[17:14.70-17:17.82] too loosely in this position. So how do we punish them? We punished
+[17:17.82-17:18.98] them by countering that,
+[17:18.98-17:20.22] by playing more conservative.
+[17:20.22-17:23.74] so now when they think you're in there with Jack Five suited and whatnot
+[17:23.74-17:25.90] you actually are in there with pocket jacks
+[17:25.90-17:29.82] aces kings and ace king. There's always a constant adjustment
+[17:29.82-17:30.70] in poker
+[17:30.70-17:33.42] in terms of your ranges based on your perception
+[17:33.42-17:35.26] and this is true of whether you're bluffing
+[17:36.38-17:38.54] or value betting you're always paying the button very aggressive
+[17:44.70-17:49.02] But the guy in your left and a small blind has been playing even more aggressively.
+[17:49.04-17:52.26] So he's re-raised you every single time, well he is sending you a message.
+[17:52.26-17:55.86] He's like don't mess with me I'm coming after you so what do we do to adjust
+[17:55.86-17:56.86] that?
+[17:56.86-18:00.70] Well if we know he is going to re-raise a lot and we can't call then we just
+[18:00.70-18:02.02] Then we have to play more conservatively so we're gonna open with a tighter range and we are
+[18:04.02-18:06.02] and we're going to hope that he comes after it!
+[18:14.70-18:16.70] and seeing what are people doing,
+[18:16.70-18:17.70] What's changed?
+[18:17.70-18:19.70] Also demeanor changes as well with players
+[18:20.70-18:22.70] when they've lost seven pots in a row.
+[18:22.70-18:23.70] All of the sudden a guy who was playing
+[18:23.70-18:25.70] tight and conservative may now have
+[18:25.70-18:27.70] what we call his nose open
+[18:27.70-18:28.70] right?
+[18:28.70-18:29.70] And he is just looking for reasons to get involved
+[18:29.70-18:32.02] get involved. If you're not paying attention to that,
+[18:32.04-18:34.86] You might see the guy and go oh he's a very tight player
+[18:34.86-18:37.34] And not realize that things have changed so
+[18:37.34-18:39.34] The dynamic is constantly changing
+[18:39.34-18:41.70] And you need to adjust your ranges accordingly
+[18:49.12-18:51.52] some of you might ask you know how do you
+[18:51.52-18:55.80] adjust your range? Based on what's been going on at the table
+[18:57.80-19:00.40] and the best way to do that is of course as I said if your table image is shot
+[19:00.40-19:00.48] where you've just got
+[19:00.52-19:00.64] ed
+[19:00.64-19:04.16] just been caught playing way too many hands and people see that you're opening really
+[19:04.16-19:08.08] really wide. You take a look at your normal standard opening range,
+[19:08.08-19:09.96] that you would normally open with maybe
+[19:09.96-19:13.32] you know chop it down a little bit so some of the weaker hands in the rage
+[19:13.32-19:17.28] may be eliminate those or vice versa if players think that you've
+[19:17.32-19:20.92] been playing super tight and they're afraid of you or you have a dominant position
+[19:20.92-19:21.76] at the table
+[19:23.76-19:24.52] maybe start to add some of the fringe hands that you wouldn't normally
+[19:24.52-19:28.76] normally play. Maybe for example a hand like 5-7 suited that you wouldn't
+[19:28.76-19:32.32] play from middle position maybe normally, now you feel confident and you open up
+[19:32.32-19:36.28] because the situation appears right so essentially what you want to do
+[19:36.28-19:40.52] whenever you're adjusting your range is look at the bottom part of it
+[19:40.52-19:52.15] and either expand it or shrink it just a little bit when you play poker
+[19:52.15-19:55.39] you have to put aside the stakes of the game they're really not relevant
+[19:55.39-19:57.27] because if you sit down in a game you should feel comfortable playing with
+[19:57.27-19:59.45] you should feel comfortable making the same play
+[19:59.45-20:01.43] you would in a 50 cent dollar game as
+[20:01.45-20:03.07] you do with 1,000-2 thousand dollars
+[20:03.09-20:03.57] game.
+[20:03.57-20:04.47] And if you can't,
+[20:04.47-20:05.87] You shouldn't be in that game.
+[20:05.87-20:09.47] So in terms of my ranges changing based on stakes
+[20:09.47-20:10.67] That's not really a thing.
+[20:10.67-20:12.07] Now in practice sure,
+[20:12.07-20:14.27] If I'm going to go place small limits and just have fun
+[20:14.31-20:15.67] and splash around
+[20:15.77-20:17.27] I might just play every hand and be goofy or beefy
+[20:35.46-20:37.88] Houston.
+[20:37.88-20:39.88] Hello, with Aces.
+[20:39.88-20:46.57] to call. She limps very risky I'm so scared
+[20:46.61-20:51.15] have a hand here oh not again all right i'll just play nice this time they're
+[20:51.15-20:55.87] all gonna yell at me if I keep picking on you Daniel calls Joe folds Reynolds
+[20:55.87-21:02.24] out vipper calls alright see pocket pair for Tony announces a raise
+[21:02.24-21:07.80] the 4800 Elizabeth listed Toni G as her favorite poker player maybe she knew he was going
+[21:07.80-21:13.13] do this because right now I'm pretty nervous the way she's playing these Aces
+[21:14.13-21:18.21] Elizabeth had a plan. She set the trap and Tony took
+[21:18.25-21:18.77] debate
+[21:18.77-21:22.13] Tony, but what happened to just playing nice-nice and seeing a blop?
+[21:22.21-21:23.71] It's 12 more.
+[21:24.71-21:26.12] Vifer?
+[21:26.12-21:27.12] I'd like to look in her eyes...
+[21:27.12-21:28.12] You know…
+[21:28.12-21:30.80] vipper folds but goes all in with flirt!
+[21:30.80-21:33.80] Do you have ices?
+[21:33.80-21:35.21] Good read.
+[21:35.21-21:36.21] No.
+[21:36.21-21:37.21] I'll be your lawyer.
+[21:37.21-21:38.21] You don't have to answer any questions.
+[21:39.21-21:41.21] I take the fifth no ice.
+[21:42.21-21:44.21] No.
+[21:44.21-21:45.21] You should call.
+[21:45.21-21:46.21] Cool?
+[21:47.29-21:48.29] Really?
+[21:55.27-21:56.27] 12.
+[21:56.37-21:57.77] All right, just for you
+[21:58.07-22:00.77] Tony hits a five he could get her entire stack
+[22:01.34-22:02.34] I check in the dark
+[22:03.46-22:05.69] The flop 1079
+[22:05.69-22:09.23] My check. Once again Tony's checked!
+[22:09.23-22:13.00] Say flop so far but it is a wet board...
+[22:14.00-22:15.00] I've got 25.
+[22:15.00-22:19.51] Can it fire 25,000 Tony I got a feeling
+[22:20.87-22:23.99] This is gonna be a big hand
+[22:24.35-22:26.19] this is going to be
+[22:26.23-22:27.07] A big
+[22:27.07-22:31.27] and I had one to follow this one. What do you say?
+[22:31.35-22:33.35] He's been like the 4-8
+[22:33.39-22:34.75] You doesn't know what to do
+[22:34.99-22:40.12] I am beating ice as king by the way
+[22:40.12-22:42.12] And a lot of other cards
+[22:42.93-22:44.77] So mine
+[22:44.85-22:46.29] She bidding
+[22:46.45-22:48.01] Correct
+[22:51.01-22:51.41] that was a present
+[22:52.01-22:54.01] pot but are talking let Tony off easy.
+[22:55.01-22:56.81] Five's, it didn't want to say a five
+[22:57.21-22:57.81] I thought it was going
+[22:58.21-22:59.91] Elizabeth Houston has already turned
+[23:00.01-23:01.71] the profit pretty good start
+[23:02.80-23:04.60] So I get like you watch movies and stuff
+[23:04.64-23:05.80] poker is really romantic
+[23:05.80-23:06.80] It's this idea of
+[23:06.80-23:10.24] of you know just looking through somebody's soul and figuring out their exact hand.
+[23:10.24-23:11.48] And while that's a thing,
+[23:11.50-23:14.96] you know obviously physical tells are it's super important
+[23:15.00-23:17.68] especially in today's game to understand how
+[23:17.68-23:20.92] to identify ranges right we've talked a lot about ranges
+[23:20.92-23:23.28] and we're going to use an example here where
+[23:24.28-23:28.48] we're gonna look at why we can define a range so clearly
+[23:28.48-23:31.28] in a specific situation. So it's important to understand on this show
+[23:32.48-23:33.12] we've got a bunch of professionals or high stakes players players
+[23:37.12-23:42.24] won an opportunity she was given a chance to play with these guys and you know
+[23:42.24-23:45.76] whatever she wins, she gets to keep. So she's an amateur player
+[23:45.76-23:49.96] just looking to eke out of profit so in this situation here
+[23:49.96-23:52.76] she calls in first position against the straddle.
+[23:52.76-23:57.92] It's already you know sizable amount of chips I have course limp behind
+[23:57.92-23:59.72] because i'm looking to take advantage.
+[23:59.72-24:02.52] 9 6 is diamonds not great hand but
+[24:02.52-24:04.72] I am looking as many flops lops with her as I can well now Tony Gee ge
+[24:07.12-24:11.28] know is a very aggressive player. He goes ahead and raises from the straddle
+[24:11.87-24:16.51] I think he's looking to in some ways define the loose cannon's range
+[24:16.51-24:21.07] and also just play aggressive and splashy as he does so he kicks it up to
+[24:21.07-24:27.07] 4800 now, the action is back on Elizabeth Houston who is the lose canon
+[24:27.07-24:29.07] I'll make it 16 total.
+[24:29.11-24:30.07] Yeah!
+[24:30.07-24:31.07] Hey...
+[24:32.07-24:34.57] Now, in this situation every one of us is trying to figure out what type
+[24:34.57-24:36.57] of range she going to have here?
+[24:36.57-24:38.57] If she calls well once she's limp,
+[24:38.57-24:39.57] What does she limp with?
+[24:39.57-24:41.57] There's a lot of hands you could limp with
+[24:41.57-24:43.07] if she calls that big raise
+[24:43.07-24:44.07] Well now there's more narrow group of hands
+[24:44.07-24:46.07] that she can have
+[24:46.07-24:47.07] .
+[24:47.07-24:50.07] What about if she re-raiseseshesinpsed
+[24:57.07-25:04.51] so she's not bluffing. What hand, just limbs? Just calls the straddle and then wraps it around with a raise
+[25:04.51-25:07.47] I think it was pretty clear to all of us when she made that play
+[25:07.47-25:11.23] That the range of hands we could put her on was Aces
+[25:11.23-25:15.07] And as you can see Tony G called out specifically what she had
+[25:15.31-25:16.99] You have Aces good read
+[25:18.00-25:20.00] No, but you should call
+[25:27.52-25:28.52] You want me to call?
+[25:28.52-25:30.10] Sure.
+[25:30.10-25:31.10] Really?
+[25:31.10-25:32.80] Oh!
+[25:32.80-25:34.80] Obviously it's not always going to be this easy
+[25:34.80-25:37.80] To pinpoint ranges on your opponents
+[25:37.80-25:38.80] 12
+[25:38.80-25:40.80] All right, just for you
+[25:40.80-25:42.80] But it's a good example of how
+[25:42.80-25:44.80] clear was in this situation
+[25:44.80-25:47.80] professionals are gonna be more balanced
+[25:47.80-25:49.80] Not that they're going to call the bet very often
+[25:49.80-25:51.80] pros don't limp very often but if they did
+[25:52.80-25:53.80] sometimes
+[25:54.80-25:57.80] to fooling
+[25:58.80-26:01.36] like that to keep you guessing because if
+[26:01.36-26:03.44] you only do it with aces and everyone knows
+[26:03.44-26:05.44] that, kind of hard to win a poker when
+[26:05.44-26:06.40] you play your cards face up.
+[26:07.04-26:12.26] The flop 1079 I checked once again Tony's
+[26:12.26-26:16.69] check safe flopped so far but it is a wet board
+[26:17.72-26:20.96] 25 canon fire twenty five thousand Tony
+[26:24.13-26:24.85] all right was the prison
+[26:25.09-26:25.77] Toni folds
+[26:25.97-26:27.65] I saw the fall
+[26:27.97-26:29.41] talking let Tony off easy fives he didn't want to see a
+[26:31.65-26:33.65] I thought it was going to be Tony.
+[26:33.65-26:35.65] Elizabeth Houston has already turned a profit
+[26:35.65-26:37.65] It's pretty good start
+[26:37.65-26:38.65] That's so wonderful stuff
+[26:40.16-26:42.16] So we see the way this hand played out
+[26:42.16-26:43.16] and we can look at it
+[26:43.16-26:44.16] And say okay well
+[26:44.16-26:45.16] obviously, it was very easy
+[26:45.16-26:47.92] to sort of figure out not only her range but
+[26:47.92-26:51.24] her specific hand so was there anything she could have done differently
+[26:51.24-26:54.88] would I have played the hand differently? The answer is yes. Now generally speaking
+[26:54.88-26:58.36] as i said before, I don't advocate just limping in you know this a game
+[26:58.36-27:01.96] with a straddle one of the benefits of coming in for raise
+[27:01.96-27:06.80] is that if you're doing that with all of your hands you'll be able to do that with
+[27:06.80-27:07.64] cases and kings,
+[27:07.64-27:10.28] and not have people think like oh they raise
+[27:10.30-27:11.92] They must only have aces or Kings.
+[27:12.12-27:13.84] So I'm not big on developing
+[27:13.84-27:16.24] a limping range especially for her
+[27:16.24-27:17.36] in this type of situation
+[27:17.36-27:18.52] I think she would've come
+[27:18.52-27:22.20] for just a normal-sized raise, people could put her on
+[27:22.20-27:26.56] a wide range of hands. Ace Jack, Case 10, King Queen, Pocket Sixes, pocket Aces,
+[27:26.56-27:29.96] Pocket Kings... The problem is the way she ended up playing it was he
+[27:29.96-27:33.48] was in narrowed down to specifically one hand so what I would have done
+[27:33.48-27:39.12] was come in for a standard race now if Tony G were to re-raise that's a spot where
+[27:41.12-27:42.04] now there's substantial amount of money in there maybe our Reaise or
+[27:42.04-27:46.08] maybe sometimes I'd slow play, but most certainly the big difference in
+[27:46.10-27:49.00] terms of the way that I would have played this hand is I would've come in for a
+[27:49.00-27:54.16] raise and not limp re-rays with Aces there.

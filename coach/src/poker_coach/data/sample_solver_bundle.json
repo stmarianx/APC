@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.0.0",
+  "source": "example_solver_export",
+  "source_version": "2026.08-fixture",
+  "spots": [
+    {
+      "node_id": "btn_vs_bb_a72r_kq",
+      "key": {
+        "game": "holdem_no_limit",
+        "players": 2,
+        "hero_position": "BTN",
+        "effective_stack_bb": "97.5",
+        "pot_bb": "5.5",
+        "board": ["Ah", "7s", "2c"],
+        "hero_cards": ["Kc", "Qd"],
+        "action_history": ["BTN raise_to:2.5", "BB call", "BB check"],
+        "rake_model": "training_no_rake",
+        "utility_model": "chip_ev",
+        "allowed_sizes": ["0.33", "0.75"]
+      },
+      "actions": [
+        {"action": "check", "frequency": "0.24", "ev": "2.01"},
+        {"action": "bet:0.33", "frequency": "0.66", "ev": "2.10"},
+        {"action": "bet:0.75", "frequency": "0.10", "ev": "1.91"}
+      ]
+    },
+    {
+      "node_id": "btn_vs_bb_a72r_jt",
+      "key": {
+        "game": "holdem_no_limit",
+        "players": 2,
+        "hero_position": "BTN",
+        "effective_stack_bb": "97.5",
+        "pot_bb": "5.5",
+        "board": ["Ah", "7s", "2c"],
+        "hero_cards": ["Jc", "Td"],
+        "action_history": ["BTN raise_to:2.5", "BB call", "BB check"],
+        "rake_model": "training_no_rake",
+        "utility_model": "chip_ev",
+        "allowed_sizes": ["0.33", "0.75"]
+      },
+      "actions": [
+        {"action": "check", "frequency": "0.42", "ev": "1.31"},
+        {"action": "bet:0.33", "frequency": "0.53", "ev": "1.35"},
+        {"action": "bet:0.75", "frequency": "0.05", "ev": "1.20"}
+      ]
+    },
+    {
+      "node_id": "sample_hand_flop_ak",
+      "key": {
+        "game": "holdem_no_limit",
+        "players": 2,
+        "hero_position": "BTN",
+        "effective_stack_bb": "97",
+        "pot_bb": "6.5",
+        "board": ["Ah", "7c", "2d"],
+        "hero_cards": ["As", "Kd"],
+        "action_history": ["BTN raise_to:3", "SB fold", "BB call", "BB check"],
+        "rake_model": "play_money_fixture",
+        "utility_model": "chip_ev",
+        "allowed_sizes": ["0.33", "0.62"]
+      },
+      "actions": [
+        {"action": "check", "frequency": "0.10", "ev": "2.30"},
+        {"action": "bet:0.33", "frequency": "0.70", "ev": "2.55"},
+        {"action": "bet:0.62", "frequency": "0.20", "ev": "2.40"}
+      ]
+    },
+    {
+      "node_id": "sample_hand_flop_bb_kq",
+      "key": {
+        "game": "holdem_no_limit",
+        "players": 2,
+        "hero_position": "BB",
+        "effective_stack_bb": "97",
+        "pot_bb": "6.5",
+        "board": ["Ah", "7c", "2d"],
+        "hero_cards": ["Kc", "Qh"],
+        "action_history": ["BTN raise_to:3", "SB fold", "BB call"],
+        "rake_model": "play_money_fixture",
+        "utility_model": "chip_ev",
+        "allowed_sizes": ["0.5"]
+      },
+      "actions": [
+        {"action": "check", "frequency": "0.70", "ev": "1.18"},
+        {"action": "bet:0.5", "frequency": "0.30", "ev": "1.09"}
+      ]
+    },
+    {
+      "node_id": "sample_hand_flop_bb_jt",
+      "key": {
+        "game": "holdem_no_limit",
+        "players": 2,
+        "hero_position": "BB",
+        "effective_stack_bb": "97",
+        "pot_bb": "6.5",
+        "board": ["Ah", "7c", "2d"],
+        "hero_cards": ["Js", "Td"],
+        "action_history": ["BTN raise_to:3", "SB fold", "BB call"],
+        "rake_model": "play_money_fixture",
+        "utility_model": "chip_ev",
+        "allowed_sizes": ["0.5"]
+      },
+      "actions": [
+        {"action": "check", "frequency": "0.20", "ev": "0.71"},
+        {"action": "bet:0.5", "frequency": "0.80", "ev": "0.76"}
+      ]
+    },
+    {
+      "node_id": "sample_hand_flop_bb_86",
+      "key": {
+        "game": "holdem_no_limit",
+        "players": 2,
+        "hero_position": "BB",
+        "effective_stack_bb": "97",
+        "pot_bb": "6.5",
+        "board": ["Ah", "7c", "2d"],
+        "hero_cards": ["8h", "6c"],
+        "action_history": ["BTN raise_to:3", "SB fold", "BB call"],
+        "rake_model": "play_money_fixture",
+        "utility_model": "chip_ev",
+        "allowed_sizes": ["0.5"]
+      },
+      "actions": [
+        {"action": "check", "frequency": "0.45", "ev": "0.62"},
+        {"action": "bet:0.5", "frequency": "0.55", "ev": "0.64"}
+      ]
+    },
+    {
+      "node_id": "sample_hand_turn_bb_kq",
+      "key": {
+        "game": "holdem_no_limit",
+        "players": 2,
+        "hero_position": "BB",
+        "effective_stack_bb": "93",
+        "pot_bb": "14.5",
+        "board": ["Ah", "7c", "2d", "9s"],
+        "hero_cards": ["Kc", "Qh"],
+        "action_history": ["BTN raise_to:3", "SB fold", "BB call", "BB check", "BTN bet:4", "BB call"],
+        "rake_model": "play_money_fixture",
+        "utility_model": "chip_ev",
+        "allowed_sizes": ["0.5"]
+      },
+      "actions": [
+        {"action": "check", "frequency": "0.25", "ev": "2.22"},
+        {"action": "bet:0.5", "frequency": "0.75", "ev": "2.31"}
+      ]
+    },
+    {
+      "node_id": "sample_hand_turn_bb_jt",
+      "key": {
+        "game": "holdem_no_limit",
+        "players": 2,
+        "hero_position": "BB",
+        "effective_stack_bb": "93",
+        "pot_bb": "14.5",
+        "board": ["Ah", "7c", "2d", "9s"],
+        "hero_cards": ["Js", "Td"],
+        "action_history": ["BTN raise_to:3", "SB fold", "BB call", "BB check", "BTN bet:4", "BB call"],
+        "rake_model": "play_money_fixture",
+        "utility_model": "chip_ev",
+        "allowed_sizes": ["0.5"]
+      },
+      "actions": [
+        {"action": "check", "frequency": "0.75", "ev": "1.33"},
+        {"action": "bet:0.5", "frequency": "0.25", "ev": "1.27"}
+      ]
+    },
+    {
+      "node_id": "sample_hand_turn_bb_86",
+      "key": {
+        "game": "holdem_no_limit",
+        "players": 2,
+        "hero_position": "BB",
+        "effective_stack_bb": "93",
+        "pot_bb": "14.5",
+        "board": ["Ah", "7c", "2d", "9s"],
+        "hero_cards": ["8h", "6c"],
+        "action_history": ["BTN raise_to:3", "SB fold", "BB call", "BB check", "BTN bet:4", "BB call"],
+        "rake_model": "play_money_fixture",
+        "utility_model": "chip_ev",
+        "allowed_sizes": ["0.5"]
+      },
+      "actions": [
+        {"action": "check", "frequency": "0.50", "ev": "1.01"},
+        {"action": "bet:0.5", "frequency": "0.50", "ev": "1.02"}
+      ]
+    }
+  ]
+}

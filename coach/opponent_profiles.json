@@ -1,0 +1,678 @@
+{
+  "schema_version": "1.0.0",
+  "units": "BB",
+  "updated_at": "2026-08-02T03:25:00+03:00",
+  "evidence_policy": {
+    "confirmed_hand_history": "Exact action line reconstructed from a saved PokerStars hand history and converted to BB.",
+    "confirmed_showdown": "Hole cards were exposed in a saved history or clearly shown at the table.",
+    "screen_observation": "Observed on screen but not yet reconciled against a saved hand history.",
+    "tentative_read": "Small-sample inference that must not override strong hand-specific evidence."
+  },
+  "tables": {
+    "Wachmann IV": {
+      "format": "nine_player_cash",
+      "active": true,
+      "players": [
+        "st_marian_x",
+        "momogeros",
+        "Y0D4-ARG",
+        "Cebbb",
+        "Canitogg",
+        "joyccie",
+        "Nice S.P.",
+        "fizikfil",
+        "seanharen722"
+      ]
+    },
+    "Rosselia IV": {
+      "format": "six_player_cash",
+      "active": false,
+      "players": [
+        "Borekitas",
+        "dyoll833",
+        "Cristian Ramos",
+        "Xamil666",
+        "iHold2Kings",
+        "dontletit"
+      ]
+    }
+  },
+  "players": {
+    "CJWinnett": {
+      "confidence": "medium",
+      "sample": "five_confirmed_showdowns_and_four_unshown_aggressive_lines",
+      "tendencies": [
+        "Used a near-pot river bet on a paired river and won without showdown.",
+        "With QQ, 3-bet an open to 7.96 BB, called a 21 BB 4-bet, called an 11 BB flop bet on Js-Ks-Jd, then check-jammed 63.8 BB over a 31.2 BB turn bet on the Ts while behind AA; rivered a queen for a full house.",
+        "Raised a 3.72 BB flop bet to 9.92 BB on Ks-8c-Js, continued after being called, and paid a 35.1 BB river lead on the paired runout; lost to Cebbb's confirmed 88.",
+        "Check-raised a 5.24 BB turn stab to 15.7 BB on 4d-4c-6d-8c and won without showdown.",
+        "Cold-called a 7.48 BB button 3-bet from the small blind with J9o, check-called 7.48 BB on Jc-4h-Qh, check-called 18.36 BB on the 8s turn, then donk-jammed 31.6 BB after the Jh river made trip jacks.",
+        "After limping the button and checking twice on 7d-5s-Td-Jd, jammed 131.08 BB into about 2.4 BB on the Ac river; opponent folded and the hand was not shown.",
+        "Opened K8s to 3 BB, checked Qs-6d-Tc, check-called 3.56 BB on the Ts turn with a king-high flush draw, and checked the Qd river; lost at showdown to ace-high kicker.",
+        "Opened AA to 3 BB from the cutoff and won the blinds, voluntarily showing the hand."
+      ],
+      "evidence": [
+        {
+          "source": "screen_observation",
+          "board": ["Qh", "8d", "7h", "3s", "3d"],
+          "line_bb": "Bet 22 into 24.1 on the river; opponent folded.",
+          "showdown": false
+        },
+        {
+          "source": "screen_observation_and_showdown_chat",
+          "hero_hand": ["As", "Ah"],
+          "villain_hand": ["Q", "Q"],
+          "board_through_turn": ["Js", "Ks", "Jd", "Ts"],
+          "line_bb": "Hero opened 2.48; CJWinnett 3-bet to 7.96; hero 4-bet to 21; CJWinnett called. CJWinnett check-called 11 into 41.4 on the flop, then check-jammed 63.8 over 31.2 into 62.4 on the turn. Hero called the remaining 32.6. A river queen made CJWinnett queens full of jacks.",
+          "showdown": true,
+          "strategic_note": "CJWinnett put the stack in with QQ while behind AA on the turn; the outcome does not change the quality of hero's call."
+        },
+        {
+          "source": "screen_observation_and_showdown_chat",
+          "board": ["Ks", "8c", "Js", "Jc", "2c"],
+          "line_bb": "Cebbb bet 3.72 into 4.96 on the flop; CJWinnett raised to 9.92 and Cebbb called. Later CJWinnett called Cebbb's 35.1 river lead into 46.8 and lost. CJWinnett's hand was not shown; Cebbb showed 88.",
+          "showdown": true
+        },
+        {
+          "source": "screen_observation",
+          "board_through_turn": ["4d", "4c", "6d", "8c"],
+          "line_bb": "CJWinnett checked the turn, hero bet 5.24 into 10.4 with Ad7h, and CJWinnett check-raised to 15.7. Hero folded; no showdown.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617211783",
+          "villain_hand": ["9h", "Js"],
+          "hero_hand": ["Qd", "Th"],
+          "board": ["Jc", "4h", "Qh", "8s", "Jh"],
+          "line_bb": "fizikfil opened to 2.4; hero 3-bet the button to 7.48; CJWinnett cold-called from the small blind and fizikfil called. CJWinnett check-called 7.48 into 22.4 on the flop and 18.36 into 36.72 on the turn, then donk-jammed 31.6 into 71.68 on the river. Hero called and lost to trip jacks.",
+          "showdown": true
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617232513",
+          "board": ["7d", "5s", "Td", "Jd", "Ac"],
+          "line_bb": "Limped the button for 1, checked the flop and turn against the big blind, then jammed 131.08 into about 2.4 on the river. Xamil666 folded; no showdown.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617256695",
+          "villain_hand": ["Ks", "8s"],
+          "board": ["Qs", "6d", "Tc", "Ts", "Qd"],
+          "line_bb": "Opened to 3, checked the flop, check-called momogeros's 3.56 turn bet, and checked the river. Lost the kicker showdown to As3s.",
+          "showdown": true
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617313924",
+          "villain_hand": ["As", "Ac"],
+          "line_bb": "Opened to 3 from the cutoff; all opponents folded and CJWinnett voluntarily showed AA.",
+          "showdown": true
+        }
+      ],
+      "adjustments": [
+        "Do not label the earlier river bet a bluff or value bet until a showdown repeats the pattern.",
+        "When bluff-catching, compare his future river size and line against this 0.91-pot baseline.",
+        "Do not overfold strong value hands or high-equity draws to CJWinnett's large check-raises; he has shown willingness to stack off with an overpair on a highly dynamic paired board.",
+        "Value 4-bet premium hands normally; QQ is confirmed in his 3-bet/call-4-bet range at roughly 100 BB.",
+        "Value-bet rivers more confidently against CJWinnett; he has made at least one large losing river call after taking an aggressive flop line.",
+        "After CJWinnett checks a dynamic turn, use fewer low-equity stabs and continue against his check-raises only with made hands or sufficiently strong draws.",
+        "Expect loose cold-calls to 3-bets, including offsuit broadway-gapper holdings such as J9o; value-isolate him, but fold weak bluff-catchers when his passive line turns into a large river lead on a card that improves his flop-calling range.",
+        "His extreme unshown river overbet proves he can use wildly disproportionate sizing, but not that it was a bluff; use blockers and range construction rather than treating every huge bet as value."
+      ]
+    },
+    "momogeros": {
+      "confidence": "medium",
+      "sample": "three_confirmed_showdowns",
+      "tendencies": [
+        "Cold-called a 3 BB open with A3s, checked back ace-high on the flop, bet half-pot after turning the nut-flush draw, then checked back the missed river and won on kicker.",
+        "Cold-called a 3 BB open with KQo, bet about one-third pot into three players on Kc-4s-6h, bet half-pot on the 2s turn, then checked back the Th river and won against PokRal's 63s.",
+        "Defended the small blind with A2s against a 2.48 BB button open, called a half-pot flop bet on 5d-4d-5c with ace-high plus a gutshot, then checked the 8c turn and Jd river; split with the opener's A3o."
+      ],
+      "evidence": [
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617256695",
+          "hand": ["3s", "As"],
+          "board": ["Qs", "6d", "Tc", "Ts", "Qd"],
+          "line_bb": "Cold-called CJWinnett's 3 BB open, checked back the flop, bet 3.56 into about 7.08 on the turn with the nut-flush draw, and checked back after the draw missed. Beat Ks8s at showdown by ace kicker.",
+          "showdown": true
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617303766",
+          "hand": ["Ks", "Qd"],
+          "board": ["4s", "Kc", "6h", "2s", "Th"],
+          "line_bb": "Cold-called a 3 BB cutoff open on the button, bet 3.12 into about 8.96 on the flop, bet 8.96 into about 17.92 on the turn, and checked back the river. Won against PokRal's 6s3s.",
+          "showdown": true
+        },
+        {
+          "source": "screen_observation_and_showdown",
+          "hand": ["Ac", "2c"],
+          "hero_hand": ["As", "3h"],
+          "board": ["5d", "4d", "5c", "8c", "Jd"],
+          "line_bb": "Called hero's 2.48 BB button open from the small blind, called 3.56 into 7.12 on the flop with ace-high plus a gutshot, then checked the turn and river. Split the pot with ace-high kicker to the paired board.",
+          "showdown": true
+        }
+      ],
+      "adjustments": [
+        "Allow for delayed semi-bluffs when momogeros checks back the flop and the turn gives him a strong draw.",
+        "Do not over-bluff his river checks: his checked-back range can retain ace-high showdown value.",
+        "Give repeated flop-plus-turn barrels normal top-pair value weight; his confirmed KQ line used one-third pot multiway followed by half-pot on the turn.",
+        "Do not expect automatic flop folds from ace-high hands when momogeros also has draw equity; choose bluffs with stronger blockers or credible follow-through cards."
+      ]
+    },
+    "An1an1": {
+      "confidence": "low",
+      "sample": "two_unshown_aggressive_lines",
+      "tendencies": [
+        "3-bet a 2.48 BB open to 7.32 BB, then reached the river in the unchanged 15.3 BB pot and won without exposed cards.",
+        "Opened to 2.4 BB, then check-raised to 9.12 BB on 2h-5s-4s after a 2.48 BB bet and one call; both opponents folded."
+      ],
+      "evidence": [
+        {
+          "source": "screen_observation",
+          "board": ["2s", "Tc", "8s", "3d", "6c"],
+          "line_bb": "3-bet momogeros's 2.48 BB open to 7.32; momogeros called. No postflop chips were visibly added, and An1an1 won the 15.3 BB pot without exposed cards.",
+          "showdown": false
+        },
+        {
+          "source": "screen_observation",
+          "board": ["2h", "5s", "4s"],
+          "line_bb": "Opened to 2.4 and went multiway. After the flop checked to hero, hero bet 2.48 and momogeros called; An1an1 check-raised to 9.12. Hero and momogeros folded, and An1an1 won 16.3 unshown.",
+          "showdown": false
+        }
+      ],
+      "adjustments": [
+        "Treat 7.32 BB as a small 3-bet data point, but do not infer range width or hand strength without a showdown.",
+        "Respect An1an1's multiway flop check-raises with marginal one-pair hands; continue with strong made hands and high-equity draws, while waiting for showdown evidence before labeling the line value-heavy."
+      ]
+    },
+    "Y0D4-ARG": {
+      "confidence": "none",
+      "sample": "seat_identified_only",
+      "tendencies": [],
+      "evidence": [],
+      "adjustments": ["Use baseline nine-player ranges until evidence accumulates."]
+    },
+    "Canitogg": {
+      "confidence": "low",
+      "sample": "one_confirmed_showdown_after_40_bb_entry",
+      "tendencies": [
+        "Reached showdown with 55 on 4c-3h-Tc-Th-2h and won a 45.84 BB pot with tens and fives."
+      ],
+      "evidence": [
+        {
+          "source": "screen_observation_and_showdown_chat",
+          "hand": ["5", "5"],
+          "board": ["4c", "3h", "Tc", "Th", "2h"],
+          "line_bb": "Entered the table at 40 BB and won a 45.84 BB showdown pot with pocket fives. The exact street-by-street action was not captured reliably.",
+          "showdown": true
+        }
+      ],
+      "adjustments": [
+        "Allow pocket pairs in Canitogg's continuing range on low paired-board runouts, but do not infer calling thresholds without a complete action line."
+      ]
+    },
+    "joyccie": {
+      "confidence": "medium",
+      "sample": "one_confirmed_large_pot_showdown",
+      "tendencies": [
+        "With KQo, called a half-pot flop bet on 6s-Qh-2s, then pot-bet the Ac turn and 3-bet all-in over a check-raise while holding only top pair; lost to a set."
+      ],
+      "evidence": [
+        {
+          "source": "screen_observation_and_showdown_chat",
+          "hand": ["Qc", "Kd"],
+          "board": ["6s", "Qh", "2s", "Ac", "8d"],
+          "line_bb": "Called seanharen722's 5.92 BB flop bet into 11.8. After seanharen722 checked the turn, bet 23.2 into 23.2, then 3-bet all-in to 65.9 effective over a raise to 40. Lost the 149 BB pot to 66.",
+          "showdown": true
+        }
+      ],
+      "adjustments": [
+        "Value-bet strong one-pair-plus hands aggressively against joyccie and reduce bluffs; the first confirmed showdown shows willingness to stack off top pair on a worsening turn."
+      ]
+    },
+    "ibra1612": {
+      "confidence": "none",
+      "sample": "seat_identified_only",
+      "tendencies": [],
+      "evidence": [],
+      "adjustments": ["Use baseline nine-player ranges until evidence accumulates."]
+    },
+    "PokRal": {
+      "confidence": "low",
+      "sample": "one_confirmed_unshown_triple_barrel_one_unshown_multiway_cbet_and_one_confirmed_showdown",
+      "tendencies": [
+        "Opened to 2.28 BB and triple-barreled one-third pot, one-half pot, then about four-fifths pot on a river completing the front-door heart draw.",
+        "Opened to 2 BB and bet 3.84 BB into about 5.72 BB on 2c-Jh-3c against two blind callers; both folded.",
+        "Defended 63s in the big blind versus a 3 BB open and button call, then called one-third-pot flop and half-pot turn bets with bottom pair plus a turned flush draw; checked the river and lost to top pair."
+      ],
+      "evidence": [
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617188518",
+          "hero_hand": ["5c", "9c"],
+          "board": ["9h", "2h", "Jd", "As", "6h"],
+          "line_bb": "Opened to 2.28; bet 1.56 into about 4.72 on the flop, 3.88 into about 7.72 on the turn, and 12.12 into about 15.84 on the river. Hero folded one pair without a heart; PokRal did not show.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617291696",
+          "board": ["2c", "Jh", "3c"],
+          "line_bb": "Opened to 2 and bet 3.84 into about 5.72 against two callers. Both folded; PokRal did not show.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617303766",
+          "hand": ["6s", "3s"],
+          "board": ["4s", "Kc", "6h", "2s", "Th"],
+          "line_bb": "Defended the big blind against a 3 BB open and button call, then called 3.12 into about 8.96 on the flop and 8.96 into about 17.92 on the turn. Checked the river and lost to momogeros's KQ.",
+          "showdown": true
+        }
+      ],
+      "adjustments": [
+        "Do not infer whether the triple barrel was value or a bluff without showdown evidence.",
+        "Against future large river barrels, continue with strong bluff-catchers only when blockers and the runout remove enough value combinations.",
+        "Value-bet top pair and strong overpairs normally against PokRal; he has called two streets with bottom pair plus draw equity."
+      ]
+    },
+    "Cebbb": {
+      "confidence": "medium",
+      "sample": "one_confirmed_showdown_and_one_unshown_preflop_squeeze",
+      "tendencies": [
+        "Used a large 14 BB squeeze from the big blind over a 2.48 BB open and one caller; both opponents folded.",
+        "With 88 on Ks-8c-Js-Jc-2c, bet 3.72 into 4.96, called a raise to 9.92, continued after filling up on the turn, and led 35.1 into 46.8 on the river for value."
+      ],
+      "evidence": [
+        {
+          "source": "screen_observation",
+          "line_bb": "Hero opened 2.48 with 44, CJWinnett called 2.48, and Cebbb squeezed from the big blind to 14. Hero and CJWinnett folded; no showdown.",
+          "showdown": false
+        },
+        {
+          "source": "screen_observation_and_showdown_chat",
+          "hand": ["8", "8"],
+          "board": ["Ks", "8c", "Js", "Jc", "2c"],
+          "line_bb": "Bet 3.72 into 4.96 on the flop, called CJWinnett's raise to 9.92, continued after making a full house on the Jc turn, and led 35.1 into 46.8 on the river. CJWinnett called and lost.",
+          "showdown": true
+        }
+      ],
+      "adjustments": [
+        "Treat the 14 BB squeeze as a large-size baseline but do not infer whether it is value-heavy or bluff-heavy from one unshown hand.",
+        "Continue folding small pairs and dominated broadways that cannot profitably withstand this sizing; respond with tighter calls and value-oriented 4-bets until more evidence appears.",
+        "Give Cebbb's large river leads substantial credit after he calls a flop raise and the board pairs; his confirmed example was a full house played for value."
+      ]
+    },
+    "lonely fire": {
+      "confidence": "low",
+      "sample": "two_confirmed_showdowns",
+      "tendencies": [
+        "Opened 99 to 2.48 BB, checked twice on a K-high board as the front-door diamond draw completed, then used a 1 BB river blocker bet and lost to second pair.",
+        "Opened A4s to 2.48 BB, bet one-third pot with bottom pair on 9c-4d-3s, then checked the turn and river and lost to 66."
+      ],
+      "evidence": [
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617243408",
+          "hand": ["9h", "9s"],
+          "board": ["3c", "Kd", "4d", "7d", "Qs"],
+          "line_bb": "Opened to 2.48, checked the flop and turn, then bet 1 BB into about 6.08 on the river. Hero called with QhTh and won.",
+          "showdown": true
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617277461",
+          "hand": ["4c", "Ac"],
+          "board": ["9c", "4d", "3s", "7d", "3c"],
+          "line_bb": "Opened to 2.48, bet 1.88 into about 5.68 on the flop, then checked the turn and river. Lost to hero's 66.",
+          "showdown": true
+        }
+      ],
+      "adjustments": [
+        "Call very small river blocker bets wider with pairs and strong ace-high bluff-catchers when the price is extreme.",
+        "Do not infer that a double check caps lonely fire to air; medium pocket pairs remain in the range.",
+        "His one-third-pot flop continuation bet can include bottom pair; defend dry low boards appropriately and expect him to slow down with marginal showdown value."
+      ]
+    },
+    "Nice S.P.": {
+      "confidence": "none",
+      "sample": "seat_identified_only",
+      "tendencies": [],
+      "evidence": [],
+      "adjustments": ["Use baseline nine-player ranges until evidence accumulates."]
+    },
+    "Uchitel666": {
+      "confidence": "none",
+      "sample": "seat_identified_only",
+      "tendencies": [],
+      "evidence": [],
+      "adjustments": ["Use baseline nine-player ranges until evidence accumulates."]
+    },
+    "seanharen722": {
+      "confidence": "medium",
+      "sample": "two_confirmed_showdown_results_one_with_exact_hole_cards",
+      "tendencies": [
+        "Reached showdown in a 45.84 BB pot on 4c-3h-Tc-Th-2h with only a pair of tens and lost to Canitogg's pocket fives.",
+        "With 66, bet half-pot on 6s-Qh-2s, then check-raised the Ac turn from a pot-size bet to 40 BB and called off the remaining 25.9 BB; won a 149 BB pot with a set."
+      ],
+      "evidence": [
+        {
+          "source": "screen_observation_and_showdown_chat",
+          "board": ["4c", "3h", "Tc", "Th", "2h"],
+          "line_bb": "Lost a 45.84 BB showdown pot with the dealer reporting one pair, tens. Exact hole cards and street-by-street action were not captured reliably.",
+          "showdown": true
+        },
+        {
+          "source": "screen_observation_and_showdown_chat",
+          "hand": ["6d", "6h"],
+          "opponent_hand": ["Qc", "Kd"],
+          "board": ["6s", "Qh", "2s", "Ac", "8d"],
+          "line_bb": "Bet 5.92 into 11.8 on the flop with a set. Checked the turn, raised joyccie's 23.2 pot-size bet to 40, and called the remaining 25.9 when joyccie moved all-in. Won the 149 BB pot.",
+          "showdown": true
+        }
+      ],
+      "adjustments": [
+        "Do not assume seanharen722's exact holding from the earlier one-pair result.",
+        "Give seanharen722's turn check-raises substantial value weight after he leads the flop; his first exact example was a slow-played set that continued for stacks."
+      ]
+    },
+    "fizikfil": {
+      "confidence": "medium",
+      "sample": "two_confirmed_showdowns",
+      "tendencies": [
+        "With 33, reached the river on a monotone ace-high flop and made a river set for value.",
+        "With KQo on 3s-Qc-4h-Jc-As, checked top pair on the flop, then used a small delayed turn bet and reached showdown with one pair."
+      ],
+      "evidence": [
+        {
+          "source": "screen_observation_and_showdown_chat",
+          "hand": ["3", "3"],
+          "board": ["2c", "Ac", "4c", "Jh", "3s"],
+          "line_bb": "Checked through early streets against CJWinnett, then bet about 4.4 on the river and was called; chat confirmed three of a kind, threes.",
+          "showdown": true
+        },
+        {
+          "source": "screen_observation_and_showdown",
+          "hand": ["Kc", "Qs"],
+          "board": ["3s", "Qc", "4h", "Jc", "As"],
+          "line_bb": "In a roughly 5.92 BB flop pot, checked top pair on the flop, bet 1.96 on the turn, and won 19.1 at showdown with a pair of queens.",
+          "showdown": true
+        }
+      ],
+      "adjustments": [
+        "Do not automatically stab every flop check from fizikfil; top-pair hands are present in his checking range.",
+        "Give delayed small turn bets normal one-pair value weight rather than treating them as mostly bluffs.",
+        "Value-bet clean rivers normally; his prior pocket-pair line showed willingness to call down and then bet when improving."
+      ]
+    },
+    "Borekitas": {
+      "confidence": "high",
+      "sample": "multiple_saved_hands_and_showdowns",
+      "tendencies": [
+        "Uses 2.48 opens and an 8 BB three-bet over a 3 BB open.",
+        "Can continuation-bet medium showdown hands and then check down.",
+        "Large late-street raises on paired boards have been strongly value weighted."
+      ],
+      "evidence": [
+        {
+          "source": "confirmed_showdown",
+          "hand_id": "261616578245",
+          "hole_cards": ["8c", "9s"],
+          "line_bb": "Opened 2.48, called a 6 BB flop lead on 6d-2h-9c, then put the short stack all-in for 30.52 effective on the 8s turn.",
+          "result": "Won with two pair after the river paired the board."
+        },
+        {
+          "source": "confirmed_showdown",
+          "hand_id": "261616628807",
+          "hole_cards": ["3s", "3h"],
+          "line_bb": "Opened 2.48, bet 3.56 on 7h-9d-9c, then checked the turn and river.",
+          "result": "Won at showdown with the pocket pair."
+        },
+        {
+          "source": "confirmed_showdown",
+          "hand_id": "261616668175",
+          "hole_cards": ["Ad", "Js"],
+          "line_bb": "Three-bet to 8 over a 3 BB open, called flop and turn leads, then raised a 7 BB river lead to 36.96 on 5h-Ah-Ac-5c-6c.",
+          "result": "Showed aces full of fives."
+        }
+      ],
+      "adjustments": [
+        "Respect very large river raises unless a future showdown proves a bluff component.",
+        "Value-bet strong made hands; he can call earlier streets with substantial showdown value.",
+        "Do not assume a flop continuation bet means he will keep barreling."
+      ]
+    },
+    "dyoll833": {
+      "confidence": "high",
+      "sample": "multiple_saved_hands_and_one_mucked_showdown",
+      "tendencies": [
+        "Frequently leads large from the blinds after defending preflop.",
+        "Uses large turn stabs after a checked flop.",
+        "Has called a very large river raise with an overpair on a double-paired board."
+      ],
+      "evidence": [
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616688720",
+          "line_bb": "Called a 2.48 BB open in the BB, checked K-9-8, then bet 5.12 on the turn into a pot of about 5.36; opener folded.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616718131",
+          "line_bb": "Called a 2.48 BB BTN open and led 5.12 on K-7-6; opener folded.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_showdown",
+          "hand_id": "261616668175",
+          "hole_cards": ["Qh", "Qd"],
+          "line_bb": "Opened 3, called a three-bet to 8, led 8.32 on 5h-Ah-Ac, bet 7 on the turn and river, then called a raise to 36.96.",
+          "result": "Lost to AJ on the double-paired board."
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616753444",
+          "line_bb": "Called a 2.48 BB open from the SB, led 2.84 on A-5-8, then check-folded the diamond turn to 5.56.",
+          "showdown": false
+        }
+      ],
+      "adjustments": [
+        "Expect donk leads more often than population; do not auto-fold top pair or strong draws.",
+        "Value-bet larger when his range is capped but sticky.",
+        "Bluff less on runouts where an overpair can convince him to call a large raise.",
+        "Attack his turn checks after he has led the flop and the turn improves your range."
+      ]
+    },
+    "Cristian Ramos": {
+      "confidence": "medium",
+      "sample": "several_saved_unshown_lines",
+      "tendencies": [
+        "Uses small flop continuation bets after raising from the blinds.",
+        "Can make a large turn stab after the preflop raiser checks back."
+      ],
+      "evidence": [
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616710753",
+          "line_bb": "Called a 2.48 BB open in the BB, checked 6-5-7, then led 3.84 on the turn into about 5.36; opener folded.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616743170",
+          "line_bb": "Raised the SB to 3, bet 1.88 on K-Q-9, then check-folded the turn to 4.68.",
+          "showdown": false
+        }
+      ],
+      "adjustments": [
+        "Float small flop bets with hands that have credible turn equity, but do not overgeneralize from two lines.",
+        "After he checks the turn, apply pressure with value and selected low-showdown bluffs."
+      ]
+    },
+    "Xamil666": {
+      "confidence": "medium",
+      "sample": "saved_unshown_lines_plus_current_table_aggressive_lines",
+      "tendencies": [
+        "Repeatedly uses 2.48 BB opens.",
+        "Has checked flops and folded to large turn leads.",
+        "Previously showed a small-street value line with a full house.",
+        "At Wachmann IV, 3-bet CJWinnett's 3 BB open to 9 BB and used large flop, turn, and river pressure on 8d-2c-5c-4s-Kh; the 39.1 BB river jam into 117.6 BB forced a fold without showdown.",
+        "Squeezed from the big blind to 12 BB over fizikfil's 2.4 BB open and momogeros's small-blind call; both folded."
+      ],
+      "evidence": [
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616688720",
+          "line_bb": "Opened 2.48, checked back K-9-8, and folded to a 5.12 BB turn lead.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616710753",
+          "line_bb": "Opened 2.48, checked back 6-5-7, and folded to a 3.84 BB turn lead.",
+          "showdown": false
+        },
+        {
+          "source": "screen_observation",
+          "line_bb": "Tiny flop check-raise on 3-3-4, turn check on K, then river pressure on 2; won without showdown.",
+          "showdown": false
+        },
+        {
+          "source": "screen_observation",
+          "table": "Wachmann IV",
+          "board": ["8d", "2c", "5c", "4s", "Kh"],
+          "line_bb": "CJWinnett opened to 3 and Xamil666 3-bet to 9. After building the pot across the flop, Xamil666 bet 38 into 45 on the turn, was called, then jammed the remaining 39.1 into 117.6 on the river. CJWinnett folded; no showdown.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261617299208",
+          "line_bb": "Squeezed from the big blind to 12 over a 2.4 BB open and small-blind call. Both opponents folded; no showdown.",
+          "showdown": false
+        }
+      ],
+      "adjustments": [
+        "Probe turns after he checks back suitable flops, especially when the turn favors the defender.",
+        "Do not label his tiny flop check-raise as a bluff without showdown evidence.",
+        "Expect sustained pressure after Xamil666 3-bets; avoid loose out-of-position calls with hands that cannot withstand multiple barrels.",
+        "Do not automatically overfold strong bluff-catchers to his river jams, but require blockers and a coherent bluff range because the latest triple barrel was unshown.",
+        "When Xamil666 is in the big blind behind an open and caller, anticipate a large squeeze around 12 BB and avoid loose cold-calls that cannot continue."
+      ]
+    },
+    "iHold2Kings": {
+      "confidence": "low",
+      "sample": "two_saved_unshown_lines",
+      "tendencies": [
+        "Opened the BTN to 2 BB and used a roughly one-third-pot flop continuation bet.",
+        "Folded another BTN open to a near-pot blind lead."
+      ],
+      "evidence": [
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616727044",
+          "line_bb": "Opened the BTN to 2, bet 1.36 into about 4.2 on K-6-K, and won after a fold.",
+          "showdown": false
+        },
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616718131",
+          "line_bb": "Opened the BTN to 2.48 and folded to a 5.12 BB lead on K-7-6.",
+          "showdown": false
+        }
+      ],
+      "adjustments": [
+        "Defend the BB appropriately versus his small BTN opens.",
+        "Do not over-credit a one-third-pot paired-board continuation bet."
+      ]
+    },
+    "dontletit": {
+      "confidence": "low",
+      "sample": "one_saved_unshown_pressure_line",
+      "tendencies": [
+        "Opened to 2.2 BB and applied turn-plus-river pressure after the flop checked through."
+      ],
+      "evidence": [
+        {
+          "source": "confirmed_hand_history",
+          "hand_id": "261616776047",
+          "line_bb": "Opened to 2.2, checked T-9-9, bet 3 on the ace turn, and bet 8 on the river 9; both opponents folded by the river.",
+          "showdown": false
+        }
+      ],
+      "adjustments": [
+        "Keep bluff-catch candidates with relevant blockers when he delays aggression, but wait for showdown evidence before widening materially.",
+        "Avoid weak cold calls that let him realize position and pressure later streets."
+      ]
+    },
+    "Vicktorio": {
+      "confidence": "medium",
+      "sample": "screen_observed_showdown",
+      "tendencies": ["Has shown a multi-street bluff after raising the turn."],
+      "evidence": [
+        {
+          "source": "screen_observation",
+          "line_bb": "Raised the turn and barreled the river with only the board pair; was called down by a pair.",
+          "showdown": true
+        }
+      ],
+      "adjustments": ["Bluff-catch somewhat wider on coherent missed-draw runouts, while still respecting clearly value-heavy lines."]
+    },
+    "milkovich90": {
+      "confidence": "medium",
+      "sample": "multiple_screen_observations",
+      "tendencies": [
+        "Aggressive and merged preflop.",
+        "Has raised weak turn probes and called down a confirmed bluff."
+      ],
+      "evidence": [
+        {
+          "source": "screen_observation",
+          "line_bb": "Raised a 2 BB turn probe to 8.16 and won without showdown.",
+          "showdown": false
+        }
+      ],
+      "adjustments": ["Do not use blocker bets that cannot continue; value-bet cleanly and allow him to bluff into robust bluff-catchers."]
+    },
+    "StormBreaker86": {
+      "confidence": "medium",
+      "sample": "multiple_screen_observations",
+      "tendencies": [
+        "Used a 20 BB cold four-bet and won preflop.",
+        "Can pot-control a strong overpair after calling preflop."
+      ],
+      "evidence": [
+        {
+          "source": "screen_observation",
+          "line_bb": "Cold four-bet to 20 over a 2.48 open and an 8 BB three-bet; both opponents folded.",
+          "showdown": false
+        },
+        {
+          "source": "screen_observation",
+          "hole_cards": ["J", "J"],
+          "line_bb": "Called a 5 BB preflop raise, called a half-pot flop bet on 7-7-3, then checked down and won.",
+          "showdown": true
+        }
+      ],
+      "adjustments": ["Treat large preflop aggression as value-heavy until a bluff is exposed; do not assume turn checks cap his pair strength."]
+    },
+    "64Herz": {
+      "confidence": "high",
+      "sample": "confirmed_user-reported_showdown",
+      "tendencies": ["Showed 73o after a turn-raise and river-barrel bluff."],
+      "evidence": [
+        {
+          "source": "confirmed_showdown",
+          "hole_cards": ["7", "3"],
+          "line_bb": "Turn raise followed by a river barrel with 73o as a pure bluff.",
+          "showdown": true
+        }
+      ],
+      "adjustments": ["Bluff-catch wider when his line represents a narrow value range and natural draws miss."]
+    }
+  }
+}

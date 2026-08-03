@@ -1,0 +1,283 @@
+[00:05.97-00:08.97] Super excited to talk about tournament strategy.
+[00:08.99-00:10.13] Now I've played cash games,
+[00:10.15-00:11.49] I have played tournaments all my life
+[00:11.49-00:13.33] but I've always felt more excited
+[00:13.33-00:14.49] about a tournament because it has
+[00:14.49-00:15.17] a beginning,
+[00:15.17-00:16.85] a middle an ending and at the end
+[00:16.85-00:18.73] you win yourself a nice trophy occasionally
+[00:18.73-00:20.57] whereas a cache game to me is
+[00:20.57-00:21.97] also a little bit more like work.
+[00:22.57-00:25.73] You go in there, you punch your clock, make your money,
+[00:25.73-00:27.21] there's no trophy at the end of the day,
+[00:27.21-00:29.41] which is a job well done when you did have win.
+[00:29.43-00:30.81] So we're gonna talk
+[00:30.81-00:32.53] a little bit more in depth about tournament strategy,
+[00:32.53-00:35.25] things to look for throughout the various stages
+[00:35.25-00:36.57] of the tournament because there's always going
+[00:36.57-00:37.65] be an ebb and flow.
+[00:37.65-00:39.57] There's always a dynamic that's changing
+[00:39.57-00:40.61] when you play cash games,
+[00:40.61-00:42.41] you're rarely gonna be faced in situations
+[00:42.41-00:45.77] where stack size matter as much they do in tournaments right?
+[00:45.81-00:47.13] In cache games typically people will play relatively deep
+[00:47.13-00:49.01] people play relatively deep.
+[00:49.01-00:50.37] A rarelier you're gonna see a player
+[00:50.37-00:52.97] with just 10 big lines left sitting on his stack
+[00:52.97-00:54.89] and in tournaments it's very common,
+[00:54.89-00:57.05] You're going to see stacks ranging from five
+[00:57.05-00:59.41] big lines to ten to 20 to 50
+[00:59.41-01:01.25] And of course you're have the Deep Stack Play
+[01:01.25-01:02.25] especially in the early level.
+[01:02.25-01:04.25] So we're going to go through bit by bit
+[01:04.25-01:07.13] what to look forward to and what to think about
+[01:07.13-01:09.25] in the early stages, middle stagees late stages
+[01:09.73-01:09.93] and how how that all changes
+[01:09.93-01:13.93] changes throughout based on the different dynamics that you're going to be faced with.
+[01:13.93-01:25.31] Let's tackle the early stages first and there is definitely a few schools of
+[01:25.33-01:28.99] thought on how to approach these levels like some players are out there
+[01:28.99-01:32.11] like gang bust or taking advantage everybody and really pushing the envelope
+[01:32.11-01:35.47] trying to build a big stack, try to build a big stack where others especially because in
+[01:35.47-01:38.47] most tournaments that you play the first few levels will not have an
+[01:38.47-01:41.31] anti they're going to play a little more snug and they're gonna play a
+[01:42.31-01:42.39] more conservative. And they're going to be for most poker situations
+[01:44.39-01:44.83] and sorta-for most poker situations and just kind of things
+[01:50.87-01:52.83] The answer is, it depends.
+[01:52.83-01:55.19] As a general rule before the annies kick in
+[01:55.19-01:56.75] in a tournament you do want to be
+[01:56.75-01:58.71] on the more conservative side right?
+[01:58.71-01:59.99] There's a simple fact here that
+[01:59.99-02:01.27] in the early stages
+[02:01.27-02:02.15] You can go broke
+[02:02.15-02:03.19] you can lose all your chips what
+[02:03.19-02:04.55] you can't do is win the entire
+[02:04.55-02:05.75] tournament so the question
+[02:05.75-02:09.91] is how much value is there in doubling your stack at the early stages
+[02:09.93-02:10.63] in terms of
+[02:10.63-02:13.95] how often you're going to cash or how much more likely you are to win.
+[02:13.95-02:16.47] And it's not as significant as you would hope,
+[02:16.47-02:19.23] It's far more important especially in the early stages
+[02:19.23-02:22.23] to think in terms of survival that's gonna be a theme throughout this
+[02:22.23-02:24.87] tournament portion. In cache games we're always thinking
+[02:24.87-02:27.59] how do we get max-value? That's the only thing that matters well in
+[02:28.07-02:28.95] Well in a tournament there's another consideration
+[02:28.95-02:33.43] there's another consideration. The other consideration is like, okay how do I avoid
+[02:34.23-02:38.23] ruin here? How do i lower my variance so that I don't go broke in these situations
+[02:38.23-02:40.95] So there's more to think about internments because again
+[02:40.95-02:44.39] There's another concept that will get into a little bit more in depth later called
+[02:44.43-02:49.19] ICM which essentially means independent chip model and what it explains
+[02:50.19-02:53.43] is the value of one ship changes as the tournament progresses
+[02:53.43-02:57.43] So one chip out of a thousand in the early stages is not as valuable
+[02:57.45-03:01.39] as one ship later when everyone only has 10 chips for example.
+[03:01.41-03:02.87] so we're going to cover all that but,
+[03:02.87-03:05.43] as a general rule in your early stage what I'd like to see you do
+[03:05.43-03:09.07] is really in that first half hour or hour map up at the table
+[03:09.07-03:13.19] I would generally go with more conservative strategy there are no any
+[03:13.19-03:14.67] anis yet as i said
+[03:14.67-03:17.31] The only time and because remember I said it depends
+[03:17.39-03:17.45] from that
+[03:17.45-03:20.09] from that strategy is if everybody else
+[03:20.11-03:21.45] is doing the same thing.
+[03:21.45-03:23.45] So, if the rest of your opponents are playing
+[03:23.45-03:25.45] overly conservative well you can just
+[03:25.45-03:27.45] pick up the free chips at very low risk
+[03:27.45-03:29.45] so if you do have more maniacs
+[03:29.45-03:30.45] to the table you want to wait them out
+[03:30.45-03:32.45] You wanna wait for them to make big mistakes
+[03:32.45-03:33.45] while you sit tight
+[03:34.45-03:35.45] conserve your chips in your stack
+[03:36.45-03:37.45] it's a marathon not a sprint
+[03:37.45-03:38.45] and that's how you need to think about
+[03:38.45-03:47.92] about and approach the early levels.
+[03:47.92-03:49.96] Another consideration in your early stages is thinking
+[03:49.96-03:51.64] about hand selection, right?
+[03:51.64-03:53.88] Which hands go up-in value in the early stages
+[03:53.88-03:55.68] and which ones down in values?
+[03:55.68-03:58.36] So depending on the type of tournament you're in
+[03:58.36-04:00.12] if you have some weaker players who are doing
+[04:00.12-04:03.08] some limping or playing too many hands
+[04:03.08-04:06.24] like six seven suited pocket fives those suit connectors
+[04:06.24-04:09.12] what I call home run hands they do quite well
+[04:09.12-04:13.12] when you're playing very very large.
+[04:15.24-04:18.24] Now contrast that with a hand like Ace 9 off suit.
+[04:18.24-04:21.24] Well, ACE-9 is certainly better than 6 7 suited right?
+[04:21.24-04:24.24] However in the early stages
+[04:24.24-04:26.24] The ace nine of suit doesn't have as much potential
+[04:26.24-04:28.24] to make a really big hand after the flop
+[04:28.24-04:31.24] With Ace Nine you're trying to makeases or
+[04:45.24-04:48.96] early stages is I would probably up my frequencies a little bit with some of
+[04:48.98-04:51.72] the hands that are home run hands like six seven suited and pocket threes
+[04:51.72-04:56.44] and I would steer away from the hands that do better in what I call hot
+[04:56.44-05:01.04] and cold situation. So Ace 9 off-suit you know it's a better hand to go all
+[05:01.04-05:04.32] in with from the button for example if you have 10 big blinds than 6 7
+[05:04.40-05:09.20] suited but again, because you're not going to have to face any bets on the flop or turnin
+[05:09.20-05:10.68] in the flop or turn and river.
+[05:10.68-05:11.80] The deeper you are,
+[05:11.80-05:21.59] the higher the value of those pseudo-connectors becomes.
+[05:21.59-05:22.63] Depending what your playing
+[05:22.63-05:23.99] if you're an online tournament
+[05:23.99-05:26.47] or you're playing in maybe a low stakes live event
+[05:26.47-05:29.03] where the blinds are going up really quickly
+[05:29.03-05:31.87] that's gonna cause you to adjust your strategy significantly
+[05:31.87-05:33.07] in early stages because
+[05:33.07-05:35.23] you're not gonna have a lot of weight period.
+[05:35.23-05:36.67] You know, you're gonna have to get involved
+[05:36.67-05:40.07] really quickly. So in a situation like that I would play it
+[05:40.07-05:41.71] little bit more like a cash game,
+[05:41.71-05:44.83] In the early stages and in sense of not worrying so much about
+[05:44.83-05:47.71] survival and focusing a little bit more on value.
+[05:47.71-05:50.79] So you get a good hand let's get it in whereas in a tournament
+[05:50.79-05:52.67] maybe don't want to get in first level
+[05:52.75-05:54.99] in a fast-paced tournament online for example
+[05:54.99-05:56.99] that has you know the hyper turbos
+[05:56.99-05:59.47] that have three-minute blinds, you get a good hand.
+[05:59.47-06:00.67] You want to get full value,
+[06:00.67-06:02.03] you wanna get it in because
+[06:02.03-06:03.63] it's not that type of event
+[06:03.63-06:05.19] that is a marathon versus a sprint.
+[06:05.19-06:14.12] It's a sprint from the get go.
+[06:14.12-06:17.12] So the number one mistake I see tournament players make
+[06:17.12-06:18.12] and I have for many years
+[06:18.12-06:21.00] maybe slightly less so today but still very prevalent
+[06:21.00-06:23.56] is you see a player who has a chip lead or a very big stack
+[06:24.12-06:26.24] and then just blows off bluffing trying to win the role.
+[06:26.24-06:28.52] bluffing, trying to win the tournament too early.
+[06:28.52-06:30.56] You really have to have a lot of patience and discipline
+[06:30.56-06:31.48] in order to win a tournament.
+[06:31.48-06:33.68] Sure aggression plays a big role but if you go
+[06:33.68-06:34.68] too far with that
+[06:34.68-06:36.36] and you take a coveted big stack
+[06:36.36-06:37.64] and your two reckless with it
+[06:37.64-06:40.24] and you start doubling people up left right and center
+[06:40.24-06:42.28] you take what was once a very valuable stack
+[06:42.28-06:44.84] that was gonna like almost lockup and guarantee you
+[06:44.84-06:46.24] a pretty good payday and you're too reckless with it. And you've been
+[06:46.24-06:48.24] that will burn all of that equity.
+[06:48.24-06:49.24] It's a huge mistake,
+[06:49.24-06:50.24] a lot of players make
+[06:50.24-06:51.24] that are playing too many hands
+[06:51.24-06:52.24] to aggressively trying
+[06:52.24-06:53.24] to win the tournament
+[06:53.24-07:04.16] The middle stage is the tournament or where new variables are introduced.
+[07:04.18-07:06.84] Everyone starts with the same amount of chips in early levels,
+[07:06.84-07:09.64] everyone's usually relatively deep stacked
+[07:09.64-07:13.64] you're not talking about any situations it's a little more relaxed
+[07:13.64-07:15.88] well by the middle stages of the tournament
+[07:15.88-07:18.16] You start to see some fluctuation and chip stacks
+[07:18.16-07:19.16] You're gonna have some big stacks
+[07:19.16-07:20.96] your going to have some average stats
+[07:20.96-07:22.28] And then some potentially really short stacks so that's
+[07:23.48-07:24.16] really really short stacks
+[07:24.48-07:27.48] So that's open up some opportunities as well
+[07:30.16-07:33.76] So let's say for example we use six eight of hearts.
+[07:33.80-07:37.16] You have six eight of hearts, there is an Annie out there you're in middle position
+[07:37.16-07:41.76] and doing quite well on chips would you open with this hand right?
+[07:41.76-07:46.16] I wouldn't normally open with this hand except when behind me or
+[07:46.16-07:48.88] like for example the player in the button or in the blinds are sitting
+[07:48.88-07:54.28] on stacks of maybe anywhere from 8 to 15 blinds because those players typically
+[07:54.28-07:56.16] with 8-15 lines their play is going all in okay so
+[08:00.16-08:01.66] and you open with it,
+[08:01.66-08:03.00] and you have these short stacks.
+[08:03.00-08:04.42] They're gonna take advantage of your opening
+[08:04.42-08:05.74] if you're opening that wide.
+[08:05.74-08:06.86] And when I say why?
+[08:06.86-08:09.66] That means just a wider range of hands okay?
+[08:09.66-08:12.50] 6-8 suited is pretty wide right now
+[08:12.50-08:14.94] If everyone's deep stacked or average stack six eight suited
+[08:14.94-08:16.16] as fine hand because
+[08:16.18-08:16.86] It plays pretty well post flop
+[08:16.86-08:19.32] Of course if you get rerays
+[08:19.32-08:20.16] it doesn't mean you have to continue
+[08:20.96-08:21.40] necessarily but you can't call the shelves
+[08:21.40-08:24.84] but you're not facing the situations where
+[08:24.84-08:27.88] you raise and someone just denies all equity from you because
+[08:27.88-08:30.84] you can't call the shelves. So, you have to be very mindful by
+[08:30.84-08:33.40] the middle stages of where the stacks are
+[08:33.40-08:36.04] and if the stacks that are shortest or on your left
+[08:36.04-08:39.00] that is going to handcuff you. If you play Lucy-goosey
+[08:39.00-08:41.80] a fast aggressive style in those situations
+[08:41.80-08:43.88] you're gonna get punished alright
+[08:44.60-08:45.40] having said that
+[08:45.64-08:47.80] In Sit
+[08:47.88-08:49.72] ed an Ace Ten I'd
+[08:51.40-08:55.24] have an ace 10 in that situation than the 6-8 of hearts. Remember we discussed
+[08:55.24-08:59.88] in the early levels? A hand like six, seven suited plays better than Ace 9 well now
+[08:59.88-09:02.92] were starting to get to the point where if there are short stacks involved
+[09:02.92-09:04.12] we want to have the best hand going because there's not having the best hand
+[09:04.12-09:08.08] going in because there's not gonna be a lot of betting on the flopped turn and river when
+[09:28.53-09:31.13] know, play aggressively and knock everybody out.
+[09:31.13-09:33.89] And he looks at it a little differently in saying that
+[09:33.89-09:36.13] A big stack is something to be protected
+[09:36.13-09:37.89] and coveted because the big stock
+[09:37.89-09:39.61] is going to allow you in the later stage
+[09:39.61-09:40.73] when we get to the bubble
+[09:40.73-09:42.85] to apply a lot of pressure on your opponents
+[09:42.85-09:44.61] called ICM-pressure which we discussed
+[09:44.61-09:45.93] a little bit and I promise you
+[09:45.93-09:49.33] we are going to get into depth so you have deeper understanding
+[09:49.33-09:50.33] of why ICM plays such as a role what you want to do?
+[09:50.33-09:52.79] play such a role in tournaments to pay 10%
+[09:52.79-09:53.83] 20 percent of the fields.
+[09:54.23-09:56.87] But, the key thought that John Jawanda has is with
+[09:56.89-09:58.37] a big stack what you want to do
+[09:58.61-10:00.97] is you want to avoid tangling
+[10:00.97-10:02.47] with the other big stacks at the table
+[10:02.63-10:04.19] because the other big stacks are
+[10:04.19-10:05.19] the only ones that can put
+[10:05.19-10:07.13] a real big dent into your chances
+[10:07.15-10:08.19] through in the tournament so you're going
+[10:08.19-10:10.09] to proceed a little bit more cautiously
+[10:10.09-10:11.49] in those situations, right?
+[10:11.51-10:13.85] So if you are the only big stack at the table
+[10:13.85-10:15.65] off and you can be a table captain
+[10:15.65-10:16.85] to be a little more aggressive.
+[10:16.85-10:17.97] But if you have a good player
+[10:17.97-10:20.89] to your left especially who also has a big stack
+[10:20.89-10:21.73] it's gonna force you
+[10:21.73-10:23.69] to be a little smarter because otherwise
+[10:23.69-10:27.13] you'd be lighting ICS dollars on fire.
+[10:27.13-10:36.85] And again we're going explain that later I promise.
+[10:46.65-10:48.45] down to less than 20 big blinds.
+[10:48.45-10:51.45] And that's right around where I'd call the danger zone
+[10:51.45-10:53.13] when you're under 20 big blinds,
+[10:53.13-10:54.77] you're starting to look for situations
+[10:54.77-10:55.81] where you're not longer looking
+[10:55.81-10:57.13] to say well let me see what
+[10:57.13-10:59.01] the flop looks like and play post-flop
+[10:59.01-11:00.53] You're looking to find situations
+[11:00.53-11:02.65] or you can either shove go all in
+[11:02.73-11:03.77] or fold.
+[11:03.77-11:07.73] You're looking to come over the top of players who have raised maybe there is a liberal player
+[11:16.65-11:19.17] players still trying to play poker,
+[11:19.17-11:20.49] still trying to see flops.
+[11:20.49-11:22.97] Still trying to hope that they can catch something.
+[11:22.97-11:24.97] You don't want to be in Hope mode in that position.
+[11:24.97-11:26.89] You wanna make a decision and be definitive
+[11:26.89-11:28.01] and go all inner fold.
+[11:28.01-11:30.81] So typically an amateur player who's on the eight
+[11:30.81-11:32.57] to 11 big blind range you know
+[11:32.57-11:34.97] sometimes I see them just calling or limping in
+[11:34.97-11:38.65] or you know just defending a blind
+[11:38.65-11:40.93] hoping to catch miracle in a bottle.
+[11:40.95-11:42.97] In these kind of situations, you simply want
+[11:42.97-11:45.09] to use whatever chips you have left
+[11:45.09-11:46.85] the little leverage that you have left
+[11:46.85-11:49.09] put it all towards the pot
+[11:49.09-11:50.09] to win the blinds and 80s
+[11:50.09-11:51.85] because if you're sitting on eight big lines
+[11:51.85-11:53.49] and then you go all in in a tournament
+[11:53.49-11:54.85] You're going to pick up a big line
+[11:54.89-11:57.17] a small blind as well as the annes at the table
+[11:57.25-11:59.45] which now gets you from 8-to 10 or 11
+[11:59.45-12:02.57] And again, it's very important to note that just because you went all in with the worst
+[12:02.57-12:04.77] hand doesn't mean you lose.
+[12:04.77-12:08.41] You go all in with Ace Five a Spades player calls you with Pocket Tens.
+[12:08.41-12:09.41] Sure!
+[12:09.41-12:11.41] You're not the favorite but you are going to win off and enough
+[12:11.41-12:12.73] to make this a valuable play.
+[12:12.73-12:14.57] You're still only two-to-one underdog.
+[12:14.57-12:17.77] And as we've seen if you watch poker on TV, bad beats happen.
+[12:17.77-12:19.93] two to one dog, that's not even that bad a beat.
+[12:19.95-12:21.61] Trust me I got way worse beats
+[12:21.61-12:22.73] I could tell you but that would be
+[12:22.73-12:24.53] a whole new video we're not going there

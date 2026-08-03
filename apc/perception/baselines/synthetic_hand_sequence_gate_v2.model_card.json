@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic complete-hand perception gate v2",
+  "status": "synthetic_test_passed_controlled_visible_not_promotion_eligible",
+  "created_at": "2026-08-03T01:24:10+03:00",
+  "dataset": {
+    "dataset_id": "apc-synthetic-hand-sequences-2026080302",
+    "verified_frames": 2000,
+    "hands": 250,
+    "capture_sessions": 125,
+    "layouts": 3,
+    "themes": 2,
+    "annotations_sha256": "91f2340a4ec0e7cbd911f62244fe1fd7cf360e4e4106908116be3498ce6d1f94",
+    "split_sha256": "6ef2e8e78da9b0a917aa5a67a80f72e7484fb3d29aee3efa6dee3658c32fff75",
+    "sequence_audit_sha256": "c8ed9c6778b967b1f6d56029fa21cacdb0c355ee658ed051fdd47b33b6972a6d"
+  },
+  "checkpoint_provenance": {
+    "base_sha256": "cf78ab4aec662cee6ea7bc914223d68301e2b6e2e554068eebae98fbd127a0a1",
+    "card_sha256": "462e0b59aa9faa35c06791d09ccfe8b1320b596c5bcbb0efa9ef4adfc194ffea",
+    "table_state_sha256": "ba184df356c940679b5aece89ac5b6bffac4bea46191c9df14e029f3ec7ef3c3",
+    "stack_sha256": "a6849f58e98417ed08d98ff321f8cd7e14e813485bc43c5d4c8d4d3463eb2723",
+    "event_sha256": "68f8a6db44c349e2a7fe69e5085e1eee701a13ed034e33e2dab1a0992bdaabcc",
+    "boundary_sha256": "7ed43fc24d83be07ad00608399ef18447f003102ad06adce1e1f292f8ed074e1"
+  },
+  "development_validation": {
+    "frames": 192,
+    "pairs": 96,
+    "completed_hands": 24,
+    "base_joint_accuracy": 1.0,
+    "visible_card_exact_accuracy": 1.0,
+    "table_state_joint_accuracy": 1.0,
+    "stack_exact_accuracy": 1.0,
+    "event_exact_accuracy": 1.0,
+    "boundary_accuracy": 1.0,
+    "complete_transition_accuracy": 1.0,
+    "completed_hand_exact_accuracy": 1.0,
+    "hand_tracker_latency_ms_p95": 1784.755074986606,
+    "reports": {
+      "base_sha256": "a84655970dcbe9b479a5e486107787601c89068834becd1e4d21c24e680e2963",
+      "card_sha256": "0afd33a3dc26cb48fea66d68e8ed3f852d6060a094ec1550e008c0cc8715cc36",
+      "table_state_sha256": "90536272602cee034cd591af39f9ca3ea047b6ed7d8b5b402b36b97caf1fdd5e",
+      "stack_sha256": "038010dbacb88cf01929f413232b84183c8247c63cf54811d5b37b3db7695549",
+      "event_sha256": "caa04d545fe52608681427863c6ac0491cbc644def03e487245bbe5d77a5b864",
+      "boundary_sha256": "5bcf49d2347eb570c199de676caf9c08618505793a106a0f20285fb375f7dbb1",
+      "temporal_sha256": "58494a17f3be65aab608f1dc5c8118ce5d4b0af1132408af84f097978f6dbad0",
+      "hand_tracker_sha256": "e81617901e29d1aa8b71b46164124bfe5a6783f6df18252ba1c5c57d85e9a969"
+    }
+  },
+  "frozen_synthetic_test": {
+    "test_split_reused_for_tuning": false,
+    "frames": 192,
+    "pairs": 96,
+    "completed_hands": 24,
+    "complete_tracked_pair_accuracy": 1.0,
+    "completed_hand_exact_accuracy": 1.0,
+    "visible_state_exact_accuracy": 1.0,
+    "history_exact_accuracy": 1.0,
+    "opponent_effective_stacks_exact_accuracy": 1.0,
+    "boundary_accuracy": 1.0,
+    "latency_ms_p95": 1322.0984249928733,
+    "prediction_sha256": "5247f23cc3b225443d340af5731111453c9bbde7a8570f675e17e360e4da74d2",
+    "report_file_sha256": "9144cde58c9da79e93b4e8c56e6c90075748be155f7722b35169f9ab8b86e9ac"
+  },
+  "frozen_visible_ood_reference": {
+    "use_policy": "audit_only_not_training_tuning_or_gate_count",
+    "normalized_image_sha256": "e1278b5b0cf2713594a71477e78303b2e8c445d132e47de2439a0a6b8bb7b17d",
+    "verified_fields": 6,
+    "exact_fields": 1,
+    "exact_field_accuracy": 0.16666666666666666,
+    "safe_abstention": true,
+    "minimum_supported_confidence": 0.00014143774728799747,
+    "prediction_status": "abstain_incomplete_state",
+    "prediction_file_sha256": "115f91503d9b3238a0f9820a9bbfbe6ed7ed96eba034ab2aa8385c6974256344",
+    "audit_file_sha256": "2320ac7a998a3ccf8389215400982331c033c02304e79b32ab4344d52c65efd0",
+    "reference_reused_for_tuning": false
+  },
+  "improvements_over_previous_checkpoint": [
+    "Fresh group-exclusive 2000-frame corpus instead of 192 development frames.",
+    "Numeric decoder constrains decimal placement from the learned token shape and digits from a numeric-only alphabet.",
+    "Pot/call token shapes use train-split exemplars; the prior centroid validation errors are preserved separately.",
+    "Fresh untouched complete-hand test improved from 1/2 exact hands to 24/24 exact hands."
+  ],
+  "gate_policy": {
+    "recommendation_allowed": false,
+    "visible_table_training_ready": false,
+    "controlled_visible_frames": 0,
+    "controlled_visible_frames_required": 500,
+    "controlled_visible_sessions": 0,
+    "controlled_visible_sessions_required": 2,
+    "interactive_latency_passed": false
+  },
+  "limitations": [
+    "The exact test covers the same synthetic renderer family, not arbitrary visible tables.",
+    "The frozen real reference remains only 1/6 exact despite viewport normalization.",
+    "Player names are not read as human-readable OCR and coaching remains identity-gated.",
+    "Event inference assumes adjacent frames with a visible event banner.",
+    "Test p95 latency of 1322.10 ms is not interactive.",
+    "No controlled-visible calibration or promotion claim is made."
+  ]
+}

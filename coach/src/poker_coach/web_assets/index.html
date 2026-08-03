@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Poker Coach Lab</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">PC</span>
+      <div><strong>Poker Coach Lab</strong><small>Decision training · Hand review</small></div>
+    </div>
+    <nav aria-label="Application views">
+      <button class="nav-button active" data-view="trainer">Training table</button>
+      <button class="nav-button" data-view="live">Live assistant</button>
+      <button class="nav-button" data-view="solver">River Solver Lab</button>
+      <button class="nav-button" data-view="review">Hand-history review</button>
+    </nav>
+    <div class="health"><span class="health-dot"></span><span id="healthLabel">Connecting</span></div>
+  </header>
+
+  <main>
+    <section id="trainerView" class="view active" aria-labelledby="scenarioTitle">
+      <div class="workspace">
+        <aside class="rail">
+          <div class="eyebrow">Live training session</div>
+          <h1 id="scenarioTitle">Loading your table…</h1>
+          <div class="metadata">
+            <span id="streetBadge">—</span><span id="difficultyBadge">—</span>
+          </div>
+          <div class="progress-block">
+            <div class="progress-label"><span>Progress</span><strong id="progressText">0 / 0</strong></div>
+            <div class="progress-track"><span id="progressFill"></span></div>
+          </div>
+          <div class="score-card"><span>Session score</span><strong id="scoreValue">0</strong><small>/ 100</small></div>
+          <div>
+            <div class="eyebrow">Concepts in play</div>
+            <div id="concepts" class="chips"></div>
+          </div>
+          <div class="provenance-card">
+            <span id="provenanceTier" class="status-pill">Loading</span>
+            <p id="provenanceText">Strategy provenance will appear here.</p>
+          </div>
+        </aside>
+
+        <section class="table-zone">
+          <div class="table-shell">
+            <div class="poker-table">
+              <div class="seat villain">
+                <div class="avatar">V</div>
+                <div><strong id="villainPosition">Villain</strong><span id="villainStack">—</span></div>
+              </div>
+              <div class="pot-display"><small>Pot</small><strong id="potValue">—</strong></div>
+              <div id="board" class="cards board" aria-label="Board cards"></div>
+              <div class="seat hero">
+                <div class="avatar hero-avatar">H</div>
+                <div><strong id="heroPosition">Hero</strong><span id="heroStack">—</span></div>
+              </div>
+              <div id="heroCards" class="cards hole-cards" aria-label="Hero cards"></div>
+            </div>
+          </div>
+
+          <div class="decision-panel">
+            <div>
+              <div class="eyebrow">Action history</div>
+              <ol id="actionHistory" class="history"></ol>
+            </div>
+            <div class="decision-side">
+              <div class="decision-heading">
+                <div><div class="eyebrow">Your decision</div><h2 id="decisionPrompt">Choose an action</h2></div>
+                <span id="callPrice" class="call-price"></span>
+              </div>
+              <div id="actionButtons" class="action-grid"></div>
+            </div>
+          </div>
+
+          <section id="feedbackPanel" class="feedback-panel hidden" aria-live="polite">
+            <div class="feedback-head">
+              <div><div class="eyebrow">Coach feedback</div><h2 id="feedbackTitle">Decision reviewed</h2></div>
+              <span id="gradeBadge" class="grade-badge"></span>
+            </div>
+            <p id="feedbackMessage" class="lead"></p>
+            <div class="metrics">
+              <div><span>EV loss</span><strong id="evLoss">—</strong></div>
+              <div><span>Reference frequency</span><strong id="chosenFrequency">—</strong></div>
+              <div><span>Required equity</span><strong id="requiredEquity">—</strong></div>
+              <div><span>SPR</span><strong id="sprValue">—</strong></div>
+            </div>
+            <p id="explanation" class="explanation"></p>
+            <div><div class="eyebrow">Reference strategy</div><div id="strategyBars" class="strategy-bars"></div></div>
+            <button id="nextButton" class="primary-button">Next decision</button>
+          </section>
+        </section>
+      </div>
+    </section>
+
+    <section id="solverView" class="view" aria-labelledby="solverTitle">
+      <div class="solver-layout">
+        <div class="solver-copy">
+          <div class="eyebrow">Counterfactual regret minimization</div>
+          <h1 id="solverTitle">Solve a river value-bluff game.</h1>
+          <p>This lab computes an approximate Nash equilibrium instead of replaying a stored answer. IP holds Value or Air with equal prior weight; OOP holds a bluff-catcher. Change the pot and fixed bet size to see optimal bluffing and defense frequencies move.</p>
+          <div class="solver-status"><span>Solver generated</span><p>Results are GTO within the displayed abstraction—not a claim about an unsolved full no-limit tree.</p></div>
+          <ul><li>Heads-up river and one fixed bet size</li><li>Check/bet versus fold/call</li><li>Zero-sum chip EV, no rake</li><li>Exploitability reported in big blinds</li></ul>
+        </div>
+        <div class="solver-card">
+          <div class="solver-form">
+            <label>Pot before bet <span><input id="solverPot" type="number" min="0.1" max="1000" step="0.5" value="10"> bb</span></label>
+            <label>Bet size <span><input id="solverBet" type="number" min="0.1" max="1000" step="0.5" value="10"> bb</span></label>
+            <label>Iterations <select id="solverIterations"><option value="10000">10,000 · quick</option><option value="50000" selected>50,000 · precise</option><option value="150000">150,000 · tighter</option></select></label>
+          </div>
+          <div class="sizing-presets" aria-label="Bet-size presets">
+            <button data-pot-fraction="0.5">½ pot</button><button data-pot-fraction="0.75">¾ pot</button><button data-pot-fraction="1">Pot</button><button data-pot-fraction="1.5">1½ pot</button>
+          </div>
+          <button id="solveRiverButton" class="primary-button solver-run">Run CFR solver</button>
+          <p id="solverError" class="error hidden"></p>
+        </div>
+        <section id="solverResults" class="solver-results hidden" aria-live="polite">
+          <div class="feedback-head"><div><div class="eyebrow">Approximate equilibrium</div><h2>CFR solution</h2></div><span class="grade-badge">Solver generated</span></div>
+          <div class="metrics solver-metrics"><div><span>Exploitability</span><strong id="solverExploitability">—</strong></div><div><span>Nash gap</span><strong id="solverNashGap">—</strong></div><div><span>IP game EV</span><strong id="solverGameEv">—</strong></div><div><span>Iterations</span><strong id="solverIterationResult">—</strong></div></div>
+          <div class="solver-strategy-grid">
+            <div><div class="eyebrow">IP betting strategy</div><div id="ipSolverBars" class="strategy-bars"></div></div>
+            <div><div class="eyebrow">OOP defense strategy</div><div id="oopSolverBars" class="strategy-bars"></div></div>
+          </div>
+          <p id="solverInterpretation" class="explanation"></p>
+        </section>
+        <section class="range-matchup-card" aria-labelledby="rangeMatchupTitle">
+          <div class="range-matchup-copy">
+            <div class="eyebrow">Range versus range</div>
+            <h2 id="rangeMatchupTitle">Measure equity and nut-share advantage.</h2>
+            <p>Supply both weighted ranges before making an advantage claim. Small trees enumerate every matchup and runout; larger trees use a deterministic sample with a reported 95% interval.</p>
+            <p class="range-caveat">Notation examples: <code>TT+</code>, <code>AJs+</code>, <code>AKo:0.5</code>, or exact cards such as <code>AsKd</code>.</p>
+          </div>
+          <div class="range-matchup-form">
+            <label>Board cards<input id="rangeMatchupBoard" value="Ah 7c 2d" spellcheck="false" placeholder="Ah 7c 2d"></label>
+            <label>Hero range<input id="rangeMatchupHero" value="AA,AKs,AQo:0.5" spellcheck="false"></label>
+            <label>Villain range<input id="rangeMatchupVillain" value="77+,AJs+,KQs,AQo+" spellcheck="false"></label>
+            <label>Monte Carlo samples<select id="rangeMatchupSamples"><option value="5000">5,000</option><option value="20000" selected>20,000</option><option value="50000">50,000</option></select></label>
+            <label>Deterministic seed<input id="rangeMatchupSeed" type="number" value="17" step="1"></label>
+            <button id="analyzeRangeMatchupButton" class="primary-button">Analyze ranges</button>
+            <p id="rangeMatchupError" class="error hidden"></p>
+          </div>
+          <div id="rangeMatchupResults" class="range-matchup-results hidden" aria-live="polite">
+            <div class="result-summary"><div><span>Hero equity</span><strong id="rangeHeroEquity">â€”</strong></div><div><span>Villain equity</span><strong id="rangeVillainEquity">â€”</strong></div><div><span>Hero edge</span><strong id="rangeEquityEdge">â€”</strong></div><div><span>Method</span><strong id="rangeMethod">â€”</strong></div><div><span>Outcomes</span><strong id="rangeOutcomes">â€”</strong></div><div><span>95% interval</span><strong id="rangeConfidence">â€”</strong></div></div>
+            <div class="range-comparison-grid">
+              <div><div class="eyebrow">Hero current distribution</div><div id="rangeHeroDistribution" class="strategy-bars"></div></div>
+              <div><div class="eyebrow">Villain current distribution</div><div id="rangeVillainDistribution" class="strategy-bars"></div></div>
+            </div>
+            <div class="nut-share-summary"><strong id="rangeNutLeader">â€”</strong><span id="rangeNutShares">â€”</span></div>
+            <p id="rangeMatchupProvenance" class="explanation"></p>
+          </div>
+        </section>
+        <section class="solver-import-card" aria-labelledby="solverImportTitle">
+          <div class="solver-import-copy">
+            <div class="eyebrow">Full-tree bridge</div>
+            <h2 id="solverImportTitle">Import an external solution bundle.</h2>
+            <p>Import versioned bundle JSON or one-action-per-row tabular CSV. Every node is checked for complete game configuration, legal cards, normalized frequencies, EVs, private-hand identity and source version before it enters the solution cache.</p>
+            <div class="import-actions"><button id="loadSolverBundleButton" class="secondary-button">Load example export</button><button id="importSolverBundleButton" class="primary-button">Validate and import</button></div>
+          </div>
+          <div>
+            <div class="export-format-row">
+              <label for="solverExportFormat">Export format</label>
+              <select id="solverExportFormat"><option value="bundle-json-v1">Bundle JSON v1</option><option value="tabular-csv-v1">Tabular CSV v1 · multi-street</option></select>
+            </div>
+            <label id="solverExportLabel" class="bundle-label" for="solverBundleInput">Versioned solver-bundle JSON</label>
+            <textarea id="solverBundleInput" class="solver-bundle-input" spellcheck="false" placeholder="{ &quot;schema_version&quot;: &quot;1.0.0&quot;, … }"></textarea>
+            <p id="solverImportError" class="error hidden"></p>
+          </div>
+          <div id="solverImportResult" class="solver-import-result hidden" aria-live="polite">
+            <div class="result-summary"><div><span>Imported spots</span><strong id="importedSpotCount">0</strong></div><div><span>Inserted</span><strong id="insertedSpotCount">0</strong></div><div><span>Updated</span><strong id="updatedSpotCount">0</strong></div><div><span>Adapter</span><strong id="importedFormat">—</strong></div><div><span>Tree edges</span><strong id="importedTreeEdges">0</strong></div><div><span>Max depth</span><strong id="importedTreeDepth">0</strong></div><div><span>Ambiguous</span><strong id="importedTreeAmbiguous">0</strong></div></div>
+            <div id="importedSolutions" class="solution-node-list"></div>
+          </div>
+        </section>
+        <section id="rangeExplorer" class="range-explorer hidden" aria-labelledby="rangeExplorerTitle">
+          <div class="range-explorer-head">
+            <div><div class="eyebrow">Editable solver range</div><h2 id="rangeExplorerTitle">Explore the strategy by starting-hand class.</h2></div>
+            <div class="range-node-controls">
+              <label>Public decision node<select id="rangeNodeSelect"></select></label>
+              <button id="practiceRangeNodeButton" class="primary-button">Practice selected node</button>
+            </div>
+          </div>
+          <p class="range-caveat">Coverage reflects imported exact private-hand nodes. Click an available class to cycle its analysis weight through 100%, 50%, and excluded; missing classes are never inferred.</p>
+          <div class="range-explorer-body">
+            <div class="range-matrix-wrap"><div id="rangeMatrix" class="range-matrix"></div></div>
+            <div class="range-summary">
+              <div class="result-summary"><div><span>Exact nodes</span><strong id="rangeExactNodes">0</strong></div><div><span>Covered classes</span><strong id="rangeCoveredClasses">0</strong></div></div>
+              <p id="rangeSelectionSummary"></p>
+              <div class="eyebrow">Weighted action mix</div>
+              <div id="rangeActionMix" class="strategy-bars"></div>
+            </div>
+          </div>
+          <section class="range-inference-panel" aria-labelledby="rangeInferenceTitle">
+            <div class="range-inference-head">
+              <div><div class="eyebrow">Bayesian action conditioning</div><h3 id="rangeInferenceTitle">Update combo weights after an observed action.</h3></div>
+              <div class="range-inference-controls"><label>Observed solver action<select id="rangeInferenceAction"></select></label><button id="conditionRangeButton" class="primary-button">Condition range</button></div>
+            </div>
+            <p class="range-caveat">The editable class weights above form the prior. Posterior weight is proportional to prior weight multiplied by each imported combo's solver frequency for the observed action.</p>
+            <p id="rangeInferenceError" class="error hidden"></p>
+            <div id="rangeInferenceResults" class="range-inference-results hidden">
+              <div class="result-summary"><div><span>Action evidence</span><strong id="rangeActionEvidence">â€”</strong></div><div><span>Entropy</span><strong id="rangeEntropyShift">â€”</strong></div><div><span>Effective combos</span><strong id="rangeEffectiveShift">â€”</strong></div><div><span>Total variation</span><strong id="rangeTotalVariation">â€”</strong></div></div>
+              <div id="rangeInferenceCombos" class="range-inference-combos"></div>
+              <p id="rangeInferenceProvenance" class="explanation"></p>
+            </div>
+          </section>
+          <section id="solverPracticePanel" class="solver-practice hidden" aria-live="polite">
+            <div class="solver-practice-head">
+              <div><div class="eyebrow">Hidden-strategy drill</div><h3>Choose before the solution is revealed.</h3></div>
+              <span id="solverPracticeStreet" class="grade-badge">—</span>
+            </div>
+            <div class="solver-practice-state">
+              <div><span>Hero</span><strong id="solverPracticePosition">—</strong></div>
+              <div><span>Pot</span><strong id="solverPracticePot">—</strong></div>
+              <div><span>Effective</span><strong id="solverPracticeStack">—</strong></div>
+              <div><span>Node</span><strong id="solverPracticeNode">—</strong></div>
+            </div>
+            <div class="solver-practice-cards">
+              <div><span>Hand</span><div id="solverPracticeHand" class="cards"></div></div>
+              <div><span>Board</span><div id="solverPracticeBoard" class="cards"></div></div>
+            </div>
+            <ol id="solverPracticeHistory" class="history"></ol>
+            <div id="solverPracticeActions" class="action-grid"></div>
+            <p id="solverPracticeError" class="error hidden"></p>
+            <div id="solverPracticeResult" class="solver-practice-result hidden">
+              <div class="feedback-head"><div><div class="eyebrow">Solver feedback</div><h3 id="solverPracticeResultTitle">Decision reviewed</h3></div><span id="solverPracticeGrade" class="grade-badge">—</span></div>
+              <div class="metrics"><div><span>EV loss</span><strong id="solverPracticeLoss">—</strong></div><div><span>Chosen mix</span><strong id="solverPracticeFrequency">—</strong></div><div><span>Chosen EV</span><strong id="solverPracticeChosenEv">—</strong></div><div><span>Best EV</span><strong id="solverPracticeBestEv">—</strong></div></div>
+              <div id="solverPracticeStrategy" class="strategy-bars"></div>
+              <p id="solverPracticeProvenance" class="explanation"></p>
+            </div>
+          </section>
+        </section>
+      </div>
+    </section>
+
+    <section id="liveView" class="view" aria-labelledby="liveTitle">
+      <div class="live-layout">
+        <div class="live-copy">
+          <div class="eyebrow">Revisioned table-state feed</div>
+          <h1 id="liveTitle">Analyze the current decision.</h1>
+          <p>Capture adapters send one normalized state per change. The coach rejects stale revisions and state rollbacks, matches cards suit-isomorphically, and reports only actions covered by both the table and the imported solution.</p>
+          <div class="solver-status"><span>State contract v1</span><p>Every recommendation carries its solver node, source version, match confidence, and exact state fingerprint.</p></div>
+          <div class="live-session-card">
+            <label for="liveTableId">Table identity</label>
+            <div class="folder-row"><input id="liveTableId" value="Play Money Table 1" spellcheck="false"><button id="createLiveSessionButton" class="secondary-button">New session</button></div>
+            <p id="liveSessionStatus">No active feed session.</p>
+            <div class="live-capture-controls">
+              <label for="liveHistoryPath">Growing hand-history file or folder</label>
+              <div class="folder-row"><input id="liveHistoryPath" spellcheck="false" placeholder="C:\Users\you\AppData\Local\PokerStars\HandHistory"><button id="pollLiveHistoryButton" class="primary-button">Poll now</button></div>
+              <label class="live-auto-option"><input id="autoPollLiveHistory" type="checkbox"> Poll automatically every second</label>
+              <p id="liveCaptureStatus">Capture adapter idle.</p>
+            </div>
+          </div>
+        </div>
+        <div class="live-feed-card">
+          <div class="live-feed-head"><div><div class="eyebrow">Normalized capture payload</div><h2>Current table state</h2></div><button id="loadLiveSampleButton" class="secondary-button">Load matched example</button></div>
+          <textarea id="liveStateInput" class="live-state-input" spellcheck="false" placeholder="{ &quot;schema_version&quot;: &quot;1.0.0&quot;, … }"></textarea>
+          <div class="review-actions"><button id="analyzeLiveStateButton" class="primary-button">Analyze current state</button></div>
+          <p id="liveError" class="error hidden"></p>
+        </div>
+        <section class="visual-bridge-card" aria-labelledby="visualBridgeTitle">
+          <div class="visual-bridge-copy">
+            <div class="eyebrow">Calibrated visual-provider bridge</div>
+            <h2 id="visualBridgeTitle">Gate screen observations before strategy.</h2>
+            <p>This dependency-free core does not pretend to contain OCR. A screen-recognition provider supplies calibrated regions, values, confidence, and screenshot evidence. Cards and numbers below 90% confidence are blocked, two distinct consistent frames are required, and temporal chip, board, card, and action invariants must pass before the state advances.</p>
+            <div id="visualObservationStatus" class="solver-status"><span id="visualObservationState">Awaiting frame</span><p id="visualObservationDetail">Load the example twice to simulate two independently captured frames.</p></div>
+            <ul id="visualInvariantList" class="visual-invariant-list hidden"></ul>
+          </div>
+          <div>
+            <textarea id="visualObservationInput" class="visual-observation-input" spellcheck="false" placeholder="{ &quot;provider&quot;: &quot;your_visual_provider&quot;, … }"></textarea>
+            <div class="review-actions"><button id="loadVisualObservationButton" class="secondary-button">Load visual frame</button><button id="submitVisualObservationButton" class="primary-button">Submit visual frame</button></div>
+            <p id="visualObservationError" class="error hidden"></p>
+          </div>
+        </section>
+        <section id="liveResults" class="live-results hidden" aria-live="polite">
+          <div class="live-result-head"><div><div class="eyebrow">Current recommendation</div><h2 id="liveResultTitle">Solver node matched</h2></div><span id="liveMatchStatus" class="grade-badge">—</span></div>
+          <div class="live-state-summary">
+            <div><span>Street</span><strong id="liveStreet">—</strong></div><div><span>Position</span><strong id="livePosition">—</strong></div><div><span>Pot</span><strong id="livePot">—</strong></div><div><span>Effective</span><strong id="liveStack">—</strong></div><div><span>SPR</span><strong id="liveSpr">—</strong></div><div><span>Call threshold</span><strong id="liveCallThreshold">—</strong></div>
+          </div>
+          <div class="solver-practice-cards"><div><span>Hand</span><div id="liveHeroCards" class="cards"></div></div><div><span>Board</span><div id="liveBoardCards" class="cards"></div></div></div>
+          <section class="texture-panel" aria-labelledby="liveTextureTitle">
+            <div class="texture-panel-head"><div><div class="eyebrow">Structural reasoning</div><h3 id="liveTextureTitle">Board and blocker map</h3></div><div id="liveTextureTags" class="texture-tags"></div></div>
+            <ul id="liveTextureFacts" class="texture-facts"></ul>
+            <p id="liveTextureCaveat" class="texture-caveat"></p>
+          </section>
+          <ol id="liveActionHistory" class="history"></ol>
+          <div id="liveStrategyPanel">
+            <div class="live-strategy-head"><div><div class="eyebrow">Covered GTO strategy</div><p id="liveDominantAction"></p></div><strong id="liveNodeId">—</strong></div>
+            <div id="liveStrategyBars" class="strategy-bars"></div>
+            <div id="liveDecisionButtons" class="action-grid"></div>
+            <p id="liveProvenance" class="explanation"></p>
+          </div>
+          <div id="liveUnmatched" class="empty-state hidden"></div>
+          <div id="liveWarnings" class="live-warnings"></div>
+          <div id="liveDecisionFeedback" class="solver-practice-result hidden">
+            <div class="feedback-head"><div><div class="eyebrow">Decision audit</div><h3>Action recorded</h3></div><span id="liveDecisionGrade" class="grade-badge">—</span></div>
+            <div class="metrics"><div><span>EV loss</span><strong id="liveDecisionLoss">—</strong></div><div><span>Chosen mix</span><strong id="liveDecisionMix">—</strong></div><div><span>Chosen EV</span><strong id="liveDecisionEv">—</strong></div><div><span>Best EV</span><strong id="liveDecisionBestEv">—</strong></div></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="reviewView" class="view" aria-labelledby="reviewTitle">
+      <div class="review-layout">
+        <div class="review-copy">
+          <div class="eyebrow">Saved play-money hands</div>
+          <h1 id="reviewTitle">Turn a hand history into an audit trail.</h1>
+          <p>Paste one or more English PokerStars text histories. The parser reconstructs every decision, reconciles the pot, and updates uncertainty-aware player tendencies.</p>
+          <ul><li>Nothing is uploaded; this server runs locally.</li><li>Raw source lines remain attached to parsed actions.</li><li>Malformed or incomplete states fail explicitly.</li></ul>
+        </div>
+        <div class="review-card">
+          <label for="handHistory">PokerStars hand-history text</label>
+          <textarea id="handHistory" spellcheck="false" placeholder="PokerStars Hand #…"></textarea>
+          <div class="review-actions">
+            <button id="loadSampleButton" class="secondary-button">Load example</button>
+            <button id="analyzeButton" class="primary-button">Analyze hands</button>
+          </div>
+          <p id="reviewError" class="error hidden"></p>
+        </div>
+        <section class="ingestion-card" aria-labelledby="ingestionTitle">
+          <div>
+            <div class="eyebrow">Continuous saved-hand intake</div>
+            <h2 id="ingestionTitle">Watch a PokerStars hand-history folder.</h2>
+            <p>The scanner imports only completed hands, skips unchanged files, and rebuilds player-style estimates from the durable library. Auto-scan checks every five seconds while this page is open.</p>
+          </div>
+          <div class="ingestion-controls">
+            <label for="handHistoryFolder">Folder on this computer</label>
+            <div class="folder-row">
+              <input id="handHistoryFolder" type="text" spellcheck="false" placeholder="C:\Users\you\AppData\Local\PokerStars\HandHistory\screenname">
+              <button id="scanFolderButton" class="primary-button">Scan now</button>
+            </div>
+            <div class="scan-options">
+              <label><input id="recursiveScan" type="checkbox"> Include subfolders</label>
+              <label><input id="autoScan" type="checkbox"> Auto-scan every 5 seconds</label>
+              <button id="loadLibraryButton" class="text-button">Load saved library</button>
+            </div>
+            <p id="scanError" class="error hidden"></p>
+          </div>
+          <div id="scanStatus" class="scan-status hidden" aria-live="polite">
+            <div><span>Library</span><strong id="scanLibraryHands">0 hands</strong></div>
+            <div><span>Latest scan</span><strong id="scanImported">0 new</strong></div>
+            <div><span>Files</span><strong id="scanFiles">0 checked</strong></div>
+            <div><span>Pending writes</span><strong id="scanPending">0</strong></div>
+            <p id="scanMessage"></p>
+          </div>
+        </section>
+        <section id="reviewResults" class="review-results hidden" aria-live="polite">
+          <div class="result-summary"><div><span>Hands</span><strong id="resultHands">0</strong></div><div><span>Players profiled</span><strong id="resultPlayers">0</strong></div><div><span>Solver matches</span><strong id="resultMatches">0</strong></div><div><span>Measured EV loss</span><strong id="resultEvLoss">—</strong></div><div><span>Solver coverage</span><strong id="resultCoverage">0%</strong></div><div><span>Pot errors</span><strong id="resultErrors">0</strong></div></div>
+          <div id="handReports" class="report-list"></div>
+          <div class="eyebrow profile-heading">Opponent range timelines</div>
+          <div id="opponentRangeTimelines" class="range-timeline-list"></div>
+          <div class="eyebrow profile-heading">Showdown range calibration</div>
+          <div id="rangeCalibration" class="range-calibration"></div>
+          <div class="eyebrow profile-heading">Personalized drill queue</div>
+          <div id="drillQueue" class="drill-queue"></div>
+          <div class="eyebrow profile-heading">Player-style insights</div>
+          <div id="playerProfiles" class="profile-grid"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

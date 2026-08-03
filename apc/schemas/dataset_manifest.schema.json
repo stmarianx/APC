@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.apc/schemas/dataset_manifest.schema.json",
+  "title": "APC visual dataset manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "dataset_version",
+    "created_at",
+    "annotation_schema",
+    "source_policy",
+    "annotation_files",
+    "splits",
+    "statistics",
+    "fingerprints"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "dataset_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"},
+    "dataset_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "annotation_schema": {"const": "schemas/frame_annotation.schema.json"},
+    "source_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["virtual_chips_only", "allowed_source_kinds", "player_identity_policy"],
+      "properties": {
+        "virtual_chips_only": {"const": true},
+        "allowed_source_kinds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["controlled_training_table", "explicitly_permitted_virtual_table", "synthetic_render"]}
+        },
+        "player_identity_policy": {"enum": ["pseudonymized", "local_only"]}
+      }
+    },
+    "annotation_files": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "splits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group_key", "group_exclusive", "train", "validation", "test"],
+      "properties": {
+        "group_key": {"const": "capture_session_id"},
+        "group_exclusive": {"const": true},
+        "train": {"$ref": "#/$defs/session_ids"},
+        "validation": {"$ref": "#/$defs/session_ids"},
+        "test": {"$ref": "#/$defs/session_ids"}
+      }
+    },
+    "statistics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["captured_frames", "labeled_frames", "verified_frames", "double_audited_frames", "capture_sessions", "layouts", "themes", "temporal_sequence_frames"],
+      "properties": {
+        "captured_frames": {"type": "integer", "minimum": 0},
+        "labeled_frames": {"type": "integer", "minimum": 0},
+        "verified_frames": {"type": "integer", "minimum": 0},
+        "double_audited_frames": {"type": "integer", "minimum": 0},
+        "capture_sessions": {"type": "integer", "minimum": 0},
+        "layouts": {"type": "integer", "minimum": 0},
+        "themes": {"type": "integer", "minimum": 0},
+        "temporal_sequence_frames": {"type": "integer", "minimum": 0},
+        "controlled_visible_frames": {"type": "integer", "minimum": 0},
+        "controlled_visible_sessions": {"type": "integer", "minimum": 0},
+        "synthetic_frames": {"type": "integer", "minimum": 0}
+      }
+    },
+    "fingerprints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["annotations_sha256", "split_sha256", "duplicate_audit_sha256"],
+      "properties": {
+        "annotations_sha256": {"$ref": "#/$defs/sha256"},
+        "split_sha256": {"$ref": "#/$defs/sha256"},
+        "duplicate_audit_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  },
+  "$defs": {
+    "session_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"}
+    },
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

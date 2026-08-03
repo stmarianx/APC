@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic stack and temporal-event baselines v1",
+  "status": "synthetic_audits_passed_not_promotion_eligible",
+  "stack_ocr": {
+    "dataset_id": "apc-synthetic-118092",
+    "checkpoint_sha256": "7ec0b3a434b57e010047ff668fdf2d4ed84e872d37ff4f74a57dd3a0b11df9a5",
+    "untouched_test": {
+      "capture_sessions": ["synthetic-0010"],
+      "training_session_overlap": [],
+      "frames": 4,
+      "stack_examples": 24,
+      "digit_count_accuracy": 1.0,
+      "stack_exact_accuracy": 1.0,
+      "complete_frame_stack_accuracy": 1.0,
+      "latency_ms_p95": 223.31225499510765,
+      "prediction_sha256": "9db43e78758450bf6632ebb80da93f7224e1d4f64edefaf2da6076f82a3eecf3"
+    }
+  },
+  "temporal_event": {
+    "dataset_id": "apc-synthetic-events-764321",
+    "verified_frames": 144,
+    "paired_transitions": 72,
+    "capture_sessions": 18,
+    "action_classes": ["fold", "check", "call", "bet", "raise", "all_in"],
+    "examples_per_action_class": 12,
+    "checkpoint_sha256": "7044764e1dd7bcd4a1dcc1076c39cd05f49da96caa70223c09c66d11e2ebe160",
+    "dataset_fingerprints": {
+      "annotations_sha256": "94002c894bc9a35b5f2243ef9c88ae3e1a2b2834f3300ccf3d50765ec4a0580a",
+      "split_sha256": "f1c340e3ce96b0a58620571114cdb203266f5d86abf68c449ac879f45f7a3b68",
+      "duplicate_audit_sha256": "fb5d1a60daf194ea58d312e295248a1d4a4497efe22c79cbb98820a18e8fc1be"
+    },
+    "validation": {
+      "capture_sessions": ["event-0001", "event-0015"],
+      "training_session_overlap": [],
+      "pairs": 8,
+      "complete_event_accuracy": 1.0,
+      "latency_ms_p95": 185.78695001197048,
+      "prediction_sha256": "72234d7e5dd6dfd1cee21cce2a862f6f6b7e8a5204d96289aa04e3162205ed0a"
+    },
+    "untouched_test": {
+      "capture_sessions": ["event-0008", "event-0012"],
+      "training_session_overlap": [],
+      "pairs": 8,
+      "action_accuracy": 1.0,
+      "actor_seat_accuracy": 1.0,
+      "amount_exact_accuracy": 1.0,
+      "complete_event_accuracy": 1.0,
+      "latency_ms_p95": 384.0203599800587,
+      "prediction_sha256": "bacd3967e8cfdd440da9e1d6ee2ffc5a31e62c95229fbf6485991f96ca05b110"
+    },
+    "development_history": [
+      "The first fixed-banner development checkpoint reconstructed only 75% of complete events on validation because actor-seat recognition confused seat 3 with seat 2.",
+      "A later development checkpoint passed validation but reconstructed only 75% of complete events on its untouched test because an all-in was classified as a raise with the wrong amount.",
+      "The architecture was then changed before this independent audit: action columns are fixed, actor digits are segmented and all-in amount is derived from the pre-action stack observation."
+    ]
+  },
+  "composite_smoke": {
+    "status": "abstain_incomplete_state",
+    "visible_stack_examples": [
+      {"seat_no": 1, "stack_bb": "93"},
+      {"seat_no": 2, "stack_bb": "106"}
+    ],
+    "latency_ms": 207.6614000252448,
+    "missing_critical_fields": [
+      "effective_stack_bb",
+      "player_identities",
+      "action_history",
+      "observed_action"
+    ]
+  },
+  "limitations": [
+    "All evidence in this card comes from deterministic synthetic renderers and cannot promote APC for arbitrary visible tables.",
+    "Stack OCR assumes renderer-v2 fixed-width integer digits; arbitrary fonts, decimal stacks, occlusion and all-in labels are unsupported.",
+    "Event recognition assumes two adjacent frames and a fixed visible event banner; animations, banner-free clients and multiple actions between frames are unsupported.",
+    "Confidence is uncalibrated, player identities are not recognized and the recommendation gate remains closed."
+  ]
+}

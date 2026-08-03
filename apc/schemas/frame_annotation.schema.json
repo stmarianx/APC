@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.apc/schemas/frame_annotation.schema.json",
+  "title": "APC visible poker frame annotation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sample_id",
+    "capture_session_id",
+    "sequence_index",
+    "image",
+    "environment",
+    "state",
+    "objects",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "sample_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"},
+    "capture_session_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"},
+    "sequence_index": {"type": "integer", "minimum": 0},
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "width", "height", "timestamp_ms"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "perceptual_hash": {"type": "string", "pattern": "^[0-9a-f]{16,128}$"},
+        "width": {"type": "integer", "minimum": 320},
+        "height": {"type": "integer", "minimum": 240},
+        "timestamp_ms": {"type": "integer", "minimum": 0}
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_kind", "provider_id", "layout_id", "theme_id", "locale", "max_seats", "virtual_chips"],
+      "properties": {
+        "source_kind": {"enum": ["controlled_training_table", "explicitly_permitted_virtual_table", "synthetic_render"]},
+        "provider_id": {"type": "string", "minLength": 1},
+        "layout_id": {"type": "string", "minLength": 1},
+        "theme_id": {"type": "string", "minLength": 1},
+        "locale": {"type": "string", "minLength": 2},
+        "max_seats": {"type": "integer", "minimum": 2, "maximum": 10},
+        "virtual_chips": {"const": true}
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["game", "table_id", "hand_id", "street", "hero_seat", "dealer_seat", "pot_bb", "to_call_bb", "legal_actions", "action_history"],
+      "properties": {
+        "game": {"const": "holdem_no_limit"},
+        "table_id": {"type": "string", "minLength": 1},
+        "hand_id": {"type": "string", "minLength": 1},
+        "hand_start": {"type": "boolean"},
+        "street": {"enum": ["preflop", "flop", "turn", "river", "showdown"]},
+        "hero_seat": {"type": "integer", "minimum": 1, "maximum": 10},
+        "dealer_seat": {"type": "integer", "minimum": 1, "maximum": 10},
+        "pot_bb": {"$ref": "#/$defs/nonnegative_bb"},
+        "to_call_bb": {"$ref": "#/$defs/nonnegative_bb"},
+        "legal_actions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/action"}
+        },
+        "action_history": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/action_event"}
+        }
+      }
+    },
+    "objects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["table", "seats", "hero_cards", "board_cards", "pot", "action_buttons"],
+      "properties": {
+        "table": {"$ref": "#/$defs/box"},
+        "seats": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 10,
+          "items": {"$ref": "#/$defs/seat"}
+        },
+        "hero_cards": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/card"}
+        },
+        "board_cards": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {"$ref": "#/$defs/card"}
+        },
+        "pot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["box", "amount_bb", "raw_text", "visibility"],
+          "properties": {
+            "box": {"$ref": "#/$defs/box"},
+            "amount_bb": {"$ref": "#/$defs/nonnegative_bb"},
+            "raw_text": {"type": "string"},
+            "visibility": {"$ref": "#/$defs/visibility"}
+          }
+        },
+        "action_buttons": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/action_button"}
+        },
+        "observed_action": {
+          "anyOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/action_event"}
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["annotator", "annotation_version", "verified", "created_at"],
+      "properties": {
+        "annotator": {"type": "string", "minLength": 1},
+        "annotation_version": {"type": "integer", "minimum": 1},
+        "verified": {"type": "boolean"},
+        "reviewer": {"type": ["string", "null"]},
+        "created_at": {"type": "string", "format": "date-time"},
+        "notes": {"type": "string"}
+      }
+    }
+  },
+  "$defs": {
+    "nonnegative_bb": {
+      "type": "string",
+      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+    },
+    "box": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": {"type": "number", "minimum": 0, "maximum": 1},
+        "y": {"type": "number", "minimum": 0, "maximum": 1},
+        "width": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "height": {"type": "number", "exclusiveMinimum": 0, "maximum": 1}
+      }
+    },
+    "visibility": {"enum": ["clear", "partial", "occluded", "uncertain"]},
+    "action": {"enum": ["fold", "check", "call", "bet", "raise", "all_in"]},
+    "action_event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actor_seat", "action"],
+      "properties": {
+        "actor_seat": {"type": "integer", "minimum": 1, "maximum": 10},
+        "action": {"$ref": "#/$defs/action"},
+        "amount_bb": {"$ref": "#/$defs/nonnegative_bb"},
+        "to_amount_bb": {"$ref": "#/$defs/nonnegative_bb"}
+      }
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["box", "rank", "suit", "visibility"],
+      "properties": {
+        "box": {"$ref": "#/$defs/box"},
+        "rank": {"enum": ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A", "back", "unknown"]},
+        "suit": {"enum": ["c", "d", "h", "s", "none", "unknown"]},
+        "visibility": {"$ref": "#/$defs/visibility"}
+      }
+    },
+    "seat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seat_no", "box", "occupied", "is_hero", "has_dealer_button", "status", "visibility"],
+      "properties": {
+        "seat_no": {"type": "integer", "minimum": 1, "maximum": 10},
+        "box": {"$ref": "#/$defs/box"},
+        "occupied": {"type": "boolean"},
+        "is_hero": {"type": "boolean"},
+        "has_dealer_button": {"type": "boolean"},
+        "player_name": {"type": ["string", "null"]},
+        "stack_bb": {
+          "anyOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/nonnegative_bb"}
+          ]
+        },
+        "raw_stack_text": {"type": ["string", "null"]},
+        "status": {"enum": ["empty", "active", "folded", "all_in", "sitting_out", "disconnected", "unknown"]},
+        "visibility": {"$ref": "#/$defs/visibility"}
+      }
+    },
+    "action_button": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["box", "action", "enabled", "raw_text", "visibility"],
+      "properties": {
+        "box": {"$ref": "#/$defs/box"},
+        "action": {"$ref": "#/$defs/action"},
+        "enabled": {"type": "boolean"},
+        "amount_bb": {"$ref": "#/$defs/nonnegative_bb"},
+        "raw_text": {"type": "string"},
+        "visibility": {"$ref": "#/$defs/visibility"}
+      }
+    }
+  }
+}

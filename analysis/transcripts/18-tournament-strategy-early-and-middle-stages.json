@@ -1,0 +1,2284 @@
+{
+  "file": "18 Tournament Strategy. Early and Middle Stages.MP4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 744.704,
+  "duration_after_vad_seconds": 690.816,
+  "transcription_elapsed_seconds": 410.329,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 2,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 5.97,
+      "end": 8.97,
+      "text": "Super excited to talk about tournament strategy.",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 8.99,
+      "end": 10.13,
+      "text": "Now I've played cash games,",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 10.15,
+      "end": 11.49,
+      "text": "I have played tournaments all my life",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 11.49,
+      "end": 13.33,
+      "text": "but I've always felt more excited",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 13.33,
+      "end": 14.49,
+      "text": "about a tournament because it has",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 14.49,
+      "end": 15.17,
+      "text": "a beginning,",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 15.17,
+      "end": 16.85,
+      "text": "a middle an ending and at the end",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 16.85,
+      "end": 18.73,
+      "text": "you win yourself a nice trophy occasionally",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 18.73,
+      "end": 20.57,
+      "text": "whereas a cache game to me is",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 20.57,
+      "end": 21.97,
+      "text": "also a little bit more like work.",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 22.57,
+      "end": 25.73,
+      "text": "You go in there, you punch your clock, make your money,",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 25.73,
+      "end": 27.21,
+      "text": "there's no trophy at the end of the day,",
+      "avg_logprob": -0.42571,
+      "no_speech_prob": 0.00447,
+      "compression_ratio": 1.70866
+    },
+    {
+      "start": 27.21,
+      "end": 29.41,
+      "text": "which is a job well done when you did have win.",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 29.43,
+      "end": 30.81,
+      "text": "So we're gonna talk",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 30.81,
+      "end": 32.53,
+      "text": "a little bit more in depth about tournament strategy,",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 32.53,
+      "end": 35.25,
+      "text": "things to look for throughout the various stages",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 35.25,
+      "end": 36.57,
+      "text": "of the tournament because there's always going",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 36.57,
+      "end": 37.65,
+      "text": "be an ebb and flow.",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 37.65,
+      "end": 39.57,
+      "text": "There's always a dynamic that's changing",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 39.57,
+      "end": 40.61,
+      "text": "when you play cash games,",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 40.61,
+      "end": 42.41,
+      "text": "you're rarely gonna be faced in situations",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 42.41,
+      "end": 45.77,
+      "text": "where stack size matter as much they do in tournaments right?",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 45.81,
+      "end": 47.13,
+      "text": "In cache games typically people will play relatively deep",
+      "avg_logprob": -0.34708,
+      "no_speech_prob": 0.01445,
+      "compression_ratio": 1.66192
+    },
+    {
+      "start": 47.13,
+      "end": 49.01,
+      "text": "people play relatively deep.",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 49.01,
+      "end": 50.37,
+      "text": "A rarelier you're gonna see a player",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 50.37,
+      "end": 52.97,
+      "text": "with just 10 big lines left sitting on his stack",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 52.97,
+      "end": 54.89,
+      "text": "and in tournaments it's very common,",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 54.89,
+      "end": 57.05,
+      "text": "You're going to see stacks ranging from five",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 57.05,
+      "end": 59.41,
+      "text": "big lines to ten to 20 to 50",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 59.41,
+      "end": 61.25,
+      "text": "And of course you're have the Deep Stack Play",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 61.25,
+      "end": 62.25,
+      "text": "especially in the early level.",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 62.25,
+      "end": 64.25,
+      "text": "So we're going to go through bit by bit",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 64.25,
+      "end": 67.13,
+      "text": "what to look forward to and what to think about",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 67.13,
+      "end": 69.25,
+      "text": "in the early stages, middle stagees late stages",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 69.73,
+      "end": 69.93,
+      "text": "and how how that all changes",
+      "avg_logprob": -0.41839,
+      "no_speech_prob": 0.01194,
+      "compression_ratio": 1.67626
+    },
+    {
+      "start": 69.93,
+      "end": 73.93,
+      "text": "changes throughout based on the different dynamics that you're going to be faced with.",
+      "avg_logprob": -0.46077,
+      "no_speech_prob": 0.0164,
+      "compression_ratio": 1.08861
+    },
+    {
+      "start": 73.93,
+      "end": 85.31,
+      "text": "Let's tackle the early stages first and there is definitely a few schools of",
+      "avg_logprob": -0.51206,
+      "no_speech_prob": 0.0043,
+      "compression_ratio": 1.8746
+    },
+    {
+      "start": 85.33,
+      "end": 88.99,
+      "text": "thought on how to approach these levels like some players are out there",
+      "avg_logprob": -0.51206,
+      "no_speech_prob": 0.0043,
+      "compression_ratio": 1.8746
+    },
+    {
+      "start": 88.99,
+      "end": 92.11,
+      "text": "like gang bust or taking advantage everybody and really pushing the envelope",
+      "avg_logprob": -0.51206,
+      "no_speech_prob": 0.0043,
+      "compression_ratio": 1.8746
+    },
+    {
+      "start": 92.11,
+      "end": 95.47,
+      "text": "trying to build a big stack, try to build a big stack where others especially because in",
+      "avg_logprob": -0.51206,
+      "no_speech_prob": 0.0043,
+      "compression_ratio": 1.8746
+    },
+    {
+      "start": 95.47,
+      "end": 98.47,
+      "text": "most tournaments that you play the first few levels will not have an",
+      "avg_logprob": -0.51206,
+      "no_speech_prob": 0.0043,
+      "compression_ratio": 1.8746
+    },
+    {
+      "start": 98.47,
+      "end": 101.31,
+      "text": "anti they're going to play a little more snug and they're gonna play a",
+      "avg_logprob": -0.51206,
+      "no_speech_prob": 0.0043,
+      "compression_ratio": 1.8746
+    },
+    {
+      "start": 102.31,
+      "end": 102.39,
+      "text": "more conservative. And they're going to be for most poker situations",
+      "avg_logprob": -0.51206,
+      "no_speech_prob": 0.0043,
+      "compression_ratio": 1.8746
+    },
+    {
+      "start": 104.39,
+      "end": 104.83,
+      "text": "and sorta-for most poker situations and just kind of things",
+      "avg_logprob": -0.51206,
+      "no_speech_prob": 0.0043,
+      "compression_ratio": 1.8746
+    },
+    {
+      "start": 110.87,
+      "end": 112.83,
+      "text": "The answer is, it depends.",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 112.83,
+      "end": 115.19,
+      "text": "As a general rule before the annies kick in",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 115.19,
+      "end": 116.75,
+      "text": "in a tournament you do want to be",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 116.75,
+      "end": 118.71,
+      "text": "on the more conservative side right?",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 118.71,
+      "end": 119.99,
+      "text": "There's a simple fact here that",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 119.99,
+      "end": 121.27,
+      "text": "in the early stages",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 121.27,
+      "end": 122.15,
+      "text": "You can go broke",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 122.15,
+      "end": 123.19,
+      "text": "you can lose all your chips what",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 123.19,
+      "end": 124.55,
+      "text": "you can't do is win the entire",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 124.55,
+      "end": 125.75,
+      "text": "tournament so the question",
+      "avg_logprob": -0.32015,
+      "no_speech_prob": 0.01126,
+      "compression_ratio": 1.55155
+    },
+    {
+      "start": 125.75,
+      "end": 129.91,
+      "text": "is how much value is there in doubling your stack at the early stages",
+      "avg_logprob": -0.41351,
+      "no_speech_prob": 0.01242,
+      "compression_ratio": 1.74216
+    },
+    {
+      "start": 129.93,
+      "end": 130.63,
+      "text": "in terms of",
+      "avg_logprob": -0.41351,
+      "no_speech_prob": 0.01242,
+      "compression_ratio": 1.74216
+    },
+    {
+      "start": 130.63,
+      "end": 133.95,
+      "text": "how often you're going to cash or how much more likely you are to win.",
+      "avg_logprob": -0.41351,
+      "no_speech_prob": 0.01242,
+      "compression_ratio": 1.74216
+    },
+    {
+      "start": 133.95,
+      "end": 136.47,
+      "text": "And it's not as significant as you would hope,",
+      "avg_logprob": -0.41351,
+      "no_speech_prob": 0.01242,
+      "compression_ratio": 1.74216
+    },
+    {
+      "start": 136.47,
+      "end": 139.23,
+      "text": "It's far more important especially in the early stages",
+      "avg_logprob": -0.41351,
+      "no_speech_prob": 0.01242,
+      "compression_ratio": 1.74216
+    },
+    {
+      "start": 139.23,
+      "end": 142.23,
+      "text": "to think in terms of survival that's gonna be a theme throughout this",
+      "avg_logprob": -0.41351,
+      "no_speech_prob": 0.01242,
+      "compression_ratio": 1.74216
+    },
+    {
+      "start": 142.23,
+      "end": 144.87,
+      "text": "tournament portion. In cache games we're always thinking",
+      "avg_logprob": -0.41351,
+      "no_speech_prob": 0.01242,
+      "compression_ratio": 1.74216
+    },
+    {
+      "start": 144.87,
+      "end": 147.59,
+      "text": "how do we get max-value? That's the only thing that matters well in",
+      "avg_logprob": -0.41351,
+      "no_speech_prob": 0.01242,
+      "compression_ratio": 1.74216
+    },
+    {
+      "start": 148.07,
+      "end": 148.95,
+      "text": "Well in a tournament there's another consideration",
+      "avg_logprob": -0.41351,
+      "no_speech_prob": 0.01242,
+      "compression_ratio": 1.74216
+    },
+    {
+      "start": 148.95,
+      "end": 153.43,
+      "text": "there's another consideration. The other consideration is like, okay how do I avoid",
+      "avg_logprob": -0.26182,
+      "no_speech_prob": 0.01469,
+      "compression_ratio": 1.673
+    },
+    {
+      "start": 154.23,
+      "end": 158.23,
+      "text": "ruin here? How do i lower my variance so that I don't go broke in these situations",
+      "avg_logprob": -0.26182,
+      "no_speech_prob": 0.01469,
+      "compression_ratio": 1.673
+    },
+    {
+      "start": 158.23,
+      "end": 160.95,
+      "text": "So there's more to think about internments because again",
+      "avg_logprob": -0.26182,
+      "no_speech_prob": 0.01469,
+      "compression_ratio": 1.673
+    },
+    {
+      "start": 160.95,
+      "end": 164.39,
+      "text": "There's another concept that will get into a little bit more in depth later called",
+      "avg_logprob": -0.26182,
+      "no_speech_prob": 0.01469,
+      "compression_ratio": 1.673
+    },
+    {
+      "start": 164.43,
+      "end": 169.19,
+      "text": "ICM which essentially means independent chip model and what it explains",
+      "avg_logprob": -0.26182,
+      "no_speech_prob": 0.01469,
+      "compression_ratio": 1.673
+    },
+    {
+      "start": 170.19,
+      "end": 173.43,
+      "text": "is the value of one ship changes as the tournament progresses",
+      "avg_logprob": -0.26182,
+      "no_speech_prob": 0.01469,
+      "compression_ratio": 1.673
+    },
+    {
+      "start": 173.43,
+      "end": 177.43,
+      "text": "So one chip out of a thousand in the early stages is not as valuable",
+      "avg_logprob": -0.52884,
+      "no_speech_prob": 0.01234,
+      "compression_ratio": 1.63273
+    },
+    {
+      "start": 177.45,
+      "end": 181.39,
+      "text": "as one ship later when everyone only has 10 chips for example.",
+      "avg_logprob": -0.52884,
+      "no_speech_prob": 0.01234,
+      "compression_ratio": 1.63273
+    },
+    {
+      "start": 181.41,
+      "end": 182.87,
+      "text": "so we're going to cover all that but,",
+      "avg_logprob": -0.52884,
+      "no_speech_prob": 0.01234,
+      "compression_ratio": 1.63273
+    },
+    {
+      "start": 182.87,
+      "end": 185.43,
+      "text": "as a general rule in your early stage what I'd like to see you do",
+      "avg_logprob": -0.52884,
+      "no_speech_prob": 0.01234,
+      "compression_ratio": 1.63273
+    },
+    {
+      "start": 185.43,
+      "end": 189.07,
+      "text": "is really in that first half hour or hour map up at the table",
+      "avg_logprob": -0.52884,
+      "no_speech_prob": 0.01234,
+      "compression_ratio": 1.63273
+    },
+    {
+      "start": 189.07,
+      "end": 193.19,
+      "text": "I would generally go with more conservative strategy there are no any",
+      "avg_logprob": -0.52884,
+      "no_speech_prob": 0.01234,
+      "compression_ratio": 1.63273
+    },
+    {
+      "start": 193.19,
+      "end": 194.67,
+      "text": "anis yet as i said",
+      "avg_logprob": -0.52884,
+      "no_speech_prob": 0.01234,
+      "compression_ratio": 1.63273
+    },
+    {
+      "start": 194.67,
+      "end": 197.31,
+      "text": "The only time and because remember I said it depends",
+      "avg_logprob": -0.52884,
+      "no_speech_prob": 0.01234,
+      "compression_ratio": 1.63273
+    },
+    {
+      "start": 197.39,
+      "end": 197.45,
+      "text": "from that",
+      "avg_logprob": -0.52884,
+      "no_speech_prob": 0.01234,
+      "compression_ratio": 1.63273
+    },
+    {
+      "start": 197.45,
+      "end": 200.09,
+      "text": "from that strategy is if everybody else",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 200.11,
+      "end": 201.45,
+      "text": "is doing the same thing.",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 201.45,
+      "end": 203.45,
+      "text": "So, if the rest of your opponents are playing",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 203.45,
+      "end": 205.45,
+      "text": "overly conservative well you can just",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 205.45,
+      "end": 207.45,
+      "text": "pick up the free chips at very low risk",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 207.45,
+      "end": 209.45,
+      "text": "so if you do have more maniacs",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 209.45,
+      "end": 210.45,
+      "text": "to the table you want to wait them out",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 210.45,
+      "end": 212.45,
+      "text": "You wanna wait for them to make big mistakes",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 212.45,
+      "end": 213.45,
+      "text": "while you sit tight",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 214.45,
+      "end": 215.45,
+      "text": "conserve your chips in your stack",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 216.45,
+      "end": 217.45,
+      "text": "it's a marathon not a sprint",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 217.45,
+      "end": 218.45,
+      "text": "and that's how you need to think about",
+      "avg_logprob": -0.38056,
+      "no_speech_prob": 0.00936,
+      "compression_ratio": 1.68651
+    },
+    {
+      "start": 218.45,
+      "end": 227.92,
+      "text": "about and approach the early levels.",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 227.92,
+      "end": 229.96,
+      "text": "Another consideration in your early stages is thinking",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 229.96,
+      "end": 231.64,
+      "text": "about hand selection, right?",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 231.64,
+      "end": 233.88,
+      "text": "Which hands go up-in value in the early stages",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 233.88,
+      "end": 235.68,
+      "text": "and which ones down in values?",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 235.68,
+      "end": 238.36,
+      "text": "So depending on the type of tournament you're in",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 238.36,
+      "end": 240.12,
+      "text": "if you have some weaker players who are doing",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 240.12,
+      "end": 243.08,
+      "text": "some limping or playing too many hands",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 243.08,
+      "end": 246.24,
+      "text": "like six seven suited pocket fives those suit connectors",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 246.24,
+      "end": 249.12,
+      "text": "what I call home run hands they do quite well",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 249.12,
+      "end": 253.12,
+      "text": "when you're playing very very large.",
+      "avg_logprob": -0.38059,
+      "no_speech_prob": 0.01571,
+      "compression_ratio": 1.71014
+    },
+    {
+      "start": 255.24,
+      "end": 258.24,
+      "text": "Now contrast that with a hand like Ace 9 off suit.",
+      "avg_logprob": -0.38681,
+      "no_speech_prob": 0.02409,
+      "compression_ratio": 1.40838
+    },
+    {
+      "start": 258.24,
+      "end": 261.24,
+      "text": "Well, ACE-9 is certainly better than 6 7 suited right?",
+      "avg_logprob": -0.38681,
+      "no_speech_prob": 0.02409,
+      "compression_ratio": 1.40838
+    },
+    {
+      "start": 261.24,
+      "end": 264.24,
+      "text": "However in the early stages",
+      "avg_logprob": -0.38681,
+      "no_speech_prob": 0.02409,
+      "compression_ratio": 1.40838
+    },
+    {
+      "start": 264.24,
+      "end": 266.24,
+      "text": "The ace nine of suit doesn't have as much potential",
+      "avg_logprob": -0.38681,
+      "no_speech_prob": 0.02409,
+      "compression_ratio": 1.40838
+    },
+    {
+      "start": 266.24,
+      "end": 268.24,
+      "text": "to make a really big hand after the flop",
+      "avg_logprob": -0.38681,
+      "no_speech_prob": 0.02409,
+      "compression_ratio": 1.40838
+    },
+    {
+      "start": 268.24,
+      "end": 271.24,
+      "text": "With Ace Nine you're trying to makeases or",
+      "avg_logprob": -0.38681,
+      "no_speech_prob": 0.02409,
+      "compression_ratio": 1.40838
+    },
+    {
+      "start": 285.24,
+      "end": 288.96,
+      "text": "early stages is I would probably up my frequencies a little bit with some of",
+      "avg_logprob": -0.28581,
+      "no_speech_prob": 0.01309,
+      "compression_ratio": 1.66304
+    },
+    {
+      "start": 288.98,
+      "end": 291.72,
+      "text": "the hands that are home run hands like six seven suited and pocket threes",
+      "avg_logprob": -0.28581,
+      "no_speech_prob": 0.01309,
+      "compression_ratio": 1.66304
+    },
+    {
+      "start": 291.72,
+      "end": 296.44,
+      "text": "and I would steer away from the hands that do better in what I call hot",
+      "avg_logprob": -0.28581,
+      "no_speech_prob": 0.01309,
+      "compression_ratio": 1.66304
+    },
+    {
+      "start": 296.44,
+      "end": 301.04,
+      "text": "and cold situation. So Ace 9 off-suit you know it's a better hand to go all",
+      "avg_logprob": -0.28581,
+      "no_speech_prob": 0.01309,
+      "compression_ratio": 1.66304
+    },
+    {
+      "start": 301.04,
+      "end": 304.32,
+      "text": "in with from the button for example if you have 10 big blinds than 6 7",
+      "avg_logprob": -0.28581,
+      "no_speech_prob": 0.01309,
+      "compression_ratio": 1.66304
+    },
+    {
+      "start": 304.4,
+      "end": 309.2,
+      "text": "suited but again, because you're not going to have to face any bets on the flop or turnin",
+      "avg_logprob": -0.28581,
+      "no_speech_prob": 0.01309,
+      "compression_ratio": 1.66304
+    },
+    {
+      "start": 309.2,
+      "end": 310.68,
+      "text": "in the flop or turn and river.",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 310.68,
+      "end": 311.8,
+      "text": "The deeper you are,",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 311.8,
+      "end": 321.59,
+      "text": "the higher the value of those pseudo-connectors becomes.",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 321.59,
+      "end": 322.63,
+      "text": "Depending what your playing",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 322.63,
+      "end": 323.99,
+      "text": "if you're an online tournament",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 323.99,
+      "end": 326.47,
+      "text": "or you're playing in maybe a low stakes live event",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 326.47,
+      "end": 329.03,
+      "text": "where the blinds are going up really quickly",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 329.03,
+      "end": 331.87,
+      "text": "that's gonna cause you to adjust your strategy significantly",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 331.87,
+      "end": 333.07,
+      "text": "in early stages because",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 333.07,
+      "end": 335.23,
+      "text": "you're not gonna have a lot of weight period.",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 335.23,
+      "end": 336.67,
+      "text": "You know, you're gonna have to get involved",
+      "avg_logprob": -0.33741,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.6616
+    },
+    {
+      "start": 336.67,
+      "end": 340.07,
+      "text": "really quickly. So in a situation like that I would play it",
+      "avg_logprob": -0.41405,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.64135
+    },
+    {
+      "start": 340.07,
+      "end": 341.71,
+      "text": "little bit more like a cash game,",
+      "avg_logprob": -0.41405,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.64135
+    },
+    {
+      "start": 341.71,
+      "end": 344.83,
+      "text": "In the early stages and in sense of not worrying so much about",
+      "avg_logprob": -0.41405,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.64135
+    },
+    {
+      "start": 344.83,
+      "end": 347.71,
+      "text": "survival and focusing a little bit more on value.",
+      "avg_logprob": -0.41405,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.64135
+    },
+    {
+      "start": 347.71,
+      "end": 350.79,
+      "text": "So you get a good hand let's get it in whereas in a tournament",
+      "avg_logprob": -0.41405,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.64135
+    },
+    {
+      "start": 350.79,
+      "end": 352.67,
+      "text": "maybe don't want to get in first level",
+      "avg_logprob": -0.41405,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.64135
+    },
+    {
+      "start": 352.75,
+      "end": 354.99,
+      "text": "in a fast-paced tournament online for example",
+      "avg_logprob": -0.41405,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.64135
+    },
+    {
+      "start": 354.99,
+      "end": 356.99,
+      "text": "that has you know the hyper turbos",
+      "avg_logprob": -0.41405,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.64135
+    },
+    {
+      "start": 356.99,
+      "end": 359.47,
+      "text": "that have three-minute blinds, you get a good hand.",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 359.47,
+      "end": 360.67,
+      "text": "You want to get full value,",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 360.67,
+      "end": 362.03,
+      "text": "you wanna get it in because",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 362.03,
+      "end": 363.63,
+      "text": "it's not that type of event",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 363.63,
+      "end": 365.19,
+      "text": "that is a marathon versus a sprint.",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 365.19,
+      "end": 374.12,
+      "text": "It's a sprint from the get go.",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 374.12,
+      "end": 377.12,
+      "text": "So the number one mistake I see tournament players make",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 377.12,
+      "end": 378.12,
+      "text": "and I have for many years",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 378.12,
+      "end": 381.0,
+      "text": "maybe slightly less so today but still very prevalent",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 381.0,
+      "end": 383.56,
+      "text": "is you see a player who has a chip lead or a very big stack",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 384.12,
+      "end": 386.24,
+      "text": "and then just blows off bluffing trying to win the role.",
+      "avg_logprob": -0.37771,
+      "no_speech_prob": 0.00725,
+      "compression_ratio": 1.6426
+    },
+    {
+      "start": 386.24,
+      "end": 388.52,
+      "text": "bluffing, trying to win the tournament too early.",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 388.52,
+      "end": 390.56,
+      "text": "You really have to have a lot of patience and discipline",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 390.56,
+      "end": 391.48,
+      "text": "in order to win a tournament.",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 391.48,
+      "end": 393.68,
+      "text": "Sure aggression plays a big role but if you go",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 393.68,
+      "end": 394.68,
+      "text": "too far with that",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 394.68,
+      "end": 396.36,
+      "text": "and you take a coveted big stack",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 396.36,
+      "end": 397.64,
+      "text": "and your two reckless with it",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 397.64,
+      "end": 400.24,
+      "text": "and you start doubling people up left right and center",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 400.24,
+      "end": 402.28,
+      "text": "you take what was once a very valuable stack",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 402.28,
+      "end": 404.84,
+      "text": "that was gonna like almost lockup and guarantee you",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 404.84,
+      "end": 406.24,
+      "text": "a pretty good payday and you're too reckless with it. And you've been",
+      "avg_logprob": -0.38105,
+      "no_speech_prob": 0.03338,
+      "compression_ratio": 1.78022
+    },
+    {
+      "start": 406.24,
+      "end": 408.24,
+      "text": "that will burn all of that equity.",
+      "avg_logprob": -0.54284,
+      "no_speech_prob": 0.01902,
+      "compression_ratio": 1.32759
+    },
+    {
+      "start": 408.24,
+      "end": 409.24,
+      "text": "It's a huge mistake,",
+      "avg_logprob": -0.54284,
+      "no_speech_prob": 0.01902,
+      "compression_ratio": 1.32759
+    },
+    {
+      "start": 409.24,
+      "end": 410.24,
+      "text": "a lot of players make",
+      "avg_logprob": -0.54284,
+      "no_speech_prob": 0.01902,
+      "compression_ratio": 1.32759
+    },
+    {
+      "start": 410.24,
+      "end": 411.24,
+      "text": "that are playing too many hands",
+      "avg_logprob": -0.54284,
+      "no_speech_prob": 0.01902,
+      "compression_ratio": 1.32759
+    },
+    {
+      "start": 411.24,
+      "end": 412.24,
+      "text": "to aggressively trying",
+      "avg_logprob": -0.54284,
+      "no_speech_prob": 0.01902,
+      "compression_ratio": 1.32759
+    },
+    {
+      "start": 412.24,
+      "end": 413.24,
+      "text": "to win the tournament",
+      "avg_logprob": -0.54284,
+      "no_speech_prob": 0.01902,
+      "compression_ratio": 1.32759
+    },
+    {
+      "start": 413.24,
+      "end": 424.16,
+      "text": "The middle stage is the tournament or where new variables are introduced.",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 424.18,
+      "end": 426.84,
+      "text": "Everyone starts with the same amount of chips in early levels,",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 426.84,
+      "end": 429.64,
+      "text": "everyone's usually relatively deep stacked",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 429.64,
+      "end": 433.64,
+      "text": "you're not talking about any situations it's a little more relaxed",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 433.64,
+      "end": 435.88,
+      "text": "well by the middle stages of the tournament",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 435.88,
+      "end": 438.16,
+      "text": "You start to see some fluctuation and chip stacks",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 438.16,
+      "end": 439.16,
+      "text": "You're gonna have some big stacks",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 439.16,
+      "end": 440.96,
+      "text": "your going to have some average stats",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 440.96,
+      "end": 442.28,
+      "text": "And then some potentially really short stacks so that's",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 443.48,
+      "end": 444.16,
+      "text": "really really short stacks",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 444.48,
+      "end": 447.48,
+      "text": "So that's open up some opportunities as well",
+      "avg_logprob": -0.51641,
+      "no_speech_prob": 0.0069,
+      "compression_ratio": 1.843
+    },
+    {
+      "start": 450.16,
+      "end": 453.76,
+      "text": "So let's say for example we use six eight of hearts.",
+      "avg_logprob": -0.4222,
+      "no_speech_prob": 0.00971,
+      "compression_ratio": 1.75373
+    },
+    {
+      "start": 453.8,
+      "end": 457.16,
+      "text": "You have six eight of hearts, there is an Annie out there you're in middle position",
+      "avg_logprob": -0.4222,
+      "no_speech_prob": 0.00971,
+      "compression_ratio": 1.75373
+    },
+    {
+      "start": 457.16,
+      "end": 461.76,
+      "text": "and doing quite well on chips would you open with this hand right?",
+      "avg_logprob": -0.4222,
+      "no_speech_prob": 0.00971,
+      "compression_ratio": 1.75373
+    },
+    {
+      "start": 461.76,
+      "end": 466.16,
+      "text": "I wouldn't normally open with this hand except when behind me or",
+      "avg_logprob": -0.4222,
+      "no_speech_prob": 0.00971,
+      "compression_ratio": 1.75373
+    },
+    {
+      "start": 466.16,
+      "end": 468.88,
+      "text": "like for example the player in the button or in the blinds are sitting",
+      "avg_logprob": -0.4222,
+      "no_speech_prob": 0.00971,
+      "compression_ratio": 1.75373
+    },
+    {
+      "start": 468.88,
+      "end": 474.28,
+      "text": "on stacks of maybe anywhere from 8 to 15 blinds because those players typically",
+      "avg_logprob": -0.4222,
+      "no_speech_prob": 0.00971,
+      "compression_ratio": 1.75373
+    },
+    {
+      "start": 474.28,
+      "end": 476.16,
+      "text": "with 8-15 lines their play is going all in okay so",
+      "avg_logprob": -0.4222,
+      "no_speech_prob": 0.00971,
+      "compression_ratio": 1.75373
+    },
+    {
+      "start": 480.16,
+      "end": 481.66,
+      "text": "and you open with it,",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 481.66,
+      "end": 483.0,
+      "text": "and you have these short stacks.",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 483.0,
+      "end": 484.42,
+      "text": "They're gonna take advantage of your opening",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 484.42,
+      "end": 485.74,
+      "text": "if you're opening that wide.",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 485.74,
+      "end": 486.86,
+      "text": "And when I say why?",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 486.86,
+      "end": 489.66,
+      "text": "That means just a wider range of hands okay?",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 489.66,
+      "end": 492.5,
+      "text": "6-8 suited is pretty wide right now",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 492.5,
+      "end": 494.94,
+      "text": "If everyone's deep stacked or average stack six eight suited",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 494.94,
+      "end": 496.16,
+      "text": "as fine hand because",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 496.18,
+      "end": 496.86,
+      "text": "It plays pretty well post flop",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 496.86,
+      "end": 499.32,
+      "text": "Of course if you get rerays",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 499.32,
+      "end": 500.16,
+      "text": "it doesn't mean you have to continue",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 500.96,
+      "end": 501.4,
+      "text": "necessarily but you can't call the shelves",
+      "avg_logprob": -0.54342,
+      "no_speech_prob": 0.02194,
+      "compression_ratio": 1.66052
+    },
+    {
+      "start": 501.4,
+      "end": 504.84,
+      "text": "but you're not facing the situations where",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 504.84,
+      "end": 507.88,
+      "text": "you raise and someone just denies all equity from you because",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 507.88,
+      "end": 510.84,
+      "text": "you can't call the shelves. So, you have to be very mindful by",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 510.84,
+      "end": 513.4,
+      "text": "the middle stages of where the stacks are",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 513.4,
+      "end": 516.04,
+      "text": "and if the stacks that are shortest or on your left",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 516.04,
+      "end": 519.0,
+      "text": "that is going to handcuff you. If you play Lucy-goosey",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 519.0,
+      "end": 521.8,
+      "text": "a fast aggressive style in those situations",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 521.8,
+      "end": 523.88,
+      "text": "you're gonna get punished alright",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 524.6,
+      "end": 525.4,
+      "text": "having said that",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 525.64,
+      "end": 527.8,
+      "text": "In Sit",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 527.88,
+      "end": 529.72,
+      "text": "ed an Ace Ten I'd",
+      "avg_logprob": -0.50644,
+      "no_speech_prob": 0.00449,
+      "compression_ratio": 1.64151
+    },
+    {
+      "start": 531.4,
+      "end": 535.24,
+      "text": "have an ace 10 in that situation than the 6-8 of hearts. Remember we discussed",
+      "avg_logprob": -0.28403,
+      "no_speech_prob": 0.00391,
+      "compression_ratio": 1.69038
+    },
+    {
+      "start": 535.24,
+      "end": 539.88,
+      "text": "in the early levels? A hand like six, seven suited plays better than Ace 9 well now",
+      "avg_logprob": -0.28403,
+      "no_speech_prob": 0.00391,
+      "compression_ratio": 1.69038
+    },
+    {
+      "start": 539.88,
+      "end": 542.92,
+      "text": "were starting to get to the point where if there are short stacks involved",
+      "avg_logprob": -0.28403,
+      "no_speech_prob": 0.00391,
+      "compression_ratio": 1.69038
+    },
+    {
+      "start": 542.92,
+      "end": 544.12,
+      "text": "we want to have the best hand going because there's not having the best hand",
+      "avg_logprob": -0.28403,
+      "no_speech_prob": 0.00391,
+      "compression_ratio": 1.69038
+    },
+    {
+      "start": 544.12,
+      "end": 548.08,
+      "text": "going in because there's not gonna be a lot of betting on the flopped turn and river when",
+      "avg_logprob": -0.28403,
+      "no_speech_prob": 0.00391,
+      "compression_ratio": 1.69038
+    },
+    {
+      "start": 568.53,
+      "end": 571.13,
+      "text": "know, play aggressively and knock everybody out.",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 571.13,
+      "end": 573.89,
+      "text": "And he looks at it a little differently in saying that",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 573.89,
+      "end": 576.13,
+      "text": "A big stack is something to be protected",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 576.13,
+      "end": 577.89,
+      "text": "and coveted because the big stock",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 577.89,
+      "end": 579.61,
+      "text": "is going to allow you in the later stage",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 579.61,
+      "end": 580.73,
+      "text": "when we get to the bubble",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 580.73,
+      "end": 582.85,
+      "text": "to apply a lot of pressure on your opponents",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 582.85,
+      "end": 584.61,
+      "text": "called ICM-pressure which we discussed",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 584.61,
+      "end": 585.93,
+      "text": "a little bit and I promise you",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 585.93,
+      "end": 589.33,
+      "text": "we are going to get into depth so you have deeper understanding",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 589.33,
+      "end": 590.33,
+      "text": "of why ICM plays such as a role what you want to do?",
+      "avg_logprob": -0.35715,
+      "no_speech_prob": 0.01333,
+      "compression_ratio": 1.67368
+    },
+    {
+      "start": 590.33,
+      "end": 592.79,
+      "text": "play such a role in tournaments to pay 10%",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 592.79,
+      "end": 593.83,
+      "text": "20 percent of the fields.",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 594.23,
+      "end": 596.87,
+      "text": "But, the key thought that John Jawanda has is with",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 596.89,
+      "end": 598.37,
+      "text": "a big stack what you want to do",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 598.61,
+      "end": 600.97,
+      "text": "is you want to avoid tangling",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 600.97,
+      "end": 602.47,
+      "text": "with the other big stacks at the table",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 602.63,
+      "end": 604.19,
+      "text": "because the other big stacks are",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 604.19,
+      "end": 605.19,
+      "text": "the only ones that can put",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 605.19,
+      "end": 607.13,
+      "text": "a real big dent into your chances",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 607.15,
+      "end": 608.19,
+      "text": "through in the tournament so you're going",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 608.19,
+      "end": 610.09,
+      "text": "to proceed a little bit more cautiously",
+      "avg_logprob": -0.48454,
+      "no_speech_prob": 0.01216,
+      "compression_ratio": 1.71429
+    },
+    {
+      "start": 610.09,
+      "end": 611.49,
+      "text": "in those situations, right?",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 611.51,
+      "end": 613.85,
+      "text": "So if you are the only big stack at the table",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 613.85,
+      "end": 615.65,
+      "text": "off and you can be a table captain",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 615.65,
+      "end": 616.85,
+      "text": "to be a little more aggressive.",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 616.85,
+      "end": 617.97,
+      "text": "But if you have a good player",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 617.97,
+      "end": 620.89,
+      "text": "to your left especially who also has a big stack",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 620.89,
+      "end": 621.73,
+      "text": "it's gonna force you",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 621.73,
+      "end": 623.69,
+      "text": "to be a little smarter because otherwise",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 623.69,
+      "end": 627.13,
+      "text": "you'd be lighting ICS dollars on fire.",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 627.13,
+      "end": 636.85,
+      "text": "And again we're going explain that later I promise.",
+      "avg_logprob": -0.25202,
+      "no_speech_prob": 0.01235,
+      "compression_ratio": 1.59657
+    },
+    {
+      "start": 646.65,
+      "end": 648.45,
+      "text": "down to less than 20 big blinds.",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 648.45,
+      "end": 651.45,
+      "text": "And that's right around where I'd call the danger zone",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 651.45,
+      "end": 653.13,
+      "text": "when you're under 20 big blinds,",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 653.13,
+      "end": 654.77,
+      "text": "you're starting to look for situations",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 654.77,
+      "end": 655.81,
+      "text": "where you're not longer looking",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 655.81,
+      "end": 657.13,
+      "text": "to say well let me see what",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 657.13,
+      "end": 659.01,
+      "text": "the flop looks like and play post-flop",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 659.01,
+      "end": 660.53,
+      "text": "You're looking to find situations",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 660.53,
+      "end": 662.65,
+      "text": "or you can either shove go all in",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 662.73,
+      "end": 663.77,
+      "text": "or fold.",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 663.77,
+      "end": 667.73,
+      "text": "You're looking to come over the top of players who have raised maybe there is a liberal player",
+      "avg_logprob": -0.3445,
+      "no_speech_prob": 0.02359,
+      "compression_ratio": 1.79167
+    },
+    {
+      "start": 676.65,
+      "end": 679.17,
+      "text": "players still trying to play poker,",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 679.17,
+      "end": 680.49,
+      "text": "still trying to see flops.",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 680.49,
+      "end": 682.97,
+      "text": "Still trying to hope that they can catch something.",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 682.97,
+      "end": 684.97,
+      "text": "You don't want to be in Hope mode in that position.",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 684.97,
+      "end": 686.89,
+      "text": "You wanna make a decision and be definitive",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 686.89,
+      "end": 688.01,
+      "text": "and go all inner fold.",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 688.01,
+      "end": 690.81,
+      "text": "So typically an amateur player who's on the eight",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 690.81,
+      "end": 692.57,
+      "text": "to 11 big blind range you know",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 692.57,
+      "end": 694.97,
+      "text": "sometimes I see them just calling or limping in",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 694.97,
+      "end": 698.65,
+      "text": "or you know just defending a blind",
+      "avg_logprob": -0.32926,
+      "no_speech_prob": 0.02996,
+      "compression_ratio": 1.6822
+    },
+    {
+      "start": 698.65,
+      "end": 700.93,
+      "text": "hoping to catch miracle in a bottle.",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 700.95,
+      "end": 702.97,
+      "text": "In these kind of situations, you simply want",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 702.97,
+      "end": 705.09,
+      "text": "to use whatever chips you have left",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 705.09,
+      "end": 706.85,
+      "text": "the little leverage that you have left",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 706.85,
+      "end": 709.09,
+      "text": "put it all towards the pot",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 709.09,
+      "end": 710.09,
+      "text": "to win the blinds and 80s",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 710.09,
+      "end": 711.85,
+      "text": "because if you're sitting on eight big lines",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 711.85,
+      "end": 713.49,
+      "text": "and then you go all in in a tournament",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 713.49,
+      "end": 714.85,
+      "text": "You're going to pick up a big line",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 714.89,
+      "end": 717.17,
+      "text": "a small blind as well as the annes at the table",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 717.25,
+      "end": 719.45,
+      "text": "which now gets you from 8-to 10 or 11",
+      "avg_logprob": -0.39639,
+      "no_speech_prob": 0.02078,
+      "compression_ratio": 1.67611
+    },
+    {
+      "start": 719.45,
+      "end": 722.57,
+      "text": "And again, it's very important to note that just because you went all in with the worst",
+      "avg_logprob": -0.38659,
+      "no_speech_prob": 0.00408,
+      "compression_ratio": 1.53968
+    },
+    {
+      "start": 722.57,
+      "end": 724.77,
+      "text": "hand doesn't mean you lose.",
+      "avg_logprob": -0.38659,
+      "no_speech_prob": 0.00408,
+      "compression_ratio": 1.53968
+    },
+    {
+      "start": 724.77,
+      "end": 728.41,
+      "text": "You go all in with Ace Five a Spades player calls you with Pocket Tens.",
+      "avg_logprob": -0.38659,
+      "no_speech_prob": 0.00408,
+      "compression_ratio": 1.53968
+    },
+    {
+      "start": 728.41,
+      "end": 729.41,
+      "text": "Sure!",
+      "avg_logprob": -0.38659,
+      "no_speech_prob": 0.00408,
+      "compression_ratio": 1.53968
+    },
+    {
+      "start": 729.41,
+      "end": 731.41,
+      "text": "You're not the favorite but you are going to win off and enough",
+      "avg_logprob": -0.38659,
+      "no_speech_prob": 0.00408,
+      "compression_ratio": 1.53968
+    },
+    {
+      "start": 731.41,
+      "end": 732.73,
+      "text": "to make this a valuable play.",
+      "avg_logprob": -0.38659,
+      "no_speech_prob": 0.00408,
+      "compression_ratio": 1.53968
+    },
+    {
+      "start": 732.73,
+      "end": 734.57,
+      "text": "You're still only two-to-one underdog.",
+      "avg_logprob": -0.38659,
+      "no_speech_prob": 0.00408,
+      "compression_ratio": 1.53968
+    },
+    {
+      "start": 734.57,
+      "end": 737.77,
+      "text": "And as we've seen if you watch poker on TV, bad beats happen.",
+      "avg_logprob": -0.38659,
+      "no_speech_prob": 0.00408,
+      "compression_ratio": 1.53968
+    },
+    {
+      "start": 737.77,
+      "end": 739.93,
+      "text": "two to one dog, that's not even that bad a beat.",
+      "avg_logprob": -0.29288,
+      "no_speech_prob": 0.03115,
+      "compression_ratio": 1.33913
+    },
+    {
+      "start": 739.95,
+      "end": 741.61,
+      "text": "Trust me I got way worse beats",
+      "avg_logprob": -0.29288,
+      "no_speech_prob": 0.03115,
+      "compression_ratio": 1.33913
+    },
+    {
+      "start": 741.61,
+      "end": 742.73,
+      "text": "I could tell you but that would be",
+      "avg_logprob": -0.29288,
+      "no_speech_prob": 0.03115,
+      "compression_ratio": 1.33913
+    },
+    {
+      "start": 742.73,
+      "end": 744.53,
+      "text": "a whole new video we're not going there",
+      "avg_logprob": -0.29288,
+      "no_speech_prob": 0.03115,
+      "compression_ratio": 1.33913
+    }
+  ]
+}

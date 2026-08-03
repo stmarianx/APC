@@ -1,0 +1,26 @@
+PokerStars Hand #90000000001: Hold'em No Limit (10/20 Play Money) - 2026/08/01 20:00:00 ET
+Table 'Training Table' 3-max Seat #1 is the button
+Seat 1: Hero (2000 in chips)
+Seat 2: VillainA (2000 in chips)
+Seat 3: VillainB (2000 in chips)
+VillainA: posts small blind 10
+VillainB: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Hero [As Kd]
+Hero: raises 40 to 60
+VillainA: folds
+VillainB: calls 40
+*** FLOP *** [Ah 7c 2d]
+VillainB: checks
+Hero: bets 80
+VillainB: calls 80
+*** TURN *** [Ah 7c 2d] [9s]
+VillainB: checks
+Hero: bets 180
+VillainB: folds
+Uncalled bet (180) returned to Hero
+Hero collected 280 from pot
+*** SUMMARY ***
+Total pot 290 | Rake 10
+Board [Ah 7c 2d 9s]
+

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic temporal composite v1",
+  "status": "held_out_validation_passed_fresh_test_pending_not_promotion_eligible",
+  "dataset": {
+    "dataset_id": "apc-synthetic-events-764321",
+    "verified_frames": 144,
+    "paired_transitions": 72,
+    "capture_sessions": 18,
+    "controlled_visible_frames": 0,
+    "fingerprints": {
+      "annotations_sha256": "94002c894bc9a35b5f2243ef9c88ae3e1a2b2834f3300ccf3d50765ec4a0580a",
+      "split_sha256": "f1c340e3ce96b0a58620571114cdb203266f5d86abf68c449ac879f45f7a3b68",
+      "duplicate_audit_sha256": "fb5d1a60daf194ea58d312e295248a1d4a4497efe22c79cbb98820a18e8fc1be"
+    }
+  },
+  "checkpoint_provenance": {
+    "base_sha256": "4baf634c98f30627d5a6e73ecdba27d8cace13452e54891f6929e81d83429947",
+    "card_sha256": "8103fdfb911d2dc1c2132aaeb579066431c72dab328b398fb08b21ef63a8e4b3",
+    "table_state_sha256": "ce5423423f4217625f17608f2dbd1b0bdc1240db887b27a3783b5c13bdb2aef2",
+    "stack_sha256": "4b306ad3e3c05de05336a7173315a0fb7bbfad4f0f1ec6296909920a9495a71c",
+    "event_sha256": "7044764e1dd7bcd4a1dcc1076c39cd05f49da96caa70223c09c66d11e2ebe160"
+  },
+  "held_out_validation": {
+    "capture_sessions": ["event-0001", "event-0015"],
+    "training_session_overlap": {},
+    "frames": 16,
+    "pairs": 8,
+    "table_state_joint_accuracy": 1.0,
+    "stack_examples": 64,
+    "stack_exact_accuracy": 1.0,
+    "complete_supported_transition_accuracy": 1.0,
+    "transition_acceptance_accuracy": 1.0,
+    "observed_action_accuracy": 1.0,
+    "effective_stack_policy_accuracy": 1.0,
+    "abstention_contract_accuracy": 1.0,
+    "latency_ms_p95": 1105.0258950243006,
+    "prediction_sha256": "04042b3fc1ab9b1ec31d1fecd90a16c8620caca3e31a6fcb28e1bd2fe1938ad9"
+  },
+  "untouched_test": {
+    "status": "pending_fresh_independent_audit",
+    "reason": "The original event test pair event-0008-00 was inspected during integration and exposed a static pot-vocabulary failure. That split is therefore development evidence and is not reused for an unbiased composite claim."
+  },
+  "development_history": [
+    "The initial end-to-end test pair was correctly rejected because the static table-state head read a post-call pot as 1.5 BB instead of 2.5 BB.",
+    "After retraining the table-state head on paired event frames, the first full validation run completed only 5/8 transitions because integer-only stack OCR failed on decimal and zero stacks.",
+    "The first numeric-token stack model reached 63/64 exact validation stacks; its remaining 86.5 BB error exposed unequal renderer glyph widths for digits and the decimal point.",
+    "Token-shape geometry now learns integer/decimal structure and decimal position without using whole stack values as labels; the final validation run reconstructed all 64 stacks and all 8 transitions exactly."
+  ],
+  "abstention_contract": {
+    "recommendation": null,
+    "always_missing": ["player_identities"],
+    "conditionally_missing": {
+      "action_history": "missing unless a complete prior history is explicitly evidenced",
+      "effective_stack_bb": "derived only heads-up; unresolved as a scalar in multiway states"
+    }
+  },
+  "limitations": [
+    "All results are synthetic, closed-vocabulary and uncalibrated; this model card cannot open APC Gate P.",
+    "Player identity recognition and complete-hand boundary/history reconstruction are not implemented.",
+    "Action recognition requires adjacent frames and the synthetic fixed event banner.",
+    "Stack recognition remains tied to renderer-v2 font and geometry despite supporting integer, decimal and zero tokens.",
+    "Reference p95 latency is approximately 1.1 seconds because frame features are recomputed; this misses APC's interactive latency target.",
+    "A fresh independent composite audit is required after the architecture is frozen."
+  ]
+}

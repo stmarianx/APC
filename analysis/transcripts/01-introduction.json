@@ -1,0 +1,332 @@
+{
+  "file": "01 Introduction.MP4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 172.1173125,
+  "duration_after_vad_seconds": 104.992,
+  "transcription_elapsed_seconds": 110.076,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 1,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 63.63,
+      "end": 68.03,
+      "text": "In this master class, you're going to be seated directly across from me on the felt.",
+      "avg_logprob": -0.37405,
+      "no_speech_prob": 0.00656,
+      "compression_ratio": 1.66993
+    },
+    {
+      "start": 68.05,
+      "end": 71.63,
+      "text": "And we are gonna cover a bunch of stuff that I've never shared before",
+      "avg_logprob": -0.37405,
+      "no_speech_prob": 0.00656,
+      "compression_ratio": 1.66993
+    },
+    {
+      "start": 71.65,
+      "end": 75.47,
+      "text": "specifically in the domain of reading people",
+      "avg_logprob": -0.37405,
+      "no_speech_prob": 0.00656,
+      "compression_ratio": 1.66993
+    },
+    {
+      "start": 75.49,
+      "end": 78.87,
+      "text": "picking up tells hiding tales as well as a whole host",
+      "avg_logprob": -0.37405,
+      "no_speech_prob": 0.00656,
+      "compression_ratio": 1.66993
+    },
+    {
+      "start": 78.87,
+      "end": 83.47,
+      "text": "discussion about tournament strategy continuation betting how to figure out when",
+      "avg_logprob": -0.37405,
+      "no_speech_prob": 0.00656,
+      "compression_ratio": 1.66993
+    },
+    {
+      "start": 83.47,
+      "end": 86.23,
+      "text": "you should bet multi-way pot dynamics.",
+      "avg_logprob": -0.37405,
+      "no_speech_prob": 0.00656,
+      "compression_ratio": 1.66993
+    },
+    {
+      "start": 86.23,
+      "end": 89.63,
+      "text": "We're going to cover three beddinging and we're going have footage real life footage",
+      "avg_logprob": -0.37405,
+      "no_speech_prob": 0.00656,
+      "compression_ratio": 1.66993
+    },
+    {
+      "start": 89.63,
+      "end": 94.19,
+      "text": "real-life footage from hands that have happened on television and break down who did what",
+      "avg_logprob": -0.2778,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.70103
+    },
+    {
+      "start": 94.19,
+      "end": 95.19,
+      "text": "correctly,",
+      "avg_logprob": -0.2778,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.70103
+    },
+    {
+      "start": 95.19,
+      "end": 97.03,
+      "text": "and what mistakes might've been made.",
+      "avg_logprob": -0.2778,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.70103
+    },
+    {
+      "start": 97.03,
+      "end": 100.27,
+      "text": "So as we go through this course I want you to be cognizant of the fact",
+      "avg_logprob": -0.2778,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.70103
+    },
+    {
+      "start": 100.27,
+      "end": 107.65,
+      "text": "that eventually these concepts will seep in and you'll have a better understanding any time",
+      "avg_logprob": -0.2778,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.70103
+    },
+    {
+      "start": 107.65,
+      "end": 112.05,
+      "text": "you take on something new it can be challenging and there's essentially four stages",
+      "avg_logprob": -0.2778,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.70103
+    },
+    {
+      "start": 112.05,
+      "end": 115.73,
+      "text": "to this learning and the first stage is...you know i'm no good at this and I don't really know what I'm doing",
+      "avg_logprob": -0.2778,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.70103
+    },
+    {
+      "start": 115.73,
+      "end": 117.85,
+      "text": "and I don't really know what i'm doing.",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 117.87,
+      "end": 120.29,
+      "text": "The second stage would be, okay so",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 120.29,
+      "end": 122.69,
+      "text": "I know I'm not good at this but",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 122.69,
+      "end": 124.93,
+      "text": "I don't really know how to get better at it",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 124.93,
+      "end": 127.49,
+      "text": "Okay the third stage is all right",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 127.49,
+      "end": 129.65,
+      "text": "So I know what I got a work on",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 129.65,
+      "end": 131.73,
+      "text": "But it's really really hard right?",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 131.81,
+      "end": 133.37,
+      "text": "And when you get to Stage four",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 133.37,
+      "end": 137.31,
+      "text": "________________________________________________________________as essentially like driving a car where",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 137.31,
+      "end": 139.69,
+      "text": "You no longer have to think about it",
+      "avg_logprob": -0.48553,
+      "no_speech_prob": 0.03291,
+      "compression_ratio": 1.88393
+    },
+    {
+      "start": 139.69,
+      "end": 141.45,
+      "text": "for example with pot odds, right?",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 141.45,
+      "end": 143.33,
+      "text": "When I first started playing poker",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 143.33,
+      "end": 145.41,
+      "text": "I would actually have to manually think",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 145.41,
+      "end": 148.49,
+      "text": "through counting the pot odds in every situation",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 148.49,
+      "end": 149.29,
+      "text": "until the point",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 149.29,
+      "end": 150.53,
+      "text": "I got so comfortable with it",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 150.53,
+      "end": 151.97,
+      "text": "that now I just know it.",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 151.97,
+      "end": 153.37,
+      "text": "And I have a rough eyeball",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 153.37,
+      "end": 154.49,
+      "text": "I can look at the pod and go okay",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 154.49,
+      "end": 155.49,
+      "text": "I'm getting about three-to-one.",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 155.49,
+      "end": 157.53,
+      "text": "So it's become like breathing for me.",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 157.55,
+      "end": 158.97,
+      "text": "And essentially that's where we want to get you",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 159.21,
+      "end": 160.81,
+      "text": "with a lot of the concepts were going to share",
+      "avg_logprob": -0.33399,
+      "no_speech_prob": 0.00156,
+      "compression_ratio": 1.63538
+    },
+    {
+      "start": 160.81,
+      "end": 163.09,
+      "text": "to get you to stage foring it so that",
+      "avg_logprob": -0.4169,
+      "no_speech_prob": 0.00264,
+      "compression_ratio": 1.07353
+    },
+    {
+      "start": 163.11,
+      "end": 166.55,
+      "text": "its like breathing for you as well.",
+      "avg_logprob": -0.4169,
+      "no_speech_prob": 0.00264,
+      "compression_ratio": 1.07353
+    }
+  ]
+}

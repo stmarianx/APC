@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "reference_id": "user-play-money-flop-normalized-e1278b5b",
+  "use_policy": "frozen_out_of_domain_audit_only_not_training_or_gate_count",
+  "derived_from": {
+    "reference_id": "user-play-money-flop-abcaa035",
+    "source_image_sha256": "abcaa03594d592f4608bc3f43b8f7f7a0a803b38635324c0bdc25ced7ce946ef",
+    "viewport_profile_sha256": "eefbf6aca24cb71088f53d6dd754ff89bf9b4e6a97a1942af408173109c1aec9"
+  },
+  "source": {
+    "source_kind": "explicitly_permitted_virtual_table",
+    "virtual_chips": true,
+    "virtual_chip_basis": "user-provided session context",
+    "player_identity_policy": "local_only",
+    "provider_specific_training_label": false
+  },
+  "image": {
+    "path": "frames/user-play-money-flop-normalized.png",
+    "sha256": "e1278b5b0cf2713594a71477e78303b2e8c445d132e47de2439a0a6b8bb7b17d",
+    "width": 1280,
+    "height": 720
+  },
+  "verified_partial_state": {
+    "layout_id": "six-max",
+    "street": "flop",
+    "hero_cards": ["Ah", "Qh"],
+    "board_cards": ["2s", "8d", "5s"],
+    "pot_bb": "62.4",
+    "visible_seat_slots": 6,
+    "visible_named_players": 5,
+    "sitting_out_slots": 1,
+    "visible_player_stacks_bb": {
+      "st_marian_x": "225.9",
+      "Vicktorio": "85",
+      "milkovich90": "146.1",
+      "StormBreaker86": "100",
+      "FACUMDP": "148.6"
+    }
+  },
+  "unverified_fields": [
+    "dealer_seat",
+    "hero_seat_number",
+    "to_call_bb",
+    "legal_actions",
+    "action_history",
+    "current_actor",
+    "effective_stack_bb"
+  ],
+  "notes": [
+    "Semantic labels are inherited unchanged from the frozen source image.",
+    "The affine viewport normalization is a frozen one-pass architecture audit and is not training data."
+  ]
+}

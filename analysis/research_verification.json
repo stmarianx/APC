@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "errors": [],
+  "source_videos": 38,
+  "manifest_videos": 38,
+  "duration_hours": 7.673,
+  "canonical_transcripts": 38,
+  "transcript_words": 82599,
+  "transcript_segments": 9011,
+  "evidence_records": 38,
+  "evidence_excerpts": 214,
+  "contact_sheets": 38,
+  "gallery_pages": 19,
+  "graph_nodes": 63,
+  "graph_unique_nodes": 63,
+  "graph_edges": 79
+}

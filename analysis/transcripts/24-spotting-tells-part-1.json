@@ -1,0 +1,1636 @@
+{
+  "file": "24 Spotting Tells, Part 1.MP4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 680.064,
+  "duration_after_vad_seconds": 585.92,
+  "transcription_elapsed_seconds": 371.687,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 2,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 1.2,
+      "end": 26.72,
+      "text": "During the section, I'm trying to show you examples that are extreme but",
+      "avg_logprob": -0.37043,
+      "no_speech_prob": 0.0047,
+      "compression_ratio": 1.67364
+    },
+    {
+      "start": 26.72,
+      "end": 29.32,
+      "text": "you have to understand they're going to be a lot more subtle when you",
+      "avg_logprob": -0.37043,
+      "no_speech_prob": 0.0047,
+      "compression_ratio": 1.67364
+    },
+    {
+      "start": 29.32,
+      "end": 32.8,
+      "text": "actually play at the table. But when you start to learn what it is",
+      "avg_logprob": -0.37043,
+      "no_speech_prob": 0.0047,
+      "compression_ratio": 1.67364
+    },
+    {
+      "start": 32.8,
+      "end": 33.8,
+      "text": "that you want to look for,",
+      "avg_logprob": -0.37043,
+      "no_speech_prob": 0.0047,
+      "compression_ratio": 1.67364
+    },
+    {
+      "start": 33.84,
+      "end": 37.2,
+      "text": "It'll become easier and easier to spot those subtle tells in addition",
+      "avg_logprob": -0.37043,
+      "no_speech_prob": 0.0047,
+      "compression_ratio": 1.67364
+    },
+    {
+      "start": 37.2,
+      "end": 42.28,
+      "text": "That at the lower limits players have much more pronounced tells and as you get higher people",
+      "avg_logprob": -0.37043,
+      "no_speech_prob": 0.0047,
+      "compression_ratio": 1.67364
+    },
+    {
+      "start": 42.28,
+      "end": 43.84,
+      "text": "learn to mask them better.",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 43.84,
+      "end": 45.88,
+      "text": "So as a general rule, when we're looking for tells",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 45.88,
+      "end": 46.88,
+      "text": "essentially what we're looking",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 46.88,
+      "end": 50.56,
+      "text": "for is behavior that is different than the norm right?",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 50.56,
+      "end": 52.12,
+      "text": "So another good example of this and",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 52.12,
+      "end": 54.52,
+      "text": "this one's pretty accurate for the most part",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 54.52,
+      "end": 54.76,
+      "text": "is I remember when we're talking about",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 54.76,
+      "end": 55.12,
+      "text": "For the most part is uh...",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 55.12,
+      "end": 56.08,
+      "text": "And remember when we're talking",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 56.08,
+      "end": 57.48,
+      "text": "about this there are no absolutes",
+      "avg_logprob": -0.42532,
+      "no_speech_prob": 0.01666,
+      "compression_ratio": 1.79048
+    },
+    {
+      "start": 57.48,
+      "end": 61.08,
+      "text": "This is, you know some people may use this kind of stuff to fool",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 61.12,
+      "end": 61.92,
+      "text": "you if they think that",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 62.08,
+      "end": 63.48,
+      "text": "If they can throw off something.",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 63.52,
+      "end": 64.92,
+      "text": "But one of the ones I found",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 64.96,
+      "end": 65.76,
+      "text": "The most accurate",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 65.78,
+      "end": 67.28,
+      "text": "Is imagine your playing against a player who",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 67.6,
+      "end": 69.32,
+      "text": "typically in throughout their hand",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 69.32,
+      "end": 70.16,
+      "text": "They don't really look at you",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 70.32,
+      "end": 70.36,
+      "text": "You know they kinda look at you",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 70.36,
+      "end": 71.36,
+      "text": "You know they kind of look at their chips",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 71.36,
+      "end": 73.48,
+      "text": "They check they bet and all of a sudden",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 73.56,
+      "end": 74.6,
+      "text": "on the turn they check",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 74.76,
+      "end": 75.68,
+      "text": "and the actions on you",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 75.8,
+      "end": 76.48,
+      "text": "And all of a sudden there like",
+      "avg_logprob": -0.60493,
+      "no_speech_prob": 0.01479,
+      "compression_ratio": 1.84585
+    },
+    {
+      "start": 76.48,
+      "end": 79.86,
+      "text": "Like, they're body languages like forward.",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 79.88,
+      "end": 80.78,
+      "text": "They are looking at you,",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 80.8,
+      "end": 83.54,
+      "text": "like giving you the mean mug look?",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 83.54,
+      "end": 85.26,
+      "text": "What would you think that would mean",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 85.26,
+      "end": 87.78,
+      "text": "if you were to gauge what that is likely to mean?",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 87.78,
+      "end": 89.42,
+      "text": "So normally he doesn't look at you",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 89.42,
+      "end": 90.74,
+      "text": "now he's checked the river",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 90.74,
+      "end": 91.98,
+      "text": "and he's staring at you",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 92.02,
+      "end": 93.66,
+      "text": "like he wants to eat you.",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 93.66,
+      "end": 97.94,
+      "text": "Well typically in this spot there trying to send his glare or message",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 99.94,
+      "end": 100.74,
+      "text": "of strength when it's actually quite the opposite",
+      "avg_logprob": -0.30651,
+      "no_speech_prob": 0.01248,
+      "compression_ratio": 1.69076
+    },
+    {
+      "start": 100.74,
+      "end": 105.7,
+      "text": "They're looking at you trying to show this moment of strength when they really don't want",
+      "avg_logprob": -0.24374,
+      "no_speech_prob": 0.00831,
+      "compression_ratio": 1.59809
+    },
+    {
+      "start": 105.7,
+      "end": 109.54,
+      "text": "you to bet because their hands weak. So if you are in a situation on the turn where",
+      "avg_logprob": -0.24374,
+      "no_speech_prob": 0.00831,
+      "compression_ratio": 1.59809
+    },
+    {
+      "start": 109.54,
+      "end": 111.94,
+      "text": "you're not sure if you should check or bet and all of a sudden,",
+      "avg_logprob": -0.24374,
+      "no_speech_prob": 0.00831,
+      "compression_ratio": 1.59809
+    },
+    {
+      "start": 111.94,
+      "end": 116.82,
+      "text": "the player stares you down like that, you can rest assured that more often than not he's folding",
+      "avg_logprob": -0.24374,
+      "no_speech_prob": 0.00831,
+      "compression_ratio": 1.59809
+    },
+    {
+      "start": 116.82,
+      "end": 135.95,
+      "text": "If you've played in a poker room pretty much anywhere",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 135.97,
+      "end": 136.95,
+      "text": "in this country or the world,",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 136.97,
+      "end": 138.95,
+      "text": "they're going to hear the sound of crickets.",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 138.97,
+      "end": 141.95,
+      "text": "You're gonna hear as people are talking and playing",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 141.97,
+      "end": 142.95,
+      "text": "with chip shuffling.",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 142.95,
+      "end": 144.95,
+      "text": "It's pretty common for most poker players",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 144.95,
+      "end": 145.95,
+      "text": "to fidget in this way",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 145.95,
+      "end": 147.95,
+      "text": "And you can actually glean a lot",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 147.95,
+      "end": 149.95,
+      "text": "information based on how people",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 149.95,
+      "end": 151.95,
+      "text": "are shuffling their chips in key situations",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 151.95,
+      "end": 152.95,
+      "text": "For example,",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 152.95,
+      "end": 153.95,
+      "text": "you only watching the chip shuffle",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 155.95,
+      "end": 156.95,
+      "text": "-shuffle.",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 157.95,
+      "end": 162.34,
+      "text": "es",
+      "avg_logprob": -0.46577,
+      "no_speech_prob": 0.01783,
+      "compression_ratio": 1.70472
+    },
+    {
+      "start": 163.34,
+      "end": 166.06,
+      "text": "and stops. Okay? They may be doing this consciously,",
+      "avg_logprob": -0.31785,
+      "no_speech_prob": 0.01679,
+      "compression_ratio": 1.79137
+    },
+    {
+      "start": 166.06,
+      "end": 169.58,
+      "text": "and they may do this every single time. But again you want to look for that because it could",
+      "avg_logprob": -0.31785,
+      "no_speech_prob": 0.01679,
+      "compression_ratio": 1.79137
+    },
+    {
+      "start": 169.58,
+      "end": 172.86,
+      "text": "mean that they're uncomfortable and they're not trying to bring attention to themselves",
+      "avg_logprob": -0.31785,
+      "no_speech_prob": 0.01679,
+      "compression_ratio": 1.79137
+    },
+    {
+      "start": 172.86,
+      "end": 177.42,
+      "text": "so they notice that there were shuffling chips and they stopped. Much more subtle",
+      "avg_logprob": -0.31785,
+      "no_speech_prob": 0.01679,
+      "compression_ratio": 1.79137
+    },
+    {
+      "start": 177.42,
+      "end": 180.7,
+      "text": "an effective thing to look for because this is one that can be controlled",
+      "avg_logprob": -0.31785,
+      "no_speech_prob": 0.01679,
+      "compression_ratio": 1.79137
+    },
+    {
+      "start": 181.58,
+      "end": 185.82,
+      "text": "people stopping their shuffle as something they are doing consciously. Whereas the other possibility someone",
+      "avg_logprob": -0.31785,
+      "no_speech_prob": 0.01679,
+      "compression_ratio": 1.79137
+    },
+    {
+      "start": 185.82,
+      "end": 191.26,
+      "text": "Whereas the other possibility is someone starts normally to say they're shuffling at this speed",
+      "avg_logprob": -0.43745,
+      "no_speech_prob": 0.00486,
+      "compression_ratio": 1.61189
+    },
+    {
+      "start": 191.74,
+      "end": 196.66,
+      "text": "and slow control. You can hear the sound",
+      "avg_logprob": -0.43745,
+      "no_speech_prob": 0.00486,
+      "compression_ratio": 1.61189
+    },
+    {
+      "start": 196.66,
+      "end": 198.1,
+      "text": "And then all of a sudden after a bet,",
+      "avg_logprob": -0.43745,
+      "no_speech_prob": 0.00486,
+      "compression_ratio": 1.61189
+    },
+    {
+      "start": 198.1,
+      "end": 202.09,
+      "text": "They start",
+      "avg_logprob": -0.43745,
+      "no_speech_prob": 0.00486,
+      "compression_ratio": 1.61189
+    },
+    {
+      "start": 202.09,
+      "end": 204.09,
+      "text": "and you notice that it's gotten a lot faster",
+      "avg_logprob": -0.43745,
+      "no_speech_prob": 0.00486,
+      "compression_ratio": 1.61189
+    },
+    {
+      "start": 204.33,
+      "end": 206.33,
+      "text": "This could be a sign of stress",
+      "avg_logprob": -0.43745,
+      "no_speech_prob": 0.00486,
+      "compression_ratio": 1.61189
+    },
+    {
+      "start": 206.33,
+      "end": 212.97,
+      "text": "Could be uncomfortable like antsy almost... It's almost like foot tapping with your fingers",
+      "avg_logprob": -0.43745,
+      "no_speech_prob": 0.00486,
+      "compression_ratio": 1.61189
+    },
+    {
+      "start": 212.97,
+      "end": 215.21,
+      "text": "So whatever it is you find",
+      "avg_logprob": -0.43745,
+      "no_speech_prob": 0.00486,
+      "compression_ratio": 1.61189
+    },
+    {
+      "start": 215.21,
+      "end": 219.29,
+      "text": "You just want essentially look for pictures that seem different and out of place",
+      "avg_logprob": -0.43745,
+      "no_speech_prob": 0.00486,
+      "compression_ratio": 1.61189
+    },
+    {
+      "start": 220.97,
+      "end": 222.47,
+      "text": "the hands that get turned over.",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 222.47,
+      "end": 224.51,
+      "text": "This is why we've talked about in previous videos,",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 224.51,
+      "end": 226.01,
+      "text": "it's so important to pay attention",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 226.01,
+      "end": 227.33,
+      "text": "whether you're in a hand or not.",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 227.33,
+      "end": 229.81,
+      "text": "Specifically for physical tells,",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 229.81,
+      "end": 230.53,
+      "text": "these are patterns",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 230.53,
+      "end": 232.01,
+      "text": "that players are typically gonna have",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 232.01,
+      "end": 233.25,
+      "text": "whether it's against you",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 233.25,
+      "end": 235.13,
+      "text": "or other players as well if it is",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 235.13,
+      "end": 237.65,
+      "text": "of fact a pattern and the more data accumulation",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 237.65,
+      "end": 239.53,
+      "text": "you can do with situations like this,",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 239.53,
+      "end": 240.89,
+      "text": "the more often you're going to be able to make amazinglyly",
+      "avg_logprob": -0.35348,
+      "no_speech_prob": 0.01887,
+      "compression_ratio": 1.69847
+    },
+    {
+      "start": 240.89,
+      "end": 245.13,
+      "text": "make amazingly good decisions based simply on the fact that they're giving it away",
+      "avg_logprob": -0.19364,
+      "no_speech_prob": 0.01875,
+      "compression_ratio": 1.07895
+    },
+    {
+      "start": 270.89,
+      "end": 295.99,
+      "text": "consistently to take advantage of it. So this next tell is a real doozy,",
+      "avg_logprob": -0.36232,
+      "no_speech_prob": 0.01567,
+      "compression_ratio": 1.72464
+    },
+    {
+      "start": 295.99,
+      "end": 300.07,
+      "text": "It's probably one that has made me the most money and it is one",
+      "avg_logprob": -0.36232,
+      "no_speech_prob": 0.01567,
+      "compression_ratio": 1.72464
+    },
+    {
+      "start": 300.07,
+      "end": 304.79,
+      "text": "That is far more prevalent with new players as you get higher in stakes",
+      "avg_logprob": -0.36232,
+      "no_speech_prob": 0.01567,
+      "compression_ratio": 1.72464
+    },
+    {
+      "start": 304.79,
+      "end": 306.95,
+      "text": "Players are very aware of this and much more in",
+      "avg_logprob": -0.36232,
+      "no_speech_prob": 0.01567,
+      "compression_ratio": 1.72464
+    },
+    {
+      "start": 306.99,
+      "end": 312.31,
+      "text": "You know cognizant of what their eyes are doing but typically our eyes",
+      "avg_logprob": -0.36232,
+      "no_speech_prob": 0.01567,
+      "compression_ratio": 1.72464
+    },
+    {
+      "start": 312.31,
+      "end": 315.23,
+      "text": "or connected to our mind and when we see something we like",
+      "avg_logprob": -0.36232,
+      "no_speech_prob": 0.01567,
+      "compression_ratio": 1.72464
+    },
+    {
+      "start": 315.23,
+      "end": 318.59,
+      "text": "Our eyes will do something we don't like our eyes may do something different different so",
+      "avg_logprob": -0.36232,
+      "no_speech_prob": 0.01567,
+      "compression_ratio": 1.72464
+    },
+    {
+      "start": 321.27,
+      "end": 323.27,
+      "text": "classic chip glance tell.",
+      "avg_logprob": -0.38481,
+      "no_speech_prob": 0.01505,
+      "compression_ratio": 1.2
+    },
+    {
+      "start": 323.27,
+      "end": 324.27,
+      "text": "Okay?",
+      "avg_logprob": -0.38481,
+      "no_speech_prob": 0.01505,
+      "compression_ratio": 1.2
+    },
+    {
+      "start": 324.27,
+      "end": 325.27,
+      "text": "So this is your hand right here,",
+      "avg_logprob": -0.38481,
+      "no_speech_prob": 0.01505,
+      "compression_ratio": 1.2
+    },
+    {
+      "start": 325.27,
+      "end": 327.27,
+      "text": "imagine I'm the dealer for just a moment",
+      "avg_logprob": -0.38481,
+      "no_speech_prob": 0.01505,
+      "compression_ratio": 1.2
+    },
+    {
+      "start": 327.27,
+      "end": 330.27,
+      "text": "so here comes the flop like this",
+      "avg_logprob": -0.38481,
+      "no_speech_prob": 0.01505,
+      "compression_ratio": 1.2
+    },
+    {
+      "start": 352.33,
+      "end": 353.33,
+      "text": "or anything like that,",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 353.33,
+      "end": 357.33,
+      "text": "that flop comes out and instantly I give it the old chip glands till.",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 358.33,
+      "end": 360.33,
+      "text": "Now that's a sign that I like what I see okay?",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 360.33,
+      "end": 363.33,
+      "text": "Conversely if you notice with the same type of player",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 363.33,
+      "end": 365.33,
+      "text": "a situation where they look at the flopp",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 365.33,
+      "end": 367.33,
+      "text": "and they just keep staring at it",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 367.33,
+      "end": 369.33,
+      "text": "And there is no glance to chips or anything like that",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 369.33,
+      "end": 372.33,
+      "text": "It's very likely that they don't like anything they see on that flop",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 373.33,
+      "end": 374.33,
+      "text": "this",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 375.33,
+      "end": 380.33,
+      "text": "and this is like a green light be mindful of that but",
+      "avg_logprob": -0.40269,
+      "no_speech_prob": 0.02295,
+      "compression_ratio": 1.78175
+    },
+    {
+      "start": 382.33,
+      "end": 383.89,
+      "text": "If you're playing in lower limit games and",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 383.91,
+      "end": 385.85,
+      "text": "You see this tell, if you see someone",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 385.87,
+      "end": 388.17,
+      "text": "glancing down at their chips they are doing so for a reason",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 388.17,
+      "end": 390.49,
+      "text": "And most of the time it's totally subconscious.",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 390.49,
+      "end": 391.49,
+      "text": "They don't even know they're doing it",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 391.49,
+      "end": 400.46,
+      "text": "I grew up playing limit hold them",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 400.5,
+      "end": 402.42,
+      "text": "Okay and limit hold is a much faster game",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 402.42,
+      "end": 403.98,
+      "text": "In limited hold on people don't",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 404.02,
+      "end": 405.94,
+      "text": "you know sit in the tank and think that usually bang",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 405.98,
+      "end": 407.3,
+      "text": "Bangbang bang very fast right",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 407.38,
+      "end": 409.06,
+      "text": "So often when I would be playing in a play in a",
+      "avg_logprob": -0.51396,
+      "no_speech_prob": 0.00462,
+      "compression_ratio": 1.70956
+    },
+    {
+      "start": 409.06,
+      "end": 414.46,
+      "text": "be playing in a game, I would reach for my chips look down and as i'm like looking",
+      "avg_logprob": -0.40673,
+      "no_speech_prob": 0.01596,
+      "compression_ratio": 1.69498
+    },
+    {
+      "start": 414.46,
+      "end": 415.46,
+      "text": "at my chips.",
+      "avg_logprob": -0.40673,
+      "no_speech_prob": 0.01596,
+      "compression_ratio": 1.69498
+    },
+    {
+      "start": 415.46,
+      "end": 419.62,
+      "text": "I am watching my opponent if my opponent already has their arm extended before I've even",
+      "avg_logprob": -0.40673,
+      "no_speech_prob": 0.01596,
+      "compression_ratio": 1.69498
+    },
+    {
+      "start": 419.62,
+      "end": 422.18,
+      "text": "bet the chips they're giving me information about what they are going to do.",
+      "avg_logprob": -0.40673,
+      "no_speech_prob": 0.01596,
+      "compression_ratio": 1.69498
+    },
+    {
+      "start": 422.18,
+      "end": 423.18,
+      "text": "I haven't made my bet yet now.",
+      "avg_logprob": -0.40673,
+      "no_speech_prob": 0.01596,
+      "compression_ratio": 1.69498
+    },
+    {
+      "start": 423.18,
+      "end": 427.1,
+      "text": "Now this isn't illegal, this is an angle shoot obviously if you go like this and you",
+      "avg_logprob": -0.40673,
+      "no_speech_prob": 0.01596,
+      "compression_ratio": 1.69498
+    },
+    {
+      "start": 427.1,
+      "end": 428.18,
+      "text": "go up.",
+      "avg_logprob": -0.40673,
+      "no_speech_prob": 0.01596,
+      "compression_ratio": 1.69498
+    },
+    {
+      "start": 430.18,
+      "end": 430.26,
+      "text": "I check now that's borderline but you have borderline.",
+      "avg_logprob": -0.40673,
+      "no_speech_prob": 0.01596,
+      "compression_ratio": 1.69498
+    },
+    {
+      "start": 439.06,
+      "end": 440.5,
+      "text": "with a call or they're coming",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 440.5,
+      "end": 448.55,
+      "text": "with a raise.",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 448.55,
+      "end": 449.95,
+      "text": "So I'm going to give you one now,",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 449.95,
+      "end": 451.35,
+      "text": "that I'm gonna have you look at two",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 451.35,
+      "end": 453.55,
+      "text": "sort of like images of me",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 453.55,
+      "end": 455.19,
+      "text": "and I want you to tell me",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 455.19,
+      "end": 457.35,
+      "text": "which one you think is the strong one",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 457.35,
+      "end": 458.55,
+      "text": "in which one you think",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 458.55,
+      "end": 461.35,
+      "text": "is the one where I am likely to be bluffing all right?",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 461.35,
+      "end": 466.23,
+      "text": "So I've got my cards here, okay?",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 466.23,
+      "end": 467.67,
+      "text": "bet my chips.",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 467.67,
+      "end": 468.39,
+      "text": "And now the important part of this hand is",
+      "avg_logprob": -0.42832,
+      "no_speech_prob": 0.01289,
+      "compression_ratio": 1.70183
+    },
+    {
+      "start": 468.39,
+      "end": 472.03,
+      "text": "part of this hand is I'm going to put my hands up on the rail. Okay? So,",
+      "avg_logprob": -0.43296,
+      "no_speech_prob": 0.01854,
+      "compression_ratio": 1.68775
+    },
+    {
+      "start": 472.05,
+      "end": 475.23,
+      "text": "I've got my hands here now I bet and I'm looking at you everything's comfortable so",
+      "avg_logprob": -0.43296,
+      "no_speech_prob": 0.01854,
+      "compression_ratio": 1.68775
+    },
+    {
+      "start": 475.23,
+      "end": 478.19,
+      "text": "my hands are right here. You got that? Got that memorized all right",
+      "avg_logprob": -0.43296,
+      "no_speech_prob": 0.01854,
+      "compression_ratio": 1.68775
+    },
+    {
+      "start": 478.21,
+      "end": 481.59,
+      "text": "Now we're do the same thing where we looked in my cards",
+      "avg_logprob": -0.43296,
+      "no_speech_prob": 0.01854,
+      "compression_ratio": 1.68775
+    },
+    {
+      "start": 481.59,
+      "end": 487.46,
+      "text": "Bet and this time I'm gonna put my hands like this alright",
+      "avg_logprob": -0.43296,
+      "no_speech_prob": 0.01854,
+      "compression_ratio": 1.68775
+    },
+    {
+      "start": 487.46,
+      "end": 490.02,
+      "text": "did you notice a difference between the first one and the second",
+      "avg_logprob": -0.43296,
+      "no_speech_prob": 0.01854,
+      "compression_ratio": 1.68775
+    },
+    {
+      "start": 490.02,
+      "end": 491.54,
+      "text": "give you a moment here",
+      "avg_logprob": -0.43296,
+      "no_speech_prob": 0.01854,
+      "compression_ratio": 1.68775
+    },
+    {
+      "start": 491.54,
+      "end": 495.73,
+      "text": "If you notice anything different about the first and second, all right.",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 495.77,
+      "end": 498.21,
+      "text": "So the first was here?",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 498.21,
+      "end": 500.29,
+      "text": "The second was here!",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 500.29,
+      "end": 501.29,
+      "text": "What's different?",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 501.29,
+      "end": 503.57,
+      "text": "Well, notice in the first one my arms are relaxed,",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 503.57,
+      "end": 506.97,
+      "text": "my hands are comfortable, they're rested on the table.",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 506.97,
+      "end": 511.09,
+      "text": "On the second one this right hand of sudden latched onto my arm and was holding",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 511.09,
+      "end": 512.89,
+      "text": "on for dear life.",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 514.89,
+      "end": 516.53,
+      "text": "so this is relaxed, more stressed than uncomfortable.",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 516.53,
+      "end": 518.41,
+      "text": "as we've discussed when it comes to pokerk a player-a-player-a-a-a-lairis,",
+      "avg_logprob": -0.5282,
+      "no_speech_prob": 0.01557,
+      "compression_ratio": 1.77186
+    },
+    {
+      "start": 522.41,
+      "end": 524.65,
+      "text": "to have a strong hand, and the more tense",
+      "avg_logprob": -0.39055,
+      "no_speech_prob": 0.02401,
+      "compression_ratio": 1.60811
+    },
+    {
+      "start": 524.65,
+      "end": 525.85,
+      "text": "in the more uncomfortable they look",
+      "avg_logprob": -0.39055,
+      "no_speech_prob": 0.02401,
+      "compression_ratio": 1.60811
+    },
+    {
+      "start": 525.85,
+      "end": 527.21,
+      "text": "or the more afraid they look",
+      "avg_logprob": -0.39055,
+      "no_speech_prob": 0.02401,
+      "compression_ratio": 1.60811
+    },
+    {
+      "start": 527.21,
+      "end": 529.21,
+      "text": "the more likely they are to be bluffing.",
+      "avg_logprob": -0.39055,
+      "no_speech_prob": 0.02401,
+      "compression_ratio": 1.60811
+    },
+    {
+      "start": 529.21,
+      "end": 532.01,
+      "text": "So this was me saying please call",
+      "avg_logprob": -0.39055,
+      "no_speech_prob": 0.02401,
+      "compression_ratio": 1.60811
+    },
+    {
+      "start": 532.01,
+      "end": 534.89,
+      "text": "This was saying I'm scared don't call me",
+      "avg_logprob": -0.39055,
+      "no_speech_prob": 0.02401,
+      "compression_ratio": 1.60811
+    },
+    {
+      "start": 534.89,
+      "end": 535.85,
+      "text": "Please don't go",
+      "avg_logprob": -0.39055,
+      "no_speech_prob": 0.02401,
+      "compression_ratio": 1.60811
+    },
+    {
+      "start": 535.85,
+      "end": 537.85,
+      "text": "Please don't go. I'm bluffing!",
+      "avg_logprob": -0.37698,
+      "no_speech_prob": 0.00786,
+      "compression_ratio": 1.59559
+    },
+    {
+      "start": 545.64,
+      "end": 548.26,
+      "text": "So when I first started playing poker in Las Vegas,",
+      "avg_logprob": -0.37698,
+      "no_speech_prob": 0.00786,
+      "compression_ratio": 1.59559
+    },
+    {
+      "start": 548.26,
+      "end": 552.06,
+      "text": "smoking was pretty common. Luckily we've outlawed it. It's a nasty habit you",
+      "avg_logprob": -0.37698,
+      "no_speech_prob": 0.00786,
+      "compression_ratio": 1.59559
+    },
+    {
+      "start": 552.06,
+      "end": 552.82,
+      "text": "don't want to start.",
+      "avg_logprob": -0.37698,
+      "no_speech_prob": 0.00786,
+      "compression_ratio": 1.59559
+    },
+    {
+      "start": 552.82,
+      "end": 555.42,
+      "text": "I don't smoke but we got one here because",
+      "avg_logprob": -0.37698,
+      "no_speech_prob": 0.00786,
+      "compression_ratio": 1.59559
+    },
+    {
+      "start": 555.42,
+      "end": 560.18,
+      "text": "i wanna help illustrate another version of a tell that you can look for",
+      "avg_logprob": -0.37698,
+      "no_speech_prob": 0.00786,
+      "compression_ratio": 1.59559
+    },
+    {
+      "start": 560.26,
+      "end": 563.34,
+      "text": "if you play in a house game or something along those lines where people smoke and",
+      "avg_logprob": -0.37698,
+      "no_speech_prob": 0.00786,
+      "compression_ratio": 1.59559
+    },
+    {
+      "start": 563.34,
+      "end": 567.1,
+      "text": "also an example that you could stretch past just smoking?",
+      "avg_logprob": -0.37698,
+      "no_speech_prob": 0.00786,
+      "compression_ratio": 1.59559
+    },
+    {
+      "start": 573.14,
+      "end": 576.54,
+      "text": "Once again, I want you to tell me which one do you think is more likely",
+      "avg_logprob": -0.3922,
+      "no_speech_prob": 0.00825,
+      "compression_ratio": 1.59922
+    },
+    {
+      "start": 576.54,
+      "end": 577.54,
+      "text": "to be the bluff.",
+      "avg_logprob": -0.3922,
+      "no_speech_prob": 0.00825,
+      "compression_ratio": 1.59922
+    },
+    {
+      "start": 577.54,
+      "end": 580.7,
+      "text": "We're going to put a cigarette aside for just second and look over my cards",
+      "avg_logprob": -0.3922,
+      "no_speech_prob": 0.00825,
+      "compression_ratio": 1.59922
+    },
+    {
+      "start": 580.7,
+      "end": 583.02,
+      "text": "and go ahead and bet.",
+      "avg_logprob": -0.3922,
+      "no_speech_prob": 0.00825,
+      "compression_ratio": 1.59922
+    },
+    {
+      "start": 583.02,
+      "end": 585.62,
+      "text": "And now imagine I have a cigarette in my hand so",
+      "avg_logprob": -0.3922,
+      "no_speech_prob": 0.00825,
+      "compression_ratio": 1.59922
+    },
+    {
+      "start": 585.62,
+      "end": 589.14,
+      "text": "I take my drag these things even smell bad when you don't smoke them",
+      "avg_logprob": -0.3922,
+      "no_speech_prob": 0.00825,
+      "compression_ratio": 1.59922
+    },
+    {
+      "start": 589.14,
+      "end": 595.94,
+      "text": "Take my drag and then blow out a very small mushroom cloud nothing too big right?",
+      "avg_logprob": -0.3922,
+      "no_speech_prob": 0.00825,
+      "compression_ratio": 1.59922
+    },
+    {
+      "start": 595.94,
+      "end": 596.66,
+      "text": "So that's the first one.",
+      "avg_logprob": -0.3922,
+      "no_speech_prob": 0.00825,
+      "compression_ratio": 1.59922
+    },
+    {
+      "start": 596.66,
+      "end": 599.76,
+      "text": "The second one is of course, same bet.",
+      "avg_logprob": -0.44328,
+      "no_speech_prob": 0.00655,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 599.78,
+      "end": 602.28,
+      "text": "Taking cigarette leaning back",
+      "avg_logprob": -0.44328,
+      "no_speech_prob": 0.00655,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 603.8,
+      "end": 606.16,
+      "text": "however people do it I don't even know how to smoke properly",
+      "avg_logprob": -0.44328,
+      "no_speech_prob": 0.00655,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 606.16,
+      "end": 611.34,
+      "text": "and then like this okay so the first",
+      "avg_logprob": -0.44328,
+      "no_speech_prob": 0.00655,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 611.34,
+      "end": 616.02,
+      "text": "one again is very small exhale barely see the smoke come out",
+      "avg_logprob": -0.44328,
+      "no_speech_prob": 0.00655,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 616.02,
+      "end": 620.92,
+      "text": "the second one is a comfortable relaxed",
+      "avg_logprob": -0.44328,
+      "no_speech_prob": 0.00655,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 620.92,
+      "end": 625.49,
+      "text": "and whatnot so which one is more likely to be the bluff?",
+      "avg_logprob": -0.44328,
+      "no_speech_prob": 0.00655,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 625.49,
+      "end": 625.69,
+      "text": "And why?",
+      "avg_logprob": -0.44328,
+      "no_speech_prob": 0.00655,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 628.69,
+      "end": 629.49,
+      "text": "So if you guess the first one is the bluff your correct?",
+      "avg_logprob": -0.44328,
+      "no_speech_prob": 0.00655,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 630.09,
+      "end": 636.09,
+      "text": "speaking, when someone is trying to avoid drawing any attention themselves",
+      "avg_logprob": -0.35152,
+      "no_speech_prob": 0.01909,
+      "compression_ratio": 1.74658
+    },
+    {
+      "start": 636.09,
+      "end": 639.17,
+      "text": "they're more likely to be weak. So they're trying to stay as still as possible",
+      "avg_logprob": -0.35152,
+      "no_speech_prob": 0.01909,
+      "compression_ratio": 1.74658
+    },
+    {
+      "start": 639.17,
+      "end": 641.89,
+      "text": "that I want to bring attention themselves the player who blows out",
+      "avg_logprob": -0.35152,
+      "no_speech_prob": 0.01909,
+      "compression_ratio": 1.74658
+    },
+    {
+      "start": 641.89,
+      "end": 645.05,
+      "text": "the big mushroom cloud of smoke doesn't really mind as much because he's",
+      "avg_logprob": -0.35152,
+      "no_speech_prob": 0.01909,
+      "compression_ratio": 1.74658
+    },
+    {
+      "start": 645.05,
+      "end": 647.93,
+      "text": "more comfortable this is something subtle that people don't even realize",
+      "avg_logprob": -0.35152,
+      "no_speech_prob": 0.01909,
+      "compression_ratio": 1.74658
+    },
+    {
+      "start": 647.95,
+      "end": 652.91,
+      "text": "that they're doing so again you wanna look for situations not just with a cigarette but in general",
+      "avg_logprob": -0.35152,
+      "no_speech_prob": 0.01909,
+      "compression_ratio": 1.74658
+    },
+    {
+      "start": 652.91,
+      "end": 658.41,
+      "text": "people are closed up keeping their head-fold",
+      "avg_logprob": -0.35152,
+      "no_speech_prob": 0.01909,
+      "compression_ratio": 1.74658
+    },
+    {
+      "start": 660.09,
+      "end": 663.09,
+      "text": "Just making some of themselves as small as possible.",
+      "avg_logprob": -0.29653,
+      "no_speech_prob": 0.00648,
+      "compression_ratio": 1.59322
+    },
+    {
+      "start": 663.17,
+      "end": 666.17,
+      "text": "This versus something like this or relaxed,",
+      "avg_logprob": -0.29653,
+      "no_speech_prob": 0.00648,
+      "compression_ratio": 1.59322
+    },
+    {
+      "start": 666.19,
+      "end": 669.61,
+      "text": "whatever whichever way they go you can gain information from that and again",
+      "avg_logprob": -0.29653,
+      "no_speech_prob": 0.00648,
+      "compression_ratio": 1.59322
+    },
+    {
+      "start": 669.63,
+      "end": 671.53,
+      "text": "Like I said with all these things have repeated again",
+      "avg_logprob": -0.29653,
+      "no_speech_prob": 0.00648,
+      "compression_ratio": 1.59322
+    },
+    {
+      "start": 671.93,
+      "end": 675.89,
+      "text": "You must be thinking about data accumulation don't just use one time",
+      "avg_logprob": -0.29653,
+      "no_speech_prob": 0.00648,
+      "compression_ratio": 1.59322
+    },
+    {
+      "start": 675.97,
+      "end": 679.37,
+      "text": "And correlated is this always means that because then you're going to get fooled",
+      "avg_logprob": -0.29653,
+      "no_speech_prob": 0.00648,
+      "compression_ratio": 1.59322
+    }
+  ]
+}

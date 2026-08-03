@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "reference_id": "user-play-money-flop-abcaa035",
+  "use_policy": "frozen_out_of_domain_audit_only_not_training_or_gate_count",
+  "source": {
+    "source_kind": "explicitly_permitted_virtual_table",
+    "virtual_chips": true,
+    "virtual_chip_basis": "user-provided session context",
+    "player_identity_policy": "local_only",
+    "provider_specific_training_label": false
+  },
+  "image": {
+    "path": "frames/user-play-money-flop.png",
+    "sha256": "abcaa03594d592f4608bc3f43b8f7f7a0a803b38635324c0bdc25ced7ce946ef",
+    "width": 1657,
+    "height": 706
+  },
+  "verified_partial_state": {
+    "layout_id": "six-max",
+    "street": "flop",
+    "hero_cards": ["Ah", "Qh"],
+    "board_cards": ["2s", "8d", "5s"],
+    "pot_bb": "62.4",
+    "visible_seat_slots": 6,
+    "visible_named_players": 5,
+    "sitting_out_slots": 1,
+    "visible_player_stacks_bb": {
+      "st_marian_x": "225.9",
+      "Vicktorio": "85",
+      "milkovich90": "146.1",
+      "StormBreaker86": "100",
+      "FACUMDP": "148.6"
+    }
+  },
+  "unverified_fields": [
+    "dealer_seat",
+    "hero_seat_number",
+    "to_call_bb",
+    "legal_actions",
+    "action_history",
+    "current_actor",
+    "effective_stack_bb"
+  ],
+  "notes": [
+    "The 8 on the flop is a diamond; the Hero therefore does not have a backdoor heart flush draw on this flop.",
+    "Decimal commas visible in the client are normalized to decimal points in BB.",
+    "This single incomplete frame cannot count toward the controlled-visible training or temporal-frame minimums."
+  ]
+}

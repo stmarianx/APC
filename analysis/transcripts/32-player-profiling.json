@@ -1,0 +1,2236 @@
+{
+  "file": "32-Player Profiling.mp4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 856.2346875,
+  "duration_after_vad_seconds": 788.704,
+  "transcription_elapsed_seconds": 426.473,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 2,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 5.87,
+      "end": 8.19,
+      "text": "So when I'm trying to profile a player, obviously",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 8.19,
+      "end": 9.39,
+      "text": "I'm watching the action.",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 9.39,
+      "end": 12.43,
+      "text": "Most importantly I'm watching okay how often are they playing?",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 12.43,
+      "end": 13.31,
+      "text": "You know or are they raising",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 13.31,
+      "end": 14.75,
+      "text": "and are they playing restively but in addition",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 14.75,
+      "end": 15.27,
+      "text": "to that",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 15.27,
+      "end": 16.67,
+      "text": "i'm trying to profile them",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 16.67,
+      "end": 18.03,
+      "text": "sort of away from the table",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 18.03,
+      "end": 18.91,
+      "text": "And um...",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 18.91,
+      "end": 20.03,
+      "text": "The personality traits",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 20.03,
+      "end": 22.11,
+      "text": "I think best do that is simply",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 22.11,
+      "end": 24.19,
+      "text": "how talkative and engaging they're right",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 24.27,
+      "end": 27.15,
+      "text": "typically a player who is more chatty",
+      "avg_logprob": -0.4608,
+      "no_speech_prob": 0.00485,
+      "compression_ratio": 1.72428
+    },
+    {
+      "start": 27.15,
+      "end": 32.03,
+      "text": "and whatnot is going to be a little more loosey-goosee, probably gets you know has tilt issues",
+      "avg_logprob": -0.27262,
+      "no_speech_prob": 0.01316,
+      "compression_ratio": 1.68478
+    },
+    {
+      "start": 32.03,
+      "end": 35.23,
+      "text": "maybe because they get bored in certain situations. And they're there",
+      "avg_logprob": -0.27262,
+      "no_speech_prob": 0.01316,
+      "compression_ratio": 1.68478
+    },
+    {
+      "start": 35.23,
+      "end": 39.31,
+      "text": "to have some fun and action. You know personality types that are typically",
+      "avg_logprob": -0.27262,
+      "no_speech_prob": 0.01316,
+      "compression_ratio": 1.68478
+    },
+    {
+      "start": 39.31,
+      "end": 43.63,
+      "text": "more quiet I would expect to be maybe a little bit more on the conservative side now",
+      "avg_logprob": -0.27262,
+      "no_speech_prob": 0.01316,
+      "compression_ratio": 1.68478
+    },
+    {
+      "start": 43.63,
+      "end": 49.47,
+      "text": "these are not steadfast rules like these are general stereotypes and if you should first",
+      "avg_logprob": -0.27262,
+      "no_speech_prob": 0.01316,
+      "compression_ratio": 1.68478
+    },
+    {
+      "start": 50.47,
+      "end": 53.55,
+      "text": "and foremost focus on the cards or turning it over.",
+      "avg_logprob": -0.27262,
+      "no_speech_prob": 0.01316,
+      "compression_ratio": 1.68478
+    },
+    {
+      "start": 57.15,
+      "end": 61.31,
+      "text": "relatively tight and aggressive for the most part, but otherwise you know",
+      "avg_logprob": -0.40885,
+      "no_speech_prob": 0.00546,
+      "compression_ratio": 1.74144
+    },
+    {
+      "start": 62.31,
+      "end": 62.95,
+      "text": "age",
+      "avg_logprob": -0.40885,
+      "no_speech_prob": 0.00546,
+      "compression_ratio": 1.74144
+    },
+    {
+      "start": 65.11,
+      "end": 67.51,
+      "text": "other mannerisms that they may have. There's a whole",
+      "avg_logprob": -0.40885,
+      "no_speech_prob": 0.00546,
+      "compression_ratio": 1.74144
+    },
+    {
+      "start": 67.51,
+      "end": 71.63,
+      "text": "bevy of things you can look at outside of just simply the way that players",
+      "avg_logprob": -0.40885,
+      "no_speech_prob": 0.00546,
+      "compression_ratio": 1.74144
+    },
+    {
+      "start": 71.63,
+      "end": 75.63,
+      "text": "play their cards that will give you information in terms of who they likely are",
+      "avg_logprob": -0.40885,
+      "no_speech_prob": 0.00546,
+      "compression_ratio": 1.74144
+    },
+    {
+      "start": 75.63,
+      "end": 76.47,
+      "text": "in terms of",
+      "avg_logprob": -0.40885,
+      "no_speech_prob": 0.00546,
+      "compression_ratio": 1.74144
+    },
+    {
+      "start": 76.47,
+      "end": 79.91,
+      "text": "how they're going to play big stressful situations.",
+      "avg_logprob": -0.40885,
+      "no_speech_prob": 0.00546,
+      "compression_ratio": 1.74144
+    },
+    {
+      "start": 79.91,
+      "end": 87.74,
+      "text": "The best way to exploit your opponents",
+      "avg_logprob": -0.40885,
+      "no_speech_prob": 0.00546,
+      "compression_ratio": 1.74144
+    },
+    {
+      "start": 89.02,
+      "end": 90.94,
+      "text": "first and foremost pay attention not only pay attention to the hands-",
+      "avg_logprob": -0.40885,
+      "no_speech_prob": 0.00546,
+      "compression_ratio": 1.74144
+    },
+    {
+      "start": 93.62,
+      "end": 97.06,
+      "text": "they turn over, but if it's a player you've never played with before that just sat down",
+      "avg_logprob": -0.37831,
+      "no_speech_prob": 0.00678,
+      "compression_ratio": 1.72374
+    },
+    {
+      "start": 97.54,
+      "end": 100.26,
+      "text": "pay attention to his mannerisms. Pay attention to what he is.",
+      "avg_logprob": -0.37831,
+      "no_speech_prob": 0.00678,
+      "compression_ratio": 1.72374
+    },
+    {
+      "start": 100.26,
+      "end": 103.62,
+      "text": "Pay attention to how well kept he is. You'll find little tells and",
+      "avg_logprob": -0.37831,
+      "no_speech_prob": 0.00678,
+      "compression_ratio": 1.72374
+    },
+    {
+      "start": 103.62,
+      "end": 107.22,
+      "text": "little nuggets that will tell you a little bit about how this person thinks",
+      "avg_logprob": -0.37831,
+      "no_speech_prob": 0.00678,
+      "compression_ratio": 1.72374
+    },
+    {
+      "start": 107.22,
+      "end": 109.94,
+      "text": "about life and how they're going to approach poker.",
+      "avg_logprob": -0.37831,
+      "no_speech_prob": 0.00678,
+      "compression_ratio": 1.72374
+    },
+    {
+      "start": 109.94,
+      "end": 111.94,
+      "text": "So imagine, you know, you have a guy,",
+      "avg_logprob": -0.37831,
+      "no_speech_prob": 0.00678,
+      "compression_ratio": 1.72374
+    },
+    {
+      "start": 111.94,
+      "end": 119.94,
+      "text": "He's got yellow fingernails, he smokesat-and he's coming in,",
+      "avg_logprob": -0.37831,
+      "no_speech_prob": 0.00678,
+      "compression_ratio": 1.72374
+    },
+    {
+      "start": 123.62,
+      "end": 127.94,
+      "text": "into the first pot, self-discipline may be a struggle for this guy.",
+      "avg_logprob": -0.36981,
+      "no_speech_prob": 0.01263,
+      "compression_ratio": 1.67041
+    },
+    {
+      "start": 127.96,
+      "end": 132.06,
+      "text": "You know organizational skills so he's more likely to be like a looser player",
+      "avg_logprob": -0.36981,
+      "no_speech_prob": 0.01263,
+      "compression_ratio": 1.67041
+    },
+    {
+      "start": 132.08,
+      "end": 135.38,
+      "text": "conversely maybe you take up you know a person who comes in wearing",
+      "avg_logprob": -0.36981,
+      "no_speech_prob": 0.01263,
+      "compression_ratio": 1.67041
+    },
+    {
+      "start": 135.38,
+      "end": 136.38,
+      "text": "a pressed shirt",
+      "avg_logprob": -0.36981,
+      "no_speech_prob": 0.01263,
+      "compression_ratio": 1.67041
+    },
+    {
+      "start": 136.38,
+      "end": 141.74,
+      "text": "with a pocket pen and here and perfectly kept hair now this player",
+      "avg_logprob": -0.36981,
+      "no_speech_prob": 0.01263,
+      "compression_ratio": 1.67041
+    },
+    {
+      "start": 142.06,
+      "end": 145.02,
+      "text": "is more likely to be on the conservative side and careful",
+      "avg_logprob": -0.36981,
+      "no_speech_prob": 0.01263,
+      "compression_ratio": 1.67041
+    },
+    {
+      "start": 145.02,
+      "end": 147.86,
+      "text": "So all these little things are not",
+      "avg_logprob": -0.36981,
+      "no_speech_prob": 0.01263,
+      "compression_ratio": 1.67041
+    },
+    {
+      "start": 147.86,
+      "end": 150.22,
+      "text": "always or never right but they can make decisions better",
+      "avg_logprob": -0.36981,
+      "no_speech_prob": 0.01263,
+      "compression_ratio": 1.67041
+    },
+    {
+      "start": 150.22,
+      "end": 154.58,
+      "text": "But they can help you to make decisions better and ultimately what's really going",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 154.58,
+      "end": 157.5,
+      "text": "to help is when you start see what hands are turning over.",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 157.5,
+      "end": 159.18,
+      "text": "And the ways in which they're playing their hands,",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 159.18,
+      "end": 160.18,
+      "text": "and are they aggressive?",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 160.18,
+      "end": 161.18,
+      "text": "Are they weak?",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 161.18,
+      "end": 164.54,
+      "text": "That first 20-30 minutes you play with somebody new...",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 164.54,
+      "end": 166.7,
+      "text": "Super important to focus on them",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 166.7,
+      "end": 176.06,
+      "text": "and try to get an understanding of who you're dealing with.",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 178.06,
+      "end": 179.1,
+      "text": "While it's obviously important to really pay attention",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 180.1,
+      "end": 180.9,
+      "text": "You're a hand",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 181.1,
+      "end": 184.1,
+      "text": "and your own The flop or whatever.",
+      "avg_logprob": -0.48903,
+      "no_speech_prob": 0.01107,
+      "compression_ratio": 1.64286
+    },
+    {
+      "start": 186.78,
+      "end": 189.26,
+      "text": "to pay attention when you're out of the hand",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 189.28,
+      "end": 192.1,
+      "text": "because your gonna pick up so much information sometimes",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 192.1,
+      "end": 193.06,
+      "text": "that will be valuable.",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 193.06,
+      "end": 194.9,
+      "text": "I have a real life example of this,",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 194.9,
+      "end": 197.26,
+      "text": "I was playing in a World Series of Poker event",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 197.26,
+      "end": 199.18,
+      "text": "with a guy named Mike Matisso",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 199.18,
+      "end": 200.54,
+      "text": "and Mike in the first hour",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 200.54,
+      "end": 202.34,
+      "text": "was not paying any attention at all",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 202.34,
+      "end": 203.74,
+      "text": "when he was out of pots.",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 203.82,
+      "end": 205.54,
+      "text": "He ends up getting involved",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 205.54,
+      "end": 209.26,
+      "text": "with the tightest player at the table who never bluffed always had",
+      "avg_logprob": -0.29705,
+      "no_speech_prob": 0.03578,
+      "compression_ratio": 1.59696
+    },
+    {
+      "start": 209.26,
+      "end": 212.06,
+      "text": "the absolute best possible hand imaginable.",
+      "avg_logprob": -0.36794,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.51955
+    },
+    {
+      "start": 212.1,
+      "end": 213.62,
+      "text": "So it was a hand where that player raised,",
+      "avg_logprob": -0.36794,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.51955
+    },
+    {
+      "start": 213.62,
+      "end": 214.62,
+      "text": "Mike re-raised,",
+      "avg_logprob": -0.36794,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.51955
+    },
+    {
+      "start": 214.62,
+      "end": 216.14,
+      "text": "the player rerazed again,",
+      "avg_logprob": -0.36794,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.51955
+    },
+    {
+      "start": 216.14,
+      "end": 218.18,
+      "text": "Mike went all in with a pair of queens",
+      "avg_logprob": -0.36794,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.51955
+    },
+    {
+      "start": 218.18,
+      "end": 219.38,
+      "text": "and everyone at table was like",
+      "avg_logprob": -0.36794,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.51955
+    },
+    {
+      "start": 219.38,
+      "end": 222.42,
+      "text": "Mike this guy has Aces you didn't know that",
+      "avg_logprob": -0.36794,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.51955
+    },
+    {
+      "start": 222.42,
+      "end": 223.06,
+      "text": "so because Mike wasn't paying",
+      "avg_logprob": -0.36794,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.51955
+    },
+    {
+      "start": 223.06,
+      "end": 224.82,
+      "text": "because Mike wasn't paying attention,",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 224.86,
+      "end": 227.62,
+      "text": "he lost a huge pot that he could have gotten away from.",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 227.62,
+      "end": 228.82,
+      "text": "And that'll happen to you too",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 228.82,
+      "end": 230.14,
+      "text": "like if you don't notice",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 230.14,
+      "end": 231.78,
+      "text": "that this player on your left",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 231.78,
+      "end": 233.74,
+      "text": "has been bluffing five or six times in a row",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 233.74,
+      "end": 235.5,
+      "text": "You'll find yourself in a marginal situation",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 235.5,
+      "end": 238.18,
+      "text": "say oh, you know what I should fold this hand?",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 238.18,
+      "end": 239.14,
+      "text": "If you would've been",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 239.14,
+      "end": 241.82,
+      "text": "had adjusted your play there's other things",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 241.86,
+      "end": 244.14,
+      "text": "to be looking for two physical tells",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 244.38,
+      "end": 244.94,
+      "text": "pone pokerkinger is",
+      "avg_logprob": -0.43047,
+      "no_speech_prob": 0.00542,
+      "compression_ratio": 1.62082
+    },
+    {
+      "start": 260.14,
+      "end": 261.78,
+      "text": "note-taking and you know,",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 261.78,
+      "end": 262.98,
+      "text": "You can color code players.",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 262.98,
+      "end": 264.18,
+      "text": "And typically what you want to do",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 264.18,
+      "end": 265.66,
+      "text": "if you're going to color code certain",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 265.66,
+      "end": 268.66,
+      "text": "players is group them into different categories.",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 268.66,
+      "end": 269.86,
+      "text": "You've got your sharks,",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 269.86,
+      "end": 270.94,
+      "text": "you've got your whales,",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 270.94,
+      "end": 272.18,
+      "text": "you have your recreation place,",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 272.18,
+      "end": 273.02,
+      "text": "you get your maniacs,",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 273.02,
+      "end": 274.02,
+      "text": "you got your maniacts,",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 274.02,
+      "end": 275.02,
+      "text": "you got your tags,",
+      "avg_logprob": -0.545,
+      "no_speech_prob": 0.01427,
+      "compression_ratio": 1.7377
+    },
+    {
+      "start": 275.02,
+      "end": 278.86,
+      "text": "aggressive players, you got your lags and you can create a wide spectrum of",
+      "avg_logprob": -0.33806,
+      "no_speech_prob": 0.01658,
+      "compression_ratio": 1.89474
+    },
+    {
+      "start": 278.86,
+      "end": 282.46,
+      "text": "groupings. And then it's important to like look for tendencies when",
+      "avg_logprob": -0.33806,
+      "no_speech_prob": 0.01658,
+      "compression_ratio": 1.89474
+    },
+    {
+      "start": 282.46,
+      "end": 284.66,
+      "text": "you're putting players into a group like what are you looking for",
+      "avg_logprob": -0.33806,
+      "no_speech_prob": 0.01658,
+      "compression_ratio": 1.89474
+    },
+    {
+      "start": 284.66,
+      "end": 286.5,
+      "text": "when you're looking for? When you're looking for a whale right so somebody",
+      "avg_logprob": -0.33806,
+      "no_speech_prob": 0.01658,
+      "compression_ratio": 1.89474
+    },
+    {
+      "start": 286.5,
+      "end": 289.5,
+      "text": "A whale is essentially like you know obviously like a big fish",
+      "avg_logprob": -0.33806,
+      "no_speech_prob": 0.01658,
+      "compression_ratio": 1.89474
+    },
+    {
+      "start": 289.5,
+      "end": 298.98,
+      "text": "Somebody who's very like a wail is essentially like you know obvious like a big-fish",
+      "avg_logprob": -0.33806,
+      "no_speech_prob": 0.01658,
+      "compression_ratio": 1.89474
+    },
+    {
+      "start": 305.02,
+      "end": 306.02,
+      "text": "And is he raising?",
+      "avg_logprob": -0.4103,
+      "no_speech_prob": 0.00782,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 306.02,
+      "end": 308.02,
+      "text": "Is he raising a lot or is just calling a lot?",
+      "avg_logprob": -0.4103,
+      "no_speech_prob": 0.00782,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 308.02,
+      "end": 312.74,
+      "text": "Typically, a whale is going to have a profile that looks like high v-pip means plays",
+      "avg_logprob": -0.4103,
+      "no_speech_prob": 0.00782,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 312.74,
+      "end": 315.98,
+      "text": "a lot of hands but also doesn't do a lot of racing.",
+      "avg_logprob": -0.4103,
+      "no_speech_prob": 0.00782,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 315.98,
+      "end": 320.46,
+      "text": "Very meek very weak calls all the way around to the river and it takes initiative you know",
+      "avg_logprob": -0.4103,
+      "no_speech_prob": 0.00782,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 320.46,
+      "end": 323.58,
+      "text": "and loses at a rate like that so you see that sort of tendency.",
+      "avg_logprob": -0.4103,
+      "no_speech_prob": 0.00782,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 323.58,
+      "end": 327.62,
+      "text": "You can almost certainly categorize that player as a wail.",
+      "avg_logprob": -0.4103,
+      "no_speech_prob": 0.00782,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 327.62,
+      "end": 332.62,
+      "text": "yourself.",
+      "avg_logprob": -0.4103,
+      "no_speech_prob": 0.00782,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 335.02,
+      "end": 337.02,
+      "text": "So he's three betting,",
+      "avg_logprob": -0.39752,
+      "no_speech_prob": 0.02402,
+      "compression_ratio": 1.13978
+    },
+    {
+      "start": 337.02,
+      "end": 338.02,
+      "text": "He's playing very aggressively.",
+      "avg_logprob": -0.39752,
+      "no_speech_prob": 0.02402,
+      "compression_ratio": 1.13978
+    },
+    {
+      "start": 338.02,
+      "end": 340.02,
+      "text": "Well the chances are that's more likely to be a pro",
+      "avg_logprob": -0.39752,
+      "no_speech_prob": 0.02402,
+      "compression_ratio": 1.13978
+    },
+    {
+      "start": 340.02,
+      "end": 342.78,
+      "text": "pro seems more like a tag which is",
+      "avg_logprob": -0.53298,
+      "no_speech_prob": 0.012,
+      "compression_ratio": 1.92105
+    },
+    {
+      "start": 342.78,
+      "end": 346.26,
+      "text": "like a tight aggressive type player. There's various types of",
+      "avg_logprob": -0.53298,
+      "no_speech_prob": 0.012,
+      "compression_ratio": 1.92105
+    },
+    {
+      "start": 346.26,
+      "end": 348.1,
+      "text": "pros as well you're going to run into that's why",
+      "avg_logprob": -0.53298,
+      "no_speech_prob": 0.012,
+      "compression_ratio": 1.92105
+    },
+    {
+      "start": 348.18,
+      "end": 350.58,
+      "text": "you can almost separate them into two groups the tags and",
+      "avg_logprob": -0.53298,
+      "no_speech_prob": 0.012,
+      "compression_ratio": 1.92105
+    },
+    {
+      "start": 350.58,
+      "end": 352.18,
+      "text": "the lags what is the lag? The leg,",
+      "avg_logprob": -0.53298,
+      "no_speech_prob": 0.012,
+      "compression_ratio": 1.92105
+    },
+    {
+      "start": 352.22,
+      "end": 354.74,
+      "text": "the loose-agg is the lose ag is the loose aggressive player those ones",
+      "avg_logprob": -0.53298,
+      "no_speech_prob": 0.012,
+      "compression_ratio": 1.92105
+    },
+    {
+      "start": 354.74,
+      "end": 358.02,
+      "text": "can be difficult to play against as well and they're important to note as well so",
+      "avg_logprob": -0.53298,
+      "no_speech_prob": 0.012,
+      "compression_ratio": 1.92105
+    },
+    {
+      "start": 358.02,
+      "end": 359.78,
+      "text": "a loose aggressive player still gonna be aggressive but they're just",
+      "avg_logprob": -0.53298,
+      "no_speech_prob": 0.012,
+      "compression_ratio": 1.92105
+    },
+    {
+      "start": 359.78,
+      "end": 361.78,
+      "text": "but they're doing with a lot more than someone who",
+      "avg_logprob": -0.53298,
+      "no_speech_prob": 0.012,
+      "compression_ratio": 1.92105
+    },
+    {
+      "start": 361.78,
+      "end": 365.22,
+      "text": "more hands so they're going to have a weaker range. The tight aggressive player",
+      "avg_logprob": -0.17937,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.54023
+    },
+    {
+      "start": 365.22,
+      "end": 369.94,
+      "text": "you can define a little bit more clearly their rage now when Maniac is typically someone who",
+      "avg_logprob": -0.17937,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.54023
+    },
+    {
+      "start": 369.94,
+      "end": 375.46,
+      "text": "also plays a lot of hands and plays them aggressively but without any sort of real plan or game",
+      "avg_logprob": -0.17937,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.54023
+    },
+    {
+      "start": 391.78,
+      "end": 395.94,
+      "text": "way. Maniacs, you don't want to mess with a maniac just press the check",
+      "avg_logprob": -0.36335,
+      "no_speech_prob": 0.01706,
+      "compression_ratio": 1.77011
+    },
+    {
+      "start": 395.94,
+      "end": 398.82,
+      "text": "button and check check check let them bet for you",
+      "avg_logprob": -0.36335,
+      "no_speech_prob": 0.01706,
+      "compression_ratio": 1.77011
+    },
+    {
+      "start": 398.84,
+      "end": 400.82,
+      "text": "and then wait for the river and take all their chips",
+      "avg_logprob": -0.36335,
+      "no_speech_prob": 0.01706,
+      "compression_ratio": 1.77011
+    },
+    {
+      "start": 400.82,
+      "end": 405.06,
+      "text": "so the value here really in is essentially make roadmapping",
+      "avg_logprob": -0.36335,
+      "no_speech_prob": 0.01706,
+      "compression_ratio": 1.77011
+    },
+    {
+      "start": 405.06,
+      "end": 408.9,
+      "text": "a table for yourself so that you have a much better idea going forward of who",
+      "avg_logprob": -0.36335,
+      "no_speech_prob": 0.01706,
+      "compression_ratio": 1.77011
+    },
+    {
+      "start": 408.9,
+      "end": 413.06,
+      "text": "you're up against how to defend against that so that's something you can do online",
+      "avg_logprob": -0.36335,
+      "no_speech_prob": 0.01706,
+      "compression_ratio": 1.77011
+    },
+    {
+      "start": 414.06,
+      "end": 422.42,
+      "text": "but she can also do it live well",
+      "avg_logprob": -0.36335,
+      "no_speech_prob": 0.01706,
+      "compression_ratio": 1.77011
+    },
+    {
+      "start": 422.42,
+      "end": 423.7,
+      "text": "thing you need to also understand",
+      "avg_logprob": -0.36335,
+      "no_speech_prob": 0.01706,
+      "compression_ratio": 1.77011
+    },
+    {
+      "start": 423.7,
+      "end": 426.78,
+      "text": "categorizing players into different groups. I mean, you can put them in four",
+      "avg_logprob": -0.41809,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.70922
+    },
+    {
+      "start": 426.78,
+      "end": 430.14,
+      "text": "groups sure if you choose to but there's an infinite number of groups. There's",
+      "avg_logprob": -0.41809,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.70922
+    },
+    {
+      "start": 430.14,
+      "end": 434.06,
+      "text": "all types of player types. You know? You have some player types that actually",
+      "avg_logprob": -0.41809,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.70922
+    },
+    {
+      "start": 434.06,
+      "end": 437.34,
+      "text": "shift and change based on how they're doing in the game so you might have a",
+      "avg_logprob": -0.41809,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.70922
+    },
+    {
+      "start": 437.34,
+      "end": 441.58,
+      "text": "player who is normally a tag whose very tight aggressive but then when he loses three",
+      "avg_logprob": -0.41809,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.70922
+    },
+    {
+      "start": 441.58,
+      "end": 445.66,
+      "text": "3 pots in their row he goes from tagged maniacs! So we're going him a hybrid player or",
+      "avg_logprob": -0.41809,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.70922
+    },
+    {
+      "start": 445.66,
+      "end": 448.86,
+      "text": "right? So you want to pay attention to that. There's a whole bunch of different groupings,",
+      "avg_logprob": -0.40981,
+      "no_speech_prob": 0.02012,
+      "compression_ratio": 1.67895
+    },
+    {
+      "start": 448.86,
+      "end": 452.14,
+      "text": "You may have some tighter players who do a lot of bluffing",
+      "avg_logprob": -0.40981,
+      "no_speech_prob": 0.02012,
+      "compression_ratio": 1.67895
+    },
+    {
+      "start": 452.14,
+      "end": 454.9,
+      "text": "You may have some tighter player who do almost no bluffing",
+      "avg_logprob": -0.40981,
+      "no_speech_prob": 0.02012,
+      "compression_ratio": 1.67895
+    },
+    {
+      "start": 455.22,
+      "end": 456.86,
+      "text": "there is an endless stream of",
+      "avg_logprob": -0.40981,
+      "no_speech_prob": 0.02012,
+      "compression_ratio": 1.67895
+    },
+    {
+      "start": 457.34,
+      "end": 461.34,
+      "text": "Groupings that you can put players into and again as I mention with online poker",
+      "avg_logprob": -0.40981,
+      "no_speech_prob": 0.02012,
+      "compression_ratio": 1.67895
+    },
+    {
+      "start": 461.34,
+      "end": 465.74,
+      "text": "It's even more easy and accessible to do that because you can keep notes",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 465.76,
+      "end": 467.02,
+      "text": "in very specific notes on players,",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 467.02,
+      "end": 468.42,
+      "text": "You can look at hand histories later",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 468.44,
+      "end": 471.14,
+      "text": "And really kind of deeply study what your opponents are doing",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 478.41,
+      "end": 479.97,
+      "text": "What you'll generally see",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 479.97,
+      "end": 481.89,
+      "text": "you know at the lower stakes is a wide variety",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 481.89,
+      "end": 482.89,
+      "text": "Of player types.",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 482.89,
+      "end": 485.09,
+      "text": "A lot more looser beginner but as you move up",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 485.09,
+      "end": 486.97,
+      "text": "In steaks and you get to the highest levels it",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 486.97,
+      "end": 488.45,
+      "text": "if you slowly progress",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 488.45,
+      "end": 493.97,
+      "text": "and you're going to see just a lus aggressive as well",
+      "avg_logprob": -0.42708,
+      "no_speech_prob": 0.01068,
+      "compression_ratio": 1.64664
+    },
+    {
+      "start": 497.97,
+      "end": 501.73,
+      "text": "you know, just really good overall players that can ebb and flow between",
+      "avg_logprob": -0.26827,
+      "no_speech_prob": 0.00631,
+      "compression_ratio": 1.70412
+    },
+    {
+      "start": 501.73,
+      "end": 505.17,
+      "text": "that. And you start to see a lot less of the limping. You see a lot less",
+      "avg_logprob": -0.26827,
+      "no_speech_prob": 0.00631,
+      "compression_ratio": 1.70412
+    },
+    {
+      "start": 505.17,
+      "end": 509.73,
+      "text": "of the just calling or the...you know, the totally honest ranges where they bet",
+      "avg_logprob": -0.26827,
+      "no_speech_prob": 0.00631,
+      "compression_ratio": 1.70412
+    },
+    {
+      "start": 509.73,
+      "end": 514.13,
+      "text": "with top pair and check when they don't have it so as you move up in stakes",
+      "avg_logprob": -0.26827,
+      "no_speech_prob": 0.00631,
+      "compression_ratio": 1.70412
+    },
+    {
+      "start": 514.13,
+      "end": 520.45,
+      "text": "your ability to read players becomes enhanced more important because everyone is playing at",
+      "avg_logprob": -0.26827,
+      "no_speech_prob": 0.00631,
+      "compression_ratio": 1.70412
+    },
+    {
+      "start": 520.45,
+      "end": 533.3,
+      "text": "at a much higher level. So you know we've talked about paying",
+      "avg_logprob": -0.26827,
+      "no_speech_prob": 0.00631,
+      "compression_ratio": 1.70412
+    },
+    {
+      "start": 534.98,
+      "end": 539.22,
+      "text": "players and do all kinds of stuff. And you definitely want to keep that in your memory bank,",
+      "avg_logprob": -0.38434,
+      "no_speech_prob": 0.01785,
+      "compression_ratio": 1.64539
+    },
+    {
+      "start": 539.22,
+      "end": 543.62,
+      "text": "but it's also important to note the dynamic changes when it's used specifically right?",
+      "avg_logprob": -0.38434,
+      "no_speech_prob": 0.01785,
+      "compression_ratio": 1.64539
+    },
+    {
+      "start": 543.62,
+      "end": 547.54,
+      "text": "So if you notice that John is picking on Bill",
+      "avg_logprob": -0.38434,
+      "no_speech_prob": 0.01785,
+      "compression_ratio": 1.64539
+    },
+    {
+      "start": 547.62,
+      "end": 550.02,
+      "text": "Right and bluffing them and all that stuff,",
+      "avg_logprob": -0.38434,
+      "no_speech_prob": 0.01785,
+      "compression_ratio": 1.64539
+    },
+    {
+      "start": 550.1,
+      "end": 552.1,
+      "text": "But Jon has never actually bluffed you yet,",
+      "avg_logprob": -0.38434,
+      "no_speech_prob": 0.01785,
+      "compression_ratio": 1.64539
+    },
+    {
+      "start": 552.1,
+      "end": 558.42,
+      "text": "right so when you know John's in a pot we don't necessarily give him credit for being able",
+      "avg_logprob": -0.38434,
+      "no_speech_prob": 0.01785,
+      "compression_ratio": 1.64539
+    },
+    {
+      "start": 558.42,
+      "end": 560.98,
+      "text": "able to bluff us until we've... he's actually done it to us",
+      "avg_logprob": -0.38434,
+      "no_speech_prob": 0.01785,
+      "compression_ratio": 1.64539
+    },
+    {
+      "start": 560.98,
+      "end": 566.02,
+      "text": "So while we take this information and you have to understand the dynamic, maybe John's",
+      "avg_logprob": -0.27239,
+      "no_speech_prob": 0.01051,
+      "compression_ratio": 1.65677
+    },
+    {
+      "start": 566.02,
+      "end": 567.02,
+      "text": "afraid of you.",
+      "avg_logprob": -0.27239,
+      "no_speech_prob": 0.01051,
+      "compression_ratio": 1.65677
+    },
+    {
+      "start": 567.02,
+      "end": 568.02,
+      "text": "You know?",
+      "avg_logprob": -0.27239,
+      "no_speech_prob": 0.01051,
+      "compression_ratio": 1.65677
+    },
+    {
+      "start": 568.02,
+      "end": 570.78,
+      "text": "Maybe he doesn't want to mess with you but feels like he can bully Bill so that",
+      "avg_logprob": -0.27239,
+      "no_speech_prob": 0.01051,
+      "compression_ratio": 1.65677
+    },
+    {
+      "start": 570.78,
+      "end": 575.58,
+      "text": "dynamic changes person-to-person it still extremely valuable from a tendency perspective",
+      "avg_logprob": -0.27239,
+      "no_speech_prob": 0.01051,
+      "compression_ratio": 1.65677
+    },
+    {
+      "start": 575.58,
+      "end": 579.3,
+      "text": "to see how often this person is willing to bluff at all, but understand as well",
+      "avg_logprob": -0.27239,
+      "no_speech_prob": 0.01051,
+      "compression_ratio": 1.65677
+    },
+    {
+      "start": 579.3,
+      "end": 592.28,
+      "text": "that may change against player A versus Player B.",
+      "avg_logprob": -0.27239,
+      "no_speech_prob": 0.01051,
+      "compression_ratio": 1.65677
+    },
+    {
+      "start": 592.28,
+      "end": 596.72,
+      "text": "The most profitable player type to play again is obviously... for me personally I think the",
+      "avg_logprob": -0.27239,
+      "no_speech_prob": 0.01051,
+      "compression_ratio": 1.65677
+    },
+    {
+      "start": 598.4,
+      "end": 600.4,
+      "text": "the beginning player,",
+      "avg_logprob": -0.42741,
+      "no_speech_prob": 0.01447,
+      "compression_ratio": 1.51149
+    },
+    {
+      "start": 600.4,
+      "end": 602.4,
+      "text": "The weak timid one that's not going to put you in spots",
+      "avg_logprob": -0.42741,
+      "no_speech_prob": 0.01447,
+      "compression_ratio": 1.51149
+    },
+    {
+      "start": 602.4,
+      "end": 603.4,
+      "text": "to guess.",
+      "avg_logprob": -0.42741,
+      "no_speech_prob": 0.01447,
+      "compression_ratio": 1.51149
+    },
+    {
+      "start": 603.4,
+      "end": 605.4,
+      "text": "You know some might call a maniac easier",
+      "avg_logprob": -0.42741,
+      "no_speech_prob": 0.01447,
+      "compression_ratio": 1.51149
+    },
+    {
+      "start": 605.4,
+      "end": 606.4,
+      "text": "more profitable to play against",
+      "avg_logprob": -0.42741,
+      "no_speech_prob": 0.01447,
+      "compression_ratio": 1.51149
+    },
+    {
+      "start": 607.4,
+      "end": 608.4,
+      "text": "and while you could make big",
+      "avg_logprob": -0.42741,
+      "no_speech_prob": 0.01447,
+      "compression_ratio": 1.51149
+    },
+    {
+      "start": 608.4,
+      "end": 610.4,
+      "text": "or win big pots of maniac",
+      "avg_logprob": -0.42741,
+      "no_speech_prob": 0.01447,
+      "compression_ratio": 1.51149
+    },
+    {
+      "start": 610.4,
+      "end": 611.4,
+      "text": "it's also gonna put you in a lot",
+      "avg_logprob": -0.42741,
+      "no_speech_prob": 0.01447,
+      "compression_ratio": 1.51149
+    },
+    {
+      "start": 611.4,
+      "end": 612.4,
+      "text": "of tough spots",
+      "avg_logprob": -0.42741,
+      "no_speech_prob": 0.01447,
+      "compression_ratio": 1.51149
+    },
+    {
+      "start": 612.4,
+      "end": 615.96,
+      "text": "and head-scratching situations that might put you to the test for all your chips.",
+      "avg_logprob": -0.32906,
+      "no_speech_prob": 0.00304,
+      "compression_ratio": 1.68914
+    },
+    {
+      "start": 615.96,
+      "end": 617.16,
+      "text": "A week,",
+      "avg_logprob": -0.32906,
+      "no_speech_prob": 0.00304,
+      "compression_ratio": 1.68914
+    },
+    {
+      "start": 617.16,
+      "end": 620.68,
+      "text": "you know timid beginning player they're going to play so honest",
+      "avg_logprob": -0.32906,
+      "no_speech_prob": 0.00304,
+      "compression_ratio": 1.68914
+    },
+    {
+      "start": 620.68,
+      "end": 622.96,
+      "text": "and so straightforward I mean just think about it",
+      "avg_logprob": -0.32906,
+      "no_speech_prob": 0.00304,
+      "compression_ratio": 1.68914
+    },
+    {
+      "start": 622.96,
+      "end": 625.56,
+      "text": "isn't easier to play against somebody when you know pretty much what their",
+      "avg_logprob": -0.32906,
+      "no_speech_prob": 0.00304,
+      "compression_ratio": 1.68914
+    },
+    {
+      "start": 625.56,
+      "end": 626.44,
+      "text": "whole cards are",
+      "avg_logprob": -0.32906,
+      "no_speech_prob": 0.00304,
+      "compression_ratio": 1.68914
+    },
+    {
+      "start": 626.44,
+      "end": 628.04,
+      "text": "and that's a type of player that i will",
+      "avg_logprob": -0.32906,
+      "no_speech_prob": 0.00304,
+      "compression_ratio": 1.68914
+    },
+    {
+      "start": 628.04,
+      "end": 629.76,
+      "text": "push around when they don't have anything",
+      "avg_logprob": -0.32906,
+      "no_speech_prob": 0.00304,
+      "compression_ratio": 1.68914
+    },
+    {
+      "start": 629.76,
+      "end": 634.36,
+      "text": "and get away when they do remember now we don't like an always or never so",
+      "avg_logprob": -0.32906,
+      "no_speech_prob": 0.00304,
+      "compression_ratio": 1.68914
+    },
+    {
+      "start": 634.36,
+      "end": 638.88,
+      "text": "When you see a beginning player come to the table, we can infer some ideas about",
+      "avg_logprob": -0.51813,
+      "no_speech_prob": 0.0079,
+      "compression_ratio": 1.65934
+    },
+    {
+      "start": 638.88,
+      "end": 640.36,
+      "text": "how they're likely to play.",
+      "avg_logprob": -0.51813,
+      "no_speech_prob": 0.0079,
+      "compression_ratio": 1.65934
+    },
+    {
+      "start": 640.36,
+      "end": 643.44,
+      "text": "But there's no always or never so typically what you are going to see if you",
+      "avg_logprob": -0.51813,
+      "no_speech_prob": 0.0079,
+      "compression_ratio": 1.65934
+    },
+    {
+      "start": 643.44,
+      "end": 646.84,
+      "text": "see a beginning player is as far as a profile goes, they're usually gonna be weak",
+      "avg_logprob": -0.51813,
+      "no_speech_prob": 0.0079,
+      "compression_ratio": 1.65934
+    },
+    {
+      "start": 646.84,
+      "end": 646.88,
+      "text": "and being weak timid and it was...",
+      "avg_logprob": -0.51813,
+      "no_speech_prob": 0.0079,
+      "compression_ratio": 1.65934
+    },
+    {
+      "start": 646.88,
+      "end": 650.96,
+      "text": "teamed and loose. So you're going to see a player that limps in",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 650.98,
+      "end": 653.2,
+      "text": "and just calls the bat, and remember that's not something we really want",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 653.2,
+      "end": 655.4,
+      "text": "to do if you're in a game whether people are doing it",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 655.4,
+      "end": 658.48,
+      "text": "We can get away with this sometimes but typically if you're coming into",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 658.48,
+      "end": 659.88,
+      "text": "To a hand you wanna be raising so beginning",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 659.92,
+      "end": 660.28,
+      "text": "So an beginning play on beginning players usually?",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 660.28,
+      "end": 662.52,
+      "text": "So a beginning player is usually not gonna do a lot of bluffing",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 662.76,
+      "end": 663.32,
+      "text": "They're going",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 663.56,
+      "end": 664.0,
+      "text": "they're getting way for",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 664.04,
+      "end": 664.2,
+      "text": "or some times But typically If you're coming up your coming out",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 664.28,
+      "end": 664.36,
+      "text": "It",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 665.2,
+      "end": 666.64,
+      "text": "at",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 666.92,
+      "end": 666.96,
+      "text": "I'm like",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 667.16,
+      "end": 667.32,
+      "text": "if you're coming from",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 668.12,
+      "end": 671.04,
+      "text": "You're coming into a two",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 671.56,
+      "end": 674.2,
+      "text": "to a",
+      "avg_logprob": -1.62329,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 2.18568
+    },
+    {
+      "start": 674.2,
+      "end": 675.2,
+      "text": "I typically think, all right.",
+      "avg_logprob": -0.53741,
+      "no_speech_prob": 0.01247,
+      "compression_ratio": 1.2605
+    },
+    {
+      "start": 675.2,
+      "end": 677.2,
+      "text": "It's going to be an ABC type player week",
+      "avg_logprob": -0.53741,
+      "no_speech_prob": 0.01247,
+      "compression_ratio": 1.2605
+    },
+    {
+      "start": 677.2,
+      "end": 679.7,
+      "text": "and gonna out fundamental them when they check",
+      "avg_logprob": -0.53741,
+      "no_speech_prob": 0.01247,
+      "compression_ratio": 1.2605
+    },
+    {
+      "start": 679.7,
+      "end": 681.2,
+      "text": "I'm going to take pots from them",
+      "avg_logprob": -0.53741,
+      "no_speech_prob": 0.01247,
+      "compression_ratio": 1.2605
+    },
+    {
+      "start": 681.2,
+      "end": 684.64,
+      "text": "Certainly, always happy to see beginners come",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 684.66,
+      "end": 686.72,
+      "text": "in my table or any new player you know that",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 686.72,
+      "end": 689.6,
+      "text": "you've never seen before. You always assume first and foremost",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 689.64,
+      "end": 691.6,
+      "text": "that this could be a good opportunity",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 699.25,
+      "end": 700.73,
+      "text": "without question the easiest players",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 700.73,
+      "end": 702.17,
+      "text": "to play against are passive players",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 702.17,
+      "end": 705.17,
+      "text": "so a passive player is going to check",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 705.17,
+      "end": 708.13,
+      "text": "and call a lot more hands than a more aggressive player who may",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 708.69,
+      "end": 709.89,
+      "text": "cheque race or bet himself",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 709.89,
+      "end": 712.49,
+      "text": "So you have to assume that when a player checked",
+      "avg_logprob": -0.48134,
+      "no_speech_prob": 0.0096,
+      "compression_ratio": 1.71595
+    },
+    {
+      "start": 712.49,
+      "end": 716.89,
+      "text": "calls a lot and they're passive, it doesn't mean the same thing as an aggressive player.",
+      "avg_logprob": -0.46056,
+      "no_speech_prob": 0.01828,
+      "compression_ratio": 1.89655
+    },
+    {
+      "start": 716.89,
+      "end": 720.45,
+      "text": "So you might want to give it a little bit more credit to some degree.",
+      "avg_logprob": -0.46056,
+      "no_speech_prob": 0.01828,
+      "compression_ratio": 1.89655
+    },
+    {
+      "start": 720.45,
+      "end": 724.21,
+      "text": "If they ever do raise you a passive player, you should always assume that's a much stronger",
+      "avg_logprob": -0.46056,
+      "no_speech_prob": 0.01828,
+      "compression_ratio": 1.89655
+    },
+    {
+      "start": 724.21,
+      "end": 726.01,
+      "text": "hand than the average player then the average player would have been having the average player",
+      "avg_logprob": -0.46056,
+      "no_speech_prob": 0.01828,
+      "compression_ratio": 1.89655
+    },
+    {
+      "start": 726.01,
+      "end": 730.49,
+      "text": "than the average player who has so what allows you to get away from a lot of second best hands.",
+      "avg_logprob": -0.46056,
+      "no_speech_prob": 0.01828,
+      "compression_ratio": 1.89655
+    },
+    {
+      "start": 730.49,
+      "end": 741.09,
+      "text": "...so you make a very good flush on your opponent or a",
+      "avg_logprob": -0.46056,
+      "no_speech_prob": 0.01828,
+      "compression_ratio": 1.89655
+    },
+    {
+      "start": 742.49,
+      "end": 745.69,
+      "text": "I can fold. Whereas against an aggressive player, you're never going to fold that",
+      "avg_logprob": -0.37912,
+      "no_speech_prob": 0.01573,
+      "compression_ratio": 1.84014
+    },
+    {
+      "start": 745.69,
+      "end": 756.06,
+      "text": "in it. Probably one of the more common questions I get is how do you deal with",
+      "avg_logprob": -0.37912,
+      "no_speech_prob": 0.01573,
+      "compression_ratio": 1.84014
+    },
+    {
+      "start": 756.06,
+      "end": 758.7,
+      "text": "aggressive players? Nobody wants to play with aggressive players especially",
+      "avg_logprob": -0.37912,
+      "no_speech_prob": 0.01573,
+      "compression_ratio": 1.84014
+    },
+    {
+      "start": 758.7,
+      "end": 762.66,
+      "text": "beginners they are just very frustrated by because partly this game was",
+      "avg_logprob": -0.37912,
+      "no_speech_prob": 0.01573,
+      "compression_ratio": 1.84014
+    },
+    {
+      "start": 762.66,
+      "end": 765.98,
+      "text": "designed to be an aggressive player. You know an aggressive player tends",
+      "avg_logprob": -0.37912,
+      "no_speech_prob": 0.01573,
+      "compression_ratio": 1.84014
+    },
+    {
+      "start": 765.98,
+      "end": 770.46,
+      "text": "to mean a good player right obviously you can take that to the extreme and become a maniac",
+      "avg_logprob": -0.37912,
+      "no_speech_prob": 0.01573,
+      "compression_ratio": 1.84014
+    },
+    {
+      "start": 770.48,
+      "end": 774.58,
+      "text": "now if we feel like a player is going past a playing pass aggression",
+      "avg_logprob": -0.37912,
+      "no_speech_prob": 0.01573,
+      "compression_ratio": 1.84014
+    },
+    {
+      "start": 774.58,
+      "end": 779.58,
+      "text": "The real only defense you have is to play a slightly tighter range against that player,",
+      "avg_logprob": -0.44398,
+      "no_speech_prob": 0.02114,
+      "compression_ratio": 1.11538
+    },
+    {
+      "start": 779.58,
+      "end": 785.28,
+      "text": "range of hands and also slow play more often. So if your opponent's",
+      "avg_logprob": -0.40927,
+      "no_speech_prob": 0.02517,
+      "compression_ratio": 1.75836
+    },
+    {
+      "start": 785.28,
+      "end": 788.8,
+      "text": "tendency, and their weakness is that they bet too often and they bluff to",
+      "avg_logprob": -0.40927,
+      "no_speech_prob": 0.02517,
+      "compression_ratio": 1.75836
+    },
+    {
+      "start": 788.8,
+      "end": 790.88,
+      "text": "off and then they are overly aggressive,",
+      "avg_logprob": -0.40927,
+      "no_speech_prob": 0.02517,
+      "compression_ratio": 1.75836
+    },
+    {
+      "start": 790.88,
+      "end": 795.34,
+      "text": "then naturally we deviate the other way. We don't get into a war where we try",
+      "avg_logprob": -0.40927,
+      "no_speech_prob": 0.02517,
+      "compression_ratio": 1.75836
+    },
+    {
+      "start": 795.34,
+      "end": 798.82,
+      "text": "to outaggress the player maybe occasionally to send them a message",
+      "avg_logprob": -0.40927,
+      "no_speech_prob": 0.02517,
+      "compression_ratio": 1.75836
+    },
+    {
+      "start": 800.82,
+      "end": 803.54,
+      "text": "that like you know basically took him to make your other strategy work",
+      "avg_logprob": -0.40927,
+      "no_speech_prob": 0.02517,
+      "compression_ratio": 1.75836
+    },
+    {
+      "start": 803.54,
+      "end": 805.58,
+      "text": "were you're going to sort of play ropedidope-roped but it's actually quite",
+      "avg_logprob": -0.40927,
+      "no_speech_prob": 0.02517,
+      "compression_ratio": 1.75836
+    },
+    {
+      "start": 809.58,
+      "end": 811.82,
+      "text": "than the emotion of it, understand that",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 811.86,
+      "end": 813.58,
+      "text": "the aggressive player if they're very aggressive",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 813.58,
+      "end": 814.78,
+      "text": "there are going to win more pots",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 814.78,
+      "end": 815.58,
+      "text": "then you.",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 815.58,
+      "end": 816.58,
+      "text": "Okay?",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 816.58,
+      "end": 817.22,
+      "text": "They're probably gonna win more pots in you",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 817.26,
+      "end": 818.42,
+      "text": "but the goal at end of day is not",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 818.42,
+      "end": 819.46,
+      "text": "to win more pots",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 819.46,
+      "end": 820.46,
+      "text": "It's to win more money",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 820.46,
+      "end": 821.46,
+      "text": "There's no question",
+      "avg_logprob": -0.55159,
+      "no_speech_prob": 0.01748,
+      "compression_ratio": 1.64671
+    },
+    {
+      "start": 821.46,
+      "end": 824.42,
+      "text": "that obviously if you're playing against aggressive players it",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 824.42,
+      "end": 825.9,
+      "text": "requires more mental energy,",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 825.9,
+      "end": 827.78,
+      "text": "you know because you're going to be put to the test",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 827.78,
+      "end": 830.14,
+      "text": "more often. They're gonna keep you on the defense they're",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 830.14,
+      "end": 832.42,
+      "text": "gonna force you to really think through hands and",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 832.42,
+      "end": 833.94,
+      "text": "you know the opposite type of player is",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 833.94,
+      "end": 836.34,
+      "text": "you know the weak passive player and they never puts you to",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 836.34,
+      "end": 837.1,
+      "text": "the test.",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 837.14,
+      "end": 839.54,
+      "text": "allow you to control the game so you never want to be",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 839.58,
+      "end": 841.86,
+      "text": "the week-passive player unless",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 841.94,
+      "end": 844.26,
+      "text": "the aggressive play or overly-over",
+      "avg_logprob": -0.53329,
+      "no_speech_prob": 0.01503,
+      "compression_ratio": 1.93173
+    },
+    {
+      "start": 844.26,
+      "end": 846.42,
+      "text": "that he ends up making it easy for you.",
+      "avg_logprob": -0.21607,
+      "no_speech_prob": 0.01449,
+      "compression_ratio": 1.4557
+    },
+    {
+      "start": 846.44,
+      "end": 848.62,
+      "text": "If a player is playing far too aggressively,",
+      "avg_logprob": -0.21607,
+      "no_speech_prob": 0.01449,
+      "compression_ratio": 1.4557
+    },
+    {
+      "start": 848.62,
+      "end": 850.06,
+      "text": "then they don't really stress me out.",
+      "avg_logprob": -0.21607,
+      "no_speech_prob": 0.01449,
+      "compression_ratio": 1.4557
+    },
+    {
+      "start": 850.06,
+      "end": 852.5,
+      "text": "I just play my game, wait for the situations",
+      "avg_logprob": -0.21607,
+      "no_speech_prob": 0.01449,
+      "compression_ratio": 1.4557
+    },
+    {
+      "start": 852.5,
+      "end": 853.78,
+      "text": "and they will trap themselves",
+      "avg_logprob": -0.21607,
+      "no_speech_prob": 0.01449,
+      "compression_ratio": 1.4557
+    },
+    {
+      "start": 853.78,
+      "end": 855.98,
+      "text": "They'll fall in without my help.",
+      "avg_logprob": -0.21607,
+      "no_speech_prob": 0.01449,
+      "compression_ratio": 1.4557
+    }
+  ]
+}

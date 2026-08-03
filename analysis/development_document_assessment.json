@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "source": {
+    "path": "C:/Users/st_ma/Downloads/Live GTO Poker Application Development.docx",
+    "sha256": "7f4ba06d08a00c1534bc6b4f3e4a6d2c9e91d1e5a2166ab79c58ac02c7f1a7b3",
+    "title": "Architecture and Implementation of a Real-Time Game Theory Optimal Desktop Poker Application"
+  },
+  "inspection": {
+    "method": "complete structural DOCX extraction",
+    "paragraphs": 141,
+    "tables": 3,
+    "inline_shapes": 39,
+    "render_qa": "not_available_libreoffice_missing",
+    "authority": "secondary_design_input_not_verified_strategy_source"
+  },
+  "adopted": [
+    {
+      "idea": "separate perception, temporal state, strategy and delivery workloads",
+      "apc_mapping": ["apc/perception", "apc/backend_adapter.py", "coach/src/poker_coach/strategy_selection.py"]
+    },
+    {
+      "idea": "asynchronous latency budgets and local blueprint fallback",
+      "apc_mapping": ["coach/src/poker_coach/strategy_selection.py", "apc/readiness.json"]
+    },
+    {
+      "idea": "four-color card input and environment-specific calibration profiles",
+      "apc_mapping": ["apc/schemas/frame_annotation.schema.json", "apc/perception/card_baseline.py"]
+    },
+    {
+      "idea": "OCR output must be checked against chip, pot and action invariants",
+      "apc_mapping": ["apc/perception/temporal_composite.py", "coach/src/poker_coach/state_transition.py"]
+    },
+    {
+      "idea": "blueprint strategy plus provenance-preserving safe refinement",
+      "apc_mapping": ["coach/src/poker_coach/solutions.py", "coach/src/poker_coach/strategy_selection.py"]
+    },
+    {
+      "idea": "public belief inputs require cards, action history, stacks and opponent-policy uncertainty",
+      "apc_mapping": ["coach/src/poker_coach/range_inference.py", "coach/src/poker_coach/range_timeline.py", "coach/src/poker_coach/profiles.py"]
+    }
+  ],
+  "conditional_research_items": [
+    "Deep CFR or SD-CFR only after a reproducible game abstraction, exploitability benchmark and compute budget exist.",
+    "ReBeL-style public-belief search only for game classes where its assumptions and evaluation are explicitly established.",
+    "Remote GPU refinement only after the local blueprint path, timeouts, provenance and deterministic fallback are verified.",
+    "Generic OCR engines may assist labels but cannot bypass controlled calibration and temporal validation."
+  ],
+  "rejected": [
+    {
+      "idea": "reward shaping suited connectors to force a LAG policy",
+      "reason": "changes the utility and does not preserve a GTO claim; Negreanu evidence remains an explanatory/exploit feature, not a distorted equilibrium target"
+    },
+    {
+      "idea": "purchased bulk hand histories",
+      "reason": "outside APC's local evidence scope and unnecessary for uncertainty-aware profiles learned from observed virtual-chip sessions"
+    },
+    {
+      "idea": "fixed PokerStars coordinates and platform-specific architecture",
+      "reason": "APC is platform-neutral and learns table regions through calibration profiles and detection"
+    },
+    {
+      "idea": "mouse/keyboard actuation and humanization delays",
+      "reason": "APC's current product boundary is visible-state coaching and controlled training, not anti-detection automation"
+    },
+    {
+      "idea": "unqualified real-time GTO or unexploitable claims from neural approximation",
+      "reason": "every strategy output must retain solver configuration, coverage, error and calibration evidence"
+    }
+  ],
+  "source_quality_notes": [
+    "The report mixes primary research papers, repositories, blogs, videos and secondary articles without a source-quality tier.",
+    "Several mathematical formulas are embedded as shapes and disappear from plain-text extraction.",
+    "Two-player zero-sum convergence results must not be generalized to arbitrary multiway poker without separate evidence.",
+    "The document is useful for engineering hypotheses but does not supersede APC's verified math graph, course evidence or promotion gates."
+  ]
+}

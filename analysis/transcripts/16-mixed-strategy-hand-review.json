@@ -1,0 +1,660 @@
+{
+  "file": "16 Mixed Strategy. Hand Review.MP4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 293.7386875,
+  "duration_after_vad_seconds": 259.104,
+  "transcription_elapsed_seconds": 166.372,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 2,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 5.94,
+      "end": 10.34,
+      "text": "So we're going to take a look at real life example between two of the more famous",
+      "avg_logprob": -0.51547,
+      "no_speech_prob": 0.00541,
+      "compression_ratio": 1.48996
+    },
+    {
+      "start": 10.34,
+      "end": 14.83,
+      "text": "players in poker, Antonio and Tony G.",
+      "avg_logprob": -0.51547,
+      "no_speech_prob": 0.00541,
+      "compression_ratio": 1.48996
+    },
+    {
+      "start": 14.83,
+      "end": 24.51,
+      "text": "Ace Jack for Antonio who raises King Deuce for Tony G calls Ike folds",
+      "avg_logprob": -0.51547,
+      "no_speech_prob": 0.00541,
+      "compression_ratio": 1.48996
+    },
+    {
+      "start": 24.51,
+      "end": 28.54,
+      "text": "Mercier's out so too to the flop?",
+      "avg_logprob": -0.51547,
+      "no_speech_prob": 0.00541,
+      "compression_ratio": 1.48996
+    },
+    {
+      "start": 30.54,
+      "end": 31.74,
+      "text": "Oh I'm glad the whole cams are back i felt like Alex Trebeck when he's not on",
+      "avg_logprob": -0.51547,
+      "no_speech_prob": 0.00541,
+      "compression_ratio": 1.48996
+    },
+    {
+      "start": 31.74,
+      "end": 32.46,
+      "text": "on the set of jeopardy",
+      "avg_logprob": -0.51547,
+      "no_speech_prob": 0.00541,
+      "compression_ratio": 1.48996
+    },
+    {
+      "start": 32.46,
+      "end": 35.66,
+      "text": "The answer is five deuce nine!",
+      "avg_logprob": -0.51547,
+      "no_speech_prob": 0.00541,
+      "compression_ratio": 1.48996
+    },
+    {
+      "start": 35.66,
+      "end": 38.66,
+      "text": "what is the flo",
+      "avg_logprob": -0.51547,
+      "no_speech_prob": 0.00541,
+      "compression_ratio": 1.48996
+    },
+    {
+      "start": 39.26,
+      "end": 46.34,
+      "text": "continues here. He does betting 3200 Tony G with bottom pair calls pretty",
+      "avg_logprob": -0.43942,
+      "no_speech_prob": 0.0251,
+      "compression_ratio": 1.56855
+    },
+    {
+      "start": 46.34,
+      "end": 48.66,
+      "text": "rare to see Tony fold any pair on the flop",
+      "avg_logprob": -0.43942,
+      "no_speech_prob": 0.0251,
+      "compression_ratio": 1.56855
+    },
+    {
+      "start": 48.66,
+      "end": 53.62,
+      "text": "that turn, the three of clubs and he's right not too we still got the best",
+      "avg_logprob": -0.43942,
+      "no_speech_prob": 0.0251,
+      "compression_ratio": 1.56855
+    },
+    {
+      "start": 53.62,
+      "end": 54.14,
+      "text": "hand",
+      "avg_logprob": -0.43942,
+      "no_speech_prob": 0.0251,
+      "compression_ratio": 1.56855
+    },
+    {
+      "start": 54.14,
+      "end": 57.74,
+      "text": "And Toni was picked up a gut shot in checks",
+      "avg_logprob": -0.43942,
+      "no_speech_prob": 0.0251,
+      "compression_ratio": 1.56855
+    },
+    {
+      "start": 58.93,
+      "end": 62.17,
+      "text": "That three isn't exactly a scary card for Tony even though it is an overcard",
+      "avg_logprob": -0.43942,
+      "no_speech_prob": 0.0251,
+      "compression_ratio": 1.56855
+    },
+    {
+      "start": 62.25,
+      "end": 66.62,
+      "text": "technically Tony bet 7 thousand looks like Antonio might think Tony has",
+      "avg_logprob": -0.43942,
+      "no_speech_prob": 0.0251,
+      "compression_ratio": 1.56855
+    },
+    {
+      "start": 66.62,
+      "end": 70.34,
+      "text": "Looks like Antonio might think Tony's got air.",
+      "avg_logprob": -0.48511,
+      "no_speech_prob": 0.00927,
+      "compression_ratio": 1.49485
+    },
+    {
+      "start": 70.34,
+      "end": 79.29,
+      "text": "And he's not that far off",
+      "avg_logprob": -0.48511,
+      "no_speech_prob": 0.00927,
+      "compression_ratio": 1.49485
+    },
+    {
+      "start": 79.29,
+      "end": 86.3,
+      "text": "as Fondieri calls, board pairs on the river",
+      "avg_logprob": -0.48511,
+      "no_speech_prob": 0.00927,
+      "compression_ratio": 1.49485
+    },
+    {
+      "start": 86.3,
+      "end": 88.78,
+      "text": "Antonio checks",
+      "avg_logprob": -0.48511,
+      "no_speech_prob": 0.00927,
+      "compression_ratio": 1.49485
+    },
+    {
+      "start": 88.78,
+      "end": 91.66,
+      "text": "Tony is trying to decide if you'd ever get called by a worse hand",
+      "avg_logprob": -0.48511,
+      "no_speech_prob": 0.00927,
+      "compression_ratio": 1.49485
+    },
+    {
+      "start": 91.66,
+      "end": 95.99,
+      "text": "If he bets his pair of deuces",
+      "avg_logprob": -0.48511,
+      "no_speech_prob": 0.00927,
+      "compression_ratio": 1.49485
+    },
+    {
+      "start": 96.07,
+      "end": 98.15,
+      "text": "Toni checks and wins",
+      "avg_logprob": -0.48511,
+      "no_speech_prob": 0.00927,
+      "compression_ratio": 1.49485
+    },
+    {
+      "start": 99.15,
+      "end": 99.19,
+      "text": "I should have better",
+      "avg_logprob": -0.48511,
+      "no_speech_prob": 0.00927,
+      "compression_ratio": 1.49485
+    },
+    {
+      "start": 100.58,
+      "end": 101.7,
+      "text": "i was calling it too",
+      "avg_logprob": -0.48511,
+      "no_speech_prob": 0.00927,
+      "compression_ratio": 1.49485
+    },
+    {
+      "start": 101.7,
+      "end": 102.7,
+      "text": "I know, I don't.",
+      "avg_logprob": -0.75617,
+      "no_speech_prob": 0.01643,
+      "compression_ratio": 0.81818
+    },
+    {
+      "start": 103.7,
+      "end": 104.7,
+      "text": "It's not a mason...",
+      "avg_logprob": -0.75617,
+      "no_speech_prob": 0.01643,
+      "compression_ratio": 0.81818
+    },
+    {
+      "start": 104.7,
+      "end": 108.98,
+      "text": "I'm not even calling it.",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 110.17,
+      "end": 111.17,
+      "text": "It's so sick...",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 112.17,
+      "end": 113.17,
+      "text": "Now, this is from the big game and uh",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 113.17,
+      "end": 114.17,
+      "text": "This hand what you're gonna see happened here",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 114.17,
+      "end": 117.17,
+      "text": "Is Antonio raises it up with Ace Jack",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 117.17,
+      "end": 118.17,
+      "text": "Pretty Standard next to the button",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 118.17,
+      "end": 120.17,
+      "text": "Tony G a little loosey-goose",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 120.17,
+      "end": 121.17,
+      "text": "But we know that's Tony G he likes",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 121.17,
+      "end": 123.17,
+      "text": "To play a lot of hands especially in position",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 123.17,
+      "end": 124.17,
+      "text": "And he calls with King Duce",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 126.17,
+      "end": 127.17,
+      "text": "dusa diamonds.",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 127.17,
+      "end": 128.17,
+      "text": "hashtag don't try this at home",
+      "avg_logprob": -0.44594,
+      "no_speech_prob": 0.01419,
+      "compression_ratio": 1.4902
+    },
+    {
+      "start": 137.17,
+      "end": 141.33,
+      "text": "Now, the question is how often should he be doing this?",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 141.35,
+      "end": 143.25,
+      "text": "And what factors should he be thinking about in",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 143.25,
+      "end": 144.25,
+      "text": "this type of situation.",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 144.25,
+      "end": 147.09,
+      "text": "Well it is a pretty dry board right?",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 147.09,
+      "end": 148.69,
+      "text": "He will have the best hand and decent amount",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 148.69,
+      "end": 152.01,
+      "text": "of time problem is who is opponent here?",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 152.01,
+      "end": 154.45,
+      "text": "His opponent we know to be a very sticky player.",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 154.45,
+      "end": 156.17,
+      "text": "He plays a lot of hands pre-flop.",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 156.17,
+      "end": 157.61,
+      "text": "He hits a lot of boards.",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 159.61,
+      "end": 159.77,
+      "text": "And also even sometimes when he doesn't hit boards",
+      "avg_logprob": -0.3807,
+      "no_speech_prob": 0.01135,
+      "compression_ratio": 1.66939
+    },
+    {
+      "start": 159.77,
+      "end": 164.33,
+      "text": "he still calls to try and take the pots away later with position in just a bluff on",
+      "avg_logprob": -0.39516,
+      "no_speech_prob": 0.00875,
+      "compression_ratio": 1.62136
+    },
+    {
+      "start": 164.33,
+      "end": 165.33,
+      "text": "the turn.",
+      "avg_logprob": -0.39516,
+      "no_speech_prob": 0.00875,
+      "compression_ratio": 1.62136
+    },
+    {
+      "start": 165.33,
+      "end": 168.13,
+      "text": "So it's very important here that Antonio does choose to bet,",
+      "avg_logprob": -0.39516,
+      "no_speech_prob": 0.00875,
+      "compression_ratio": 1.62136
+    },
+    {
+      "start": 168.13,
+      "end": 172.33,
+      "text": "and thats okay as long you're doing some of the time right?",
+      "avg_logprob": -0.39516,
+      "no_speech_prob": 0.00875,
+      "compression_ratio": 1.62136
+    },
+    {
+      "start": 172.33,
+      "end": 176.49,
+      "text": "You want to be betting sometimes, you also wanna be checking as well especially against",
+      "avg_logprob": -0.39516,
+      "no_speech_prob": 0.00875,
+      "compression_ratio": 1.62136
+    },
+    {
+      "start": 176.49,
+      "end": 178.53,
+      "text": "the player like Tony!",
+      "avg_logprob": -0.39516,
+      "no_speech_prob": 0.00875,
+      "compression_ratio": 1.62136
+    },
+    {
+      "start": 178.53,
+      "end": 181.25,
+      "text": "Now the Turn card comes and its at 3.",
+      "avg_logprob": -0.39516,
+      "no_speech_prob": 0.00875,
+      "compression_ratio": 1.62136
+    },
+    {
+      "start": 181.25,
+      "end": 185.77,
+      "text": "And Antonio realizes now OK, well if the jig is up I'm going check because Toni Geez wild and I don't have anything and I am gonna let him",
+      "avg_logprob": -0.39516,
+      "no_speech_prob": 0.00875,
+      "compression_ratio": 1.62136
+    },
+    {
+      "start": 185.77,
+      "end": 188.25,
+      "text": "Tony G's wild and I don't have anything,",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 188.27,
+      "end": 190.21,
+      "text": "And I'm gonna let him bet.",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 190.21,
+      "end": 192.98,
+      "text": "Now Tony bets an Antonio call",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 192.98,
+      "end": 194.7,
+      "text": "So lets just look a little more in depth",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 194.7,
+      "end": 196.18,
+      "text": "about this situation",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 196.18,
+      "end": 199.22,
+      "text": "Some of the time Antonio should actually be betting twice",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 199.22,
+      "end": 199.7,
+      "text": "right?",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 199.7,
+      "end": 202.02,
+      "text": "What you don't want to have is a situation where",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 202.1,
+      "end": 205.02,
+      "text": "OK, you bet to flop with overcards your opponent calls",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 205.02,
+      "end": 207.14,
+      "text": "You know you don't catch one on the turn and you check",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 207.7,
+      "end": 209.86,
+      "text": "if you're so easily read",
+      "avg_logprob": -0.3766,
+      "no_speech_prob": 0.01079,
+      "compression_ratio": 1.58755
+    },
+    {
+      "start": 209.86,
+      "end": 213.7,
+      "text": "and you're using that pattern, it's going to be very easy for players like myself",
+      "avg_logprob": -0.27735,
+      "no_speech_prob": 0.00997,
+      "compression_ratio": 1.69343
+    },
+    {
+      "start": 213.7,
+      "end": 218.1,
+      "text": "and others to just call you on flops see what you do in the turn when you check steal",
+      "avg_logprob": -0.27735,
+      "no_speech_prob": 0.00997,
+      "compression_ratio": 1.69343
+    },
+    {
+      "start": 218.1,
+      "end": 219.46,
+      "text": "that pot from you.",
+      "avg_logprob": -0.27735,
+      "no_speech_prob": 0.00997,
+      "compression_ratio": 1.69343
+    },
+    {
+      "start": 219.46,
+      "end": 223.3,
+      "text": "So Antonio elects to call here with the worst hand he has got an inside straight",
+      "avg_logprob": -0.27735,
+      "no_speech_prob": 0.00997,
+      "compression_ratio": 1.69343
+    },
+    {
+      "start": 223.3,
+      "end": 227.22,
+      "text": "and you know can catch the ace or the jack but he calls because it is Tony G",
+      "avg_logprob": -0.27735,
+      "no_speech_prob": 0.00997,
+      "compression_ratio": 1.69343
+    },
+    {
+      "start": 227.22,
+      "end": 232.34,
+      "text": "and Tony's a wildish kind of player but let's just take a look here that the reason that Antonio was in this tough spot",
+      "avg_logprob": -0.27735,
+      "no_speech_prob": 0.00997,
+      "compression_ratio": 1.69343
+    },
+    {
+      "start": 232.34,
+      "end": 237.26,
+      "text": "this tough spot is partly because he did continuation bet. So by doing so",
+      "avg_logprob": -0.14411,
+      "no_speech_prob": 0.00964,
+      "compression_ratio": 1.02817
+    },
+    {
+      "start": 267.21,
+      "end": 272.49,
+      "text": "Chit chat about whether or not you know, Tony would have called who knows but it's a good illustration",
+      "avg_logprob": -0.34135,
+      "no_speech_prob": 0.00858,
+      "compression_ratio": 1.65234
+    },
+    {
+      "start": 272.49,
+      "end": 274.01,
+      "text": "example throughout the hand of",
+      "avg_logprob": -0.34135,
+      "no_speech_prob": 0.00858,
+      "compression_ratio": 1.65234
+    },
+    {
+      "start": 274.73,
+      "end": 278.65,
+      "text": "Antonio needs to have a mixed strategy in this situation. It can't always be",
+      "avg_logprob": -0.34135,
+      "no_speech_prob": 0.00858,
+      "compression_ratio": 1.65234
+    },
+    {
+      "start": 278.65,
+      "end": 285.53,
+      "text": "a line that goes bet-flop check turn with Ace Jack. It should be sometimes Bet Beth",
+      "avg_logprob": -0.34135,
+      "no_speech_prob": 0.00858,
+      "compression_ratio": 1.65234
+    },
+    {
+      "start": 285.53,
+      "end": 291.37,
+      "text": "Sometimes there should be, you know, cheque You have to have a mixed line of strategies so that",
+      "avg_logprob": -0.34135,
+      "no_speech_prob": 0.00858,
+      "compression_ratio": 1.65234
+    },
+    {
+      "start": 293.37,
+      "end": 295.85,
+      "text": "you keep your opponents guessing",
+      "avg_logprob": -0.34135,
+      "no_speech_prob": 0.00858,
+      "compression_ratio": 1.65234
+    }
+  ]
+}

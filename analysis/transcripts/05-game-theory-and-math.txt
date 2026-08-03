@@ -1,0 +1,210 @@
+[00:12.91-00:15.91] So sort of the latest trend or fat in poker and then
+[00:15.93-00:20.23] The latest evolution of it is understanding game theory optimal play.
+[00:20.25-00:22.71] So what exactly does Game Theory Optimal Play mean?
+[00:22.75-00:27.47] Well, essentially what it means is you create a strategy that is
+[00:27.51-00:29.91] unexpoitable so let's use a real-life example
+[00:29.91-00:32.19] You all know rock paper scissors right?
+[00:32.19-00:34.47] You know you throw rock you through paper you throw
+[00:34.47-00:36.87] visitors
+[00:36.87-00:39.31] well now would be the gain theory optimal percentage to throw each one
+[00:39.31-00:40.31] one.
+[00:40.31-00:45.75] I'll let you think about that for a second, well obviously throwing 1 third, 1 3rd would
+[00:45.75-00:47.59] be the game theory optimal approach.
+[00:47.59-00:50.71] The problem with that is while you won't lose,
+[00:50.71-00:55.27] you also won't win if you stick to that unless you get lucky of course but it's not
+[00:55.27-01:03.27] an exploitative strategy now what if you find you notice your opponent throws rock
+[01:03.27-01:04.27] Rock a lot?
+[01:05.27-01:08.27] right?
+[01:08.27-01:08.31] You start to notice a pattern of he's throwing rock every time!
+[01:09.31-01:10.31] Well, what should you do?
+[01:10.31-01:11.31] Right.
+[01:11.31-01:12.81] So obviously you throw paper.
+[01:12.81-01:15.31] But the question is with poker how often
+[01:15.31-01:16.51] should you throw paper right
+[01:16.67-01:18.71] Do you throw paper 100% of the time
+[01:19.44-01:20.64] that seems logical right
+[01:20.72-01:22.12] The problem with that is if
+[01:22.12-01:23.24] You start throwing paper
+[01:23.24-01:24.92] one hundred percent of times he notices
+[01:24.92-01:25.72] and says ha
+[01:26.12-01:28.60] I caught on to something you're doing so
+[01:28.60-01:30.44] I'm gonna adjust as well
+[01:30.44-01:36.44] So what you want to do is instead of doing 33,33% across the board if he's
+[01:36.44-01:39.44] throwing rock 100 percent of time
+[01:39.44-01:43.44] You up your paper to maybe 40 or 45 per cent a time.
+[01:43.44-01:46.44] So you're going to exploit the weakness in his strategy
+[01:46.44-01:49.44] but you're gonna do it while he doesn't even realize
+[01:49.44-01:53.44] you're doing it because every time you deviate from a game theory structure
+[01:53.44-01:54.44] you become exploitable as well.
+[01:55.44-01:59.44] Another way to look at really is so Game Theory is a defensiveative strategy.
+[02:00.44-02:01.44] I'm protected.
+[02:01.44-02:03.44] There's no way that you're going to be able to exploit me
+[02:03.44-02:06.44] Now, exploitative play which is something
+[02:06.44-02:08.44] That I've been doing for 20 years before
+[02:08.44-02:11.44] I fully had a understanding of game theory
+[02:11.44-02:13.44] Is always looking for the mistakes in my opponent
+[02:13.44-02:15.44] And going on the aggressive and trying
+[02:15.44-02:16.44] To take advantage of them
+[02:16.44-02:20.88] Now, of course a byproduct to that is well if they're being perceptive
+[02:20.90-02:25.48] They can start exploiting me because I'm willing to like give up on the defensive side
+[02:25.60-02:29.28] To play aggressively. So it's very important to have a mix of both starting with
+[02:29.28-02:32.16] A baseline of game theory and then exploiting from there
+[02:32.44-02:41.42] so there's a debate in poker which is
+[02:41.92-02:42.42] Which is?
+[02:42.42-02:47.74] The better approach should we be focusing on playing strictly Game Theory optimal or
+[02:48.74-02:51.74] Or should we focus on playing Strictly exploitative
+[02:53.42-02:54.82] in the middle, right?
+[02:54.84-02:57.78] So you take what you can from game theory
+[02:57.78-02:59.54] and then adjust to your opponents
+[02:59.54-03:00.90] because if you're not doing that
+[03:00.90-03:02.58] you're not gonna maximize profit.
+[03:02.58-03:03.70] So for example,
+[03:03.70-03:06.82] If you have player A who plays Game Theory
+[03:06.82-03:09.79] in a game full of recreational players
+[03:09.79-03:10.95] Player A is going to win.
+[03:10.95-03:14.55] But if you're playing some of that game theater
+[03:14.55-03:17.03] but you also exploiting these weaker players
+[03:17.03-03:19.15] your win rate is going to be even bigger.
+[03:19.17-03:20.55] So the combination,
+[03:20.55-03:23.19] the hybrid if you will of game theory
+[03:23.19-03:24.55] and exploitative play
+[03:24.55-03:34.01] is what the elite players are gonna do.
+[03:34.01-03:35.65] One of the newer revolutions in poker
+[03:35.65-03:37.41] is sort of understanding like
+[03:37.41-03:40.01] what a Game Theory baseline is when I say that
+[03:40.01-03:41.17] essentially what I'm saying is
+[03:41.17-03:43.01] like what is the perfect play
+[03:45.01-03:45.53] if you were playing against the perfect robot?
+[03:46.53-03:47.65] Your opponent doesn't make any mistakes
+[03:47.73-03:49.69] would be the standard or correct play in this situation.
+[03:53.69-03:56.69] to know what that baseline is and then realize
+[03:56.69-03:59.73] you know, I'm not playing against a robot. These are humans so
+[03:59.73-04:02.69] what tendencies do they have? So let's say for example
+[04:02.69-04:05.69] i'm in a situation where against the robot well
+[04:05.69-04:08.69] I should bluff about 50% of the time but
+[04:08.69-04:14.09] I'm up against Harry and Harry's pushover you know I can bluff
+[04:14.13-04:15.19] hairy whenever I want to.
+[04:15.19-04:17.67] So maybe against Harry I up my frequency where
+[04:17.69-04:19.23] I've left 75% of time or
+[04:19.27-04:21.27] maybe even a hundred if i have
+[04:21.27-04:22.83] a good read in the situation.
+[04:22.83-04:24.67] So, the important thing here is to understand
+[04:24.67-04:26.91] that math teaches you to the baseline
+[04:26.91-04:28.91] so you know the right play if you will
+[04:28.91-04:33.19] and then you deviate from that depending on your opponent
+[04:33.23-04:35.39] and history that you've developed with that player because
+[04:35.39-04:36.59] you'll always have a meta game.
+[04:38.59-04:39.19] If you sit down in a game and you just got caught bluffing five times in a row
+[04:39.19-04:45.11] Bluffing five times in a row, okay? The jig is up right because everyone's going to know now when they're
+[04:45.11-04:48.95] In a situation like you know what I don't trust this guy. Because I've just seen him lie and bluff
+[04:48.95-04:52.95] Five times so i'm gonna call them So you need to make the adjustments once you've done that
+[04:52.95-05:01.67] So there's a whole bunch of variables that would have you deviate from sort of the baseline correct decision is based on history player
+[05:01.67-05:14.45] Tenencies and it's very easy
+[05:15.97-05:18.61] important at the very least to understand sort of
+[05:18.63-05:21.73] the beginner basic understanding of something as simple
+[05:21.73-05:23.81] as pot odds for example right so what are
+[05:23.81-05:26.53] pot odds? Potons are simply like,
+[05:26.61-05:28.69] what are the odds you're being laid. What is
+[05:28.69-05:30.45] the price you're being given? So for
+[05:30.45-05:33.61] example if there's a hundred in the pot and your
+[05:33.61-05:37.25] opponent bets 100 what are your pot odds well it's
+[05:37.25-05:41.97] going to cost you one hundred to win 200 alright so you're getting two to
+[05:41.97-05:44.29] 2-to 1 or 33 percent now
+[05:45.97-05:48.41] Typically when you're deciding, especially if
+[05:48.43-05:50.77] your own draw type hand whether or not
+[05:50.77-05:51.69] you should continue.
+[05:51.69-05:53.69] Super important to understand the pot odds.
+[05:53.69-05:55.69] So let's say for example,
+[05:55.69-05:58.45] You flopped four to a flush.
+[05:58.45-06:01.29] So that means you have nine cards with which
+[06:01.29-06:04.09] you can make your flush and a simple way for you
+[06:04.09-06:06.33] to figure out percentages because this is going to be important
+[06:06.33-06:09.01] you is on the flop, however many outs
+[06:09.01-06:09.41] you have.
+[06:09.41-06:10.73] Outs are cards that you need to help
+[06:10.73-06:14.13] you after the flopp multiply them by four.
+[06:14.13-06:15.21] If it's on the turn,
+[06:15.21-06:16.45] you multiply it by two.
+[06:16.45-06:18.37] So in a situation on the flop
+[06:18.37-06:19.37] where you have a flush draw,
+[06:19.37-06:23.13] OK, that's nineouts times for 36% chance right?
+[06:23.13-06:26.01] which is roughly putting you at a 2-to-1.
+[06:26.01-06:28.45] Well now you compare that to the size of the size of the size
+[06:28.45-06:32.77] of the bet. So if there was a hundred in the pot, your opponent bets 100
+[06:32.79-06:36.81] you're getting right about two to one so this is a situation where you might
+[06:36.81-06:41.85] call now what if that opponent that same opponent bet 500 into this $100
+[06:41.85-06:44.96] pot? What are your pod odds now?
+[06:45.00-06:49.76] So now they're 600 in the pot but it's going to cost you five hundred to call
+[06:51.76-06:54.52] right so now your pot odds aren't looking so good you need to be getting 2-to-1 to make this
+[06:54.52-06:55.76] getting two to one
+[06:55.78-06:56.80] to make this call correct.
+[06:56.82-06:59.68] Now, there's obviously a thing called implied odds
+[06:59.68-07:00.72] where if you think that
+[07:00.72-07:02.04] you catch your sneaky card
+[07:02.04-07:03.76] you can get a whole big stack of chips
+[07:03.76-07:05.48] from your opponent it might be worth
+[07:05.48-07:08.16] it sometimes to take bad odds
+[07:08.16-07:10.32] with the hopes of getting a big payday after.
+[07:10.40-07:12.92] But in that direct moment say for example
+[07:13.02-07:14.12] you had no other chips
+[07:14.12-07:15.32] would it'd be correct to call with the flush draw?
+[07:17.32-07:19.32] and the answers or applyed as we're going on.
+[07:24.52-07:34.97] 600 which doesn't give you the right price.
+[07:34.97-07:38.25] So as I said there's different levels of poker math and another one that
+[07:38.25-07:41.89] think is pretty important to understand a sort of game theory baseline
+[07:41.89-07:45.89] and that's what should be the correct folding frequency,
+[07:45.89-07:46.89] Right?
+[07:46.89-07:50.93] so what does that mean exactly well it means based on a bet size how often
+[07:50.93-07:52.77] should you theoretically be folding?
+[07:52.77-07:53.81] So for example
+[07:53.81-07:57.97] There's 100 in the pot and your opponent bets 100
+[07:57.97-08:03.57] Well, in theory long term how often should you call and there's actually a formula
+[08:03.59-08:07.57] to that you can use and do in real time because it's very important with
+[08:07.57-08:12.29] all the study that we do here. That it's applicable to real-time situations
+[08:12.29-08:16.17] It's not There's not a lot of value in saying to yourself well I figured out at home
+[08:16.17-08:21.39] when but when you need to actually do it in the moment so one of the very very simple formulas
+[08:21.89-08:23.97] were going to look at right here is its bet divided by pot plus
+[08:23.97-08:27.77] Bet divided by pot plus bet.
+[08:27.77-08:29.33] And that's going to be your fold frequency,
+[08:29.33-08:30.45] so in this case,
+[08:30.45-08:34.21] that would be 100 over 100 plus 100
+[08:34.21-08:36.57] which is 100 or over 200
+[08:36.57-08:39.25] which you can break down to one over two
+[08:39.25-08:41.09] which is 50%
+[08:41.17-08:44.22] So in this situation if your opponent bets pot
+[08:44.22-08:47.62] theoretically you should fold 50 percent of the time
+[08:47.62-08:49.66] and either call or raise the other 50% of the time.
+[08:49.66-08:50.50] Now let's take a look at another situation.
+[08:54.10-08:57.22] the pot, but your opponent bets 300 this time.
+[08:57.22-09:02.04] So what should you fold frequency be in this case?
+[09:02.04-09:05.69] So we have the three hundred up top and then down low
+[09:05.69-09:09.29] we have the pot plus bet which is 300 plus 100 so that's
+[09:09.29-09:14.05] 300 over 400 breaks down to 3 over 4 which we know breaks down
+[09:14.05-09:15.53] to 75%!
+[09:17.53-09:18.61] So you should be folding to a bed size that big 75 percent of times.
+[09:20.61-09:22.61] That means only the top 25% of the range of the range of the ranges of the range of the
+[09:24.29-09:26.09] with in this situation. And,
+[09:26.09-09:30.53] This is a very easily applicable mathematical formula that you can use
+[09:30.53-09:32.93] that is absolutely correct in all situations
+[09:32.93-09:37.25] that can help you at least know okay so well how often should I fold?
+[09:37.25-09:38.69] and then decide from there
+[09:38.69-09:41.89] Should i full more often because this guy doesn't bluff or
+[09:41.89-09:45.57] should I call more often maybe because this guy bluffs too much
+[09:45.57-09:48.45] or maybe my hand is too strong to fold? Maybe I almost have the nuts which
+[09:49.65-09:50.29] as the best hand possible So even if I should fold 75 percent of the hands
+[09:54.29-09:55.77] I have a hand that's way too good to fold.
+[09:55.77-09:57.81] So the key thing is knowing what
+[09:57.81-10:01.33] is the correct frequency and then adjusting from there
+[10:01.33-10:09.79] based on the situation.
+[10:09.79-10:12.27] So let's, let's have you guys try one right now OK?
+[10:12.27-10:14.31] Let's do this formula say for example
+[10:14.31-10:18.87] there is 400 in the pot and your opponent bets 100
+[10:18.87-10:20.75] What's the correct fold frequency?
+[10:20.75-10:25.83] Is it A 20% B 25 or C 15 percent?
+[10:36.93-10:39.85] Now I think it's really important, this is some homework for you.
+[10:39.85-10:42.17] When your playing poker and in situations
+[10:42.17-10:45.13] I want to start with this thought process first.
+[10:45.13-10:48.13] Let's figure out what is your folding frequency
+[10:48.13-10:51.05] And even if you're going to fold just as a practice because we wanna do
+[10:51.05-10:52.05] Because what?
+[11:06.93-11:08.61] you need to think about in terms of the variables

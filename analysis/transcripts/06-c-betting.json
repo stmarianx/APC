@@ -1,0 +1,2652 @@
+{
+  "file": "06-C-Betting.mp4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 956.288,
+  "duration_after_vad_seconds": 893.888,
+  "transcription_elapsed_seconds": 611.389,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 2,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 5.87,
+      "end": 7.87,
+      "text": "Well, what exactly is C-Betting?",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 7.89,
+      "end": 10.95,
+      "text": "Well, see-bedding is a short form for continuation bedding.",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 10.97,
+      "end": 14.23,
+      "text": "And essentially what that means is if you were the razor before the flop",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 14.25,
+      "end": 16.59,
+      "text": "You know, you are the aggressor before the flopp when the",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 16.59,
+      "end": 17.55,
+      "text": "Flop comes out",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 17.55,
+      "end": 18.39,
+      "text": "You know typically everyone's looking to you",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 18.39,
+      "end": 19.39,
+      "text": "Everyone's looking at you drive the action",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 19.39,
+      "end": 21.39,
+      "text": "To drive the action and they're gonna say well listen",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 21.39,
+      "end": 22.91,
+      "text": "Are you going to continue with your story",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 22.99,
+      "end": 25.63,
+      "text": "a really strong hand so if you've do",
+      "avg_logprob": -0.59884,
+      "no_speech_prob": 0.00552,
+      "compression_ratio": 1.8
+    },
+    {
+      "start": 25.63,
+      "end": 27.19,
+      "text": "That would be what's called a see bet,",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 27.19,
+      "end": 29.39,
+      "text": "a continuation of the story you told",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 29.39,
+      "end": 30.75,
+      "text": "with the pre-flop aggression.",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 30.75,
+      "end": 32.27,
+      "text": "So why do people see that?",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 32.27,
+      "end": 33.27,
+      "text": "Like why is it a thing?",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 33.27,
+      "end": 34.95,
+      "text": "Well again we talked a little bit",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 34.95,
+      "end": 37.67,
+      "text": "in some of the other videos about range advantage right",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 37.67,
+      "end": 39.23,
+      "text": "so if you've raised before the flop",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 39.23,
+      "end": 40.63,
+      "text": "and no one has reraised you",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 40.63,
+      "end": 44.27,
+      "text": "You have the strongest range in that perspective like",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 44.31,
+      "end": 48.63,
+      "text": "you are the most likely player that could still have pocketasesed No always know never ever.",
+      "avg_logprob": -0.2983,
+      "no_speech_prob": 0.01299,
+      "compression_ratio": 1.64982
+    },
+    {
+      "start": 55.63,
+      "end": 58.07,
+      "text": "But most of the time, over half",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 58.07,
+      "end": 60.31,
+      "text": "the time depending on how many players in the pot",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 60.31,
+      "end": 61.59,
+      "text": "you are going to be the one that's",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 61.59,
+      "end": 63.83,
+      "text": "going to be the aggressor in these spots.",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 63.83,
+      "end": 66.31,
+      "text": "So you're gonna want to continue to continuation bet",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 66.31,
+      "end": 67.95,
+      "text": "whether you have it or not because a lot",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 67.95,
+      "end": 71.43,
+      "text": "of the time when you don't have anything your opponent doesn't",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 71.43,
+      "end": 72.31,
+      "text": "have anything either.",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 72.31,
+      "end": 74.51,
+      "text": "You just kind of win the pot right there other times",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 74.51,
+      "end": 75.59,
+      "text": "when you do have it.",
+      "avg_logprob": -0.32703,
+      "no_speech_prob": 0.00129,
+      "compression_ratio": 1.86818
+    },
+    {
+      "start": 75.59,
+      "end": 78.95,
+      "text": "you're just going to get more value from your continuation bet.",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 78.97,
+      "end": 79.87,
+      "text": "So, you want to have it",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 80.87,
+      "end": 82.59,
+      "text": "analogous to a jab right?",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 82.59,
+      "end": 84.19,
+      "text": "You wanna keep a pretty steady",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 84.43,
+      "end": 88.07,
+      "text": "you know diet of jabs coming at your opponents",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 88.07,
+      "end": 91.31,
+      "text": "not all always you know dodge a little bit too but",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 91.31,
+      "end": 101.85,
+      "text": "a good steady amount of jobs so there's a lot of considerations that you have",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 103.85,
+      "end": 105.17,
+      "text": "to think about when it comes to seabetting",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 105.17,
+      "end": 106.53,
+      "text": "outside of the specific",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 106.69,
+      "end": 108.89,
+      "text": "type of player you are up against you also want to factor in like how many players some example better",
+      "avg_logprob": -0.53397,
+      "no_speech_prob": 0.00104,
+      "compression_ratio": 1.71329
+    },
+    {
+      "start": 108.89,
+      "end": 110.85,
+      "text": "factor in, like how many players?",
+      "avg_logprob": -0.34617,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.61479
+    },
+    {
+      "start": 110.85,
+      "end": 114.89,
+      "text": "So let's use that same example again where you're under the gun and raised with Ace King",
+      "avg_logprob": -0.34617,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.61479
+    },
+    {
+      "start": 114.89,
+      "end": 119.45,
+      "text": "and it goes call-call, a button calls, small blind call is the big blind call.",
+      "avg_logprob": -0.34617,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.61479
+    },
+    {
+      "start": 119.45,
+      "end": 121.61,
+      "text": "So there are six players to the flop.",
+      "avg_logprob": -0.34617,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.61479
+    },
+    {
+      "start": 121.61,
+      "end": 126.01,
+      "text": "And now the flopp comes 10 5 deuce both lines check to you and its up to you.",
+      "avg_logprob": -0.34617,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.61479
+    },
+    {
+      "start": 126.01,
+      "end": 132.77,
+      "text": "Well, the question is should you be seabetting more often or less often in a situation like this?",
+      "avg_logprob": -0.34617,
+      "no_speech_prob": 0.01415,
+      "compression_ratio": 1.61479
+    },
+    {
+      "start": 132.77,
+      "end": 134.45,
+      "text": "The correct answer is less often.",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 134.45,
+      "end": 135.15,
+      "text": "And the reason being,",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 135.15,
+      "end": 137.65,
+      "text": "is with so many more players in the hand",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 137.65,
+      "end": 140.49,
+      "text": "the odds of somebody actually having a 10 or continuing",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 140.49,
+      "end": 141.45,
+      "text": "are much higher.",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 141.45,
+      "end": 143.57,
+      "text": "When you only have to get through one opponent",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 143.57,
+      "end": 144.93,
+      "text": "it's far more likely that",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 144.93,
+      "end": 146.29,
+      "text": "that opponent has completely missed",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 146.29,
+      "end": 148.05,
+      "text": "the flop and is just going to fold the hand.",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 148.05,
+      "end": 150.37,
+      "text": "when you've got five people left to act",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 150.37,
+      "end": 151.85,
+      "text": "you're basically wasting chips.",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 151.85,
+      "end": 153.33,
+      "text": "I see far too often",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 153.33,
+      "end": 156.73,
+      "text": "like players feel like well they have to continuation but at a continuation bit",
+      "avg_logprob": -0.51158,
+      "no_speech_prob": 0.01343,
+      "compression_ratio": 1.74296
+    },
+    {
+      "start": 156.73,
+      "end": 158.73,
+      "text": "time and it's a wasted bet. And a",
+      "avg_logprob": -0.43453,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 1.4186
+    },
+    {
+      "start": 158.73,
+      "end": 159.73,
+      "text": "way, in a bet lost",
+      "avg_logprob": -0.43453,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 1.4186
+    },
+    {
+      "start": 159.73,
+      "end": 162.73,
+      "text": "in terms of you know not like",
+      "avg_logprob": -0.43453,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 1.4186
+    },
+    {
+      "start": 162.73,
+      "end": 164.73,
+      "text": "getting away with it is going to",
+      "avg_logprob": -0.43453,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 1.4186
+    },
+    {
+      "start": 164.73,
+      "end": 165.73,
+      "text": "cost you in the long run",
+      "avg_logprob": -0.43453,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 1.4186
+    },
+    {
+      "start": 165.73,
+      "end": 166.73,
+      "text": "Like those add up",
+      "avg_logprob": -0.43453,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 1.4186
+    },
+    {
+      "start": 166.73,
+      "end": 167.73,
+      "text": "to a big amount of money",
+      "avg_logprob": -0.43453,
+      "no_speech_prob": 0.00585,
+      "compression_ratio": 1.4186
+    },
+    {
+      "start": 167.73,
+      "end": 170.53,
+      "text": "at the end of the year. The other consideration aside from",
+      "avg_logprob": -0.4251,
+      "no_speech_prob": 0.01533,
+      "compression_ratio": 1.55729
+    },
+    {
+      "start": 170.57,
+      "end": 173.09,
+      "text": "the number of players is what is the flop?",
+      "avg_logprob": -0.4251,
+      "no_speech_prob": 0.01533,
+      "compression_ratio": 1.55729
+    },
+    {
+      "start": 173.09,
+      "end": 173.93,
+      "text": "Right,",
+      "avg_logprob": -0.4251,
+      "no_speech_prob": 0.01533,
+      "compression_ratio": 1.55729
+    },
+    {
+      "start": 173.93,
+      "end": 175.29,
+      "text": "What type of board is that?",
+      "avg_logprob": -0.4251,
+      "no_speech_prob": 0.01533,
+      "compression_ratio": 1.55729
+    },
+    {
+      "start": 175.29,
+      "end": 176.49,
+      "text": "What type of board texture?",
+      "avg_logprob": -0.4251,
+      "no_speech_prob": 0.01533,
+      "compression_ratio": 1.55729
+    },
+    {
+      "start": 176.49,
+      "end": 178.33,
+      "text": "The one we've been discussing so far",
+      "avg_logprob": -0.4251,
+      "no_speech_prob": 0.01533,
+      "compression_ratio": 1.55729
+    },
+    {
+      "start": 178.33,
+      "end": 180.05,
+      "text": "as a dryboard it's 10-5 deuce",
+      "avg_logprob": -0.4251,
+      "no_speech_prob": 0.01533,
+      "compression_ratio": 1.55729
+    },
+    {
+      "start": 180.05,
+      "end": 181.73,
+      "text": "We call that dry because",
+      "avg_logprob": -0.4251,
+      "no_speech_prob": 0.01533,
+      "compression_ratio": 1.55729
+    },
+    {
+      "start": 181.73,
+      "end": 183.33,
+      "text": "It's not very draw heavy there's not a lot",
+      "avg_logprob": -0.4251,
+      "no_speech_prob": 0.01533,
+      "compression_ratio": 1.55729
+    },
+    {
+      "start": 183.33,
+      "end": 186.45,
+      "text": "of like, you know, comment there's not a lot of connected cards. We're",
+      "avg_logprob": -0.40378,
+      "no_speech_prob": 0.01246,
+      "compression_ratio": 1.7637
+    },
+    {
+      "start": 186.45,
+      "end": 189.25,
+      "text": "not talking about two suits or anything like that well what about a flop",
+      "avg_logprob": -0.40378,
+      "no_speech_prob": 0.01246,
+      "compression_ratio": 1.7637
+    },
+    {
+      "start": 189.25,
+      "end": 194.01,
+      "text": "that comes like Jack 9-7 with 2 hearts? It's a very different situation",
+      "avg_logprob": -0.40378,
+      "no_speech_prob": 0.01246,
+      "compression_ratio": 1.7637
+    },
+    {
+      "start": 194.01,
+      "end": 198.05,
+      "text": "because there's a lot more hands than an opponent is going to continue",
+      "avg_logprob": -0.40378,
+      "no_speech_prob": 0.01246,
+      "compression_ratio": 1.7637
+    },
+    {
+      "start": 198.05,
+      "end": 201.33,
+      "text": "with on a board like that so the...you know for example that same",
+      "avg_logprob": -0.40378,
+      "no_speech_prob": 0.01246,
+      "compression_ratio": 1.7637
+    },
+    {
+      "start": 201.33,
+      "end": 204.41,
+      "text": "example if you raised with Ace King under the gun and the button called and it comes",
+      "avg_logprob": -0.40378,
+      "no_speech_prob": 0.01246,
+      "compression_ratio": 1.7637
+    },
+    {
+      "start": 204.57,
+      "end": 209.33,
+      "text": "Jack 7 with 2 parts with 2 hearts should you be continuing betting more often",
+      "avg_logprob": -0.40378,
+      "no_speech_prob": 0.01246,
+      "compression_ratio": 1.7637
+    },
+    {
+      "start": 213.33,
+      "end": 217.33,
+      "text": "in the range that this button is going to call with. Jack Ten suited, Jack Nine and 89",
+      "avg_logprob": -0.30861,
+      "no_speech_prob": 0.02168,
+      "compression_ratio": 1.68125
+    },
+    {
+      "start": 217.65,
+      "end": 221.81,
+      "text": "they're not folding any of these hands so the likelihood of your seabed getting through",
+      "avg_logprob": -0.30861,
+      "no_speech_prob": 0.02168,
+      "compression_ratio": 1.68125
+    },
+    {
+      "start": 221.81,
+      "end": 226.77,
+      "text": "on a board like that it decreases significantly so you should definitely shut down",
+      "avg_logprob": -0.30861,
+      "no_speech_prob": 0.02168,
+      "compression_ratio": 1.68125
+    },
+    {
+      "start": 226.77,
+      "end": 231.81,
+      "text": "a lot more with Ace King in a situation like that. So you want to factor in how many opponents",
+      "avg_logprob": -0.30861,
+      "no_speech_prob": 0.02168,
+      "compression_ratio": 1.68125
+    },
+    {
+      "start": 231.81,
+      "end": 239.33,
+      "text": "do I have? And what does that board texture look like obviously positions another factor that you always consider",
+      "avg_logprob": -0.30861,
+      "no_speech_prob": 0.02168,
+      "compression_ratio": 1.68125
+    },
+    {
+      "start": 239.81,
+      "end": 241.65,
+      "text": "but all those things as well as well as your table image or table-image",
+      "avg_logprob": -0.30861,
+      "no_speech_prob": 0.02168,
+      "compression_ratio": 1.68125
+    },
+    {
+      "start": 243.33,
+      "end": 245.57,
+      "text": "your read on your opponents.",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 245.57,
+      "end": 248.93,
+      "text": "This is not an exact science in a sense with sea bedding",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 248.93,
+      "end": 250.41,
+      "text": "because there's always different flops,",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 250.41,
+      "end": 251.73,
+      "text": "always different situations",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 251.73,
+      "end": 253.01,
+      "text": "the more you practice it",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 253.01,
+      "end": 253.97,
+      "text": "the more you get comfortable",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 253.97,
+      "end": 255.77,
+      "text": "with a mixed strategy in this situation",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 255.77,
+      "end": 264.28,
+      "text": "the better you're gonna do.",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 264.28,
+      "end": 267.28,
+      "text": "Before you can even decide what is",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 267.36,
+      "end": 268.88,
+      "text": "a good seabetting board and not,",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 268.88,
+      "end": 272.04,
+      "text": "you have to understand like what are good boards for a seebed",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 272.08,
+      "end": 274.36,
+      "text": "and good boards for the pre-flop raise",
+      "avg_logprob": -0.40018,
+      "no_speech_prob": 0.01238,
+      "compression_ratio": 1.776
+    },
+    {
+      "start": 274.36,
+      "end": 275.92,
+      "text": "or in terms of range advantage,",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 275.92,
+      "end": 277.88,
+      "text": "are boards that often look like something",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 277.88,
+      "end": 278.8,
+      "text": "like a paired board.",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 278.8,
+      "end": 281.12,
+      "text": "Like you know, deuce-deose three is I've used",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 281.12,
+      "end": 283.12,
+      "text": "or a very dryboard maybe",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 283.12,
+      "end": 285.4,
+      "text": "something like 10 deuce 3",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 285.4,
+      "end": 286.36,
+      "text": "where obviously",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 286.36,
+      "end": 288.4,
+      "text": "you know a ten is a playable card for lot",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 288.4,
+      "end": 290.44,
+      "text": "of your opponents but that's the only one there.",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 290.44,
+      "end": 292.6,
+      "text": "You know the opposite of that some badboards",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 292.6,
+      "end": 295.08,
+      "text": "for seabetting unless of course you've really got it",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 295.1,
+      "end": 295.76,
+      "text": "have been",
+      "avg_logprob": -0.50094,
+      "no_speech_prob": 0.00839,
+      "compression_ratio": 1.66393
+    },
+    {
+      "start": 295.76,
+      "end": 298.24,
+      "text": "draw heavy boards, okay? In terms of efficiency",
+      "avg_logprob": -0.40831,
+      "no_speech_prob": 0.02157,
+      "compression_ratio": 1.62094
+    },
+    {
+      "start": 298.24,
+      "end": 301.76,
+      "text": "of getting away with sea bets as bluffs or to get them through is a way",
+      "avg_logprob": -0.40831,
+      "no_speech_prob": 0.02157,
+      "compression_ratio": 1.62094
+    },
+    {
+      "start": 301.76,
+      "end": 303.84,
+      "text": "to win the pot. The wetter the board,",
+      "avg_logprob": -0.40831,
+      "no_speech_prob": 0.02157,
+      "compression_ratio": 1.62094
+    },
+    {
+      "start": 303.84,
+      "end": 306.24,
+      "text": "the less likely that's going to be able succeed and what",
+      "avg_logprob": -0.40831,
+      "no_speech_prob": 0.02157,
+      "compression_ratio": 1.62094
+    },
+    {
+      "start": 306.24,
+      "end": 308.96,
+      "text": "is a wetboard? A wet board is two connected",
+      "avg_logprob": -0.40831,
+      "no_speech_prob": 0.02157,
+      "compression_ratio": 1.62094
+    },
+    {
+      "start": 308.96,
+      "end": 312.56,
+      "text": "2-3 connected cards with maybe a flush draw there",
+      "avg_logprob": -0.40831,
+      "no_speech_prob": 0.02157,
+      "compression_ratio": 1.62094
+    },
+    {
+      "start": 312.56,
+      "end": 317.44,
+      "text": "seven eight nine ten jack queen all of these are very wet boards.",
+      "avg_logprob": -0.40831,
+      "no_speech_prob": 0.02157,
+      "compression_ratio": 1.62094
+    },
+    {
+      "start": 317.44,
+      "end": 324.32,
+      "text": "The dryboards look like Queen Deuce 7, Jack Dus 3, those are heavily favor",
+      "avg_logprob": -0.40831,
+      "no_speech_prob": 0.02157,
+      "compression_ratio": 1.62094
+    },
+    {
+      "start": 325.76,
+      "end": 328.6,
+      "text": "range, right? Because the pre-flop razor is",
+      "avg_logprob": -0.47635,
+      "no_speech_prob": 0.00321,
+      "compression_ratio": 1.62825
+    },
+    {
+      "start": 328.62,
+      "end": 331.6,
+      "text": "the one who's most likely have aces or kings. Okay so",
+      "avg_logprob": -0.47635,
+      "no_speech_prob": 0.00321,
+      "compression_ratio": 1.62825
+    },
+    {
+      "start": 331.6,
+      "end": 335.28,
+      "text": "aces are Kings when it comes eight nine ten they go way down in value",
+      "avg_logprob": -0.47635,
+      "no_speech_prob": 0.00321,
+      "compression_ratio": 1.62825
+    },
+    {
+      "start": 335.28,
+      "end": 338.92,
+      "text": "because an 89 10 flop heavily hits your opponents'",
+      "avg_logprob": -0.47635,
+      "no_speech_prob": 0.00321,
+      "compression_ratio": 1.62825
+    },
+    {
+      "start": 338.92,
+      "end": 341.36,
+      "text": "range. So now that's situation where whether you have",
+      "avg_logprob": -0.47635,
+      "no_speech_prob": 0.00321,
+      "compression_ratio": 1.62825
+    },
+    {
+      "start": 341.36,
+      "end": 342.72,
+      "text": "Aces, whether you hit the board or not",
+      "avg_logprob": -0.47635,
+      "no_speech_prob": 0.00321,
+      "compression_ratio": 1.62825
+    },
+    {
+      "start": 342.8,
+      "end": 346.08,
+      "text": "you want to lower your se bet frequency on those dangerous wet boards",
+      "avg_logprob": -0.47635,
+      "no_speech_prob": 0.00321,
+      "compression_ratio": 1.62825
+    },
+    {
+      "start": 353.7,
+      "end": 356.26,
+      "text": "another consideration when it comes to sea betting",
+      "avg_logprob": -0.47635,
+      "no_speech_prob": 0.00321,
+      "compression_ratio": 1.62825
+    },
+    {
+      "start": 356.34,
+      "end": 357.78,
+      "text": "ing is",
+      "avg_logprob": -0.47635,
+      "no_speech_prob": 0.00321,
+      "compression_ratio": 1.62825
+    },
+    {
+      "start": 357.78,
+      "end": 360.78,
+      "text": "is range advantage, right?",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 360.8,
+      "end": 363.06,
+      "text": "So in some situations with good boards",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 363.06,
+      "end": 363.82,
+      "text": "like boards like board's",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 363.82,
+      "end": 366.3,
+      "text": "doose-doos or Duce-dooce three a hand",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 366.3,
+      "end": 368.1,
+      "text": "that's not going to see your opponents hit",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 368.1,
+      "end": 369.26,
+      "text": "that flop very often",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 369.26,
+      "end": 370.26,
+      "text": "where they're not gonna actually",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 370.26,
+      "end": 371.26,
+      "text": "improve their hand",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 371.26,
+      "end": 372.26,
+      "text": "that they started with.",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 372.26,
+      "end": 373.82,
+      "text": "So if you were the preflop razor",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 373.9,
+      "end": 374.9,
+      "text": "this would be a situation",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 374.94,
+      "end": 377.26,
+      "text": "where you have a range advantage and that's a good board",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 379.26,
+      "end": 379.66,
+      "text": "continuation bet with.",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 381.66,
+      "end": 381.7,
+      "text": "about it.",
+      "avg_logprob": -0.46804,
+      "no_speech_prob": 0.00951,
+      "compression_ratio": 1.80519
+    },
+    {
+      "start": 387.98,
+      "end": 391.5,
+      "text": "you are supposed to have a much better hand in the big blind should be",
+      "avg_logprob": -0.31051,
+      "no_speech_prob": 0.01339,
+      "compression_ratio": 1.39157
+    },
+    {
+      "start": 391.5,
+      "end": 396.22,
+      "text": "a little more loosey-goose. Now, the flop comes Ace 93 right? No flush draw",
+      "avg_logprob": -0.31051,
+      "no_speech_prob": 0.01339,
+      "compression_ratio": 1.39157
+    },
+    {
+      "start": 396.22,
+      "end": 401.26,
+      "text": "he checks it's up to you. You should in this situation probably up your continuation",
+      "avg_logprob": -0.31051,
+      "no_speech_prob": 0.01339,
+      "compression_ratio": 1.39157
+    },
+    {
+      "start": 417.98,
+      "end": 419.98,
+      "text": "you know, whether you have it or not",
+      "avg_logprob": -0.28671,
+      "no_speech_prob": 0.00787,
+      "compression_ratio": 1.55357
+    },
+    {
+      "start": 419.98,
+      "end": 422.98,
+      "text": "where you would up your frequency of seabets.",
+      "avg_logprob": -0.28671,
+      "no_speech_prob": 0.00787,
+      "compression_ratio": 1.55357
+    },
+    {
+      "start": 422.98,
+      "end": 424.98,
+      "text": "You know a deeper look at that example is sometimes",
+      "avg_logprob": -0.28671,
+      "no_speech_prob": 0.00787,
+      "compression_ratio": 1.55357
+    },
+    {
+      "start": 424.98,
+      "end": 427.98,
+      "text": "you can now base your decision to seebed",
+      "avg_logprob": -0.28671,
+      "no_speech_prob": 0.00787,
+      "compression_ratio": 1.55357
+    },
+    {
+      "start": 427.98,
+      "end": 429.98,
+      "text": "on the actual hand you have and be exploitative",
+      "avg_logprob": -0.28671,
+      "no_speech_prob": 0.00787,
+      "compression_ratio": 1.55357
+    },
+    {
+      "start": 429.98,
+      "end": 431.98,
+      "text": "So for example if you have king queen",
+      "avg_logprob": -0.28671,
+      "no_speech_prob": 0.00787,
+      "compression_ratio": 1.55357
+    },
+    {
+      "start": 447.98,
+      "end": 449.98,
+      "text": "to bluff at it at a later street.",
+      "avg_logprob": -0.30917,
+      "no_speech_prob": 0.00812,
+      "compression_ratio": 1.48352
+    },
+    {
+      "start": 449.98,
+      "end": 451.98,
+      "text": "So the bottom line is when boards like this come up,",
+      "avg_logprob": -0.30917,
+      "no_speech_prob": 0.00812,
+      "compression_ratio": 1.48352
+    },
+    {
+      "start": 451.98,
+      "end": 453.98,
+      "text": "It favors you if you do have strong hand",
+      "avg_logprob": -0.30917,
+      "no_speech_prob": 0.00812,
+      "compression_ratio": 1.48352
+    },
+    {
+      "start": 453.98,
+      "end": 455.98,
+      "text": "where you can check back more often",
+      "avg_logprob": -0.30917,
+      "no_speech_prob": 0.00812,
+      "compression_ratio": 1.48352
+    },
+    {
+      "start": 455.98,
+      "end": 456.98,
+      "text": "and if you want a bluff",
+      "avg_logprob": -0.30917,
+      "no_speech_prob": 0.00812,
+      "compression_ratio": 1.48352
+    },
+    {
+      "start": 456.98,
+      "end": 459.98,
+      "text": "its great situation to do that as well",
+      "avg_logprob": -0.30917,
+      "no_speech_prob": 0.00812,
+      "compression_ratio": 1.48352
+    },
+    {
+      "start": 459.98,
+      "end": 467.15,
+      "text": "A lot of time",
+      "avg_logprob": -0.30917,
+      "no_speech_prob": 0.00812,
+      "compression_ratio": 1.48352
+    },
+    {
+      "start": 467.15,
+      "end": 468.15,
+      "text": "You're going to find yourself",
+      "avg_logprob": -0.30917,
+      "no_speech_prob": 0.00812,
+      "compression_ratio": 1.48352
+    },
+    {
+      "start": 468.15,
+      "end": 471.15,
+      "text": "in situations after the flop, where you have a drawing hand.",
+      "avg_logprob": -0.39847,
+      "no_speech_prob": 0.02738,
+      "compression_ratio": 1.53107
+    },
+    {
+      "start": 471.15,
+      "end": 474.15,
+      "text": "Whether it's four to straight or four to flush",
+      "avg_logprob": -0.39847,
+      "no_speech_prob": 0.02738,
+      "compression_ratio": 1.53107
+    },
+    {
+      "start": 474.15,
+      "end": 475.15,
+      "text": "You may even have both.",
+      "avg_logprob": -0.39847,
+      "no_speech_prob": 0.02738,
+      "compression_ratio": 1.53107
+    },
+    {
+      "start": 475.15,
+      "end": 477.15,
+      "text": "You may have a hand where you have say for example",
+      "avg_logprob": -0.39847,
+      "no_speech_prob": 0.02738,
+      "compression_ratio": 1.53107
+    },
+    {
+      "start": 477.15,
+      "end": 480.15,
+      "text": "Queen Ten of Spades and The Flop comes Jacka spades",
+      "avg_logprob": -0.39847,
+      "no_speech_prob": 0.02738,
+      "compression_ratio": 1.53107
+    },
+    {
+      "start": 480.15,
+      "end": 481.15,
+      "text": "Nine of Spades 4 giving you a strait",
+      "avg_logprob": -0.39847,
+      "no_speech_prob": 0.02738,
+      "compression_ratio": 1.53107
+    },
+    {
+      "start": 481.15,
+      "end": 484.75,
+      "text": "you a straight flush draw. Those are very powerful hands now that's what I would call",
+      "avg_logprob": -0.43587,
+      "no_speech_prob": 0.00354,
+      "compression_ratio": 1.79259
+    },
+    {
+      "start": 484.75,
+      "end": 489.55,
+      "text": "a monster draw and in situations where you have a monster draw there's really almost",
+      "avg_logprob": -0.43587,
+      "no_speech_prob": 0.00354,
+      "compression_ratio": 1.79259
+    },
+    {
+      "start": 489.55,
+      "end": 492.75,
+      "text": "no hand you'll be up against, where you're in really big trouble. You know there's some",
+      "avg_logprob": -0.43587,
+      "no_speech_prob": 0.00354,
+      "compression_ratio": 1.79259
+    },
+    {
+      "start": 492.75,
+      "end": 495.07,
+      "text": "hands obviously if your opponent has three of the kind or maybe they've had...",
+      "avg_logprob": -0.43587,
+      "no_speech_prob": 0.00354,
+      "compression_ratio": 1.79259
+    },
+    {
+      "start": 495.07,
+      "end": 498.27,
+      "text": "or if they have maybe the higher flush straw with the ace-high flush draw those",
+      "avg_logprob": -0.43587,
+      "no_speech_prob": 0.00354,
+      "compression_ratio": 1.79259
+    },
+    {
+      "start": 498.27,
+      "end": 500.43,
+      "text": "but those are some hands that put you know tough spots but overall",
+      "avg_logprob": -0.43587,
+      "no_speech_prob": 0.00354,
+      "compression_ratio": 1.79259
+    },
+    {
+      "start": 500.43,
+      "end": 505.63,
+      "text": "tough spots, but overall those are situations where you typically want to get make the pot bigger and",
+      "avg_logprob": -0.48325,
+      "no_speech_prob": 0.03009,
+      "compression_ratio": 1.68905
+    },
+    {
+      "start": 505.63,
+      "end": 509.39,
+      "text": "you wanna get, you know, make it bloated. So you're gonna want to bet those a little more often",
+      "avg_logprob": -0.48325,
+      "no_speech_prob": 0.03009,
+      "compression_ratio": 1.68905
+    },
+    {
+      "start": 510.27,
+      "end": 512.11,
+      "text": "Now some other draws maybe, you know,",
+      "avg_logprob": -0.48325,
+      "no_speech_prob": 0.03009,
+      "compression_ratio": 1.68905
+    },
+    {
+      "start": 512.11,
+      "end": 514.11,
+      "text": "You might not be able to call a check race",
+      "avg_logprob": -0.48325,
+      "no_speech_prob": 0.03009,
+      "compression_ratio": 1.68905
+    },
+    {
+      "start": 514.11,
+      "end": 515.31,
+      "text": "so you do want a free card",
+      "avg_logprob": -0.48325,
+      "no_speech_prob": 0.03009,
+      "compression_ratio": 1.68905
+    },
+    {
+      "start": 515.35,
+      "end": 516.51,
+      "text": "Let's say for example",
+      "avg_logprob": -0.48325,
+      "no_speech_prob": 0.03009,
+      "compression_ratio": 1.68905
+    },
+    {
+      "start": 516.51,
+      "end": 519.07,
+      "text": "The flop is King Queen Nine with two hearts",
+      "avg_logprob": -0.48325,
+      "no_speech_prob": 0.03009,
+      "compression_ratio": 1.68905
+    },
+    {
+      "start": 519.15,
+      "end": 520.91,
+      "text": "and you have the six seven of hearts",
+      "avg_logprob": -0.48325,
+      "no_speech_prob": 0.03009,
+      "compression_ratio": 1.68905
+    },
+    {
+      "start": 521.23,
+      "end": 523.55,
+      "text": "you know, there's four players in their 4 players in the one else may",
+      "avg_logprob": -0.48325,
+      "no_speech_prob": 0.03009,
+      "compression_ratio": 1.68905
+    },
+    {
+      "start": 530.43,
+      "end": 532.75,
+      "text": "have a better one. So that would be kind of like more",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 532.91,
+      "end": 534.03,
+      "text": "of a draw that you want to play",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 534.03,
+      "end": 535.83,
+      "text": "more timidly and maybe",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 535.87,
+      "end": 538.03,
+      "text": "you can steal it later in the situation, but",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 538.11,
+      "end": 539.39,
+      "text": "The monster draws are the ones",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 539.39,
+      "end": 541.43,
+      "text": "that you wanna definitely up your frequency with",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 541.59,
+      "end": 542.75,
+      "text": "And then the weaker draws",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 542.91,
+      "end": 544.59,
+      "text": "Maybe you know that you can't really",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 544.59,
+      "end": 545.71,
+      "text": "fit a check raise with",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 545.73,
+      "end": 547.47,
+      "text": "You don't want to having said",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 547.55,
+      "end": 549.43,
+      "text": "there are some draws like really weak",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 549.43,
+      "end": 551.23,
+      "text": "' shots like gutshots that you can use as a bluffed",
+      "avg_logprob": -0.57373,
+      "no_speech_prob": 0.02121,
+      "compression_ratio": 1.77328
+    },
+    {
+      "start": 551.23,
+      "end": 556.67,
+      "text": "is a bluff. So another example would be, let's say it comes Queen 7-3 you",
+      "avg_logprob": -0.35831,
+      "no_speech_prob": 0.02492,
+      "compression_ratio": 1.70611
+    },
+    {
+      "start": 556.67,
+      "end": 558.79,
+      "text": "decided to raise it with five six spades,",
+      "avg_logprob": -0.35831,
+      "no_speech_prob": 0.02492,
+      "compression_ratio": 1.70611
+    },
+    {
+      "start": 558.79,
+      "end": 561.67,
+      "text": "you have an inside straight draw your opponent's check to you",
+      "avg_logprob": -0.35831,
+      "no_speech_prob": 0.02492,
+      "compression_ratio": 1.70611
+    },
+    {
+      "start": 561.67,
+      "end": 565.27,
+      "text": "well we have not a great draw but you have something and you can continue",
+      "avg_logprob": -0.35831,
+      "no_speech_prob": 0.02492,
+      "compression_ratio": 1.70611
+    },
+    {
+      "start": 565.27,
+      "end": 567.71,
+      "text": "with it if you bet in your opponent check raises",
+      "avg_logprob": -0.35831,
+      "no_speech_prob": 0.02492,
+      "compression_ratio": 1.70611
+    },
+    {
+      "start": 567.71,
+      "end": 570.99,
+      "text": "you know a lot of time you're gonna have to fold other times you can still peel",
+      "avg_logprob": -0.35831,
+      "no_speech_prob": 0.02492,
+      "compression_ratio": 1.70611
+    },
+    {
+      "start": 570.99,
+      "end": 573.71,
+      "text": "and that's okay because it wasn't like you're getting yourself off",
+      "avg_logprob": -0.35831,
+      "no_speech_prob": 0.02492,
+      "compression_ratio": 1.70611
+    },
+    {
+      "start": 573.71,
+      "end": 575.71,
+      "text": "of this fantastic draw.",
+      "avg_logprob": -0.39594,
+      "no_speech_prob": 0.01725,
+      "compression_ratio": 1.42857
+    },
+    {
+      "start": 575.71,
+      "end": 577.71,
+      "text": "It's just a gut shot, you know?",
+      "avg_logprob": -0.39594,
+      "no_speech_prob": 0.01725,
+      "compression_ratio": 1.42857
+    },
+    {
+      "start": 577.71,
+      "end": 578.71,
+      "text": "My mom always said don't",
+      "avg_logprob": -0.39594,
+      "no_speech_prob": 0.01725,
+      "compression_ratio": 1.42857
+    },
+    {
+      "start": 578.71,
+      "end": 579.71,
+      "text": "be chasing no inside straight draws",
+      "avg_logprob": -0.39594,
+      "no_speech_prob": 0.01725,
+      "compression_ratio": 1.42857
+    },
+    {
+      "start": 579.71,
+      "end": 581.71,
+      "text": "okay well she never said that",
+      "avg_logprob": -0.39594,
+      "no_speech_prob": 0.01725,
+      "compression_ratio": 1.42857
+    },
+    {
+      "start": 581.71,
+      "end": 582.71,
+      "text": "but you get the gist of it",
+      "avg_logprob": -0.39594,
+      "no_speech_prob": 0.01725,
+      "compression_ratio": 1.42857
+    },
+    {
+      "start": 582.71,
+      "end": 583.71,
+      "text": "So when you flop a draw",
+      "avg_logprob": -0.39594,
+      "no_speech_prob": 0.01725,
+      "compression_ratio": 1.42857
+    },
+    {
+      "start": 583.71,
+      "end": 585.71,
+      "text": "whether its' monster draw",
+      "avg_logprob": -0.39594,
+      "no_speech_prob": 0.01725,
+      "compression_ratio": 1.42857
+    },
+    {
+      "start": 585.71,
+      "end": 586.71,
+      "text": "or a weaker draw",
+      "avg_logprob": -0.39594,
+      "no_speech_prob": 0.01725,
+      "compression_ratio": 1.42857
+    },
+    {
+      "start": 586.71,
+      "end": 588.63,
+      "text": "a couple ways you can win this pot. Number one is,",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 588.67,
+      "end": 591.11,
+      "text": "you can actually hit it and catch the card you need",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 591.11,
+      "end": 592.79,
+      "text": "but by being more aggressive",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 592.79,
+      "end": 593.67,
+      "text": "and being the aggressor",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 593.67,
+      "end": 595.91,
+      "text": "you actually give yourself two chances to win",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 595.91,
+      "end": 597.31,
+      "text": "You can bet and get your opponent",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 597.31,
+      "end": 601.14,
+      "text": "to fold out potentially a better hand",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 601.14,
+      "end": 602.58,
+      "text": "or if they do call",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 602.58,
+      "end": 604.7,
+      "text": "you still have that backdoor opportunity",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 604.7,
+      "end": 609.89,
+      "text": "to actually hit the car so generally speaking in situations like this",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 609.89,
+      "end": 611.79,
+      "text": "you're gonna get rewarded for aggression",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 611.83,
+      "end": 612.41,
+      "text": "and I would highly suggest",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 612.43,
+      "end": 614.73,
+      "text": "think as valuable you want to be an additional",
+      "avg_logprob": -0.50678,
+      "no_speech_prob": 0.00236,
+      "compression_ratio": 1.77397
+    },
+    {
+      "start": 618.41,
+      "end": 620.01,
+      "text": "to have your game again because you don't want",
+      "avg_logprob": -0.39297,
+      "no_speech_prob": 0.01895,
+      "compression_ratio": 1.63556
+    },
+    {
+      "start": 620.01,
+      "end": 622.21,
+      "text": "be so easily read that you're only betting",
+      "avg_logprob": -0.39297,
+      "no_speech_prob": 0.01895,
+      "compression_ratio": 1.63556
+    },
+    {
+      "start": 622.25,
+      "end": 624.09,
+      "text": "when you have top pair or an over-par,",
+      "avg_logprob": -0.39297,
+      "no_speech_prob": 0.01895,
+      "compression_ratio": 1.63556
+    },
+    {
+      "start": 624.09,
+      "end": 626.21,
+      "text": "or three of a kind and checking all your draws.",
+      "avg_logprob": -0.39297,
+      "no_speech_prob": 0.01895,
+      "compression_ratio": 1.63556
+    },
+    {
+      "start": 626.21,
+      "end": 628.89,
+      "text": "You have to incorporate some vetting on the come as well",
+      "avg_logprob": -0.39297,
+      "no_speech_prob": 0.01895,
+      "compression_ratio": 1.63556
+    },
+    {
+      "start": 628.89,
+      "end": 629.97,
+      "text": "and there's an added bonus",
+      "avg_logprob": -0.39297,
+      "no_speech_prob": 0.01895,
+      "compression_ratio": 1.63556
+    },
+    {
+      "start": 629.97,
+      "end": 639.86,
+      "text": "of giving yourself two ways to win the pot.",
+      "avg_logprob": -0.39297,
+      "no_speech_prob": 0.01895,
+      "compression_ratio": 1.63556
+    },
+    {
+      "start": 639.86,
+      "end": 640.86,
+      "text": "When it comes to sea bedding,",
+      "avg_logprob": -0.39297,
+      "no_speech_prob": 0.01895,
+      "compression_ratio": 1.63556
+    },
+    {
+      "start": 640.86,
+      "end": 642.86,
+      "text": "in auto pilot and just being okay",
+      "avg_logprob": -0.39297,
+      "no_speech_prob": 0.01895,
+      "compression_ratio": 1.63556
+    },
+    {
+      "start": 642.86,
+      "end": 645.34,
+      "text": "saying, okay well I have this hand and I'm just going to see that. You need",
+      "avg_logprob": -0.26158,
+      "no_speech_prob": 0.01072,
+      "compression_ratio": 1.56383
+    },
+    {
+      "start": 645.34,
+      "end": 648.5,
+      "text": "to also be paying attention because sometimes you're gonna pick up on something",
+      "avg_logprob": -0.26158,
+      "no_speech_prob": 0.01072,
+      "compression_ratio": 1.56383
+    },
+    {
+      "start": 648.5,
+      "end": 652.1,
+      "text": "that should alter your strategy significantly so one of the things",
+      "avg_logprob": -0.26158,
+      "no_speech_prob": 0.01072,
+      "compression_ratio": 1.56383
+    },
+    {
+      "start": 652.1,
+      "end": 656.38,
+      "text": "one of the most more basic ones I would say that I look for is the eyes",
+      "avg_logprob": -0.26158,
+      "no_speech_prob": 0.01072,
+      "compression_ratio": 1.56383
+    },
+    {
+      "start": 656.38,
+      "end": 660.02,
+      "text": "Okay, so typically when you're up against an opponent and they see the flop",
+      "avg_logprob": -0.41505,
+      "no_speech_prob": 0.04723,
+      "compression_ratio": 1.8403
+    },
+    {
+      "start": 660.02,
+      "end": 665.06,
+      "text": "And the first thing they do is they glanced out at their chips. What does that mean to you? Like what do you think that means",
+      "avg_logprob": -0.41505,
+      "no_speech_prob": 0.04723,
+      "compression_ratio": 1.8403
+    },
+    {
+      "start": 665.1,
+      "end": 669.06,
+      "text": "And if you said that means they're likely more interested in or thinking about betting next",
+      "avg_logprob": -0.41505,
+      "no_speech_prob": 0.04723,
+      "compression_ratio": 1.8403
+    },
+    {
+      "start": 669.1,
+      "end": 669.14,
+      "text": "That's probably correct because they're thinking about bedding next",
+      "avg_logprob": -0.41505,
+      "no_speech_prob": 0.04723,
+      "compression_ratio": 1.8403
+    },
+    {
+      "start": 669.18,
+      "end": 679.9,
+      "text": "It's probably correct because they like what they see So in a situation where I would maybe see-aitting frequency on my...",
+      "avg_logprob": -0.41505,
+      "no_speech_prob": 0.04723,
+      "compression_ratio": 1.8403
+    },
+    {
+      "start": 686.38,
+      "end": 690.54,
+      "text": "hand. So if I have a strong hand and I want them to check raise me, ooh-hoo!",
+      "avg_logprob": -0.42227,
+      "no_speech_prob": 0.01531,
+      "compression_ratio": 1.6549
+    },
+    {
+      "start": 690.54,
+      "end": 693.18,
+      "text": "i'm gonna bet. However, if I do have a weaker hand or a",
+      "avg_logprob": -0.42227,
+      "no_speech_prob": 0.01531,
+      "compression_ratio": 1.6549
+    },
+    {
+      "start": 693.18,
+      "end": 695.18,
+      "text": "hand that really doesn't wanna get checked raised",
+      "avg_logprob": -0.42227,
+      "no_speech_prob": 0.01531,
+      "compression_ratio": 1.6549
+    },
+    {
+      "start": 695.2,
+      "end": 697.82,
+      "text": "I'm going to increase my checks so there's more",
+      "avg_logprob": -0.42227,
+      "no_speech_prob": 0.01531,
+      "compression_ratio": 1.6549
+    },
+    {
+      "start": 697.82,
+      "end": 700.14,
+      "text": "to just see betting in terms of just like okay I",
+      "avg_logprob": -0.42227,
+      "no_speech_prob": 0.01531,
+      "compression_ratio": 1.6549
+    },
+    {
+      "start": 700.14,
+      "end": 703.98,
+      "text": "check these flops I bet these flops you're factoring in so many variables and one",
+      "avg_logprob": -0.42227,
+      "no_speech_prob": 0.01531,
+      "compression_ratio": 1.6549
+    },
+    {
+      "start": 703.98,
+      "end": 714.51,
+      "text": "those things is body language and physical tells. One of the",
+      "avg_logprob": -0.42227,
+      "no_speech_prob": 0.01531,
+      "compression_ratio": 1.6549
+    },
+    {
+      "start": 714.51,
+      "end": 718.63,
+      "text": "The bigger mistakes I see beginning players make is they'll often throw out a continuation",
+      "avg_logprob": -0.33233,
+      "no_speech_prob": 0.0173,
+      "compression_ratio": 1.6844
+    },
+    {
+      "start": 718.63,
+      "end": 723.31,
+      "text": "bet without any real plan as to how their going to proceed on the turn in the river.",
+      "avg_logprob": -0.33233,
+      "no_speech_prob": 0.0173,
+      "compression_ratio": 1.6844
+    },
+    {
+      "start": 723.31,
+      "end": 727.07,
+      "text": "Now if you have a chest background at all, you will know that it's important to think",
+      "avg_logprob": -0.33233,
+      "no_speech_prob": 0.0173,
+      "compression_ratio": 1.6844
+    },
+    {
+      "start": 727.07,
+      "end": 728.51,
+      "text": "several moves ahead.",
+      "avg_logprob": -0.33233,
+      "no_speech_prob": 0.0173,
+      "compression_ratio": 1.6844
+    },
+    {
+      "start": 728.51,
+      "end": 729.75,
+      "text": "Same holds true in poker.",
+      "avg_logprob": -0.33233,
+      "no_speech_prob": 0.0173,
+      "compression_ratio": 1.6844
+    },
+    {
+      "start": 729.75,
+      "end": 734.51,
+      "text": "If your throwing out a continuation bet and then the person calls and you go oh no what do I",
+      "avg_logprob": -0.33233,
+      "no_speech_prob": 0.0173,
+      "compression_ratio": 1.6844
+    },
+    {
+      "start": 734.51,
+      "end": 735.51,
+      "text": "do now?",
+      "avg_logprob": -0.33233,
+      "no_speech_prob": 0.0173,
+      "compression_ratio": 1.6844
+    },
+    {
+      "start": 737.51,
+      "end": 742.39,
+      "text": "You should be thinking about this before you make your first bed.",
+      "avg_logprob": -0.33233,
+      "no_speech_prob": 0.0173,
+      "compression_ratio": 1.6844
+    },
+    {
+      "start": 744.51,
+      "end": 747.51,
+      "text": "and the turn card comes, an ace king or a queen.",
+      "avg_logprob": -0.36467,
+      "no_speech_prob": 0.02633,
+      "compression_ratio": 1.69403
+    },
+    {
+      "start": 747.51,
+      "end": 750.51,
+      "text": "The card that comes in the term is always going to change your action",
+      "avg_logprob": -0.36467,
+      "no_speech_prob": 0.02633,
+      "compression_ratio": 1.69403
+    },
+    {
+      "start": 750.51,
+      "end": 753.51,
+      "text": "because some of those cards are gonna be beneficial for your opponent's range",
+      "avg_logprob": -0.36467,
+      "no_speech_prob": 0.02633,
+      "compression_ratio": 1.69403
+    },
+    {
+      "start": 753.51,
+      "end": 755.51,
+      "text": "Some will be beneficial for you",
+      "avg_logprob": -0.36467,
+      "no_speech_prob": 0.02633,
+      "compression_ratio": 1.69403
+    },
+    {
+      "start": 755.51,
+      "end": 758.51,
+      "text": "So super important to think a couple steps ahead",
+      "avg_logprob": -0.36467,
+      "no_speech_prob": 0.02633,
+      "compression_ratio": 1.69403
+    },
+    {
+      "start": 758.51,
+      "end": 761.51,
+      "text": "I'm making this continuation bet why?",
+      "avg_logprob": -0.36467,
+      "no_speech_prob": 0.02633,
+      "compression_ratio": 1.69403
+    },
+    {
+      "start": 761.51,
+      "end": 764.51,
+      "text": "What are the reasons for this continuation bed if you can't come up with",
+      "avg_logprob": -0.36467,
+      "no_speech_prob": 0.02633,
+      "compression_ratio": 1.69403
+    },
+    {
+      "start": 765.51,
+      "end": 773.51,
+      "text": "A Couple Good Reason as to Why This Makes Since With An Under-Out",
+      "avg_logprob": -0.36467,
+      "no_speech_prob": 0.02633,
+      "compression_ratio": 1.69403
+    },
+    {
+      "start": 774.51,
+      "end": 776.67,
+      "text": "of how you're going to proceed on the turn in the river.",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 776.69,
+      "end": 779.15,
+      "text": "So maybe, you raised under the gun",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 779.15,
+      "end": 781.11,
+      "text": "The flop came deuce-deuce three",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 781.11,
+      "end": 783.03,
+      "text": "You're up against an opponent who called from",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 783.03,
+      "end": 783.83,
+      "text": "the small wine",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 783.83,
+      "end": 786.39,
+      "text": "so that's a very strong hand typically",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 786.39,
+      "end": 787.55,
+      "text": "and it's a you know",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 787.55,
+      "end": 790.51,
+      "text": "Maybe a player who is semi pro okay",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 790.75,
+      "end": 791.63,
+      "text": "so now his range is gonna be what like pocket eight",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 793.63,
+      "end": 794.43,
+      "text": "Spocket sevens, pocket jacks",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 794.83,
+      "end": 796.83,
+      "text": "or pocket tens may be ace queeneace",
+      "avg_logprob": -0.59839,
+      "no_speech_prob": 0.03326,
+      "compression_ratio": 1.63636
+    },
+    {
+      "start": 796.83,
+      "end": 798.11,
+      "text": "suited, king queen sued it.",
+      "avg_logprob": -0.41256,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.50769
+    },
+    {
+      "start": 798.11,
+      "end": 799.31,
+      "text": "A lot of these types of hands",
+      "avg_logprob": -0.41256,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.50769
+    },
+    {
+      "start": 799.31,
+      "end": 801.87,
+      "text": "So the flop is deuce-deuce three he checks",
+      "avg_logprob": -0.41256,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.50769
+    },
+    {
+      "start": 801.87,
+      "end": 803.31,
+      "text": "you decide a continuation bet",
+      "avg_logprob": -0.41256,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.50769
+    },
+    {
+      "start": 803.31,
+      "end": 804.91,
+      "text": "what are you gonna do after that?",
+      "avg_logprob": -0.41256,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.50769
+    },
+    {
+      "start": 804.91,
+      "end": 806.83,
+      "text": "You already know there's a good chance your player",
+      "avg_logprob": -0.41256,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.50769
+    },
+    {
+      "start": 806.83,
+      "end": 808.19,
+      "text": "Your opponent's going to continue",
+      "avg_logprob": -0.41256,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.50769
+    },
+    {
+      "start": 808.19,
+      "end": 809.71,
+      "text": "because he's gonna have eight snines or tens",
+      "avg_logprob": -0.41256,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.50769
+    },
+    {
+      "start": 809.71,
+      "end": 812.75,
+      "text": "Now, maybe have history with this opponent and you know that because",
+      "avg_logprob": -0.33523,
+      "no_speech_prob": 0.00393,
+      "compression_ratio": 1.71583
+    },
+    {
+      "start": 812.75,
+      "end": 817.75,
+      "text": "you raise into the gun if you fire first barrel double-barrel triple barrel he",
+      "avg_logprob": -0.33523,
+      "no_speech_prob": 0.00393,
+      "compression_ratio": 1.71583
+    },
+    {
+      "start": 817.75,
+      "end": 821.39,
+      "text": "may fold those hands but you have to realize that it's not going to work",
+      "avg_logprob": -0.33523,
+      "no_speech_prob": 0.00393,
+      "compression_ratio": 1.71583
+    },
+    {
+      "start": 821.39,
+      "end": 825.35,
+      "text": "with one clip. You can't just bet to flop and expect him to fold pocket tens",
+      "avg_logprob": -0.33523,
+      "no_speech_prob": 0.00393,
+      "compression_ratio": 1.71583
+    },
+    {
+      "start": 825.35,
+      "end": 828.99,
+      "text": "you're gonna have to commit in that situation if you want to bluff this so a bed on",
+      "avg_logprob": -0.33523,
+      "no_speech_prob": 0.00393,
+      "compression_ratio": 1.71583
+    },
+    {
+      "start": 830.99,
+      "end": 840.46,
+      "text": "of bend on turn and often a bit on the river. So sometimes you have an amazing game plan for me",
+      "avg_logprob": -0.33523,
+      "no_speech_prob": 0.00393,
+      "compression_ratio": 1.71583
+    },
+    {
+      "start": 846.46,
+      "end": 849.14,
+      "text": "The flopob comes, you know Jack 9 deuce and",
+      "avg_logprob": -0.47952,
+      "no_speech_prob": 0.02381,
+      "compression_ratio": 1.50244
+    },
+    {
+      "start": 849.14,
+      "end": 850.14,
+      "text": "You've got three nines",
+      "avg_logprob": -0.47952,
+      "no_speech_prob": 0.02381,
+      "compression_ratio": 1.50244
+    },
+    {
+      "start": 850.14,
+      "end": 851.02,
+      "text": "And you know your opponent's",
+      "avg_logprob": -0.47952,
+      "no_speech_prob": 0.02381,
+      "compression_ratio": 1.50244
+    },
+    {
+      "start": 851.02,
+      "end": 852.14,
+      "text": "has a pretty strong hand",
+      "avg_logprob": -0.47952,
+      "no_speech_prob": 0.02381,
+      "compression_ratio": 1.50244
+    },
+    {
+      "start": 852.14,
+      "end": 854.18,
+      "text": "and you're gonna get maximum value.",
+      "avg_logprob": -0.47952,
+      "no_speech_prob": 0.02381,
+      "compression_ratio": 1.50244
+    },
+    {
+      "start": 854.18,
+      "end": 856.38,
+      "text": "Well that's going to heavily depend on the runout",
+      "avg_logprob": -0.47952,
+      "no_speech_prob": 0.02381,
+      "compression_ratio": 1.50244
+    },
+    {
+      "start": 856.38,
+      "end": 857.5,
+      "text": "So what is the run out?",
+      "avg_logprob": -0.47952,
+      "no_speech_prob": 0.02381,
+      "compression_ratio": 1.50244
+    },
+    {
+      "start": 857.5,
+      "end": 858.94,
+      "text": "The runout essentially okay",
+      "avg_logprob": -0.47952,
+      "no_speech_prob": 0.02381,
+      "compression_ratio": 1.50244
+    },
+    {
+      "start": 858.94,
+      "end": 859.58,
+      "text": "What combination of cards come in the turnination",
+      "avg_logprob": -0.47952,
+      "no_speech_prob": 0.02381,
+      "compression_ratio": 1.50244
+    },
+    {
+      "start": 876.46,
+      "end": 878.66,
+      "text": "and so beneficial for your opponent's hand.",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 878.68,
+      "end": 879.96,
+      "text": "So there is good runouts",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 879.96,
+      "end": 881.56,
+      "text": "and bad run outs, you should plan",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 881.56,
+      "end": 884.36,
+      "text": "your strategy based around both possibilities",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 884.36,
+      "end": 885.34,
+      "text": "when you have strong hands",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 885.34,
+      "end": 887.0,
+      "text": "or when you have weak hands thinking ahead",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 887.0,
+      "end": 888.22,
+      "text": "to the fact that like",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 888.22,
+      "end": 889.34,
+      "text": "you don't want be surprised I'm like",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 889.34,
+      "end": 891.58,
+      "text": "oh no that card came what do I do now?",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 891.58,
+      "end": 893.14,
+      "text": "You should've thought of that before",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 893.14,
+      "end": 893.78,
+      "text": "the cart actually came in the runoff happened",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 894.78,
+      "end": 903.64,
+      "text": "while Ace King seems a very powerful",
+      "avg_logprob": -0.40555,
+      "no_speech_prob": 0.01088,
+      "compression_ratio": 1.65152
+    },
+    {
+      "start": 903.64,
+      "end": 906.4,
+      "text": "very powerful hand, you know the big slick. It is one of",
+      "avg_logprob": -0.50374,
+      "no_speech_prob": 0.01846,
+      "compression_ratio": 1.68803
+    },
+    {
+      "start": 906.4,
+      "end": 909.76,
+      "text": "the top hands you can get it's important to also note that when",
+      "avg_logprob": -0.50374,
+      "no_speech_prob": 0.01846,
+      "compression_ratio": 1.68803
+    },
+    {
+      "start": 909.76,
+      "end": 913.88,
+      "text": "you have Ace King after the flop more often than not",
+      "avg_logprob": -0.50374,
+      "no_speech_prob": 0.01846,
+      "compression_ratio": 1.68803
+    },
+    {
+      "start": 913.9,
+      "end": 917.0,
+      "text": "your still going to have just ACE king. You're not",
+      "avg_logprob": -0.50374,
+      "no_speech_prob": 0.01846,
+      "compression_ratio": 1.68803
+    },
+    {
+      "start": 917.0,
+      "end": 918.64,
+      "text": "gonna flopp a pair.",
+      "avg_logprob": -0.50374,
+      "no_speech_prob": 0.01846,
+      "compression_ratio": 1.68803
+    },
+    {
+      "start": 918.68,
+      "end": 920.76,
+      "text": "You're going to flip a pair around in roughly like",
+      "avg_logprob": -0.50374,
+      "no_speech_prob": 0.01846,
+      "compression_ratio": 1.68803
+    },
+    {
+      "start": 920.76,
+      "end": 923.8,
+      "text": "a quarter of the time. The other three quarters of the time",
+      "avg_logprob": -0.50374,
+      "no_speech_prob": 0.01846,
+      "compression_ratio": 1.68803
+    },
+    {
+      "start": 923.8,
+      "end": 926.94,
+      "text": "you may be going to flock maybe a gutt-",
+      "avg_logprob": -0.50374,
+      "no_speech_prob": 0.01846,
+      "compression_ratio": 1.68803
+    },
+    {
+      "start": 933.64,
+      "end": 935.84,
+      "text": "to flop. But that's important to understand too when it comes",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 935.86,
+      "end": 937.24,
+      "text": "to seabetting as a bluff,",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 937.24,
+      "end": 940.12,
+      "text": "When your opponent plays a hand from the big blind",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 940.12,
+      "end": 943.36,
+      "text": "and the flopp comes you know Queen 7-4",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 943.36,
+      "end": 945.8,
+      "text": "they are very unlikely if they didn't start with",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 945.8,
+      "end": 947.36,
+      "text": "a pair to have flopped a pair",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 947.36,
+      "end": 948.36,
+      "text": "what that means is",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 948.36,
+      "end": 949.92,
+      "text": "It should give you the green light more often",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 949.96,
+      "end": 950.56,
+      "text": "to go ahead",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 950.56,
+      "end": 953.96,
+      "text": "and take those pots understanding that even if you don't flop a pair",
+      "avg_logprob": -0.45737,
+      "no_speech_prob": 0.01421,
+      "compression_ratio": 1.64082
+    },
+    {
+      "start": 953.96,
+      "end": 955.96,
+      "text": "That's okay. They probably didn't either",
+      "avg_logprob": -0.17792,
+      "no_speech_prob": 0.0109,
+      "compression_ratio": 0.83333
+    }
+  ]
+}

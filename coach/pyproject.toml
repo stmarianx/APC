@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "poker-coach-core"
+version = "0.1.0"
+description = "Offline poker hand-history analysis and training core"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+poker-coach = "poker_coach.cli:main"
+poker-coach-web = "poker_coach.web:main"
+poker-coach-import-solutions = "poker_coach.solver_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+poker_coach = ["data/*.json", "data/*.txt", "data/*.csv", "web_assets/*"]

@@ -1,0 +1,452 @@
+{
+  "file": "37-Closing.mp4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 189.4826875,
+  "duration_after_vad_seconds": 138.944,
+  "transcription_elapsed_seconds": 72.752,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 2,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 0.24,
+      "end": 21.19,
+      "text": "Without a doubt my most challenging experience in poker was really at the outset.",
+      "avg_logprob": -0.41788,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.64528
+    },
+    {
+      "start": 21.21,
+      "end": 23.55,
+      "text": "You know, in Toronto I was big fish and a little pond",
+      "avg_logprob": -0.41788,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.64528
+    },
+    {
+      "start": 23.55,
+      "end": 25.71,
+      "text": "And I was able to pound people into submission",
+      "avg_logprob": -0.41788,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.64528
+    },
+    {
+      "start": 25.71,
+      "end": 27.71,
+      "text": "And I was a bull in a China shop",
+      "avg_logprob": -0.41788,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.64528
+    },
+    {
+      "start": 27.71,
+      "end": 30.23,
+      "text": "I took that sort of mentality to Las Vegas",
+      "avg_logprob": -0.41788,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.64528
+    },
+    {
+      "start": 30.51,
+      "end": 33.87,
+      "text": "And I was the hometown hero that went home with his tail between his legs",
+      "avg_logprob": -0.41788,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.64528
+    },
+    {
+      "start": 33.91,
+      "end": 38.07,
+      "text": "and I'd go back home and rebuild and come back to Los Vegas get spanked again",
+      "avg_logprob": -0.41788,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.64528
+    },
+    {
+      "start": 38.15,
+      "end": 39.59,
+      "text": "Get beaten up and getting",
+      "avg_logprob": -0.41788,
+      "no_speech_prob": 0.01515,
+      "compression_ratio": 1.64528
+    },
+    {
+      "start": 39.59,
+      "end": 42.95,
+      "text": "There was many nights where I walked home from the mirage,",
+      "avg_logprob": -0.37704,
+      "no_speech_prob": 0.00947,
+      "compression_ratio": 1.56957
+    },
+    {
+      "start": 42.97,
+      "end": 45.83,
+      "text": "rather than spend $5 on a cab because",
+      "avg_logprob": -0.37704,
+      "no_speech_prob": 0.00947,
+      "compression_ratio": 1.56957
+    },
+    {
+      "start": 45.83,
+      "end": 48.63,
+      "text": "I didn't exactly have it to the budget suites which",
+      "avg_logprob": -0.37704,
+      "no_speech_prob": 0.00947,
+      "compression_ratio": 1.56957
+    },
+    {
+      "start": 48.63,
+      "end": 51.47,
+      "text": "is basically like a motel I was staying at and really kind of",
+      "avg_logprob": -0.37704,
+      "no_speech_prob": 0.00947,
+      "compression_ratio": 1.56957
+    },
+    {
+      "start": 51.47,
+      "end": 54.27,
+      "text": "getting deeper into saying to myself what am I really going",
+      "avg_logprob": -0.37704,
+      "no_speech_prob": 0.00947,
+      "compression_ratio": 1.56957
+    },
+    {
+      "start": 54.27,
+      "end": 55.11,
+      "text": "do with my life?",
+      "avg_logprob": -0.37704,
+      "no_speech_prob": 0.00947,
+      "compression_ratio": 1.56957
+    },
+    {
+      "start": 55.11,
+      "end": 58.91,
+      "text": "Am I gonna be able to make it how many times can I fail before I succeed?",
+      "avg_logprob": -0.37704,
+      "no_speech_prob": 0.00947,
+      "compression_ratio": 1.56957
+    },
+    {
+      "start": 58.91,
+      "end": 60.11,
+      "text": "What is it going to take?",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 60.11,
+      "end": 61.43,
+      "text": "And all those moments,",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 61.43,
+      "end": 65.03,
+      "text": "those weak moments or those moments where I was in a breakdown",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 65.03,
+      "end": 67.99,
+      "text": "led to me having major breakthroughs",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 67.99,
+      "end": 70.47,
+      "text": "in terms of what it was gonna take for me",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 70.47,
+      "end": 71.87,
+      "text": "to be successful.",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 71.87,
+      "end": 73.31,
+      "text": "And I'm thankful for every mistake",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 73.31,
+      "end": 74.71,
+      "text": "I've made because I see mistakes",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 74.71,
+      "end": 77.15,
+      "text": "as an opportunity to learn and grow.",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 77.15,
+      "end": 81.91,
+      "text": "So my definition of success is probably a lot different than you may expect.",
+      "avg_logprob": -0.32247,
+      "no_speech_prob": 0.00517,
+      "compression_ratio": 1.61826
+    },
+    {
+      "start": 81.91,
+      "end": 83.95,
+      "text": "I think of success from the perspective",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 83.95,
+      "end": 84.95,
+      "text": "of integrity.",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 84.95,
+      "end": 85.95,
+      "text": "Okay?",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 85.95,
+      "end": 87.67,
+      "text": "And what I mean by that is, for me,",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 87.67,
+      "end": 90.87,
+      "text": "success is living a life where",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 90.87,
+      "end": 92.95,
+      "text": "what I say I'm going to do,",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 92.95,
+      "end": 94.23,
+      "text": "I actually do.",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 94.23,
+      "end": 96.59,
+      "text": "So if I say that I'm gonna be on time",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 96.59,
+      "end": 97.67,
+      "text": "I am there on time.",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 97.67,
+      "end": 98.71,
+      "text": "If I say that I'm going",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 98.79,
+      "end": 102.03,
+      "text": "to not drink before a tournament and not be social",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 104.03,
+      "end": 104.71,
+      "text": "get eight hours of sleep and I do that's",
+      "avg_logprob": -0.40815,
+      "no_speech_prob": 0.00429,
+      "compression_ratio": 1.62559
+    },
+    {
+      "start": 104.71,
+      "end": 106.51,
+      "text": "that's success. If I say",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 106.53,
+      "end": 108.61,
+      "text": "that I'm going to put in the hard work and learn how",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 108.63,
+      "end": 109.43,
+      "text": "to play the game better,",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 109.43,
+      "end": 112.75,
+      "text": "and do that, that's a success. That allows me",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 112.75,
+      "end": 115.03,
+      "text": "to live a life where I'm less focused on the results",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 115.03,
+      "end": 117.07,
+      "text": "than I let the results come",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 117.07,
+      "end": 120.59,
+      "text": "on the back of my hard work. So I don't necessarily focus",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 120.59,
+      "end": 125.59,
+      "text": "on specific titles or amounts of money that I need to have",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 125.59,
+      "end": 128.83,
+      "text": "for me to feel like I have a successful life. For me what's most important is living an",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 129.03,
+      "end": 130.27,
+      "text": "living in integrity",
+      "avg_logprob": -0.38179,
+      "no_speech_prob": 0.00728,
+      "compression_ratio": 1.73946
+    },
+    {
+      "start": 136.25,
+      "end": 140.09,
+      "text": "an absolute pleasure creating this course for you guys and I want to thank",
+      "avg_logprob": -0.28171,
+      "no_speech_prob": 0.01543,
+      "compression_ratio": 1.65728
+    },
+    {
+      "start": 140.09,
+      "end": 143.61,
+      "text": "you for tuning in and taking in all the concepts.",
+      "avg_logprob": -0.28171,
+      "no_speech_prob": 0.01543,
+      "compression_ratio": 1.65728
+    },
+    {
+      "start": 143.61,
+      "end": 146.25,
+      "text": "I know sometimes it may be intimidating but um,",
+      "avg_logprob": -0.28171,
+      "no_speech_prob": 0.01543,
+      "compression_ratio": 1.65728
+    },
+    {
+      "start": 146.25,
+      "end": 147.85,
+      "text": "i'm just thankful that I had the opportunity",
+      "avg_logprob": -0.28171,
+      "no_speech_prob": 0.01543,
+      "compression_ratio": 1.65728
+    },
+    {
+      "start": 147.85,
+      "end": 150.57,
+      "text": "to share a game that I love and I hope that",
+      "avg_logprob": -0.28171,
+      "no_speech_prob": 0.01543,
+      "compression_ratio": 1.65728
+    },
+    {
+      "start": 150.57,
+      "end": 153.53,
+      "text": "the better prepared you are to play this game at a high level",
+      "avg_logprob": -0.28171,
+      "no_speech_prob": 0.01543,
+      "compression_ratio": 1.65728
+    },
+    {
+      "start": 153.53,
+      "end": 154.89,
+      "text": "the more you enjoy it as well",
+      "avg_logprob": -0.28171,
+      "no_speech_prob": 0.01543,
+      "compression_ratio": 1.65728
+    }
+  ]
+}

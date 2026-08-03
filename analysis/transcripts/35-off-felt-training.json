@@ -1,0 +1,2444 @@
+{
+  "file": "35 Off-Felt Training.MP4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 830.08,
+  "duration_after_vad_seconds": 768.656,
+  "transcription_elapsed_seconds": 434.554,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 2,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 6.03,
+      "end": 8.15,
+      "text": "One of the main reasons, one of the most important",
+      "avg_logprob": -0.32667,
+      "no_speech_prob": 0.00359,
+      "compression_ratio": 1.79283
+    },
+    {
+      "start": 8.35,
+      "end": 11.87,
+      "text": "reason it's important to spend time in the lab is because that's where you're going",
+      "avg_logprob": -0.32667,
+      "no_speech_prob": 0.00359,
+      "compression_ratio": 1.79283
+    },
+    {
+      "start": 11.87,
+      "end": 13.47,
+      "text": "to do the nitty gritty hard work",
+      "avg_logprob": -0.32667,
+      "no_speech_prob": 0.00359,
+      "compression_ratio": 1.79283
+    },
+    {
+      "start": 13.47,
+      "end": 16.15,
+      "text": "that you simply can't do at game speed while you're playing",
+      "avg_logprob": -0.32667,
+      "no_speech_prob": 0.00359,
+      "compression_ratio": 1.79283
+    },
+    {
+      "start": 16.15,
+      "end": 17.75,
+      "text": "in a cash game or in a tournament.",
+      "avg_logprob": -0.32667,
+      "no_speech_prob": 0.00359,
+      "compression_ratio": 1.79283
+    },
+    {
+      "start": 17.75,
+      "end": 20.07,
+      "text": "So you basically are drilling the fundamentals",
+      "avg_logprob": -0.32667,
+      "no_speech_prob": 0.00359,
+      "compression_ratio": 1.79283
+    },
+    {
+      "start": 20.07,
+      "end": 23.67,
+      "text": "of how to play certain situations so that when you actually",
+      "avg_logprob": -0.32667,
+      "no_speech_prob": 0.00359,
+      "compression_ratio": 1.79283
+    },
+    {
+      "start": 24.07,
+      "end": 28.35,
+      "text": "confronted with them at gamesbeat you can actually apply some of those concepts.",
+      "avg_logprob": -0.32667,
+      "no_speech_prob": 0.00359,
+      "compression_ratio": 1.79283
+    },
+    {
+      "start": 36.03,
+      "end": 40.43,
+      "text": "work away from the table, study practice is just as important",
+      "avg_logprob": -0.34066,
+      "no_speech_prob": 0.00484,
+      "compression_ratio": 1.39655
+    },
+    {
+      "start": 40.43,
+      "end": 44.15,
+      "text": "as actually playing and getting an experience that you do at The Felt.",
+      "avg_logprob": -0.34066,
+      "no_speech_prob": 0.00484,
+      "compression_ratio": 1.39655
+    },
+    {
+      "start": 44.15,
+      "end": 45.19,
+      "text": "I can't tell how many times",
+      "avg_logprob": -0.34066,
+      "no_speech_prob": 0.00484,
+      "compression_ratio": 1.39655
+    },
+    {
+      "start": 45.19,
+      "end": 47.75,
+      "text": "I've been in a pot or situation",
+      "avg_logprob": -0.34066,
+      "no_speech_prob": 0.00484,
+      "compression_ratio": 1.39655
+    },
+    {
+      "start": 47.75,
+      "end": 49.07,
+      "text": "and the thought occurred to me like",
+      "avg_logprob": -0.34066,
+      "no_speech_prob": 0.00484,
+      "compression_ratio": 1.39655
+    },
+    {
+      "start": 49.07,
+      "end": 50.07,
+      "text": "You know what?",
+      "avg_logprob": -0.34066,
+      "no_speech_prob": 0.00484,
+      "compression_ratio": 1.39655
+    },
+    {
+      "start": 50.07,
+      "end": 51.55,
+      "text": "movie before, right?",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 51.55,
+      "end": 52.91,
+      "text": "The thousands and thousands of hands",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 52.91,
+      "end": 55.39,
+      "text": "the millions of hands I've played throughout my life.",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 55.39,
+      "end": 57.47,
+      "text": "There's obviously gonna be some pattern recognition",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 57.47,
+      "end": 59.95,
+      "text": "so there's been hands where from my past",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 59.95,
+      "end": 61.91,
+      "text": "I've played that in real time",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 61.91,
+      "end": 65.19,
+      "text": "I look at the way or the line chosen by a specific player",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 65.19,
+      "end": 66.75,
+      "text": "when I say line I mean",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 66.75,
+      "end": 68.95,
+      "text": "a line of play like he three bet before the flop,",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 68.95,
+      "end": 70.59,
+      "text": "he check raised the flob, you bet to turn.",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 70.87,
+      "end": 71.47,
+      "text": "That's the line he took through the line he took throughout the hand",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 73.47,
+      "end": 73.51,
+      "text": "throw up throughout the hand",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 73.95,
+      "end": 74.03,
+      "text": "though out throughout the hand.",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 74.11,
+      "end": 74.23,
+      "text": "with thought throughout the hand and then",
+      "avg_logprob": -0.60065,
+      "no_speech_prob": 0.00996,
+      "compression_ratio": 2.05674
+    },
+    {
+      "start": 74.23,
+      "end": 75.73,
+      "text": "that with a board texture,",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 75.75,
+      "end": 77.23,
+      "text": "that I'm reminiscent of.",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 77.23,
+      "end": 78.83,
+      "text": "And this is why practice and drilling",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 78.83,
+      "end": 81.93,
+      "text": "is so important because of all the hands",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 81.93,
+      "end": 83.11,
+      "text": "I've played before",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 83.11,
+      "end": 84.03,
+      "text": "I have already dealt",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 84.03,
+      "end": 85.13,
+      "text": "with this situation before",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 85.13,
+      "end": 85.93,
+      "text": "away from the table",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 85.93,
+      "end": 86.83,
+      "text": "and at the table",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 86.83,
+      "end": 89.67,
+      "text": "So when I approach it in real time",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 89.67,
+      "end": 90.67,
+      "text": "I go ah-huh",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 90.67,
+      "end": 92.63,
+      "text": "I've already worked the math out on this",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 92.63,
+      "end": 95.03,
+      "text": "or know how to handle this type of player",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 95.03,
+      "end": 96.03,
+      "text": "and it'll equip me make a better decision",
+      "avg_logprob": -0.53393,
+      "no_speech_prob": 0.02018,
+      "compression_ratio": 1.64372
+    },
+    {
+      "start": 96.03,
+      "end": 104.85,
+      "text": "make a better decision.",
+      "avg_logprob": -0.29331,
+      "no_speech_prob": 0.01707,
+      "compression_ratio": 0.74194
+    },
+    {
+      "start": 132.85,
+      "end": 134.49,
+      "text": "and getting so much experience,",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 134.49,
+      "end": 136.17,
+      "text": "so quickly because online",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 136.17,
+      "end": 137.29,
+      "text": "which is different than live",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 137.29,
+      "end": 138.97,
+      "text": "you can play multiple tables.",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 138.97,
+      "end": 141.53,
+      "text": "So some of these guys are playing 12 games at once",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 141.53,
+      "end": 143.33,
+      "text": "they're downloading all this information",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 143.33,
+      "end": 146.37,
+      "text": "getting the practice in that took say for example",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 146.37,
+      "end": 149.41,
+      "text": "a guy like Dole Brunson who's 84 years old right now",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 149.41,
+      "end": 151.25,
+      "text": "he's been playing every day pretty much",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 151.25,
+      "end": 152.89,
+      "text": "for 50-60 years.",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 152.89,
+      "end": 154.43,
+      "text": "He still hasn't played as many hands",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 154.43,
+      "end": 156.73,
+      "text": "from these 23 yearold kids",
+      "avg_logprob": -0.37393,
+      "no_speech_prob": 0.02336,
+      "compression_ratio": 1.55396
+    },
+    {
+      "start": 156.73,
+      "end": 163.37,
+      "text": "hammered at home online. So today, as I said before there's so many ways to learn how",
+      "avg_logprob": -0.32439,
+      "no_speech_prob": 0.00627,
+      "compression_ratio": 1.73723
+    },
+    {
+      "start": 163.37,
+      "end": 167.37,
+      "text": "to play this game effectively and there are so many opportunities to play in different forms you",
+      "avg_logprob": -0.32439,
+      "no_speech_prob": 0.00627,
+      "compression_ratio": 1.73723
+    },
+    {
+      "start": 167.37,
+      "end": 171.69,
+      "text": "can play in casinos, you can play on studios, you can play online and again every part of the world",
+      "avg_logprob": -0.32439,
+      "no_speech_prob": 0.00627,
+      "compression_ratio": 1.73723
+    },
+    {
+      "start": 171.69,
+      "end": 175.05,
+      "text": "offers poker for stakes at a wide variety of ranges.",
+      "avg_logprob": -0.32439,
+      "no_speech_prob": 0.00627,
+      "compression_ratio": 1.73723
+    },
+    {
+      "start": 175.05,
+      "end": 186.6,
+      "text": "I think it is extremely important especially if you've been in the game as long as i have",
+      "avg_logprob": -0.32439,
+      "no_speech_prob": 0.00627,
+      "compression_ratio": 1.73723
+    },
+    {
+      "start": 186.6,
+      "end": 191.96,
+      "text": "that you're always continually looking to learn...",
+      "avg_logprob": -0.32439,
+      "no_speech_prob": 0.00627,
+      "compression_ratio": 1.73723
+    },
+    {
+      "start": 193.64,
+      "end": 196.0,
+      "text": "some of the new younger generation",
+      "avg_logprob": -0.30618,
+      "no_speech_prob": 0.01784,
+      "compression_ratio": 1.47333
+    },
+    {
+      "start": 196.02,
+      "end": 197.84,
+      "text": "of players and like learn with them",
+      "avg_logprob": -0.30618,
+      "no_speech_prob": 0.01784,
+      "compression_ratio": 1.47333
+    },
+    {
+      "start": 197.84,
+      "end": 198.96,
+      "text": "and learn how they learned.",
+      "avg_logprob": -0.30618,
+      "no_speech_prob": 0.01784,
+      "compression_ratio": 1.47333
+    },
+    {
+      "start": 198.96,
+      "end": 200.32,
+      "text": "Because if I'm not aware",
+      "avg_logprob": -0.30618,
+      "no_speech_prob": 0.01784,
+      "compression_ratio": 1.47333
+    },
+    {
+      "start": 200.32,
+      "end": 202.32,
+      "text": "of the tools are using or what they're doing,",
+      "avg_logprob": -0.30618,
+      "no_speech_prob": 0.01784,
+      "compression_ratio": 1.47333
+    },
+    {
+      "start": 202.32,
+      "end": 205.92,
+      "text": "then it'll be very difficult for me to combat that.",
+      "avg_logprob": -0.30618,
+      "no_speech_prob": 0.01784,
+      "compression_ratio": 1.47333
+    },
+    {
+      "start": 223.64,
+      "end": 226.32,
+      "text": "we have software that will do that for you.",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 226.32,
+      "end": 227.92,
+      "text": "So if you want to know,",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 227.92,
+      "end": 229.44,
+      "text": "you wanna run some simulations",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 229.44,
+      "end": 230.76,
+      "text": "You don't actually do it manually",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 230.76,
+      "end": 232.48,
+      "text": "You can do that with a wide range",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 232.48,
+      "end": 234.2,
+      "text": "of different types of software programs",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 234.2,
+      "end": 236.32,
+      "text": "Now some of those software programs today",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 236.32,
+      "end": 239.4,
+      "text": "Have evolved past the basic simulator stage",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 239.4,
+      "end": 242.92,
+      "text": "where you can put in combinations of cards",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 244.92,
+      "end": 245.96,
+      "text": "that your opponent could have and check how you're doing",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 245.96,
+      "end": 247.08,
+      "text": "against that range of hands.",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 247.08,
+      "end": 248.08,
+      "text": "There's a wide spectrum and at the elite spectrum.",
+      "avg_logprob": -0.37021,
+      "no_speech_prob": 0.01277,
+      "compression_ratio": 1.76119
+    },
+    {
+      "start": 253.64,
+      "end": 255.04,
+      "text": "in their learning process.",
+      "avg_logprob": -0.3785,
+      "no_speech_prob": 0.00675,
+      "compression_ratio": 1.72204
+    },
+    {
+      "start": 255.04,
+      "end": 258.56,
+      "text": "So again, it's one of those things where you can look back and say okay well how do",
+      "avg_logprob": -0.3785,
+      "no_speech_prob": 0.00675,
+      "compression_ratio": 1.72204
+    },
+    {
+      "start": 258.56,
+      "end": 259.56,
+      "text": "you think we play this?",
+      "avg_logprob": -0.3785,
+      "no_speech_prob": 0.00675,
+      "compression_ratio": 1.72204
+    },
+    {
+      "start": 259.56,
+      "end": 262.16,
+      "text": "And let's run a simulation see how that works.",
+      "avg_logprob": -0.3785,
+      "no_speech_prob": 0.00675,
+      "compression_ratio": 1.72204
+    },
+    {
+      "start": 262.16,
+      "end": 268.6,
+      "text": "That's evolved like I was at the very early onset of that many years ago but today",
+      "avg_logprob": -0.3785,
+      "no_speech_prob": 0.00675,
+      "compression_ratio": 1.72204
+    },
+    {
+      "start": 268.6,
+      "end": 279.22,
+      "text": "its gone to a new level with computer science being where it is.",
+      "avg_logprob": -0.3785,
+      "no_speech_prob": 0.00675,
+      "compression_ratio": 1.72204
+    },
+    {
+      "start": 281.22,
+      "end": 284.38,
+      "text": "The way that I study hands or I have especially 20 years ago was often I write down",
+      "avg_logprob": -0.3785,
+      "no_speech_prob": 0.00675,
+      "compression_ratio": 1.72204
+    },
+    {
+      "start": 284.38,
+      "end": 287.58,
+      "text": "You know the specific pertinent information what was the action and things like that things like that are things like that...",
+      "avg_logprob": -0.3785,
+      "no_speech_prob": 0.00675,
+      "compression_ratio": 1.72204
+    },
+    {
+      "start": 290.26,
+      "end": 291.9,
+      "text": "the way that I found a lot of values,",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 291.9,
+      "end": 294.38,
+      "text": "often on the way home thinking through",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 294.38,
+      "end": 296.02,
+      "text": "what could have done differently?",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 296.02,
+      "end": 299.22,
+      "text": "What would I have done if my hand was X Y or Z like",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 299.22,
+      "end": 299.9,
+      "text": "what would I have done",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 299.9,
+      "end": 301.74,
+      "text": "if this card came and really break down",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 301.74,
+      "end": 303.7,
+      "text": "the hand from many different angles.",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 303.7,
+      "end": 306.06,
+      "text": "And I think the most valuable part",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 306.06,
+      "end": 309.26,
+      "text": "of study for me has always been okay so here's how",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 309.26,
+      "end": 311.06,
+      "text": "I think about it right?",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 311.06,
+      "end": 313.08,
+      "text": "what does my friend Phil Ivy think?",
+      "avg_logprob": -0.3468,
+      "no_speech_prob": 0.00507,
+      "compression_ratio": 1.67901
+    },
+    {
+      "start": 313.08,
+      "end": 314.76,
+      "text": "want to think, the more heads",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 314.78,
+      "end": 317.4,
+      "text": "the better. And sometimes you might not agree with them but",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 317.42,
+      "end": 318.44,
+      "text": "the bottom line is",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 318.46,
+      "end": 319.8,
+      "text": "your opening yourself up",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 319.84,
+      "end": 322.36,
+      "text": "to more ways of looking at a head one",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 322.36,
+      "end": 323.32,
+      "text": "of things that I do",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 323.36,
+      "end": 324.72,
+      "text": "is create a brain trust",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 324.76,
+      "end": 326.12,
+      "text": "you know working with",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 326.12,
+      "end": 327.72,
+      "text": "people who understand how",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 327.72,
+      "end": 328.72,
+      "text": "How to use this software",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 328.76,
+      "end": 329.72,
+      "text": "better than I do and",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 329.88,
+      "end": 330.92,
+      "text": "guys they can like",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 331.16,
+      "end": 331.64,
+      "text": "you know coach",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 331.72,
+      "end": 333.0,
+      "text": "You see guy like Tiger Woods",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 333.56,
+      "end": 334.36,
+      "text": "greatest golf forever right?",
+      "avg_logprob": -0.62892,
+      "no_speech_prob": 0.02556,
+      "compression_ratio": 1.63008
+    },
+    {
+      "start": 334.36,
+      "end": 338.6,
+      "text": "right? He has a coach because there's certain things that he may be blind to",
+      "avg_logprob": -0.39492,
+      "no_speech_prob": 0.01239,
+      "compression_ratio": 1.65724
+    },
+    {
+      "start": 338.76,
+      "end": 341.64,
+      "text": "that there's a lot of value in collaborating with someone else on. I believe",
+      "avg_logprob": -0.39492,
+      "no_speech_prob": 0.01239,
+      "compression_ratio": 1.65724
+    },
+    {
+      "start": 341.64,
+      "end": 344.28,
+      "text": "in poker, super important to have",
+      "avg_logprob": -0.39492,
+      "no_speech_prob": 0.01239,
+      "compression_ratio": 1.65724
+    },
+    {
+      "start": 344.36,
+      "end": 348.44,
+      "text": "uh...a group of people you trust maybe at similar like left skill level",
+      "avg_logprob": -0.39492,
+      "no_speech_prob": 0.01239,
+      "compression_ratio": 1.65724
+    },
+    {
+      "start": 348.44,
+      "end": 350.92,
+      "text": "as you for time being or maybe someone better slightly",
+      "avg_logprob": -0.39492,
+      "no_speech_prob": 0.01239,
+      "compression_ratio": 1.65724
+    },
+    {
+      "start": 351.16,
+      "end": 354.12,
+      "text": "that you can sort of bounce ideas off of because that's how you all learned",
+      "avg_logprob": -0.39492,
+      "no_speech_prob": 0.01239,
+      "compression_ratio": 1.65724
+    },
+    {
+      "start": 354.12,
+      "end": 358.32,
+      "text": "together so aside from just playing Poker",
+      "avg_logprob": -0.39492,
+      "no_speech_prob": 0.01239,
+      "compression_ratio": 1.65724
+    },
+    {
+      "start": 358.4,
+      "end": 362.68,
+      "text": "You know ultimately you want to find",
+      "avg_logprob": -0.39492,
+      "no_speech_prob": 0.01239,
+      "compression_ratio": 1.65724
+    },
+    {
+      "start": 364.36,
+      "end": 366.84,
+      "text": "a group of people, friends or whatever at",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 366.86,
+      "end": 368.8,
+      "text": "similar place that you are",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 368.8,
+      "end": 370.6,
+      "text": "that want to learn the game and really kind",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 370.6,
+      "end": 372.0,
+      "text": "of brainstormed together because",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 372.0,
+      "end": 373.72,
+      "text": "when you bounce ideas off each other",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 373.72,
+      "end": 382.2,
+      "text": "really good things happen.",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 382.2,
+      "end": 384.92,
+      "text": "So typical study session for me",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 384.92,
+      "end": 386.88,
+      "text": "will look like me working with",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 386.88,
+      "end": 389.08,
+      "text": "a couple of younger guys that I work with",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 389.08,
+      "end": 390.4,
+      "text": "coaches if you will.",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 391.36,
+      "end": 395.36,
+      "text": "And often it's as simple as really breaking down a hand.",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 395.4,
+      "end": 395.96,
+      "text": "You can take one hand",
+      "avg_logprob": -0.42948,
+      "no_speech_prob": 0.02527,
+      "compression_ratio": 1.65543
+    },
+    {
+      "start": 395.96,
+      "end": 398.12,
+      "text": "and spend three to four hours on that one hand",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 398.14,
+      "end": 399.44,
+      "text": "and break down all the variables.",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 399.44,
+      "end": 401.76,
+      "text": "Because you can look at what actually happened,",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 401.76,
+      "end": 403.52,
+      "text": "what would have happen if this card changed?",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 403.52,
+      "end": 405.08,
+      "text": "What would've happened if this car changed?",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 405.08,
+      "end": 407.44,
+      "text": "What if we would have changed our bet sizing?",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 407.44,
+      "end": 411.2,
+      "text": "What if we bet quarter pot instead of full pot?",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 411.2,
+      "end": 413.08,
+      "text": "There's again software that we can use.",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 413.08,
+      "end": 417.04,
+      "text": "So typically it's going to be a sharing of information and ideas",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 417.08,
+      "end": 420.08,
+      "text": "in terms of different ways that we can incorporate",
+      "avg_logprob": -0.28374,
+      "no_speech_prob": 0.01735,
+      "compression_ratio": 1.77567
+    },
+    {
+      "start": 425.96,
+      "end": 429.64,
+      "text": "was literally four hours, we talked about one hand the entire four",
+      "avg_logprob": -0.35249,
+      "no_speech_prob": 0.01891,
+      "compression_ratio": 1.75969
+    },
+    {
+      "start": 429.64,
+      "end": 433.52,
+      "text": "hours. But through that there were so many lessons within that one hand",
+      "avg_logprob": -0.35249,
+      "no_speech_prob": 0.01891,
+      "compression_ratio": 1.75969
+    },
+    {
+      "start": 433.52,
+      "end": 437.0,
+      "text": "it was really worthwhile and the more you practice",
+      "avg_logprob": -0.35249,
+      "no_speech_prob": 0.01891,
+      "compression_ratio": 1.75969
+    },
+    {
+      "start": 437.0,
+      "end": 440.0,
+      "text": "the more you do that the more it becomes ingrained",
+      "avg_logprob": -0.35249,
+      "no_speech_prob": 0.01891,
+      "compression_ratio": 1.75969
+    },
+    {
+      "start": 440.0,
+      "end": 443.08,
+      "text": "and then you can like what we call stage for it which essentially means",
+      "avg_logprob": -0.35249,
+      "no_speech_prob": 0.01891,
+      "compression_ratio": 1.75969
+    },
+    {
+      "start": 443.08,
+      "end": 447.96,
+      "text": "is just on autopilot a lot of the concepts that I've learned most recently are",
+      "avg_logprob": -0.35249,
+      "no_speech_prob": 0.01891,
+      "compression_ratio": 1.75969
+    },
+    {
+      "start": 447.96,
+      "end": 451.36,
+      "text": "things that when I first saw them were frankly intimidating as",
+      "avg_logprob": -0.35249,
+      "no_speech_prob": 0.01891,
+      "compression_ratio": 1.75969
+    },
+    {
+      "start": 451.36,
+      "end": 452.8,
+      "text": "sure, you know,",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 452.92,
+      "end": 453.84,
+      "text": "You're watching sometimes.",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 453.84,
+      "end": 455.76,
+      "text": "You hear me talking and think I don't get it",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 455.76,
+      "end": 457.28,
+      "text": "It's a little hard that's okay",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 457.52,
+      "end": 458.64,
+      "text": "It'll click right?",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 458.72,
+      "end": 460.04,
+      "text": "You just got to hang in there",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 460.28,
+      "end": 462.32,
+      "text": "drill it repeat repetition",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 462.32,
+      "end": 464.16,
+      "text": "A lot of what I did really was when",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 464.16,
+      "end": 465.4,
+      "text": "I was learning new concepts",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 465.48,
+      "end": 466.64,
+      "text": "I would go online",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 466.84,
+      "end": 467.16,
+      "text": "Right",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 467.24,
+      "end": 468.48,
+      "text": "And on line I would start drilling",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 468.64,
+      "end": 469.6,
+      "text": "like",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 469.68,
+      "end": 471.64,
+      "text": "just practicing all the basic concept",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 471.64,
+      "end": 472.16,
+      "text": "i've learned",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 472.24,
+      "end": 473.16,
+      "text": "the point where",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 473.24,
+      "end": 473.32,
+      "text": "want to the point where I don't",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 473.48,
+      "end": 475.24,
+      "text": "Thi don't",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 475.32,
+      "end": 484.69,
+      "text": "thing about thinking",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 486.57,
+      "end": 488.57,
+      "text": "le-to think",
+      "avg_logprob": -1.23246,
+      "no_speech_prob": 0.01448,
+      "compression_ratio": 1.97078
+    },
+    {
+      "start": 488.57,
+      "end": 489.87,
+      "text": "studying fundamentals,",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 489.89,
+      "end": 492.41,
+      "text": "starting with my work group that I worked",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 492.41,
+      "end": 494.29,
+      "text": "with and also game film.",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 494.31,
+      "end": 494.69,
+      "text": "Right?",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 494.71,
+      "end": 496.85,
+      "text": "Because part of the way like",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 496.87,
+      "end": 498.45,
+      "text": "the NFL these days coaches",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 498.49,
+      "end": 499.53,
+      "text": "you can watch Game Film",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 499.55,
+      "end": 500.41,
+      "text": "and sort of get a sense",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 500.41,
+      "end": 501.93,
+      "text": "of what your opponents are",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 502.09,
+      "end": 502.93,
+      "text": "capable of doing,",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 502.93,
+      "end": 503.93,
+      "text": "What certain plays mean?",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 504.93,
+      "end": 505.25,
+      "text": "And so I'd like to see",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 505.33,
+      "end": 505.69,
+      "text": "because I'm playing",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 505.73,
+      "end": 506.57,
+      "text": "with a small group",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 506.61,
+      "end": 508.97,
+      "text": "of the elite players in the world at the highest stakes",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 509.05,
+      "end": 510.45,
+      "text": "I like to get an idea",
+      "avg_logprob": -0.57507,
+      "no_speech_prob": 0.01373,
+      "compression_ratio": 1.64
+    },
+    {
+      "start": 510.45,
+      "end": 512.73,
+      "text": "what they're doing. So I'll watch game footage",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 512.75,
+      "end": 515.05,
+      "text": "I've gotten to a point now in my career where",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 515.07,
+      "end": 517.49,
+      "text": "a lot of the basic elementary things that",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 517.49,
+      "end": 520.93,
+      "text": "I would have put in, in terms of study when I was 21 or 22",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 520.93,
+      "end": 522.13,
+      "text": "That's not necessary anymore",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 522.13,
+      "end": 525.45,
+      "text": "so I'm dealing either with very high level concepts",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 525.45,
+      "end": 530.13,
+      "text": "or working mostly on making sure that I'm mentally prepared",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 532.13,
+      "end": 533.45,
+      "text": "and that I'm getting the right rest",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 533.45,
+      "end": 535.85,
+      "text": "and doing all the sort of things to relax my mind as far as",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 536.45,
+      "end": 537.77,
+      "text": "The high-level stuff you do",
+      "avg_logprob": -0.42626,
+      "no_speech_prob": 0.00983,
+      "compression_ratio": 1.64748
+    },
+    {
+      "start": 540.45,
+      "end": 542.13,
+      "text": "away from the table.",
+      "avg_logprob": -0.24189,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.56831
+    },
+    {
+      "start": 542.13,
+      "end": 545.61,
+      "text": "You don't want to take a concept that you just sort of like",
+      "avg_logprob": -0.24189,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.56831
+    },
+    {
+      "start": 545.61,
+      "end": 547.81,
+      "text": "kind of figured out or we're talking about",
+      "avg_logprob": -0.24189,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.56831
+    },
+    {
+      "start": 547.81,
+      "end": 549.25,
+      "text": "and then apply it when you play poker",
+      "avg_logprob": -0.24189,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.56831
+    },
+    {
+      "start": 549.25,
+      "end": 550.57,
+      "text": "in next day because you won't really understand",
+      "avg_logprob": -0.24189,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.56831
+    },
+    {
+      "start": 550.57,
+      "end": 552.33,
+      "text": "how to apply it so very important",
+      "avg_logprob": -0.24189,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.56831
+    },
+    {
+      "start": 552.33,
+      "end": 553.85,
+      "text": "just like with anything if you are a golfer",
+      "avg_logprob": -0.24189,
+      "no_speech_prob": 0.0195,
+      "compression_ratio": 1.56831
+    },
+    {
+      "start": 570.45,
+      "end": 572.05,
+      "text": "thing, that's not what I'm going to bring",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 572.09,
+      "end": 573.09,
+      "text": "to the golf course.",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 573.09,
+      "end": 574.13,
+      "text": "If I hit a fade,",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 574.13,
+      "end": 575.61,
+      "text": "that's what I'm gonna go with right?",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 575.61,
+      "end": 577.93,
+      "text": "So I'm gonna work on the draw when I'm practicing",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 577.93,
+      "end": 579.33,
+      "text": "you know away from",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 579.33,
+      "end": 580.09,
+      "text": "the rounds,",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 580.09,
+      "end": 581.29,
+      "text": "I'm gonna work on",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 581.29,
+      "end": 581.93,
+      "text": "you know what I need",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 581.93,
+      "end": 582.65,
+      "text": "to work on",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 582.65,
+      "end": 583.97,
+      "text": "with poker as well so it's",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 583.97,
+      "end": 585.93,
+      "text": "good parallel to explain here",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 585.93,
+      "end": 587.57,
+      "text": "that the the work",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 587.73,
+      "end": 589.21,
+      "text": "that needs to be done has to happen away from",
+      "avg_logprob": -0.41662,
+      "no_speech_prob": 0.00499,
+      "compression_ratio": 1.79024
+    },
+    {
+      "start": 589.21,
+      "end": 592.41,
+      "text": "away from the table, till you get so comfortable with it that",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 592.43,
+      "end": 602.18,
+      "text": "you're confident enough to bring it to tables.",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 602.18,
+      "end": 605.86,
+      "text": "The prototypical poker player of the old days was",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 605.86,
+      "end": 608.9,
+      "text": "whiskey in one hand, cigar in the other and belly",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 608.9,
+      "end": 610.14,
+      "text": "hanging over the table.",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 610.14,
+      "end": 613.02,
+      "text": "That's not what you see today in the high roller tournaments.",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 613.1,
+      "end": 616.26,
+      "text": "What you see now is a younger group of players",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 616.3,
+      "end": 619.38,
+      "text": "that are built and physically fit.",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 619.38,
+      "end": 621.46,
+      "text": "And I go play tournaments in Barcelona sometimes now,",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 621.62,
+      "end": 622.38,
+      "text": "I go to the gym in the morning, packed with poker-with poker players.",
+      "avg_logprob": -0.45955,
+      "no_speech_prob": 0.01332,
+      "compression_ratio": 1.74825
+    },
+    {
+      "start": 626.06,
+      "end": 633.06,
+      "text": "Very important now to understand that especially with tournaments, sometimes you'll be sitting for 12 or 14 maybe even 16 hour periods.",
+      "avg_logprob": -0.31445,
+      "no_speech_prob": 0.0143,
+      "compression_ratio": 1.42169
+    },
+    {
+      "start": 634.06,
+      "end": 638.34,
+      "text": "And when your sitting for that long if you're not physically in shape it's going to be difficult for",
+      "avg_logprob": -0.31445,
+      "no_speech_prob": 0.0143,
+      "compression_ratio": 1.42169
+    },
+    {
+      "start": 638.34,
+      "end": 640.86,
+      "text": "you to do that for five or seven straight days.",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 640.86,
+      "end": 642.98,
+      "text": "So the more mentally fit and physically fit",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 642.98,
+      "end": 643.66,
+      "text": "you are,",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 643.66,
+      "end": 647.3,
+      "text": "the better you are going to be in terms of when crunch time comes",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 647.3,
+      "end": 649.66,
+      "text": "late at night and everyone else has fallen asleep",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 649.66,
+      "end": 659.68,
+      "text": "and you're ready to steal that last pot.",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 659.68,
+      "end": 662.04,
+      "text": "Poker mirrors life in so many ways",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 662.04,
+      "end": 664.92,
+      "text": "and how you tackle it can be very similar",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 666.92,
+      "end": 668.68,
+      "text": "in terms of how lazy you are, how accountable you want to hold yourself",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 668.76,
+      "end": 669.88,
+      "text": "and how driven you are.",
+      "avg_logprob": -0.33041,
+      "no_speech_prob": 0.01714,
+      "compression_ratio": 1.71315
+    },
+    {
+      "start": 669.88,
+      "end": 673.24,
+      "text": "I've always been somebody who was pretty driven at everything that i did.",
+      "avg_logprob": -0.33276,
+      "no_speech_prob": 0.00846,
+      "compression_ratio": 1.62977
+    },
+    {
+      "start": 673.24,
+      "end": 677.4,
+      "text": "I was a competitive kid, would have loved to have been you know a hockey player but",
+      "avg_logprob": -0.33276,
+      "no_speech_prob": 0.00846,
+      "compression_ratio": 1.62977
+    },
+    {
+      "start": 677.4,
+      "end": 678.68,
+      "text": "I wasn't good enough!",
+      "avg_logprob": -0.33276,
+      "no_speech_prob": 0.00846,
+      "compression_ratio": 1.62977
+    },
+    {
+      "start": 678.68,
+      "end": 682.04,
+      "text": "I love to have been some sort of professional athlete.",
+      "avg_logprob": -0.33276,
+      "no_speech_prob": 0.00846,
+      "compression_ratio": 1.62977
+    },
+    {
+      "start": 682.04,
+      "end": 686.52,
+      "text": "Luckily for me my competitive juices we were",
+      "avg_logprob": -0.33276,
+      "no_speech_prob": 0.00846,
+      "compression_ratio": 1.62977
+    },
+    {
+      "start": 686.52,
+      "end": 691.72,
+      "text": "addressed at the poker table and in terms of how I approach poker not much",
+      "avg_logprob": -0.33276,
+      "no_speech_prob": 0.00846,
+      "compression_ratio": 1.62977
+    },
+    {
+      "start": 691.72,
+      "end": 695.88,
+      "text": "different than an athlete would before tournaments I find it's extremely",
+      "avg_logprob": -0.33276,
+      "no_speech_prob": 0.00846,
+      "compression_ratio": 1.62977
+    },
+    {
+      "start": 695.88,
+      "end": 697.88,
+      "text": "to get eight hours of sleep.",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.03791,
+      "compression_ratio": 1.45087
+    },
+    {
+      "start": 697.88,
+      "end": 699.88,
+      "text": "I have personal rules for myself,",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.03791,
+      "compression_ratio": 1.45087
+    },
+    {
+      "start": 699.88,
+      "end": 700.88,
+      "text": "and don't know if these work for you",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.03791,
+      "compression_ratio": 1.45087
+    },
+    {
+      "start": 701.88,
+      "end": 702.88,
+      "text": "but this is how I do it...",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.03791,
+      "compression_ratio": 1.45087
+    },
+    {
+      "start": 702.88,
+      "end": 703.88,
+      "text": "The night before,",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.03791,
+      "compression_ratio": 1.45087
+    },
+    {
+      "start": 703.88,
+      "end": 704.88,
+      "text": "I don't drink any alcohol.",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.03791,
+      "compression_ratio": 1.45087
+    },
+    {
+      "start": 704.88,
+      "end": 705.88,
+      "text": "I don't go to dinner with a group of people",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.03791,
+      "compression_ratio": 1.45087
+    },
+    {
+      "start": 705.88,
+      "end": 706.88,
+      "text": "because I find that",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.03791,
+      "compression_ratio": 1.45087
+    },
+    {
+      "start": 706.88,
+      "end": 707.88,
+      "text": "I expend energy",
+      "avg_logprob": -0.346,
+      "no_speech_prob": 0.03791,
+      "compression_ratio": 1.45087
+    },
+    {
+      "start": 707.88,
+      "end": 711.24,
+      "text": "energy and I want to be like sort of in my room relaxed calm.",
+      "avg_logprob": -0.39554,
+      "no_speech_prob": 0.03218,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 711.24,
+      "end": 715.64,
+      "text": "I avoid social events, what i'll typically do is maybe you know if",
+      "avg_logprob": -0.39554,
+      "no_speech_prob": 0.03218,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 715.64,
+      "end": 717.28,
+      "text": "I know who I'm playing against next day",
+      "avg_logprob": -0.39554,
+      "no_speech_prob": 0.03218,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 717.28,
+      "end": 718.88,
+      "text": "I'll go over some footage",
+      "avg_logprob": -0.39554,
+      "no_speech_prob": 0.03218,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 718.88,
+      "end": 721.16,
+      "text": "of some stuff that I've seen them do",
+      "avg_logprob": -0.39554,
+      "no_speech_prob": 0.03218,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 721.16,
+      "end": 723.6,
+      "text": "and try to like come up with a game plan",
+      "avg_logprob": -0.39554,
+      "no_speech_prob": 0.03218,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 723.64,
+      "end": 725.56,
+      "text": "If I'm traveling I'm typically going to",
+      "avg_logprob": -0.39554,
+      "no_speech_prob": 0.03218,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 725.56,
+      "end": 728.8,
+      "text": "trying to com a couple days early so I don't face the jet lag one",
+      "avg_logprob": -0.39554,
+      "no_speech_prob": 0.03218,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 728.8,
+      "end": 730.56,
+      "text": "of the most important ways that you can improve yourself",
+      "avg_logprob": -0.39554,
+      "no_speech_prob": 0.03218,
+      "compression_ratio": 1.66667
+    },
+    {
+      "start": 730.56,
+      "end": 736.0,
+      "text": "that you can improve yourself and improve your poker game is to be mentally prepared",
+      "avg_logprob": -0.35084,
+      "no_speech_prob": 0.00779,
+      "compression_ratio": 1.64822
+    },
+    {
+      "start": 736.0,
+      "end": 737.0,
+      "text": "for both the good and bad.",
+      "avg_logprob": -0.35084,
+      "no_speech_prob": 0.00779,
+      "compression_ratio": 1.64822
+    },
+    {
+      "start": 737.0,
+      "end": 739.24,
+      "text": "I used to complain because I would go to Europe,",
+      "avg_logprob": -0.35084,
+      "no_speech_prob": 0.00779,
+      "compression_ratio": 1.64822
+    },
+    {
+      "start": 739.24,
+      "end": 740.76,
+      "text": "and there are certain spots where like",
+      "avg_logprob": -0.35084,
+      "no_speech_prob": 0.00779,
+      "compression_ratio": 1.64822
+    },
+    {
+      "start": 740.76,
+      "end": 741.76,
+      "text": "I didn't get the food that I wanted.",
+      "avg_logprob": -0.35084,
+      "no_speech_prob": 0.00779,
+      "compression_ratio": 1.64822
+    },
+    {
+      "start": 741.76,
+      "end": 742.76,
+      "text": "And I'd be like,",
+      "avg_logprob": -0.35084,
+      "no_speech_prob": 0.00779,
+      "compression_ratio": 1.64822
+    },
+    {
+      "start": 742.76,
+      "end": 743.76,
+      "text": "I can't find what I want to eat right?",
+      "avg_logprob": -0.35084,
+      "no_speech_prob": 0.00779,
+      "compression_ratio": 1.64822
+    },
+    {
+      "start": 743.76,
+      "end": 747.04,
+      "text": "So what I realize is instead of me being a victim",
+      "avg_logprob": -0.35084,
+      "no_speech_prob": 0.00779,
+      "compression_ratio": 1.64822
+    },
+    {
+      "start": 747.04,
+      "end": 751.96,
+      "text": "to the circumstance, why don't I call ahead months ahead, check ahead, see",
+      "avg_logprob": -0.35084,
+      "no_speech_prob": 0.00779,
+      "compression_ratio": 1.64822
+    },
+    {
+      "start": 751.96,
+      "end": 755.04,
+      "text": "what's available and map out a plan. The more planned",
+      "avg_logprob": -0.34836,
+      "no_speech_prob": 0.01255,
+      "compression_ratio": 1.66279
+    },
+    {
+      "start": 755.04,
+      "end": 757.8,
+      "text": "out you have your life, whether it's at the poker table or",
+      "avg_logprob": -0.34836,
+      "no_speech_prob": 0.01255,
+      "compression_ratio": 1.66279
+    },
+    {
+      "start": 757.8,
+      "end": 759.16,
+      "text": "outside of the poker table,",
+      "avg_logprob": -0.34836,
+      "no_speech_prob": 0.01255,
+      "compression_ratio": 1.66279
+    },
+    {
+      "start": 759.2,
+      "end": 762.36,
+      "text": "the more likely you're going to have success in both",
+      "avg_logprob": -0.34836,
+      "no_speech_prob": 0.01255,
+      "compression_ratio": 1.66279
+    },
+    {
+      "start": 762.36,
+      "end": 772.28,
+      "text": "endeavors. So there is no question that this new age",
+      "avg_logprob": -0.34836,
+      "no_speech_prob": 0.01255,
+      "compression_ratio": 1.66279
+    },
+    {
+      "start": 772.28,
+      "end": 776.92,
+      "text": "mumbo-jumbo stuff meditation emotional intelligence are all",
+      "avg_logprob": -0.34836,
+      "no_speech_prob": 0.01255,
+      "compression_ratio": 1.66279
+    },
+    {
+      "start": 776.92,
+      "end": 780.96,
+      "text": "highly effective in terms of seeing you be the best version",
+      "avg_logprob": -0.34836,
+      "no_speech_prob": 0.01255,
+      "compression_ratio": 1.66279
+    },
+    {
+      "start": 782.96,
+      "end": 783.0,
+      "text": "of yourself I've done throughout the years plenty of workshops",
+      "avg_logprob": -0.34836,
+      "no_speech_prob": 0.01255,
+      "compression_ratio": 1.66279
+    },
+    {
+      "start": 783.0,
+      "end": 784.92,
+      "text": "plenty of workshops, I've read a lot books.",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 784.92,
+      "end": 787.36,
+      "text": "I did a course called Choice Center in Las Vegas",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 787.36,
+      "end": 790.32,
+      "text": "which is about emotional intelligence and elevating that",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 790.32,
+      "end": 792.4,
+      "text": "And I use a lot of what I learn there",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 792.4,
+      "end": 794.16,
+      "text": "and apply it to poker",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 794.16,
+      "end": 795.6,
+      "text": "and meditation is also a big part",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 795.6,
+      "end": 799.04,
+      "text": "of that just calming the mind so you can be prepared",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 799.04,
+      "end": 801.96,
+      "text": "for these long 12-to 16 hour days sometimes.",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 802.04,
+      "end": 804.24,
+      "text": "A little bit of moment of rest is important.",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 804.24,
+      "end": 805.76,
+      "text": "We live in a fast-paced society.",
+      "avg_logprob": -0.36538,
+      "no_speech_prob": 0.01384,
+      "compression_ratio": 1.54613
+    },
+    {
+      "start": 805.76,
+      "end": 807.32,
+      "text": "always on my phone, you know I'm",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 807.32,
+      "end": 809.12,
+      "text": "always like engaging with people and things",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 809.12,
+      "end": 812.28,
+      "text": "like that. So that ability to rest for a moment",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 812.28,
+      "end": 815.08,
+      "text": "sort of visualize and get clear",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 815.12,
+      "end": 816.64,
+      "text": "like I am a big believer in",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 816.64,
+      "end": 818.04,
+      "text": "like having clear intention before",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 818.04,
+      "end": 818.96,
+      "text": "I start this tournament",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 818.96,
+      "end": 821.64,
+      "text": "and I sort of envision what",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 821.64,
+      "end": 823.96,
+      "text": "I'd like to see this day look like",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 823.96,
+      "end": 826.68,
+      "text": "and I do this for things at the table as well",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 826.68,
+      "end": 827.76,
+      "text": "as outside of my life",
+      "avg_logprob": -0.35123,
+      "no_speech_prob": 0.00617,
+      "compression_ratio": 1.69231
+    },
+    {
+      "start": 827.76,
+      "end": 829.76,
+      "text": "in terms of what I want to create in the world.",
+      "avg_logprob": -0.18802,
+      "no_speech_prob": 0.00227,
+      "compression_ratio": 0.87037
+    }
+  ]
+}

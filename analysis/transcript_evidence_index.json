@@ -1,0 +1,2882 @@
+[
+  {
+    "ordinal": 1,
+    "file": "01 Introduction.MP4",
+    "transcript_file": "01-introduction.json",
+    "duration_seconds": 172.1173125,
+    "word_count": 371,
+    "words_per_minute": 129.3,
+    "speech_coverage": 0.595,
+    "segment_count": 39,
+    "mean_avg_logprob": -0.3742,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 1,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "equity and odds": 4,
+      "tells and live reads": 2,
+      "multiway": 1,
+      "tournaments": 1,
+      "position": 0,
+      "ranges": 0,
+      "board texture": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "cash games": 0,
+      "player modeling": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "equity and odds",
+        "start": 145.41,
+        "end": 148.49,
+        "text": "through counting the pot odds in every situation"
+      },
+      {
+        "topic": "tells and live reads",
+        "start": 155.49,
+        "end": 157.53,
+        "text": "So it's become like breathing for me."
+      },
+      {
+        "topic": "multiway",
+        "start": 83.47,
+        "end": 86.23,
+        "text": "you should bet multi-way pot dynamics."
+      },
+      {
+        "topic": "tournaments",
+        "start": 78.87,
+        "end": 83.47,
+        "text": "discussion about tournament strategy continuation betting how to figure out when"
+      }
+    ]
+  },
+  {
+    "ordinal": 2,
+    "file": "02-Understanding Position.mp4",
+    "transcript_file": "02-understanding-position.json",
+    "duration_seconds": 750.208,
+    "word_count": 2127,
+    "words_per_minute": 170.1,
+    "speech_coverage": 0.815,
+    "segment_count": 230,
+    "mean_avg_logprob": -0.4035,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 1,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "position": 65,
+      "player modeling": 14,
+      "board texture": 9,
+      "ranges": 6,
+      "tournaments": 4,
+      "equity and odds": 2,
+      "mixed strategy": 2,
+      "aggression": 1,
+      "tells and live reads": 1,
+      "bet sizing": 0,
+      "bluffing": 0,
+      "multiway": 0,
+      "cash games": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "position",
+        "start": 353.7,
+        "end": 358.5,
+        "text": "gonna make most of your money playing from a button next to the button and in those positions"
+      },
+      {
+        "topic": "player modeling",
+        "start": 488.82,
+        "end": 498.08,
+        "text": "how aggressive it is or how passive it is?"
+      },
+      {
+        "topic": "board texture",
+        "start": 93.73,
+        "end": 104.58,
+        "text": "the flop, turn or the river. There's two positions you can be in in a pot"
+      },
+      {
+        "topic": "ranges",
+        "start": 429.82,
+        "end": 433.82,
+        "text": "you should be defending your big blind with a pretty wide range of hands"
+      },
+      {
+        "topic": "tournaments",
+        "start": 727.02,
+        "end": 728.02,
+        "text": "But they also have to deal with the player and big blinds"
+      },
+      {
+        "topic": "equity and odds",
+        "start": 433.82,
+        "end": 438.78,
+        "text": "because you've already got portion of the bed in so your pot odds are going to be pretty good"
+      }
+    ]
+  },
+  {
+    "ordinal": 3,
+    "file": "03-Hand Ranges and Board Texture.mp4",
+    "transcript_file": "03-hand-ranges-and-board-texture.json",
+    "duration_seconds": 1672.9173125,
+    "word_count": 4984,
+    "words_per_minute": 178.8,
+    "speech_coverage": 0.846,
+    "segment_count": 529,
+    "mean_avg_logprob": -0.4495,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 1,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "ranges": 65,
+      "position": 45,
+      "board texture": 33,
+      "player modeling": 29,
+      "bluffing": 4,
+      "mixed strategy": 3,
+      "game and bankroll": 3,
+      "equity and odds": 2,
+      "tournaments": 2,
+      "cash games": 2,
+      "tells and live reads": 2,
+      "study process": 2,
+      "aggression": 1,
+      "multiway": 1,
+      "psychology and meta": 1,
+      "bet sizing": 0
+    },
+    "evidence": [
+      {
+        "topic": "ranges",
+        "start": 1642.2,
+        "end": 1646.56,
+        "text": "a wide range of hands. Ace Jack, Case 10, King Queen, Pocket Sixes, pocket Aces,"
+      },
+      {
+        "topic": "position",
+        "start": 538.26,
+        "end": 542.02,
+        "text": "well the button is a position of power while you're in the worst position"
+      },
+      {
+        "topic": "board texture",
+        "start": 1329.23,
+        "end": 1333.0,
+        "text": "Say flop so far but it is a wet board..."
+      },
+      {
+        "topic": "player modeling",
+        "start": 27.28,
+        "end": 31.4,
+        "text": "? What do I have? What do I think my opponent my opponent has well that developed through the years to the year"
+      },
+      {
+        "topic": "bluffing",
+        "start": 262.39,
+        "end": 274.25,
+        "text": "the ranges get more and more narrow and more polarized back in the old days"
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 651.95,
+        "end": 656.99,
+        "text": "There's gonna be a frequency which will depend a little bit upon on who your opponent is maybe"
+      }
+    ]
+  },
+  {
+    "ordinal": 4,
+    "file": "04-Ranges Hand Review.mp4",
+    "transcript_file": "04-ranges-hand-review.json",
+    "duration_seconds": 734.2506875,
+    "word_count": 2031,
+    "words_per_minute": 166.0,
+    "speech_coverage": 0.79,
+    "segment_count": 218,
+    "mean_avg_logprob": -0.4732,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "ranges": 20,
+      "board texture": 20,
+      "position": 6,
+      "bluffing": 5,
+      "bet sizing": 4,
+      "equity and odds": 2,
+      "study process": 2,
+      "multiway": 1,
+      "tells and live reads": 1,
+      "player modeling": 1,
+      "aggression": 0,
+      "mixed strategy": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "ranges",
+        "start": 615.07,
+        "end": 616.95,
+        "text": "to cap your range to narrow your range"
+      },
+      {
+        "topic": "board texture",
+        "start": 276.12,
+        "end": 280.8,
+        "text": "So we can call this 1500 to try and catch a 9 or 10 on the turn or the river"
+      },
+      {
+        "topic": "position",
+        "start": 167.04,
+        "end": 171.6,
+        "text": "to go ahead and see this hand on the button and uh... It's again in a hand"
+      },
+      {
+        "topic": "bluffing",
+        "start": 261.32,
+        "end": 266.12,
+        "text": "we have the potential with the right card to potentially bluff him off of a big pair now"
+      },
+      {
+        "topic": "bet sizing",
+        "start": 695.32,
+        "end": 700.36,
+        "text": "he's got Queens and how his bet size decreases I don't think he would do that if he had three queens"
+      },
+      {
+        "topic": "equity and odds",
+        "start": 523.18,
+        "end": 524.5,
+        "text": "to know the math and the ins and outs in the fundamentals"
+      }
+    ]
+  },
+  {
+    "ordinal": 5,
+    "file": "05-Game Theory and Math.mp4",
+    "transcript_file": "05-game-theory-and-math.json",
+    "duration_seconds": 669.5253125,
+    "word_count": 1953,
+    "words_per_minute": 175.0,
+    "speech_coverage": 0.871,
+    "segment_count": 210,
+    "mean_avg_logprob": -0.4146,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "mixed strategy": 20,
+      "equity and odds": 17,
+      "player modeling": 14,
+      "ranges": 4,
+      "board texture": 4,
+      "bluffing": 4,
+      "study process": 2,
+      "bet sizing": 1,
+      "position": 0,
+      "aggression": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "tells and live reads": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "mixed strategy",
+        "start": 162.42,
+        "end": 167.74,
+        "text": "The better approach should we be focusing on playing strictly Game Theory optimal or"
+      },
+      {
+        "topic": "equity and odds",
+        "start": 411.76,
+        "end": 414.52,
+        "text": "right so now your pot odds aren't looking so good you need to be getting 2-to-1 to make this"
+      },
+      {
+        "topic": "player modeling",
+        "start": 396.81,
+        "end": 401.85,
+        "text": "call now what if that opponent that same opponent bet 500 into this $100"
+      },
+      {
+        "topic": "ranges",
+        "start": 560.61,
+        "end": 562.61,
+        "text": "That means only the top 25% of the range of the range of the ranges of the range of the"
+      },
+      {
+        "topic": "board texture",
+        "start": 90.44,
+        "end": 96.44,
+        "text": "So what you want to do is instead of doing 33,33% across the board if he's"
+      },
+      {
+        "topic": "bluffing",
+        "start": 285.11,
+        "end": 288.95,
+        "text": "In a situation like you know what I don't trust this guy. Because I've just seen him lie and bluff"
+      }
+    ]
+  },
+  {
+    "ordinal": 6,
+    "file": "06-C-Betting.mp4",
+    "transcript_file": "06-c-betting.json",
+    "duration_seconds": 956.288,
+    "word_count": 3067,
+    "words_per_minute": 192.4,
+    "speech_coverage": 0.857,
+    "segment_count": 329,
+    "mean_avg_logprob": -0.4321,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 49,
+      "player modeling": 17,
+      "ranges": 11,
+      "position": 10,
+      "aggression": 9,
+      "bluffing": 5,
+      "mixed strategy": 5,
+      "equity and odds": 2,
+      "tells and live reads": 2,
+      "multiway": 1,
+      "psychology and meta": 1,
+      "study process": 1,
+      "bet sizing": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 231.81,
+        "end": 239.33,
+        "text": "do I have? And what does that board texture look like obviously positions another factor that you always consider"
+      },
+      {
+        "topic": "player modeling",
+        "start": 492.75,
+        "end": 495.07,
+        "text": "hands obviously if your opponent has three of the kind or maybe they've had..."
+      },
+      {
+        "topic": "ranges",
+        "start": 213.33,
+        "end": 217.33,
+        "text": "in the range that this button is going to call with. Jack Ten suited, Jack Nine and 89"
+      },
+      {
+        "topic": "position",
+        "start": 114.89,
+        "end": 119.45,
+        "text": "and it goes call-call, a button calls, small blind call is the big blind call."
+      },
+      {
+        "topic": "aggression",
+        "start": 729.75,
+        "end": 734.51,
+        "text": "If your throwing out a continuation bet and then the person calls and you go oh no what do I"
+      },
+      {
+        "topic": "bluffing",
+        "start": 825.35,
+        "end": 828.99,
+        "text": "you're gonna have to commit in that situation if you want to bluff this so a bed on"
+      }
+    ]
+  },
+  {
+    "ordinal": 7,
+    "file": "07-Check-Raising.mp4",
+    "transcript_file": "07-check-raising.json",
+    "duration_seconds": 428.5226875,
+    "word_count": 1233,
+    "words_per_minute": 172.6,
+    "speech_coverage": 0.756,
+    "segment_count": 117,
+    "mean_avg_logprob": -0.4227,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 12,
+      "ranges": 7,
+      "aggression": 7,
+      "position": 6,
+      "player modeling": 6,
+      "bluffing": 4,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "tells and live reads": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 243.69,
+        "end": 248.89,
+        "text": "so instead of just check-raisinging the turn or check-reshing the flop or check-rasing the flopp, I've got..."
+      },
+      {
+        "topic": "ranges",
+        "start": 236.77,
+        "end": 240.01,
+        "text": "what does my check calling range look like in that spot? Well i checked all the"
+      },
+      {
+        "topic": "aggression",
+        "start": 22.85,
+        "end": 28.79,
+        "text": "You're a player who doesn't really ever check raise well then your opponent can always feel free to bet the turn"
+      },
+      {
+        "topic": "position",
+        "start": 87.49,
+        "end": 87.53,
+        "text": "you don't get to raise your own getting to raised to race but it as much out of position"
+      },
+      {
+        "topic": "player modeling",
+        "start": 335.95,
+        "end": 340.55,
+        "text": "Not ideal because it's harder for your opponent to have a hand they would continue with that's worse"
+      },
+      {
+        "topic": "bluffing",
+        "start": 372.19,
+        "end": 377.23,
+        "text": "Which of the three hands would be best to bluff with on a king seven doosport?"
+      }
+    ]
+  },
+  {
+    "ordinal": 8,
+    "file": "08-Three-Betting.mp4",
+    "transcript_file": "08-three-betting.json",
+    "duration_seconds": 549.3333125,
+    "word_count": 1566,
+    "words_per_minute": 171.0,
+    "speech_coverage": 0.729,
+    "segment_count": 172,
+    "mean_avg_logprob": -0.4198,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "position": 17,
+      "ranges": 12,
+      "player modeling": 5,
+      "board texture": 4,
+      "aggression": 4,
+      "mixed strategy": 4,
+      "tournaments": 2,
+      "psychology and meta": 2,
+      "cash games": 1,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "bluffing": 0,
+      "multiway": 0,
+      "tells and live reads": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "position",
+        "start": 314.21,
+        "end": 318.01,
+        "text": "small blind having said that when a button or late position"
+      },
+      {
+        "topic": "ranges",
+        "start": 319.01,
+        "end": 320.45,
+        "text": "they usually have a pretty wide range"
+      },
+      {
+        "topic": "player modeling",
+        "start": 118.02,
+        "end": 124.22,
+        "text": "player are you up against? Is this a player who 3 bets liberally and is very aggressive? If so then his range"
+      },
+      {
+        "topic": "board texture",
+        "start": 307.93,
+        "end": 311.17,
+        "text": "after the flop you get to at glass you have complete control in hand."
+      },
+      {
+        "topic": "aggression",
+        "start": 18.6,
+        "end": 21.6,
+        "text": "The three bet, and essentially what that means is the re-rays."
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 383.85,
+        "end": 387.33,
+        "text": "So you want to find a pretty good balance in a frequency for when"
+      }
+    ]
+  },
+  {
+    "ordinal": 9,
+    "file": "09-Three-Betting Hand Review.mp4",
+    "transcript_file": "09-three-betting-hand-review.json",
+    "duration_seconds": 263.9146875,
+    "word_count": 685,
+    "words_per_minute": 155.7,
+    "speech_coverage": 0.731,
+    "segment_count": 73,
+    "mean_avg_logprob": -0.3855,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "position": 15,
+      "ranges": 12,
+      "aggression": 5,
+      "board texture": 1,
+      "bluffing": 1,
+      "tournaments": 1,
+      "cash games": 1,
+      "tells and live reads": 1,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "player modeling": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "position",
+        "start": 58.84,
+        "end": 61.6,
+        "text": "understand about the button player is the Button players range"
+      },
+      {
+        "topic": "ranges",
+        "start": 149.96,
+        "end": 154.28,
+        "text": "the race came from the button, we know that's a wide range. Then factor in my three"
+      },
+      {
+        "topic": "aggression",
+        "start": 21.67,
+        "end": 25.03,
+        "text": "It's gonna involve the three bet and four bet and how we react"
+      },
+      {
+        "topic": "board texture",
+        "start": 217.26,
+        "end": 219.82,
+        "text": "I could turn my hand into a real solid bluff"
+      },
+      {
+        "topic": "tournaments",
+        "start": 232.97,
+        "end": 235.33,
+        "text": "doing in a tournament, maybe more so occasionally"
+      }
+    ]
+  },
+  {
+    "ordinal": 10,
+    "file": "10-Detecting and Executing the Bluff.mp4",
+    "transcript_file": "10-detecting-and-executing-the-bluff.json",
+    "duration_seconds": 871.36,
+    "word_count": 2571,
+    "words_per_minute": 177.0,
+    "speech_coverage": 0.824,
+    "segment_count": 279,
+    "mean_avg_logprob": -0.4435,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 31,
+      "bluffing": 21,
+      "ranges": 15,
+      "position": 8,
+      "aggression": 7,
+      "tells and live reads": 7,
+      "player modeling": 7,
+      "mixed strategy": 4,
+      "tournaments": 3,
+      "equity and odds": 2,
+      "bet sizing": 1,
+      "psychology and meta": 1,
+      "multiway": 0,
+      "cash games": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 138.86,
+        "end": 140.78,
+        "text": "you bet the turn...you bet the turn! And the river's a three of spades"
+      },
+      {
+        "topic": "bluffing",
+        "start": 444.3,
+        "end": 453.5,
+        "text": "He may decide he can Bluff raise you on the water-raise You on the River and take them blocker!"
+      },
+      {
+        "topic": "ranges",
+        "start": 42.17,
+        "end": 47.85,
+        "text": "because we talked about a range of hands that a player can and can't have so if the range"
+      },
+      {
+        "topic": "position",
+        "start": 348.04,
+        "end": 351.9,
+        "text": "You've got the potential maid hands puts your opponent in position where they're going to scratch their head"
+      },
+      {
+        "topic": "aggression",
+        "start": 169.64,
+        "end": 173.14,
+        "text": "what a C-bed is. And that's the continuation bet after the flop okay"
+      },
+      {
+        "topic": "tells and live reads",
+        "start": 120.14,
+        "end": 123.14,
+        "text": "Sometimes your opponents, you know gives off a physical tell"
+      }
+    ]
+  },
+  {
+    "ordinal": 11,
+    "file": "11-Executing the Bluff Hand Reviews.mp4",
+    "transcript_file": "11-executing-the-bluff-hand-reviews.json",
+    "duration_seconds": 1825.792,
+    "word_count": 5296,
+    "words_per_minute": 174.0,
+    "speech_coverage": 0.804,
+    "segment_count": 556,
+    "mean_avg_logprob": -0.4859,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 46,
+      "ranges": 44,
+      "position": 13,
+      "bluffing": 10,
+      "aggression": 8,
+      "bet sizing": 7,
+      "equity and odds": 5,
+      "player modeling": 4,
+      "tells and live reads": 3,
+      "mixed strategy": 1,
+      "multiway": 1,
+      "tournaments": 1,
+      "psychology and meta": 1,
+      "study process": 1,
+      "cash games": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 1728.63,
+        "end": 1734.47,
+        "text": "had when i bet the flop bet again on the turn and now putting in a big bomb of a bit on the"
+      },
+      {
+        "topic": "ranges",
+        "start": 1643.47,
+        "end": 1647.31,
+        "text": "straddling position so his range is very wide but the counter to that"
+      },
+      {
+        "topic": "position",
+        "start": 65.67,
+        "end": 71.17,
+        "text": "I sensed his rays there is going to be pretty light and i don't mind playing hands in position with him."
+      },
+      {
+        "topic": "bluffing",
+        "start": 1663.54,
+        "end": 1676.66,
+        "text": "is getting pretty big...to the river deuce of hearts Big Brick brick! And Kenny checks? We don't see three-barrel bluff from"
+      },
+      {
+        "topic": "aggression",
+        "start": 691.7,
+        "end": 696.18,
+        "text": "throughout this hand right we three bet before the flop. We checked it back on the flopp now"
+      },
+      {
+        "topic": "bet sizing",
+        "start": 401.83,
+        "end": 408.23,
+        "text": "We know it's unlikely that he has sets and what I'll figure out on the river based on Phil's bet size"
+      }
+    ]
+  },
+  {
+    "ordinal": 12,
+    "file": "12-Bet Sizing.mp4",
+    "transcript_file": "12-bet-sizing.json",
+    "duration_seconds": 424.9813125,
+    "word_count": 1351,
+    "words_per_minute": 190.7,
+    "speech_coverage": 0.87,
+    "segment_count": 138,
+    "mean_avg_logprob": -0.4837,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 15,
+      "bet sizing": 8,
+      "player modeling": 5,
+      "bluffing": 4,
+      "mixed strategy": 2,
+      "position": 1,
+      "ranges": 1,
+      "equity and odds": 0,
+      "aggression": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "tells and live reads": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 138.97,
+        "end": 141.73,
+        "text": "dry heavy board where a lot of turn cards can come"
+      },
+      {
+        "topic": "bet sizing",
+        "start": 420.9,
+        "end": 425.9,
+        "text": "and that's what i pretty-i pretty much look for when i'm analyzing Bets sizing"
+      },
+      {
+        "topic": "player modeling",
+        "start": 36.3,
+        "end": 36.42,
+        "text": "and you want your opponent at call it as a situation where you have a time."
+      },
+      {
+        "topic": "bluffing",
+        "start": 59.66,
+        "end": 62.06,
+        "text": "not really sure what they're doing. Are you vetting that as a Bluff?"
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 351.22,
+        "end": 355.54,
+        "text": "So if your amateur in watching this and you're seeing well we understand the fold frequency"
+      },
+      {
+        "topic": "position",
+        "start": 175.52,
+        "end": 178.0,
+        "text": "you raise with Jack Nina hearts on the button and"
+      }
+    ]
+  },
+  {
+    "ordinal": 13,
+    "file": "13-Overbetting.mp4",
+    "transcript_file": "13-overbetting.json",
+    "duration_seconds": 632.7466875,
+    "word_count": 1971,
+    "words_per_minute": 186.9,
+    "speech_coverage": 0.863,
+    "segment_count": 215,
+    "mean_avg_logprob": -0.4243,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "player modeling": 24,
+      "board texture": 18,
+      "ranges": 7,
+      "bluffing": 7,
+      "mixed strategy": 3,
+      "study process": 3,
+      "bet sizing": 2,
+      "tells and live reads": 2,
+      "equity and odds": 1,
+      "position": 0,
+      "aggression": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "player modeling",
+        "start": 254.85,
+        "end": 259.21,
+        "text": "the turn is like a six your opponent. You know check call called about in then the bet and then the river's an the reverse on the rivers an eace and then there was an"
+      },
+      {
+        "topic": "board texture",
+        "start": 339.84,
+        "end": 344.0,
+        "text": "So how strong can your opponent's hand really be when he called flop and turn"
+      },
+      {
+        "topic": "ranges",
+        "start": 73.69,
+        "end": 77.53,
+        "text": "have your opponents range as being very very strong except yours is slightly stronger."
+      },
+      {
+        "topic": "bluffing",
+        "start": 187.39,
+        "end": 192.03,
+        "text": "you're gonna bluff as an overbed? Typically you're gonna bluff as in overbet when"
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 479.78,
+        "end": 483.14,
+        "text": "frequency should be in a standard situation so what does that frequency"
+      },
+      {
+        "topic": "study process",
+        "start": 562.71,
+        "end": 566.07,
+        "text": "If you are going to err one way or the other in terms of making a mistake,"
+      }
+    ]
+  },
+  {
+    "ordinal": 14,
+    "file": "14-Multi-way Dynamics.mp4",
+    "transcript_file": "14-multi-way-dynamics.json",
+    "duration_seconds": 827.2,
+    "word_count": 2519,
+    "words_per_minute": 182.7,
+    "speech_coverage": 0.829,
+    "segment_count": 275,
+    "mean_avg_logprob": -0.4133,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "multiway": 17,
+      "board texture": 15,
+      "ranges": 9,
+      "position": 7,
+      "bluffing": 7,
+      "equity and odds": 5,
+      "player modeling": 4,
+      "game and bankroll": 3,
+      "mixed strategy": 2,
+      "aggression": 1,
+      "tournaments": 1,
+      "cash games": 1,
+      "bet sizing": 0,
+      "tells and live reads": 0,
+      "psychology and meta": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "multiway",
+        "start": 13.2,
+        "end": 17.72,
+        "text": "But you're also going to find yourself in a lot of multiway parts where there's three people in the hand"
+      },
+      {
+        "topic": "board texture",
+        "start": 160.6,
+        "end": 171.72,
+        "text": "going forward past the flop. So as we've established, when you're in a multiway pot"
+      },
+      {
+        "topic": "ranges",
+        "start": 501.96,
+        "end": 504.0,
+        "text": "You can start to narrow that player's range down but"
+      },
+      {
+        "topic": "position",
+        "start": 336.46,
+        "end": 340.86,
+        "text": "they would've bet. So if you do bed in position again it's never a good idea"
+      },
+      {
+        "topic": "bluffing",
+        "start": 67.04,
+        "end": 69.44,
+        "text": "You'll hear the term polarized a lot essentially what that means is you know a bet for"
+      },
+      {
+        "topic": "equity and odds",
+        "start": 426.85,
+        "end": 429.83,
+        "text": "you know not as many opportunities to extract equity because if that one"
+      }
+    ]
+  },
+  {
+    "ordinal": 15,
+    "file": "15-Mixed Strategy.mp4",
+    "transcript_file": "15-mixed-strategy.json",
+    "duration_seconds": 1109.7813125,
+    "word_count": 3668,
+    "words_per_minute": 198.3,
+    "speech_coverage": 0.874,
+    "segment_count": 383,
+    "mean_avg_logprob": -0.4203,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 26,
+      "mixed strategy": 21,
+      "player modeling": 14,
+      "ranges": 13,
+      "position": 10,
+      "aggression": 3,
+      "multiway": 2,
+      "cash games": 2,
+      "game and bankroll": 2,
+      "study process": 2,
+      "bet sizing": 1,
+      "bluffing": 1,
+      "tells and live reads": 1,
+      "equity and odds": 0,
+      "tournaments": 0,
+      "psychology and meta": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 837.99,
+        "end": 844.07,
+        "text": "from next the button with Jack Queen of Diamonds and the flop comes Jack Six Duce,"
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 545.18,
+        "end": 549.74,
+        "text": "right there very simple example of how do use a mixed strategy? And how do you do that exactly"
+      },
+      {
+        "topic": "player modeling",
+        "start": 536.22,
+        "end": 540.94,
+        "text": "readable where again you check that means it's a green light for your opponent to seal the pot"
+      },
+      {
+        "topic": "ranges",
+        "start": 279.64,
+        "end": 283.2,
+        "text": "six seven suited and seven eight suited to your raising range right? Well if it"
+      },
+      {
+        "topic": "position",
+        "start": 844.07,
+        "end": 848.87,
+        "text": "I'm heads up against The Big Blind. He checks to me right? Well this is a spot where in"
+      },
+      {
+        "topic": "aggression",
+        "start": 61.84,
+        "end": 65.28,
+        "text": "Other times you may actually play aggressively in three bet."
+      }
+    ]
+  },
+  {
+    "ordinal": 16,
+    "file": "16 Mixed Strategy. Hand Review.MP4",
+    "transcript_file": "16-mixed-strategy-hand-review.json",
+    "duration_seconds": 293.7386875,
+    "word_count": 779,
+    "words_per_minute": 159.1,
+    "speech_coverage": 0.797,
+    "segment_count": 80,
+    "mean_avg_logprob": -0.4175,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 15,
+      "position": 3,
+      "player modeling": 3,
+      "aggression": 1,
+      "bluffing": 1,
+      "mixed strategy": 1,
+      "ranges": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "tells and live reads": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 278.65,
+        "end": 285.53,
+        "text": "a line that goes bet-flop check turn with Ace Jack. It should be sometimes Bet Beth"
+      },
+      {
+        "topic": "position",
+        "start": 159.77,
+        "end": 164.33,
+        "text": "he still calls to try and take the pots away later with position in just a bluff on"
+      },
+      {
+        "topic": "player modeling",
+        "start": 202.1,
+        "end": 205.02,
+        "text": "OK, you bet to flop with overcards your opponent calls"
+      },
+      {
+        "topic": "aggression",
+        "start": 232.34,
+        "end": 237.26,
+        "text": "this tough spot is partly because he did continuation bet. So by doing so"
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 274.73,
+        "end": 278.65,
+        "text": "Antonio needs to have a mixed strategy in this situation. It can't always be"
+      }
+    ]
+  },
+  {
+    "ordinal": 17,
+    "file": "17-Pre- and Postflop Mistakes.mp4",
+    "transcript_file": "17-pre-and-postflop-mistakes.json",
+    "duration_seconds": 608.32,
+    "word_count": 1684,
+    "words_per_minute": 166.1,
+    "speech_coverage": 0.744,
+    "segment_count": 174,
+    "mean_avg_logprob": -0.435,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 31,
+      "position": 8,
+      "equity and odds": 6,
+      "player modeling": 5,
+      "ranges": 4,
+      "aggression": 4,
+      "multiway": 3,
+      "study process": 3,
+      "bet sizing": 1,
+      "mixed strategy": 1,
+      "tournaments": 1,
+      "bluffing": 0,
+      "cash games": 0,
+      "tells and live reads": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 361.79,
+        "end": 365.83,
+        "text": "in situations like that just because you started with a premium hand realize that the flop can change that and turn it into"
+      },
+      {
+        "topic": "position",
+        "start": 495.77,
+        "end": 501.13,
+        "text": "It's reraised from the small blind and the big blind rerays is again"
+      },
+      {
+        "topic": "equity and odds",
+        "start": 347.63,
+        "end": 351.15,
+        "text": "you know have good equity against you anyway. So that's your best case scenario"
+      },
+      {
+        "topic": "player modeling",
+        "start": 560.24,
+        "end": 562.6,
+        "text": "that King Jack against one opponent when you're the aggressor and there's no regression"
+      },
+      {
+        "topic": "ranges",
+        "start": 482.51,
+        "end": 485.09,
+        "text": "you can open with a pretty wide range of hands right? You know"
+      },
+      {
+        "topic": "aggression",
+        "start": 606.04,
+        "end": 607.68,
+        "text": "In the face of someone who three bet she bets before before the flipate you before the flyb with one"
+      }
+    ]
+  },
+  {
+    "ordinal": 18,
+    "file": "18 Tournament Strategy. Early and Middle Stages.MP4",
+    "transcript_file": "18-tournament-strategy-early-and-middle-stages.json",
+    "duration_seconds": 744.704,
+    "word_count": 2510,
+    "words_per_minute": 202.2,
+    "speech_coverage": 0.879,
+    "segment_count": 283,
+    "mean_avg_logprob": -0.4005,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "tournaments": 28,
+      "board texture": 10,
+      "position": 6,
+      "ranges": 4,
+      "cash games": 4,
+      "player modeling": 3,
+      "game and bankroll": 3,
+      "equity and odds": 2,
+      "study process": 2,
+      "tells and live reads": 1,
+      "bet sizing": 0,
+      "aggression": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "psychology and meta": 0
+    },
+    "evidence": [
+      {
+        "topic": "tournaments",
+        "start": 413.24,
+        "end": 424.16,
+        "text": "The middle stage is the tournament or where new variables are introduced."
+      },
+      {
+        "topic": "board texture",
+        "start": 544.12,
+        "end": 548.08,
+        "text": "going in because there's not gonna be a lot of betting on the flopped turn and river when"
+      },
+      {
+        "topic": "position",
+        "start": 453.8,
+        "end": 457.16,
+        "text": "You have six eight of hearts, there is an Annie out there you're in middle position"
+      },
+      {
+        "topic": "ranges",
+        "start": 486.86,
+        "end": 489.66,
+        "text": "That means just a wider range of hands okay?"
+      },
+      {
+        "topic": "cash games",
+        "start": 59.41,
+        "end": 61.25,
+        "text": "And of course you're have the Deep Stack Play"
+      },
+      {
+        "topic": "player modeling",
+        "start": 519.0,
+        "end": 521.8,
+        "text": "a fast aggressive style in those situations"
+      }
+    ]
+  },
+  {
+    "ordinal": 19,
+    "file": "19 Tournament Strategy. On the Bubble.MP4",
+    "transcript_file": "19-tournament-strategy-on-the-bubble.json",
+    "duration_seconds": 616.7466875,
+    "word_count": 1911,
+    "words_per_minute": 185.9,
+    "speech_coverage": 0.864,
+    "segment_count": 213,
+    "mean_avg_logprob": -0.3694,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "tournaments": 34,
+      "position": 10,
+      "ranges": 4,
+      "study process": 3,
+      "multiway": 1,
+      "tells and live reads": 1,
+      "player modeling": 1,
+      "psychology and meta": 1,
+      "game and bankroll": 1,
+      "board texture": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "cash games": 0
+    },
+    "evidence": [
+      {
+        "topic": "tournaments",
+        "start": 42.66,
+        "end": 47.42,
+        "text": "So that's right when the bubble happens, you'll notice a huge shift after the bubble"
+      },
+      {
+        "topic": "position",
+        "start": 182.06,
+        "end": 186.34,
+        "text": "an early position and a player in middle position sitting on nine big blinds looks around"
+      },
+      {
+        "topic": "ranges",
+        "start": 299.62,
+        "end": 303.78,
+        "text": "Because the range of hands you're up against looks like aces, kings, queens"
+      },
+      {
+        "topic": "study process",
+        "start": 127.19,
+        "end": 128.15,
+        "text": "and practice and practice in these situations"
+      },
+      {
+        "topic": "multiway",
+        "start": 413.1,
+        "end": 415.42,
+        "text": "But there are three players at table"
+      },
+      {
+        "topic": "tells and live reads",
+        "start": 568.47,
+        "end": 570.67,
+        "text": "so important for them to just tell their family at home"
+      }
+    ]
+  },
+  {
+    "ordinal": 20,
+    "file": "20-Tournament Strategy Late Stages and Final Table.mp4",
+    "transcript_file": "20-tournament-strategy-late-stages-and-final-table.json",
+    "duration_seconds": 617.536,
+    "word_count": 1682,
+    "words_per_minute": 163.4,
+    "speech_coverage": 0.741,
+    "segment_count": 168,
+    "mean_avg_logprob": -0.4121,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "tournaments": 25,
+      "position": 8,
+      "ranges": 6,
+      "game and bankroll": 4,
+      "board texture": 3,
+      "player modeling": 3,
+      "cash games": 2,
+      "equity and odds": 1,
+      "aggression": 1,
+      "tells and live reads": 1,
+      "bet sizing": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "psychology and meta": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "tournaments",
+        "start": 126.23,
+        "end": 129.19,
+        "text": "the short stack. When you are in the short stack, what's your weapon? What do you have"
+      },
+      {
+        "topic": "position",
+        "start": 604.05,
+        "end": 606.29,
+        "text": "I was the big blind and the small blind went"
+      },
+      {
+        "topic": "ranges",
+        "start": 580.13,
+        "end": 583.13,
+        "text": "With a very wide percentage of your range because what you're essentially doing is"
+      },
+      {
+        "topic": "game and bankroll",
+        "start": 408.99,
+        "end": 414.51,
+        "text": "the more you need to be risk adverse if the jump is sort of minimal and meaningless then"
+      },
+      {
+        "topic": "board texture",
+        "start": 336.86,
+        "end": 341.34,
+        "text": "the flop not true before the flopp? Absolutely there are situations where"
+      },
+      {
+        "topic": "player modeling",
+        "start": 190.71,
+        "end": 193.55,
+        "text": "Take advantage of those players that are playing too tight."
+      }
+    ]
+  },
+  {
+    "ordinal": 21,
+    "file": "21-Universal Tournament Strategy.mp4",
+    "transcript_file": "21-universal-tournament-strategy.json",
+    "duration_seconds": 572.9066875,
+    "word_count": 1835,
+    "words_per_minute": 192.2,
+    "speech_coverage": 0.871,
+    "segment_count": 192,
+    "mean_avg_logprob": -0.4025,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "tournaments": 27,
+      "equity and odds": 8,
+      "bluffing": 4,
+      "position": 3,
+      "cash games": 3,
+      "game and bankroll": 3,
+      "ranges": 2,
+      "player modeling": 1,
+      "study process": 1,
+      "board texture": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "tells and live reads": 0,
+      "psychology and meta": 0
+    },
+    "evidence": [
+      {
+        "topic": "tournaments",
+        "start": 243.54,
+        "end": 247.22,
+        "text": "in a tournament where your short stack but that's not reality"
+      },
+      {
+        "topic": "equity and odds",
+        "start": 377.0,
+        "end": 380.52,
+        "text": "fold equity if your sitting on 12-15 big lines going all in"
+      },
+      {
+        "topic": "bluffing",
+        "start": 335.84,
+        "end": 339.04,
+        "text": "that you've eliminated all possibility of any fold equity"
+      },
+      {
+        "topic": "position",
+        "start": 382.24,
+        "end": 386.28,
+        "text": "Big Blind now if you're down to as I said less than full"
+      },
+      {
+        "topic": "cash games",
+        "start": 5.9,
+        "end": 11.9,
+        "text": "One of the more frustrating things about tournament poker as it compares to cash games is variance and bad luck."
+      },
+      {
+        "topic": "game and bankroll",
+        "start": 45.82,
+        "end": 53.02,
+        "text": "a resiliency, a mental resiliency to not focus on things out of your control and variance"
+      }
+    ]
+  },
+  {
+    "ordinal": 22,
+    "file": "22-Cash Games.mp4",
+    "transcript_file": "22-cash-games.json",
+    "duration_seconds": 701.0773125,
+    "word_count": 2141,
+    "words_per_minute": 183.2,
+    "speech_coverage": 0.834,
+    "segment_count": 236,
+    "mean_avg_logprob": -0.4124,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "cash games": 22,
+      "board texture": 18,
+      "tournaments": 11,
+      "position": 8,
+      "player modeling": 7,
+      "psychology and meta": 4,
+      "game and bankroll": 4,
+      "ranges": 2,
+      "bet sizing": 2,
+      "aggression": 1,
+      "multiway": 1,
+      "equity and odds": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "tells and live reads": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "cash games",
+        "start": 490.1,
+        "end": 504.65,
+        "text": "The thing about cash games is if you have a personality type that's sort of tilt friendly"
+      },
+      {
+        "topic": "board texture",
+        "start": 183.52,
+        "end": 188.32,
+        "text": "They really really wanna see the flop so they're playing poker from the position of like man I want to see what I can catch"
+      },
+      {
+        "topic": "tournaments",
+        "start": 417.19,
+        "end": 420.63,
+        "text": "You're better off being a short stack whereas if you think you're one of the better players"
+      },
+      {
+        "topic": "position",
+        "start": 691.54,
+        "end": 695.78,
+        "text": "the information that the player in position has. So the deeper stack as a general rule"
+      },
+      {
+        "topic": "player modeling",
+        "start": 682.9,
+        "end": 686.34,
+        "text": "You don't also decide what your opponent is going to do in terms of reaction"
+      },
+      {
+        "topic": "psychology and meta",
+        "start": 466.48,
+        "end": 471.58,
+        "text": "Deep Stack play again it also just takes the metagame"
+      }
+    ]
+  },
+  {
+    "ordinal": 23,
+    "file": "23 Masking Tells.MP4",
+    "transcript_file": "23-masking-tells.json",
+    "duration_seconds": 731.328,
+    "word_count": 2125,
+    "words_per_minute": 174.3,
+    "speech_coverage": 0.762,
+    "segment_count": 244,
+    "mean_avg_logprob": -0.4904,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 11,
+      "tells and live reads": 4,
+      "study process": 3,
+      "player modeling": 2,
+      "equity and odds": 1,
+      "aggression": 1,
+      "bluffing": 1,
+      "mixed strategy": 1,
+      "position": 0,
+      "ranges": 0,
+      "bet sizing": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 573.94,
+        "end": 577.28,
+        "text": "you can repeat consistently, pre-flop flop"
+      },
+      {
+        "topic": "tells and live reads",
+        "start": 23.12,
+        "end": 26.76,
+        "text": "We're going to talk a little bit about body language physical tells that you might be giving"
+      },
+      {
+        "topic": "study process",
+        "start": 727.25,
+        "end": 730.93,
+        "text": "and you'll also learn how to mask your own tells through experience as well."
+      }
+    ]
+  },
+  {
+    "ordinal": 24,
+    "file": "24 Spotting Tells, Part 1.MP4",
+    "transcript_file": "24-spotting-tells-part-1.json",
+    "duration_seconds": 680.064,
+    "word_count": 1898,
+    "words_per_minute": 167.5,
+    "speech_coverage": 0.843,
+    "segment_count": 202,
+    "mean_avg_logprob": -0.4161,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "tells and live reads": 7,
+      "board texture": 6,
+      "bluffing": 3,
+      "player modeling": 2,
+      "study process": 2,
+      "game and bankroll": 1,
+      "position": 0,
+      "ranges": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "psychology and meta": 0
+    },
+    "evidence": [
+      {
+        "topic": "tells and live reads",
+        "start": 270.89,
+        "end": 295.99,
+        "text": "consistently to take advantage of it. So this next tell is a real doozy,"
+      },
+      {
+        "topic": "board texture",
+        "start": 105.7,
+        "end": 109.54,
+        "text": "you to bet because their hands weak. So if you are in a situation on the turn where"
+      },
+      {
+        "topic": "bluffing",
+        "start": 620.92,
+        "end": 625.49,
+        "text": "and whatnot so which one is more likely to be the bluff?"
+      },
+      {
+        "topic": "player modeling",
+        "start": 415.46,
+        "end": 419.62,
+        "text": "I am watching my opponent if my opponent already has their arm extended before I've even"
+      },
+      {
+        "topic": "study process",
+        "start": 29.32,
+        "end": 32.8,
+        "text": "actually play at the table. But when you start to learn what it is"
+      },
+      {
+        "topic": "game and bankroll",
+        "start": 300.07,
+        "end": 304.79,
+        "text": "That is far more prevalent with new players as you get higher in stakes"
+      }
+    ]
+  },
+  {
+    "ordinal": 25,
+    "file": "25-Spotting Tells, Part 2.mp4",
+    "transcript_file": "25-spotting-tells-part-2.json",
+    "duration_seconds": 558.528,
+    "word_count": 1674,
+    "words_per_minute": 179.8,
+    "speech_coverage": 0.801,
+    "segment_count": 202,
+    "mean_avg_logprob": -0.4542,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "bluffing": 6,
+      "board texture": 5,
+      "tells and live reads": 5,
+      "mixed strategy": 1,
+      "tournaments": 1,
+      "player modeling": 1,
+      "psychology and meta": 1,
+      "game and bankroll": 1,
+      "position": 0,
+      "ranges": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "multiway": 0,
+      "cash games": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "bluffing",
+        "start": 547.76,
+        "end": 551.68,
+        "text": "I gave at the old this and people saw that as a Bluff"
+      },
+      {
+        "topic": "board texture",
+        "start": 380.88,
+        "end": 381.88,
+        "text": "You know? Then all of sudden on the sudden on the river he made the River"
+      },
+      {
+        "topic": "tells and live reads",
+        "start": 142.06,
+        "end": 149.58,
+        "text": "tell to you to say listen get away I'm very strong run. Whereas that same player if they"
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 85.37,
+        "end": 87.61,
+        "text": "if you see a random especially an amateur player"
+      },
+      {
+        "topic": "tournaments",
+        "start": 222.03,
+        "end": 242.38,
+        "text": "of possible tells that you could exploit later in the tournament."
+      },
+      {
+        "topic": "player modeling",
+        "start": 158.62,
+        "end": 162.78,
+        "text": "Because they want you to call Why would they be more aggressive with their arm because they want you out"
+      }
+    ]
+  },
+  {
+    "ordinal": 26,
+    "file": "26-Spotting Tells Hand Reviews.mp4",
+    "transcript_file": "26-spotting-tells-hand-reviews.json",
+    "duration_seconds": 843.8186875,
+    "word_count": 2315,
+    "words_per_minute": 164.6,
+    "speech_coverage": 0.765,
+    "segment_count": 249,
+    "mean_avg_logprob": -0.4684,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 22,
+      "ranges": 18,
+      "position": 9,
+      "tells and live reads": 6,
+      "player modeling": 5,
+      "bluffing": 2,
+      "bet sizing": 1,
+      "mixed strategy": 1,
+      "multiway": 1,
+      "equity and odds": 0,
+      "aggression": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 184.8,
+        "end": 193.56,
+        "text": "actions on Daniel and he checks as well still keeping the parts small turn card for free then"
+      },
+      {
+        "topic": "ranges",
+        "start": 80.02,
+        "end": 82.54,
+        "text": "because my range here my limpinging range usually going to"
+      },
+      {
+        "topic": "position",
+        "start": 477.68,
+        "end": 483.2,
+        "text": "the game at that time, billionaire from Hungary actually. He calls in position against me and"
+      },
+      {
+        "topic": "tells and live reads",
+        "start": 695.08,
+        "end": 698.44,
+        "text": "because one of things you do with physical tells is you need a little bit"
+      },
+      {
+        "topic": "player modeling",
+        "start": 764.9,
+        "end": 769.78,
+        "text": "here and my opponent raises me, I have to put him on a very strong hand. A slow played straight"
+      },
+      {
+        "topic": "bluffing",
+        "start": 749.7,
+        "end": 753.1,
+        "text": "partially what we call a blocker bat which is a smaller bet that"
+      }
+    ]
+  },
+  {
+    "ordinal": 27,
+    "file": "27-Table Talk.mp4",
+    "transcript_file": "27-table-talk.json",
+    "duration_seconds": 629.4826875,
+    "word_count": 1766,
+    "words_per_minute": 168.3,
+    "speech_coverage": 0.788,
+    "segment_count": 214,
+    "mean_avg_logprob": -0.4421,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 8,
+      "player modeling": 7,
+      "psychology and meta": 6,
+      "position": 2,
+      "tells and live reads": 2,
+      "bluffing": 1,
+      "multiway": 1,
+      "game and bankroll": 1,
+      "ranges": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "mixed strategy": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 521.07,
+        "end": 526.03,
+        "text": "was studying me was sort of focus on the card and the board so let's say for example"
+      },
+      {
+        "topic": "player modeling",
+        "start": 172.79,
+        "end": 177.79,
+        "text": "You know, you could theoretically fold that hand back then because the ranges for openers were very tight."
+      },
+      {
+        "topic": "psychology and meta",
+        "start": 142.79,
+        "end": 146.79,
+        "text": "And I might, you know engage in some table talk to try and elicit information for my opponent."
+      },
+      {
+        "topic": "position",
+        "start": 328.88,
+        "end": 332.46,
+        "text": "Nagrano on the button has 10 Nine of Diamonds"
+      },
+      {
+        "topic": "tells and live reads",
+        "start": 440.19,
+        "end": 442.19,
+        "text": "And when you tell someone what they have"
+      },
+      {
+        "topic": "bluffing",
+        "start": 452.19,
+        "end": 457.39,
+        "text": "against a non-professional player, he folded the big over pair and I was able to bluff pot early on."
+      }
+    ]
+  },
+  {
+    "ordinal": 28,
+    "file": "28-How to Think at the Poker Table.mp4",
+    "transcript_file": "28-how-to-think-at-the-poker-table.json",
+    "duration_seconds": 674.2826875,
+    "word_count": 2004,
+    "words_per_minute": 178.3,
+    "speech_coverage": 0.827,
+    "segment_count": 222,
+    "mean_avg_logprob": -0.3922,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 8,
+      "psychology and meta": 4,
+      "equity and odds": 3,
+      "study process": 2,
+      "cash games": 1,
+      "tells and live reads": 1,
+      "player modeling": 1,
+      "position": 0,
+      "ranges": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 469.47,
+        "end": 473.87,
+        "text": "the river, but I never want you to ignore that first thought came to your head because"
+      },
+      {
+        "topic": "psychology and meta",
+        "start": 116.78,
+        "end": 121.18,
+        "text": "that it actually came you don't want to let emotion drive your decisions"
+      },
+      {
+        "topic": "equity and odds",
+        "start": 236.8,
+        "end": 240.72,
+        "text": "or the odds the next one will be heads or tails well some of you may think"
+      },
+      {
+        "topic": "study process",
+        "start": 385.29,
+        "end": 387.13,
+        "text": "and just because you made a mistake"
+      },
+      {
+        "topic": "cash games",
+        "start": 556.22,
+        "end": 558.54,
+        "text": "going to play a cash game don't sit next with smoker."
+      }
+    ]
+  },
+  {
+    "ordinal": 29,
+    "file": "29-Managing and Exploiting Tilt.mp4",
+    "transcript_file": "29-managing-and-exploiting-tilt.json",
+    "duration_seconds": 1150.784,
+    "word_count": 3654,
+    "words_per_minute": 190.5,
+    "speech_coverage": 0.828,
+    "segment_count": 424,
+    "mean_avg_logprob": -0.4353,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "psychology and meta": 28,
+      "board texture": 24,
+      "tournaments": 10,
+      "study process": 7,
+      "bluffing": 5,
+      "tells and live reads": 3,
+      "multiway": 2,
+      "cash games": 2,
+      "player modeling": 2,
+      "ranges": 1,
+      "game and bankroll": 1,
+      "position": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "mixed strategy": 0
+    },
+    "evidence": [
+      {
+        "topic": "psychology and meta",
+        "start": 794.63,
+        "end": 799.83,
+        "text": "So tilt is real putting players on Tilt is an art form it's a skill that again you"
+      },
+      {
+        "topic": "board texture",
+        "start": 756.27,
+        "end": 762.19,
+        "text": "Turn was a six, river was a six and Freddie bet the River."
+      },
+      {
+        "topic": "tournaments",
+        "start": 243.08,
+        "end": 246.36,
+        "text": "a role and its very important, especially if you're gonna play tournament poker to"
+      },
+      {
+        "topic": "study process",
+        "start": 473.74,
+        "end": 476.22,
+        "text": "I made a mistake here but i'm gonna learn from this so the next time"
+      },
+      {
+        "topic": "bluffing",
+        "start": 664.18,
+        "end": 668.62,
+        "text": "Play the mental gymnastics with them a little bit. Well for some players you show them a bluff on"
+      },
+      {
+        "topic": "tells and live reads",
+        "start": 720.15,
+        "end": 722.51,
+        "text": "Having said that I wouldn't advise that if you find a tell"
+      }
+    ]
+  },
+  {
+    "ordinal": 30,
+    "file": "30-Table Image and Metagame.mp4",
+    "transcript_file": "30-table-image-and-metagame.json",
+    "duration_seconds": 952.9813125,
+    "word_count": 2908,
+    "words_per_minute": 183.1,
+    "speech_coverage": 0.791,
+    "segment_count": 311,
+    "mean_avg_logprob": -0.4486,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "psychology and meta": 15,
+      "bluffing": 7,
+      "player modeling": 7,
+      "board texture": 6,
+      "ranges": 4,
+      "mixed strategy": 2,
+      "cash games": 2,
+      "tournaments": 1,
+      "study process": 1,
+      "position": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "multiway": 0,
+      "tells and live reads": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "psychology and meta",
+        "start": 588.5,
+        "end": 591.78,
+        "text": "by setting up a table image in a spot where you're not going to get to capitalize off"
+      },
+      {
+        "topic": "bluffing",
+        "start": 214.35,
+        "end": 217.87,
+        "text": "If you are against a player who you see bluff six times in a row how"
+      },
+      {
+        "topic": "player modeling",
+        "start": 602.17,
+        "end": 608.49,
+        "text": "So if you find yourself in a situation where your table is being The NIT, the tight player who never bluffs or whoever's"
+      },
+      {
+        "topic": "board texture",
+        "start": 333.66,
+        "end": 335.3,
+        "text": "You bet the turn and you went all in on the river,"
+      },
+      {
+        "topic": "ranges",
+        "start": 373.58,
+        "end": 377.5,
+        "text": "So they're going to have your range dead wrong when you do open a pot so when you finally"
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 486.65,
+        "end": 490.69,
+        "text": "bluffing frequency. So you might become more of an aggressive player than normal"
+      }
+    ]
+  },
+  {
+    "ordinal": 31,
+    "file": "31-Table Image and Metagame Hand Reviews.mp4",
+    "transcript_file": "31-table-image-and-metagame-hand-reviews.json",
+    "duration_seconds": 809.3226875,
+    "word_count": 2157,
+    "words_per_minute": 159.9,
+    "speech_coverage": 0.735,
+    "segment_count": 232,
+    "mean_avg_logprob": -0.4878,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "board texture": 9,
+      "bluffing": 5,
+      "psychology and meta": 5,
+      "ranges": 4,
+      "player modeling": 4,
+      "position": 3,
+      "aggression": 3,
+      "multiway": 3,
+      "equity and odds": 2,
+      "tournaments": 2,
+      "game and bankroll": 2,
+      "bet sizing": 1,
+      "mixed strategy": 0,
+      "cash games": 0,
+      "tells and live reads": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "board texture",
+        "start": 415.18,
+        "end": 418.18,
+        "text": "all the damn turn there is an argument if you call the turn,"
+      },
+      {
+        "topic": "bluffing",
+        "start": 35.42,
+        "end": 38.98,
+        "text": "may be the opposite maybe they think you don't bluff enough and this is a situation"
+      },
+      {
+        "topic": "psychology and meta",
+        "start": 17.94,
+        "end": 20.82,
+        "text": "metagame and you know there's a lot to poker. There is the fundamentals of"
+      },
+      {
+        "topic": "ranges",
+        "start": 697.22,
+        "end": 699.94,
+        "text": "you're representing such a narrow range anyway that"
+      },
+      {
+        "topic": "player modeling",
+        "start": 482.43,
+        "end": 486.43,
+        "text": "And because of my read-of-the situation in my opponent, it actually worked."
+      },
+      {
+        "topic": "position",
+        "start": 140.58,
+        "end": 143.7,
+        "text": "I want to do things that people would never expect so in this position"
+      }
+    ]
+  },
+  {
+    "ordinal": 32,
+    "file": "32-Player Profiling.mp4",
+    "transcript_file": "32-player-profiling.json",
+    "duration_seconds": 856.2346875,
+    "word_count": 2708,
+    "words_per_minute": 189.8,
+    "speech_coverage": 0.876,
+    "segment_count": 277,
+    "mean_avg_logprob": -0.4833,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "player modeling": 42,
+      "ranges": 5,
+      "board texture": 4,
+      "bluffing": 3,
+      "tells and live reads": 2,
+      "psychology and meta": 2,
+      "game and bankroll": 2,
+      "position": 1,
+      "study process": 1,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "cash games": 0
+    },
+    "evidence": [
+      {
+        "topic": "player modeling",
+        "start": 352.22,
+        "end": 354.74,
+        "text": "the loose-agg is the lose ag is the loose aggressive player those ones"
+      },
+      {
+        "topic": "ranges",
+        "start": 774.58,
+        "end": 779.58,
+        "text": "The real only defense you have is to play a slightly tighter range against that player,"
+      },
+      {
+        "topic": "board texture",
+        "start": 315.98,
+        "end": 320.46,
+        "text": "Very meek very weak calls all the way around to the river and it takes initiative you know"
+      },
+      {
+        "topic": "bluffing",
+        "start": 575.58,
+        "end": 579.3,
+        "text": "to see how often this person is willing to bluff at all, but understand as well"
+      },
+      {
+        "topic": "tells and live reads",
+        "start": 103.62,
+        "end": 107.22,
+        "text": "little nuggets that will tell you a little bit about how this person thinks"
+      },
+      {
+        "topic": "psychology and meta",
+        "start": 27.15,
+        "end": 32.03,
+        "text": "and whatnot is going to be a little more loosey-goosee, probably gets you know has tilt issues"
+      }
+    ]
+  },
+  {
+    "ordinal": 33,
+    "file": "33-Game Selection.mp4",
+    "transcript_file": "33-game-selection.json",
+    "duration_seconds": 784.0,
+    "word_count": 2636,
+    "words_per_minute": 201.7,
+    "speech_coverage": 0.862,
+    "segment_count": 299,
+    "mean_avg_logprob": -0.4177,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "game and bankroll": 8,
+      "position": 3,
+      "player modeling": 3,
+      "study process": 3,
+      "ranges": 2,
+      "board texture": 1,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "cash games": 0,
+      "tells and live reads": 0,
+      "psychology and meta": 0
+    },
+    "evidence": [
+      {
+        "topic": "game and bankroll",
+        "start": 144.92,
+        "end": 148.24,
+        "text": "you do when you are professional especially as your bankroll is building"
+      },
+      {
+        "topic": "position",
+        "start": 485.8,
+        "end": 488.16,
+        "text": "or you get to do that more often when you're in position."
+      },
+      {
+        "topic": "player modeling",
+        "start": 515.88,
+        "end": 519.28,
+        "text": "The players that you don't really care where they sit all that much or you know the tight are?"
+      },
+      {
+        "topic": "study process",
+        "start": 113.32,
+        "end": 115.44,
+        "text": "its more like study rather then I'm going for working"
+      },
+      {
+        "topic": "ranges",
+        "start": 503.16,
+        "end": 507.08,
+        "text": "and always, yeprasing it, putting the heat on you then it forces your range to tighten"
+      },
+      {
+        "topic": "board texture",
+        "start": 172.92,
+        "end": 175.12,
+        "text": "I'm looking for the right sort of texture"
+      }
+    ]
+  },
+  {
+    "ordinal": 34,
+    "file": "34-Bankroll Management.mp4",
+    "transcript_file": "34-bankroll-management.json",
+    "duration_seconds": 678.8266875,
+    "word_count": 1769,
+    "words_per_minute": 156.4,
+    "speech_coverage": 0.712,
+    "segment_count": 197,
+    "mean_avg_logprob": -0.4141,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "game and bankroll": 26,
+      "cash games": 5,
+      "board texture": 2,
+      "psychology and meta": 2,
+      "study process": 2,
+      "tournaments": 1,
+      "player modeling": 1,
+      "position": 0,
+      "ranges": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "tells and live reads": 0
+    },
+    "evidence": [
+      {
+        "topic": "game and bankroll",
+        "start": 213.09,
+        "end": 215.09,
+        "text": "With your bankroll but as you get higher and stakes"
+      },
+      {
+        "topic": "cash games",
+        "start": 612.84,
+        "end": 615.2,
+        "text": "my bread-and-butter base was cash games because"
+      },
+      {
+        "topic": "board texture",
+        "start": 175.09,
+        "end": 178.93,
+        "text": "where things don't turn out. So it's very important when you choose a limit for what"
+      },
+      {
+        "topic": "psychology and meta",
+        "start": 450.82,
+        "end": 455.22,
+        "text": "were important to swallow the pride and ego a little bit,"
+      },
+      {
+        "topic": "study process",
+        "start": 141.61,
+        "end": 143.37,
+        "text": "That you guys have to learn yourself"
+      }
+    ]
+  },
+  {
+    "ordinal": 35,
+    "file": "35 Off-Felt Training.MP4",
+    "transcript_file": "35-off-felt-training.json",
+    "duration_seconds": 830.08,
+    "word_count": 2483,
+    "words_per_minute": 179.5,
+    "speech_coverage": 0.849,
+    "segment_count": 303,
+    "mean_avg_logprob": -0.4629,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "study process": 15,
+      "ranges": 5,
+      "board texture": 4,
+      "tournaments": 2,
+      "game and bankroll": 2,
+      "bet sizing": 1,
+      "aggression": 1,
+      "cash games": 1,
+      "tells and live reads": 1,
+      "player modeling": 1,
+      "position": 0,
+      "equity and odds": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "psychology and meta": 0
+    },
+    "evidence": [
+      {
+        "topic": "study process",
+        "start": 36.03,
+        "end": 40.43,
+        "text": "work away from the table, study practice is just as important"
+      },
+      {
+        "topic": "ranges",
+        "start": 171.69,
+        "end": 175.05,
+        "text": "offers poker for stakes at a wide variety of ranges."
+      },
+      {
+        "topic": "board texture",
+        "start": 66.75,
+        "end": 68.95,
+        "text": "a line of play like he three bet before the flop,"
+      },
+      {
+        "topic": "game and bankroll",
+        "start": 506.61,
+        "end": 508.97,
+        "text": "of the elite players in the world at the highest stakes"
+      },
+      {
+        "topic": "bet sizing",
+        "start": 405.08,
+        "end": 407.44,
+        "text": "What if we would have changed our bet sizing?"
+      }
+    ]
+  },
+  {
+    "ordinal": 36,
+    "file": "36-Life as a Poker Player.mp4",
+    "transcript_file": "36-life-as-a-poker-player.json",
+    "duration_seconds": 860.3306875,
+    "word_count": 2937,
+    "words_per_minute": 204.8,
+    "speech_coverage": 0.894,
+    "segment_count": 340,
+    "mean_avg_logprob": -0.397,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "study process": 8,
+      "cash games": 5,
+      "game and bankroll": 4,
+      "mixed strategy": 3,
+      "board texture": 2,
+      "position": 1,
+      "tournaments": 1,
+      "tells and live reads": 1,
+      "player modeling": 1,
+      "psychology and meta": 1,
+      "ranges": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "bluffing": 0,
+      "multiway": 0
+    },
+    "evidence": [
+      {
+        "topic": "study process",
+        "start": 366.4,
+        "end": 369.44,
+        "text": "So if you didn't want to learn hold them or play hold them, all the sudden"
+      },
+      {
+        "topic": "cash games",
+        "start": 325.68,
+        "end": 329.36,
+        "text": "So if you've never played cash games and your only a tournament guy,"
+      },
+      {
+        "topic": "game and bankroll",
+        "start": 812.57,
+        "end": 818.57,
+        "text": "to earn for playing high stakes, but also do so within a framework where your ego doesn't get out of whack"
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 80.68,
+        "end": 83.06,
+        "text": "To a do seven or some random, you know random play that this guy"
+      },
+      {
+        "topic": "board texture",
+        "start": 136.26,
+        "end": 139.26,
+        "text": "If you have higher aspirations, just get on board with me here."
+      },
+      {
+        "topic": "position",
+        "start": 529.75,
+        "end": 531.35,
+        "text": "That's not just all health position"
+      }
+    ]
+  },
+  {
+    "ordinal": 37,
+    "file": "37-Closing.mp4",
+    "transcript_file": "37-closing.json",
+    "duration_seconds": 189.4826875,
+    "word_count": 492,
+    "words_per_minute": 155.8,
+    "speech_coverage": 0.77,
+    "segment_count": 54,
+    "mean_avg_logprob": -0.3684,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "study process": 3,
+      "tournaments": 1,
+      "position": 0,
+      "ranges": 0,
+      "board texture": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "bluffing": 0,
+      "mixed strategy": 0,
+      "multiway": 0,
+      "cash games": 0,
+      "tells and live reads": 0,
+      "player modeling": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0
+    },
+    "evidence": [
+      {
+        "topic": "study process",
+        "start": 106.53,
+        "end": 108.61,
+        "text": "that I'm going to put in the hard work and learn how"
+      },
+      {
+        "topic": "tournaments",
+        "start": 98.79,
+        "end": 102.03,
+        "text": "to not drink before a tournament and not be social"
+      }
+    ]
+  },
+  {
+    "ordinal": 38,
+    "file": "38-Bonus Material Online Play.mp4",
+    "transcript_file": "38-bonus-material-online-play.json",
+    "duration_seconds": 347.5413125,
+    "word_count": 1138,
+    "words_per_minute": 196.5,
+    "speech_coverage": 0.886,
+    "segment_count": 132,
+    "mean_avg_logprob": -0.4059,
+    "quality_flags": [],
+    "decoding": {
+      "model": "distil-small.en",
+      "device": "cpu",
+      "compute_type": "int8",
+      "threads": 2,
+      "beam_size": 1,
+      "batched": false,
+      "condition_on_previous_text": false,
+      "vad_filter": true
+    },
+    "topic_counts": {
+      "position": 4,
+      "player modeling": 3,
+      "ranges": 2,
+      "mixed strategy": 2,
+      "bluffing": 1,
+      "cash games": 1,
+      "board texture": 0,
+      "equity and odds": 0,
+      "bet sizing": 0,
+      "aggression": 0,
+      "multiway": 0,
+      "tournaments": 0,
+      "tells and live reads": 0,
+      "psychology and meta": 0,
+      "game and bankroll": 0,
+      "study process": 0
+    },
+    "evidence": [
+      {
+        "topic": "position",
+        "start": 160.99,
+        "end": 165.83,
+        "text": "You can figure out okay well when this guy is on the button he raises 80%"
+      },
+      {
+        "topic": "player modeling",
+        "start": 40.46,
+        "end": 43.38,
+        "text": "In addition to that, it's gonna be a lot more aggressive"
+      },
+      {
+        "topic": "ranges",
+        "start": 188.39,
+        "end": 193.91,
+        "text": "a large amount that forces them off some of the garbage hand so very wide selection"
+      },
+      {
+        "topic": "mixed strategy",
+        "start": 34.8,
+        "end": 36.66,
+        "text": "a little more game theory oriented."
+      },
+      {
+        "topic": "bluffing",
+        "start": 122.11,
+        "end": 125.51,
+        "text": "Some players may bluff more often when they bet really quickly."
+      },
+      {
+        "topic": "cash games",
+        "start": 19.34,
+        "end": 22.26,
+        "text": "as if your cash game player who plays live"
+      }
+    ]
+  }
+]

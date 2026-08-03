@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "source": "analysis/gto_math_foundation.md",
+  "units": "BB",
+  "primitives": [
+    {
+      "id": "expected_value",
+      "concepts": ["expected value"],
+      "question": "How is the expected value of an action defined?",
+      "formula": "EV(a|s) = sum_o P(o|a,s) * u(o)",
+      "assumptions": ["Outcome probabilities and utilities use the same fully specified information state."],
+      "verification": "mathematical_identity"
+    },
+    {
+      "id": "break_even_call_equity",
+      "concepts": ["equity and odds", "expected value"],
+      "question": "Facing a bet B into pot P, what immediate equity makes a call break even?",
+      "formula": "q_call = B / (P + 2B)",
+      "assumptions": ["No future betting.", "No rake.", "Ties are ignored or incorporated consistently."],
+      "verification": "decision_math.pot_odds"
+    },
+    {
+      "id": "break_even_bluff_fold_frequency",
+      "concepts": ["bluffing", "expected value"],
+      "question": "When a pure bluff risks B to win pot P, what fold frequency breaks even?",
+      "formula": "f_bluff = B / (P + B)",
+      "assumptions": ["The bluff has zero showdown value when called.", "No future betting or rake."],
+      "verification": "decision_math.break_even_bluff_frequency"
+    },
+    {
+      "id": "minimum_defense_frequency",
+      "concepts": ["mixed strategy", "bluffing"],
+      "question": "For bet fraction x=B/P, what is the idealized minimum defense frequency?",
+      "formula": "MDF = 1 / (1 + x)",
+      "assumptions": ["Heads-up polar river abstraction.", "The defender's bluff catchers have zero equity against value and full equity against bluffs."],
+      "verification": "decision_math.minimum_defense_frequency"
+    },
+    {
+      "id": "polar_bluff_to_value_ratio",
+      "concepts": ["mixed strategy", "bluffing", "ranges"],
+      "question": "For bet fraction x=B/P, what bluff-to-value ratio makes a bluff catcher indifferent in the idealized polar river model?",
+      "formula": "bluffs / value = x / (1 + x)",
+      "assumptions": ["Heads-up polar river abstraction.", "Value always wins when called and bluffs always lose when called."],
+      "verification": "decision_math.polar_bluff_to_value_ratio"
+    },
+    {
+      "id": "polar_bluff_share",
+      "concepts": ["mixed strategy", "bluffing", "ranges"],
+      "question": "For bet fraction x=B/P, what share of the betting range is bluff in the idealized polar river model?",
+      "formula": "bluff_share = x / (1 + 2x)",
+      "assumptions": ["Heads-up polar river abstraction."],
+      "verification": "derived_from_polar_ratio"
+    },
+    {
+      "id": "stack_to_pot_ratio",
+      "concepts": ["stack depth", "bet sizing"],
+      "question": "How is stack-to-pot ratio defined at the start of a street?",
+      "formula": "SPR = effective_stack / pot",
+      "assumptions": ["Effective stack and pot are measured at the same decision boundary and in the same units."],
+      "verification": "decision_math.stack_to_pot_ratio"
+    },
+    {
+      "id": "one_card_out_probability",
+      "concepts": ["equity and odds", "combinatorics"],
+      "question": "With o clean outs and U unseen cards, what is the probability of improving on the next card?",
+      "formula": "P(hit) = o / U",
+      "assumptions": ["Every listed out is clean and distinct."],
+      "verification": "combinatorial_identity"
+    },
+    {
+      "id": "two_card_out_probability",
+      "concepts": ["equity and odds", "combinatorics"],
+      "question": "On the flop with o clean outs, what is the probability of improving by the river?",
+      "formula": "P(hit_by_river) = 1 - ((47-o)/47) * ((46-o)/46)",
+      "assumptions": ["All outs remain clean on both draws.", "Known cards leave 47 unseen cards on the flop."],
+      "verification": "decision_math.hit_probability"
+    },
+    {
+      "id": "bayesian_range_update",
+      "concepts": ["ranges", "player modeling", "Bayesian inference"],
+      "question": "How should a range be updated after observing action a in state s?",
+      "formula": "P(h|a,s) = P(a|h,s)P(h|s) / sum_h' P(a|h',s)P(h'|s)",
+      "assumptions": ["The prior covers compatible exact combinations.", "Action likelihoods come from declared solver or model evidence."],
+      "verification": "range_inference.condition_solution_range"
+    }
+  ]
+}

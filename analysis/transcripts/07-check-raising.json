@@ -1,0 +1,956 @@
+{
+  "file": "07-Check-Raising.mp4",
+  "language": "en",
+  "language_probability": 1,
+  "duration_seconds": 428.5226875,
+  "duration_after_vad_seconds": 386.9386875,
+  "transcription_elapsed_seconds": 257.707,
+  "decoding": {
+    "model": "distil-small.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "threads": 2,
+    "beam_size": 1,
+    "batched": false,
+    "condition_on_previous_text": false,
+    "vad_filter": true
+  },
+  "segments": [
+    {
+      "start": 5.97,
+      "end": 9.17,
+      "text": "Checkraising is a deadly weapon and it must be used occasionally.",
+      "avg_logprob": -0.33997,
+      "no_speech_prob": 0.00986,
+      "compression_ratio": 1.70978
+    },
+    {
+      "start": 9.19,
+      "end": 12.41,
+      "text": "And, a lot of benefits come from check raising obviously you know",
+      "avg_logprob": -0.33997,
+      "no_speech_prob": 0.00986,
+      "compression_ratio": 1.70978
+    },
+    {
+      "start": 12.43,
+      "end": 14.13,
+      "text": "You get value when you have a good hand",
+      "avg_logprob": -0.33997,
+      "no_speech_prob": 0.00986,
+      "compression_ratio": 1.70978
+    },
+    {
+      "start": 14.13,
+      "end": 15.89,
+      "text": "It allows you to bluff in certain situations",
+      "avg_logprob": -0.33997,
+      "no_speech_prob": 0.00986,
+      "compression_ratio": 1.70978
+    },
+    {
+      "start": 15.93,
+      "end": 17.93,
+      "text": "But most importantly it",
+      "avg_logprob": -0.33997,
+      "no_speech_prob": 0.00986,
+      "compression_ratio": 1.70978
+    },
+    {
+      "start": 18.17,
+      "end": 22.77,
+      "text": "stops the opponent who has position on you from just running over you right if",
+      "avg_logprob": -0.33997,
+      "no_speech_prob": 0.00986,
+      "compression_ratio": 1.70978
+    },
+    {
+      "start": 22.85,
+      "end": 28.79,
+      "text": "You're a player who doesn't really ever check raise well then your opponent can always feel free to bet the turn",
+      "avg_logprob": -0.33997,
+      "no_speech_prob": 0.00986,
+      "compression_ratio": 1.70978
+    },
+    {
+      "start": 29.29,
+      "end": 33.29,
+      "text": "You know and know that there's no fear of you check-raisinging him off his draw or anything along those lines",
+      "avg_logprob": -0.33997,
+      "no_speech_prob": 0.00986,
+      "compression_ratio": 1.70978
+    },
+    {
+      "start": 35.97,
+      "end": 38.29,
+      "text": "if you start to check raise occasionally and people know that",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 38.29,
+      "end": 41.01,
+      "text": "you're capable of it, sometimes it'll get your free cards.",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 41.01,
+      "end": 43.17,
+      "text": "Because people are afraid like I don't really want a bed here because",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 43.17,
+      "end": 44.21,
+      "text": "if i get checked raised",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 44.21,
+      "end": 47.17,
+      "text": "I don't know that I can call so that will allow you to see some rivers",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 47.17,
+      "end": 48.57,
+      "text": "that you may not otherwise",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 48.57,
+      "end": 52.45,
+      "text": "ideally the image you wanna create is someone to be feared",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 52.45,
+      "end": 55.89,
+      "text": "You want to be feared in all situations when you check",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 55.89,
+      "end": 57.77,
+      "text": "you don't necessarily that to be a signal",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 57.77,
+      "end": 58.77,
+      "text": "for everyone to be a single for everyone to be a very simple",
+      "avg_logprob": -0.41236,
+      "no_speech_prob": 0.0242,
+      "compression_ratio": 1.86926
+    },
+    {
+      "start": 58.77,
+      "end": 60.61,
+      "text": "to say, well I'm just going to run you over.",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 60.61,
+      "end": 63.21,
+      "text": "There's too many players who play so straightforward",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 63.21,
+      "end": 65.29,
+      "text": "that a check means exactly what you'd expect",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 65.29,
+      "end": 67.09,
+      "text": "I don't have a very good hand and the bet",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 67.09,
+      "end": 69.01,
+      "text": "means I think I have a very good hand.",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 69.01,
+      "end": 77.57,
+      "text": "You don't want to be that player.",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 77.57,
+      "end": 78.93,
+      "text": "In some home games especially when",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 78.93,
+      "end": 81.37,
+      "text": "I started playing Checkraising?",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 81.37,
+      "end": 81.97,
+      "text": "Hey!",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 81.97,
+      "end": 83.97,
+      "text": "That's not legal we didn't even allow it right?",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 83.97,
+      "end": 85.49,
+      "text": "It seemed like hey man you checked.",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 87.49,
+      "end": 87.53,
+      "text": "you don't get to raise your own getting to raised to race but it as much out of position",
+      "avg_logprob": -0.5031,
+      "no_speech_prob": 0.0121,
+      "compression_ratio": 1.68456
+    },
+    {
+      "start": 87.53,
+      "end": 91.05,
+      "text": "a pretty important weapon for the player that is out of position.",
+      "avg_logprob": -0.38417,
+      "no_speech_prob": 0.02287,
+      "compression_ratio": 1.7594
+    },
+    {
+      "start": 91.05,
+      "end": 93.97,
+      "text": "As we've, you know established obviously being",
+      "avg_logprob": -0.38417,
+      "no_speech_prob": 0.02287,
+      "compression_ratio": 1.7594
+    },
+    {
+      "start": 93.97,
+      "end": 96.73,
+      "text": "out of position forces you into being more defensive.",
+      "avg_logprob": -0.38417,
+      "no_speech_prob": 0.02287,
+      "compression_ratio": 1.7594
+    },
+    {
+      "start": 96.73,
+      "end": 99.29,
+      "text": "Well one of the weapons you can use is check raise but",
+      "avg_logprob": -0.38417,
+      "no_speech_prob": 0.02287,
+      "compression_ratio": 1.7594
+    },
+    {
+      "start": 99.29,
+      "end": 102.61,
+      "text": "you need to be really smart about how you're doing so because if your",
+      "avg_logprob": -0.38417,
+      "no_speech_prob": 0.02287,
+      "compression_ratio": 1.7594
+    },
+    {
+      "start": 102.61,
+      "end": 104.17,
+      "text": "checraising too often",
+      "avg_logprob": -0.38417,
+      "no_speech_prob": 0.02287,
+      "compression_ratio": 1.7594
+    },
+    {
+      "start": 104.21,
+      "end": 107.53,
+      "text": "You're making the pot bigger for an opponent who's going to be in",
+      "avg_logprob": -0.38417,
+      "no_speech_prob": 0.02287,
+      "compression_ratio": 1.7594
+    },
+    {
+      "start": 107.53,
+      "end": 111.49,
+      "text": "position and call a lot and you're gonna put yourself in a lot more difficult situations",
+      "avg_logprob": -0.38417,
+      "no_speech_prob": 0.02287,
+      "compression_ratio": 1.7594
+    },
+    {
+      "start": 111.49,
+      "end": 116.17,
+      "text": "The other problem with check raising is doing it in a balanced fashion.",
+      "avg_logprob": -0.21705,
+      "no_speech_prob": 0.00599,
+      "compression_ratio": 1.02899
+    },
+    {
+      "start": 141.49,
+      "end": 144.79,
+      "text": "The question is, are you going to only check raise when",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 144.79,
+      "end": 145.87,
+      "text": "you have good hands and then just",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 145.87,
+      "end": 146.87,
+      "text": "chequefolding?",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 146.87,
+      "end": 148.47,
+      "text": "What happens when you check call?",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 148.47,
+      "end": 151.27,
+      "text": "So if your Chequ Raising too many of your good hands",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 151.27,
+      "end": 153.75,
+      "text": "it means that the hand's you checked in call with",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 153.75,
+      "end": 155.99,
+      "text": "become weaker as far a range goes.",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 155.99,
+      "end": 158.07,
+      "text": "So it's a very dangerous game to play",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 158.07,
+      "end": 160.83,
+      "text": "It certainly plays a role on flops turns and rivers",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 160.83,
+      "end": 163.91,
+      "text": "there's lot of situations where Checkraising is great play but",
+      "avg_logprob": -0.43455,
+      "no_speech_prob": 0.01744,
+      "compression_ratio": 1.66926
+    },
+    {
+      "start": 163.91,
+      "end": 166.63,
+      "text": "but you have to really think through your range when",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 166.65,
+      "end": 167.35,
+      "text": "you're doing this.",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 167.39,
+      "end": 169.43,
+      "text": "If your opponents know that you only check raising",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 169.43,
+      "end": 170.83,
+      "text": "with like two pair of better,",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 170.83,
+      "end": 172.75,
+      "text": "probably not worth checking because they're going",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 172.75,
+      "end": 174.59,
+      "text": "to be able to play against you perfectly",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 174.59,
+      "end": 176.95,
+      "text": "like your cards are face up so you're gonna",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 176.95,
+      "end": 178.07,
+      "text": "have to incorporate if you are going",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 178.07,
+      "end": 180.15,
+      "text": "to check raise with King 7 for example",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 180.15,
+      "end": 181.03,
+      "text": "You're also going to want to do",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 181.03,
+      "end": 184.63,
+      "text": "what some bluffs like Queen Jack suited or 8 9-suted",
+      "avg_logprob": -0.40542,
+      "no_speech_prob": 0.01751,
+      "compression_ratio": 1.69697
+    },
+    {
+      "start": 200.89,
+      "end": 203.89,
+      "text": "and had to adjust in my game playing against better players",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 203.91,
+      "end": 207.25,
+      "text": "and some of these high rollers is there were certain situations on the turn",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 207.25,
+      "end": 208.29,
+      "text": "where I'm check raising,",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 208.29,
+      "end": 212.29,
+      "text": "and I'm just not getting value because my hand becomes so obvious.",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 212.29,
+      "end": 215.49,
+      "text": "On a Jack Deuce 3 rainbow flop if it was me",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 215.49,
+      "end": 216.49,
+      "text": "and I checked and called",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 216.49,
+      "end": 217.89,
+      "text": "and then this turn was seven,",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 217.89,
+      "end": 219.89,
+      "text": "There's no flush or I checked my opponent bets",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 219.89,
+      "end": 220.89,
+      "text": "and I have three of a kind",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 220.89,
+      "end": 222.89,
+      "text": "and I check raise",
+      "avg_logprob": -0.48023,
+      "no_speech_prob": 0.03587,
+      "compression_ratio": 1.65873
+    },
+    {
+      "start": 222.89,
+      "end": 226.09,
+      "text": "sometimes are folding over pairs. They're holding queens and kings,",
+      "avg_logprob": -0.48548,
+      "no_speech_prob": 0.01328,
+      "compression_ratio": 1.811
+    },
+    {
+      "start": 226.09,
+      "end": 229.57,
+      "text": "and I'm thinking what am I doing here? And what I'd realize is yeah they",
+      "avg_logprob": -0.48548,
+      "no_speech_prob": 0.01328,
+      "compression_ratio": 1.811
+    },
+    {
+      "start": 229.57,
+      "end": 233.77,
+      "text": "realized that my check raising range in that spot was so you know so clear",
+      "avg_logprob": -0.48548,
+      "no_speech_prob": 0.01328,
+      "compression_ratio": 1.811
+    },
+    {
+      "start": 233.77,
+      "end": 236.77,
+      "text": "and so obvious. So what I realised with some of them is well",
+      "avg_logprob": -0.48548,
+      "no_speech_prob": 0.01328,
+      "compression_ratio": 1.811
+    },
+    {
+      "start": 236.77,
+      "end": 240.01,
+      "text": "what does my check calling range look like in that spot? Well i checked all the",
+      "avg_logprob": -0.48548,
+      "no_speech_prob": 0.01328,
+      "compression_ratio": 1.811
+    },
+    {
+      "start": 240.01,
+      "end": 243.69,
+      "text": "jack a lot of time, so I also need to do that with a set too.",
+      "avg_logprob": -0.48548,
+      "no_speech_prob": 0.01328,
+      "compression_ratio": 1.811
+    },
+    {
+      "start": 243.69,
+      "end": 248.89,
+      "text": "so instead of just check-raisinging the turn or check-reshing the flop or check-rasing the flopp, I've got...",
+      "avg_logprob": -0.48548,
+      "no_speech_prob": 0.01328,
+      "compression_ratio": 1.811
+    },
+    {
+      "start": 252.89,
+      "end": 255.73,
+      "text": "fold to my check raise, but I still get more value because",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 255.73,
+      "end": 256.89,
+      "text": "they got value in the flop.",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 256.89,
+      "end": 258.81,
+      "text": "Value on the turn and value in the river.",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 258.81,
+      "end": 260.77,
+      "text": "Whereas if I checked raised a turn",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 260.77,
+      "end": 262.81,
+      "text": "a lot of times my more perceptive opponents",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 262.81,
+      "end": 265.09,
+      "text": "who understood my tendencies would actually",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 265.09,
+      "end": 266.25,
+      "text": "fold very stronghand",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 266.25,
+      "end": 267.41,
+      "text": "that I don't want them doing that.",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 267.41,
+      "end": 270.65,
+      "text": "I wanna make sure that my range incorporates all these things",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 270.65,
+      "end": 273.93,
+      "text": "let them value bet the worst hand spring the trap",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 273.93,
+      "end": 278.29,
+      "text": "on the river rather than earlier when it's so",
+      "avg_logprob": -0.40107,
+      "no_speech_prob": 0.01856,
+      "compression_ratio": 1.74157
+    },
+    {
+      "start": 289.77,
+      "end": 292.09,
+      "text": "You've checked from the big line after calling a raise",
+      "avg_logprob": -0.44091,
+      "no_speech_prob": 0.00716,
+      "compression_ratio": 1.6763
+    },
+    {
+      "start": 292.11,
+      "end": 293.69,
+      "text": "for the button, he goes ahead and bets.",
+      "avg_logprob": -0.44091,
+      "no_speech_prob": 0.00716,
+      "compression_ratio": 1.6763
+    },
+    {
+      "start": 293.71,
+      "end": 297.05,
+      "text": "Now the question is you're going to have some check calls in your range",
+      "avg_logprob": -0.44091,
+      "no_speech_prob": 0.00716,
+      "compression_ratio": 1.6763
+    },
+    {
+      "start": 297.07,
+      "end": 298.89,
+      "text": "or gonna have some check raises in your range",
+      "avg_logprob": -0.44091,
+      "no_speech_prob": 0.00716,
+      "compression_ratio": 1.6763
+    },
+    {
+      "start": 298.91,
+      "end": 299.85,
+      "text": "Some will be value,",
+      "avg_logprob": -0.44091,
+      "no_speech_prob": 0.00716,
+      "compression_ratio": 1.6763
+    },
+    {
+      "start": 299.85,
+      "end": 300.85,
+      "text": "some will be bluffs",
+      "avg_logprob": -0.44091,
+      "no_speech_prob": 0.00716,
+      "compression_ratio": 1.6763
+    },
+    {
+      "start": 300.85,
+      "end": 302.37,
+      "text": "So I'm going to pose little questions",
+      "avg_logprob": -0.44091,
+      "no_speech_prob": 0.00716,
+      "compression_ratio": 1.6763
+    },
+    {
+      "start": 302.37,
+      "end": 306.61,
+      "text": "you. If you were going to check race for value, which of the three hands here would be",
+      "avg_logprob": -0.25318,
+      "no_speech_prob": 0.01559,
+      "compression_ratio": 1.08861
+    },
+    {
+      "start": 335.95,
+      "end": 340.55,
+      "text": "Not ideal because it's harder for your opponent to have a hand they would continue with that's worse",
+      "avg_logprob": -0.35661,
+      "no_speech_prob": 0.00443,
+      "compression_ratio": 1.64127
+    },
+    {
+      "start": 341.03,
+      "end": 345.03,
+      "text": "Ace King same kind of problem there the deuces are the sneaky one, right?",
+      "avg_logprob": -0.35661,
+      "no_speech_prob": 0.00443,
+      "compression_ratio": 1.64127
+    },
+    {
+      "start": 345.05,
+      "end": 348.55,
+      "text": "Because the dooses are obviously very strong three ducers you only lose right now",
+      "avg_logprob": -0.35661,
+      "no_speech_prob": 0.00443,
+      "compression_ratio": 1.64127
+    },
+    {
+      "start": 348.63,
+      "end": 351.59,
+      "text": "To pocket sevens or pocket kings but most importantly",
+      "avg_logprob": -0.35661,
+      "no_speech_prob": 0.00443,
+      "compression_ratio": 1.64127
+    },
+    {
+      "start": 351.67,
+      "end": 357.19,
+      "text": "You're not blocking the top card. So that's a very good hand to check race for value with",
+      "avg_logprob": -0.35661,
+      "no_speech_prob": 0.00443,
+      "compression_ratio": 1.64127
+    },
+    {
+      "start": 357.19,
+      "end": 359.39,
+      "text": "But again as I said before you have to incorporate some bluffs too",
+      "avg_logprob": -0.35661,
+      "no_speech_prob": 0.00443,
+      "compression_ratio": 1.64127
+    },
+    {
+      "start": 360.11,
+      "end": 369.03,
+      "text": "We can ask a follow-up in this bluff in this spot",
+      "avg_logprob": -0.35661,
+      "no_speech_prob": 0.00443,
+      "compression_ratio": 1.64127
+    },
+    {
+      "start": 372.19,
+      "end": 377.23,
+      "text": "Which of the three hands would be best to bluff with on a king seven doosport?",
+      "avg_logprob": -0.54788,
+      "no_speech_prob": 0.00686,
+      "compression_ratio": 1.68727
+    },
+    {
+      "start": 377.23,
+      "end": 380.14,
+      "text": "Would it be Queen Jack,",
+      "avg_logprob": -0.54788,
+      "no_speech_prob": 0.00686,
+      "compression_ratio": 1.68727
+    },
+    {
+      "start": 380.14,
+      "end": 389.94,
+      "text": "would it be Ace jack or would it be 9-10.",
+      "avg_logprob": -0.54788,
+      "no_speech_prob": 0.00686,
+      "compression_ratio": 1.68727
+    },
+    {
+      "start": 389.94,
+      "end": 392.78,
+      "text": "So all these are candidates that you might want to bluff with now",
+      "avg_logprob": -0.54788,
+      "no_speech_prob": 0.00686,
+      "compression_ratio": 1.68727
+    },
+    {
+      "start": 392.78,
+      "end": 395.42,
+      "text": "The ACE high that might actually be good some of the time so",
+      "avg_logprob": -0.54788,
+      "no_speech_prob": 0.00686,
+      "compression_ratio": 1.68727
+    },
+    {
+      "start": 395.42,
+      "end": 397.94,
+      "text": "It's a hand you might wanna check call with sometimes",
+      "avg_logprob": -0.54788,
+      "no_speech_prob": 0.00686,
+      "compression_ratio": 1.68727
+    },
+    {
+      "start": 397.94,
+      "end": 400.66,
+      "text": "Now the queenjack That's not really a hand that hit that",
+      "avg_logprob": -0.54788,
+      "no_speech_prob": 0.00686,
+      "compression_ratio": 1.68727
+    },
+    {
+      "start": 400.82,
+      "end": 405.7,
+      "text": "but importantly You make it less likely because you have a clean and a green in a",
+      "avg_logprob": -0.54788,
+      "no_speech_prob": 0.00686,
+      "compression_ratio": 1.68727
+    },
+    {
+      "start": 406.7,
+      "end": 411.42,
+      "text": "Block, King Queen and King Jack which are both hands your opponent might open with.",
+      "avg_logprob": -0.27443,
+      "no_speech_prob": 0.0124,
+      "compression_ratio": 1.59144
+    },
+    {
+      "start": 411.42,
+      "end": 415.06,
+      "text": "So the fact that you have a queen in a jack makes it less likely.",
+      "avg_logprob": -0.27443,
+      "no_speech_prob": 0.0124,
+      "compression_ratio": 1.59144
+    },
+    {
+      "start": 415.06,
+      "end": 419.9,
+      "text": "And blockers are certainly something that in the last couple years has been discussed",
+      "avg_logprob": -0.27443,
+      "no_speech_prob": 0.0124,
+      "compression_ratio": 1.59144
+    },
+    {
+      "start": 419.9,
+      "end": 423.7,
+      "text": "at nauseum in terms of how people make poker decisions and its important to understand",
+      "avg_logprob": -0.27443,
+      "no_speech_prob": 0.0124,
+      "compression_ratio": 1.59144
+    },
+    {
+      "start": 423.7,
+      "end": 424.9,
+      "text": "like how this works.",
+      "avg_logprob": -0.27443,
+      "no_speech_prob": 0.0124,
+      "compression_ratio": 1.59144
+    },
+    {
+      "start": 424.9,
+      "end": 428.02,
+      "text": "We will get into blockers a little bit more in depth than future.",
+      "avg_logprob": -0.27443,
+      "no_speech_prob": 0.0124,
+      "compression_ratio": 1.59144
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC provider-agnostic table locator v1",
+  "status": "development_baseline_not_promotion_eligible",
+  "created_at": "2026-08-03T00:50:44+03:00",
+  "implementation": {
+    "kind": "border_center_contrast_connected_geometry",
+    "source_sha256": "3a97c18e60b3476b25a456749e29ca4f086fe2a0573e99ee069a757155c32632",
+    "analysis_width": 320,
+    "safe_abstention": true,
+    "confidence_calibrated": false,
+    "maximum_reported_raw_confidence": 0.75
+  },
+  "development_validation": {
+    "dataset_id": "apc-synthetic-20260802",
+    "split": "validation",
+    "frames": 4,
+    "detection_rate": 1.0,
+    "mean_iou": 0.8401486854558459,
+    "iou_at_0_8": 1.0,
+    "latency_ms_p95": 152.71920000668615,
+    "predictions_sha256": "ddf532a129b6ce9c9bb469c88aec3d8b38133c1b745dbd216fce71564c2c5205",
+    "report_file_sha256": "b04315d4509c2805990ba8e7495305e3c9a11e490f050d62a9a9f3f621be6088"
+  },
+  "frozen_synthetic_test": {
+    "dataset_id": "apc-synthetic-hand-sequences-2026080302",
+    "split": "test",
+    "frames": 192,
+    "detection_rate": 1.0,
+    "mean_iou": 0.8412550189882322,
+    "iou_at_0_8": 1.0,
+    "latency_ms_p95": 136.36369997402653,
+    "predictions_sha256": "aa8f8bbe1fea1ee3a8a6c967cec0234393ba28ebb3b04148afd87753f781f3d1",
+    "report_file_sha256": "9ad038347cf4c4e444af3328372f32e252ca485c48c8d94374c7ccab9d1fa39f",
+    "test_split_reused_for_tuning": false
+  },
+  "frozen_visible_ood_reference": {
+    "reference_id": "user-play-money-flop-abcaa035",
+    "use_policy": "audit_only_not_training_tuning_or_gate_count",
+    "image_sha256": "abcaa03594d592f4608bc3f43b8f7f7a0a803b38635324c0bdc25ced7ce946ef",
+    "profile_sha256": "eefbf6aca24cb71088f53d6dd754ff89bf9b4e6a97a1942af408173109c1aec9",
+    "status": "detected_uncalibrated",
+    "iou": 0.8177570595468177,
+    "iou_at_0_8": true,
+    "latency_ms": 103.70570002123713,
+    "prediction_sha256": "f53a4f5c396687a4d6774c55f358065bf10bbbe8f20761ba02be58cbf7568aa5",
+    "report_file_sha256": "a90f88e5041d01987a813235ff648dac8f4167802fe0c7f9380aa8c3cb5cd20f",
+    "reference_reused_for_tuning": false
+  },
+  "gate_policy": {
+    "automatic_viewport_promotion_allowed": false,
+    "controlled_visible_frames_required": 500,
+    "controlled_visible_sessions_required": 2,
+    "recommendation_gate_may_use_raw_confidence": false
+  },
+  "limitations": [
+    "The detector is a visual heuristic, not a trained object detector.",
+    "Synthetic layouts share a narrow renderer family.",
+    "One successful frozen real frame cannot establish generalization or calibration.",
+    "Multiple tables, overlays, severe cropping and low-contrast themes remain unevaluated.",
+    "Automatic viewport output must remain advisory until the controlled-visible gate passes."
+  ]
+}
