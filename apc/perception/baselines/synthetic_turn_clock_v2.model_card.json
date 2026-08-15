@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic turn-clock baseline v2",
+  "status": "synthetic_turn_clock_audit_passed_not_promotion_eligible",
+  "dataset": {
+    "dataset_id": "apc-synthetic-2026081502",
+    "renderer": "apc-synthetic-renderer-v2",
+    "verified_frames": 168,
+    "capture_sessions": 42,
+    "layouts": 3,
+    "themes": 2,
+    "controlled_visible_frames": 0,
+    "annotations_sha256": "b982dda4699b878fba08201594817f99243f6ed7e59ac3762623d79a627986b3",
+    "split_sha256": "174ec610d72a83f07f2081fe92eb3ff2b22360f2bd31277de53b8c70c111001d",
+    "duplicate_audit_sha256": "7c413f037d22fb2b4ea69a8002d2d2781e1d67f1b6f9fb5a2b38126f050b3bcf"
+  },
+  "checkpoint": {
+    "sha256": "45cdd66e1e952611c8392fb29f8167318c79ee98bc8418db465c114a6b849334",
+    "training_frames": 136,
+    "character_classes": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+  },
+  "held_out_validation": {
+    "capture_sessions": ["synthetic-0017", "synthetic-0021", "synthetic-0029", "synthetic-0041"],
+    "training_session_overlap": [],
+    "frames": 16,
+    "exact_remaining_ms_accuracy": 1.0,
+    "mean_absolute_error_ms": 0.0,
+    "latency_ms_p95": 64.5498750036495,
+    "prediction_sha256": "e26d02d2e1453c062ed8cb77a6e7b3262bfc613067f6dd91cae984baac039398"
+  },
+  "untouched_test": {
+    "capture_sessions": ["synthetic-0000", "synthetic-0010", "synthetic-0013", "synthetic-0036"],
+    "training_session_overlap": [],
+    "frames": 16,
+    "exact_remaining_ms_accuracy": 1.0,
+    "mean_absolute_error_ms": 0.0,
+    "latency_ms_p95": 62.15952500315325,
+    "prediction_sha256": "0fc09c74b425296a1f453734bcb02f311b758f7a431a396bac1a428e5638860a"
+  },
+  "output_contract": {
+    "unit": "milliseconds",
+    "resolution_ms": 1000,
+    "composite_fields": [
+      "hero_to_act",
+      "decision_time_remaining_ms",
+      "decision_deadline_source",
+      "turn_clock_box"
+    ]
+  },
+  "limitations": [
+    "The audit covers one deterministic synthetic font and fixed clock geometry only.",
+    "Subsecond transitions, animation, occlusion and arbitrary visible-table formats are unsupported.",
+    "Confidence is uncalibrated; this checkpoint cannot open Gate P or authorize a recommendation.",
+    "Controlled-visible timer OCR and deadline-source evaluation remain required."
+  ]
+}

@@ -40,6 +40,29 @@ THEMES = (
 LAYOUTS = ((2, "heads-up"), (6, "six-max"), (9, "nine-max"))
 SUIT_COLORS = {"c": "#1f9d55", "d": "#2675ff", "h": "#e33d4f", "s": "#151515"}
 PROVIDER_ID = "apc-synthetic-renderer-v2"
+CLOCK_VALUES_MS = (
+    5000,
+    8000,
+    9000,
+    10000,
+    12000,
+    18000,
+    20000,
+    28000,
+    30000,
+    38000,
+    45000,
+    48000,
+    58000,
+    60000,
+    68000,
+    75000,
+    78000,
+    88000,
+    90000,
+    98000,
+    99000,
+)
 
 
 def _pil() -> tuple[Any, Any, Any]:
@@ -125,6 +148,7 @@ def render_frame(
     hand_id_override: str | None = None,
     seat_name_overrides: dict[int, str] | None = None,
     hand_start: bool | None = None,
+    decision_time_remaining_ms: int | None = None,
 ) -> RenderedFrame:
     Image, ImageDraw, ImageFont = _pil()
     image = Image.new("RGB", (WIDTH, HEIGHT), theme["background"])
@@ -229,6 +253,27 @@ def render_frame(
             button_payload["amount_bb"] = amount_bb
         buttons_payload.append(button_payload)
 
+    turn_clock_payload: dict[str, object] | None = None
+    if decision_time_remaining_ms is not None:
+        if (
+            not isinstance(decision_time_remaining_ms, int)
+            or isinstance(decision_time_remaining_ms, bool)
+            or decision_time_remaining_ms <= 0
+            or decision_time_remaining_ms % 1000
+        ):
+            raise ValueError("synthetic decision time must be a positive whole number of seconds")
+        seconds = decision_time_remaining_ms // 1000
+        clock_box = (28, 665, 128, 708)
+        draw.rounded_rectangle(clock_box, radius=9, fill=theme["panel"], outline=theme["accent"])
+        raw_clock = f"T {seconds} s"
+        _draw_centered(draw, clock_box, raw_clock, fill=theme["accent"], font=bold)
+        turn_clock_payload = {
+            "box": normalized_box(clock_box),
+            "remaining_ms": decision_time_remaining_ms,
+            "raw_text": raw_clock,
+            "visibility": "clear",
+        }
+
     image.save(output, format="PNG", optimize=False)
     state_payload: dict[str, object] = {
             "game": "holdem_no_limit",
@@ -244,6 +289,14 @@ def render_frame(
     }
     if hand_start is not None:
         state_payload["hand_start"] = hand_start
+    if turn_clock_payload is not None:
+        state_payload.update(
+            {
+                "hero_to_act": True,
+                "decision_time_remaining_ms": decision_time_remaining_ms,
+                "decision_deadline_source": "training_table_clock",
+            }
+        )
     annotation = {
         "state": state_payload,
         "objects": {
@@ -254,6 +307,7 @@ def render_frame(
             "pot": {"box": normalized_box(pot_box), "amount_bb": pot_bb, "raw_text": f"Pot {pot_bb} BB", "visibility": "clear"},
             "action_buttons": buttons_payload,
             "observed_action": observed_action,
+            "turn_clock": turn_clock_payload,
         },
         "provenance": {
             "annotator": provider_id,
@@ -298,6 +352,7 @@ def generate_dataset(
     *,
     sessions: int,
     seed: int,
+    include_turn_clock: bool = False,
 ) -> dict[str, object]:
     if sessions < 3:
         raise ValueError("Synthetic dataset generation requires at least three sessions")
@@ -338,6 +393,11 @@ def generate_dataset(
                 layout_id=layout_id,
                 theme=theme,
                 street=street,
+                decision_time_remaining_ms=(
+                    CLOCK_VALUES_MS[(session_index * len(STREETS) + sequence_index) % len(CLOCK_VALUES_MS)]
+                    if include_turn_clock
+                    else None
+                ),
             )
             record, _ = project.import_frame(
                 rendered.image_path,
@@ -354,6 +414,7 @@ def generate_dataset(
         "manifest": str(manifest_path),
         "validation": report,
         "seed": seed,
+        "include_turn_clock": include_turn_clock,
     }
 
 
@@ -362,6 +423,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("output", type=Path)
     parser.add_argument("--sessions", type=int, default=9)
     parser.add_argument("--seed", type=int, default=20260802)
+    parser.add_argument("--include-turn-clock", action="store_true")
     return parser
 
 
@@ -369,7 +431,12 @@ def main(argv: list[str] | None = None) -> int:
     import json
 
     args = build_parser().parse_args(argv)
-    result = generate_dataset(args.output.expanduser().resolve(), sessions=args.sessions, seed=args.seed)
+    result = generate_dataset(
+        args.output.expanduser().resolve(),
+        sessions=args.sessions,
+        seed=args.seed,
+        include_turn_clock=args.include_turn_clock,
+    )
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0
 

@@ -49,6 +49,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `PORTABILITY_AND_RELEASE.md` — reproducible machine-transfer, artifact and publication policy.
 - `tools/artifact_manifest.py` — SHA-256 manifest creation/verification for datasets, checkpoints and run reports moved between machines.
 - `perception/baseline.py` — reproducible pixel smoke trainer and held-out evaluator.
+- `perception/turn_clock_baseline.py` — segmented synthetic countdown OCR producing canonical remaining milliseconds.
 - `perception/card_baseline.py` — learned card-slot geometry plus rank/suit pixel heads.
 - `perception/table_state_baseline.py` — hero/dealer geometry and closed-vocabulary pot/call-price heads.
 - `perception/stack_baseline.py` — segmented renderer-v2 numeric-token OCR for integer, decimal and zero BB stacks, with legacy checkpoint compatibility.
@@ -263,6 +264,29 @@ smoke model reads pixels, but it is deliberately non-promotable and supports
 only layout, theme, street and visible legal-action classification. Gate T
 also requires at least 500 verified frames from two controlled visible-table
 sessions; synthetic scale alone can never open the gate.
+
+Generate a clock-labeled synthetic audit set, fit the segmented countdown head,
+and evaluate it on group-exclusive sessions:
+
+```powershell
+python -m apc.synthetic.render_table .\apc\data\processed\synthetic-turn-clock-v2 `
+  --sessions 42 --seed 2026081502 --include-turn-clock
+
+python -m apc.perception.turn_clock_baseline train `
+  .\apc\data\processed\synthetic-turn-clock-v2\dataset_manifest.json `
+  --checkpoint .\apc\checkpoints\synthetic-turn-clock-v2.json --seed 2026081501
+
+python -m apc.perception.turn_clock_baseline evaluate `
+  .\apc\checkpoints\synthetic-turn-clock-v2.json `
+  .\apc\data\processed\synthetic-turn-clock-v2\dataset_manifest.json `
+  --split test --output .\apc\runs\synthetic-turn-clock-v2\test.json
+```
+
+The untouched synthetic test reads 16/16 countdowns exactly with 0 ms mean
+absolute error and 62.16 ms p95 on this laptop. The optional composite head
+publishes canonical remaining milliseconds and visible-timer provenance. This
+is fixed-font synthetic evidence only; real timer formats, occlusion,
+animations, calibration and deadline-source auditing remain open.
 
 Generate paired temporal events and evaluate actor, action and BB amount:
 

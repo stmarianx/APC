@@ -14,6 +14,10 @@ from apc.perception.table_state_baseline import (
     predict_table_state,
 )
 from apc.perception.stack_baseline import load_stack_checkpoint, predict_stacks
+from apc.perception.turn_clock_baseline import (
+    load_turn_clock_checkpoint,
+    predict_turn_clock,
+)
 from apc.visual_identity_signature import extract_frame_signatures
 
 
@@ -90,6 +94,7 @@ def infer_visible_state(
     card_checkpoint: dict[str, Any],
     table_state_checkpoint: dict[str, Any],
     stack_checkpoint: dict[str, Any],
+    turn_clock_checkpoint: dict[str, Any] | None = None,
 ) -> dict[str, object]:
     path = Path(image_path).expanduser().resolve()
     started = time.perf_counter()
@@ -136,6 +141,14 @@ def infer_visible_state(
         "reason": "dependency_unavailable",
         "detail": "base_perception failed",
     })
+    clock, clock_error = (
+        _safe_perception_head(
+            "turn_clock_perception",
+            lambda: predict_turn_clock(turn_clock_checkpoint, path),
+        )
+        if turn_clock_checkpoint is not None
+        else (None, None)
+    )
     base = base or {}
     cards = cards or {"hero_cards": [], "board_cards": []}
     table = table or {
@@ -160,7 +173,7 @@ def infer_visible_state(
     )
     head_errors = [
         error
-        for error in (base_error, card_error, table_error, stack_error)
+        for error in (base_error, card_error, table_error, stack_error, clock_error)
         if error is not None
     ]
     perception_abstentions = list(head_errors)
@@ -199,6 +212,61 @@ def infer_visible_state(
             default=0.0,
         ),
     }
+    if clock is not None:
+        field_confidence["decision_time_remaining_ms"] = float(clock["confidence"])
+    visible_state = {
+        "layout_id": base.get("layout_id", {}).get("value"),
+        "theme_id": base.get("theme_id", {}).get("value"),
+        "street": base.get("street", {}).get("value"),
+        "legal_actions": (
+            str(base["legal_actions"]["value"]).split("+")
+            if base.get("legal_actions", {}).get("value") is not None
+            else []
+        ),
+        "hero_seat": table["hero_seat"],
+        "dealer_seat": table["dealer_seat"],
+        "hero_cards": hero_cards,
+        "board_cards": board_cards,
+        "pot_bb": table["pot_bb"]["value"],
+        "to_call_bb": table["to_call_bb"]["value"],
+        "seat_stacks_bb": [
+            {
+                "seat_no": stack["seat_no"],
+                "stack_bb": stack["stack_bb"],
+                "seat_box": stack["seat_box"],
+            }
+            for stack in stacks
+        ],
+        "visual_identity_signatures": [
+            {
+                "seat_no": row.seat_no,
+                "visual_token": row.visual_token,
+                "signature_sha256": row.signature_sha256,
+                "quality_score": row.quality_score,
+                "frame_sha256": row.frame_sha256,
+            }
+            for row in signature_rows
+        ],
+    }
+    if clock is not None:
+        visible_state.update(
+            {
+                "hero_to_act": bool(visible_state["legal_actions"]),
+                "decision_time_remaining_ms": clock["remaining_ms"],
+                "decision_deadline_source": "visible_timer",
+                "turn_clock_box": clock["clock_box"],
+            }
+        )
+    checkpoint_provenance = {
+        "base_sha256": base_checkpoint.payload["checkpoint_sha256"],
+        "card_sha256": card_checkpoint["checkpoint_sha256"],
+        "table_state_sha256": table_state_checkpoint["checkpoint_sha256"],
+        "stack_sha256": stack_checkpoint["checkpoint_sha256"],
+    }
+    if turn_clock_checkpoint is not None:
+        checkpoint_provenance["turn_clock_sha256"] = turn_clock_checkpoint[
+            "checkpoint_sha256"
+        ]
     return {
         "schema_version": "1.0.0",
         "model_name": "APC",
@@ -215,46 +283,8 @@ def infer_visible_state(
             "image_path": str(path),
             "image_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         },
-        "checkpoint_provenance": {
-            "base_sha256": base_checkpoint.payload["checkpoint_sha256"],
-            "card_sha256": card_checkpoint["checkpoint_sha256"],
-            "table_state_sha256": table_state_checkpoint["checkpoint_sha256"],
-            "stack_sha256": stack_checkpoint["checkpoint_sha256"],
-        },
-        "visible_state": {
-            "layout_id": base.get("layout_id", {}).get("value"),
-            "theme_id": base.get("theme_id", {}).get("value"),
-            "street": base.get("street", {}).get("value"),
-            "legal_actions": (
-                str(base["legal_actions"]["value"]).split("+")
-                if base.get("legal_actions", {}).get("value") is not None
-                else []
-            ),
-            "hero_seat": table["hero_seat"],
-            "dealer_seat": table["dealer_seat"],
-            "hero_cards": hero_cards,
-            "board_cards": board_cards,
-            "pot_bb": table["pot_bb"]["value"],
-            "to_call_bb": table["to_call_bb"]["value"],
-            "seat_stacks_bb": [
-                {
-                    "seat_no": stack["seat_no"],
-                    "stack_bb": stack["stack_bb"],
-                    "seat_box": stack["seat_box"],
-                }
-                for stack in stacks
-            ],
-            "visual_identity_signatures": [
-                {
-                    "seat_no": row.seat_no,
-                    "visual_token": row.visual_token,
-                    "signature_sha256": row.signature_sha256,
-                    "quality_score": row.quality_score,
-                    "frame_sha256": row.frame_sha256,
-                }
-                for row in signature_rows
-            ],
-        },
+        "checkpoint_provenance": checkpoint_provenance,
+        "visible_state": visible_state,
         "field_confidence": field_confidence,
         "card_integrity_audit": card_integrity,
         "minimum_supported_confidence": min(field_confidence.values()),
@@ -278,6 +308,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--card-checkpoint", type=Path, required=True)
     parser.add_argument("--table-state-checkpoint", type=Path, required=True)
     parser.add_argument("--stack-checkpoint", type=Path, required=True)
+    parser.add_argument("--turn-clock-checkpoint", type=Path)
     parser.add_argument("--output", type=Path)
     return parser
 
@@ -291,6 +322,11 @@ def main(argv: list[str] | None = None) -> int:
             card_checkpoint=load_card_checkpoint(args.card_checkpoint),
             table_state_checkpoint=load_table_state_checkpoint(args.table_state_checkpoint),
             stack_checkpoint=load_stack_checkpoint(args.stack_checkpoint),
+            turn_clock_checkpoint=(
+                load_turn_clock_checkpoint(args.turn_clock_checkpoint)
+                if args.turn_clock_checkpoint
+                else None
+            ),
         )
         if args.output:
             output = args.output.expanduser().resolve()

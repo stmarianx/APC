@@ -5,7 +5,15 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from apc.synthetic.render_table import LAYOUTS, THEMES, action_display, normalized_box, seat_boxes
+from apc.synthetic.render_table import (
+    LAYOUTS,
+    THEMES,
+    CLOCK_VALUES_MS,
+    action_display,
+    normalized_box,
+    render_frame,
+    seat_boxes,
+)
 
 
 class SyntheticRendererContractTests(unittest.TestCase):
@@ -27,6 +35,7 @@ class SyntheticRendererContractTests(unittest.TestCase):
         self.assertEqual({seats for seats, _ in LAYOUTS}, {2, 6, 9})
         self.assertGreaterEqual(len(THEMES), 2)
         self.assertEqual(len({theme["id"] for theme in THEMES}), len(THEMES))
+        self.assertEqual(set("0123456789"), set("".join(str(value // 1000) for value in CLOCK_VALUES_MS)))
 
     def test_hero_seat_clears_the_fixed_hole_card_region(self) -> None:
         for seats, _ in LAYOUTS:
@@ -36,6 +45,23 @@ class SyntheticRendererContractTests(unittest.TestCase):
     def test_call_price_is_visible_and_machine_labeled(self) -> None:
         self.assertEqual(action_display("call", "2.5"), ("Call 2.5 BB", "2.5"))
         self.assertEqual(action_display("check", "0"), ("Check", None))
+
+    def test_optional_turn_clock_has_exact_canonical_milliseconds(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            rendered = render_frame(
+                Path(directory) / "clock.png",
+                rng=random.Random(7),
+                session_id="clock-session",
+                sequence_index=0,
+                seats=6,
+                layout_id="six-max",
+                theme=THEMES[0],
+                street="flop",
+                decision_time_remaining_ms=12_000,
+            )
+            self.assertEqual(rendered.annotation["state"]["decision_time_remaining_ms"], 12_000)
+            self.assertEqual(rendered.annotation["objects"]["turn_clock"]["remaining_ms"], 12_000)
+            self.assertTrue(rendered.image_path.is_file())
 
 
 if __name__ == "__main__":
