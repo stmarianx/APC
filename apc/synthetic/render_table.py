@@ -63,6 +63,8 @@ CLOCK_VALUES_MS = (
     98000,
     99000,
 )
+NAME_OCR_CHARSET = "ABEFJKLPRSTVXY0123456789"
+NAME_OCR_LENGTH = 8
 
 
 def _pil() -> tuple[Any, Any, Any]:
@@ -347,12 +349,32 @@ def action_display(action: str, to_call_bb: str) -> tuple[str, str | None]:
     return action.replace("_", " ").title(), None
 
 
+def synthetic_ocr_player_names(
+    rng: random.Random,
+    seats: int,
+) -> dict[int, str]:
+    """Create stable, distinct fixed-advance names for the character OCR smoke task."""
+    names: dict[int, str] = {}
+    used: set[str] = set()
+    for seat_no in range(1, seats + 1):
+        while True:
+            candidate = "".join(
+                rng.choice(NAME_OCR_CHARSET) for _ in range(NAME_OCR_LENGTH)
+            )
+            if candidate not in used:
+                names[seat_no] = candidate
+                used.add(candidate)
+                break
+    return names
+
+
 def generate_dataset(
     root: Path,
     *,
     sessions: int,
     seed: int,
     include_turn_clock: bool = False,
+    include_name_ocr: bool = False,
 ) -> dict[str, object]:
     if sessions < 3:
         raise ValueError("Synthetic dataset generation requires at least three sessions")
@@ -373,6 +395,7 @@ def generate_dataset(
         seats, layout_id = LAYOUTS[session_index % len(LAYOUTS)]
         theme = THEMES[(session_index // len(LAYOUTS)) % len(THEMES)]
         session_id = f"synthetic-{session_index:04d}"
+        session_names = synthetic_ocr_player_names(rng, seats) if include_name_ocr else None
         environment = {
             "source_kind": "synthetic_render",
             "provider_id": PROVIDER_ID,
@@ -393,6 +416,7 @@ def generate_dataset(
                 layout_id=layout_id,
                 theme=theme,
                 street=street,
+                seat_name_overrides=session_names,
                 decision_time_remaining_ms=(
                     CLOCK_VALUES_MS[(session_index * len(STREETS) + sequence_index) % len(CLOCK_VALUES_MS)]
                     if include_turn_clock
@@ -415,6 +439,7 @@ def generate_dataset(
         "validation": report,
         "seed": seed,
         "include_turn_clock": include_turn_clock,
+        "include_name_ocr": include_name_ocr,
     }
 
 
@@ -424,6 +449,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--sessions", type=int, default=9)
     parser.add_argument("--seed", type=int, default=20260802)
     parser.add_argument("--include-turn-clock", action="store_true")
+    parser.add_argument("--include-name-ocr", action="store_true")
     return parser
 
 
@@ -436,6 +462,7 @@ def main(argv: list[str] | None = None) -> int:
         sessions=args.sessions,
         seed=args.seed,
         include_turn_clock=args.include_turn_clock,
+        include_name_ocr=args.include_name_ocr,
     )
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0

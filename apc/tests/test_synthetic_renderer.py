@@ -9,10 +9,13 @@ from apc.synthetic.render_table import (
     LAYOUTS,
     THEMES,
     CLOCK_VALUES_MS,
+    NAME_OCR_CHARSET,
+    NAME_OCR_LENGTH,
     action_display,
     normalized_box,
     render_frame,
     seat_boxes,
+    synthetic_ocr_player_names,
 )
 
 
@@ -62,6 +65,18 @@ class SyntheticRendererContractTests(unittest.TestCase):
             self.assertEqual(rendered.annotation["state"]["decision_time_remaining_ms"], 12_000)
             self.assertEqual(rendered.annotation["objects"]["turn_clock"]["remaining_ms"], 12_000)
             self.assertTrue(rendered.image_path.is_file())
+
+    def test_synthetic_ocr_names_are_distinct_and_fixed_advance(self) -> None:
+        names = synthetic_ocr_player_names(random.Random(19), 9)
+        self.assertEqual(len(names), 9)
+        self.assertEqual(len(set(names.values())), 9)
+        self.assertTrue(
+            all(
+                len(name) == NAME_OCR_LENGTH
+                and set(name) <= set(NAME_OCR_CHARSET)
+                for name in names.values()
+            )
+        )
 
 
 if __name__ == "__main__":

@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic character player-name OCR v1",
+  "status": "synthetic_name_ocr_audit_passed_not_promotion_eligible",
+  "dataset": {
+    "dataset_id": "apc-synthetic-2026081601",
+    "renderer": "apc-synthetic-renderer-v2",
+    "verified_frames": 168,
+    "capture_sessions": 42,
+    "layouts": 3,
+    "themes": 2,
+    "controlled_visible_frames": 0,
+    "annotations_sha256": "454c282aaf9693e62a9a59ab3eaf37e1bb5bc324e71785edac627d2727e0d95f",
+    "split_sha256": "174ec610d72a83f07f2081fe92eb3ff2b22360f2bd31277de53b8c70c111001d",
+    "duplicate_audit_sha256": "c2c55418a96cf53b9ac45d6a2d2c05fefa2f1a0de1608603ae30ce241cf1fa49"
+  },
+  "checkpoint": {
+    "sha256": "a39f88ca3b5848f67cf8b501067720fe477c55271087c736fe6ba00af630f3df",
+    "training_frames": 136,
+    "training_unique_names": 193,
+    "character_examples": 6176,
+    "character_classes": 24,
+    "decoder": "eight-character fixed-advance character sequence"
+  },
+  "held_out_validation": {
+    "capture_sessions": ["synthetic-0017", "synthetic-0021", "synthetic-0029", "synthetic-0041"],
+    "training_session_overlap": [],
+    "frames": 16,
+    "names": 116,
+    "exact_name_accuracy": 1.0,
+    "character_accuracy": 1.0,
+    "unseen_whole_name_rate": 1.0,
+    "minimum_name_confidence": 0.7952411075860424,
+    "final_identity_resolution_rate": 0.896551724137931,
+    "latency_ms_p95": 63.142799997876864,
+    "prediction_sha256": "585975439b1e2a5eae683ea49dfc1900f1a4db82e2f334ada4bbae94507aed2b"
+  },
+  "untouched_test": {
+    "capture_sessions": ["synthetic-0000", "synthetic-0010", "synthetic-0013", "synthetic-0036"],
+    "training_session_overlap": [],
+    "frames": 16,
+    "names": 64,
+    "exact_name_accuracy": 1.0,
+    "character_accuracy": 1.0,
+    "unseen_whole_name_rate": 1.0,
+    "minimum_name_confidence": 0.8815982989793073,
+    "final_identity_resolution_rate": 1.0,
+    "latency_ms_p95": 49.78657500032568,
+    "prediction_sha256": "a1cbc3c03cc9b4233f94f96b1dd146f562dff584070426bd8b216d652819d29b"
+  },
+  "latency_optimization": {
+    "change": "single image decode plus vectorized batched exemplar distances",
+    "before_test_p95_ms": 608.5407499995199,
+    "after_test_p95_ms": 49.78657500032568,
+    "prediction_fingerprint_unchanged": true
+  },
+  "composite_smoke": {
+    "status": "abstain_incomplete_state",
+    "frame_sha256": "cf9739f0d2ca06c4706b791dfc938aec1824852a1046b36a9c2758e040fce6de",
+    "expected_and_recognized_names": ["99F560TJ", "06B2B3SV"],
+    "name_checkpoint_provenance_present": true,
+    "card_integrity": "accepted",
+    "latency_ms": 248.48059999931138,
+    "recommendation": null
+  },
+  "identity_contract": {
+    "repeated_frames_required": 3,
+    "collision_gate": true,
+    "uncertain_names_remain_unresolved": true,
+    "human_readable_names": true
+  },
+  "limitations": [
+    "The audit covers a deterministic synthetic font, eight-character names and a restricted 24-character alphabet.",
+    "It does not establish recognition of arbitrary fonts, Unicode, variable-length names, animation or occlusion.",
+    "Confidence is uncalibrated; lower-confidence validation identities correctly remained unresolved.",
+    "Controlled-visible name OCR calibration remains required before Gate P or recommendation use."
+  ]
+}

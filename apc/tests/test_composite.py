@@ -104,6 +104,18 @@ class CompositePerceptionTests(unittest.TestCase):
             "confidence": 0.88,
             "clock_box": {"x": 0.02, "y": 0.89, "width": 0.08, "height": 0.06},
         }
+        name_prediction = {
+            "layout_id": base_prediction["layout_id"],
+            "player_names": [
+                {
+                    "seat_no": 1,
+                    "player_name": "PLAYER01",
+                    "confidence": 0.87,
+                    "seat_box": {"x": 0.4, "y": 0.8, "width": 0.1, "height": 0.1},
+                    "frame_sha256": "f" * 64,
+                }
+            ],
+        }
         checkpoint = SimpleNamespace(payload={"checkpoint_sha256": "a" * 64})
         with tempfile.TemporaryDirectory() as directory:
             image = Path(directory) / "frame.png"
@@ -114,6 +126,7 @@ class CompositePerceptionTests(unittest.TestCase):
                 patch("apc.perception.composite.predict_table_state", return_value=table_prediction),
                 patch("apc.perception.composite.predict_stacks", return_value=[]),
                 patch("apc.perception.composite.predict_turn_clock", return_value=clock_prediction),
+                patch("apc.perception.composite.predict_player_names", return_value=name_prediction),
                 patch("apc.perception.composite._visual_signatures_or_abstain", return_value=([], None)),
             ):
                 result = infer_visible_state(
@@ -123,6 +136,7 @@ class CompositePerceptionTests(unittest.TestCase):
                     table_state_checkpoint={"checkpoint_sha256": "c" * 64},
                     stack_checkpoint={"checkpoint_sha256": "d" * 64},
                     turn_clock_checkpoint={"checkpoint_sha256": "e" * 64},
+                    name_ocr_checkpoint={"checkpoint_sha256": "f" * 64},
                 )
 
         self.assertTrue(result["visible_state"]["hero_to_act"])
@@ -130,6 +144,12 @@ class CompositePerceptionTests(unittest.TestCase):
         self.assertEqual(result["visible_state"]["decision_deadline_source"], "visible_timer")
         self.assertEqual(result["field_confidence"]["decision_time_remaining_ms"], 0.88)
         self.assertEqual(result["checkpoint_provenance"]["turn_clock_sha256"], "e" * 64)
+        self.assertEqual(
+            result["visible_state"]["recognized_player_names"][0]["player_name"],
+            "PLAYER01",
+        )
+        self.assertEqual(result["field_confidence"]["recognized_player_names"], 0.87)
+        self.assertEqual(result["checkpoint_provenance"]["name_ocr_sha256"], "f" * 64)
 
 
 if __name__ == "__main__":

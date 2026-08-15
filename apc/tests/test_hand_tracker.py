@@ -6,6 +6,7 @@ import unittest
 from apc.perception.hand_tracker import (
     TemporalHandTracker,
     attach_player_identities,
+    resolve_ocr_player_identities,
     resolve_visual_player_identities,
 )
 from apc.player_identity import PlayerIdentityRegistry
@@ -195,6 +196,49 @@ class HandTrackerTests(unittest.TestCase):
             "visual_name_band_signature_not_ocr",
         )
         self.assertFalse(enriched["identity_gate"]["human_readable_names"])
+
+    def test_repeated_ocr_names_resolve_human_readable_profiles(self) -> None:
+        registry = PlayerIdentityRegistry("ocr-training")
+        enriched = None
+        for frame in range(1, 4):
+            tracked = {
+                "track_id": "table-ocr",
+                "status": "state_tracked_incomplete_identity",
+                "state": {
+                    "seat_stacks_bb": [
+                        {"seat_no": 1, "stack_bb": "100"},
+                        {"seat_no": 2, "stack_bb": "98"},
+                    ],
+                    "recognized_player_names": [
+                        {
+                            "seat_no": 1,
+                            "player_name": "PLAYER01",
+                            "confidence": 0.99,
+                            "frame_sha256": f"{frame:064x}",
+                        },
+                        {
+                            "seat_no": 2,
+                            "player_name": "VILLAIN2",
+                            "confidence": 0.99,
+                            "frame_sha256": f"{frame + 10:064x}",
+                        },
+                    ],
+                },
+                "missing_critical_fields": ["player_identities"],
+                "recommendation": None,
+            }
+            enriched = resolve_ocr_player_identities(
+                tracked,
+                registry,
+                observed_at_ms=frame * 100,
+            )
+        self.assertEqual(enriched["identity_gate"]["status"], "passed")
+        self.assertEqual(enriched["identity_gate"]["evidence_kind"], "human_readable_name_ocr")
+        self.assertTrue(enriched["identity_gate"]["human_readable_names"])
+        self.assertEqual(
+            [row["display_name"] for row in enriched["state"]["player_identities"]],
+            ["PLAYER01", "VILLAIN2"],
+        )
 
 
 if __name__ == "__main__":

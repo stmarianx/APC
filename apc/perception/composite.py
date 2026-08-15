@@ -14,6 +14,10 @@ from apc.perception.table_state_baseline import (
     predict_table_state,
 )
 from apc.perception.stack_baseline import load_stack_checkpoint, predict_stacks
+from apc.perception.name_ocr_baseline import (
+    load_name_ocr_checkpoint,
+    predict_player_names,
+)
 from apc.perception.turn_clock_baseline import (
     load_turn_clock_checkpoint,
     predict_turn_clock,
@@ -95,6 +99,7 @@ def infer_visible_state(
     table_state_checkpoint: dict[str, Any],
     stack_checkpoint: dict[str, Any],
     turn_clock_checkpoint: dict[str, Any] | None = None,
+    name_ocr_checkpoint: dict[str, Any] | None = None,
 ) -> dict[str, object]:
     path = Path(image_path).expanduser().resolve()
     started = time.perf_counter()
@@ -149,6 +154,30 @@ def infer_visible_state(
         if turn_clock_checkpoint is not None
         else (None, None)
     )
+    names, names_error = (
+        _safe_perception_head(
+            "player_name_perception",
+            lambda: predict_player_names(
+                name_ocr_checkpoint,
+                path,
+                base_checkpoint=base_checkpoint,
+                base_prediction=base,
+            ),
+        )
+        if name_ocr_checkpoint is not None and base is not None
+        else (
+            (None, None)
+            if name_ocr_checkpoint is None
+            else (
+                None,
+                {
+                    "field": "player_name_perception",
+                    "reason": "dependency_unavailable",
+                    "detail": "base_perception failed",
+                },
+            )
+        )
+    )
     base = base or {}
     cards = cards or {"hero_cards": [], "board_cards": []}
     table = table or {
@@ -173,7 +202,14 @@ def infer_visible_state(
     )
     head_errors = [
         error
-        for error in (base_error, card_error, table_error, stack_error, clock_error)
+        for error in (
+            base_error,
+            card_error,
+            table_error,
+            stack_error,
+            clock_error,
+            names_error,
+        )
         if error is not None
     ]
     perception_abstentions = list(head_errors)
@@ -214,6 +250,11 @@ def infer_visible_state(
     }
     if clock is not None:
         field_confidence["decision_time_remaining_ms"] = float(clock["confidence"])
+    if names is not None:
+        field_confidence["recognized_player_names"] = min(
+            (float(row["confidence"]) for row in names["player_names"]),
+            default=0.0,
+        )
     visible_state = {
         "layout_id": base.get("layout_id", {}).get("value"),
         "theme_id": base.get("theme_id", {}).get("value"),
@@ -257,6 +298,8 @@ def infer_visible_state(
                 "turn_clock_box": clock["clock_box"],
             }
         )
+    if names is not None:
+        visible_state["recognized_player_names"] = names["player_names"]
     checkpoint_provenance = {
         "base_sha256": base_checkpoint.payload["checkpoint_sha256"],
         "card_sha256": card_checkpoint["checkpoint_sha256"],
@@ -265,6 +308,10 @@ def infer_visible_state(
     }
     if turn_clock_checkpoint is not None:
         checkpoint_provenance["turn_clock_sha256"] = turn_clock_checkpoint[
+            "checkpoint_sha256"
+        ]
+    if name_ocr_checkpoint is not None:
+        checkpoint_provenance["name_ocr_sha256"] = name_ocr_checkpoint[
             "checkpoint_sha256"
         ]
     return {
@@ -297,6 +344,7 @@ def infer_visible_state(
             "Confidence values are uncalibrated and cannot open the production confidence gate.",
             "Optional visual identity extraction abstains instead of terminating the remaining perception heads.",
             "Card, numeric and stack heads fail independently and force an audited composite abstention.",
+            "The optional synthetic name head is restricted to its declared fixed-length character contract.",
         ],
     }
 
@@ -309,6 +357,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--table-state-checkpoint", type=Path, required=True)
     parser.add_argument("--stack-checkpoint", type=Path, required=True)
     parser.add_argument("--turn-clock-checkpoint", type=Path)
+    parser.add_argument("--name-ocr-checkpoint", type=Path)
     parser.add_argument("--output", type=Path)
     return parser
 
@@ -325,6 +374,11 @@ def main(argv: list[str] | None = None) -> int:
             turn_clock_checkpoint=(
                 load_turn_clock_checkpoint(args.turn_clock_checkpoint)
                 if args.turn_clock_checkpoint
+                else None
+            ),
+            name_ocr_checkpoint=(
+                load_name_ocr_checkpoint(args.name_ocr_checkpoint)
+                if args.name_ocr_checkpoint
                 else None
             ),
         )

@@ -50,6 +50,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `tools/artifact_manifest.py` — SHA-256 manifest creation/verification for datasets, checkpoints and run reports moved between machines.
 - `perception/baseline.py` — reproducible pixel smoke trainer and held-out evaluator.
 - `perception/turn_clock_baseline.py` — segmented synthetic countdown OCR producing canonical remaining milliseconds.
+- `perception/name_ocr_baseline.py` — batched character-level synthetic player-name OCR feeding the uncertainty-aware identity registry.
 - `perception/card_baseline.py` — learned card-slot geometry plus rank/suit pixel heads.
 - `perception/table_state_baseline.py` — hero/dealer geometry and closed-vocabulary pot/call-price heads.
 - `perception/stack_baseline.py` — segmented renderer-v2 numeric-token OCR for integer, decimal and zero BB stacks, with legacy checkpoint compatibility.
@@ -287,6 +288,31 @@ absolute error and 62.16 ms p95 on this laptop. The optional composite head
 publishes canonical remaining milliseconds and visible-timer provenance. This
 is fixed-font synthetic evidence only; real timer formats, occlusion,
 animations, calibration and deadline-source auditing remain open.
+
+Generate varied stable player names, train the character head and audit both
+unseen whole-name decoding and repeated-frame identity resolution:
+
+```powershell
+python -m apc.synthetic.render_table .\apc\data\processed\synthetic-name-ocr-v1 `
+  --sessions 42 --seed 2026081601 --include-name-ocr
+
+python -m apc.perception.name_ocr_baseline train `
+  .\apc\data\processed\synthetic-name-ocr-v1\dataset_manifest.json `
+  --checkpoint .\apc\checkpoints\synthetic-name-ocr-v1.json --seed 2026081601
+
+python -m apc.perception.name_ocr_baseline evaluate `
+  .\apc\checkpoints\synthetic-name-ocr-v1.json `
+  .\apc\data\processed\synthetic-name-ocr-v1\dataset_manifest.json `
+  --split test --output .\apc\runs\synthetic-name-ocr-v1\test.json
+```
+
+The untouched synthetic test reconstructs 64/64 previously unseen whole names
+and every character exactly, then resolves all identities after repeated frames.
+Single-decode batched inference reduced p95 from 608.54 ms to 49.79 ms without
+changing the prediction fingerprint. The validation identity rate is lower
+(89.66%) despite exact text because its uncalibrated confidence gate correctly
+retains uncertain names. Arbitrary real fonts, lengths, Unicode and occlusion
+remain controlled-visible requirements.
 
 Generate paired temporal events and evaluate actor, action and BB amount:
 

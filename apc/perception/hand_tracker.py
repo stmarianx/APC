@@ -8,7 +8,7 @@ from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Any
 
-from apc.player_identity import PlayerIdentityRegistry
+from apc.player_identity import NameObservation, PlayerIdentityRegistry
 from apc.visual_identity_signature import registry_observations_from_state
 
 
@@ -146,6 +146,48 @@ def resolve_visual_player_identities(
     enriched = attach_player_identities(tracked_result, resolutions)
     enriched["identity_gate"]["evidence_kind"] = "visual_name_band_signature_not_ocr"
     enriched["identity_gate"]["human_readable_names"] = False
+    return enriched
+
+
+def resolve_ocr_player_identities(
+    tracked_result: dict[str, object],
+    registry: PlayerIdentityRegistry,
+    *,
+    observed_at_ms: int,
+) -> dict[str, object]:
+    """Resolve readable player identities from repeated confidence-bearing OCR rows."""
+    state = tracked_result.get("state")
+    track_id = tracked_result.get("track_id")
+    if not isinstance(state, dict) or not isinstance(track_id, str) or not track_id:
+        raise ValueError("tracked result requires state and track_id for OCR identity resolution")
+    rows = state.get("recognized_player_names")
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("tracked state has no recognized player names")
+    observations: list[NameObservation] = []
+    seats: set[int] = set()
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            raise ValueError(f"recognized player name {index} is not structured")
+        seat_no = row.get("seat_no")
+        if isinstance(seat_no, bool) or not isinstance(seat_no, int) or seat_no in seats:
+            raise ValueError("recognized player names require unique integer seats")
+        player_name = row.get("player_name")
+        if not isinstance(player_name, str):
+            raise ValueError("recognized player name must be text")
+        observations.append(
+            NameObservation(
+                seat_no=seat_no,
+                raw_name=player_name,
+                confidence=float(row.get("confidence")),
+                frame_sha256=str(row.get("frame_sha256")),
+                observed_at_ms=observed_at_ms,
+            )
+        )
+        seats.add(seat_no)
+    resolutions = registry.observe_batch(track_id, observations)
+    enriched = attach_player_identities(tracked_result, resolutions)
+    enriched["identity_gate"]["evidence_kind"] = "human_readable_name_ocr"
+    enriched["identity_gate"]["human_readable_names"] = True
     return enriched
 
 

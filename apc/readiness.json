@@ -92,7 +92,7 @@
         "data/processed/synthetic-handseq-gate-v2: 2000 verified temporal frames, 250 complete hands, 125 group-exclusive sessions, 3 layouts and 2 themes; annotations_sha256=91f2340a4ec0e7cbd911f62244fe1fd7cf360e4e4106908116be3498ce6d1f94",
         "runs/synthetic-handseq-gate-v2/sequence_audit.json: 2000/2000 frames and 250/250 hand starts passed continuity; sequence_audit_sha256=c8ed9c6778b967b1f6d56029fa21cacdb0c355ee658ed051fdd47b33b6972a6d",
         "runs/synthetic-handseq-gate-v2/gate_t_validation.json: all minimums pass except controlled-visible frames/sessions; report_sha256=9ddf9d530469c2bb6ef7f07841124498e2e74151b1113c9a130d629547649c78",
-        "tests/: 124 passing APC tests",
+        "tests/: 127 passing APC tests",
         "annotator/web_assets/: browser-verified normalized overlay, drag-to-box editor, object-field merge and canonical-state synchronization; zero browser console errors",
         "runs/workbench-suggestion-smoke-20260803/browser_audit.json: frozen-reference browser audit passed review-only suggestion display and explicit unsaved-draft application; 0 saved/verified annotations and 0 console errors",
         "data/processed/synthetic-smoke-v2: 36 verified frames, 9 group-exclusive sessions, 3 layouts, 2 themes",
@@ -105,6 +105,7 @@
         "perception/baselines/synthetic_state_v1.model_card.json: untouched synthetic table-state test exact for hero/dealer/pot/to-call on 4/4 frames; p95=181.02 ms",
         "perception/stack_baseline.py: segmented stack-digit learner; untouched synthetic test exact on 24/24 stacks across 4 frames; p95=223.31 ms",
         "perception/baselines/synthetic_turn_clock_v2.model_card.json: 168 verified synthetic frames across 42 group-exclusive sessions, 3 layouts and 2 themes; untouched test read 16/16 countdowns exactly with 0 ms MAE and p95=62.16 ms; not promotion eligible",
+        "perception/baselines/synthetic_name_ocr_v1.model_card.json: character-level head reconstructed 64/64 untouched unseen whole names exactly, resolved all repeated-frame test identities and reduced p95 from 608.54 ms to 49.79 ms with unchanged predictions; synthetic restricted-font evidence only",
         "perception/event_baseline.py: paired before/after event learner with actor, action and BB amount validation",
         "data/processed/synthetic-events-audit-v1: 144 verified temporal frames, 72 pairs, 18 group-exclusive sessions and 12 examples per action class",
         "perception/baselines/synthetic_stack_event_v1.model_card.json: independent event audit validation and untouched test each reconstructed 8/8 complete events exactly; test p95=384.02 ms; not promotion eligible",
@@ -147,7 +148,7 @@
         "perception/baselines/synthetic_hand_sequence_v1.model_card.json: exact two-hand validation but 50% exact untouched test, preserving the failed promotion result"
         ,"perception/baselines/synthetic_hand_sequence_gate_v2.model_card.json: new numeric-shape architecture and fresh independent complete-hand audit passed 24/24 exact synthetic test hands without test tuning"
       ],
-      "missing": ["controlled-visible trained perception checkpoint", "controlled-visible table-localization calibration", "human-readable visual player-name OCR or verified aliasing for the pseudonymous signature registry", "controlled-visible hand-boundary/history evaluation", "arbitrary-font/occlusion numeric OCR", "visible turn-clock OCR/calibration and deadline-source audit", "banner-free multi-action temporal reconstruction", "calibration report", "multi-frame controlled-visible out-of-distribution report", "controlled-visible perception p95 <= 250 ms and end-to-end p95 <= 500 ms report"]
+      "missing": ["controlled-visible trained perception checkpoint", "controlled-visible table-localization calibration", "controlled-visible variable-font/Unicode player-name OCR calibration", "controlled-visible hand-boundary/history evaluation", "arbitrary-font/occlusion numeric OCR", "visible turn-clock OCR/calibration and deadline-source audit", "banner-free multi-action temporal reconstruction", "calibration report", "multi-frame controlled-visible out-of-distribution report", "controlled-visible perception p95 <= 250 ms and end-to-end p95 <= 500 ms report"]
     },
     "C_coaching_prototype": {
       "status": "in_progress",
@@ -166,9 +167,9 @@
         "../coach/src/poker_coach/state_transition.py: normalized BB all-in history accepted without weakening temporal invariants",
         "deadline.py and tests/test_deadline.py: actual-deadline budgeting, adaptive strategy tiers, check/fold fallback, BB action semantics and stale/illegal/duplicate action rejection for a future controlled table",
         "schemas/frame_annotation.schema.json and annotation workbench: optional visible turn-clock box, raw text, remaining milliseconds and canonical deadline source",
-        "APC/coaching cross-package verification: 124 APC tests and 165 coaching-core tests passing"
+        "APC/coaching cross-package verification: 127 APC tests and 165 coaching-core tests passing"
       ],
-      "missing": ["human-readable visual name OCR or verified aliasing", "calibrated controlled-visible bridge promotion", "end-to-end BB recommendation evaluation", "solver coverage audit", "controlled virtual-table action provider evaluation", "interactive latency gate"]
+      "missing": ["controlled-visible variable-font/Unicode name OCR calibration", "calibrated controlled-visible bridge promotion", "end-to-end BB recommendation evaluation", "solver coverage audit", "controlled virtual-table action provider evaluation", "interactive latency gate"]
     },
     "S_self_learning": {
       "status": "not_started",
