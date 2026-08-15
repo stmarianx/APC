@@ -10,11 +10,17 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+try:
+    import numpy as _np
+except ImportError:
+    _np = None
+
 from apc.perception.baseline import (
     BaselineCheckpoint,
     _image_path,
     _manifest_annotations,
     _percentile,
+    cached_grayscale_image,
     extract_feature,
     fit_centroids,
     predict_centroids,
@@ -125,29 +131,28 @@ def _tight_glyph_feature(
         raise RuntimeError("APC numeric OCR requires Pillow") from error
     if polarity not in {"bright", "dark"}:
         raise ValueError("glyph polarity must be bright or dark")
-    with Image.open(image_path) as source:
-        image = source.convert("L")
-        width, height = image.size
-        left = max(0, min(width - 1, round(float(box["x"]) * width)))
-        top = max(0, min(height - 1, round(float(box["y"]) * height)))
-        right = max(left + 1, min(width, round((float(box["x"]) + float(box["width"])) * width)))
-        bottom = max(top + 1, min(height, round((float(box["y"]) + float(box["height"])) * height)))
-        region = image.crop((left, top, right, bottom))
-        if polarity == "bright":
-            mask = region.point(lambda value: 255 if value >= 150 else 0)
-        else:
-            mask = region.point(lambda value: 255 if value <= 100 else 0)
-        ink = mask.getbbox()
-        canvas = Image.new("L", TIGHT_GLYPH_CANVAS)
-        if ink is not None:
-            glyph = mask.crop(ink)
-            x = max(0, (TIGHT_GLYPH_CANVAS[0] - glyph.width) // 2)
-            y = max(0, (TIGHT_GLYPH_CANVAS[1] - glyph.height) // 2)
-            canvas.paste(glyph, (x, y))
-        resampling = getattr(Image, "Resampling", Image).BOX
-        reduced = canvas.resize(TIGHT_GLYPH_SIZE, resampling)
-        flattened = reduced.get_flattened_data() if hasattr(reduced, "get_flattened_data") else reduced.getdata()
-        return [value / 255.0 for value in flattened]
+    image = cached_grayscale_image(image_path)
+    width, height = image.size
+    left = max(0, min(width - 1, round(float(box["x"]) * width)))
+    top = max(0, min(height - 1, round(float(box["y"]) * height)))
+    right = max(left + 1, min(width, round((float(box["x"]) + float(box["width"])) * width)))
+    bottom = max(top + 1, min(height, round((float(box["y"]) + float(box["height"])) * height)))
+    region = image.crop((left, top, right, bottom))
+    if polarity == "bright":
+        mask = region.point(lambda value: 255 if value >= 150 else 0)
+    else:
+        mask = region.point(lambda value: 255 if value <= 100 else 0)
+    ink = mask.getbbox()
+    canvas = Image.new("L", TIGHT_GLYPH_CANVAS)
+    if ink is not None:
+        glyph = mask.crop(ink)
+        x = max(0, (TIGHT_GLYPH_CANVAS[0] - glyph.width) // 2)
+        y = max(0, (TIGHT_GLYPH_CANVAS[1] - glyph.height) // 2)
+        canvas.paste(glyph, (x, y))
+    resampling = getattr(Image, "Resampling", Image).BOX
+    reduced = canvas.resize(TIGHT_GLYPH_SIZE, resampling)
+    flattened = reduced.get_flattened_data() if hasattr(reduced, "get_flattened_data") else reduced.getdata()
+    return [value / 255.0 for value in flattened]
 
 
 def _numeric_training_rows(
@@ -230,6 +235,19 @@ def _distance_to_label(feature: list[float], model: dict[str, object], label: st
         sum(((value - float(centroid[index])) / float(scale[index])) ** 2 for index, value in enumerate(feature))
         / max(1, len(feature))
     )
+
+
+def _distances_to_label(
+    features: list[list[float]],
+    model: dict[str, object],
+    label: str,
+) -> list[float]:
+    if _np is None:
+        return [_distance_to_label(feature, model, label) for feature in features]
+    matrix = _np.asarray(features, dtype="float64")
+    centroid = _np.asarray(model["centroids"][label], dtype="float64")
+    scale = _np.asarray(model["scale"], dtype="float64")
+    return _np.sqrt(_np.mean(((matrix - centroid) / scale) ** 2, axis=1)).tolist()
 
 
 def _learn_geometry(rows: list[tuple[Path, dict[str, Any]]]) -> dict[str, object]:
@@ -450,14 +468,32 @@ def predict_table_state(
     if not seat_boxes:
         raise ValueError(f"table-state geometry has no learned layout: {layout}")
     dealer_relative = tuple(float(value) for value in checkpoint["features"]["dealer_relative_crop"])
-    hero_candidates = []
-    dealer_candidates = []
-    for index, box in enumerate(seat_boxes, start=1):
-        hero_feature = extract_feature(path, _config(box, checkpoint["features"]["hero"]))
-        dealer_box = _relative_box(box, dealer_relative)
-        dealer_feature = extract_feature(path, _config(dealer_box, checkpoint["features"]["dealer"]))
-        hero_candidates.append((_distance_to_label(hero_feature, checkpoint["hero_model"], "yes"), index))
-        dealer_candidates.append((_distance_to_label(dealer_feature, checkpoint["dealer_model"], "yes"), index))
+    hero_features = [
+        extract_feature(path, _config(box, checkpoint["features"]["hero"]))
+        for box in seat_boxes
+    ]
+    dealer_features = [
+        extract_feature(
+            path,
+            _config(
+                _relative_box(box, dealer_relative),
+                checkpoint["features"]["dealer"],
+            ),
+        )
+        for box in seat_boxes
+    ]
+    hero_candidates = list(
+        zip(
+            _distances_to_label(hero_features, checkpoint["hero_model"], "yes"),
+            range(1, len(seat_boxes) + 1),
+        )
+    )
+    dealer_candidates = list(
+        zip(
+            _distances_to_label(dealer_features, checkpoint["dealer_model"], "yes"),
+            range(1, len(seat_boxes) + 1),
+        )
+    )
     if checkpoint["model_kind"] == LEGACY_MODEL_KIND:
         pot_bb, pot_confidence = predict_exemplars(
             extract_feature(path, _config(checkpoint["geometry"]["pot"], checkpoint["features"]["pot"])),

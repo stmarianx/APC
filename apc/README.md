@@ -34,7 +34,7 @@ The initial implementation reuses the existing `coach/` domain engine:
   safe fallback behavior.
 
 The synthetic pixel-to-observation provider now covers cards, hero/dealer
-seats, pot and call price, integer stacks, and paired action events. It remains
+seats, pot and call price, stacks, player names, turn clocks and paired action events. It remains
 a closed-vocabulary bootstrap; controlled visible-table data and calibrated
 models are still required before APC can be trained for arbitrary tables.
 
@@ -59,6 +59,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `perception/composite.py` — one BB-only visible-state result with forced abstention on missing fields.
 - `perception/temporal_composite.py` — paired-frame state reconstruction with chip/pot conservation, heads-up effective stack and evidence-gated history completeness.
 - `perception/evaluate_temporal.py` — leakage-checked held-out evaluator for the complete temporal perception path.
+- `perception/evaluate_realtime_composite.py` — separate-corpus joint field, per-head latency and visible-deadline evaluator.
 - `perception/hand_tracker.py` — stateful hand IDs, cross-street continuity, complete histories and identity attachment gate.
 - `perception/viewport.py` — fingerprinted affine mapping from a detected or manually verified table box into canonical perception geometry.
 - `perception/evaluate_hand_tracker.py` — full multi-hand perception/tracker evaluator.
@@ -82,6 +83,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `perception/baselines/synthetic_hand_sequence_gate_v2.model_card.json` — fresh 2,000-frame model family, exact 24-hand synthetic test, real OOD failure and latency limits.
 - `perception/baselines/synthetic_hand_sequence_latency_cache_v1.model_card.json` — matched 24-hand cache optimization audit with unchanged predictions and bounded-memory latency evidence.
 - `perception/baselines/synthetic_visual_identity_stack_context_v1.model_card.json` — post-test development evidence for visual signatures, explicit multiway stack context and the gated backend bridge.
+- `perception/baselines/synthetic_realtime_composite_v1.model_card.json` — integrated 13-field accuracy, latency and deadline-routing audit.
 
 ## Annotation workflow
 
@@ -306,7 +308,7 @@ python -m apc.perception.name_ocr_baseline evaluate `
   --split test --output .\apc\runs\synthetic-name-ocr-v1\test.json
 ```
 
-The untouched synthetic test reconstructs 64/64 previously unseen whole names
+The group-exclusive held-out synthetic test reconstructs 64/64 previously unseen whole names
 and every character exactly, then resolves all identities after repeated frames.
 Single-decode batched inference reduced p95 from 608.54 ms to 49.79 ms without
 changing the prediction fingerprint. The validation identity rate is lower
@@ -355,6 +357,33 @@ The temporal composite rejects mismatched cards, seats, actor-stack deltas,
 pot deltas and invalid all-in residual stacks. It does not call a pair-local
 history complete, does not collapse multiway effective stacks to a misleading
 scalar, and never substitutes seat aliases for recognized player identities.
+
+Run the full visible-state and deadline audit on a separately generated corpus
+that includes both player names and turn clocks:
+
+```powershell
+python -m apc.synthetic.render_table .\apc\data\processed\synthetic-realtime-v1 `
+  --sessions 42 --seed 2026081602 --include-turn-clock --include-name-ocr
+
+python -m apc.perception.evaluate_realtime_composite `
+  .\apc\data\processed\synthetic-realtime-v1\dataset_manifest.json `
+  --base-checkpoint .\apc\checkpoints\synthetic-handseq-gate-v2-base.json `
+  --card-checkpoint .\apc\checkpoints\synthetic-handseq-gate-v2-card.json `
+  --table-state-checkpoint .\apc\checkpoints\synthetic-handseq-gate-v2-table-exemplar.json `
+  --stack-checkpoint .\apc\checkpoints\synthetic-handseq-gate-v2-stack.json `
+  --turn-clock-checkpoint .\apc\checkpoints\synthetic-turn-clock-v2.json `
+  --name-ocr-checkpoint .\apc\checkpoints\synthetic-name-ocr-v1.json `
+  --split test --output .\apc\runs\synthetic-realtime-v1\test.json
+```
+
+The final separately generated audit reached 100% joint supported-state
+accuracy, 188.38 ms validation p95 and 171.34 ms held-out-test p95. Measured
+latency is charged against each visible countdown; all 32 frames retained a
+bounded-refinement budget and none entered an unsafe/expired state. Batched
+numeric/card inference and removal of redundant identity work cut the original
+393.79/333.30 ms validation/test p95 values. Threaded heads were measured and
+rejected because contention was slower on this laptop. These figures remain
+synthetic-only and exclude solver and actuation latency.
 
 ## Complete-hand sequence workflow
 

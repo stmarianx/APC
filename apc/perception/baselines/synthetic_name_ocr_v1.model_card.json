@@ -35,7 +35,7 @@
     "latency_ms_p95": 63.142799997876864,
     "prediction_sha256": "585975439b1e2a5eae683ea49dfc1900f1a4db82e2f334ada4bbae94507aed2b"
   },
-  "untouched_test": {
+  "held_out_test": {
     "capture_sessions": ["synthetic-0000", "synthetic-0010", "synthetic-0013", "synthetic-0036"],
     "training_session_overlap": [],
     "frames": 16,

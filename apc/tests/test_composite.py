@@ -150,6 +150,15 @@ class CompositePerceptionTests(unittest.TestCase):
         )
         self.assertEqual(result["field_confidence"]["recognized_player_names"], 0.87)
         self.assertEqual(result["checkpoint_provenance"]["name_ocr_sha256"], "f" * 64)
+        self.assertEqual(set(result["head_latency_ms"]), {
+            "base",
+            "cards",
+            "table_state",
+            "stacks",
+            "turn_clock",
+            "player_names",
+            "visual_identity_signatures",
+        })
 
 
 if __name__ == "__main__":

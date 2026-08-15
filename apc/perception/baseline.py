@@ -77,6 +77,16 @@ def _cached_rgb_image(path: str, size_bytes: int, mtime_ns: int) -> Any:
     return image
 
 
+@lru_cache(maxsize=16)
+def _cached_grayscale_image(path: str, size_bytes: int, mtime_ns: int) -> Any:
+    del size_bytes, mtime_ns
+    Image = _pil_image()
+    with Image.open(path) as source:
+        image = source.convert("L")
+        image.load()
+    return image
+
+
 @lru_cache(maxsize=4096)
 def _cached_feature(
     path: str,
@@ -153,13 +163,21 @@ def _cached_feature(
 def clear_feature_cache() -> None:
     _cached_feature.cache_clear()
     _cached_rgb_image.cache_clear()
+    _cached_grayscale_image.cache_clear()
 
 
 def feature_cache_info() -> dict[str, object]:
     return {
         "images": _cached_rgb_image.cache_info()._asdict(),
+        "grayscale_images": _cached_grayscale_image.cache_info()._asdict(),
         "features": _cached_feature.cache_info()._asdict(),
     }
+
+
+def cached_grayscale_image(image_path: str | Path) -> Any:
+    path = Path(image_path).expanduser().resolve()
+    stat = path.stat()
+    return _cached_grayscale_image(str(path), stat.st_size, stat.st_mtime_ns)
 
 
 def extract_feature(image_path: Path, config: dict[str, object]) -> list[float]:
@@ -226,6 +244,40 @@ def predict_centroids(feature: list[float], model: dict[str, object]) -> tuple[s
         second = ordered[1][1]
         confidence = max(0.0, min(1.0, (second - best) / max(second, 1e-12)))
     return predicted, confidence
+
+
+def predict_centroids_batch(
+    features: list[list[float]],
+    model: dict[str, object],
+) -> list[tuple[str, float]]:
+    if not features:
+        return []
+    try:
+        import numpy as np
+    except ImportError as error:
+        raise RuntimeError("Batched APC centroid inference requires NumPy") from error
+    dimension = int(model["feature_dimension"])
+    if any(len(feature) != dimension for feature in features):
+        raise ValueError("feature dimension does not match checkpoint")
+    labels = sorted(str(label) for label in model["centroids"])
+    matrix = np.asarray(features, dtype="float64")
+    centroids = np.asarray([model["centroids"][label] for label in labels], dtype="float64")
+    scale = np.asarray(model["scale"], dtype="float64")
+    distances = np.sqrt(
+        np.mean(((matrix[:, None, :] - centroids[None, :, :]) / scale) ** 2, axis=2)
+    )
+    predictions: list[tuple[str, float]] = []
+    for row in distances:
+        order = np.argsort(row)
+        best_index = int(order[0])
+        best = float(row[best_index])
+        if len(order) == 1:
+            confidence = 1.0
+        else:
+            second = float(row[int(order[1])])
+            confidence = max(0.0, min(1.0, (second - best) / max(second, 1e-12)))
+        predictions.append((labels[best_index], confidence))
+    return predictions
 
 
 @dataclass(frozen=True)

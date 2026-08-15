@@ -9,6 +9,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+try:
+    import numpy as _np
+except ImportError:  # Deferred error keeps non-vision metadata tooling importable.
+    _np = None
+
 from apc.perception.baseline import (
     BaselineCheckpoint,
     _annotation_path,
@@ -125,6 +130,54 @@ def predict_exemplars(
     return best_label, confidence
 
 
+def predict_exemplars_batch(
+    features: list[list[float]],
+    model: dict[str, object],
+    *,
+    allowed_labels: set[str] | None = None,
+) -> list[tuple[str, float]]:
+    if not features:
+        return []
+    if _np is None:
+        raise RuntimeError("Batched APC exemplar inference requires NumPy")
+    np = _np
+    dimension = int(model["feature_dimension"])
+    if any(len(feature) != dimension for feature in features):
+        raise ValueError("feature dimension does not match checkpoint")
+    exemplars = [
+        row
+        for row in model["exemplars"]
+        if allowed_labels is None or str(row["label"]) in allowed_labels
+    ]
+    if not exemplars:
+        raise ValueError("exemplar model has no rows for the allowed labels")
+    feature_matrix = np.asarray(features, dtype="float64")
+    exemplar_matrix = np.asarray([row["feature"] for row in exemplars], dtype="float64")
+    squared = (
+        np.sum(feature_matrix * feature_matrix, axis=1, keepdims=True)
+        + np.sum(exemplar_matrix * exemplar_matrix, axis=1)[None, :]
+        - 2.0 * feature_matrix @ exemplar_matrix.T
+    ) / max(1, dimension)
+    distances = np.sqrt(np.maximum(squared, 0.0))
+    labels = [str(row["label"]) for row in exemplars]
+    predictions: list[tuple[str, float]] = []
+    for row in distances:
+        order = np.argsort(row)
+        best_index = int(order[0])
+        best_label = labels[best_index]
+        best_distance = float(row[best_index])
+        alternative = next(
+            (float(row[int(index)]) for index in order if labels[int(index)] != best_label),
+            best_distance,
+        )
+        confidence = 1.0 if alternative == 0 and best_distance == 0 else max(
+            0.0,
+            min(1.0, (alternative - best_distance) / max(alternative, 1e-12)),
+        )
+        predictions.append((best_label, confidence))
+    return predictions
+
+
 def _learn_geometry(training_rows: list[tuple[Path, dict[str, Any]]]) -> dict[str, object]:
     collected: dict[str, dict[str, dict[int, list[dict[str, object]]]]] = {}
     for _, annotation in training_rows:
@@ -234,27 +287,33 @@ def predict_cards(
         "hero_cards": [],
         "board_cards": [],
     }
+    slots: list[tuple[str, dict[str, object]]] = []
     for collection, count in (("hero_cards", 2), ("board_cards", BOARD_COUNTS.get(street, 0))):
         boxes = geometry[collection]
         if len(boxes) < count:
             raise ValueError(f"learned geometry has only {len(boxes)} {collection} slots, needs {count}")
-        predictions = []
-        for box in boxes[:count]:
-            rank, rank_confidence = predict_exemplars(
-                extract_feature(path, _feature_config(box, rank=True, relative=rank_relative)), card_checkpoint["rank_model"]
-            )
-            suit, suit_confidence = predict_centroids(
-                extract_feature(path, _feature_config(box, rank=False, relative=suit_relative)), card_checkpoint["suit_model"]
-            )
-            predictions.append(
-                {
-                    "rank": rank,
-                    "suit": suit,
-                    "confidence": min(rank_confidence, suit_confidence),
-                    "box": box,
-                }
-            )
-        result[collection] = predictions
+        slots.extend((collection, box) for box in boxes[:count])
+    rank_predictions = predict_exemplars_batch(
+        [
+            extract_feature(path, _feature_config(box, rank=True, relative=rank_relative))
+            for _, box in slots
+        ],
+        card_checkpoint["rank_model"],
+    )
+    for index, (collection, box) in enumerate(slots):
+        rank, rank_confidence = rank_predictions[index]
+        suit, suit_confidence = predict_centroids(
+            extract_feature(path, _feature_config(box, rank=False, relative=suit_relative)),
+            card_checkpoint["suit_model"],
+        )
+        result[collection].append(
+            {
+                "rank": rank,
+                "suit": suit,
+                "confidence": min(rank_confidence, suit_confidence),
+                "box": box,
+            }
+        )
     return result
 
 

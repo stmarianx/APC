@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any, Callable
 
@@ -45,6 +46,33 @@ def _safe_perception_head(
             "reason": "perception_head_failed",
             "detail": str(error),
         }
+
+
+def _timed_perception_head(
+    name: str,
+    operation: Callable[[], Any],
+) -> tuple[Any | None, dict[str, str] | None, float]:
+    started = time.perf_counter()
+    value, error = _safe_perception_head(name, operation)
+    return value, error, (time.perf_counter() - started) * 1000.0
+
+
+def _run_perception_heads(
+    operations: dict[str, tuple[str, Callable[[], Any]]],
+    *,
+    parallel: bool,
+) -> dict[str, tuple[Any | None, dict[str, str] | None, float]]:
+    if not parallel or len(operations) <= 1:
+        return {
+            key: _timed_perception_head(name, operation)
+            for key, (name, operation) in operations.items()
+        }
+    with ThreadPoolExecutor(max_workers=len(operations), thread_name_prefix="apc-head") as pool:
+        futures = {
+            key: pool.submit(_timed_perception_head, name, operation)
+            for key, (name, operation) in operations.items()
+        }
+        return {key: future.result() for key, future in futures.items()}
 
 
 def _visual_signatures_or_abstain(
@@ -100,83 +128,95 @@ def infer_visible_state(
     stack_checkpoint: dict[str, Any],
     turn_clock_checkpoint: dict[str, Any] | None = None,
     name_ocr_checkpoint: dict[str, Any] | None = None,
+    parallel_heads: bool = False,
 ) -> dict[str, object]:
     path = Path(image_path).expanduser().resolve()
     started = time.perf_counter()
-    base, base_error = _safe_perception_head(
+    base, base_error, base_latency = _timed_perception_head(
         "base_perception",
         lambda: predict_image(base_checkpoint, path),
     )
-    cards, card_error = _safe_perception_head(
-        "card_perception",
-        lambda: predict_cards(
-            card_checkpoint,
-            base_checkpoint,
-            path,
-            base_prediction=base,
-        ),
-    ) if base is not None else (None, {
-        "field": "card_perception",
-        "reason": "dependency_unavailable",
-        "detail": "base_perception failed",
-    })
-    table, table_error = _safe_perception_head(
-        "table_state_perception",
-        lambda: predict_table_state(
-            table_state_checkpoint,
-            base_checkpoint,
-            path,
-            base_prediction=base,
-        ),
-    ) if base is not None else (None, {
-        "field": "table_state_perception",
-        "reason": "dependency_unavailable",
-        "detail": "base_perception failed",
-    })
-    stacks, stack_error = _safe_perception_head(
-        "stack_perception",
-        lambda: predict_stacks(
-            stack_checkpoint,
-            base_checkpoint,
-            path,
-            base_prediction=base,
-        ),
-    ) if base is not None else (None, {
-        "field": "stack_perception",
-        "reason": "dependency_unavailable",
-        "detail": "base_perception failed",
-    })
-    clock, clock_error = (
-        _safe_perception_head(
+    unavailable = lambda field: (
+        None,
+        {
+            "field": field,
+            "reason": "dependency_unavailable",
+            "detail": "base_perception failed",
+        },
+        0.0,
+    )
+    cards, card_error, card_latency = unavailable("card_perception")
+    table, table_error, table_latency = unavailable("table_state_perception")
+    stacks, stack_error, stack_latency = unavailable("stack_perception")
+    names, names_error, names_latency = (
+        unavailable("player_name_perception")
+        if name_ocr_checkpoint is not None
+        else (None, None, 0.0)
+    )
+    clock, clock_error, clock_latency = (None, None, 0.0)
+    operations: dict[str, tuple[str, Callable[[], Any]]] = {}
+    if base is not None:
+        operations.update(
+            {
+                "cards": (
+                    "card_perception",
+                    lambda: predict_cards(
+                        card_checkpoint,
+                        base_checkpoint,
+                        path,
+                        base_prediction=base,
+                    ),
+                ),
+                "table": (
+                    "table_state_perception",
+                    lambda: predict_table_state(
+                        table_state_checkpoint,
+                        base_checkpoint,
+                        path,
+                        base_prediction=base,
+                    ),
+                ),
+                "stacks": (
+                    "stack_perception",
+                    lambda: predict_stacks(
+                        stack_checkpoint,
+                        base_checkpoint,
+                        path,
+                        base_prediction=base,
+                    ),
+                ),
+            }
+        )
+        if name_ocr_checkpoint is not None:
+            operations["names"] = (
+                "player_name_perception",
+                lambda: predict_player_names(
+                    name_ocr_checkpoint,
+                    path,
+                    base_checkpoint=base_checkpoint,
+                    base_prediction=base,
+                ),
+            )
+    if turn_clock_checkpoint is not None:
+        operations["clock"] = (
             "turn_clock_perception",
             lambda: predict_turn_clock(turn_clock_checkpoint, path),
         )
-        if turn_clock_checkpoint is not None
-        else (None, None)
+    head_results = _run_perception_heads(operations, parallel=parallel_heads)
+    cards, card_error, card_latency = head_results.get(
+        "cards", (cards, card_error, card_latency)
     )
-    names, names_error = (
-        _safe_perception_head(
-            "player_name_perception",
-            lambda: predict_player_names(
-                name_ocr_checkpoint,
-                path,
-                base_checkpoint=base_checkpoint,
-                base_prediction=base,
-            ),
-        )
-        if name_ocr_checkpoint is not None and base is not None
-        else (
-            (None, None)
-            if name_ocr_checkpoint is None
-            else (
-                None,
-                {
-                    "field": "player_name_perception",
-                    "reason": "dependency_unavailable",
-                    "detail": "base_perception failed",
-                },
-            )
-        )
+    table, table_error, table_latency = head_results.get(
+        "table", (table, table_error, table_latency)
+    )
+    stacks, stack_error, stack_latency = head_results.get(
+        "stacks", (stacks, stack_error, stack_latency)
+    )
+    names, names_error, names_latency = head_results.get(
+        "names", (names, names_error, names_latency)
+    )
+    clock, clock_error, clock_latency = head_results.get(
+        "clock", (clock, clock_error, clock_latency)
     )
     base = base or {}
     cards = cards or {"hero_cards": [], "board_cards": []}
@@ -187,11 +227,15 @@ def infer_visible_state(
         "to_call_bb": {"value": None, "confidence": 0.0},
     }
     stacks = stacks or []
+    signature_started = time.perf_counter()
     signature_rows, signature_error = (
-        _visual_signatures_or_abstain(path, stacks)
+        ([], None)
+        if names is not None
+        else _visual_signatures_or_abstain(path, stacks)
         if stacks
         else ([], "stack geometry unavailable")
     )
+    signature_latency = (time.perf_counter() - signature_started) * 1000.0
     elapsed_ms = (time.perf_counter() - started) * 1000.0
     hero_cards = [_card_token(card) for card in cards["hero_cards"]]
     board_cards = [_card_token(card) for card in cards["board_cards"]]
@@ -243,11 +287,12 @@ def infer_visible_state(
         "pot_bb": float(table["pot_bb"]["confidence"]),
         "to_call_bb": float(table["to_call_bb"]["confidence"]),
         "seat_stacks_bb": min((float(stack["confidence"]) for stack in stacks), default=0.0),
-        "visual_identity_signatures": min(
+    }
+    if names is None:
+        field_confidence["visual_identity_signatures"] = min(
             (float(row.quality_score) for row in signature_rows),
             default=0.0,
-        ),
-    }
+        )
     if clock is not None:
         field_confidence["decision_time_remaining_ms"] = float(clock["confidence"])
     if names is not None:
@@ -338,6 +383,16 @@ def infer_visible_state(
         "missing_critical_fields": missing_critical_fields,
         "perception_abstentions": perception_abstentions,
         "latency_ms": elapsed_ms,
+        "head_latency_ms": {
+            "base": base_latency,
+            "cards": card_latency,
+            "table_state": table_latency,
+            "stacks": stack_latency,
+            "turn_clock": clock_latency,
+            "player_names": names_latency,
+            "visual_identity_signatures": signature_latency,
+        },
+        "head_execution_mode": "parallel" if parallel_heads else "sequential",
         "limitations": [
             "Synthetic closed-vocabulary checkpoints only.",
             "Recommendation is forced to abstain until effective-stack context, player identities and action history are observed.",
@@ -345,6 +400,7 @@ def infer_visible_state(
             "Optional visual identity extraction abstains instead of terminating the remaining perception heads.",
             "Card, numeric and stack heads fail independently and force an audited composite abstention.",
             "The optional synthetic name head is restricted to its declared fixed-length character contract.",
+            "Pseudonymous name-band signatures are skipped when readable name OCR succeeds and remain the fallback when it fails.",
         ],
     }
 
@@ -358,6 +414,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--stack-checkpoint", type=Path, required=True)
     parser.add_argument("--turn-clock-checkpoint", type=Path)
     parser.add_argument("--name-ocr-checkpoint", type=Path)
+    parser.add_argument("--parallel-heads", action="store_true")
     parser.add_argument("--output", type=Path)
     return parser
 
@@ -381,6 +438,7 @@ def main(argv: list[str] | None = None) -> int:
                 if args.name_ocr_checkpoint
                 else None
             ),
+            parallel_heads=args.parallel_heads,
         )
         if args.output:
             output = args.output.expanduser().resolve()

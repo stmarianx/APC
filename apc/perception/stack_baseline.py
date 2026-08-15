@@ -16,10 +16,10 @@ from apc.perception.baseline import (
     _percentile,
     extract_feature,
     fit_centroids,
-    predict_centroids,
+    predict_centroids_batch,
     predict_image,
 )
-from apc.perception.card_baseline import fit_exemplars, predict_exemplars
+from apc.perception.card_baseline import fit_exemplars, predict_exemplars_batch
 from apc.tools.validate_dataset import canonical_sha256, validate_manifest
 
 
@@ -226,24 +226,49 @@ def predict_stacks(
     seat_boxes = checkpoint["geometry"]["seats"].get(layout)
     if not seat_boxes:
         raise ValueError(f"stack geometry has no learned layout: {layout}")
-    predictions = []
-    for seat_no, seat_box in enumerate(seat_boxes, start=1):
-        line_box = _relative_box(seat_box, tuple(checkpoint["features"]["stack_line_relative"]))
-        line_feature = extract_feature(path, _config(line_box, checkpoint["features"]["length"]))
+    line_features = [
+        extract_feature(
+            path,
+            _config(
+                _relative_box(
+                    seat_box,
+                    tuple(checkpoint["features"]["stack_line_relative"]),
+                ),
+                checkpoint["features"]["length"],
+            ),
+        )
+        for seat_box in seat_boxes
+    ]
+    shape_model = (
+        checkpoint["length_model"]
+        if checkpoint["model_kind"] == LEGACY_MODEL_KIND
+        else checkpoint["shape_model"]
+    )
+    shape_predictions = predict_centroids_batch(line_features, shape_model)
+    seat_specs: list[dict[str, object]] = []
+    character_features: list[list[float]] = []
+    character_slots: list[tuple[int, int]] = []
+    character_model = (
+        checkpoint["digit_model"]
+        if checkpoint["model_kind"] == LEGACY_MODEL_KIND
+        else checkpoint["character_model"]
+    )
+    for seat_no, (seat_box, shape_prediction) in enumerate(
+        zip(seat_boxes, shape_predictions), start=1
+    ):
+        raw_shape, length_confidence = shape_prediction
         if checkpoint["model_kind"] == LEGACY_MODEL_KIND:
-            legacy_length, length_confidence = predict_centroids(line_feature, checkpoint["length_model"])
-            digit_count, decimal_index = int(legacy_length), None
+            digit_count, decimal_index = int(raw_shape), None
             shape = f"integer:{digit_count}"
-            character_model = checkpoint["digit_model"]
         else:
-            shape, length_confidence = predict_centroids(line_feature, checkpoint["shape_model"])
+            shape = raw_shape
             digit_count, decimal_index = _shape_geometry(shape)
-            character_model = checkpoint["character_model"]
-        characters = []
-        confidences = [length_confidence]
+        characters: list[str | None] = [None] * digit_count
+        confidences = [float(length_confidence)]
+        spec_index = len(seat_specs)
         for index in range(digit_count):
             if index == decimal_index:
-                characters.append(".")
+                characters[index] = "."
                 confidences.append(length_confidence)
                 continue
             box = digit_box(
@@ -252,24 +277,47 @@ def predict_stacks(
                 digit_index=index,
                 decimal_index=decimal_index,
             )
-            character, confidence = predict_exemplars(
-                extract_feature(path, _config(box, checkpoint["features"]["digit"])),
-                character_model,
-                allowed_labels=set("0123456789"),
+            character_features.append(
+                extract_feature(path, _config(box, checkpoint["features"]["digit"]))
             )
-            characters.append(character)
-            confidences.append(confidence)
-        token = "".join(characters)
-        if not STACK_TOKEN_RE.fullmatch(token):
-            raise ValueError(f"stack OCR produced an invalid BB token at seat {seat_no}: {token!r}")
-        predictions.append(
+            character_slots.append((spec_index, index))
+        seat_specs.append(
             {
                 "seat_no": seat_no,
+                "seat_box": seat_box,
+                "shape": shape,
+                "digit_count": digit_count,
+                "characters": characters,
+                "confidences": confidences,
+            }
+        )
+    for (spec_index, character_index), (character, confidence) in zip(
+        character_slots,
+        predict_exemplars_batch(
+            character_features,
+            character_model,
+            allowed_labels=set("0123456789"),
+        ),
+    ):
+        seat_specs[spec_index]["characters"][character_index] = character
+        seat_specs[spec_index]["confidences"].append(confidence)
+    predictions = []
+    for spec in seat_specs:
+        if any(character is None for character in spec["characters"]):
+            raise ValueError("stack OCR left an unresolved character slot")
+        token = "".join(str(character) for character in spec["characters"])
+        if not STACK_TOKEN_RE.fullmatch(token):
+            raise ValueError(
+                f"stack OCR produced an invalid BB token at seat {spec['seat_no']}: {token!r}"
+            )
+        predictions.append(
+            {
+                "seat_no": spec["seat_no"],
                 "stack_bb": token,
-                "confidence": min(confidences),
-                "character_count": digit_count,
-                "token_shape": shape,
-                "seat_box": dict(seat_box),
+                "confidence": min(spec["confidences"]),
+                "character_count": spec["digit_count"],
+                "token_shape": spec["shape"],
+                "seat_box": dict(spec["seat_box"]),
             }
         )
     return predictions

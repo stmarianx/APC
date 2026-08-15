@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC synthetic real-time composite and deadline audit v1",
+  "status": "synthetic_realtime_target_passed_not_promotion_eligible",
+  "dataset": {
+    "dataset_id": "apc-synthetic-2026081602",
+    "verified_frames": 168,
+    "capture_sessions": 42,
+    "layouts": 3,
+    "themes": 2,
+    "controlled_visible_frames": 0,
+    "annotations_sha256": "45b549b9764b11e5e56d3e91e68a1a9f6a0878e66c776b7420ae679eb171c784",
+    "split_sha256": "174ec610d72a83f07f2081fe92eb3ff2b22360f2bd31277de53b8c70c111001d",
+    "duplicate_audit_sha256": "92a74a647c1ded8296f674401b940dbe693aa9e8cf03127d7fb9fe28194995c5",
+    "excluded_from_all_checkpoint_training": true
+  },
+  "supported_fields": [
+    "layout_id",
+    "theme_id",
+    "street",
+    "legal_actions",
+    "hero_seat",
+    "dealer_seat",
+    "hero_cards",
+    "board_cards",
+    "pot_bb",
+    "to_call_bb",
+    "seat_stacks_bb",
+    "player_names",
+    "decision_time_remaining_ms"
+  ],
+  "held_out_validation": {
+    "capture_sessions": ["synthetic-0017", "synthetic-0021", "synthetic-0029", "synthetic-0041"],
+    "frames": 16,
+    "joint_supported_state_accuracy": 1.0,
+    "all_field_accuracies": 1.0,
+    "latency_ms_p95": 188.3839000001899,
+    "latency_target_ms": 250,
+    "latency_target_passed": true,
+    "deadline_compute_frames": 16,
+    "bounded_refinement_frames": 16,
+    "unsafe_or_expired_frames": 0,
+    "semantic_prediction_sha256": "b7262de08afaadbf8ce51f71ada1ac601a973ec0ac50a535abb4f4bf69928ad5"
+  },
+  "held_out_test": {
+    "capture_sessions": ["synthetic-0000", "synthetic-0010", "synthetic-0013", "synthetic-0036"],
+    "frames": 16,
+    "joint_supported_state_accuracy": 1.0,
+    "all_field_accuracies": 1.0,
+    "latency_ms_p95": 171.34290000467445,
+    "latency_target_ms": 250,
+    "latency_target_passed": true,
+    "deadline_compute_frames": 16,
+    "bounded_refinement_frames": 16,
+    "unsafe_or_expired_frames": 0,
+    "semantic_prediction_sha256": "0a2ca287ce5303f6674356513a3ee4d0ca8f18063fbf6757789a6be9d0414870"
+  },
+  "optimization_audit": {
+    "initial_validation_p95_ms": 393.7920749958721,
+    "initial_test_p95_ms": 333.3044999963022,
+    "final_validation_p95_ms": 188.3839000001899,
+    "final_test_p95_ms": 171.34290000467445,
+    "changes": [
+      "cached immutable grayscale frames for segmented numeric OCR",
+      "batched vectorized card-rank and stack character exemplar distances",
+      "batched vectorized stack-shape and hero/dealer centroid distances",
+      "loaded NumPy before timed inference",
+      "skipped redundant pseudonymous signatures when readable OCR succeeded"
+    ],
+    "parallel_head_experiment": "rejected because contention increased p95 on this laptop",
+    "default_execution": "sequential heads"
+  },
+  "deadline_contract": {
+    "perception_latency_charged_against_visible_clock": true,
+    "safety_margin_ms": 750,
+    "actuation_reserve_ms": 250,
+    "safe_fallback_order": ["check", "fold"],
+    "all_synthetic_audit_frames_retained_compute_budget": true
+  },
+  "limitations": [
+    "All audit frames and every checkpoint are synthetic; this result cannot open Gate P or a controlled-visible latency gate.",
+    "The audit ends at deadline routing and does not include solver computation or actuation latency.",
+    "Player names remain restricted-font synthetic OCR and confidence is uncalibrated.",
+    "Single-frame composite output correctly abstains because complete temporal history and resolved repeated-frame identities are absent."
+  ]
+}
