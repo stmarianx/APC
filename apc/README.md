@@ -46,6 +46,8 @@ models are still required before APC can be trained for arbitrary tables.
 - `curriculum/generated/course_curriculum.jsonl` — deterministic course and math training curriculum.
 - `curriculum/generated/curriculum_manifest.json` — source hashes, grouped splits, counts and curriculum fingerprint.
 - `readiness.json` — current evidence-backed gate status.
+- `PORTABILITY_AND_RELEASE.md` — reproducible machine-transfer, artifact and publication policy.
+- `tools/artifact_manifest.py` — SHA-256 manifest creation/verification for datasets, checkpoints and run reports moved between machines.
 - `perception/baseline.py` — reproducible pixel smoke trainer and held-out evaluator.
 - `perception/card_baseline.py` — learned card-slot geometry plus rank/suit pixel heads.
 - `perception/table_state_baseline.py` — hero/dealer geometry and closed-vocabulary pot/call-price heads.
@@ -63,6 +65,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `visual_identity_signature.py` — normalized name-band pixel signatures that support pseudonymous profile continuity without claiming readable OCR.
 - `evaluate_visual_identity.py` — held-out stability, collision and registry-resolution evaluation for visual signatures.
 - `backend_adapter.py` — strict BB-only bridge from complete tracked hands to the coaching core's confidence-bearing visual-observation contract; ambiguous multiway stacks and raise semantics abstain.
+- `deadline.py` — deadline budget, adaptive strategy-tier selection, safe fallback and stale/illegal/duplicate controlled-action authorization.
 - `evaluate_coaching_bridge.py` — full synthetic pixels-to-identity-to-observation-to-backend interoperability audit.
 - `tools/evaluate_partial_reference.py` — frozen partial-ground-truth OOD comparison with safe-abstention checks.
 - `data/reference/controlled-reference-v1/` — one immutable user-provided virtual-chip reference explicitly excluded from training and gate counts.
@@ -75,6 +78,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `perception/baselines/synthetic_temporal_composite_v1.model_card.json` — exact held-out validation evidence, integration failures and fresh-test requirement.
 - `perception/baselines/synthetic_hand_sequence_v1.model_card.json` — preserved historical complete-hand validation and untouched 50% test failure.
 - `perception/baselines/synthetic_hand_sequence_gate_v2.model_card.json` — fresh 2,000-frame model family, exact 24-hand synthetic test, real OOD failure and latency limits.
+- `perception/baselines/synthetic_hand_sequence_latency_cache_v1.model_card.json` — matched 24-hand cache optimization audit with unchanged predictions and bounded-memory latency evidence.
 - `perception/baselines/synthetic_visual_identity_stack_context_v1.model_card.json` — post-test development evidence for visual signatures, explicit multiway stack context and the gated backend bridge.
 
 ## Annotation workflow
@@ -157,6 +161,20 @@ gate without human review. The workbench displays the suggestion, raw confidence
 checkpoint provenance and abstentions; its explicit apply button only updates an
 unsaved draft, resets `verified` to false and records the suggestion fingerprint.
 
+After one frame in a capture session has a verified annotation, reuse only its
+stable normalized geometry as review-only drafts for later frames in that same
+session:
+
+```powershell
+python -m apc.annotator.propagation .\apc-data\first-table VERIFIED_SAMPLE_ID
+```
+
+This propagates table, seat, visible card-slot, pot and action-button boxes plus
+the stable Hero seat. It deliberately omits cards, stacks, pot values, dealer,
+actions, occupancy and player names. Existing annotations and suggestions are
+not replaced unless explicitly requested, and propagated drafts never count as
+verified frames.
+
 Run the local workbench:
 
 ```powershell
@@ -206,10 +224,11 @@ change the resulting data fingerprints.
 
 The workbench draws all current labels over the responsive source image and
 supports drag-to-create normalized regions for tables, seats, cards, pots and
-action buttons. Object-specific fields are merged into the canonical target,
+action buttons, and the visible turn clock. Object-specific fields are merged into the canonical target,
 and a synchronization helper derives hero/dealer seats, pot, street and legal
-actions before validation. Bulk propagation and OCR-assisted labeling remain
-planned usability improvements.
+actions before validation. Verified-source, same-session layout propagation is
+now available; OCR-assisted numeric and name labeling remains the next
+usability improvement.
 
 Raw frames, processed tensors, checkpoints and run outputs are intentionally
 ignored by version control. Reproducible manifests, annotations, metrics and
@@ -330,7 +349,11 @@ tables do not expose a client hand number. The historical two-hand checkpoint
 failed one untouched hand. Its replacement, trained on the 2,000-frame corpus,
 passed 96/96 fresh test transitions and 24/24 complete hands exactly. It remains
 non-promotable because the normalized real reference is still only 1/6 exact,
-player identities remain unresolved and test p95 latency is 1.322 seconds.
+player identities remain unresolved. The frozen model card retains its original
+1.322-second p95. A later matched cold benchmark on this laptop reduced p95
+from 1.103 seconds to 0.444 seconds using bounded shared image/feature caches,
+with the exact prediction fingerprint unchanged; controlled-visible latency and
+the 250 ms perception target remain open.
 
 `player_identity.py` can persist confidence-bearing name candidates and attach
 unique resolved identities to tracked seats. Its present evaluation uses

@@ -8,6 +8,7 @@ import statistics
 import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -66,71 +67,106 @@ def _label(annotation: dict[str, Any], head: str) -> str:
     raise KeyError(f"unsupported baseline head: {head}")
 
 
-def extract_feature(image_path: Path, config: dict[str, object]) -> list[float]:
+@lru_cache(maxsize=16)
+def _cached_rgb_image(path: str, size_bytes: int, mtime_ns: int) -> Any:
+    del size_bytes, mtime_ns  # Values are cache-key material for immutable-frame invalidation.
     Image = _pil_image()
-    crop = [float(value) for value in config["crop"]]  # type: ignore[index]
-    size = [int(value) for value in config["size"]]  # type: ignore[index]
-    with Image.open(image_path) as source:
+    with Image.open(path) as source:
         image = source.convert("RGB")
-        width, height = image.size
-        box = (
-            round(crop[0] * width),
-            round(crop[1] * height),
-            round(crop[2] * width),
-            round(crop[3] * height),
+        image.load()
+    return image
+
+
+@lru_cache(maxsize=4096)
+def _cached_feature(
+    path: str,
+    size_bytes: int,
+    mtime_ns: int,
+    config_json: str,
+) -> tuple[float, ...]:
+    Image = _pil_image()
+    config = json.loads(config_json)
+    crop = [float(value) for value in config["crop"]]
+    size = [int(value) for value in config["size"]]
+    image = _cached_rgb_image(path, size_bytes, mtime_ns)
+    width, height = image.size
+    box = (
+        round(crop[0] * width),
+        round(crop[1] * height),
+        round(crop[2] * width),
+        round(crop[3] * height),
+    )
+    region = image.crop(box)
+    representation = str(config.get("representation", "rgb"))
+    resampling = getattr(Image, "Resampling", Image).BOX
+    if representation == "bright_mask":
+        region = region.convert("L").point(lambda value: 255 if value >= 150 else 0)
+    elif representation == "dark_mask":
+        region = region.convert("L").point(lambda value: 255 if value <= 210 else 0)
+    elif representation == "ink_mask":
+        rgb_region = region.convert("RGB")
+        mask = Image.new("L", rgb_region.size)
+        pixels = (
+            rgb_region.get_flattened_data()
+            if hasattr(rgb_region, "get_flattened_data")
+            else rgb_region.getdata()
         )
-        region = image.crop(box)
-        representation = str(config.get("representation", "rgb"))
-        resampling = getattr(Image, "Resampling", Image).BOX
-        if representation == "bright_mask":
-            region = region.convert("L").point(lambda value: 255 if value >= 150 else 0)
-        elif representation == "dark_mask":
-            region = region.convert("L").point(lambda value: 255 if value <= 210 else 0)
-        elif representation == "ink_mask":
-            rgb_region = region.convert("RGB")
-            mask = Image.new("L", rgb_region.size)
-            pixels = (
-                rgb_region.get_flattened_data()
-                if hasattr(rgb_region, "get_flattened_data")
-                else rgb_region.getdata()
-            )
-            mask.putdata([
-                255
-                if (max(pixel) - min(pixel) >= 15 or sum(pixel) / 3 <= 205)
-                else 0
-                for pixel in pixels
-            ])
-            region = mask
-        elif representation == "local_contrast":
-            rgb_region = region.convert("RGB")
-            pixels = list(
-                rgb_region.get_flattened_data()
-                if hasattr(rgb_region, "get_flattened_data")
-                else rgb_region.getdata()
-            )
-            channel_background = []
-            for channel in range(3):
-                values = sorted(pixel[channel] for pixel in pixels)
-                channel_background.append(values[min(len(values) - 1, round(0.9 * (len(values) - 1)))])
-            distances = [
-                max(abs(pixel[channel] - channel_background[channel]) for channel in range(3))
-                for pixel in pixels
-            ]
-            maximum = max(distances, default=1)
-            mask = Image.new("L", rgb_region.size)
-            mask.putdata([round(255 * distance / max(1, maximum)) for distance in distances])
-            region = mask
-        elif representation != "rgb":
-            raise ValueError(f"unsupported pixel representation: {representation}")
-        reduced = region.resize((size[0], size[1]), resampling)
-        flattened = (
-            reduced.get_flattened_data()
-            if hasattr(reduced, "get_flattened_data")
-            else reduced.getdata()
+        mask.putdata([
+            255
+            if (max(pixel) - min(pixel) >= 15 or sum(pixel) / 3 <= 205)
+            else 0
+            for pixel in pixels
+        ])
+        region = mask
+    elif representation == "local_contrast":
+        rgb_region = region.convert("RGB")
+        pixels = list(
+            rgb_region.get_flattened_data()
+            if hasattr(rgb_region, "get_flattened_data")
+            else rgb_region.getdata()
         )
-        if representation in {"bright_mask", "dark_mask", "ink_mask", "local_contrast"}:
-            return [value / 255.0 for value in flattened]
-        return [channel / 255.0 for pixel in flattened for channel in pixel]
+        channel_background = []
+        for channel in range(3):
+            values = sorted(pixel[channel] for pixel in pixels)
+            channel_background.append(values[min(len(values) - 1, round(0.9 * (len(values) - 1)))])
+        distances = [
+            max(abs(pixel[channel] - channel_background[channel]) for channel in range(3))
+            for pixel in pixels
+        ]
+        maximum = max(distances, default=1)
+        mask = Image.new("L", rgb_region.size)
+        mask.putdata([round(255 * distance / max(1, maximum)) for distance in distances])
+        region = mask
+    elif representation != "rgb":
+        raise ValueError(f"unsupported pixel representation: {representation}")
+    reduced = region.resize((size[0], size[1]), resampling)
+    flattened = (
+        reduced.get_flattened_data()
+        if hasattr(reduced, "get_flattened_data")
+        else reduced.getdata()
+    )
+    if representation in {"bright_mask", "dark_mask", "ink_mask", "local_contrast"}:
+        return tuple(value / 255.0 for value in flattened)
+    return tuple(channel / 255.0 for pixel in flattened for channel in pixel)
+
+
+def clear_feature_cache() -> None:
+    _cached_feature.cache_clear()
+    _cached_rgb_image.cache_clear()
+
+
+def feature_cache_info() -> dict[str, object]:
+    return {
+        "images": _cached_rgb_image.cache_info()._asdict(),
+        "features": _cached_feature.cache_info()._asdict(),
+    }
+
+
+def extract_feature(image_path: Path, config: dict[str, object]) -> list[float]:
+    path = image_path.expanduser().resolve()
+    stat = path.stat()
+    config_json = json.dumps(config, sort_keys=True, separators=(",", ":"))
+    return list(_cached_feature(str(path), stat.st_size, stat.st_mtime_ns, config_json))
 
 
 def _mean(rows: list[list[float]]) -> list[float]:

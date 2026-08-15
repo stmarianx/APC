@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC bounded immutable-frame feature cache v1",
+  "status": "synthetic_latency_improved_not_promotion_eligible",
+  "created_at": "2026-08-15T10:05:00+03:00",
+  "change": {
+    "shared_immutable_image_cache": true,
+    "shared_feature_cache": true,
+    "image_cache_max_entries": 16,
+    "feature_cache_max_entries": 4096,
+    "invalidation_key": "resolved_path+size_bytes+mtime_ns",
+    "scope": "deterministic baseline feature extraction only"
+  },
+  "evaluation": {
+    "dataset_id": "apc-synthetic-hand-sequences-2026080302",
+    "split": "test",
+    "pairs": 96,
+    "completed_hands": 24,
+    "before_report_sha256": "f192b76e4e93b089f1b4abdc85f80367eb193e8f2f9d7e78b09cf1faecdc655e",
+    "after_report_sha256": "b0d76df6a1fb2f907b748048e2ec5aa2ed641b5e2e62c5b1a4f14b5096317b8d",
+    "before_latency_ms": {
+      "p50": 809.6302999999807,
+      "p95": 1102.5749999997743,
+      "max": 1342.6468000002387
+    },
+    "after_cold_latency_ms": {
+      "p50": 360.7403500000146,
+      "p95": 443.92517500011763,
+      "max": 538.3109999997941
+    },
+    "reduction_percent": {
+      "p50": 55.44,
+      "p95": 59.74
+    },
+    "after_cache_counters": {
+      "image_hits": 9147,
+      "image_misses": 192,
+      "feature_hits": 112,
+      "feature_misses": 9339
+    },
+    "completed_hand_exact_accuracy_before": 1.0,
+    "completed_hand_exact_accuracy_after": 1.0,
+    "prediction_sha256_before": "5247f23cc3b225443d340af5731111453c9bbde7a8570f675e17e360e4da74d2",
+    "prediction_sha256_after": "5247f23cc3b225443d340af5731111453c9bbde7a8570f675e17e360e4da74d2"
+  },
+  "gate_interpretation": {
+    "synthetic_end_to_end_500ms_target_met": true,
+    "perception_250ms_target_measured": false,
+    "controlled_visible_latency_measured": false,
+    "recommendation_allowed": false,
+    "promotion_eligible": false
+  },
+  "limitations": [
+    "This matched comparison uses the synthetic test split and the current laptop, not controlled-visible frames.",
+    "The earlier frozen semantic model card remains unchanged; this is a code-path latency supplement.",
+    "The cache is intentionally bounded for an 8 GB development machine.",
+    "Real perception generalization, controlled-visible calibration and the 250 ms perception target remain open."
+  ]
+}

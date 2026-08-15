@@ -1,6 +1,6 @@
 const $ = (id) => document.getElementById(id);
 const state = { project: null, selected: null, suggestion: null, drawnBox: null, dragStart: null };
-const BOX_COLORS = { table: "#72e6ff", seat: "#b8f171", hero_card: "#f3c86a", board_card: "#f3c86a", pot: "#ff9f68", action_button: "#d79cff" };
+const BOX_COLORS = { table: "#72e6ff", seat: "#b8f171", hero_card: "#f3c86a", board_card: "#f3c86a", pot: "#ff9f68", action_button: "#d79cff", turn_clock: "#ff7db8" };
 const DEFAULT_FIELDS = {
   table: {},
   seat: { seat_no: 1, occupied: true, is_hero: false, has_dealer_button: false, player_name: "Player", stack_bb: "100", raw_stack_text: "100 BB", status: "active", visibility: "clear" },
@@ -8,6 +8,7 @@ const DEFAULT_FIELDS = {
   board_card: { rank: "A", suit: "s", visibility: "clear" },
   pot: { amount_bb: "0", raw_text: "0 BB", visibility: "clear" },
   action_button: { action: "check", enabled: true, raw_text: "Check", visibility: "clear" },
+  turn_clock: { remaining_ms: 30000, raw_text: "30", visibility: "clear" },
 };
 
 async function api(path, options = {}) {
@@ -40,6 +41,7 @@ function boxLabelRows(annotation) {
   (objects.board_cards || []).forEach((item, index) => rows.push({ type: "board_card", label: `board ${index + 1}`, box: item.box }));
   if (objects.pot?.box) rows.push({ type: "pot", label: "pot", box: objects.pot.box });
   (objects.action_buttons || []).forEach((item, index) => rows.push({ type: "action_button", label: item.action || `action ${index + 1}`, box: item.box }));
+  if (objects.turn_clock?.box) rows.push({ type: "turn_clock", label: "turn clock", box: objects.turn_clock.box });
   return rows.filter((row) => row.box);
 }
 
@@ -96,6 +98,11 @@ function syncCanonicalState(annotation) {
   if (hero) annotation.state.hero_seat = hero.seat_no;
   if (dealer) annotation.state.dealer_seat = dealer.seat_no;
   if (objects.pot?.amount_bb != null) annotation.state.pot_bb = objects.pot.amount_bb;
+  if (objects.turn_clock?.remaining_ms != null) {
+    annotation.state.decision_time_remaining_ms = Number(objects.turn_clock.remaining_ms);
+    annotation.state.decision_deadline_source = "visible_timer";
+    annotation.state.hero_to_act = true;
+  }
   annotation.state.legal_actions = (objects.action_buttons || []).filter((button) => button.enabled).map((button) => button.action);
   const boardCount = (objects.board_cards || []).length;
   annotation.state.street = ({ 0: "preflop", 3: "flop", 4: "turn", 5: "river" })[boardCount] || annotation.state.street;
@@ -146,12 +153,55 @@ function applySuggestionToDraft(annotation, suggestion) {
     annotation.objects.pot.amount_bb = String(visible.pot_bb);
   }
 
+  const suggestedObjects = suggestion.suggested_objects;
+  if (suggestedObjects && typeof suggestedObjects === "object") {
+    if (suggestedObjects.table) annotation.objects.table = structuredClone(suggestedObjects.table);
+    (suggestedObjects.seats || []).forEach((row) => {
+      if (!row || !Number.isInteger(row.seat_no) || !row.box) return;
+      let seat = annotation.objects.seats.find((candidate) => candidate.seat_no === row.seat_no);
+      if (!seat) {
+        seat = {
+          seat_no: row.seat_no, occupied: row.seat_no === annotation.state.hero_seat,
+          is_hero: row.seat_no === annotation.state.hero_seat, has_dealer_button: false,
+          status: "unknown", visibility: "uncertain",
+        };
+        annotation.objects.seats.push(seat);
+      }
+      seat.box = structuredClone(row.box);
+    });
+    if (suggestedObjects.pot?.box) {
+      annotation.objects.pot = annotation.objects.pot || {
+        amount_bb: "0", raw_text: "", visibility: "uncertain",
+      };
+      annotation.objects.pot.box = structuredClone(suggestedObjects.pot.box);
+    }
+    if (suggestedObjects.turn_clock?.box) {
+      annotation.objects.turn_clock = annotation.objects.turn_clock || {
+        remaining_ms: 0, raw_text: "", visibility: "uncertain",
+      };
+      annotation.objects.turn_clock.box = structuredClone(suggestedObjects.turn_clock.box);
+    }
+    ["hero_cards", "board_cards", "action_buttons"].forEach((collection) => {
+      const rows = suggestedObjects[collection] || [];
+      annotation.objects[collection] = Array.isArray(annotation.objects[collection]) ? annotation.objects[collection] : [];
+      rows.forEach((row, index) => {
+        if (!row?.box) return;
+        if (!annotation.objects[collection][index]) {
+          annotation.objects[collection][index] = collection === "action_buttons"
+            ? { enabled: false, raw_text: "", visibility: "uncertain" }
+            : { rank: "unknown", suit: "unknown", visibility: "uncertain" };
+        }
+        annotation.objects[collection][index].box = structuredClone(row.box);
+      });
+    });
+  }
+
   annotation.provenance = annotation.provenance || {
     annotator: "human-review", annotation_version: 1, created_at: new Date().toISOString(),
   };
   annotation.provenance.verified = false;
   annotation.provenance.reviewer = null;
-  const marker = `model_suggestion_sha256=${suggestion.suggestion_sha256}`;
+  const marker = `suggestion_sha256=${suggestion.suggestion_sha256}`;
   const notes = annotation.provenance.notes || "";
   if (!notes.includes(marker)) annotation.provenance.notes = `${notes}${notes ? "\n" : ""}${marker}; human review required`;
   return annotation;
@@ -170,6 +220,7 @@ function renderSuggestion(suggestion) {
     suggestion_sha256: suggestion.suggestion_sha256,
     checkpoint_provenance: suggestion.checkpoint_provenance,
     visible_state: suggestion.suggested_visible_state,
+    suggested_objects: suggestion.suggested_objects,
     abstentions: suggestion.perception_abstentions,
   }, null, 2);
 }
@@ -249,6 +300,7 @@ $("applyBoxButton").addEventListener("click", () => {
     const object = { box: state.drawnBox, ...fields };
     if (type === "table") annotation.objects.table = state.drawnBox;
     else if (type === "pot") annotation.objects.pot = object;
+    else if (type === "turn_clock") annotation.objects.turn_clock = object;
     else {
       const collection = ({ seat: "seats", hero_card: "hero_cards", board_card: "board_cards", action_button: "action_buttons" })[type];
       annotation.objects[collection] = annotation.objects[collection] || [];

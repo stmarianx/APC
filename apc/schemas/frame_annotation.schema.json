@@ -70,7 +70,10 @@
         "action_history": {
           "type": "array",
           "items": {"$ref": "#/$defs/action_event"}
-        }
+        },
+        "hero_to_act": {"type": "boolean"},
+        "decision_time_remaining_ms": {"type": "integer", "minimum": 0},
+        "decision_deadline_source": {"enum": ["visible_timer", "training_table_clock", "provider_clock"]}
       }
     },
     "objects": {
@@ -114,6 +117,12 @@
           "anyOf": [
             {"type": "null"},
             {"$ref": "#/$defs/action_event"}
+          ]
+        },
+        "turn_clock": {
+          "anyOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/turn_clock"}
           ]
         }
       }
@@ -203,6 +212,17 @@
         "action": {"$ref": "#/$defs/action"},
         "enabled": {"type": "boolean"},
         "amount_bb": {"$ref": "#/$defs/nonnegative_bb"},
+        "raw_text": {"type": "string"},
+        "visibility": {"$ref": "#/$defs/visibility"}
+      }
+    },
+    "turn_clock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["box", "remaining_ms", "raw_text", "visibility"],
+      "properties": {
+        "box": {"$ref": "#/$defs/box"},
+        "remaining_ms": {"type": "integer", "minimum": 0},
         "raw_text": {"type": "string"},
         "visibility": {"$ref": "#/$defs/visibility"}
       }

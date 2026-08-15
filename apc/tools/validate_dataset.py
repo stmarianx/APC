@@ -166,6 +166,19 @@ def validate_annotation(
     _bb(state.get("pot_bb"), "$.state.pot_bb", issues)
     _bb(state.get("to_call_bb"), "$.state.to_call_bb", issues)
     _box(objects.get("table"), "$.objects.table", issues)
+    if "hero_to_act" in state and not isinstance(state.get("hero_to_act"), bool):
+        _issue(issues, "$.state.hero_to_act", "must be a boolean")
+    remaining_ms = state.get("decision_time_remaining_ms")
+    if remaining_ms is not None and (
+        not isinstance(remaining_ms, int) or isinstance(remaining_ms, bool) or remaining_ms < 0
+    ):
+        _issue(issues, "$.state.decision_time_remaining_ms", "must be a nonnegative integer")
+    if "decision_deadline_source" in state and state.get("decision_deadline_source") not in {
+        "visible_timer",
+        "training_table_clock",
+        "provider_clock",
+    }:
+        _issue(issues, "$.state.decision_deadline_source", "is not a supported deadline source")
 
     seats = objects.get("seats")
     if not isinstance(seats, list) or not 2 <= len(seats) <= 10:
@@ -255,6 +268,17 @@ def validate_annotation(
     legal_actions = state.get("legal_actions")
     if isinstance(legal_actions, list) and set(legal_actions) != enabled_actions:
         _issue(issues, "$.state.legal_actions", "must equal enabled visible action buttons")
+    raw_clock = objects.get("turn_clock")
+    if raw_clock is not None:
+        clock = _object(raw_clock, "$.objects.turn_clock", issues)
+        if clock is not None:
+            _required(clock, ("box", "remaining_ms", "raw_text", "visibility"), "$.objects.turn_clock", issues)
+            _box(clock.get("box"), "$.objects.turn_clock.box", issues)
+            clock_remaining = clock.get("remaining_ms")
+            if not isinstance(clock_remaining, int) or isinstance(clock_remaining, bool) or clock_remaining < 0:
+                _issue(issues, "$.objects.turn_clock.remaining_ms", "must be a nonnegative integer")
+            if clock_remaining != state.get("decision_time_remaining_ms"):
+                _issue(issues, "$.objects.turn_clock.remaining_ms", "must equal state.decision_time_remaining_ms")
     return issues
 
 

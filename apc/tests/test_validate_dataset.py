@@ -166,6 +166,26 @@ class DatasetValidatorTests(unittest.TestCase):
         issues = validate_annotation(item, require_image=False)
         self.assertFalse(any("call price" in issue for issue in issues))
 
+    def test_turn_clock_must_match_canonical_remaining_time(self) -> None:
+        item = annotation("session", "sample", "missing.bin", "0" * 64)
+        item["state"].update(
+            {
+                "hero_to_act": True,
+                "decision_time_remaining_ms": 12_500,
+                "decision_deadline_source": "visible_timer",
+            }
+        )
+        item["objects"]["turn_clock"] = {
+            "box": BOX,
+            "remaining_ms": 12_500,
+            "raw_text": "12.5",
+            "visibility": "clear",
+        }
+        self.assertEqual(validate_annotation(item, require_image=False), [])
+        item["objects"]["turn_clock"]["remaining_ms"] = 11_000
+        issues = validate_annotation(item, require_image=False)
+        self.assertTrue(any("turn_clock.remaining_ms" in issue for issue in issues))
+
     def test_manifest_rejects_cross_split_session_leakage(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

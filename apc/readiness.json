@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "model_name": "APC",
   "expanded_name": "AI Poker Coach",
-  "updated_at": "2026-08-03T01:25:16+03:00",
+  "updated_at": "2026-08-15T09:15:00+03:00",
   "overall_status": "not_ready_for_visible_table_training",
   "next_gate": "T",
   "gates": {
@@ -22,6 +22,32 @@
         "tests/test_validate_dataset.py: 3 passing tests"
       ],
       "missing": []
+    },
+    "R_portability": {
+      "status": "in_progress",
+      "required": [
+        "isolated reproducible dependency profiles",
+        "downloaded and private artifacts excluded from source control",
+        "fingerprinted dataset/checkpoint transfer contract",
+        "bounded 8 GB development configuration",
+        "clean-clone verification on a second machine",
+        "repository-visibility and licensing decision before final release"
+      ],
+      "evidence": [
+        "PORTABILITY_AND_RELEASE.md: source/artifact boundary, runtime profiles and public-development/private-release lifecycle",
+        "../scripts/setup_apc.ps1: core, vision, transcription and all dependency profiles",
+        "../analysis/requirements-transcription.txt: reproducible Faster-Whisper dependency declaration",
+        "requirements-dev.txt: APC vision/test dependency declaration",
+        "../.gitignore: rebuildable local runtimes, downloaded model caches, checkpoints and raw training data excluded from future commits",
+        "tools/artifact_manifest.py: portable relative-path SHA-256 transfer manifest creation and verification",
+        "tests/test_artifact_manifest.py: transfer, artifact-tamper, manifest-tamper and root-boundary tests"
+      ],
+      "missing": [
+        "remove already-tracked generated runtimes from the published branch",
+        "clean-clone test on this laptop",
+        "second-machine reproducibility test",
+        "final repository visibility and licensing decision"
+      ]
     },
     "K_knowledge_curriculum": {
       "status": "passed",
@@ -58,6 +84,7 @@
         "annotator/cli.py: init/import/template/save/status/export workflow",
         "annotator/project.py and cli.py import-folder: natural-order bulk session import, configurable intervals/subsampling, monotonic timestamps and deduplication",
         "annotator/suggestions.py: fingerprinted frame-bound model suggestions stored separately from verified annotations; review required, never auto-applied, and read-only when inspected",
+        "annotator/propagation.py: same-session verified-source layout propagation with semantic-field exclusion, immutable fingerprints and review-only drafts",
         "annotator/web.py and annotator/web_assets/: local annotation workbench",
         "tools/validate_dataset.py: annotation, split, fingerprint and minimum-dataset audit; --require-ready exits 3 for a valid manifest below Gate T",
         "tools/merge_datasets.py: deterministic validated source merge with dataset/session/table/hand namespacing, provenance fingerprints, duplicate-frame rejection and fresh group-exclusive export",
@@ -65,7 +92,7 @@
         "data/processed/synthetic-handseq-gate-v2: 2000 verified temporal frames, 250 complete hands, 125 group-exclusive sessions, 3 layouts and 2 themes; annotations_sha256=91f2340a4ec0e7cbd911f62244fe1fd7cf360e4e4106908116be3498ce6d1f94",
         "runs/synthetic-handseq-gate-v2/sequence_audit.json: 2000/2000 frames and 250/250 hand starts passed continuity; sequence_audit_sha256=c8ed9c6778b967b1f6d56029fa21cacdb0c355ee658ed051fdd47b33b6972a6d",
         "runs/synthetic-handseq-gate-v2/gate_t_validation.json: all minimums pass except controlled-visible frames/sessions; report_sha256=9ddf9d530469c2bb6ef7f07841124498e2e74151b1113c9a130d629547649c78",
-        "tests/: 102 passing APC tests",
+        "tests/: 121 passing APC tests",
         "annotator/web_assets/: browser-verified normalized overlay, drag-to-box editor, object-field merge and canonical-state synchronization; zero browser console errors",
         "runs/workbench-suggestion-smoke-20260803/browser_audit.json: frozen-reference browser audit passed review-only suggestion display and explicit unsaved-draft application; 0 saved/verified annotations and 0 console errors",
         "data/processed/synthetic-smoke-v2: 36 verified frames, 9 group-exclusive sessions, 3 layouts, 2 themes",
@@ -91,6 +118,7 @@
         "player_identity.py: fingerprinted uncertainty-aware persistent identity association with collision and duplicate-frame gates",
         "perception/baselines/synthetic_hand_sequence_v1.model_card.json: development validation exact on 2/2 hands; untouched test only 1/2 exact hands (50%) and explicitly failed; not promotion eligible"
         ,"perception/baselines/synthetic_hand_sequence_gate_v2.model_card.json: fresh train/validation/test checkpoint family; 96/96 test pairs and 24/24 complete hands exact, p95=1322.10 ms; real normalized OOD remains 1/6 exact; not promotion eligible"
+        ,"perception/baselines/synthetic_hand_sequence_latency_cache_v1.model_card.json: bounded shared decoding/features preserved the exact test prediction fingerprint and reduced matched cold p95 from 1102.57 ms to 443.93 ms; synthetic-only and not promotion eligible"
       ],
       "missing": [
         "500 verified controlled visible-table frames from at least 2 sessions"
@@ -118,7 +146,7 @@
         "perception/baselines/synthetic_hand_sequence_v1.model_card.json: exact two-hand validation but 50% exact untouched test, preserving the failed promotion result"
         ,"perception/baselines/synthetic_hand_sequence_gate_v2.model_card.json: new numeric-shape architecture and fresh independent complete-hand audit passed 24/24 exact synthetic test hands without test tuning"
       ],
-      "missing": ["controlled-visible trained perception checkpoint", "controlled-visible table-localization calibration", "human-readable visual player-name OCR or verified aliasing for the pseudonymous signature registry", "controlled-visible hand-boundary/history evaluation", "arbitrary-font/occlusion numeric OCR", "banner-free multi-action temporal reconstruction", "calibration report", "multi-frame controlled-visible out-of-distribution report", "interactive latency optimization and controlled-visible latency report"]
+      "missing": ["controlled-visible trained perception checkpoint", "controlled-visible table-localization calibration", "human-readable visual player-name OCR or verified aliasing for the pseudonymous signature registry", "controlled-visible hand-boundary/history evaluation", "arbitrary-font/occlusion numeric OCR", "visible turn-clock OCR/calibration and deadline-source audit", "banner-free multi-action temporal reconstruction", "calibration report", "multi-frame controlled-visible out-of-distribution report", "controlled-visible perception p95 <= 250 ms and end-to-end p95 <= 500 ms report"]
     },
     "C_coaching_prototype": {
       "status": "in_progress",
@@ -135,9 +163,11 @@
         "temporal_composite.py and backend_adapter.py: per-active-opponent effective stacks preserved; multiway scalar defaults to abstention and requires an explicit solver policy",
         "visual_identity_signature.py and hand_tracker.py: repeated name-band pixels can feed collision-gated pseudonymous identities while human_readable_names remains false",
         "../coach/src/poker_coach/state_transition.py: normalized BB all-in history accepted without weakening temporal invariants",
-        "APC/coaching cross-package verification: 102 APC tests and 165 coaching-core tests passing"
+        "deadline.py and tests/test_deadline.py: actual-deadline budgeting, adaptive strategy tiers, check/fold fallback, BB action semantics and stale/illegal/duplicate action rejection for a future controlled table",
+        "schemas/frame_annotation.schema.json and annotation workbench: optional visible turn-clock box, raw text, remaining milliseconds and canonical deadline source",
+        "APC/coaching cross-package verification: 121 APC tests and 165 coaching-core tests passing"
       ],
-      "missing": ["human-readable visual name OCR or verified aliasing", "calibrated controlled-visible bridge promotion", "end-to-end BB recommendation evaluation", "solver coverage audit", "interactive latency gate"]
+      "missing": ["human-readable visual name OCR or verified aliasing", "calibrated controlled-visible bridge promotion", "end-to-end BB recommendation evaluation", "solver coverage audit", "controlled virtual-table action provider evaluation", "interactive latency gate"]
     },
     "S_self_learning": {
       "status": "not_started",

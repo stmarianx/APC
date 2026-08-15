@@ -7,7 +7,14 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from apc.perception.baseline import BaselineCheckpoint, _image_path, _manifest_annotations, _percentile
+from apc.perception.baseline import (
+    BaselineCheckpoint,
+    _image_path,
+    _manifest_annotations,
+    _percentile,
+    clear_feature_cache,
+    feature_cache_info,
+)
 from apc.perception.boundary_baseline import load_boundary_checkpoint, predict_boundary
 from apc.perception.card_baseline import load_card_checkpoint
 from apc.perception.event_baseline import load_event_checkpoint
@@ -68,6 +75,7 @@ def evaluate_hand_tracker(
 ) -> dict[str, object]:
     if split not in {"validation", "test"}:
         raise ValueError("held-out evaluation split must be validation or test")
+    clear_feature_cache()
     manifest_file = Path(manifest_path).expanduser().resolve()
     frame_report = validate_manifest(manifest_file)
     sequence_report = audit_sequence_manifest(manifest_file)
@@ -268,11 +276,18 @@ def evaluate_hand_tracker(
         },
         "errors": errors[:20],
         "prediction_sha256": canonical_sha256(digest_rows),
+        "runtime_optimization": {
+            "shared_immutable_image_cache": True,
+            "shared_feature_cache": True,
+            "bounded_image_entries": 16,
+            "bounded_feature_entries": 4096,
+            "cache_info": feature_cache_info(),
+        },
         "limitations": [
             "Synthetic two-hand held-out session only; this is not promotion evidence.",
             "The synthetic boundary threshold is selected on development validation and is not calibrated.",
             "Player identities remain unresolved by perception, so the tracker always abstains from coaching.",
-            "Latency includes redundant image decoding and feature extraction in a reference implementation.",
+            "The bounded cache removes repeated immutable-frame decoding and identical feature extraction; remaining pixel heads are CPU-bound.",
         ],
     }
 

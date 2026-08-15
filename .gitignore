@@ -1,7 +1,21 @@
 __pycache__/
 *.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Rebuildable local Python runtimes and downloaded third-party dependencies.
+/.analysis_tools/
+/analysis/python_packages/
+
+# Hugging Face/CTranslate2 download cache. Keep only its explanatory README.
+/analysis/models/*
+!/analysis/models/README.md
+
 *.sqlite3-shm
 *.sqlite3-wal
+
 apc/data/raw/
 apc/data/processed/
 apc/checkpoints/
@@ -9,5 +23,3 @@ apc/runs/
 # Ignore MP4 video files
 *.mp4
 *.MP4
-
-analysis/models/models--Systran--faster-distil-whisper-small.en/snapshots/ef77d90526ccd62cde3808ee70626a01e5cf83e4/model.bin

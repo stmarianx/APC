@@ -354,8 +354,11 @@ class AnnotationProject:
         supplied_fingerprint = material.pop("suggestion_sha256", None)
         if material.get("schema_version") != "1.0.0":
             raise ValueError("Unsupported APC suggestion schema")
-        if material.get("kind") != "apc_perception_suggestion":
-            raise ValueError("Suggestion kind must be apc_perception_suggestion")
+        if material.get("kind") not in {
+            "apc_perception_suggestion",
+            "apc_layout_propagation_suggestion",
+        }:
+            raise ValueError("Unsupported APC suggestion kind")
         if material.get("sample_id") != record.sample_id:
             raise ValueError("Suggestion sample_id does not match the frame record")
         if material.get("capture_session_id") != record.capture_session_id:

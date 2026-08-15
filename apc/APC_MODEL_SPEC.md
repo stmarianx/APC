@@ -16,6 +16,14 @@ provider profile that implements one canonical observation contract. No
 strategy component may depend on screen coordinates, colors or a particular
 client name.
 
+APC is also machine-portable. Development begins with bounded CPU-first runs on
+the available 8 GB laptop, while datasets, checkpoints and run reports use
+relative paths and cryptographic fingerprints so training can move to a
+stronger machine without changing the model contract. Public source visibility
+during development does not require downloaded dependency caches or large
+training checkpoints to be committed. A clean-clone and artifact-integrity gate
+is required before moving training to another machine.
+
 ## 2. Required outputs
 
 For every accepted decision state APC returns:
@@ -94,6 +102,24 @@ Self-learning has two distinct loops:
 No candidate checkpoint replaces the active checkpoint automatically. It must
 pass the fixed regression suite, held-out perception set, strategy evaluation,
 calibration gates and paired virtual-chip evaluation against the incumbent.
+
+### 3.6 Deadline-aware decision and controlled action layer
+
+APC must read or receive the actual per-turn deadline; it must not assume a
+fixed 30-second clock. Every accepted decision carries a monotonic observation
+time, state revision/fingerprint, legal actions, deadline, safety margin and
+actuation reserve. The scheduler selects the strongest available strategy tier
+that fits the remaining compute budget: bounded refinement, cached exact node,
+cached blueprint or fast policy. If none fits, the controlled trainer uses an
+explicit check-then-fold fallback when legal. It never invents a call or size.
+
+Any action interface is downstream of strategy and is enabled only for a
+controlled virtual-chip training table. It supports fold, check, call, bet,
+raise and all-in through a provider-independent command contract. Before an
+action can be sent, the gate rechecks the state revision and fingerprint,
+observation age, legal actions, unambiguous BB sizing, deadline safety margin
+and duplicate authorization token. Perception/strategy code contains no screen
+coordinates and cannot directly click a client control.
 
 ## 4. Canonical visual annotation
 
