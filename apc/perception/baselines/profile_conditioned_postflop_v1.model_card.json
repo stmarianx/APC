@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "component": "uncertainty_aware_profile_conditioned_postflop_bridge",
+  "version": "profile_conditioned_postflop_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "offline_profile_conditioning_gate_passed_not_promoted",
+  "activation_authorized": false,
+  "recommendation_allowed": false,
+  "confidence_calibrated": false,
+  "artifact": {
+    "local_path": "apc/runs/profile-conditioned-postflop-v1",
+    "manifest_sha256": "cfd4411ec7c8eeaaadbf3c12e68fc658ae1c8d3b7bea2e670b2f4bdc4dc97f1e",
+    "artifact_fingerprint": "21c4407f53e20e2ffa82a13596f9f1c6e461e5311bcf7c14e220e913a193c2c8",
+    "audit_fingerprint": "f74010efdc51c14a7e4cc691768480ffe8cc0816e47774e3189717a972058fa3",
+    "dataset_fingerprint": "613f5022fdd8bf040a106929ee288fccd971175e561304f9d67a84599d370fd7",
+    "checkpoint_fingerprint": "acadc1002b1194286b6fc926e0f0944b9cc681ed190772df9e76c9fb3c837ead"
+  },
+  "profile_persistence": {
+    "unique_tendency_events": 450,
+    "profile_scenarios": ["overfolder", "sticky_passive", "aggressive_selective"],
+    "duplicate_event_updates": 0,
+    "atomic_snapshot": true,
+    "content_addressed": true,
+    "optimistic_stale_writer_rejection": true,
+    "exact_beta_parameters_persisted": true
+  },
+  "untouched_test": {
+    "complete_hands": 140,
+    "visible_states": 420,
+    "profile_state_evaluations": 1260,
+    "stable_action_coverage": {
+      "overfolder": "0.988095238095",
+      "sticky_passive": "0.902380952381",
+      "aggressive_selective": "0.7"
+    },
+    "uncertainty_abstentions": {
+      "overfolder": 0,
+      "sticky_passive": 36,
+      "aggressive_selective": 121
+    },
+    "incomplete_abstraction_abstentions_per_profile": 5,
+    "all_outputs_non_authorizing": true,
+    "gate_passed": true
+  },
+  "latency": {
+    "p50_ms": "2.30765",
+    "p95_ms": "3.7562",
+    "maximum_ms": "5.8796",
+    "threshold_p95_ms": "5",
+    "gate_passed": true,
+    "scope": "profile-mixture validation, six value lookups, uncertainty envelope and audit serialization; excludes perception"
+  },
+  "contract": {
+    "units": "BB",
+    "sparse_profile_behavior": "uniform_prior_observe_only",
+    "evidence_gate_required": true,
+    "uncertainty_stable_action_required": true,
+    "synthetic_probe_policy_bridge": true,
+    "gto_verified": false,
+    "external_actuation": false
+  },
+  "limitations": [
+    "The archetypes are constructed Beta-posterior profiles, not samples from a representative real-player population.",
+    "The bridge maps evidence to three hand-authored synthetic policy families and is not a learned opponent classifier.",
+    "The underlying value model still covers Hero in-position check/minimum-bet decisions on one trunk.",
+    "Stable actions are exposed for offline evaluation only and are not solver/GTO recommendations."
+  ]
+}

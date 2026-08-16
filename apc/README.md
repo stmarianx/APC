@@ -743,6 +743,28 @@ supports only check/minimum-bet decisions against the three declared synthetic
 opponent probes. It is offline evidence, not a GTO model, learned-player model,
 recommendation provider or promotion candidate.
 
+`coach/src/poker_coach/opponent_model.py` now persists exact Beta-posterior
+player evidence in a content-addressed JSON store. Unique event IDs prevent a
+replayed hand from incrementing a profile twice; atomic writes and optimistic
+revision checks reject corrupt snapshots and stale writers. Sparse profiles
+map to a uniform, observe-only prior. Evidenced fold, aggression and showdown
+posteriors map to a probability mixture over the three declared probe policies,
+with approximate 95% uncertainty propagated into every policy weight.
+
+`self_learning/profile_conditioned_postflop.py` applies that mixture to the
+postflop value candidate. An offline action is exposed only when the profile
+evidence gate passes, all six policy/action abstractions are covered, and the
+same action remains best throughout the mixture uncertainty envelope. The
+frozen audit used 450 unique profile events, three distinct archetypes and all
+420 untouched test states (1,260 profile/state evaluations). Stable-action
+coverage was 98.81% for the overfolder, 90.24% for the sticky-passive profile
+and 70.00% for the aggressive-selective profile; uncertain cases abstained.
+All outputs remained non-authorizing and bridge p95 latency was 3.7562 ms.
+
+This closes profile persistence and proves an uncertainty-aware synthetic-
+policy bridge. It does not establish a learned opponent classifier, real-player
+calibration, GTO correctness, or permission to emit evaluated coaching advice.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action

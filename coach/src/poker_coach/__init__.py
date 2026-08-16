@@ -102,6 +102,11 @@ from .strategy_selection import (
     SubgameRefiner,
 )
 from .trends import DEFAULT_SESSION_GAP, analyze_hero_trends
+from .opponent_model import (
+    PersistentProfileStore,
+    infer_opponent_policy_mixture,
+    validate_opponent_policy_mixture,
+)
 
 __all__ = [
     "ActionKind",
@@ -205,6 +210,9 @@ __all__ = [
     "SubgameRefiner",
     "DEFAULT_SESSION_GAP",
     "analyze_hero_trends",
+    "PersistentProfileStore",
+    "infer_opponent_policy_mixture",
+    "validate_opponent_policy_mixture",
     "WeightedCombo",
     "WeightedEquityResult",
     "DecisionSnapshot",
