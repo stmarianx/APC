@@ -673,6 +673,19 @@ cannot recommend, activate, estimate all-in, or generalize postflop. Those
 restrictions are enforced by inference and checkpoint validation rather than
 left as documentation only.
 
+`self_learning/evaluate_paired_value_confidence.py` bootstraps complete paired
+test deals rather than individual action rows. Across 5,000 deterministic
+bootstrap resamples, the 95% improvement lower bound remained above zero for
+call (+0.00525 BB), minimum raise (+0.01049 BB) and their aggregate (+0.00787
+BB). The statistical improvement gate therefore passes with 100% hand-class
+coverage.
+
+The same audit prevents a stronger claim: expected absolute value-calibration
+error was 0.156 BB for call and 0.312 BB for raise, with extreme-bin gaps of
+0.525 BB and 1.050 BB. The checkpoint remains explicitly uncalibrated and
+cannot recommend or activate. Validated table lookup itself is fast (0.0015 ms
+p95), but this excludes perception and end-to-end coaching latency.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action

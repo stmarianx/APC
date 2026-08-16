@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "component": "paired_preflop_value_confidence_and_calibration",
+  "version": "paired_value_confidence_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "confidence_improvement_gate_passed_calibration_pending",
+  "promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/paired-value-confidence-v1/audit.json",
+    "report_sha256": "5763802cd3a6ac498f9dd8e62d4cc406ac24872ae14208f3c8e291fbb467c9b8",
+    "evaluation_fingerprint": "d3f2a22fea737eb38794c3423cce5c57f97552324729e21e53b8039ae2822ab0"
+  },
+  "evidence": {
+    "dataset_fingerprint": "cc626b368419e68752eb516d59b5d0a4e53f9828668f897935966144ba997bc5",
+    "checkpoint_fingerprint": "86269bef32f5d539d7aa58bcc18feee6231c3e3065af08ebe1b66ada585a8892",
+    "test_groups": 732,
+    "test_examples": 1464,
+    "bootstrap_samples": 5000,
+    "bootstrap_unit": "complete_same_deal_call_raise_group",
+    "exact_hand_class_coverage": "1"
+  },
+  "improvement_95pct_intervals_bb": {
+    "call": {"point": "0.0253256265505", "lower": "0.00524727844031", "upper": "0.046371363835"},
+    "raise": {"point": "0.0506512531012", "lower": "0.0104945568807", "upper": "0.0927427276702"},
+    "aggregate": {"point": "0.0379884398259", "lower": "0.00787091766052", "upper": "0.0695570457526"}
+  },
+  "calibration": {
+    "call_expected_absolute_error_bb": "0.156100161865",
+    "call_maximum_bin_gap_bb": "0.524936499201",
+    "raise_expected_absolute_error_bb": "0.312200323729",
+    "raise_maximum_bin_gap_bb": "1.0498729984",
+    "confidence_calibrated": false
+  },
+  "latency": {
+    "validated_lookup_p95_ms": 0.0014999968698248267,
+    "validated_lookup_max_ms": 0.026900001103058457
+  },
+  "gates": {
+    "paired_improvement_confidence_passed": true,
+    "calibration_passed": false,
+    "activation_authorized": false,
+    "recommendation_allowed": false
+  },
+  "limitations": [
+    "Positive confidence intervals concern MAE improvement against action means, not proof of optimal poker actions.",
+    "Value calibration remains weak, particularly for extreme min-raise predictions.",
+    "Scope remains Hero-button preflop call/min-raise against one deterministic continuation policy."
+  ]
+}
