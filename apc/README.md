@@ -551,6 +551,27 @@ train/validation/test rows and a deterministic checkpoint. All rows represent
 the same underlying poker state, so its perfect top-action agreement and zero
 top-action regret demonstrate plumbing only—not generalization or promotion.
 
+## Controlled virtual-chip decision table
+
+`virtual_table.py` provides a platform-independent, internal-only virtual-chip
+decision episode for every imported solver node. Policies receive canonical BB
+state and legal actions without seeing the EV oracle. One legal action produces
+terminal, fingerprinted feedback containing the explicit BB command, imported
+EV, best available EV and regret. Illegal actions, duplicate terminal steps,
+ambiguous calls and sizes beyond the effective stack are rejected. The provider
+contains no screen coordinates, input hooks or external actuation.
+
+```powershell
+python -m apc.evaluate_virtual_table `
+  coach/examples/sample_solver_bundle.json `
+  --output apc/runs/virtual-table-v1/provider_audit.json
+```
+
+The frozen audit covered 9/9 nodes and 21/21 actions, rejected every illegal
+and duplicate probe, had zero external-actuation violations and measured 0.049
+ms p95 step latency. This establishes the decision-provider contract only:
+episodes use imported EV rewards and do not yet deal or complete full hands.
+
 ## Frozen visible-table OOD reference
 
 One previously supplied virtual-chip screenshot is retained as an immutable,

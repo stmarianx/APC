@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "component": "controlled_virtual_chip_decision_provider",
+  "version": "virtual_decision_table_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "decision_provider_audit_passed_full_hand_pending",
+  "promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/virtual-table-v1/provider_audit.json",
+    "report_sha256": "a22c2864c34808ff2b2f334ca77505c9f72f65b796a211df40ea8460054bf59e"
+  },
+  "solver_fixture": {
+    "source": "example_solver_export",
+    "source_version": "2026.08-fixture",
+    "nodes": 9,
+    "actions": 21
+  },
+  "metrics": {
+    "nodes_covered": 9,
+    "actions_covered": 21,
+    "illegal_action_rejections": 9,
+    "duplicate_step_rejections": 21,
+    "external_actuation_violations": 0,
+    "step_latency_p95_ms": 0.048999994760379195,
+    "step_latency_max_ms": 0.05679999594576657
+  },
+  "contract": {
+    "units": "BB",
+    "internal_virtual_chips": true,
+    "external_actuation": false,
+    "screen_or_input_control": false,
+    "legal_action_enforced": true,
+    "single_terminal_step": true,
+    "feedback_fingerprinted": true,
+    "full_hand_completed": false
+  },
+  "limitations": [
+    "Episodes contain one solver-backed decision rather than a complete dealt poker hand.",
+    "Rewards are imported action EVs in BB, not sampled terminal chip outcomes.",
+    "Full-hand self-play, paired candidate evaluation and promotion confidence intervals remain open."
+  ]
+}
