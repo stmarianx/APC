@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "component": "postflop_multi_policy_action_value_candidate",
+  "version": "postflop_policy_value_candidate_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "offline_generalization_and_latency_gates_passed_not_promoted",
+  "activation_authorized": false,
+  "recommendation_allowed": false,
+  "confidence_calibrated": false,
+  "artifact": {
+    "local_path": "apc/runs/postflop-policy-value-v1/checkpoint.json",
+    "file_sha256": "fec51a9a88b679bbd9e76f2c1a73783ebb5906a50265c94edfd4fd12a17332b1",
+    "checkpoint_fingerprint": "acadc1002b1194286b6fc926e0f0944b9cc681ed190772df9e76c9fb3c837ead",
+    "dataset_fingerprint": "613f5022fdd8bf040a106929ee288fccd971175e561304f9d67a84599d370fd7"
+  },
+  "selection": {
+    "selection_split": "validation_complete_hands_only",
+    "feature_family": "made_hand_texture",
+    "shrinkage": "0",
+    "test_tuning": false,
+    "supported_actions": ["check", "minimum_bet"],
+    "unsupported_actions": ["all_in"],
+    "opponent_policies": ["check_call", "fold_to_pressure", "made_hand_selective"]
+  },
+  "untouched_test": {
+    "independent_complete_hands": 140,
+    "policy_states": 1260,
+    "action_examples": 2520,
+    "mae_bb": "1.03697211548",
+    "street_policy_action_mean_baseline_mae_bb": "1.21047552726",
+    "mae_improvement_bb": "0.17350341178",
+    "exact_abstraction_coverage": "0.988095238095",
+    "decision_accuracy": "0.810317460317",
+    "policy_value_improvement_bb": "0.0777777777778",
+    "paired_complete_hand_bootstrap_95_bb": ["0.0396825396825", "0.116666666667"],
+    "bootstrap_samples": 2000,
+    "expected_absolute_calibration_error_bb": "0.0908745555194",
+    "maximum_calibration_bin_gap_bb": "0.232653331561",
+    "generalization_gate_passed": true
+  },
+  "validated_lookup_latency": {
+    "repetitions": 500,
+    "p50_ms": "1.388",
+    "p95_ms": "2.6422",
+    "maximum_ms": "118.4123",
+    "threshold_p95_ms": "5",
+    "gate_passed": true,
+    "scope": "checkpoint_validation_plus_value_lookup_only; excludes perception, profile inference and strategy integration"
+  },
+  "contract": {
+    "units": "BB",
+    "visible_features_only": true,
+    "opponent_card_decision_leakage": false,
+    "complete_hand_group_exclusive": true,
+    "solver_target": false,
+    "gto_verified": false,
+    "external_actuation": false
+  },
+  "limitations": [
+    "The declared opponent probes are deterministic synthetic policies, not learned player profiles or previously unseen policy families.",
+    "The candidate covers Hero in-position check and minimum-bet decisions on a preflop-call/checkdown trunk only.",
+    "Calibration diagnostics are descriptive; confidence remains explicitly uncalibrated.",
+    "The 118.4 ms maximum includes a cold import outlier, while the predeclared p95 lookup gate passed.",
+    "This artifact cannot authorize coaching, activation, promotion or external actuation."
+  ]
+}

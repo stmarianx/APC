@@ -725,6 +725,24 @@ bet value shifted from +0.239 BB on the flop to −0.011 BB on the turn and
 or learned opponent profiles—but they provide the first postflop dataset where
 street, texture and opponent response jointly affect the learning target.
 
+`self_learning/train_postflop_policy_value.py` consumes that immutable corpus
+without reopening its complete-hand splits. It selects a visible-feature
+abstraction and shrinkage only on validation hands, then evaluates check versus
+minimum bet once on 140 untouched test hands (1,260 policy states and 2,520
+action values). The selected made-hand/board-texture abstraction reduced MAE
+from the street/profile/action mean baseline's 1.2105 BB to 1.0370 BB and chose
+the higher realized action 81.03% of the time. Its realized policy value gained
+0.0778 BB per state; a 2,000-sample complete-hand paired bootstrap gave a 95%
+interval of [0.0397, 0.1167] BB. Exact abstraction coverage was 98.81%.
+
+The same audit reports descriptive value-calibration errors (0.0909 BB EACE,
+0.2327 BB maximum bin gap) but deliberately leaves confidence uncalibrated.
+Validated lookup p95 was 2.6422 ms across 500 calls against a 5 ms gate; this
+excludes perception, profile inference and strategy integration. The checkpoint
+supports only check/minimum-bet decisions against the three declared synthetic
+opponent probes. It is offline evidence, not a GTO model, learned-player model,
+recommendation provider or promotion candidate.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
