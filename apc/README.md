@@ -511,6 +511,32 @@ The declared expansion gate requires at least 100 decisions and at least 80%
 exact state coverage. This small fixture measures the gap; it does not satisfy
 that gate or visible-perception evaluation.
 
+## Completed-hand replay dataset
+
+`self_learning/replay_dataset.py` starts Gate S with an immutable dataset
+contract for exact solver-matched completed-hand decisions. Each BB-only row
+contains the canonical state, imported mixed-strategy target, observed action
+and EV-loss feedback when covered, solver provenance, a hand-group split and
+its own content fingerprint. Imported targets remain `gto_verified=false`.
+
+```powershell
+python -m apc.self_learning.replay_dataset build `
+  coach/examples/sample_solver_bundle.json `
+  coach/examples/sample_play_money_hand.txt `
+  apc/runs/replay-fixture-v1/dataset `
+  --dataset-id replay-fixture-v1
+
+python -m apc.self_learning.replay_dataset validate `
+  apc/runs/replay-fixture-v1/dataset
+```
+
+The builder refuses an existing destination, fingerprints source files,
+detects example or manifest tampering, and assigns all examples from a hand to
+one deterministic split. The first artifact has one exact training example
+from three decisions and deliberately remains `training_eligible=false`: it has
+no validation/test groups, candidate trainer, paired promotion evaluation or
+checkpoint rollback evidence.
+
 ## Frozen visible-table OOD reference
 
 One previously supplied virtual-chip screenshot is retained as an immutable,

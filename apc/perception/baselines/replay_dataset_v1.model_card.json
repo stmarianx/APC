@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "component": "completed_hand_replay_dataset",
+  "version": "replay_dataset_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "fixture_valid_not_training_eligible",
+  "promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/replay-fixture-v1/dataset",
+    "manifest_sha256": "3e66266d40859f5f3fbf374dbeb280e4d79275e923929869723145092f184eba",
+    "dataset_fingerprint": "bbe92e29b9a243bb332c52fcea3e21d13dd910908d4fa494f2de513f69880947",
+    "examples_sha256": "91e4617dac299e25ea8280ccb850053236e3158d8bce73806520b291d3128fad"
+  },
+  "metrics": {
+    "completed_hands": 1,
+    "input_hero_decisions": 3,
+    "eligible_exact_examples": 1,
+    "feedback_covered_examples": 1,
+    "group_count": 1,
+    "group_exclusive": true,
+    "tamper_detection_tested": true,
+    "overwrite_rejection_tested": true,
+    "deterministic_rebuild_tested": true
+  },
+  "contract": {
+    "units": "BB",
+    "exact_matches_only": true,
+    "gto_verified": false,
+    "training_eligible": false,
+    "source_fingerprinted": true,
+    "example_fingerprinted": true
+  },
+  "limitations": [
+    "The fixture contains one training example and has no validation or test group.",
+    "A candidate training pipeline, paired promotion evaluation and checkpoint rollback test remain unimplemented.",
+    "Imported solver targets remain explicitly unverified as GTO."
+  ]
+}
