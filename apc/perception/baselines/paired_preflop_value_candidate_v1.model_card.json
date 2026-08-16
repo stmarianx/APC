@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "component": "paired_preflop_counterfactual_value_candidate",
+  "version": "paired_preflop_value_candidate_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "fresh_offline_generalization_gate_passed_not_promoted",
+  "promotion_eligible": false,
+  "fresh_dataset": {
+    "dataset_id": "paired-preflop-counterfactual-v2",
+    "local_path": "apc/runs/paired-rollouts-v2",
+    "manifest_sha256": "3b96f694360c0175f1f020927174e072a1685869f9907ac6d83d3d95d09c4e68",
+    "dataset_fingerprint": "cc626b368419e68752eb516d59b5d0a4e53f9828668f897935966144ba997bc5",
+    "examples_sha256": "e73fdbbf587098c2adbf6199a928b8bb6d80b48ca3ed8cc6ed48d949e07e3d9a",
+    "paired_deals": 5000,
+    "counterfactual_examples": 20000,
+    "hand_seed_range": [10000, 14999],
+    "hero_hand_classes": 169,
+    "group_exclusive": true
+  },
+  "artifact": {
+    "local_path": "apc/runs/paired-value-v1/checkpoint.json",
+    "checkpoint_sha256": "0286f9fea3255e4706436576b67b51665973f29ae6d10cea5f49dab34c9d0dcf",
+    "checkpoint_fingerprint": "86269bef32f5d539d7aa58bcc18feee6231c3e3065af08ebe1b66ada585a8892"
+  },
+  "selection": {
+    "method": "validation_mae_only",
+    "selected_shrinkage": "0",
+    "test_used_for_selection": false
+  },
+  "test_metrics": {
+    "examples": 2196,
+    "exact_hand_class_coverage": "1",
+    "aggregate_mae_bb": "0.925523583315",
+    "aggregate_action_mean_baseline_mae_bb": "0.950849209866",
+    "aggregate_mae_improvement_bb": "0.0253256265506",
+    "call_examples": 732,
+    "call_mae_bb": "0.925523583315",
+    "call_baseline_mae_bb": "0.950849209866",
+    "call_improvement_bb": "0.0253256265506",
+    "raise_examples": 732,
+    "raise_mae_bb": "1.85104716663",
+    "raise_baseline_mae_bb": "1.90169841973",
+    "raise_improvement_bb": "0.0506512531011"
+  },
+  "gate": {
+    "criterion": "fresh_test_overall_call_and_raise_mae_below_action_means_with_95pct_class_coverage",
+    "passed": true,
+    "activation_authorized": false,
+    "recommendation_allowed": false,
+    "confidence_calibrated": false
+  },
+  "supported_scope": {
+    "street": "preflop",
+    "hero_position": "BTN",
+    "actions": ["fold", "call", "raise"],
+    "opponent_policy": "deterministic_check_call_v1"
+  },
+  "limitations": [
+    "All-in, postflop, non-button and multiway states abstain.",
+    "Values describe one deterministic continuation opponent, not GTO or population play.",
+    "The passing offline error gate is not calibration, coaching, exploit-safety or policy-promotion evidence."
+  ]
+}

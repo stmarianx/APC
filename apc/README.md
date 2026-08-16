@@ -658,6 +658,21 @@ call error by only 1.0%, exposing the remaining high-variance target rather
 than hiding it. This corpus is suitable for a fresh small-action counterfactual
 experiment, while all-in requires stratified sampling or normalized targets.
 
+`self_learning/train_paired_value.py` consumes a new, untouched 5,000-deal
+paired corpus and learns validation-selected hand-class/action shrinkage values
+for Hero-button preflop fold, call and minimum raise. It deliberately abstains
+on all-in and any state outside that narrow scope. On the untouched test split
+(732 deals per action), call MAE improved from 0.9508 BB to 0.9255 BB and raise
+MAE from 1.9017 BB to 1.8510 BB, with all 169 hand classes covered. This is the
+first APC sampled-outcome value candidate to pass its declared fresh offline
+generalization gate.
+
+The checkpoint remains non-promotable: its values are against one deterministic
+check/call continuation policy, not GTO or a calibrated population model. It
+cannot recommend, activate, estimate all-in, or generalize postflop. Those
+restrictions are enforced by inference and checkpoint validation rather than
+left as documentation only.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
