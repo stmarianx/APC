@@ -796,6 +796,26 @@ abstraction coverage is 99.40%, and validated lookup p95 is 3.2266 ms against
 a 5 ms gate. Calibration remains descriptive (0.1223 BB EACE, 0.2723 BB
 maximum bin gap), so confidence, recommendations and activation remain off.
 
+`self_learning/position_profile_conditioned_postflop.py` now connects that
+BTN/BB checkpoint to the persisted uncertainty-aware opponent mixture. It
+computes all six policy/action values inside the correct position slice and
+exposes an offline action only when the profile evidence gate and underlying
+position-value generalization gate pass, every policy/action abstraction is
+covered, and the same action wins throughout the approximate 95% mixture
+weight envelope. Sparse profiles remain observe-only; uncertainty reversals,
+unsupported positions and incomplete abstractions abstain with fingerprinted
+BB-only outputs.
+
+`evaluate_position_profile_conditioned.py` freezes and validates the bridge
+audit. On 166 untouched hands it evaluated 996 unique visible states (498 BTN,
+498 BB) against three independently fingerprinted 150-event archetypes, for
+2,988 profile/state evaluations. Stable-action coverage was 99.40% for the
+overfolder, 98.59% for sticky-passive and 79.22% for aggressive-selective. The
+tightest profile/position slice was aggressive-selective BB at 76.10%, above
+the predeclared 50% floor; every output remained non-authorizing. Integrated
+p95 was 4.6215 ms against 5 ms. This proves a fast two-position uncertainty
+bridge over synthetic probe policies, not population calibration or GTO.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action

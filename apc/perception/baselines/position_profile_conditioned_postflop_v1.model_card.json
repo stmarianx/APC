@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "component": "position_aware_uncertainty_profile_postflop_bridge",
+  "version": "position_profile_conditioned_postflop_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "offline_btn_bb_profile_conditioning_gate_passed_not_promoted",
+  "activation_authorized": false,
+  "recommendation_allowed": false,
+  "confidence_calibrated": false,
+  "artifact": {
+    "local_path": "apc/runs/position-profile-conditioned-postflop-v1",
+    "manifest_sha256": "42b4af67e12c716ff9e3a5213d4ff43b04264292b261b1d34783ea5e349960ba",
+    "artifact_fingerprint": "74014f4a35480b4509c3fa845d03d84a405d4c05f6a6b1f2000e20d8d074f0d4",
+    "audit_fingerprint": "2f94496a7e1bce2e347ae3a6abf4f6e0b3f9fdf948672680e2ea50811ad71bbd",
+    "dataset_fingerprint": "3f3cb4b2328dd8425d65b3254c77a103221944f269a5cc364f7ee996750c1310",
+    "checkpoint_fingerprint": "795c06f7d123231136065d3294430827c427d0d3392da89f61b164f54c66689c"
+  },
+  "profile_persistence": {
+    "unique_tendency_events": 450,
+    "profile_scenarios": [
+      "overfolder",
+      "sticky_passive",
+      "aggressive_selective"
+    ],
+    "duplicate_event_updates": 0,
+    "atomic_snapshot": true,
+    "content_addressed": true,
+    "optimistic_stale_writer_rejection": true,
+    "exact_beta_parameters_persisted": true
+  },
+  "untouched_test": {
+    "complete_hands": 166,
+    "visible_states": 996,
+    "visible_states_by_position": {
+      "BTN": 498,
+      "BB": 498
+    },
+    "profile_state_evaluations": 2988,
+    "stable_action_coverage": {
+      "overfolder": "0.993975903614",
+      "sticky_passive": "0.9859437751",
+      "aggressive_selective": "0.792168674699"
+    },
+    "stable_action_coverage_by_position": {
+      "overfolder": {
+        "BTN": "0.993975903614",
+        "BB": "0.993975903614"
+      },
+      "sticky_passive": {
+        "BTN": "0.9859437751",
+        "BB": "0.9859437751"
+      },
+      "aggressive_selective": {
+        "BTN": "0.823293172691",
+        "BB": "0.761044176707"
+      }
+    },
+    "uncertainty_abstentions": {
+      "overfolder": 0,
+      "sticky_passive": 8,
+      "aggressive_selective": 201
+    },
+    "incomplete_abstraction_abstentions_per_profile": 6,
+    "all_outputs_non_authorizing": true,
+    "gate_passed": true
+  },
+  "latency": {
+    "p50_ms": "3.2364",
+    "p95_ms": "4.6215",
+    "maximum_ms": "6.8768",
+    "threshold_p95_ms": "5",
+    "gate_passed": true,
+    "scope": "profile validation, six position-conditioned value lookups, uncertainty envelope and audit serialization; excludes perception"
+  },
+  "contract": {
+    "units": "BB",
+    "supported_positions": [
+      "BTN",
+      "BB"
+    ],
+    "sparse_profile_behavior": "uniform_prior_observe_only",
+    "profile_evidence_gate_required": true,
+    "position_value_generalization_gate_required": true,
+    "complete_abstraction_required": true,
+    "uncertainty_stable_action_required": true,
+    "minimum_stable_coverage_per_profile_position": "0.50",
+    "synthetic_probe_policy_bridge": true,
+    "gto_verified": false,
+    "external_actuation": false
+  },
+  "limitations": [
+    "The archetypes are constructed Beta-posterior profiles, not samples from a representative real-player population.",
+    "The bridge maps evidence to three hand-authored synthetic policy families and is not a learned opponent classifier.",
+    "The underlying value model covers only limped BTN/BB check and minimum-bet decisions.",
+    "Stable actions are offline evaluation outputs, not calibrated, promoted, solver/GTO or externally actionable recommendations."
+  ]
+}
