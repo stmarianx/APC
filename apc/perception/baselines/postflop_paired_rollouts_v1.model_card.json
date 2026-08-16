@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "component": "postflop_paired_counterfactual_rollout_dataset",
+  "version": "postflop_paired_rollouts_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "postflop_dataset_gate_passed_policy_diversity_pending",
+  "policy_promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/postflop-paired-rollouts-v1",
+    "manifest_sha256": "093e80895447a84ae79c9c870173f8561def2c9ed34b006186ef8ef3e6e7cf5a",
+    "examples_sha256": "9da8e9594093cf7e87202796e4fea1015abc05a82f8260a90f3ca23584de33ec",
+    "dataset_fingerprint": "8a9d86230231b3a76cc09d7a2ebad654d1ce0e7cb98edcfa363d9ac7ac20b6e8"
+  },
+  "coverage": {
+    "complete_hands": 2000,
+    "paired_states": 6000,
+    "counterfactual_examples": 18000,
+    "streets": ["flop", "turn", "river"],
+    "actions": ["check", "bet", "all_in"],
+    "public_texture_classes": 91,
+    "split_counts": {"train": 12636, "validation": 2673, "test": 2691},
+    "complete_hand_group_exclusive": true,
+    "opponent_card_decision_leaks": 0
+  },
+  "variance_audit": {
+    "minimum_bet_vs_check_standard_error_reduction_fraction": "0.5527864045",
+    "all_in_vs_check_standard_error_reduction_fraction": "0.0100494962878",
+    "street_results_identical": true
+  },
+  "contract": {
+    "units": "BB",
+    "common_random_cards_within_state": true,
+    "same_hand_all_streets_same_split": true,
+    "immutable_and_fingerprinted": true,
+    "solver_target": false,
+    "gto_verified": false,
+    "external_actuation": false
+  },
+  "limitations": [
+    "All states follow a preflop-call/checkdown trunk and cover Hero in position only.",
+    "The deterministic check/call continuation makes payoff results identical across flop, turn and river for the same action size.",
+    "Street-specific strategy learning requires opponent policies that can fold, bet and raise.",
+    "All-in variance remains too high for the current target design."
+  ]
+}

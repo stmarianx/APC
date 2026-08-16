@@ -698,6 +698,20 @@ This negative result is retained rather than tuning against the opened test
 split. Any next calibration method must be selected on validation data and use
 another untouched corpus for final evidence.
 
+`self_learning/postflop_paired_rollout_dataset.py` extends common-random-card
+counterfactuals through flop, turn and river. Every complete hand contributes a
+Hero in-position state on each street and evaluates check, minimum bet and
+all-in against identical hidden cards/runout. The frozen build contains 2,000
+hands, 6,000 paired states, 18,000 examples and 91 public texture classes; all
+nine rows from a hand stay in one split and no opponent cards enter decisions.
+
+Pairing again reduced minimum-bet comparison standard error by 55.3%, while
+all-in improved only 1.0%. Flop, turn and river payoff summaries were identical:
+with an opponent that always checks and calls, moving the same chip amount on a
+different street cannot teach timing strategy. The corpus establishes postflop
+state/action plumbing, but a useful next dataset needs continuation policies
+that fold, bet and raise, plus out-of-position trunks.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action

@@ -2,7 +2,7 @@
   "schema_version": "1.1.0",
   "model_name": "APC",
   "expanded_name": "AI Poker Coach",
-  "updated_at": "2026-08-16T21:30:00+03:00",
+  "updated_at": "2026-08-16T22:00:00+03:00",
   "overall_status": "not_ready_for_visible_table_training",
   "next_gate": "T",
   "gates": {
@@ -92,7 +92,7 @@
         "data/processed/synthetic-handseq-gate-v2: 2000 verified temporal frames, 250 complete hands, 125 group-exclusive sessions, 3 layouts and 2 themes; annotations_sha256=91f2340a4ec0e7cbd911f62244fe1fd7cf360e4e4106908116be3498ce6d1f94",
         "runs/synthetic-handseq-gate-v2/sequence_audit.json: 2000/2000 frames and 250/250 hand starts passed continuity; sequence_audit_sha256=c8ed9c6778b967b1f6d56029fa21cacdb0c355ee658ed051fdd47b33b6972a6d",
         "runs/synthetic-handseq-gate-v2/gate_t_validation.json: all minimums pass except controlled-visible frames/sessions; report_sha256=9ddf9d530469c2bb6ef7f07841124498e2e74151b1113c9a130d629547649c78",
-        "tests/: 189 passing APC tests",
+        "tests/: 192 passing APC tests",
         "annotator/web_assets/: browser-verified normalized overlay, drag-to-box editor, object-field merge and canonical-state synchronization; zero browser console errors",
         "runs/workbench-suggestion-smoke-20260803/browser_audit.json: frozen-reference browser audit passed review-only suggestion display and explicit unsaved-draft application; 0 saved/verified annotations and 0 console errors",
         "data/processed/synthetic-smoke-v2: 36 verified frames, 9 group-exclusive sessions, 3 layouts, 2 themes",
@@ -173,7 +173,7 @@
         "evaluate_solver_coverage.py and perception/baselines/solver_coverage_v1.model_card.json: reproducible completed-hand coverage audit with confidence/action coverage, dimensional slices and first-exclusion reasons; current 1-hand fixture covers 1/3 decisions exactly and fails the >=100-decision, >=80% exact-coverage gate",
         "virtual_table.py, evaluate_virtual_table.py and perception/baselines/virtual_decision_table_v1.model_card.json: internal-only BB decision provider covered 9 nodes/21 actions, rejected 9 illegal and 21 duplicate steps, recorded zero external-actuation violations and 0.049 ms p95 step latency",
         "full_hand_table.py, evaluate_full_hand_table.py and perception/baselines/full_hand_virtual_table_v1.model_card.json: deterministic heads-up no-limit engine completed 100/100 sampled-outcome hands and 540 actions with all actions/streets covered, zero replay/card/conservation/zero-sum failures, no external actuation and 0.50 ms p95 step latency",
-        "APC/coaching cross-package verification: 189 APC tests and 165 coaching-core tests passing"
+        "APC/coaching cross-package verification: 192 APC tests and 165 coaching-core tests passing"
       ],
       "missing": ["controlled-visible variable-font/Unicode name OCR calibration", "calibrated controlled-visible bridge promotion", "controlled-visible pixel-to-BB recommendation evaluation", "representative completed-hand corpus with >=100 decisions and >=80% exact solver coverage", "solver expansion for uncovered player-count/card/history slices", "multiway/rake/side-pot virtual environment evaluation", "interactive latency gate"]
     },
@@ -199,9 +199,10 @@
         "self_learning/paired_rollout_dataset.py and perception/baselines/paired_counterfactual_rollouts_v1.model_card.json: 2,000 same-deal preflop rollouts produced 8,000 fold/call/raise/all-in counterfactuals across all 169 hand classes; pairing reduced raise-vs-call standard error 55.3% but all-in only 1.0%, with immutable group-exclusive evidence",
         "self_learning/train_paired_value.py and perception/baselines/paired_preflop_value_candidate_v1.model_card.json: validation-selected hand-class/action value candidate on a fresh 5,000-deal corpus passed its untouched offline gate with 100% class coverage, improving call MAE 0.0253 BB and min-raise MAE 0.0507 BB over action means; all-in/postflop/non-BTN abstain and activation remains prohibited",
         "self_learning/evaluate_paired_value_confidence.py and perception/baselines/paired_value_confidence_v1.model_card.json: 5,000 hand-paired bootstrap resamples gave positive 95% improvement lower bounds for call (0.00525 BB), raise (0.01049 BB) and aggregate (0.00787 BB), but value calibration errors of 0.156/0.312 BB kept confidence and recommendations disabled; validated lookup p95=0.0015 ms",
-        "self_learning/calibrate_paired_value.py and perception/baselines/paired_value_calibration_v1.model_card.json: predeclared constrained affine calibration on a disjoint 5,000-deal corpus met EACE/max-gap limits but failed MAE non-regression (+0.0220 BB call, +0.0440 BB raise), so confidence calibration and activation remained false without test tuning"
+        "self_learning/calibrate_paired_value.py and perception/baselines/paired_value_calibration_v1.model_card.json: predeclared constrained affine calibration on a disjoint 5,000-deal corpus met EACE/max-gap limits but failed MAE non-regression (+0.0220 BB call, +0.0440 BB raise), so confidence calibration and activation remained false without test tuning",
+        "self_learning/postflop_paired_rollout_dataset.py and perception/baselines/postflop_paired_rollouts_v1.model_card.json: 2,000 complete hands yielded 6,000 common-state flop/turn/river decisions and 18,000 check/bet/all-in rows across 91 textures with full hand-group isolation; 55.3% bet-vs-check error reduction, but identical street payoffs expose the fixed check/call policy limitation"
       ],
-      "missing": ["representative diverse multi-hand solver-labelled replay dataset with non-empty group-exclusive train/validation/test splits", "stratified or normalized all-in counterfactual targets with materially lower variance", "postflop, non-button and multiple-opponent-policy paired counterfactual coverage", "held-out value calibration that meets a declared pre-evaluation threshold", "candidate generalization evaluation across unseen poker states beyond preflop hand classes", "paired declared-incumbent evaluation across >=30 independent nodes with >=90% coverage and a 95% improvement lower bound above zero", "paired incumbent invalid-state and unsafe-confidence non-regression with broader fuzzing", "production registry bootstrap and disaster-recovery rollback audit"]
+      "missing": ["representative diverse multi-hand solver-labelled replay dataset with non-empty group-exclusive train/validation/test splits", "stratified or normalized all-in counterfactual targets with materially lower variance", "postflop opponent policies with folds/bets/raises and non-button paired trunks", "held-out value calibration that meets a declared pre-evaluation threshold without MAE regression", "candidate generalization evaluation across unseen postflop textures and opponent policies", "paired declared-incumbent evaluation across >=30 independent nodes with >=90% coverage and a 95% improvement lower bound above zero", "paired incumbent invalid-state and unsafe-confidence non-regression with broader fuzzing", "production registry bootstrap and disaster-recovery rollback audit"]
     }
   }
 }
