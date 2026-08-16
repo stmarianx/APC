@@ -644,6 +644,20 @@ indicates that one sampled showdown return per behavior action is too noisy;
 the next dataset must average repeated paired rollouts or use separately
 verified counterfactual solver values.
 
+`self_learning/paired_rollout_dataset.py` now supplies the first variance-
+controlled alternative. For each Hero-button preflop state it evaluates fold,
+call, minimum raise and all-in using exactly the same hole cards and board
+runout, then continues with a declared check/call opponent policy. All four
+counterfactuals share one hand group and split; opponent cards remain absent
+from the learning state.
+
+The frozen build contains 2,000 paired deals, 8,000 action examples and all 169
+starting-hand classes. Common-random-card pairing reduced raise-versus-call
+standard error from 0.0493 BB to 0.0220 BB (55.3%). It reduced all-in-versus-
+call error by only 1.0%, exposing the remaining high-variance target rather
+than hiding it. This corpus is suitable for a fresh small-action counterfactual
+experiment, while all-in requires stratified sampling or normalized targets.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
