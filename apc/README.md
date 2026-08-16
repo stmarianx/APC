@@ -488,6 +488,29 @@ actuation-authorization violations and 0.681 ms p95 recommendation latency on
 this laptop. It starts from exact backend states and therefore does not satisfy
 the controlled-visible end-to-end or solver-coverage gates.
 
+## Solver coverage audit
+
+`evaluate_solver_coverage.py` measures an imported solver bundle against Hero
+decision contexts reconstructed from completed hands. Its provider-independent
+core accepts parsed hand objects; the initial command-line intake uses the
+currently supported text hand-history parser. It reports matcher confidence,
+observed-action coverage, street/player-count/position slices, and the first
+structural exclusion reason for every unmatched decision.
+
+```powershell
+python -m apc.evaluate_solver_coverage `
+  coach/examples/sample_solver_bundle.json `
+  coach/examples/sample_play_money_hand.txt `
+  --output apc/runs/solver-coverage-v1/audit.json
+```
+
+The frozen fixture audit is valid but fails promotion: only 1/3 Hero decisions
+has an exact matching node and covered observed action. The preflop decision
+has no three-player node; the turn decision has no suit-isomorphic card node.
+The declared expansion gate requires at least 100 decisions and at least 80%
+exact state coverage. This small fixture measures the gap; it does not satisfy
+that gate or visible-perception evaluation.
+
 ## Frozen visible-table OOD reference
 
 One previously supplied virtual-chip screenshot is retained as an immutable,

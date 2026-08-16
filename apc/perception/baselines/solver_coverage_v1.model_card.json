@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "component": "offline_decision_solver_coverage",
+  "version": "solver_coverage_v1",
+  "evaluated_at": "2026-08-16",
+  "evaluation_kind": "completed_hand_fixture_audit",
+  "audit_valid": true,
+  "promotion_eligible": false,
+  "coverage_gate": {
+    "passed": false,
+    "minimum_decisions": 100,
+    "minimum_exact_coverage": "0.80",
+    "observed_decisions": 3,
+    "observed_exact_coverage": "0.3333333333333333333333333333"
+  },
+  "corpus": {
+    "hands": 1,
+    "hero_decisions": 3,
+    "source": "coach/examples/sample_play_money_hand.txt",
+    "sha256": "5ec870fe5809e601a68d7c779439d63983b3a71572545687167457abcb781a58"
+  },
+  "solver": {
+    "nodes": 9,
+    "source": "coach/examples/sample_solver_bundle.json",
+    "sha256": "c9aae7c8f1b397a952b0fe889e48993839329211130d72cc26d80e7896f64fd7"
+  },
+  "metrics": {
+    "matched_decisions": 1,
+    "unmatched_decisions": 2,
+    "exact_matches": 1,
+    "observed_actions_covered": 1,
+    "state_coverage": "0.3333333333333333333333333333",
+    "observed_action_coverage": "0.3333333333333333333333333333",
+    "exclusion_counts": {
+      "no_card_isomorphic_nodes": 1,
+      "no_player_count_nodes": 1
+    }
+  },
+  "report": {
+    "local_path": "apc/runs/solver-coverage-v1/audit.json",
+    "sha256": "8e9b5cfbe2e47e815f5c9ecf393dfef7e81691a350d8a78c99c0a71c9dbe134a"
+  },
+  "limitations": [
+    "The fixture has one hand and three Hero decisions, far below the 100-decision minimum.",
+    "The parsed replay context does not carry a table rake declaration, so matcher-exact coverage is not equivalent to a fully specified live-state exact match.",
+    "The audit starts after hand parsing and excludes visible-table perception accuracy and latency."
+  ]
+}
