@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "component": "sampled_terminal_return_state_value_candidate",
+  "version": "state_value_candidate_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "generalization_gate_failed",
+  "promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/value-model-v1/checkpoint.json",
+    "checkpoint_sha256": "792b0c91dcf6f147e4227b42a17c082ee73f0fd3fe55d8cd88782a1846680f9f",
+    "checkpoint_fingerprint": "154e55cd46dafe10dc3c517cb65969f4474ff776e78cb0bea30862f95b91177c"
+  },
+  "dataset": {
+    "dataset_id": "full-hand-trajectory-v1",
+    "dataset_fingerprint": "d5330f12cda113d5b6279140908d145fd6d55f74428d429db75b714dd3657f69",
+    "train_examples": 222,
+    "validation_examples": 31,
+    "test_examples": 27,
+    "hand_group_exclusive": true
+  },
+  "metrics": {
+    "train_mae_bb": "7.59971388695",
+    "validation_mae_bb": "14.3317618828",
+    "test_mae_bb": "15.034431571",
+    "test_train_mean_baseline_mae_bb": "14.8145645646",
+    "test_mae_improvement_bb": "-0.219867006441",
+    "test_rmse_bb": "29.5615815482",
+    "test_bias_bb": "-3.26552465022",
+    "test_sign_accuracy": "0.518518518519"
+  },
+  "gate": {
+    "criterion": "test_mae_below_train_mean_baseline",
+    "passed": false,
+    "activation_authorized": false,
+    "recommendation_allowed": false,
+    "confidence_calibrated": false
+  },
+  "diagnosis": [
+    "A state-only target cannot distinguish the different deterministic behavior actions that generated terminal returns.",
+    "The next candidate must estimate action-conditioned value and must use a fresh held-out corpus to avoid tuning on this failed test split."
+  ],
+  "limitations": [
+    "The small sampled-return corpus has high showdown variance and deterministic probe behavior.",
+    "This checkpoint is retained as negative evidence and must not be used for coaching, policy selection or activation."
+  ]
+}

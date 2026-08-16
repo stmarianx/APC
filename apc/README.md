@@ -611,6 +611,24 @@ fingerprints validate, and all splits are hand-exclusive. The sampled return is
 useful for outcome/value-learning experiments, but the deterministic coverage
 behavior is neither a solver target nor a GTO or promotion label.
 
+`self_learning/train_value.py` provides the first deterministic terminal-return
+value baseline. It uses suit-renaming-invariant hashed state features, trains
+only on the training hand groups, reports MAE, RMSE, bias, sign accuracy and
+five calibration bins independently for every split, fingerprints the
+checkpoint and refuses activation or recommendations. Invalid live states and
+any exposed opponent hole cards cause inference abstention.
+
+```powershell
+python -m apc.self_learning.train_value train `
+  apc/runs/full-hand-dataset-v1 apc/runs/value-model-v1/checkpoint.json
+```
+
+The frozen baseline failed honestly: test MAE was 15.03 BB versus 14.81 BB for
+the training-mean baseline, a -0.22 BB degradation. It remains uncalibrated and
+unusable for policy selection. This identifies the next required architecture:
+action-conditioned value estimation evaluated once on a fresh hand corpus;
+the failed test split must not be reused for model selection.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
