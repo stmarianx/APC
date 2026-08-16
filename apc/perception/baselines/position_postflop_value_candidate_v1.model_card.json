@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "component": "matched_position_postflop_action_value_candidate",
+  "version": "position_postflop_value_candidate_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "offline_btn_bb_generalization_and_latency_gates_passed_not_promoted",
+  "activation_authorized": false,
+  "recommendation_allowed": false,
+  "confidence_calibrated": false,
+  "artifact": {
+    "local_path": "apc/runs/position-postflop-value-v1/checkpoint.json",
+    "file_sha256": "71d560bb4890e968526a93fd2821793c40ba9f14cd12d0e9810a36fceca2b5e0",
+    "checkpoint_fingerprint": "795c06f7d123231136065d3294430827c427d0d3392da89f61b164f54c66689c",
+    "dataset_fingerprint": "3f3cb4b2328dd8425d65b3254c77a103221944f269a5cc364f7ee996750c1310"
+  },
+  "selection": {
+    "selection_split": "validation_matched_complete_hands_only",
+    "feature_family": "made_hand_texture",
+    "shrinkage": "0",
+    "test_tuning": false,
+    "supported_positions": ["BTN", "BB"],
+    "supported_actions": ["check", "minimum_bet"],
+    "unsupported_actions": ["all_in"],
+    "opponent_policies": ["check_call", "fold_to_pressure", "made_hand_selective"]
+  },
+  "untouched_test": {
+    "independent_matched_complete_hands": 166,
+    "policy_states": 2988,
+    "action_examples": 5976,
+    "mae_bb": "1.05927255858",
+    "position_street_policy_action_mean_baseline_mae_bb": "1.20250646314",
+    "mae_improvement_bb": "0.143233904563",
+    "exact_abstraction_coverage": "0.993975903614",
+    "decision_accuracy": "0.79484605087",
+    "policy_value_improvement_bb": "0.0856760374833",
+    "paired_matched_hand_bootstrap_95_bb": ["0.0468540829987", "0.128514056225"],
+    "bootstrap_samples": 2000,
+    "expected_absolute_calibration_error_bb": "0.122287117995",
+    "maximum_calibration_bin_gap_bb": "0.272265190908",
+    "generalization_gate_passed": true
+  },
+  "position_slices": {
+    "BTN": {
+      "mae_improvement_bb": "0.142002525722",
+      "decision_accuracy": "0.79250334672",
+      "policy_value_improvement_bb": "0.0883534136546"
+    },
+    "BB": {
+      "mae_improvement_bb": "0.144465283403",
+      "decision_accuracy": "0.79718875502",
+      "policy_value_improvement_bb": "0.0829986613119"
+    }
+  },
+  "validated_lookup_latency": {
+    "repetitions": 500,
+    "p50_ms": "2.2657",
+    "p95_ms": "3.2266",
+    "maximum_ms": "350.1961",
+    "threshold_p95_ms": "5",
+    "gate_passed": true,
+    "scope": "checkpoint validation plus one position-conditioned lookup; excludes perception, profile inference and strategy integration"
+  },
+  "contract": {
+    "units": "BB",
+    "visible_features_only": true,
+    "opponent_card_decision_leakage": false,
+    "matched_complete_hand_group_exclusive": true,
+    "solver_target": false,
+    "gto_verified": false,
+    "external_actuation": false
+  },
+  "limitations": [
+    "The opponent probes are deterministic synthetic policies, not learned player profiles or population play.",
+    "The candidate covers limped-pot check/minimum-bet decisions; raised pots, facing-bet nodes and multiple sizes remain absent.",
+    "Calibration diagnostics are descriptive and confidence remains explicitly uncalibrated.",
+    "The 350.2 ms maximum is a cold runtime outlier; the predeclared p95 lookup gate passed.",
+    "This artifact cannot authorize coaching, activation, promotion or external actuation."
+  ]
+}

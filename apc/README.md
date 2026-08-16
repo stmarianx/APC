@@ -781,6 +781,21 @@ river because an in-position opponent can stab after Hero checks. This closes
 the basic out-of-position data-path gap but does not yet cover raised pots,
 facing-bet Hero nodes, multiple bet sizes or learned opponent populations.
 
+`self_learning/train_position_postflop_value.py` trains the corresponding
+position-aware value candidate without reopening the matched-hand splits. It
+selects abstraction and shrinkage on validation hands, then evaluates once on
+166 untouched matched seeds (2,988 policy states and 5,976 check/minimum-bet
+values). MAE fell from the position/street/profile/action baseline's 1.2025 BB
+to 1.0593 BB. The selected action gained 0.0857 BB per state with a matched-
+hand bootstrap 95% interval of [0.0469, 0.1285] BB.
+
+Both required position slices pass independently: BTN improves MAE by 0.1420
+BB with 79.25% decision accuracy and +0.0884 BB policy value; BB improves MAE
+by 0.1445 BB with 79.72% accuracy and +0.0830 BB policy value. Exact
+abstraction coverage is 99.40%, and validated lookup p95 is 3.2266 ms against
+a 5 ms gate. Calibration remains descriptive (0.1223 BB EACE, 0.2723 BB
+maximum bin gap), so confidence, recommendations and activation remain off.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
