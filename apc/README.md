@@ -712,6 +712,19 @@ different street cannot teach timing strategy. The corpus establishes postflop
 state/action plumbing, but a useful next dataset needs continuation policies
 that fold, bet and raise, plus out-of-position trunks.
 
+`self_learning/postflop_policy_rollout_dataset.py` adds three explicit opponent
+continuations: always check/call, always fold when pressured, and a board-aware
+selective policy that folds air, calls one pair, and bets or raises two-pair or
+better. The frozen 1,000-hand build contains 27,000 examples across 9,000
+street/policy states and all 91 texture classes. The selective policy produced
+2,028 folds, 3,315 calls, 1,790 bets and 657 raises.
+
+Unlike the check/call-only corpus, timing now matters: selective-policy minimum-
+bet value shifted from +0.239 BB on the flop to −0.011 BB on the turn and
+−0.184 BB on the river. These are probe-policy outcomes—not GTO recommendations
+or learned opponent profiles—but they provide the first postflop dataset where
+street, texture and opponent response jointly affect the learning target.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
