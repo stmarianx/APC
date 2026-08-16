@@ -572,6 +572,17 @@ and duplicate probe, had zero external-actuation violations and measured 0.049
 ms p95 step latency. This establishes the decision-provider contract only:
 episodes use imported EV rewards and do not yet deal or complete full hands.
 
+`self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
+and paired node-bootstrap confidence intervals on this provider. Inference
+renormalizes only a fully supported legal-action set and abstains if any action
+is outside the checkpoint vocabulary. The first audit compares the smoke
+candidate with a clearly labelled uniform-action reference, not an incumbent.
+It covers only 1/9 nodes: the other eight require bet sizes absent from training.
+The covered node improves reference EV by 0.0783 BB, but one node, 11.11%
+coverage and a non-incumbent comparator categorically fail promotion. The
+declared gate requires at least 30 independent nodes, at least 90% action-set
+coverage, a paired 95% lower bound above zero and a real incumbent comparator.
+
 ## Frozen visible-table OOD reference
 
 One previously supplied virtual-chip screenshot is retained as an immutable,

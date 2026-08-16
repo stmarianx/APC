@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "component": "paired_virtual_policy_evaluation",
+  "version": "paired_policy_reference_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "audit_passed_promotion_gate_failed",
+  "promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/paired-policy-v1/reference_audit.json",
+    "report_sha256": "bb2d4f2ce00e2f4b9a642eac43575e81dc1eaa11d655c67e5772429f2ee082c5",
+    "candidate_checkpoint_fingerprint": "f0063b2dfc5a4a50aa3df0f5a9e0f50610f16931aa78ab8a2af3b8944d3de5dc"
+  },
+  "comparison": {
+    "kind": "uniform_legal_action_reference",
+    "qualifies_as_incumbent": false,
+    "solver_nodes": 9,
+    "evaluated_nodes": 1,
+    "unsupported_nodes": 8,
+    "coverage": "0.1111111111111111111111111111"
+  },
+  "objective": {
+    "units": "BB",
+    "candidate_mean_ev_bb": "2.49496705334560",
+    "reference_mean_ev_bb": "2.416666666666666666666666667",
+    "mean_improvement_bb": "0.078300386678933333333333333",
+    "bootstrap_95_lower_bb": "0.078300386678933333333333333",
+    "bootstrap_95_upper_bb": "0.078300386678933333333333333",
+    "bootstrap_samples": 5000
+  },
+  "promotion_gate": {
+    "passed": false,
+    "minimum_independent_nodes": 30,
+    "minimum_coverage": "0.90",
+    "activation_authorized": false,
+    "reasons": [
+      "minimum_independent_nodes_not_met",
+      "candidate_action_vocabulary_coverage_below_threshold",
+      "uniform_reference_is_not_a_declared_incumbent"
+    ]
+  },
+  "limitations": [
+    "The confidence interval contains one independent node and is not meaningful promotion evidence despite being positive.",
+    "The comparator is a uniform reference rather than a declared incumbent checkpoint.",
+    "Episodes use imported solver EV rather than full-hand sampled terminal outcomes."
+  ]
+}

@@ -300,6 +300,51 @@ def validate_candidate_checkpoint(checkpoint_or_path: dict[str, object] | str | 
     }
 
 
+def predict_candidate(
+    checkpoint_or_path: dict[str, object] | str | Path,
+    state: dict[str, object],
+    legal_actions: list[str],
+) -> dict[str, object]:
+    if isinstance(checkpoint_or_path, dict):
+        checkpoint = checkpoint_or_path
+    else:
+        checkpoint = json.loads(Path(checkpoint_or_path).read_text(encoding="utf-8"))
+    validation = validate_candidate_checkpoint(checkpoint)
+    if not validation["valid"]:
+        raise ValueError("candidate checkpoint is invalid: " + "; ".join(validation["issues"]))
+    if not legal_actions or len(legal_actions) != len(set(legal_actions)):
+        raise ValueError("legal_actions must be a non-empty unique list")
+    vocabulary = set(checkpoint["action_vocabulary"])
+    unsupported = sorted(action for action in legal_actions if action not in vocabulary)
+    if unsupported:
+        return {
+            "schema_version": "1.0.0",
+            "status": "abstain_unsupported_actions",
+            "probabilities": None,
+            "unsupported_actions": unsupported,
+            "checkpoint_fingerprint": checkpoint["checkpoint_fingerprint"],
+            "activation_authorized": False,
+        }
+    dimension = checkpoint["configuration"]["feature_dimension"]
+    weights = {
+        action: [float(value) for value in checkpoint["weights"][action]]
+        for action in legal_actions
+    }
+    probabilities = _probabilities(weights, hashed_features(state, dimension), legal_actions)
+    result = {
+        "schema_version": "1.0.0",
+        "status": "prediction_ready",
+        "probabilities": {
+            action: format(probabilities[action], ".12g") for action in legal_actions
+        },
+        "unsupported_actions": [],
+        "checkpoint_fingerprint": checkpoint["checkpoint_fingerprint"],
+        "activation_authorized": False,
+    }
+    result["prediction_fingerprint"] = _sha256(result)
+    return result
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Train or validate an APC candidate policy checkpoint.")
     subparsers = parser.add_subparsers(dest="command", required=True)
