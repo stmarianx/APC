@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "component": "sampled_terminal_return_action_value_candidate",
+  "version": "action_value_candidate_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "fresh_generalization_gate_failed",
+  "promotion_eligible": false,
+  "fresh_dataset": {
+    "dataset_id": "full-hand-action-value-v2",
+    "local_path": "apc/runs/full-hand-dataset-v2",
+    "manifest_sha256": "a688bf6a2031c43c22299e90169f8790cac4f825bb2f3ae66253b23a2e09b87c",
+    "dataset_fingerprint": "554bc5ca46778fc8279f1c586f1c15ef3e1798a3554d7ab2e83a540cf4865853",
+    "examples_sha256": "5a92db5def8aae23161fe9a8f9b8913a8e1a64178b5c9b2992280105deaaedc7",
+    "hands": 300,
+    "examples": 840,
+    "split_counts": {"train": 597, "validation": 137, "test": 106},
+    "hand_seed_range": [3000, 3299],
+    "hand_group_exclusive": true
+  },
+  "artifact": {
+    "local_path": "apc/runs/action-value-v1/checkpoint.json",
+    "checkpoint_sha256": "ba1e67a6000bf03c0f5243b5816095394bacfaccba0f8f8433e35bb148a3a9ec",
+    "checkpoint_fingerprint": "19e36d42bf87b5ba35275749b9d4b7bd63ced0190694e2594841ddaf8d7a2b35"
+  },
+  "selection": {
+    "maximum_epochs": 100,
+    "selected_epoch_by_validation": 3,
+    "test_used_for_selection": false
+  },
+  "metrics": {
+    "train_mae_bb": "9.05964925106",
+    "validation_mae_bb": "8.21082829631",
+    "test_mae_bb": "9.70977695671",
+    "test_action_mean_baseline_mae_bb": "9.65495002298",
+    "test_global_mean_baseline_mae_bb": "9.51675041876",
+    "test_improvement_vs_action_baseline_bb": "-0.0548269337357",
+    "test_rmse_bb": "28.5925685795",
+    "test_bias_bb": "4.05964180396",
+    "test_sign_accuracy": "0.528301886792"
+  },
+  "gate": {
+    "criterion": "fresh_test_mae_below_train_action_mean_baseline",
+    "passed": false,
+    "activation_authorized": false,
+    "recommendation_allowed": false,
+    "confidence_calibrated": false
+  },
+  "diagnosis": [
+    "Action conditioning improved the validation split but did not beat either declared baseline on untouched hands.",
+    "One terminal sample per hand/action has high showdown variance; repeated paired rollouts or counterfactual solver targets are required before another value candidate."
+  ],
+  "limitations": [
+    "The checkpoint estimates observed behavior returns only and has no counterfactual coverage for all legal actions.",
+    "This failed checkpoint is negative evidence and cannot drive policy selection, coaching or activation."
+  ]
+}

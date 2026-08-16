@@ -629,6 +629,21 @@ unusable for policy selection. This identifies the next required architecture:
 action-conditioned value estimation evaluated once on a fresh hand corpus;
 the failed test split must not be reused for model selection.
 
+`self_learning/train_action_value.py` implements that isolated follow-up. It
+crosses structured poker features with an exactly validated visible legal
+command, adds rank/suit/board-shape features, selects an epoch using validation
+MAE only, and compares untouched test error with both training-action-mean and
+global-mean baselines. A fresh 300-hand corpus (`3000–3299`) produced 840
+examples split 597/137/106 by complete hand.
+
+This second experiment also failed safely. Validation-selected epoch 3 reached
+8.21 BB validation MAE, but untouched test MAE was 9.710 BB versus 9.655 BB for
+the action-mean baseline and 9.517 BB for the global baseline. No further
+feature or hyperparameter tuning is permitted on that test split. The evidence
+indicates that one sampled showdown return per behavior action is too noisy;
+the next dataset must average repeated paired rollouts or use separately
+verified counterfactual solver values.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
