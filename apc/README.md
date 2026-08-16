@@ -466,6 +466,28 @@ contains heads-up nodes only. Three histories with contribution-only raises
 abstained instead of inventing a raise-to size. No row allowed an uncalibrated
 recommendation.
 
+`recommendation.py` closes the strategy-to-output contract after a backend
+solver match. It conditionally normalizes the legal mixed strategy, samples it
+reproducibly from a caller-supplied key, converts solver bet fractions and
+raise-to amounts into explicit BB commands, and preserves node, solver, match,
+latency and deadline provenance. Closed calibration/environment gates,
+unmatched states, low-confidence matches and expired deadlines abstain or use
+the declared non-GTO safe fallback. Every result sets
+`actuation_authorized=false` so execution remains a separate, audited concern.
+
+Run the fixture regression with:
+
+```powershell
+python -m apc.evaluate_recommendations coach/examples/sample_solver_export.csv `
+  --output apc/runs/recommendation-v1/regression.json
+```
+
+The frozen four-node regression produced 4/4 deterministic, BB-only,
+provenance-complete recommendations, 4/4 closed-gate abstentions, zero
+actuation-authorization violations and 0.681 ms p95 recommendation latency on
+this laptop. It starts from exact backend states and therefore does not satisfy
+the controlled-visible end-to-end or solver-coverage gates.
+
 ## Frozen visible-table OOD reference
 
 One previously supplied virtual-chip screenshot is retained as an immutable,

@@ -2,7 +2,7 @@
   "schema_version": "1.1.0",
   "model_name": "APC",
   "expanded_name": "AI Poker Coach",
-  "updated_at": "2026-08-15T09:15:00+03:00",
+  "updated_at": "2026-08-16T15:47:53+03:00",
   "overall_status": "not_ready_for_visible_table_training",
   "next_gate": "T",
   "gates": {
@@ -92,7 +92,7 @@
         "data/processed/synthetic-handseq-gate-v2: 2000 verified temporal frames, 250 complete hands, 125 group-exclusive sessions, 3 layouts and 2 themes; annotations_sha256=91f2340a4ec0e7cbd911f62244fe1fd7cf360e4e4106908116be3498ce6d1f94",
         "runs/synthetic-handseq-gate-v2/sequence_audit.json: 2000/2000 frames and 250/250 hand starts passed continuity; sequence_audit_sha256=c8ed9c6778b967b1f6d56029fa21cacdb0c355ee658ed051fdd47b33b6972a6d",
         "runs/synthetic-handseq-gate-v2/gate_t_validation.json: all minimums pass except controlled-visible frames/sessions; report_sha256=9ddf9d530469c2bb6ef7f07841124498e2e74151b1113c9a130d629547649c78",
-        "tests/: 129 passing APC tests",
+        "tests/: 136 passing APC tests",
         "annotator/web_assets/: browser-verified normalized overlay, drag-to-box editor, object-field merge and canonical-state synchronization; zero browser console errors",
         "runs/workbench-suggestion-smoke-20260803/browser_audit.json: frozen-reference browser audit passed review-only suggestion display and explicit unsaved-draft application; 0 saved/verified annotations and 0 console errors",
         "data/processed/synthetic-smoke-v2: 36 verified frames, 9 group-exclusive sessions, 3 layouts, 2 themes",
@@ -168,9 +168,11 @@
         "../coach/src/poker_coach/state_transition.py: normalized BB all-in history accepted without weakening temporal invariants",
         "deadline.py and tests/test_deadline.py: actual-deadline budgeting, adaptive strategy tiers, check/fold fallback, BB action semantics and stale/illegal/duplicate action rejection for a future controlled table",
         "schemas/frame_annotation.schema.json and annotation workbench: optional visible turn-clock box, raw text, remaining milliseconds and canonical deadline source",
-        "APC/coaching cross-package verification: 129 APC tests and 165 coaching-core tests passing"
+        "recommendation.py: calibration/environment/confidence/deadline-gated solver strategy selection with deterministic mixing, explicit BB action sizing, provenance and no actuation authorization",
+        "evaluate_recommendations.py and perception/baselines/solver_recommendation_v1.model_card.json: 4/4 sample solver nodes produced deterministic BB-only recommendations, 4/4 closed-gate abstentions, zero authorization violations and 0.681 ms p95 strategy-to-recommendation latency",
+        "APC/coaching cross-package verification: 136 APC tests and 165 coaching-core tests passing"
       ],
-      "missing": ["controlled-visible variable-font/Unicode name OCR calibration", "calibrated controlled-visible bridge promotion", "end-to-end BB recommendation evaluation", "solver coverage audit", "controlled virtual-table action provider evaluation", "interactive latency gate"]
+      "missing": ["controlled-visible variable-font/Unicode name OCR calibration", "calibrated controlled-visible bridge promotion", "controlled-visible pixel-to-BB recommendation evaluation", "solver coverage audit", "controlled virtual-table action provider evaluation", "interactive latency gate"]
     },
     "S_self_learning": {
       "status": "not_started",

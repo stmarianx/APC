@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "component": "solver_to_auditable_bb_recommendation",
+  "version": "solver_recommendation_v1",
+  "evaluated_at": "2026-08-16",
+  "evaluation_kind": "strategy_fixture_regression",
+  "promotion_eligible": false,
+  "source": {
+    "solver_export": "coach/examples/sample_solver_export.csv",
+    "solver_source": "example_multistreet_solver_export",
+    "solver_source_version": "2026.08-fixture"
+  },
+  "metrics": {
+    "nodes": 4,
+    "exact_backend_matches": 4,
+    "recommendations_ready": 4,
+    "deterministic_replays": 4,
+    "closed_gate_abstentions": 4,
+    "bb_only_commands": 4,
+    "provenance_complete": 4,
+    "actuation_authorization_violations": 0,
+    "latency_ms": {
+      "p50": 0.6202999938977882,
+      "p95": 0.6811249942984432,
+      "max": 0.683299993397668
+    }
+  },
+  "report": {
+    "local_path": "apc/runs/recommendation-v1/regression.json",
+    "sha256": "e4d411797fe983d4b925ceb7de9e60a82a60f1813b301c05c80703e9e440640a"
+  },
+  "passed": true,
+  "limitations": [
+    "The four-node sample solver is a regression fixture, not representative strategy coverage.",
+    "The benchmark begins at a matched backend state and excludes visible-table perception latency.",
+    "No command is authorized for actuation; controlled-environment provider evaluation remains open."
+  ]
+}
