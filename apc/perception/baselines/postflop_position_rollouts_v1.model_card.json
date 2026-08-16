@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "component": "matched_position_multi_policy_postflop_dataset",
+  "version": "postflop_position_rollouts_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "matched_btn_bb_postflop_dataset_gate_passed",
+  "policy_promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/postflop-position-rollouts-v1",
+    "manifest_sha256": "cb09852f332eb455e375317fe3d9b49860fb07296f8f37b6e54271753c390e3b",
+    "examples_sha256": "ef502087a6259749ba5cb49ceed8f53243260e5270bb0ad50843769fb0561b2b",
+    "dataset_fingerprint": "3f3cb4b2328dd8425d65b3254c77a103221944f269a5cc364f7ee996750c1310"
+  },
+  "coverage": {
+    "matched_complete_hand_seeds": 1000,
+    "position_states": 6000,
+    "policy_states": 18000,
+    "counterfactual_examples": 54000,
+    "hero_positions": ["BTN", "BB"],
+    "streets": ["flop", "turn", "river"],
+    "hero_actions": ["check", "minimum_bet", "all_in"],
+    "opponent_policies": ["check_call", "fold_to_pressure", "made_hand_selective"],
+    "public_texture_classes": 87,
+    "split_counts": {"train": 36882, "validation": 8154, "test": 8964},
+    "complete_hand_group_exclusive": true,
+    "same_cards_across_positions": true,
+    "opponent_card_decision_leaks": 0
+  },
+  "selective_policy_position_effect": {
+    "btn_minimum_bet_minus_check_flop_bb": "0.285",
+    "bb_minimum_bet_minus_check_flop_bb": "0.331",
+    "bb_minus_btn_minimum_bet_advantage_flop_bb": "0.046",
+    "bb_minus_btn_minimum_bet_advantage_turn_bb": "0.093",
+    "bb_minus_btn_minimum_bet_advantage_river_bb": "0.176",
+    "check_call_position_differences_all_zero": true,
+    "fold_to_pressure_position_differences_all_zero": true
+  },
+  "selective_policy_observed_actions": {
+    "hero_btn_opponent_fold": 2116,
+    "hero_btn_opponent_call": 3220,
+    "hero_btn_opponent_bet": 1817,
+    "hero_btn_opponent_raise": 664,
+    "hero_bb_opponent_fold": 2116,
+    "hero_bb_opponent_call": 3220,
+    "hero_bb_opponent_bet": 2481,
+    "hero_bb_opponent_raise": 664
+  },
+  "contract": {
+    "units": "BB",
+    "same_cards_within_position_policy_state": true,
+    "same_cards_between_btn_and_bb_states": true,
+    "both_positions_same_complete_hand_split": true,
+    "immutable_and_fingerprinted": true,
+    "solver_target": false,
+    "gto_verified": false,
+    "external_actuation": false
+  },
+  "limitations": [
+    "Opponent policies are deterministic probes, not learned population models or GTO strategies.",
+    "Both positions use a limped preflop/checkdown trunk; raised pots, facing-bet Hero nodes and alternative sizes remain uncovered.",
+    "All-in targets remain high variance and are retained for audit rather than promotion."
+  ]
+}

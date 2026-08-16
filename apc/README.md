@@ -765,6 +765,22 @@ This closes profile persistence and proves an uncertainty-aware synthetic-
 policy bridge. It does not establish a learned opponent classifier, real-player
 calibration, GTO correctness, or permission to emit evaluated coaching advice.
 
+`self_learning/postflop_position_rollout_dataset.py` removes the prior BTN-only
+training restriction. Each of 1,000 seeds now produces card-matched Hero BTN
+and Hero BB trunks on flop, turn and river. Every position/street state is
+paired across check, minimum bet and all-in against all three opponent probes;
+all 54 rows from the seed remain in one split. The frozen corpus contains
+54,000 examples, 6,000 position states, 18,000 policy states and 87 texture
+classes, with no opponent private cards in decision inputs.
+
+Position behaves as a real feature only where the continuation can react to
+action order. Check/call and fold-to-pressure probes have exactly zero BTN/BB
+payoff difference. Against the selective probe, BB-minus-BTN minimum-bet
+advantage is +0.046 BB on the flop, +0.093 BB on the turn and +0.176 BB on the
+river because an in-position opponent can stab after Hero checks. This closes
+the basic out-of-position data-path gap but does not yet cover raised pots,
+facing-bet Hero nodes, multiple bet sizes or learned opponent populations.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
