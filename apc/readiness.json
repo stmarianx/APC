@@ -2,7 +2,7 @@
   "schema_version": "1.1.0",
   "model_name": "APC",
   "expanded_name": "AI Poker Coach",
-  "updated_at": "2026-08-16T18:00:00+03:00",
+  "updated_at": "2026-08-16T18:30:00+03:00",
   "overall_status": "not_ready_for_visible_table_training",
   "next_gate": "T",
   "gates": {
@@ -92,7 +92,7 @@
         "data/processed/synthetic-handseq-gate-v2: 2000 verified temporal frames, 250 complete hands, 125 group-exclusive sessions, 3 layouts and 2 themes; annotations_sha256=91f2340a4ec0e7cbd911f62244fe1fd7cf360e4e4106908116be3498ce6d1f94",
         "runs/synthetic-handseq-gate-v2/sequence_audit.json: 2000/2000 frames and 250/250 hand starts passed continuity; sequence_audit_sha256=c8ed9c6778b967b1f6d56029fa21cacdb0c355ee658ed051fdd47b33b6972a6d",
         "runs/synthetic-handseq-gate-v2/gate_t_validation.json: all minimums pass except controlled-visible frames/sessions; report_sha256=9ddf9d530469c2bb6ef7f07841124498e2e74151b1113c9a130d629547649c78",
-        "tests/: 166 passing APC tests",
+        "tests/: 169 passing APC tests",
         "annotator/web_assets/: browser-verified normalized overlay, drag-to-box editor, object-field merge and canonical-state synchronization; zero browser console errors",
         "runs/workbench-suggestion-smoke-20260803/browser_audit.json: frozen-reference browser audit passed review-only suggestion display and explicit unsaved-draft application; 0 saved/verified annotations and 0 console errors",
         "data/processed/synthetic-smoke-v2: 36 verified frames, 9 group-exclusive sessions, 3 layouts, 2 themes",
@@ -173,7 +173,7 @@
         "evaluate_solver_coverage.py and perception/baselines/solver_coverage_v1.model_card.json: reproducible completed-hand coverage audit with confidence/action coverage, dimensional slices and first-exclusion reasons; current 1-hand fixture covers 1/3 decisions exactly and fails the >=100-decision, >=80% exact-coverage gate",
         "virtual_table.py, evaluate_virtual_table.py and perception/baselines/virtual_decision_table_v1.model_card.json: internal-only BB decision provider covered 9 nodes/21 actions, rejected 9 illegal and 21 duplicate steps, recorded zero external-actuation violations and 0.049 ms p95 step latency",
         "full_hand_table.py, evaluate_full_hand_table.py and perception/baselines/full_hand_virtual_table_v1.model_card.json: deterministic heads-up no-limit engine completed 100/100 sampled-outcome hands and 540 actions with all actions/streets covered, zero replay/card/conservation/zero-sum failures, no external actuation and 0.50 ms p95 step latency",
-        "APC/coaching cross-package verification: 166 APC tests and 165 coaching-core tests passing"
+        "APC/coaching cross-package verification: 169 APC tests and 165 coaching-core tests passing"
       ],
       "missing": ["controlled-visible variable-font/Unicode name OCR calibration", "calibrated controlled-visible bridge promotion", "controlled-visible pixel-to-BB recommendation evaluation", "representative completed-hand corpus with >=100 decisions and >=80% exact solver coverage", "solver expansion for uncovered player-count/card/history slices", "multiway/rake/side-pot virtual environment evaluation", "interactive latency gate"]
     },
@@ -192,7 +192,8 @@
         "tests/test_checkpoint_registry.py: failed/tampered evidence, stale revision, registry/artifact tamper detection, registration isolation, strict fixture promotion and exact fingerprint rollback",
         "self_learning/evaluate_candidate_safety.py and perception/baselines/candidate_safety_v1.model_card.json: 10/10 deterministic malformed states abstained without probabilities; zero recommendation or activation violations; valid supported output remains explicitly uncalibrated and offline-only",
         "tests/test_candidate_safety.py: adversarial mutation rejection, missing legal-state evidence abstention and no-probability/no-recommendation contract",
-        "full_hand_table.py and perception/baselines/full_hand_virtual_table_v1.model_card.json: complete hidden-card heads-up trajectories now provide sampled terminal BB rewards with deterministic replay and exact settlement; audit policies are coverage probes, not trained candidates"
+        "full_hand_table.py and perception/baselines/full_hand_virtual_table_v1.model_card.json: complete hidden-card heads-up trajectories now provide sampled terminal BB rewards with deterministic replay and exact settlement; audit policies are coverage probes, not trained candidates",
+        "self_learning/full_hand_dataset.py and perception/baselines/full_hand_trajectory_dataset_v1.model_card.json: immutable 280-decision sampled-return dataset from 100 hand-exclusive groups with 222/31/27 train/validation/test examples, no opponent-card decision leakage and explicit non-GTO/non-promotion labels"
       ],
       "missing": ["representative diverse multi-hand replay dataset with non-empty group-exclusive train/validation/test splits", "candidate generalization evaluation across unseen poker states", "paired declared-incumbent evaluation across >=30 independent nodes with >=90% coverage and a 95% improvement lower bound above zero", "paired incumbent invalid-state and unsafe-confidence non-regression with broader fuzzing", "production registry bootstrap and disaster-recovery rollback audit"]
     }

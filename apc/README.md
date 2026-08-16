@@ -592,6 +592,25 @@ trajectory provider, but it currently supports equal-stack heads-up, no-rake
 play only. Multiway pots, side pots, antes, rake and trained policy evaluation
 remain separate work.
 
+`self_learning/full_hand_dataset.py` converts those complete hands into an
+immutable outcome-learning dataset. It records only Hero-perspective decisions,
+the legal action set, the exact behavior command, pre-state and transition
+fingerprints, and the sampled terminal return in BB. Opponent hole cards never
+enter a decision record. Entire hands are assigned to exactly one split.
+
+```powershell
+python -m apc.self_learning.full_hand_dataset build `
+  apc/runs/full-hand-dataset-v1 --dataset-id full-hand-trajectory-v1 `
+  --hands 100 --hand-seed-start 2000 --minimum-examples 100 `
+  --minimum-groups 80
+```
+
+The frozen build contains 280 decisions from 100 hand groups with a 222/31/27
+train/validation/test split. Its immutable file, examples and dataset-level
+fingerprints validate, and all splits are hand-exclusive. The sampled return is
+useful for outcome/value-learning experiments, but the deterministic coverage
+behavior is neither a solver target nor a GTO or promotion label.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
