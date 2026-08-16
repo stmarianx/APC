@@ -686,6 +686,18 @@ error was 0.156 BB for call and 0.312 BB for raise, with extreme-bin gaps of
 cannot recommend or activate. Validated table lookup itself is fast (0.0015 ms
 p95), but this excludes perception and end-to-end coaching latency.
 
+`self_learning/calibrate_paired_value.py` then froze explicit calibration limits
+before opening another disjoint 5,000-deal corpus (`20000–24999`). A constrained
+affine layer was fit on 1,506 validation examples and evaluated once on 1,582
+test examples. It met the declared expected-calibration-error and maximum-bin-
+gap limits, but worsened MAE by 0.0220 BB for call and 0.0440 BB for raise,
+exceeding the allowed 0.01 BB regression. The overall calibration gate therefore
+failed; the wrapper remains uncalibrated and cannot recommend or activate.
+
+This negative result is retained rather than tuning against the opened test
+split. Any next calibration method must be selected on validation data and use
+another untouched corpus for final evidence.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action

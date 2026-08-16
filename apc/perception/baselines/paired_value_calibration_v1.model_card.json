@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "component": "paired_preflop_value_affine_calibration",
+  "version": "paired_value_calibration_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "fresh_calibration_gate_failed_mae_regression",
+  "promotion_eligible": false,
+  "fresh_dataset": {
+    "dataset_id": "paired-preflop-calibration-v1",
+    "local_path": "apc/runs/paired-rollouts-calibration-v1",
+    "manifest_sha256": "18db7c4cc564cca80b97035de5f41a3b181e8e3d1ce2ed2985e2713a891bfff3",
+    "dataset_fingerprint": "0c3d4e78bcd13f3cba126f0aefc9b543ea7a68fbd48b8e996363834345a38861",
+    "examples_sha256": "1b71f883c2d52b7ba27ea9a9675547a0d6e5d385989e8132472bc181e4a4cf22",
+    "hand_seed_range": [20000, 24999],
+    "paired_deals": 5000,
+    "fit_examples": 1506,
+    "test_examples": 1582,
+    "group_exclusive": true
+  },
+  "artifact": {
+    "local_path": "apc/runs/paired-value-calibration-v1/calibration.json",
+    "artifact_sha256": "158996912d1dd3074629467ec262a0677a4dd6a01c4f79ce6b137942ed61c0d0",
+    "calibration_fingerprint": "3eca4403689cf7e60db8e5741c01f5205bfc21452847382fc02e3c1912198e69",
+    "base_checkpoint_fingerprint": "86269bef32f5d539d7aa58bcc18feee6231c3e3065af08ebe1b66ada585a8892"
+  },
+  "parameters": {
+    "call": {"intercept_bb": "-0.042093270426", "slope": "0.282437634469"},
+    "raise": {"intercept_bb": "-0.084186540852", "slope": "0.282437634469"}
+  },
+  "test_metrics": {
+    "call_eace_bb": "0.112362112529",
+    "call_max_bin_gap_bb": "0.285604930059",
+    "call_mae_change_bb": "0.0220129327255",
+    "raise_eace_bb": "0.224724225058",
+    "raise_max_bin_gap_bb": "0.571209860118",
+    "raise_mae_change_bb": "0.0440258654509",
+    "exact_hand_class_coverage": "1"
+  },
+  "gate": {
+    "calibration_error_thresholds_passed": true,
+    "maximum_bin_gap_thresholds_passed": true,
+    "mae_non_regression_threshold_passed": false,
+    "overall_passed": false,
+    "confidence_calibrated": false,
+    "activation_authorized": false,
+    "recommendation_allowed": false
+  },
+  "limitations": [
+    "Affine shrinkage improved calibration diagnostics but materially degraded absolute prediction error.",
+    "The artifact is retained as rejected evidence and cannot wrap production inference.",
+    "Scope is limited to Hero-button preflop call/minimum-raise values against one fixed continuation policy."
+  ]
+}
