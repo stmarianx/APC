@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "component": "candidate_checkpoint_lifecycle",
+  "version": "checkpoint_registry_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "transaction_and_rollback_mechanics_passed",
+  "promotion_eligible": false,
+  "contract": {
+    "content_addressed_artifacts": true,
+    "candidate_registration_changes_active": false,
+    "optimistic_revision_required": true,
+    "promotion_requires_fingerprinted_evidence": true,
+    "paired_declared_incumbent_required": true,
+    "safety_non_regression_required": true,
+    "explicit_activation_authorization_required": true,
+    "rollback_to_exact_predecessor": true
+  },
+  "tests": {
+    "register_without_activation": true,
+    "strict_successful_promotion_fixture": true,
+    "failed_gate_rejection": true,
+    "tampered_evidence_rejection": true,
+    "stale_revision_rejection": true,
+    "registry_tamper_detection": true,
+    "artifact_tamper_detection": true,
+    "exact_fingerprint_rollback": true
+  },
+  "limitations": [
+    "Successful promotion is tested with explicit fixture evidence; no current APC candidate has real passing promotion evidence.",
+    "The registry is local and single-process; distributed locking and remote artifact storage are not implemented.",
+    "Production registry bootstrap and disaster-recovery restoration remain unevaluated."
+  ]
+}

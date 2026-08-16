@@ -583,6 +583,24 @@ coverage and a non-incumbent comparator categorically fail promotion. The
 declared gate requires at least 30 independent nodes, at least 90% action-set
 coverage, a paired 95% lower bound above zero and a real incumbent comparator.
 
+`self_learning/checkpoint_registry.py` keeps activation separate from immutable
+candidate checkpoint contents. The content-addressed local registry requires an
+expected revision for every mutation. Registration never changes the active
+fingerprint. Promotion requires fingerprinted evidence naming both candidate
+and incumbent, a passing paired incumbent comparison, passing safety
+non-regression, the aggregate promotion gate and explicit registry activation
+authorization. Rollback restores the exact promotive predecessor and verifies
+its stored bytes and semantic checkpoint fingerprint before reporting success.
+
+```powershell
+python -m apc.self_learning.checkpoint_registry status <registry-folder>
+```
+
+Tests cover registration without activation, strict fixture promotion, failed
+and tampered evidence, stale revisions, registry/artifact tampering and exact
+rollback. This proves lifecycle mechanics only; no current APC candidate has
+real evidence that satisfies the promotion contract.
+
 ## Frozen visible-table OOD reference
 
 One previously supplied virtual-chip screenshot is retained as an immutable,
