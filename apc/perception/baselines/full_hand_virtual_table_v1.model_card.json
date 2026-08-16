@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "component": "controlled_virtual_chip_full_hand_provider",
+  "version": "full_hand_virtual_table_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "deterministic_full_hand_audit_passed",
+  "promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/full-hand-table-v1/audit.json",
+    "report_sha256": "cd1effb4f91ce77952d05aed9e2095984e630a041b26e0555687e1a8ff3f8fce"
+  },
+  "metrics": {
+    "hands": 100,
+    "showdowns": 80,
+    "folds": 20,
+    "actions": 540,
+    "max_actions_per_hand": 8,
+    "action_kinds_covered": ["all_in", "bet", "call", "check", "fold", "raise"],
+    "streets_covered": ["flop", "preflop", "river", "turn"],
+    "replay_mismatches": 0,
+    "chip_conservation_failures": 0,
+    "card_uniqueness_failures": 0,
+    "zero_sum_failures": 0,
+    "external_actuation_violations": 0,
+    "step_latency_p95_ms": 0.5003399914130561,
+    "step_latency_max_ms": 1.1079999967478216
+  },
+  "contract": {
+    "units": "BB",
+    "game": "heads_up_no_limit_holdem",
+    "internal_virtual_chips": true,
+    "hidden_opponent_cards_until_showdown": true,
+    "deterministic_seeded_replay": true,
+    "sampled_terminal_outcomes": true,
+    "chip_conservation": true,
+    "external_actuation": false,
+    "screen_or_input_control": false
+  },
+  "limitations": [
+    "Equal-stack heads-up cash-game hands only; no multiway pots, side pots, antes, rake or tournament blind schedules.",
+    "Coverage policies are deterministic probes rather than trained or promoted APC policies.",
+    "This is internal environment evidence and does not satisfy the controlled-visible perception gate."
+  ]
+}

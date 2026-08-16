@@ -570,7 +570,27 @@ python -m apc.evaluate_virtual_table `
 The frozen audit covered 9/9 nodes and 21/21 actions, rejected every illegal
 and duplicate probe, had zero external-actuation violations and measured 0.049
 ms p95 step latency. This establishes the decision-provider contract only:
-episodes use imported EV rewards and do not yet deal or complete full hands.
+episodes use imported EV rewards rather than sampled terminal chips.
+
+`full_hand_table.py` adds deterministic, complete heads-up no-limit Hold'em
+hands with shuffled hidden cards, 0.5/1 BB blinds, legal no-limit action bounds,
+all four betting rounds, all-in runouts, exact showdown ranking and zero-sum
+settlement. Every observation and completed transition is fingerprinted; all
+numeric poker quantities are serialized only in BB. It is an internal
+environment with no screen, mouse, keyboard or external-table integration.
+
+```powershell
+python -m apc.evaluate_full_hand_table --hands 100 --seed-start 1000 `
+  --output apc/runs/full-hand-table-v1/audit.json
+```
+
+The frozen audit completed 100/100 hands and 540 actions, covered fold, check,
+call, bet, raise and all-in plus every street, and found zero deterministic
+replay, unique-card, chip-conservation, zero-sum or external-actuation failures.
+Internal step latency was 0.50 ms p95. This is a genuine sampled-outcome
+trajectory provider, but it currently supports equal-stack heads-up, no-rake
+play only. Multiway pots, side pots, antes, rake and trained policy evaluation
+remain separate work.
 
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
