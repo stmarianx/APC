@@ -183,6 +183,8 @@ def build_replay_dataset(
     dataset_id: str,
     source_fingerprints: dict[str, str],
     seed: int = 20260816,
+    minimum_examples: int = 100,
+    minimum_groups: int = 20,
     split_ratios: tuple[Decimal, Decimal, Decimal] = (
         Decimal("0.80"),
         Decimal("0.10"),
@@ -195,6 +197,8 @@ def build_replay_dataset(
         not isinstance(value, str) or len(value) != 64 for value in source_fingerprints.values()
     ):
         raise ValueError("source_fingerprints must contain SHA-256 strings")
+    if minimum_examples <= 0 or minimum_groups <= 0:
+        raise ValueError("replay training minimums must be positive")
     destination = Path(output).resolve()
     if destination.exists():
         raise ValueError(f"replay dataset destination already exists: {destination}")
@@ -221,14 +225,33 @@ def build_replay_dataset(
             previous = group_splits.setdefault(group, split)
             if previous != split:
                 raise ValueError(f"group leakage detected for {group}")
+        required_splits_present = all(split_counts.get(key, 0) > 0 for key in ("train", "validation", "test"))
+        training_eligible = (
+            len(examples) >= minimum_examples
+            and len(group_splits) >= minimum_groups
+            and required_splits_present
+        )
+        eligibility_reasons: list[str] = []
+        if len(examples) < minimum_examples:
+            eligibility_reasons.append("minimum_examples_not_met")
+        if len(group_splits) < minimum_groups:
+            eligibility_reasons.append("minimum_groups_not_met")
+        if not required_splits_present:
+            eligibility_reasons.append("train_validation_test_splits_must_all_be_nonempty")
         manifest = {
             "schema_version": "1.0.0",
             "dataset_id": dataset_id,
             "dataset_kind": "solver_labeled_completed_hand_replay",
             "immutable": True,
             "units": "BB",
-            "training_eligible": False,
-            "training_eligibility_reason": "candidate pipeline and paired promotion evaluation are not yet implemented",
+            "training_eligible": training_eligible,
+            "training_eligibility": {
+                "passed": training_eligible,
+                "minimum_examples": minimum_examples,
+                "minimum_groups": minimum_groups,
+                "required_nonempty_splits": ["train", "validation", "test"],
+                "reasons": eligibility_reasons,
+            },
             "examples_file": "examples.jsonl",
             "examples_sha256": _sha256_bytes(examples_bytes),
             "example_count": len(examples),
@@ -275,6 +298,14 @@ def validate_replay_dataset(root: str | Path) -> dict[str, object]:
         issues.append("manifest must use BB and declare group-exclusive splits")
     if manifest.get("example_count") != len(examples):
         issues.append("manifest example_count does not match examples")
+    source_fingerprints = manifest.get("source_fingerprints")
+    if not isinstance(source_fingerprints, dict) or not source_fingerprints or any(
+        not isinstance(value, str)
+        or len(value) != 64
+        or any(character not in "0123456789abcdef" for character in value.lower())
+        for value in source_fingerprints.values()
+    ):
+        issues.append("manifest source fingerprints are invalid")
     if manifest.get("examples_sha256") != _sha256_file(examples_path):
         issues.append("examples file fingerprint mismatch")
     material = dict(manifest)
@@ -325,6 +356,23 @@ def validate_replay_dataset(root: str | Path) -> dict[str, object]:
         issues.append("manifest split_counts do not match examples")
     if manifest.get("group_count") != len(groups):
         issues.append("manifest group_count does not match examples")
+    eligibility = manifest.get("training_eligibility")
+    if not isinstance(eligibility, dict):
+        if manifest.get("training_eligible") is not False:
+            issues.append("legacy manifest without eligibility evidence must remain non-training-eligible")
+    else:
+        minimum_examples = eligibility.get("minimum_examples")
+        minimum_groups = eligibility.get("minimum_groups")
+        if not isinstance(minimum_examples, int) or minimum_examples <= 0 or not isinstance(minimum_groups, int) or minimum_groups <= 0:
+            issues.append("manifest training eligibility minimums are invalid")
+        else:
+            expected_eligible = (
+                len(examples) >= minimum_examples
+                and len(groups) >= minimum_groups
+                and all(split_counts.get(key, 0) > 0 for key in ("train", "validation", "test"))
+            )
+            if manifest.get("training_eligible") is not expected_eligible or eligibility.get("passed") is not expected_eligible:
+                issues.append("manifest training eligibility result is inconsistent")
     return {
         "schema_version": "1.0.0",
         "valid": not issues,
@@ -358,6 +406,8 @@ def main(argv: list[str] | None = None) -> int:
     build.add_argument("output", type=Path)
     build.add_argument("--dataset-id", required=True)
     build.add_argument("--seed", type=int, default=20260816)
+    build.add_argument("--minimum-examples", type=int, default=100)
+    build.add_argument("--minimum-groups", type=int, default=20)
     build.add_argument("--recursive", action="store_true")
     validate = subparsers.add_parser("validate")
     validate.add_argument("dataset", type=Path)
@@ -389,6 +439,8 @@ def main(argv: list[str] | None = None) -> int:
                 "hand_history_corpus_sha256": hand_digest.hexdigest(),
             },
             seed=args.seed,
+            minimum_examples=args.minimum_examples,
+            minimum_groups=args.minimum_groups,
         )
         print(json.dumps(manifest, indent=2))
         return 0

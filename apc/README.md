@@ -534,8 +534,22 @@ The builder refuses an existing destination, fingerprints source files,
 detects example or manifest tampering, and assigns all examples from a hand to
 one deterministic split. The first artifact has one exact training example
 from three decisions and deliberately remains `training_eligible=false`: it has
-no validation/test groups, candidate trainer, paired promotion evaluation or
-checkpoint rollback evidence.
+no validation/test groups and therefore cannot enter the candidate trainer;
+paired promotion evaluation and checkpoint rollback evidence also remain open.
+
+Replay manifests now compute training eligibility from declared minimum example
+and hand-group counts plus non-empty train/validation/test splits. The candidate
+trainer in `self_learning/train_candidate.py` accepts only a manifest that
+passes those checks. It learns deterministic hashed structured-state features
+against legal mixed-strategy targets, evaluates cross-entropy, L1 error,
+top-action agreement and top-action regret in BB on every split, and writes a
+fingerprinted checkpoint with activation and incumbent replacement disabled.
+
+`self_learning/evaluate_candidate_smoke.py` exercises the entire pipeline using
+60 distinct hand IDs cloned from one fixture. It produced 34/8/18 grouped
+train/validation/test rows and a deterministic checkpoint. All rows represent
+the same underlying poker state, so its perfect top-action agreement and zero
+top-action regret demonstrate plumbing only—not generalization or promotion.
 
 ## Frozen visible-table OOD reference
 

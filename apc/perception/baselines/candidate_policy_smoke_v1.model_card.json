@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "component": "structured_state_candidate_policy",
+  "version": "candidate_policy_smoke_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "pipeline_smoke_passed_not_promoted",
+  "promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/candidate-smoke-v1",
+    "report_sha256": "82f306c1da951c87071726cdff5631a6f33cec6f9ad7d13a560bea99ada89624",
+    "dataset_fingerprint": "c9449021407742418a8a266703b2c05fc934b3ba194fb4be75d9c95fc09b9f0c",
+    "checkpoint_fingerprint": "f0063b2dfc5a4a50aa3df0f5a9e0f50610f16931aa78ab8a2af3b8944d3de5dc",
+    "checkpoint_sha256": "099e52cae970fc8517c3fd7248e3a280e732d6276384a1eebd43ca0ebb77fd18"
+  },
+  "configuration": {
+    "model_kind": "hashed_linear_mixed_strategy_candidate",
+    "feature_schema": "hashed_poker_state_v1",
+    "suit_renaming_invariant": true,
+    "feature_dimension": 64,
+    "epochs": 20,
+    "seed": 20260816,
+    "units": "BB"
+  },
+  "dataset": {
+    "replicated_groups": 60,
+    "train_examples": 34,
+    "validation_examples": 8,
+    "test_examples": 18,
+    "identical_underlying_poker_states": true
+  },
+  "metrics": {
+    "test_cross_entropy": "0.801818667478",
+    "test_mean_l1": "0.000287187104422",
+    "test_top_action_agreement": "1",
+    "test_mean_top_action_regret_bb": "0"
+  },
+  "safety": {
+    "activation_authorized": false,
+    "incumbent_replaced": false,
+    "overwrite_rejection_tested": true,
+    "checkpoint_tamper_detection_tested": true,
+    "deterministic_retrain_tested": true
+  },
+  "limitations": [
+    "All split groups replicate one identical poker state, so metrics prove pipeline mechanics and cannot support a generalization claim.",
+    "The imported solver target is not GTO-verified.",
+    "Paired virtual-chip evaluation, safety non-regression and incumbent rollback remain open."
+  ]
+}

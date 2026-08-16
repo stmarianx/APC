@@ -32,7 +32,7 @@
   },
   "limitations": [
     "The fixture contains one training example and has no validation or test group.",
-    "A candidate training pipeline, paired promotion evaluation and checkpoint rollback test remain unimplemented.",
+    "The fixture cannot enter the candidate training pipeline because it has no validation or test group; paired promotion evaluation and checkpoint rollback remain open.",
     "Imported solver targets remain explicitly unverified as GTO."
   ]
 }
