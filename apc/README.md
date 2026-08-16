@@ -601,6 +601,17 @@ and tampered evidence, stale revisions, registry/artifact tampering and exact
 rollback. This proves lifecycle mechanics only; no current APC candidate has
 real evidence that satisfies the promotion contract.
 
+Candidate inference independently validates game/player metadata, BB stack,
+pot and call values, board and hole-card integrity, canonical action history,
+legal-action agreement, rake and utility declarations. Invalid states abstain
+without probabilities. A structurally valid supported state returns
+`prediction_ready_uncalibrated`: it may be used in offline evaluation, but
+`recommendation_allowed`, calibrated confidence and activation all remain
+false. `self_learning/evaluate_candidate_safety.py` tests ten deterministic
+invalid-state mutations. The smoke candidate accepted none and produced zero
+recommendation/activation violations across valid and adversarial paths. This
+is standalone safety evidence; paired incumbent non-regression remains open.
+
 ## Frozen visible-table OOD reference
 
 One previously supplied virtual-chip screenshot is retained as an immutable,

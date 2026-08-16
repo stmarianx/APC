@@ -5,9 +5,10 @@ import hashlib
 import json
 import math
 import random
+import re
 import tempfile
 from collections import defaultdict
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 from apc.self_learning.replay_dataset import validate_replay_dataset
@@ -33,13 +34,81 @@ def _canonical_cards(board: list[object], hero_cards: list[object]) -> tuple[lis
     rows: list[str] = []
     for raw in [*board, *hero_cards]:
         card = str(raw)
-        if len(card) not in (2, 3) or card[-1] not in "cdhs":
+        if len(card) != 2 or card[0].upper() not in "23456789TJQKA" or card[-1] not in "cdhs":
             raise ValueError(f"invalid candidate card token: {card!r}")
         suit = card[-1]
         if suit not in suit_map:
             suit_map[suit] = canonical_suits[len(suit_map)]
         rows.append(card[:-1].upper() + suit_map[suit])
     return rows[: len(board)], rows[len(board) :]
+
+
+_HISTORY_ACTION = re.compile(
+    r"^[A-Z][A-Z0-9_]* (?:fold|check|call|all_in(?::[0-9]+(?:\.[0-9]+)?)?|bet:[0-9]+(?:\.[0-9]+)?|raise_to:[0-9]+(?:\.[0-9]+)?)$"
+)
+_LEGAL_ACTION = re.compile(
+    r"^(?:fold|check|call|all_in|bet:[0-9]+(?:\.[0-9]+)?|raise_to:[0-9]+(?:\.[0-9]+)?)$"
+)
+
+
+def candidate_state_issues(state: dict[str, object], legal_actions: list[str]) -> list[str]:
+    issues: list[str] = []
+    if not isinstance(state, dict):
+        return ["state_must_be_an_object"]
+    if not isinstance(state.get("game"), str) or not state.get("game"):
+        issues.append("game_missing")
+    players = state.get("players")
+    if isinstance(players, bool) or not isinstance(players, int) or players < 2:
+        issues.append("players_invalid")
+    if not isinstance(state.get("hero_position"), str) or not state.get("hero_position"):
+        issues.append("hero_position_missing")
+    decimals: dict[str, Decimal] = {}
+    for field in ("effective_stack_bb", "pot_bb", "to_call_bb"):
+        try:
+            value = Decimal(str(state.get(field)))
+        except (InvalidOperation, ValueError):
+            issues.append(f"{field}_invalid")
+            continue
+        if not value.is_finite() or value < 0 or (field == "pot_bb" and value <= 0):
+            issues.append(f"{field}_invalid")
+        else:
+            decimals[field] = value
+    if (
+        "to_call_bb" in decimals
+        and "effective_stack_bb" in decimals
+        and decimals["to_call_bb"] > decimals["effective_stack_bb"]
+    ):
+        issues.append("to_call_exceeds_effective_stack")
+    board = state.get("board")
+    hero_cards = state.get("hero_cards")
+    if not isinstance(board, list) or len(board) not in (0, 3, 4, 5):
+        issues.append("board_invalid")
+    if not isinstance(hero_cards, list) or len(hero_cards) != 2:
+        issues.append("hero_cards_invalid")
+    if isinstance(board, list) and isinstance(hero_cards, list):
+        try:
+            _canonical_cards(board, hero_cards)
+        except ValueError:
+            issues.append("card_token_invalid")
+        if len({str(card) for card in [*board, *hero_cards]}) != len(board) + len(hero_cards):
+            issues.append("duplicate_known_cards")
+    history = state.get("action_history")
+    if not isinstance(history, list) or any(
+        not isinstance(action, str) or not _HISTORY_ACTION.fullmatch(action) for action in history
+    ):
+        issues.append("action_history_not_canonical")
+    if not legal_actions or len(legal_actions) != len(set(legal_actions)) or any(
+        not isinstance(action, str) or not _LEGAL_ACTION.fullmatch(action) for action in legal_actions
+    ):
+        issues.append("legal_actions_invalid")
+    observed_legal = state.get("legal_actions")
+    if not isinstance(observed_legal, list) or observed_legal != legal_actions:
+        issues.append("legal_actions_do_not_match_state")
+    if not isinstance(state.get("rake_model"), str) or not state.get("rake_model"):
+        issues.append("rake_model_missing")
+    if not isinstance(state.get("utility_model"), str) or not state.get("utility_model"):
+        issues.append("utility_model_missing")
+    return sorted(set(issues))
 
 
 def feature_tokens(state: dict[str, object]) -> tuple[str, ...]:
@@ -312,8 +381,19 @@ def predict_candidate(
     validation = validate_candidate_checkpoint(checkpoint)
     if not validation["valid"]:
         raise ValueError("candidate checkpoint is invalid: " + "; ".join(validation["issues"]))
-    if not legal_actions or len(legal_actions) != len(set(legal_actions)):
-        raise ValueError("legal_actions must be a non-empty unique list")
+    state_issues = candidate_state_issues(state, legal_actions)
+    if state_issues:
+        return {
+            "schema_version": "1.0.0",
+            "status": "abstain_invalid_state",
+            "probabilities": None,
+            "reasons": state_issues,
+            "checkpoint_fingerprint": checkpoint["checkpoint_fingerprint"],
+            "confidence_calibrated": False,
+            "offline_evaluation_allowed": False,
+            "recommendation_allowed": False,
+            "activation_authorized": False,
+        }
     vocabulary = set(checkpoint["action_vocabulary"])
     unsupported = sorted(action for action in legal_actions if action not in vocabulary)
     if unsupported:
@@ -323,6 +403,9 @@ def predict_candidate(
             "probabilities": None,
             "unsupported_actions": unsupported,
             "checkpoint_fingerprint": checkpoint["checkpoint_fingerprint"],
+            "confidence_calibrated": False,
+            "offline_evaluation_allowed": False,
+            "recommendation_allowed": False,
             "activation_authorized": False,
         }
     dimension = checkpoint["configuration"]["feature_dimension"]
@@ -333,12 +416,15 @@ def predict_candidate(
     probabilities = _probabilities(weights, hashed_features(state, dimension), legal_actions)
     result = {
         "schema_version": "1.0.0",
-        "status": "prediction_ready",
+        "status": "prediction_ready_uncalibrated",
         "probabilities": {
             action: format(probabilities[action], ".12g") for action in legal_actions
         },
         "unsupported_actions": [],
         "checkpoint_fingerprint": checkpoint["checkpoint_fingerprint"],
+        "confidence_calibrated": False,
+        "offline_evaluation_allowed": True,
+        "recommendation_allowed": False,
         "activation_authorized": False,
     }
     result["prediction_fingerprint"] = _sha256(result)

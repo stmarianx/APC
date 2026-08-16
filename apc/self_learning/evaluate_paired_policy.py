@@ -85,7 +85,7 @@ def evaluate_candidate_against_uniform(
         observation = VirtualDecisionTable(spot).observation()
         legal_actions = list(observation["state"]["legal_actions"])
         prediction = predict_candidate(checkpoint_payload, observation["state"], legal_actions)
-        if prediction["status"] != "prediction_ready":
+        if prediction["status"] != "prediction_ready_uncalibrated":
             unsupported.append(
                 {
                     "node_id": spot.node_id,

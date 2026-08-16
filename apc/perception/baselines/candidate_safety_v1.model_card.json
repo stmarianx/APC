@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "component": "candidate_invalid_state_and_confidence_safety",
+  "version": "candidate_safety_v1",
+  "evaluated_at": "2026-08-16",
+  "status": "standalone_safety_passed_paired_nonregression_pending",
+  "promotion_eligible": false,
+  "artifact": {
+    "local_path": "apc/runs/candidate-safety-v1/audit.json",
+    "report_sha256": "4e25dece5b09e04745827cbdf6f7ea1bac5e84ece6ac46573512a9799990d051",
+    "candidate_checkpoint_fingerprint": "f0063b2dfc5a4a50aa3df0f5a9e0f50610f16931aa78ab8a2af3b8944d3de5dc"
+  },
+  "metrics": {
+    "valid_solver_nodes": 9,
+    "uncalibrated_supported_nodes": 1,
+    "unsupported_valid_nodes": 8,
+    "adversarial_invalid_states": 10,
+    "invalid_state_acceptances": 0,
+    "recommendation_or_activation_violations": 0
+  },
+  "guards": {
+    "invalid_state_returns_probabilities": false,
+    "uncalibrated_prediction_allows_offline_evaluation": true,
+    "uncalibrated_prediction_allows_recommendation": false,
+    "candidate_activation_authorized": false
+  },
+  "limitations": [
+    "No declared incumbent checkpoint is evaluated side by side, so paired safety non-regression is not established.",
+    "The candidate remains uncalibrated and is not coaching-ready.",
+    "The adversarial corpus has ten deterministic mutation classes and is not broad fuzzing or controlled-visible evidence."
+  ]
+}

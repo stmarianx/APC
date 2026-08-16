@@ -7,7 +7,7 @@
   "promotion_eligible": false,
   "artifact": {
     "local_path": "apc/runs/paired-policy-v1/reference_audit.json",
-    "report_sha256": "bb2d4f2ce00e2f4b9a642eac43575e81dc1eaa11d655c67e5772429f2ee082c5",
+    "report_sha256": "37de8e32e7da18649ef4ee72f2e44acc5ca01cf4fd85619afe7e1afd4c890be1",
     "candidate_checkpoint_fingerprint": "f0063b2dfc5a4a50aa3df0f5a9e0f50610f16931aa78ab8a2af3b8944d3de5dc"
   },
   "comparison": {

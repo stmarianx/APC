@@ -48,9 +48,14 @@ class PairedPolicyEvaluationTests(unittest.TestCase):
         first = predict_candidate(self.checkpoint, self.state, legal)
         second = predict_candidate(self.checkpoint, self.state, legal)
         self.assertEqual(first, second)
-        self.assertEqual(first["status"], "prediction_ready")
+        self.assertEqual(first["status"], "prediction_ready_uncalibrated")
+        self.assertFalse(first["confidence_calibrated"])
+        self.assertFalse(first["recommendation_allowed"])
+        self.assertTrue(first["offline_evaluation_allowed"])
         self.assertAlmostEqual(sum(float(value) for value in first["probabilities"].values()), 1.0)
-        rejected = predict_candidate(self.checkpoint, self.state, ["check", "bet:0.75"])
+        unsupported_state = dict(self.state)
+        unsupported_state["legal_actions"] = ["check", "bet:0.75"]
+        rejected = predict_candidate(self.checkpoint, unsupported_state, ["check", "bet:0.75"])
         self.assertEqual(rejected["status"], "abstain_unsupported_actions")
         self.assertFalse(rejected["activation_authorized"])
 
