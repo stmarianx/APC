@@ -2,7 +2,7 @@
   "schema_version": "1.1.0",
   "model_name": "APC",
   "expanded_name": "AI Poker Coach",
-  "updated_at": "2026-08-23T00:03:56+03:00",
+  "updated_at": "2026-08-23T00:27:40+03:00",
   "overall_status": "not_ready_for_visible_table_training",
   "next_gate": "T",
   "gates": {
@@ -92,7 +92,7 @@
         "data/processed/synthetic-handseq-gate-v2: 2000 verified temporal frames, 250 complete hands, 125 group-exclusive sessions, 3 layouts and 2 themes; annotations_sha256=91f2340a4ec0e7cbd911f62244fe1fd7cf360e4e4106908116be3498ce6d1f94",
         "runs/synthetic-handseq-gate-v2/sequence_audit.json: 2000/2000 frames and 250/250 hand starts passed continuity; sequence_audit_sha256=c8ed9c6778b967b1f6d56029fa21cacdb0c355ee658ed051fdd47b33b6972a6d",
         "runs/synthetic-handseq-gate-v2/gate_t_validation.json: all minimums pass except controlled-visible frames/sessions; report_sha256=9ddf9d530469c2bb6ef7f07841124498e2e74151b1113c9a130d629547649c78",
-        "tests/: 216 passing APC tests",
+        "tests/: 222 passing APC tests",
         "annotator/web_assets/: browser-verified normalized overlay, drag-to-box editor, object-field merge and canonical-state synchronization; zero browser console errors",
         "runs/workbench-suggestion-smoke-20260803/browser_audit.json: frozen-reference browser audit passed review-only suggestion display and explicit unsaved-draft application; 0 saved/verified annotations and 0 console errors",
         "data/processed/synthetic-smoke-v2: 36 verified frames, 9 group-exclusive sessions, 3 layouts, 2 themes",
@@ -151,6 +151,34 @@
       ],
       "missing": ["controlled-visible trained perception checkpoint", "controlled-visible table-localization calibration", "controlled-visible variable-font/Unicode player-name OCR calibration", "controlled-visible hand-boundary/history evaluation", "arbitrary-font/occlusion numeric OCR", "visible turn-clock OCR/calibration and deadline-source audit", "banner-free multi-action temporal reconstruction", "calibration report", "multi-frame controlled-visible out-of-distribution report", "controlled-visible perception p95 <= 250 ms and end-to-end p95 <= 500 ms report"]
     },
+    "M_neural_APC": {
+      "status": "in_progress",
+      "required": [
+        "versioned multimodal temporal neural architecture",
+        "visible-frame and canonical action-sequence inputs",
+        "uncertainty-aware player-profile conditioning",
+        "legal-action-masked policy logits and BB value heads",
+        "completed-live-hand replay ingestion",
+        "pinned reproducible neural runtime",
+        "trained group-exclusive APC neural checkpoint",
+        "held-out calibration, latency and paired-incumbent evaluation",
+        "catastrophic-forgetting regression and rollback evidence"
+      ],
+      "evidence": [
+        "neural/config_v1.json: APC multimodal temporal neural-network contract with compact visual encoder, masked state transformer, posterior profile encoder, gated fusion, legal-action policy, BB value and uncertainty heads",
+        "neural/contract.py: deterministic configuration fingerprint plus completed-hand temporal replay validation that rejects non-BB state, opponent-private-card leakage, illegal chosen actions, incomplete feedback and unapproved environments",
+        "tests/test_apc_neural_contract.py: 3 passing tests prove the model name remains APC, neural identity is mandatory, completed live virtual-chip hands are training-eligible, and mid-hand policy-weight updates/automatic promotion are prohibited",
+        "APC_MODEL_SPEC.md version 0.2.0: tabular checkpoints explicitly classified as teacher baselines/regression controls rather than the final APC neural network"
+      ],
+      "missing": [
+        "install and pin PyTorch neural runtime (currently unavailable in the bundled laptop runtime)",
+        "implement APC tensorization, visual/state/profile encoders, fusion and output heads",
+        "build content-addressed completed-live-hand replay buffer and batch sampler",
+        "train deterministic APC smoke checkpoint on group-exclusive data",
+        "evaluate neural checkpoint against tabular teachers and declared incumbent",
+        "meet held-out calibration, legal-mask, latency, forgetting and rollback gates"
+      ]
+    },
     "C_coaching_prototype": {
       "status": "in_progress",
       "evidence": [
@@ -173,7 +201,7 @@
         "evaluate_solver_coverage.py and perception/baselines/solver_coverage_v1.model_card.json: reproducible completed-hand coverage audit with confidence/action coverage, dimensional slices and first-exclusion reasons; current 1-hand fixture covers 1/3 decisions exactly and fails the >=100-decision, >=80% exact-coverage gate",
         "virtual_table.py, evaluate_virtual_table.py and perception/baselines/virtual_decision_table_v1.model_card.json: internal-only BB decision provider covered 9 nodes/21 actions, rejected 9 illegal and 21 duplicate steps, recorded zero external-actuation violations and 0.049 ms p95 step latency",
         "full_hand_table.py, evaluate_full_hand_table.py and perception/baselines/full_hand_virtual_table_v1.model_card.json: deterministic heads-up no-limit engine completed 100/100 sampled-outcome hands and 540 actions with all actions/streets covered, zero replay/card/conservation/zero-sum failures, no external actuation and 0.50 ms p95 step latency",
-        "APC/coaching cross-package verification: 216 APC tests and 170 coaching-core tests passing"
+        "APC/coaching cross-package verification: 222 APC tests and 170 coaching-core tests passing"
       ],
       "missing": ["controlled-visible variable-font/Unicode name OCR calibration", "calibrated controlled-visible bridge promotion", "controlled-visible pixel-to-BB recommendation evaluation", "representative completed-hand corpus with >=100 decisions and >=80% exact solver coverage", "solver expansion for uncovered player-count/card/history slices", "multiway/rake/side-pot virtual environment evaluation", "interactive latency gate"]
     },
@@ -207,9 +235,11 @@
         "self_learning/postflop_position_rollout_dataset.py and perception/baselines/postflop_position_rollouts_v1.model_card.json: 1,000 seeds produced 54,000 same-card BTN/BB rows across 6,000 position states and 18,000 policy states; selective-probe BB-minus-BTN minimum-bet advantage increased from +0.046 BB flop to +0.176 BB river while invariant probes remained exactly zero",
         "self_learning/train_position_postflop_value.py and perception/baselines/position_postflop_value_candidate_v1.model_card.json: validation-selected position-aware candidate passed 166 untouched matched hands with 0.1432 BB aggregate MAE improvement, +0.0857 BB policy value and paired 95% interval [0.0469, 0.1285] BB; BTN and BB independently improved MAE/policy value, coverage 99.40% and lookup p95 3.2266 ms",
         "self_learning/position_profile_conditioned_postflop.py, evaluate_position_profile_conditioned.py and perception/baselines/position_profile_conditioned_postflop_v1.model_card.json: frozen 450-event uncertainty bridge evaluated 2,988 profile/state pairs over 166 untouched hands and balanced BTN/BB slices; every profile-position stable-action coverage exceeded 76.10%, all outputs remained non-authorizing and integrated p95 4.6215 ms passed the 5 ms gate",
-        "self_learning/raised_postflop_rollout_dataset.py and perception/baselines/raised_postflop_rollouts_v1.model_card.json: 600 raised-pot hands produced 129,600 matched terminal-return examples across BTN/BB, flop/turn/river, lead/facing-33%/facing-75% nodes and four legal alternatives per node; 435/89/76 complete-hand train/validation/test splits, 86 textures, full selective-policy fold/call/bet/raise coverage in both positions and median 42.75% non-fold paired standard-error reduction"
+        "self_learning/raised_postflop_rollout_dataset.py and perception/baselines/raised_postflop_rollouts_v1.model_card.json: 600 raised-pot hands produced 129,600 matched terminal-return examples across BTN/BB, flop/turn/river, lead/facing-33%/facing-75% nodes and four legal alternatives per node; 435/89/76 complete-hand train/validation/test splits, 86 textures, full selective-policy fold/call/bet/raise coverage in both positions and median 42.75% non-fold paired standard-error reduction",
+        "self_learning/train_raised_postflop_value.py and perception/baselines/raised_postflop_value_candidate_v1.model_card.json: validation-selected made-hand/texture candidate passed 76 untouched complete hands with 0.5210 BB MAE improvement, 66.50% decision accuracy, +0.4317 BB policy value and paired 95% interval [0.0582, 0.8107] BB; BTN, BB and all three node families independently passed, exact coverage was 99.56% and prepared lookup p95 0.6051 ms, while failed calibration and synthetic-policy scope prohibit promotion",
+        "neural/config_v1.json and neural/contract.py: final trainable model remains named APC and is explicitly a multimodal temporal neural network; completed live virtual-chip observations can enter candidate-training replay after hand completion while in-hand policy weights stay frozen"
       ],
-      "missing": ["representative diverse multi-hand solver-labelled replay dataset with non-empty group-exclusive train/validation/test splits", "stratified or normalized all-in counterfactual targets with materially lower variance", "additional raised, 3-bet, 4-bet, multiway, rake and continuous-sizing trunks plus a learned opponent-policy model from representative player populations", "held-out value calibration that meets a declared pre-evaluation threshold without MAE regression", "generalization to learned and previously unseen opponent-policy families", "paired declared-incumbent evaluation across >=30 independent solver nodes with >=90% coverage and a 95% improvement lower bound above zero", "paired incumbent invalid-state and unsafe-confidence non-regression with broader fuzzing", "production registry bootstrap and disaster-recovery rollback audit"]
+      "missing": ["trained APC neural policy/value checkpoint from the versioned multimodal temporal architecture", "representative diverse multi-hand solver-labelled replay dataset with non-empty group-exclusive train/validation/test splits", "content-addressed completed-live-hand replay buffer and continual-learning batch policy", "stratified or normalized all-in counterfactual targets with materially lower variance", "additional raised, 3-bet, 4-bet, multiway, rake and continuous-sizing trunks plus a learned opponent-policy model from representative player populations", "held-out value calibration that meets a declared pre-evaluation threshold without MAE regression", "generalization to learned and previously unseen opponent-policy families", "paired declared-incumbent evaluation across >=30 independent solver nodes with >=90% coverage and a 95% improvement lower bound above zero", "paired incumbent invalid-state and unsafe-confidence non-regression with broader fuzzing", "production registry bootstrap and disaster-recovery rollback audit"]
     }
   }
 }

@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "expanded_name": "AI Poker Coach",
+  "model_family": "multimodal_temporal_neural_network",
+  "neural_network": true,
+  "units": "BB",
+  "framework": {
+    "preferred": "pytorch",
+    "minimum_version": "2.4",
+    "cpu_bootstrap_supported": true,
+    "accelerator_training_optional": true,
+    "dependency_install_required": true
+  },
+  "inputs": {
+    "visible_frame_sequence": {
+      "enabled": true,
+      "maximum_frames": 16,
+      "channels": 3,
+      "normalized_table_view": true
+    },
+    "canonical_state_sequence": {
+      "enabled": true,
+      "maximum_events": 64,
+      "chip_units": "BB",
+      "opponent_private_cards_allowed_at_decision": false
+    },
+    "player_profile": {
+      "enabled": true,
+      "uncertainty_features_required": true,
+      "minimum_effective_observations_feature": true
+    },
+    "legal_action_mask": {
+      "required": true,
+      "action_vocabulary": [
+        "fold",
+        "check",
+        "call",
+        "bet",
+        "raise",
+        "all_in"
+      ],
+      "continuous_size_features": [
+        "to_amount_bb",
+        "pot_fraction"
+      ]
+    }
+  },
+  "architecture": {
+    "visual_encoder": {
+      "kind": "compact_convolutional_encoder",
+      "embedding_dimension": 256,
+      "pretrain_perception_heads": true
+    },
+    "state_encoder": {
+      "kind": "masked_transformer",
+      "hidden_dimension": 256,
+      "layers": 4,
+      "attention_heads": 8,
+      "dropout": 0.1
+    },
+    "profile_encoder": {
+      "kind": "posterior_feature_mlp",
+      "hidden_dimensions": [
+        64,
+        64
+      ]
+    },
+    "fusion": {
+      "kind": "gated_cross_modal_fusion",
+      "hidden_dimension": 256
+    },
+    "output_heads": [
+      "perception_fields",
+      "temporal_state_consistency",
+      "legal_action_policy_logits",
+      "action_value_bb",
+      "state_value_bb",
+      "opponent_tendency",
+      "uncertainty_abstention"
+    ]
+  },
+  "training": {
+    "stages": [
+      "perception_pretraining",
+      "solver_policy_value_imitation",
+      "virtual_chip_self_play",
+      "completed_hand_replay",
+      "calibration_and_paired_incumbent_evaluation"
+    ],
+    "course_corpus_role": "explanation_retrieval_and_concept_auxiliary_only",
+    "gto_label_sources": [
+      "fingerprinted_solver_outputs",
+      "reproducible_solver_self_play"
+    ],
+    "experience_sources": [
+      "controlled_virtual_chip_self_play",
+      "completed_live_observation_virtual_chip_hands",
+      "verified_completed_hand_replay"
+    ],
+    "group_exclusive_split_unit": "complete_hand_or_session",
+    "replay_buffer": {
+      "versioned": true,
+      "content_addressed": true,
+      "prioritized_sampling": true,
+      "retain_incumbent_regression_mix": true
+    }
+  },
+  "live_learning": {
+    "experience_ingestion_during_session": true,
+    "profile_posterior_updates_during_session": true,
+    "policy_weight_updates_during_hand": false,
+    "candidate_training_after_completed_hands": true,
+    "candidate_evaluation_before_activation": true,
+    "automatic_promotion": false,
+    "rollback_required": true
+  },
+  "inference": {
+    "legal_action_mask_required": true,
+    "auditable_bb_outputs_required": true,
+    "uncertainty_abstention_required": true,
+    "deadline_aware_fast_path_required": true,
+    "target_strategy_p95_ms": 50
+  },
+  "status": {
+    "architecture_contract_frozen": true,
+    "neural_runtime_available": false,
+    "trained_checkpoint_available": false,
+    "ready_for_visible_table_training": false,
+    "ready_for_evaluated_coaching": false
+  }
+}

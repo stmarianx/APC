@@ -1,10 +1,19 @@
 # APC — AI Poker Coach
 
-APC is the platform-agnostic model layer of this project. It learns poker
-concepts from the verified Negreanu course corpus and solver/GTO material,
-reads visible virtual-chip poker tables, maintains a temporally valid hand
-state, models opponents with uncertainty, and returns fast recommendations in
-big blinds.
+APC is the platform-agnostic AI poker coach and the name of its trainable
+neural-network model. It learns poker concepts from the verified Negreanu
+course corpus and solver/GTO material, reads visible virtual-chip poker tables,
+maintains a temporally valid hand state, models opponents with uncertainty, and
+returns fast recommendations in big blinds.
+
+The lookup tables, compact smoke learners and abstraction-based value
+checkpoints currently in the repository are APC teacher baselines and
+regression controls. They are not the final neural network. The neural APC
+contract lives in `neural/config_v1.json`: a visual encoder, temporal state
+transformer, uncertainty-aware profile encoder, legal-action policy head and BB
+value heads. Live virtual-chip actions can enter its completed-hand replay
+buffer immediately; network weights change only in a new evaluated checkpoint
+after completed hands, never silently during a hand.
 
 APC is designed for locally controlled or explicitly permitted virtual-chip
 training environments. A PokerStars text-history parser remains available as
@@ -41,6 +50,8 @@ models are still required before APC can be trained for arbitrary tables.
 ## Files
 
 - `APC_MODEL_SPEC.md` — authoritative product, model and training contract.
+- `neural/config_v1.json` — versioned APC multimodal temporal neural architecture and live-learning policy.
+- `neural/contract.py` — neural configuration and completed-live-hand replay validation with deterministic fingerprints.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
 - `curriculum/generated/course_curriculum.jsonl` — deterministic course and math training curriculum.
@@ -834,6 +845,23 @@ Paired common-card comparisons reduce non-fold standard error by a median
 42.75% (maximum 76.86%). Different sizes produce materially different sampled
 returns, but these are deterministic-policy virtual-chip labels—not solver or
 GTO targets—and the dataset cannot promote a policy.
+
+`self_learning/train_raised_postflop_value.py` fits the corresponding offline
+action-value candidate. It validates and defensively detaches a checkpoint
+once at load time, then performs sub-millisecond prepared lookups while still
+fully validating any raw checkpoint input. Abstraction family and shrinkage
+are selected only on the 89 validation hands; the winning configuration is
+made-hand plus board texture with zero shrinkage.
+
+On 76 untouched complete hands (16,416 action examples and 4,104 policy
+states), MAE falls from 3.9706 BB to 3.4496 BB. Exact abstraction coverage is
+99.56%, decision accuracy is 66.50%, and selected-action value improves by
+0.4317 BB with a matched-hand bootstrap 95% interval of [0.0582, 0.8107] BB.
+BTN and BB independently improve by 0.4269/0.4364 BB; lead, facing-33% and
+facing-75% nodes improve by 0.3860/0.2606/0.6484 BB. Prepared lookup p95 is
+0.6051 ms against 5 ms. Calibration remains inadequate (0.2121 BB EACE,
+0.5254 BB maximum bin gap), and synthetic-policy labels are not GTO, so the
+checkpoint stays uncalibrated, non-recommending and unpromoted.
 
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference

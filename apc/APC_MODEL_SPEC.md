@@ -1,15 +1,22 @@
 # APC model, data and readiness specification
 
-Version: 0.1.0  
+Version: 0.2.0
 Status: foundation contract  
 Units: BB
 
 ## 1. Product objective
 
-APC is an AI poker coach for controlled or explicitly permitted virtual-chip
-environments. It must turn visible table frames into an auditable poker state,
-combine a solver-backed baseline with evidence-gated player adjustments, and
-produce a low-latency recommendation expressed entirely in big blinds.
+APC is both the product name and the name of its trainable neural-network
+model. It is an AI poker coach for controlled or explicitly permitted
+virtual-chip environments. It must turn visible table-frame sequences into an
+auditable poker state, combine learned policy/value estimates with a
+solver-backed baseline and evidence-gated player adjustments, and produce a
+low-latency recommendation expressed entirely in big blinds.
+
+Deterministic lookup tables, linear smoke models and abstraction-based value
+checkpoints in this repository are APC baselines, teachers and regression
+controls. They are not the final APC neural model and must never be presented
+as if they were.
 
 APC is platform-agnostic. Each visual theme is handled by a calibration or
 provider profile that implements one canonical observation contract. No
@@ -77,7 +84,34 @@ revision rollback. A rejected transition must not mutate the last accepted
 state. Animation frames, occlusions and ambiguous OCR remain pending rather
 than becoming invented actions.
 
-### 3.4 Strategy and coaching layer
+### 3.4 APC neural model
+
+The versioned neural contract is `neural/config_v1.json`, validated by
+`neural/contract.py`. APC uses a modular multimodal temporal architecture so
+components can be pretrained independently and jointly fine-tuned later:
+
+- compact convolutional encoder for normalized visible table-frame sequences;
+- masked transformer for canonical state and observed-action sequences;
+- uncertainty-bearing player-profile encoder;
+- gated fusion of visual, structured-state and opponent evidence;
+- perception, temporal-consistency, legal-action policy, action-value BB,
+  state-value BB, opponent-tendency and uncertainty/abstention heads.
+
+Every policy output is masked by the visible legal actions. Bet and raise
+choices carry both an action class and a BB/pot-fraction size representation.
+Opponent private cards are forbidden from decision inputs. Course material is
+used for concept/explanation auxiliaries; GTO labels require fingerprinted
+solver output or a reproducible solver/self-play configuration.
+
+APC may ingest stabilized live observations and update player posteriors during
+a virtual-chip session. Neural policy weights remain frozen during a hand.
+Only completed hands enter the content-addressed replay buffer, and weight
+updates create a new offline candidate that must pass calibration, safety,
+paired-incumbent and rollback gates before activation. This is how APC evolves
+from live action without turning one noisy or adversarial hand into an
+immediate uncontrolled weight change.
+
+### 3.5 Strategy and coaching layer
 
 The strategy layer consumes only accepted canonical states. Priority order:
 
@@ -90,20 +124,22 @@ Opponent adjustments retain the solver strategy as the baseline. Small samples
 are observe-only. Directional overlays require posterior evidence and display
 their opportunity count and uncertainty interval.
 
-### 3.5 Self-learning layer
+### 3.6 Self-learning layer
 
 Self-learning has two distinct loops:
 
-- **online adaptation:** player posteriors and range beliefs update during a
-  virtual-chip session without modifying foundation or policy weights;
-- **offline improvement:** completed trajectories enter a versioned replay
-  dataset for self-play, imitation, value/policy training and calibration.
+- **online experience:** stabilized visible actions, player posteriors and range
+  beliefs update during a virtual-chip session without modifying neural policy
+  weights;
+- **offline neural improvement:** completed trajectories enter a versioned
+  replay buffer for solver imitation, self-play, policy/value learning,
+  continual-learning regression mixing and calibration.
 
 No candidate checkpoint replaces the active checkpoint automatically. It must
 pass the fixed regression suite, held-out perception set, strategy evaluation,
 calibration gates and paired virtual-chip evaluation against the incumbent.
 
-### 3.6 Deadline-aware decision and controlled action layer
+### 3.7 Deadline-aware decision and controlled action layer
 
 APC must read or receive the actual per-turn deadline; it must not assume a
 fixed 30-second clock. Every accepted decision carries a monotonic observation
@@ -190,16 +226,20 @@ per-field confidence and evaluate exact-match state reconstruction.
 Train/evaluate event recognition across frame sequences and combine it with
 hard state-transition constraints.
 
-### Stage D — strategy integration
+### Stage D — APC policy/value pretraining and strategy integration
 
-Feed only stable canonical states into the existing range, equity, solver,
-profile and explanation engine. Measure abstention and solver coverage.
+Train APC's legal-action policy and BB value heads from fingerprinted solver
+targets and the existing tabular teacher baselines. Feed only stable canonical
+states into the range, equity, solver, profile and explanation engine. Measure
+abstention, calibration and exact solver coverage.
 
 ### Stage E — virtual-chip self-play
 
-Generate controlled trajectories from frozen game configurations. Train
-candidate policy/value components, evaluate best responses or exploitability
-where tractable, and promote only evidence-backed improvements.
+Generate controlled trajectories from frozen game configurations and ingest
+eligible completed live-observation hands. Train a new APC neural checkpoint
+from the versioned replay buffer, retain incumbent regression samples, evaluate
+best responses or exploitability where tractable, and promote only
+evidence-backed improvements.
 
 ## 8. Readiness gates
 
@@ -248,6 +288,12 @@ Until Gate T passes, APC is **not ready for visible-table training**.
   confidence interval excluding zero;
 - rollback to the incumbent checkpoint is tested.
 
+For an APC neural checkpoint, Gate S additionally requires a pinned neural
+runtime, architecture/configuration fingerprint, deterministic initialization
+seed, replay-buffer fingerprint, legal-mask invariants, catastrophic-forgetting
+regression suite and a paired evaluation against the declared active APC
+checkpoint. Live experience collection alone can never satisfy promotion.
+
 ## 9. Evaluation reports
 
 Every training run produces:
@@ -264,8 +310,10 @@ Every training run produces:
 
 ## 10. Current status
 
-The course corpus, mathematical engine, saved-hand parser, Bayesian profiles,
-solver interchange, confidence gate and temporal state checks exist. APC does
-not yet contain a trained pixel model, labeled visual dataset, annotation tool
-or reproducible perception training entry point. The authoritative current gate
-status is `readiness.json`.
+The course corpus, mathematical engine, annotation/capture pipeline, synthetic
+perception baselines, temporal tracker, virtual table, Bayesian profiles,
+solver interchange and offline value teachers exist. The APC neural
+architecture and completed-live-hand replay contracts are now versioned, but
+the local runtime does not yet include PyTorch and no trained APC neural
+checkpoint exists. The authoritative evidence and missing gates are recorded
+in `readiness.json`.

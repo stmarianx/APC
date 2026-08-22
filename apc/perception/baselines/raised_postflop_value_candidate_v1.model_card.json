@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "component": "raised_postflop_position_node_action_value_candidate",
+  "version": "raised_postflop_value_candidate_v1",
+  "evaluated_at": "2026-08-23",
+  "status": "offline_generalization_and_prepared_latency_gates_passed_not_promoted",
+  "activation_authorized": false,
+  "recommendation_allowed": false,
+  "confidence_calibrated": false,
+  "artifact": {
+    "local_path": "apc/runs/raised-postflop-value-v1/checkpoint.json",
+    "file_sha256": "44d7592f8e352b915ad536e70ea027ce6e20d484bd54869d13daa38eba4b3b92",
+    "file_bytes": 1097620,
+    "checkpoint_fingerprint": "da97df2d2cf3a230ec4ada84b717a78da14a007f4600bdbf695b45bb2c71ba82",
+    "dataset_fingerprint": "e256f42305d05c87527924073457d6a4015598bda71b9cea155b2e95a50b9d5e"
+  },
+  "selection": {
+    "selection_split": "complete-hand-group-exclusive validation",
+    "feature_family": "made_hand_texture",
+    "shrinkage": "0",
+    "test_tuning": false,
+    "supported_positions": [
+      "BTN",
+      "BB"
+    ],
+    "supported_nodes": [
+      "lead",
+      "facing_33",
+      "facing_75"
+    ],
+    "actions_per_node": 4,
+    "opponent_policies": [
+      "check_call",
+      "fold_to_pressure",
+      "made_hand_selective"
+    ]
+  },
+  "untouched_test": {
+    "independent_complete_hands": 76,
+    "action_examples": 16416,
+    "policy_states": 4104,
+    "mae_bb": "3.44958385057",
+    "position_street_node_policy_action_mean_baseline_mae_bb": "3.97062372566",
+    "mae_improvement_bb": "0.521039875093",
+    "exact_abstraction_coverage": "0.995614035088",
+    "decision_accuracy": "0.664961013645",
+    "policy_value_improvement_bb": "0.431664230019",
+    "paired_complete_hand_bootstrap_95_bb": [
+      "0.0581993177388",
+      "0.810745614035"
+    ],
+    "bootstrap_samples": 2000,
+    "expected_absolute_calibration_error_bb": "0.212077226382",
+    "maximum_calibration_bin_gap_bb": "0.52535116186",
+    "generalization_gate_passed": true
+  },
+  "position_slices": {
+    "BTN": {
+      "mae_improvement_bb": "0.520821787711",
+      "decision_accuracy": "0.665204678363",
+      "policy_value_improvement_bb": "0.426949317739"
+    },
+    "BB": {
+      "mae_improvement_bb": "0.521257962476",
+      "decision_accuracy": "0.664717348928",
+      "policy_value_improvement_bb": "0.4363791423"
+    }
+  },
+  "node_slices": {
+    "lead": {
+      "mae_improvement_bb": "0.437844872973",
+      "decision_accuracy": "0.777046783626",
+      "policy_value_improvement_bb": "0.386001461988"
+    },
+    "facing_33": {
+      "mae_improvement_bb": "0.423197644357",
+      "decision_accuracy": "0.592105263158",
+      "policy_value_improvement_bb": "0.260599415205"
+    },
+    "facing_75": {
+      "mae_improvement_bb": "0.70207710795",
+      "decision_accuracy": "0.625730994152",
+      "policy_value_improvement_bb": "0.648391812865"
+    }
+  },
+  "prepared_lookup_latency": {
+    "repetitions": 500,
+    "p50_ms": "0.22745",
+    "p95_ms": "0.6051",
+    "maximum_ms": "160.0182",
+    "threshold_p95_ms": "5",
+    "gate_passed": true,
+    "scope": "one-time validated and detached checkpoint handle plus one visible-state feature and value lookup; dataset validation and perception excluded"
+  },
+  "contract": {
+    "units": "BB",
+    "visible_features_only": true,
+    "opponent_private_card_decision_leakage": false,
+    "complete_hand_group_exclusive": true,
+    "semantic_generalization_gate_recomputed_on_validation": true,
+    "solver_target": false,
+    "gto_verified": false,
+    "external_actuation": false
+  },
+  "limitations": [
+    "Values are sampled outcomes against three deterministic probe policies on one 2.5 BB raised heads-up trunk, not solver counterfactual values, GTO, or learned population play.",
+    "Only the discrete lead/facing action sizes in the corpus are supported; all-in, 3-bet, 4-bet, multiway, rake and continuous sizing remain absent.",
+    "Calibration diagnostics fail any confidence claim, so recommendation, activation and promotion remain prohibited.",
+    "The 160.0 ms maximum is a cold/runtime outlier; the predeclared prepared-lookup p95 gate passed."
+  ]
+}
