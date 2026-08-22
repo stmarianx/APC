@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "component": "raised_pot_facing_bet_multi_sizing_rollout_corpus",
+  "version": "raised_postflop_rollouts_v1",
+  "evaluated_at": "2026-08-23",
+  "status": "training_eligible_virtual_chip_dataset_not_policy_promotable",
+  "policy_promotion_eligible": false,
+  "solver_target": false,
+  "gto_verified": false,
+  "artifact": {
+    "local_path": "apc/runs/raised-postflop-rollouts-v1",
+    "manifest_sha256": "4f9c7cbfe3577b0c057906e84e4932060dd9a35f51d8eb32431f7e737a6c583e",
+    "dataset_fingerprint": "e256f42305d05c87527924073457d6a4015598bda71b9cea155b2e95a50b9d5e",
+    "examples_sha256": "468a87aa9e66686b7a1b4ce2a7a6e640cf056a53d794817316104b9d1d9278eb",
+    "examples_bytes": 311149578
+  },
+  "corpus": {
+    "complete_hand_groups": 600,
+    "examples": 129600,
+    "visible_states": 10800,
+    "opponent_policy_states": 32400,
+    "public_texture_classes": 86,
+    "hand_split_counts": {
+      "train": 435,
+      "validation": 89,
+      "test": 76
+    },
+    "example_split_counts": {
+      "train": 93960,
+      "validation": 19224,
+      "test": 16416
+    },
+    "group_exclusive": true,
+    "same_cards_across_positions_nodes_policies_actions": true,
+    "opponent_private_cards_in_decision_state": false
+  },
+  "trunk": {
+    "game": "heads_up_no_limit_holdem",
+    "units": "BB",
+    "starting_stack_bb": "100",
+    "preflop_open_to_bb": "2.5",
+    "preflop_response": "call",
+    "postflop_streets": [
+      "flop",
+      "turn",
+      "river"
+    ],
+    "hero_positions": [
+      "BTN",
+      "BB"
+    ],
+    "node_families": {
+      "lead": [
+        "check",
+        "bet_33pct_pot",
+        "bet_67pct_pot",
+        "bet_100pct_pot"
+      ],
+      "facing_33pct_pot": [
+        "fold",
+        "call",
+        "minimum_raise",
+        "raise_to_3x_bet"
+      ],
+      "facing_75pct_pot": [
+        "fold",
+        "call",
+        "minimum_raise",
+        "raise_to_3x_bet"
+      ]
+    },
+    "opponent_policies": [
+      "check_call",
+      "fold_to_pressure",
+      "made_hand_selective"
+    ]
+  },
+  "coverage": {
+    "selective_policy_actions_present_in_both_positions": [
+      "fold",
+      "call",
+      "bet",
+      "raise"
+    ],
+    "every_state_has_all_three_policies": true,
+    "every_policy_state_has_four_legal_actions": true,
+    "every_hand_has_all_positions_streets_and_nodes": true,
+    "eligibility_gate_passed": true
+  },
+  "paired_audit": {
+    "comparison_baseline": {
+      "lead": "check",
+      "facing_bet": "call"
+    },
+    "non_fold_standard_error_reduction_fraction": {
+      "median": "0.427525031369",
+      "maximum": "0.768641695571",
+      "zero_reductions_retained": true
+    },
+    "made_hand_selective_lead_value_difference_bb": {
+      "BTN": {
+        "flop_33_67_100": ["0.7995", "0.5105", "0.23"],
+        "turn_33_67_100": ["0.05275", "-0.39775", "-0.835"],
+        "river_33_67_100": ["-0.269", "-0.739333333333", "-1.19583333333"]
+      },
+      "BB": {
+        "flop_33_67_100": ["0.8545", "0.5655", "0.285"],
+        "turn_33_67_100": ["0.16775", "-0.28275", "-0.72"],
+        "river_33_67_100": ["-0.102333333333", "-0.572666666667", "-1.02916666667"]
+      }
+    }
+  },
+  "validation": {
+    "immutable_manifest_and_example_fingerprints": true,
+    "legal_visible_BB_action_validation": true,
+    "private_card_leakage_rejection": true,
+    "hand_group_split_leakage_rejection": true,
+    "position_card_match_validation": true,
+    "paired_audit_recomputed_from_examples": true,
+    "deterministic_rebuild_tested": true
+  },
+  "limitations": [
+    "Terminal returns are sampled outcomes against deterministic probe policies, not solver counterfactual values or GTO labels.",
+    "Only one 2.5 BB heads-up preflop raise/call trunk is represented; limped, 3-bet, 4-bet, multiway, rake and side-pot contexts remain separate or absent.",
+    "The fixed 33%, 67%, 75% and 100% pot sizes do not cover continuous no-limit sizing.",
+    "Training eligibility permits offline candidate fitting only and cannot authorize confidence, recommendation, promotion or external actuation."
+  ]
+}

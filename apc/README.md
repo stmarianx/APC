@@ -816,6 +816,25 @@ the predeclared 50% floor; every output remained non-authorizing. Integrated
 p95 was 4.6215 ms against 5 ms. This proves a fast two-position uncertainty
 bridge over synthetic probe policies, not population calibration or GTO.
 
+`self_learning/raised_postflop_rollout_dataset.py` opens the next postflop
+trunk from a matched 2.5 BB preflop raise/call pot. For both BTN and BB on every
+street it freezes three Hero node families: first-to-act with check or 33%,
+67% and 100% pot bets; facing a 33% pot bet; and facing a 75% pot bet. Each
+facing node pairs fold and call with a minimum legal raise and a raise to three
+times the opponent's bet. Commands are derived from the visible legal-action
+range and stored only in BB.
+
+The frozen 600-hand corpus contains 129,600 terminal-return examples, 10,800
+visible states, 32,400 policy states and 86 public texture classes. Complete
+hands split 435/89/76 across train/validation/test without leakage, and the
+same cards are retained across positions, nodes, opponent probes and Hero
+alternatives. Every policy state has all four legal counterfactuals; the
+selective probe produces folds, calls, bets and raises in both positions.
+Paired common-card comparisons reduce non-fold standard error by a median
+42.75% (maximum 76.86%). Different sizes produce materially different sampled
+returns, but these are deterministic-policy virtual-chip labels—not solver or
+GTO targets—and the dataset cannot promote a policy.
+
 `self_learning/evaluate_paired_policy.py` adds deterministic candidate inference
 and paired node-bootstrap confidence intervals on this provider. Inference
 renormalizes only a fully supported legal-action set and abstains if any action
