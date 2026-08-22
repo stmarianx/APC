@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "artifact_kind": "neural_candidate_family_model_card",
+  "status": "offline_neural_candidates_unpromoted",
+  "framework": {
+    "name": "pytorch",
+    "version": "2.13.0+cpu",
+    "device": "cpu"
+  },
+  "architecture_contract_fingerprint": "3efd4e31a0a91cf1feb3261b4d8d2283ddd55f7e6c57620739ce81854d815aab",
+  "source_dataset": {
+    "dataset_id": "raised-postflop-rollouts-v1",
+    "dataset_fingerprint": "e256f42305d05c87527924073457d6a4015598bda71b9cea155b2e95a50b9d5e",
+    "examples": 129600,
+    "complete_hand_splits": {
+      "train": 435,
+      "validation": 89,
+      "test": 76
+    },
+    "label_scope": "controlled_virtual_chip_policy_matched_terminal_returns_not_solver_or_GTO_labels"
+  },
+  "architecture": {
+    "hidden_dimension": 256,
+    "transformer_layers": 4,
+    "attention_heads": 8,
+    "visual_encoder": "compact_convolutional_encoder_initialized_untrained",
+    "state_encoder": "masked_transformer_trained",
+    "profile_encoder": "controlled_policy_profile_mlp_trained_in_v2_and_v3",
+    "fusion": "missing_modality_masked_gated_fusion",
+    "heads": [
+      "legal_action_policy_logits",
+      "continuous_size_conditioned_action_value_bb",
+      "state_value_bb",
+      "opponent_tendency",
+      "uncertainty",
+      "temporal_consistency"
+    ]
+  },
+  "candidate_comparison": {
+    "apc-neural-v1": {
+      "checkpoint_fingerprint": "a3d6a233e24cd4290df4a85c793c3253bbb1ded841e5a4b14022cbb90e2eacbd",
+      "weights_sha256": "e163af0532fed6ce82be74b46da14c37b0a4d38f49dea26044e6fec816cae22a",
+      "trained_modalities": ["canonical_state_sequence"],
+      "validation_mae_bb": "4.06606142024",
+      "validation_decision_accuracy": "0.210986267166",
+      "validation_chosen_action_regret_bb": "2.4570120511",
+      "diagnostic_test_mae_bb": "4.26740775073",
+      "diagnostic_test_decision_accuracy": "0.229532163743",
+      "diagnostic_test_chosen_action_regret_bb": "2.57485378555",
+      "p95_ms": "6.5095"
+    },
+    "apc-neural-v2": {
+      "checkpoint_fingerprint": "1fd88fd7fa4b029928f43b2c9b8cf97c4a12207b1337b12091d8576b725015a0",
+      "weights_sha256": "5e8d83b7e3d9fbb62db4fd1303d6021db2d5bdeb96034e7709121efd92b6d6c1",
+      "trained_modalities": ["canonical_state_sequence", "controlled_player_profile"],
+      "validation_mae_bb": "3.95304100795",
+      "validation_decision_accuracy": "0.137328339576",
+      "validation_chosen_action_regret_bb": "2.2400332785",
+      "diagnostic_test_mae_bb": "4.09911775196",
+      "diagnostic_test_decision_accuracy": "0.141812865497",
+      "diagnostic_test_chosen_action_regret_bb": "2.45935671162",
+      "p95_ms": "6.4455"
+    },
+    "apc-neural-v3": {
+      "checkpoint_fingerprint": "93abde462e9c8e94cf8e444f4f0acae2fbf746e134a52059262b08611da41d31",
+      "weights_sha256": "fc44478cc64e1fe9dcd6fd0e1f548ddad45993b8c8cf78f21d8ad6ce3afa5d6d",
+      "trained_modalities": ["canonical_state_sequence", "controlled_player_profile"],
+      "training_change": "complete_counterfactual_group_batches_plus_listwise_value_ranking",
+      "validation_mae_bb": "4.1271275347",
+      "validation_decision_accuracy": "0.275905118602",
+      "validation_chosen_action_regret_bb": "2.31801912559",
+      "diagnostic_test_mae_bb": "4.27758400215",
+      "diagnostic_test_decision_accuracy": "0.287037037037",
+      "diagnostic_test_chosen_action_regret_bb": "2.41915203117",
+      "p95_ms": "6.6618"
+    }
+  },
+  "selection": {
+    "preferred_candidate": "apc-neural-v2",
+    "criterion": "lowest_validation_chosen_action_regret_bb",
+    "selection_uses_test_metrics": false,
+    "promotion_authorized": false
+  },
+  "gates": {
+    "pickle_free_fingerprinted_weights": true,
+    "legal_action_mask": true,
+    "group_exclusive_training": true,
+    "strategy_p95_under_50_ms": true,
+    "beats_raised_postflop_teacher": false,
+    "confidence_calibrated": false,
+    "visible_table_training_ready": false,
+    "evaluated_coaching_ready": false
+  },
+  "evaluation_warning": "The same 76-hand test split was inspected after v1 and v2 before v3 was designed. All test metrics are diagnostic and cannot support model selection or promotion. A new sealed complete-hand audit split is required.",
+  "teacher_comparison": {
+    "teacher_test_mae_bb": "3.44958385057",
+    "teacher_test_decision_accuracy": "0.664961013645",
+    "teacher_p95_ms": "0.6051",
+    "result": "all_neural_candidates_remain_below_teacher"
+  },
+  "next_training_change": "Add verified suit-invariant made-hand, draw and board-texture features to the state tokens, train against a fresh sealed hand split, then distill from fingerprinted solver targets when available.",
+  "artifact_storage": "Rebuildable weights and checkpoints remain in ignored apc/runs directories; this tracked card preserves exact fingerprints and metrics."
+}

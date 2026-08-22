@@ -1,0 +1,3 @@
+# Install from the official PyTorch CPU index on CPU-only development machines:
+# python -m pip install -r apc/requirements-neural.txt --index-url https://download.pytorch.org/whl/cpu
+torch>=2.4

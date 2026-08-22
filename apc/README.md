@@ -52,6 +52,12 @@ models are still required before APC can be trained for arbitrary tables.
 - `APC_MODEL_SPEC.md` — authoritative product, model and training contract.
 - `neural/config_v1.json` — versioned APC multimodal temporal neural architecture and live-learning policy.
 - `neural/contract.py` — neural configuration and completed-live-hand replay validation with deterministic fingerprints.
+- `neural/features.py` — BB-only, private-card-safe, suit-renaming-invariant state/action/profile tensorization.
+- `neural/model.py` — executable PyTorch visual/state/profile network, gated fusion, legal mask and pickle-free weights.
+- `neural/train_candidate.py` — complete-hand-exclusive training, validation selection, split metrics, latency and artifact validation.
+- `neural/replay_buffer.py` — content-addressed completed-hand storage, deterministic grouped splits and prioritized incumbent-retaining sampling.
+- `neural/apc_neural_candidates_v1.model_card.json` — frozen v1-v3 comparison and closed readiness decision.
+- `requirements-neural.txt` — portable PyTorch dependency profile for neural development.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
 - `curriculum/generated/course_curriculum.jsonl` — deterministic course and math training curriculum.
@@ -902,6 +908,52 @@ false. `self_learning/evaluate_candidate_safety.py` tests ten deterministic
 invalid-state mutations. The smoke candidate accepted none and produced zero
 recommendation/activation violations across valid and adversarial paths. This
 is standalone safety evidence; paired incumbent non-regression remains open.
+
+## First executable APC neural candidates
+
+`neural/model.py` now implements the contract-sized APC network in PyTorch:
+a compact visual CNN, a 256-dimensional four-layer masked transformer over
+canonical cards/state/history tokens, an opponent-profile MLP, missing-
+modality-aware gated fusion, legal-action-masked policy logits, generic and
+continuous-size-conditioned BB value heads, opponent/temporal heads and an
+uncertainty output. State features reject opponent private cards and canonicalize
+suits by first appearance. Weights use a deterministic, fingerprinted custom
+binary format with no pickle deserialization.
+
+The first full CPU experiments trained on all 93,960 training rows of the
+129,600-example raised-postflop corpus. Every split remains complete-hand
+exclusive. V1 trained only state/history; v2 corrected the profile data path;
+v3 kept each four-action counterfactual set in the same batch and added a
+listwise value-ranking loss. The validation-selected candidate is v2, with
+3.9530 BB MAE and 2.2400 BB chosen-action regret. V3 reached higher diagnostic
+test action accuracy (28.70%) but had weaker validation regret (2.3180 BB), so
+it was not selected. All candidates reload with exact fingerprints and run in
+under 6.7 ms p95 on the four-thread laptop CPU, well below the 50 ms strategy
+budget.
+
+These candidates are genuine neural checkpoints, not lookup tables, but none
+is promotable. The stronger raised-postflop teacher remains materially better
+(3.4496 BB test MAE and 66.50% action accuracy), confidence is uncalibrated,
+labels are controlled-policy rollouts rather than verified GTO solver targets,
+and the visual encoder remains untrained. Test results were inspected between
+candidate design iterations, so they are diagnostic only; the next candidate
+requires a new sealed complete-hand audit split. Rebuildable weights stay in
+ignored `apc/runs/apc-neural-v*/` directories; the tracked model card preserves
+their exact checkpoint and weight fingerprints.
+
+`neural/replay_buffer.py` supplies the persistent continual-learning boundary.
+Only fully completed, validated BB hands enter immutable SHA-256-addressed
+objects. Session/hand identity conflicts and private-card leakage are rejected;
+duplicate bytes are idempotent. Split assignment is deterministic by complete
+hand group. Candidate batches use seeded priority-weighted sampling and reserve
+a declared fraction for incumbent examples, providing the input mechanics for
+future catastrophic-forgetting checks without changing weights during a hand.
+
+```powershell
+python -m pip install -r apc/requirements-neural.txt --index-url https://download.pytorch.org/whl/cpu
+python -m apc.neural.train_candidate apc/runs/raised-postflop-rollouts-v1 apc/runs/apc-neural-v4
+python -m apc.neural.train_candidate apc/runs/apc-neural-v3/checkpoint.json --validate
+```
 
 ## Frozen visible-table OOD reference
 

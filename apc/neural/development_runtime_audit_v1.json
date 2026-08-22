@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "observed_at": "2026-08-23T02:09:02+03:00",
+  "runtime": {
+    "framework": "pytorch",
+    "version": "2.13.0+cpu",
+    "device": "cpu",
+    "configured_threads": 4,
+    "cpu_bootstrap_available": true
+  },
+  "architecture_contract_fingerprint": "3efd4e31a0a91cf1feb3261b4d8d2283ddd55f7e6c57620739ce81854d815aab",
+  "local_candidate_runs": [
+    "apc-neural-v1",
+    "apc-neural-v2",
+    "apc-neural-v3"
+  ],
+  "preferred_by_validation_only": "apc-neural-v2",
+  "ready_for_visible_table_training": false,
+  "ready_for_evaluated_coaching": false,
+  "portable_runtime_declaration": "../requirements-neural.txt"
+}

@@ -313,7 +313,15 @@ Every training run produces:
 The course corpus, mathematical engine, annotation/capture pipeline, synthetic
 perception baselines, temporal tracker, virtual table, Bayesian profiles,
 solver interchange and offline value teachers exist. The APC neural
-architecture and completed-live-hand replay contracts are now versioned, but
-the local runtime does not yet include PyTorch and no trained APC neural
-checkpoint exists. The authoritative evidence and missing gates are recorded
-in `readiness.json`.
+architecture and completed-live-hand replay contracts are versioned. PyTorch
+2.13 CPU is installed in the development runtime, and three full-corpus APC
+neural candidates have demonstrated deterministic state/profile training,
+pickle-free fingerprinted weights and 6.7 ms-or-better p95 strategy inference.
+Completed virtual-chip hands can now enter an immutable content-addressed
+replay buffer with deterministic hand-group splits, priority sampling and
+incumbent-regression retention.
+They remain unpromoted: the visual branch is untrained, the raised-postflop
+teacher remains stronger, confidence is uncalibrated, targets are not verified
+GTO labels and a fresh sealed hand audit is required after iterative test
+inspection. The authoritative evidence and missing gates are recorded in
+`readiness.json`.

@@ -27,6 +27,7 @@ artifact bundles instead of being copied as an unverified runtime tree.
 | --- | --- | --- |
 | `core` | 8 GB laptop | coaching engine, hand review and exact tests |
 | `vision` | 8 GB laptop | core plus Pillow/NumPy and APC perception tests |
+| `neural` | 8 GB laptop | core plus CPU PyTorch and APC neural training/inference |
 | `transcription` | temporary research use | Faster-Whisper and its downloaded model cache |
 | `all` | stronger training machine | every development dependency |
 
@@ -34,7 +35,12 @@ Create an isolated environment with:
 
 ```powershell
 .\scripts\setup_apc.ps1 -Profile vision
+.\scripts\setup_apc.ps1 -Profile neural
 ```
+
+The neural profile defaults to the official CPU wheel index. A stronger
+machine can pass `-TorchIndexUrl` for its approved accelerator-specific wheel
+source without changing APC's model or dataset fingerprints.
 
 The default development path is CPU-first and uses bounded batches. Training
 runs must record peak memory, elapsed time, dependency versions, input manifest

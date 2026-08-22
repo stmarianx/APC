@@ -1,8 +1,9 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('core', 'vision', 'transcription', 'all')]
+    [ValidateSet('core', 'vision', 'neural', 'transcription', 'all')]
     [string]$Profile = 'vision',
     [string]$VenvPath = '.venv',
+    [string]$TorchIndexUrl = 'https://download.pytorch.org/whl/cpu',
     [switch]$SkipInstall
 )
 
@@ -26,6 +27,12 @@ if ($SkipInstall) {
 if ($Profile -in @('vision', 'all')) {
     & $pythonExe -m pip install --requirement (
         Join-Path $workspaceRoot 'apc\requirements-dev.txt'
+    )
+}
+
+if ($Profile -in @('neural', 'all')) {
+    & $pythonExe -m pip install --index-url $TorchIndexUrl --requirement (
+        Join-Path $workspaceRoot 'apc\requirements-neural.txt'
     )
 }
 
