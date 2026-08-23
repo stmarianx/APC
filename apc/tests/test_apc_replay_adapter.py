@@ -15,6 +15,11 @@ from apc.neural.continual_training import (
     train_completed_replay_candidate,
 )
 from apc.neural.evaluate_continual_candidate import paired_hand_bootstrap, validate_fresh_replay_report
+from apc.neural.diverse_self_play_replay import (
+    build_diverse_virtual_replay_buffer,
+    generate_diverse_virtual_replay,
+    observed_profile_features,
+)
 from apc.neural.replay_adapter import encode_completed_hand_replays, load_replay_temporal_corpus
 from apc.neural.replay_buffer import APCReplayBuffer
 from apc.neural.self_play_replay import build_virtual_replay_buffer, generate_virtual_completed_replay
@@ -232,6 +237,38 @@ class APCReplayAdapterTests(unittest.TestCase):
             report["report_fingerprint"] = hashlib.sha256(canonical(report)).hexdigest()
             path.write_text(json.dumps(report), encoding="utf-8")
             self.assertFalse(validate_fresh_replay_report(path)["valid"])
+
+    def test_observed_profile_is_bounded_and_uncertainty_decreases_with_evidence(self) -> None:
+        empty = observed_profile_features([])
+        evidenced = observed_profile_features(["check", "call", "raise", "fold"])
+        self.assertEqual(len(empty), 8)
+        self.assertTrue(all(0 <= value <= 1 for value in empty + evidenced))
+        self.assertGreater(empty[6], evidenced[6])
+        self.assertGreater(evidenced[5], empty[5])
+
+    def test_diverse_replay_holds_opponent_policy_out_of_training_profiles(self) -> None:
+        first = generate_diverse_virtual_replay(
+            501, session_id="diverse-fixture", hero_policy="pressure",
+            opponent_policy="selective", starting_stack_bb="40",
+        )
+        second = generate_diverse_virtual_replay(
+            501, session_id="diverse-fixture", hero_policy="pressure",
+            opponent_policy="selective", starting_stack_bb="40",
+        )
+        self.assertEqual(first, second)
+        self.assertTrue(all(len(event["player_profile_features"]) == 8 for event in first["events"]))
+        with tempfile.TemporaryDirectory() as temporary:
+            report = build_diverse_virtual_replay_buffer(
+                temporary, hands=192, seed_start=5000, hands_per_session=3,
+                stack_depths_bb=("40",),
+            )
+            self.assertTrue(report["training_eligible"], report)
+            self.assertEqual(report["profile_conditioned_decisions"], report["decisions"])
+            self.assertTrue(all("opponent=selective" not in key for key in report["split_configuration_counts"]["train"]))
+            for split in ("validation", "test"):
+                self.assertTrue(all("opponent=selective" in key for key in report["split_configuration_counts"][split]))
+            self.assertEqual(report["covered_training_configurations"], report["required_training_configurations"])
+            self.assertEqual(report["covered_held_out_configurations"], report["required_held_out_configurations"])
 
 
 if __name__ == "__main__":

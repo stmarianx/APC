@@ -336,6 +336,16 @@ A subsequent disjoint 240-hand one-shot replay audit found statistically
 positive paired MAE improvement on 27 test hands, exact action-accuracy
 non-regression and 7.9661 ms p95 inference. The paired RMSE interval still
 crossed zero, so promotion remains closed and v4 remains the incumbent.
+The profile-conditioned replay path now also has a deterministic 720-hand,
+three-stack, four-policy corpus with causal eight-feature opponent profiles.
+Its accepted schedule covers every declared training configuration and reserves
+the scripted selective opponent family for validation/test. A pretraining
+one-shot audit on 111 complete held-out-policy test hands found no statistically
+reliable MAE or RMSE improvement for v7 over v4; p95 inference was 31.4405 ms.
+This proves diverse replay ingestion and an honest rejection path, but not
+generalization to learned player populations, calibration, solver quality or
+GTO performance. The inspected corpus cannot provide fresh promotion evidence
+for a candidate subsequently trained from it.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

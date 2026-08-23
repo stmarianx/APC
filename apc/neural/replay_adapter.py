@@ -12,6 +12,8 @@ from apc.neural.contract import ACTION_VOCABULARY, validate_completed_hand_repla
 from apc.neural.features import (
     ACTION_INDEX,
     PROFILE_FEATURE_DIMENSION,
+    PROFILE_FEATURE_NAMES,
+    PROFILE_FEATURE_SCHEMA_VERSION,
     STATE_TOKEN_COUNT,
     STATE_TOKEN_DIMENSION,
     encode_state,
@@ -62,8 +64,8 @@ def _profile(event: dict[str, object]) -> tuple[np.ndarray, bool]:
     if not isinstance(raw, list) or len(raw) != PROFILE_FEATURE_DIMENSION:
         raise ValueError("APC replay player profile must contain exactly eight features")
     values = np.asarray(raw, dtype=np.float32)
-    if not np.isfinite(values).all():
-        raise ValueError("APC replay player profile contains non-finite values")
+    if not np.isfinite(values).all() or (values < 0).any() or (values > 1).any():
+        raise ValueError("APC replay player profile must contain finite unit-interval values")
     return values, True
 
 
@@ -140,6 +142,8 @@ def encode_completed_hand_replays(
         "units": "BB",
         "max_events": max_events,
         "feature_shape": [max_events, STATE_TOKEN_COUNT, STATE_TOKEN_DIMENSION],
+        "profile_feature_schema_version": PROFILE_FEATURE_SCHEMA_VERSION,
+        "profile_feature_names": list(PROFILE_FEATURE_NAMES),
         "completed_hands": len(source_rows),
         "decisions": len(samples),
         "sources": sorted(source_rows, key=lambda row: str(row["replay_fingerprint"])),

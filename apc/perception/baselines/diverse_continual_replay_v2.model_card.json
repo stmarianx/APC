@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "component": "diverse_profile_conditioned_completed_hand_replay_corpus",
+  "version": "diverse-continual-replay-v2",
+  "evaluated_at": "2026-08-23",
+  "status": "frozen_pretraining_generalization_audit_not_training_or_selection_data",
+  "policy_promotion_eligible": false,
+  "solver_target": false,
+  "gto_verified": false,
+  "artifact": {
+    "local_path": "apc/runs/diverse-continual-replay-v2",
+    "manifest_sha256": "fe9c592c3c15b94977e761f9635c6b804a754e27e4979db62c2c35230f4c1baf",
+    "content_fingerprint": "b5439d464d08a1ddc25918f3a6870fca8235b556c34dffa0c270ede87f60a73f",
+    "adapter_fingerprint": "83613dfddc52ecd745354f9a13079aeaa8aedb8f11e9406604fa10ea5fa3be57",
+    "object_bytes": 7574153
+  },
+  "corpus": {
+    "complete_hands": 720,
+    "hero_decisions": 4123,
+    "profile_conditioned_decisions": 4123,
+    "seed_range": [110000, 110719],
+    "hands_per_session": 3,
+    "stack_depths_bb": [40, 100, 200],
+    "split_complete_hands": {"train": 516, "validation": 93, "test": 111},
+    "complete_session_group_exclusive": true,
+    "training_policy_families": ["scripted_mixed", "passive", "pressure"],
+    "heldout_policy_family": "selective",
+    "training_configuration_coverage": "36/36 hero-policy x opponent-policy x stack combinations",
+    "heldout_configuration_coverage": "12/12 hero-policy x stack combinations",
+    "opponent_private_cards_used": false,
+    "external_actuation": false,
+    "units": "BB"
+  },
+  "profile_contract": {
+    "schema_version": "1.0.0",
+    "features": [
+      "continue_rate_posterior_mean",
+      "raise_rate_posterior_mean",
+      "aggression_rate_posterior_mean",
+      "fold_rate_posterior_mean",
+      "check_rate_posterior_mean",
+      "effective_observations_fraction",
+      "posterior_uncertainty",
+      "observed_action_entropy"
+    ],
+    "uses_only_prior_observed_opponent_actions": true,
+    "bounded_zero_to_one": true
+  },
+  "protocol": {
+    "corpus_frozen_before_candidate_evaluation": true,
+    "evaluated_split": "test",
+    "used_for_training_or_selection": false,
+    "candidate_evaluated_once": true
+  },
+  "limitations": [
+    "All four policy families are deterministic scripted probes, not learned representative player populations.",
+    "Terminal returns are controlled-policy outcomes rather than solver or verified GTO targets.",
+    "The rejected local v1 attempt confounded policy family with stack depth; v2 de-correlates them and is the only accepted diverse corpus.",
+    "The frozen test split has now been inspected and must not be reused as fresh promotion evidence for a later candidate trained from this corpus."
+  ]
+}

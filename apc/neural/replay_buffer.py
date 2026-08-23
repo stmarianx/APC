@@ -22,9 +22,12 @@ def _sha256(value: object) -> str:
     return hashlib.sha256(_canonical(value)).hexdigest()
 
 
-def _split(group_id: str) -> str:
+def split_for_group(group_id: str) -> str:
     fraction = int(hashlib.sha256(group_id.encode("utf-8")).hexdigest()[:12], 16) / float(16**12)
     return "train" if fraction < 0.70 else "validation" if fraction < 0.85 else "test"
+
+
+_split = split_for_group
 
 
 def _atomic_json(path: Path, payload: dict[str, object]) -> None:

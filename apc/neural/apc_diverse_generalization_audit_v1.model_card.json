@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "artifact_kind": "diverse_profile_conditioned_pretraining_generalization_audit",
+  "status": "evaluated_not_promoted_no_significant_value_improvement",
+  "candidate_name": "apc-continual-v7",
+  "incumbent_name": "apc-neural-v4",
+  "report_fingerprint": "4ee671043e6f1bc93bd6c2577c1d3828e92cc3550cbd22bc0cebaa8e09317a09",
+  "report_file_sha256": "f286cd3d6ecb1fd73615fb70d9863567064974201198e2dc10b5063e4eb877f6",
+  "report_bytes": 2094,
+  "audit_replay_content_fingerprint": "b5439d464d08a1ddc25918f3a6870fca8235b556c34dffa0c270ede87f60a73f",
+  "evaluated_test": {"complete_hands": 111, "decisions": 942, "opponent_policy": "selective"},
+  "incumbent_metrics": {
+    "mae_bb": "75.0895265769",
+    "rmse_bb": "106.212020482",
+    "observed_action_accuracy": "0.609341825902",
+    "temporal_consistency_mean": "0.61238950491"
+  },
+  "candidate_metrics": {
+    "mae_bb": "75.0777139932",
+    "rmse_bb": "106.242445023",
+    "observed_action_accuracy": "0.609341825902",
+    "temporal_consistency_mean": "0.61489212513"
+  },
+  "paired_complete_hand_bootstrap": {
+    "samples": 5000,
+    "seed": 20260827,
+    "mae_improvement_bb_95": ["-0.0450537340104", "0.0749398667042"],
+    "rmse_improvement_bb_95": ["-0.0819412287961", "0.0852097432581"],
+    "action_accuracy_improvement_95": ["0", "0"]
+  },
+  "latency": {
+    "audited_visible_tokens": 240,
+    "p50_ms": "29.96385",
+    "p95_ms": "31.4405",
+    "maximum_ms": "32.3756",
+    "threshold_p95_ms": "50",
+    "passed": true
+  },
+  "gates": {
+    "fresh_buffer_disjoint": true,
+    "minimum_20_complete_test_hands": true,
+    "mae_improvement_lower_95_above_zero": false,
+    "rmse_improvement_lower_95_above_zero": false,
+    "action_accuracy_lower_95_nonnegative": true,
+    "strategy_regression_passed": true,
+    "calibration_passed": false,
+    "promotion_authorized": false
+  },
+  "decision": "Retain apc-neural-v4. On an unseen scripted selective opponent at 40, 100 and 200 BB, neither paired value-improvement interval excludes zero; confidence calibration also remains open.",
+  "artifact_storage": "The rebuildable corpus and audit remain in ignored apc/runs/diverse-continual-replay-v2; this card preserves exact corpus, report and metric fingerprints."
+}

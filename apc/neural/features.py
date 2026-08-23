@@ -13,6 +13,17 @@ from apc.neural.contract import ACTION_VOCABULARY
 STATE_TOKEN_COUNT = 16
 STATE_TOKEN_DIMENSION = 24
 PROFILE_FEATURE_DIMENSION = 8
+PROFILE_FEATURE_SCHEMA_VERSION = "1.0.0"
+PROFILE_FEATURE_NAMES = (
+    "continue_rate_posterior_mean",
+    "raise_rate_posterior_mean",
+    "aggression_rate_posterior_mean",
+    "fold_rate_posterior_mean",
+    "check_rate_posterior_mean",
+    "effective_observations_fraction",
+    "posterior_uncertainty",
+    "observed_action_entropy",
+)
 FEATURE_SCHEMA_VERSION = "3.0.0"
 ACTION_INDEX = {action: index for index, action in enumerate(ACTION_VOCABULARY)}
 RANK_INDEX = {rank: index for index, rank in enumerate("23456789TJQKA", start=2)}

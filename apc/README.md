@@ -58,12 +58,14 @@ models are still required before APC can be trained for arbitrary tables.
 - `neural/replay_buffer.py` — content-addressed completed-hand storage, deterministic grouped splits and prioritized incumbent-retaining sampling.
 - `neural/replay_adapter.py` — strict completed-hand conversion into ordered, private-safe temporal neural tensors.
 - `neural/self_play_replay.py` — deterministic internal virtual-chip completed-hand replay generation with no external actuation.
+- `neural/diverse_self_play_replay.py` — deterministic multi-policy, multi-stack replay with causal uncertainty-aware opponent profiles and a held-out policy family.
 - `neural/continual_training.py` — offline incumbent-distilled replay training, rollback verification, temporal latency and catastrophic-forgetting audit.
 - `neural/evaluate_continual_candidate.py` — disjoint one-shot replay evaluation with complete-hand paired bootstrap and tamper-evident gates.
 - `neural/apc_neural_candidates_v1.model_card.json` — frozen v1-v3 comparison and closed readiness decision.
 - `neural/apc_continual_candidate_v1.model_card.json` — first completed-replay candidate and explicit strategy-regression rejection.
 - `neural/apc_continual_candidate_v2.model_card.json` — strategy-rehearsed successor, strict replay-value gate and closed promotion decision.
 - `neural/apc_continual_fresh_audit_v1.model_card.json` — untouched 27-hand paired audit and closed promotion decision.
+- `neural/apc_diverse_generalization_audit_v1.model_card.json` — one-shot 111-hand held-out-policy audit and closed promotion decision.
 - `requirements-neural.txt` — portable PyTorch dependency profile for neural development.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
@@ -1001,12 +1003,39 @@ does not pass and v4 remains the incumbent. Temporal inference was 7.9661 ms
 p95. This remains narrow same-policy/same-engine evidence, not GTO or diverse-
 environment proof.
 
+The next replay audit broadens the controlled environment without changing the
+incumbent. `neural/diverse_self_play_replay.py` generates complete hands at 40,
+100 and 200 BB using four hero policy families. Training sessions cover three
+opponent families (`scripted_mixed`, `passive`, and `pressure`); the
+deterministic `selective` family appears only in validation/test sessions. Every
+one of 4,123 Hero decisions carries an eight-value profile vector computed only
+from opponent actions already visible earlier in that hand: continue, raise,
+aggression, fold and check posterior means, observation mass, posterior
+uncertainty and action entropy. All values are finite and bounded in [0, 1].
+The accepted v2 corpus contains 720 complete hands with 516/93/111 group-
+exclusive train/validation/test splits and covers all 36 declared training and
+12 held-out policy/stack configurations. An earlier local v1 attempt was
+rejected because policy and stack were confounded.
+
+Before any training on this corpus, v4 and v7 were evaluated once on its 111-
+hand/942-decision test split. V7 changed MAE from 75.0895 to 75.0777 BB, RMSE
+from 106.2120 to 106.2424 BB, and left action agreement at 60.93%. Across 5,000
+complete-hand resamples, MAE improvement was [-0.0451, 0.0749] BB and RMSE
+improvement was [-0.0819, 0.0852] BB; neither value interval excludes zero.
+Inference passed the latency limit at 31.4405 ms p95, but calibration and value
+gates fail, so v4 remains the incumbent. This is evidence of profile-conditioned
+ingestion and scripted held-out-policy evaluation, not learned-opponent, solver,
+GTO or promotion evidence. Because the test split is now inspected, a future
+candidate trained from v2 requires a newly frozen corpus for promotion testing.
+
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
 python -m apc.neural.continual_training train apc/runs/continual-replay-v1 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v7 --epochs 1 --batch-size 32 --learning-rate 0.00003 --incumbent-retention-weight 1.0 --strategy-rehearsal-dataset apc/runs/raised-postflop-rollouts-v1 --strategy-rehearsal-weight 1.0 --strategy-rehearsal-batch-size 512 --strategy-regression-dataset apc/runs/raised-postflop-sealed-audit-v1
 python -m apc.neural.continual_training validate apc/runs/apc-continual-v7/checkpoint.json
 python -m apc.neural.evaluate_continual_candidate evaluate apc/runs/continual-replay-audit-v2 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v7/checkpoint.json --bootstrap-samples 5000 --bootstrap-seed 20260826 --output apc/runs/continual-replay-audit-v2/fresh-audit.json
 python -m apc.neural.evaluate_continual_candidate validate apc/runs/continual-replay-audit-v2/fresh-audit.json
+python -m apc.neural.diverse_self_play_replay apc/runs/diverse-continual-replay-v2 --hands 720 --seed-start 110000 --hands-per-session 3 --stack-depth-bb 40 --stack-depth-bb 100 --stack-depth-bb 200
+python -m apc.neural.evaluate_continual_candidate validate apc/runs/diverse-continual-replay-v2/pretraining-generalization-audit.json
 ```
 
 ```powershell
