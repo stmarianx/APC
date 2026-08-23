@@ -1037,6 +1037,15 @@ MAE worsened from 75.0895 to 75.1607 BB. Sealed strategy MAE also regressed from
 4.3829 to 4.3916 BB. Latency passed at 35.8087 ms p95, but both required MAE
 gates fail; v4 remains incumbent and no new promotion corpus was consumed.
 
+The trainer now addresses that scale mismatch explicitly. The replay adapter
+derives a per-decision effective-stack scale solely from public BB stacks and
+street contributions, with a deterministic pot/to-call fallback for legacy
+rows. Continual replay error is divided by the larger of that scale and the
+incumbent value scale during optimization. Model outputs, targets, audits and
+recommendations remain in BB; only gradient weighting is stack-normalized.
+The adapter manifest records the exact loss-scale contract, and malformed or
+negative stack evidence is rejected.
+
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
 python -m apc.neural.continual_training train apc/runs/continual-replay-v1 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v7 --epochs 1 --batch-size 32 --learning-rate 0.00003 --incumbent-retention-weight 1.0 --strategy-rehearsal-dataset apc/runs/raised-postflop-rollouts-v1 --strategy-rehearsal-weight 1.0 --strategy-rehearsal-batch-size 512 --strategy-regression-dataset apc/runs/raised-postflop-sealed-audit-v1

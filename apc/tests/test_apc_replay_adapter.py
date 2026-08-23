@@ -20,7 +20,7 @@ from apc.neural.diverse_self_play_replay import (
     generate_diverse_virtual_replay,
     observed_profile_features,
 )
-from apc.neural.replay_adapter import encode_completed_hand_replays, load_replay_temporal_corpus
+from apc.neural.replay_adapter import effective_stack_scale_bb, encode_completed_hand_replays, load_replay_temporal_corpus
 from apc.neural.replay_buffer import APCReplayBuffer
 from apc.neural.self_play_replay import build_virtual_replay_buffer, generate_virtual_completed_replay
 from apc.neural.train_candidate import encode_rows
@@ -83,11 +83,21 @@ class APCReplayAdapterTests(unittest.TestCase):
         self.assertEqual(corpus.manifest["completed_hands"], 1)
         self.assertEqual(corpus.manifest["decisions"], 2)
         self.assertFalse(corpus.manifest["opponent_private_cards_used"])
+        self.assertEqual(corpus.manifest["value_loss_scale"], "public_effective_stack_bb_per_decision")
+        np.testing.assert_array_equal(corpus.target_scale_bb, np.asarray([5.0, 8.0], dtype=np.float32))
         self.assertTrue(corpus.modality_available[0, 2])
         self.assertFalse(corpus.modality_available[1, 2])
         self.assertAlmostEqual(float(corpus.chosen_size_features[0, 0]), float(np.tanh(1.5 / 25.0)), places=6)
         self.assertTrue(corpus.state_padding_mask[0, 1:].all())
         self.assertTrue((corpus.state_tokens[1, 0, ~corpus.state_padding_mask[1, 0], 3] > 0).all())
+
+    def test_effective_stack_loss_scale_is_public_bb_and_stack_aware(self) -> None:
+        shallow = {"stacks_bb": {"Hero": "38", "Villain": "37"}, "street_contributions_bb": {"Hero": "2", "Villain": "3"}}
+        deep = {"stacks_bb": {"Hero": "198", "Villain": "197"}, "street_contributions_bb": {"Hero": "2", "Villain": "3"}}
+        self.assertEqual(effective_stack_scale_bb(shallow), 40.0)
+        self.assertEqual(effective_stack_scale_bb(deep), 200.0)
+        with self.assertRaisesRegex(ValueError, "outside the BB domain"):
+            effective_stack_scale_bb({"stacks_bb": {"Hero": "-1", "Villain": "40"}})
 
     def test_buffer_loading_preserves_group_split_and_is_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

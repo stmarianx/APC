@@ -351,6 +351,11 @@ replay-test MAE and sealed-strategy MAE both regressed despite better action
 agreement and replay RMSE. Its 35.8087 ms p95 latency passed. No new fresh audit
 was generated, preserving that evaluation budget for a candidate that first
 passes replay and strategy non-regression.
+Continual training now uses a public-state effective-stack denominator for each
+replay error, floored by the incumbent value scale. This prevents 200 BB hands
+from dominating gradients solely by magnitude while retaining BB-denominated
+heads and BB evaluation gates. The scale is fingerprinted in the replay adapter
+manifest and cannot use terminal reward or hidden cards.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

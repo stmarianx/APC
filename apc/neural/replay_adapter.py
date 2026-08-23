@@ -45,6 +45,7 @@ class ReplayTemporalCorpus:
     chosen_action_index: np.ndarray
     chosen_size_features: np.ndarray
     target_return_bb: np.ndarray
+    target_scale_bb: np.ndarray
     temporal_consistency_target: np.ndarray
     split: np.ndarray
     replay_fingerprints: tuple[str, ...]
@@ -84,6 +85,30 @@ def _size_features(event: dict[str, object], state: dict[str, object]) -> np.nda
     if not math.isfinite(amount_bb) or amount_bb < 0 or not math.isfinite(pot_bb) or pot_bb < 0:
         raise ValueError("APC replay chosen action size is outside the BB domain")
     return np.asarray((math.tanh(amount_bb / 25.0), math.tanh((amount_bb / pot_bb if pot_bb else 0.0) / 2.0)), dtype=np.float32)
+
+
+def effective_stack_scale_bb(state: dict[str, object]) -> float:
+    """Return a public-state scale for loss weighting while outputs remain BB."""
+    stacks = state.get("stacks_bb")
+    contributions = state.get("street_contributions_bb", {})
+    if isinstance(stacks, dict) and len(stacks) >= 2:
+        totals = []
+        for player, raw_stack in stacks.items():
+            try:
+                total = float(str(raw_stack)) + float(str(contributions.get(player, 0)))
+            except (TypeError, ValueError) as error:
+                raise ValueError("APC replay stack scale is not BB numeric") from error
+            if not math.isfinite(total) or total < 0:
+                raise ValueError("APC replay stack scale is outside the BB domain")
+            totals.append(total)
+        return max(min(totals), 1.0)
+    try:
+        fallback = max(float(str(state.get("pot_bb", 0))), float(str(state.get("to_call_bb", 0))), 1.0)
+    except (TypeError, ValueError) as error:
+        raise ValueError("APC replay fallback scale is not BB numeric") from error
+    if not math.isfinite(fallback):
+        raise ValueError("APC replay fallback scale is outside the BB domain")
+    return fallback
 
 
 def encode_completed_hand_replays(
@@ -128,6 +153,7 @@ def encode_completed_hand_replays(
                 "action": chosen,
                 "sizes": _size_features(event, state),
                 "target": reward,
+                "target_scale": effective_stack_scale_bb(state),
                 "split": split,
                 "fingerprint": fingerprint,
                 "decision_id": f"{fingerprint}:{event_index}",
@@ -144,6 +170,7 @@ def encode_completed_hand_replays(
         "feature_shape": [max_events, STATE_TOKEN_COUNT, STATE_TOKEN_DIMENSION],
         "profile_feature_schema_version": PROFILE_FEATURE_SCHEMA_VERSION,
         "profile_feature_names": list(PROFILE_FEATURE_NAMES),
+        "value_loss_scale": "public_effective_stack_bb_per_decision",
         "completed_hands": len(source_rows),
         "decisions": len(samples),
         "sources": sorted(source_rows, key=lambda row: str(row["replay_fingerprint"])),
@@ -160,6 +187,7 @@ def encode_completed_hand_replays(
         chosen_action_index=np.asarray([row["action"] for row in samples], dtype=np.int64),
         chosen_size_features=np.stack([row["sizes"] for row in samples]),
         target_return_bb=np.asarray([row["target"] for row in samples], dtype=np.float32),
+        target_scale_bb=np.asarray([row["target_scale"] for row in samples], dtype=np.float32),
         temporal_consistency_target=np.ones(len(samples), dtype=np.float32),
         split=np.asarray([row["split"] for row in samples]),
         replay_fingerprints=tuple(str(row["fingerprint"]) for row in samples),

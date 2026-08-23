@@ -194,7 +194,8 @@ def train_completed_replay_candidate(
             with torch.inference_mode():
                 prior = incumbent(**inputs)
             target = torch.from_numpy(corpus.target_return_bb[indices])
-            normalized_error = (output["candidate_action_value_bb"] - target) / scale
+            replay_scale = torch.from_numpy(corpus.target_scale_bb[indices]).clamp_min(scale)
+            normalized_error = (output["candidate_action_value_bb"] - target) / replay_scale
             value_loss = torch.nn.functional.smooth_l1_loss(normalized_error, torch.zeros_like(normalized_error))
             imitation_loss = torch.nn.functional.cross_entropy(output["policy_logits"], inputs["candidate_action_index"])
             temporal_loss = torch.nn.functional.binary_cross_entropy(output["temporal_consistency"], torch.ones_like(output["temporal_consistency"]))
@@ -424,6 +425,7 @@ def build_completed_replay_checkpoint(
                 "incumbent_retention_weight": format(incumbent_retention_weight, ".12g"),
                 "strategy_rehearsal_weight": format(strategy_rehearsal_weight, ".12g"),
                 "strategy_rehearsal_batch_size": strategy_rehearsal_batch_size,
+                "replay_value_loss_scale": "max(incumbent_value_scale_bb, public_effective_stack_bb_per_decision)",
                 "strategy_rehearsal": None if rehearsal_manifest is None else {
                     "dataset_id": rehearsal_manifest["dataset_id"],
                     "dataset_fingerprint": rehearsal_manifest["dataset_fingerprint"],
