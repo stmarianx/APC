@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "candidate_name": "apc-continual-v11",
+  "artifact_kind": "argmax_hinge_retained_diverse_continual_candidate",
+  "status": "rejected_before_fresh_audit_replay_mae_regression",
+  "checkpoint_fingerprint": "abcea02f7b714996fca2b56a7be7ebda27f64c8724ed83b85602fbc14e645caa",
+  "weights_sha256": "7204a471ef0e8a99061e5a7ccbbfe1d975cc90470f1640445be66619bad0254a",
+  "incumbent_name": "apc-neural-v4",
+  "inspected_replay_test": {
+    "complete_hands": 111,
+    "decisions": 942,
+    "incumbent_mae_bb": "75.0895265769",
+    "candidate_mae_bb": "75.098455498",
+    "incumbent_rmse_bb": "106.212020482",
+    "candidate_rmse_bb": "106.173911422",
+    "incumbent_observed_action_accuracy": "0.609341825902",
+    "candidate_observed_action_accuracy": "0.630573248408"
+  },
+  "sealed_strategy_regression": {
+    "incumbent_mae_bb": "4.38286034095",
+    "candidate_mae_bb": "4.36035957457",
+    "decision_accuracy_both": "0.292850990525",
+    "chosen_action_regret_bb_both": "2.39026699633",
+    "all_non_regression_gates_passed": true
+  },
+  "latency": {"p95_ms": "28.9924", "threshold_p95_ms": "50", "passed": true},
+  "gates": {
+    "held_out_value_mae_improves": false,
+    "held_out_value_rmse_non_regression": true,
+    "held_out_observed_action_non_regression": true,
+    "strategy_regression_passed": true,
+    "calibration_passed": false,
+    "promotion_authorized": false
+  },
+  "decision": "Reject v11 and retain v4. The direct hinge fixed sealed accuracy/regret regression, but replay MAE remains 0.00893 BB worse. No fresh audit consumed.",
+  "artifact_storage": "Rebuildable checkpoint remains ignored at apc/runs/apc-continual-v11."
+}

@@ -374,6 +374,9 @@ That constraint is now implemented: a BB-space hinge preserves the incumbent-
 best action's prior margin over every alternative in each complete four-action
 rehearsal group. It is checkpointed separately from symmetric margin retention
 and must pass a matched candidate audit before being credited as evidence.
+Matched v11 passed all sealed strategy non-regression gates, proving the hinge
+mechanism, but missed replay MAE non-regression by 0.0089 BB. It remains
+unpromoted and did not consume a fresh audit.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

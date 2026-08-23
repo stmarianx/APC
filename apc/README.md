@@ -69,6 +69,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `neural/apc_diverse_continual_candidate_v1.model_card.json` — profile-conditioned v8 training result rejected before a fresh audit.
 - `neural/apc_diverse_continual_candidate_v2.model_card.json` — stack-normalized v9 result rejected on strategy policy/regret gates.
 - `neural/apc_diverse_continual_candidate_v3.model_card.json` — margin-retained v10 result rejected on unchanged strategy policy/regret gates.
+- `neural/apc_diverse_continual_candidate_v4.model_card.json` — argmax-hinge v11 result with fixed strategy gates but failed replay MAE.
 - `requirements-neural.txt` — portable PyTorch dependency profile for neural development.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
@@ -1080,6 +1081,12 @@ hinge whenever the candidate fails to keep that action above each alternative
 by the incumbent's prior margin. Unlike the earlier symmetric loss, this term
 is not divided by the global value scale. Its weight and semantics are stored
 in the checkpoint, and incomplete groups fail closed.
+
+Matched v11 proves the hinge works: sealed accuracy and regret exactly retained
+v4 while sealed MAE improved 4.3829 to 4.3604 BB. Replay RMSE and action
+agreement improved, and latency passed at 28.9924 ms p95. Replay MAE remained
+0.0089 BB worse (75.0895 to 75.0985 BB), so v11 was rejected and no fresh audit
+was consumed.
 
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
