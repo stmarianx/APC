@@ -366,6 +366,10 @@ loss: all pairwise differences among four candidate-action values are distilled
 from the incumbent during strategy rehearsal. Checkpoints record the loss
 contract and weight, and incomplete action groups are rejected. This mechanism
 must still pass a matched candidate audit before it counts as regression proof.
+Matched v10 did not supply that proof: value metrics improved relative to v9,
+but sealed action accuracy and regret remained at the same regressed values.
+The normalized pairwise penalty is therefore recorded as insufficient at weight
+1.0; a direct incumbent-argmax constraint is required before another candidate.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

@@ -68,6 +68,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `neural/apc_diverse_generalization_audit_v1.model_card.json` — one-shot 111-hand held-out-policy audit and closed promotion decision.
 - `neural/apc_diverse_continual_candidate_v1.model_card.json` — profile-conditioned v8 training result rejected before a fresh audit.
 - `neural/apc_diverse_continual_candidate_v2.model_card.json` — stack-normalized v9 result rejected on strategy policy/regret gates.
+- `neural/apc_diverse_continual_candidate_v3.model_card.json` — margin-retained v10 result rejected on unchanged strategy policy/regret gates.
 - `requirements-neural.txt` — portable PyTorch dependency profile for neural development.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
@@ -1063,6 +1064,15 @@ This complements policy-logit KL and per-action value retention: any action-
 ordering flip or margin distortion now contributes an explicit differentiable
 penalty. The weight and exact margin contract are stored in every checkpoint;
 partial groups and invalid scales fail closed.
+
+Matched v10 showed that the first margin weight is insufficient. Replay MAE
+drift improved again, from v9's +0.0208 BB to +0.0132 BB, while replay RMSE,
+observed-action agreement, sealed strategy MAE and 29.0243 ms p95 latency all
+moved in the desired direction. Nevertheless sealed decision accuracy and
+chosen-action regret were identical to v9's failed values (26.10% and 2.4232
+BB). V10 was rejected before fresh audit. The next experiment requires a
+predeclared incumbent-argmax hinge or materially stronger ordering constraint,
+not another unchanged-weight run.
 
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3

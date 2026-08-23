@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "artifact_kind": "action_margin_retained_diverse_continual_candidate",
+  "candidate_name": "apc-continual-v10",
+  "status": "rejected_before_fresh_audit",
+  "checkpoint_fingerprint": "7eb4fc0c4e2fa491db4f753bd17ef76eb31d9e8423331e70538565e05ff22d36",
+  "weights_sha256": "1739ee551c5d41bcad7bfd55940017cce3ceed3a89758635219b73558a827d23",
+  "incumbent_name": "apc-neural-v4",
+  "training": {
+    "replay_value_loss_scale": "public_effective_stack_bb",
+    "strategy_ordering_retention": "all_pairwise_candidate_action_value_margins",
+    "strategy_ordering_retention_weight": "1.0",
+    "epochs": 2,
+    "batch_size": 64,
+    "learning_rate": "0.00003"
+  },
+  "inspected_replay_test": {
+    "complete_hands": 111,
+    "decisions": 942,
+    "incumbent_mae_bb": "75.0895265769",
+    "candidate_mae_bb": "75.102775541",
+    "incumbent_rmse_bb": "106.212020482",
+    "candidate_rmse_bb": "106.158006028",
+    "incumbent_observed_action_accuracy": "0.609341825902",
+    "candidate_observed_action_accuracy": "0.630573248408"
+  },
+  "sealed_strategy_regression": {
+    "incumbent_mae_bb": "4.38286034095",
+    "candidate_mae_bb": "4.35653544032",
+    "incumbent_decision_accuracy": "0.292850990525",
+    "candidate_decision_accuracy": "0.260981912145",
+    "incumbent_chosen_action_regret_bb": "2.39026699633",
+    "candidate_chosen_action_regret_bb": "2.42321273276"
+  },
+  "latency": {"p95_ms": "29.0243", "threshold_p95_ms": "50", "passed": true},
+  "gates": {
+    "held_out_value_mae_improves": false,
+    "held_out_value_rmse_non_regression": true,
+    "held_out_observed_action_non_regression": true,
+    "strategy_regression_passed": false,
+    "calibration_passed": false,
+    "promotion_authorized": false
+  },
+  "comparison": "Compared with v9, action-margin retention reduced replay MAE regression from +0.02083 to +0.01325 BB, but sealed accuracy and regret were unchanged at their failed values.",
+  "decision": "Reject v10 and retain v4. Replace the weak normalized margin penalty with an explicit incumbent-argmax hinge or stronger predeclared retention before retraining.",
+  "artifact_storage": "Rebuildable checkpoint remains ignored at apc/runs/apc-continual-v10."
+}
