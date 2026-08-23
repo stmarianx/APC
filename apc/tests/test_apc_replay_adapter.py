@@ -14,6 +14,7 @@ from apc.neural.continual_training import (
 from apc.neural.replay_adapter import encode_completed_hand_replays, load_replay_temporal_corpus
 from apc.neural.replay_buffer import APCReplayBuffer
 from apc.neural.self_play_replay import build_virtual_replay_buffer, generate_virtual_completed_replay
+from apc.neural.train_candidate import encode_rows
 
 
 class APCReplayAdapterTests(unittest.TestCase):
@@ -37,6 +38,34 @@ class APCReplayAdapterTests(unittest.TestCase):
             ],
             "completed_hand_feedback": {"full_hand_completed": True, "hero_reward_bb": "3.5"},
         }
+
+    @staticmethod
+    def strategy_rows() -> list[dict[str, object]]:
+        rows = []
+        commands = [
+            ("fold", {"action": "fold"}, -1.5),
+            ("call", {"action": "call", "amount_bb": "1.5"}, 1.0),
+            ("raise_min", {"action": "raise", "to_amount_bb": "3"}, 2.0),
+            ("raise_3x", {"action": "raise", "to_amount_bb": "4.5"}, 1.5),
+        ]
+        state = {
+            "units": "BB", "opponent_cards": None, "pot_bb": "5", "to_call_bb": "1.5",
+            "stacks_bb": {"Hero": "98", "Villain": "97"},
+            "street_contributions_bb": {"Hero": "0", "Villain": "1.5"},
+            "hero_position": "BB", "street": "flop", "hero_cards": ["As", "Kd"],
+            "board": ["Th", "4s", "2c"], "action_history": [],
+            "action_buttons": [{"action": "fold"}, {"action": "call"}, {"action": "raise"}],
+        }
+        for split_index, split in enumerate(("train", "validation", "test")):
+            for action_key, command, value in commands:
+                rows.append({
+                    "split": split, "group_id": f"strategy-hand-{split_index}",
+                    "policy_state_id": f"strategy-state-{split_index}", "hero_position": "BB",
+                    "node_family": "facing_33", "opponent_policy": "check_call",
+                    "counterfactual_action_key": action_key, "counterfactual_action": command,
+                    "learning_signal": {"hero_return_bb": str(value)}, "state": state,
+                })
+        return rows
 
     def test_completed_hand_becomes_ordered_private_safe_temporal_windows(self) -> None:
         corpus = encode_completed_hand_replays([(self.replay(), "train")], max_events=4)
@@ -124,6 +153,24 @@ class APCReplayAdapterTests(unittest.TestCase):
             self.assertTrue(report["training_eligible"], report)
             self.assertEqual(report["hands_added"], 18)
             self.assertGreater(report["decisions"], 18)
+
+    def test_strategy_rehearsal_runs_in_incumbent_coordinates(self) -> None:
+        rows = [(self.replay(index), split) for index, split in ((1, "train"), (2, "validation"), (3, "test"))]
+        corpus = encode_completed_hand_replays(rows, max_events=3)
+        strategy = encode_rows(self.strategy_rows())
+        architecture = APCArchitecture(hidden_dimension=32, transformer_layers=1, attention_heads=4, dropout=0.0, profile_hidden=16, visual_channels=(4, 8, 8))
+        torch.manual_seed(41)
+        incumbent = APCNetwork(architecture)
+        original_mean = float(incumbent.value_mean_bb)
+        original_scale = float(incumbent.value_scale_bb)
+        candidate, metrics = train_completed_replay_candidate(
+            corpus, incumbent, seed=29, epochs=1, batch_size=2,
+            strategy_rehearsal=strategy, strategy_rehearsal_weight=0.5,
+            strategy_rehearsal_batch_size=4,
+        )
+        self.assertIsNotNone(metrics["history"][0]["strategy_rehearsal_loss"])
+        self.assertEqual(float(candidate.value_mean_bb), original_mean)
+        self.assertEqual(float(candidate.value_scale_bb), original_scale)
 
 
 if __name__ == "__main__":

@@ -328,6 +328,10 @@ also completed a 90-hand audit. The replay-tuned candidate improved on its
 narrow held-out scripted distribution and ran at 9.5579 ms p95, but was rejected
 because it regressed MAE, accuracy and chosen-action regret on the declared
 raised-postflop strategy audit; rollback to v4 was verified.
+The successor keeps the incumbent normalization fixed and uses group-complete
+strategy rehearsal plus validation-constrained selection. It removed the
+measured strategy regression, but remains rejected because replay RMSE narrowly
+regressed and the replay test had been inspected during pipeline iteration.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

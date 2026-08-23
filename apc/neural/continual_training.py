@@ -17,6 +17,14 @@ from torch import Tensor
 
 from apc.neural.model import APCNetwork, load_apc_weights, save_apc_weights
 from apc.neural.replay_adapter import ReplayTemporalCorpus, load_replay_temporal_corpus
+from apc.neural.train_candidate import (
+    EncodedCorpus,
+    _batch as _strategy_batch,
+    _metrics as _strategy_metrics,
+    _policy_groups as _strategy_groups,
+    _predict as _strategy_predict,
+    load_raised_corpus,
+)
 
 
 SCHEMA_VERSION = "1.0.0"
@@ -123,8 +131,19 @@ def train_completed_replay_candidate(
     batch_size: int = 64,
     learning_rate: float = 1e-4,
     incumbent_retention_weight: float = 0.20,
+    strategy_rehearsal: EncodedCorpus | None = None,
+    strategy_rehearsal_weight: float = 0.50,
+    strategy_rehearsal_batch_size: int = 256,
 ) -> tuple[APCNetwork, dict[str, object]]:
-    if epochs <= 0 or batch_size <= 0 or learning_rate <= 0 or incumbent_retention_weight < 0:
+    if (
+        epochs <= 0
+        or batch_size <= 0
+        or learning_rate <= 0
+        or incumbent_retention_weight < 0
+        or strategy_rehearsal_weight < 0
+        or strategy_rehearsal_batch_size <= 0
+        or strategy_rehearsal_batch_size % 4
+    ):
         raise ValueError("APC continual-training parameters are invalid")
     split_indices = {split: corpus.indices(split) for split in ("train", "validation", "test")}
     if any(len(indices) == 0 for indices in split_indices.values()):
@@ -136,19 +155,38 @@ def train_completed_replay_candidate(
     incumbent.eval()
     incumbent_before = _model_fingerprint(incumbent)
     candidate = copy.deepcopy(incumbent)
-    mean = float(corpus.target_return_bb[split_indices["train"]].mean())
-    scale = max(float(corpus.target_return_bb[split_indices["train"]].std()), 1e-3)
-    candidate.value_mean_bb.fill_(mean)
-    candidate.value_scale_bb.fill_(scale)
+    # Preserve the incumbent output coordinate system. Re-centering these
+    # buffers on a small new replay distribution changes every old prediction
+    # before a single gradient step and is itself catastrophic forgetting.
+    scale = max(float(candidate.value_scale_bb), 1e-3)
     optimizer = torch.optim.AdamW(candidate.parameters(), lr=learning_rate, weight_decay=1e-4)
     generator = torch.Generator().manual_seed(seed)
     best_state = None
-    best_validation = (math.inf, math.inf)
+    best_validation: tuple[float, ...] = (math.inf, math.inf)
     history = []
+    rehearsal_groups = None if strategy_rehearsal is None else _strategy_groups(strategy_rehearsal, "train")
+    if strategy_rehearsal is not None and len(rehearsal_groups) == 0:
+        raise ValueError("APC strategy rehearsal corpus has no complete training groups")
+    rehearsal_groups_per_step = strategy_rehearsal_batch_size // 4
+    rehearsal_validation_indices = None
+    rehearsal_validation_incumbent = None
+    if strategy_rehearsal is not None:
+        validation_groups = _strategy_groups(strategy_rehearsal, "validation")
+        rehearsal_validation_indices = validation_groups[: min(256, len(validation_groups))].reshape(-1)
+        prior_value, _, prior_uncertainty = _strategy_predict(
+            incumbent, strategy_rehearsal, rehearsal_validation_indices, strategy_rehearsal_batch_size
+        )
+        rehearsal_validation_incumbent = _strategy_metrics(
+            strategy_rehearsal, rehearsal_validation_indices, prior_value, prior_uncertainty
+        )
     for epoch in range(epochs):
         candidate.train()
         shuffled = split_indices["train"][torch.randperm(len(split_indices["train"]), generator=generator).numpy()]
+        shuffled_rehearsal = None if rehearsal_groups is None else rehearsal_groups[
+            torch.randperm(len(rehearsal_groups), generator=generator).numpy()
+        ]
         losses = []
+        rehearsal_losses = []
         for start in range(0, len(shuffled), batch_size):
             indices = shuffled[start:start + batch_size]
             inputs = _batch(corpus, indices)
@@ -167,6 +205,41 @@ def train_completed_replay_candidate(
                 torch.log_softmax(output["policy_logits"], dim=-1), prior_probability, reduction="batchmean"
             )
             loss = value_loss + 0.05 * imitation_loss + 0.02 * temporal_loss + incumbent_retention_weight * (retention_value + retention_policy)
+            if strategy_rehearsal is not None and shuffled_rehearsal is not None:
+                group_start = (start // batch_size) * rehearsal_groups_per_step
+                if group_start + rehearsal_groups_per_step > len(shuffled_rehearsal):
+                    group_start = 0
+                rehearsal_indices = shuffled_rehearsal[group_start:group_start + rehearsal_groups_per_step].reshape(-1)
+                rehearsal_inputs = _strategy_batch(strategy_rehearsal, rehearsal_indices, torch.device("cpu"))
+                rehearsal_output = candidate(**rehearsal_inputs)
+                with torch.inference_mode():
+                    rehearsal_prior = incumbent(**rehearsal_inputs)
+                rehearsal_target = torch.from_numpy(strategy_rehearsal.target[rehearsal_indices])
+                rehearsal_value = torch.nn.functional.smooth_l1_loss(
+                    (rehearsal_output["candidate_action_value_bb"] - rehearsal_target) / scale,
+                    torch.zeros_like(rehearsal_target),
+                )
+                rehearsal_log_policy = torch.log_softmax(rehearsal_output["policy_logits"], dim=-1)
+                rehearsal_row_log_probability = rehearsal_log_policy.gather(
+                    1, rehearsal_inputs["candidate_action_index"][:, None]
+                ).squeeze(1)
+                rehearsal_probability = torch.from_numpy(strategy_rehearsal.policy_probability[rehearsal_indices])
+                rehearsal_policy = -(rehearsal_probability * rehearsal_row_log_probability).mean() * 4.0
+                rehearsal_legal = rehearsal_inputs["legal_action_mask"]
+                rehearsal_retention_value = torch.nn.functional.smooth_l1_loss(
+                    rehearsal_output["action_value_bb"][rehearsal_legal],
+                    rehearsal_prior["action_value_bb"][rehearsal_legal],
+                )
+                rehearsal_retention_policy = torch.nn.functional.kl_div(
+                    rehearsal_log_policy,
+                    torch.softmax(rehearsal_prior["policy_logits"], dim=-1),
+                    reduction="batchmean",
+                )
+                rehearsal_loss = rehearsal_value + 0.05 * rehearsal_policy + incumbent_retention_weight * (
+                    rehearsal_retention_value + rehearsal_retention_policy
+                )
+                loss = loss + strategy_rehearsal_weight * rehearsal_loss
+                rehearsal_losses.append(float(rehearsal_loss.detach()))
             optimizer.zero_grad(set_to_none=True)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(candidate.parameters(), 5.0)
@@ -174,8 +247,30 @@ def train_completed_replay_candidate(
             losses.append(float(loss.detach()))
         validation_prediction = _predict(candidate, corpus, split_indices["validation"], batch_size)
         validation = _metrics(corpus, split_indices["validation"], validation_prediction)
-        selection = (float(validation["mae_bb"]), -float(validation["observed_action_accuracy"]))
-        history.append({"epoch": epoch + 1, "training_loss": format(float(np.mean(losses)), ".12g"), **validation})
+        strategy_validation = None
+        if strategy_rehearsal is not None and rehearsal_validation_indices is not None and rehearsal_validation_incumbent is not None:
+            strategy_value, _, strategy_uncertainty = _strategy_predict(
+                candidate, strategy_rehearsal, rehearsal_validation_indices, strategy_rehearsal_batch_size
+            )
+            strategy_validation = _strategy_metrics(
+                strategy_rehearsal, rehearsal_validation_indices, strategy_value, strategy_uncertainty
+            )
+            mae_delta = float(strategy_validation["mae_bb"]) - float(rehearsal_validation_incumbent["mae_bb"])
+            regret_delta = float(strategy_validation["chosen_action_regret_bb"]) - float(rehearsal_validation_incumbent["chosen_action_regret_bb"])
+            accuracy_delta = float(rehearsal_validation_incumbent["decision_accuracy"]) - float(strategy_validation["decision_accuracy"])
+            violations = sum(delta > 0 for delta in (mae_delta, regret_delta, accuracy_delta))
+            regression_penalty = max(0.0, mae_delta) + max(0.0, regret_delta) + 10.0 * max(0.0, accuracy_delta)
+            selection = (float(violations), regression_penalty, float(validation["mae_bb"]), -float(validation["observed_action_accuracy"]))
+        else:
+            selection = (float(validation["mae_bb"]), -float(validation["observed_action_accuracy"]))
+        history.append({
+            "epoch": epoch + 1,
+            "training_loss": format(float(np.mean(losses)), ".12g"),
+            "strategy_rehearsal_loss": None if not rehearsal_losses else format(float(np.mean(rehearsal_losses)), ".12g"),
+            "strategy_validation": strategy_validation,
+            "strategy_validation_incumbent": rehearsal_validation_incumbent,
+            **validation,
+        })
         if selection < best_validation:
             best_validation = selection
             best_state = {name: tensor.detach().clone() for name, tensor in candidate.state_dict().items()}
@@ -205,7 +300,8 @@ def audit_completed_replay_candidate(
     incumbent_fingerprint = _model_fingerprint(incumbent)
     candidate_fingerprint = _model_fingerprint(candidate)
     test = metrics["test"]
-    improves_value = float(test["candidate"]["mae_bb"]) < float(test["incumbent"]["mae_bb"])
+    improves_value_mae = float(test["candidate"]["mae_bb"]) < float(test["incumbent"]["mae_bb"])
+    value_rmse_non_regression = float(test["candidate"]["rmse_bb"]) <= float(test["incumbent"]["rmse_bb"])
     action_non_regression = float(test["candidate"]["observed_action_accuracy"]) >= float(test["incumbent"]["observed_action_accuracy"])
     with tempfile.TemporaryDirectory() as temporary:
         path = Path(temporary) / "incumbent.apc"
@@ -224,7 +320,9 @@ def audit_completed_replay_candidate(
         "automatic_promotion": False,
         "metrics": metrics,
         "gates": {
-            "held_out_value_improves": improves_value,
+            "held_out_value_mae_improves": improves_value_mae,
+            "held_out_value_rmse_non_regression": value_rmse_non_regression,
+            "held_out_value_improves": improves_value_mae and value_rmse_non_regression,
             "held_out_observed_action_non_regression": action_non_regression,
             "rollback_verified": rollback_verified,
             "promotion_authorized": False,
@@ -244,6 +342,9 @@ def build_completed_replay_checkpoint(
     learning_rate: float = 1e-4,
     incumbent_retention_weight: float = 0.20,
     strategy_regression_dataset: str | Path | None = None,
+    strategy_rehearsal_dataset: str | Path | None = None,
+    strategy_rehearsal_weight: float = 0.50,
+    strategy_rehearsal_batch_size: int = 256,
 ) -> dict[str, object]:
     from apc.neural.train_candidate import validate_checkpoint
 
@@ -257,6 +358,10 @@ def build_completed_replay_checkpoint(
         str(incumbent_record["weights"]["weights_sha256"]),
     )
     corpus = load_replay_temporal_corpus(replay_buffer)
+    rehearsal_manifest = None
+    rehearsal_corpus = None
+    if strategy_rehearsal_dataset is not None:
+        rehearsal_manifest, rehearsal_corpus = load_raised_corpus(strategy_rehearsal_dataset)
     candidate, metrics = train_completed_replay_candidate(
         corpus,
         incumbent,
@@ -265,13 +370,16 @@ def build_completed_replay_checkpoint(
         batch_size=batch_size,
         learning_rate=learning_rate,
         incumbent_retention_weight=incumbent_retention_weight,
+        strategy_rehearsal=rehearsal_corpus,
+        strategy_rehearsal_weight=strategy_rehearsal_weight,
+        strategy_rehearsal_batch_size=strategy_rehearsal_batch_size,
     )
     audit = audit_completed_replay_candidate(corpus, incumbent, candidate, metrics)
     latency = evaluate_temporal_latency(candidate, corpus)
     strategy_regression = None
     if strategy_regression_dataset is not None:
         from apc.neural.train_candidate import _predict as predict_strategy
-        from apc.neural.train_candidate import _sliced_metrics, load_raised_corpus
+        from apc.neural.train_candidate import _sliced_metrics
 
         regression_manifest, regression_corpus = load_raised_corpus(strategy_regression_dataset)
         regression_indices = regression_corpus.indices("test")
@@ -314,7 +422,19 @@ def build_completed_replay_checkpoint(
                 "batch_size": batch_size,
                 "learning_rate": format(learning_rate, ".12g"),
                 "incumbent_retention_weight": format(incumbent_retention_weight, ".12g"),
-                "selection": "validation_mae_then_observed_action_accuracy",
+                "strategy_rehearsal_weight": format(strategy_rehearsal_weight, ".12g"),
+                "strategy_rehearsal_batch_size": strategy_rehearsal_batch_size,
+                "strategy_rehearsal": None if rehearsal_manifest is None else {
+                    "dataset_id": rehearsal_manifest["dataset_id"],
+                    "dataset_fingerprint": rehearsal_manifest["dataset_fingerprint"],
+                    "used_split": "train",
+                    "used_for_training": True,
+                },
+                "selection": (
+                    "strategy_non_regression_then_replay_validation_mae_and_observed_action_accuracy"
+                    if rehearsal_manifest is not None
+                    else "replay_validation_mae_then_observed_action_accuracy"
+                ),
                 "complete_hand_group_exclusive": True,
                 "policy_weight_updates_during_hand": False,
             },
@@ -373,7 +493,27 @@ def validate_completed_replay_checkpoint(path: str | Path) -> dict[str, object]:
             issues.append("checkpoint selection/promotion isolation is invalid")
         if checkpoint["gates"]["rollback_verified"] is not True or checkpoint["gates"]["promotion_authorized"] is not False:
             issues.append("checkpoint rollback/promotion gate is invalid")
+        replay_test = checkpoint["audit"]["metrics"]["test"]
+        expected_mae_gate = float(replay_test["candidate"]["mae_bb"]) < float(replay_test["incumbent"]["mae_bb"])
+        expected_rmse_gate = float(replay_test["candidate"]["rmse_bb"]) <= float(replay_test["incumbent"]["rmse_bb"])
+        expected_action_gate = float(replay_test["candidate"]["observed_action_accuracy"]) >= float(replay_test["incumbent"]["observed_action_accuracy"])
+        if (
+            checkpoint["gates"].get("held_out_value_mae_improves") is not expected_mae_gate
+            or checkpoint["gates"].get("held_out_value_rmse_non_regression") is not expected_rmse_gate
+            or checkpoint["gates"].get("held_out_value_improves") is not (expected_mae_gate and expected_rmse_gate)
+            or checkpoint["gates"].get("held_out_observed_action_non_regression") is not expected_action_gate
+        ):
+            issues.append("checkpoint replay improvement gates are invalid")
         strategy = checkpoint.get("strategy_regression")
+        rehearsal = checkpoint["training"].get("strategy_rehearsal")
+        if rehearsal is not None and (
+            not isinstance(rehearsal, dict)
+            or rehearsal.get("used_split") != "train"
+            or rehearsal.get("used_for_training") is not True
+            or not isinstance(strategy, dict)
+            or rehearsal.get("dataset_fingerprint") == strategy.get("dataset_fingerprint")
+        ):
+            issues.append("checkpoint strategy rehearsal provenance is invalid")
         expected_strategy_gate = bool(
             isinstance(strategy, dict)
             and strategy.get("used_for_training_or_selection") is False
@@ -410,6 +550,9 @@ def main() -> None:
     train.add_argument("--learning-rate", type=float, default=1e-4)
     train.add_argument("--incumbent-retention-weight", type=float, default=0.20)
     train.add_argument("--strategy-regression-dataset", type=Path)
+    train.add_argument("--strategy-rehearsal-dataset", type=Path)
+    train.add_argument("--strategy-rehearsal-weight", type=float, default=0.50)
+    train.add_argument("--strategy-rehearsal-batch-size", type=int, default=256)
     validate = subparsers.add_parser("validate")
     validate.add_argument("checkpoint", type=Path)
     args = parser.parse_args()
@@ -427,6 +570,9 @@ def main() -> None:
         learning_rate=args.learning_rate,
         incumbent_retention_weight=args.incumbent_retention_weight,
         strategy_regression_dataset=args.strategy_regression_dataset,
+        strategy_rehearsal_dataset=args.strategy_rehearsal_dataset,
+        strategy_rehearsal_weight=args.strategy_rehearsal_weight,
+        strategy_rehearsal_batch_size=args.strategy_rehearsal_batch_size,
     )
     print(json.dumps(result, indent=2))
 

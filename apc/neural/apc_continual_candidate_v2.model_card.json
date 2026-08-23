@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "artifact_kind": "strategy_rehearsed_continual_candidate_model_card",
+  "status": "offline_candidate_unpromoted_replay_rmse_gate_failed",
+  "candidate": "apc-continual-v7",
+  "incumbent": "apc-neural-v4",
+  "checkpoint_fingerprint": "c36b93a750d70ee0f3668bd525028189e6b8d77c0b9d9a091bb66705e900747a",
+  "weights_sha256": "403bce232f537e3007843bc953ff583e9a1fc19f89f52e64d9e5b5fee8b13f0d",
+  "change_from_first_continual_candidate": [
+    "preserve_incumbent_value_normalization",
+    "rehearse_complete_four_action_groups_from_original_training_split",
+    "distill_incumbent_legal_policy_and_values",
+    "select_epochs_by_original_strategy_validation_non_regression_before_replay_validation",
+    "require_replay_MAE_improvement_and_RMSE_non_regression"
+  ],
+  "training": {
+    "seed": 20260825,
+    "selected_epoch": 1,
+    "learning_rate": "0.00003",
+    "incumbent_retention_weight": "1.0",
+    "strategy_rehearsal_weight": "1.0",
+    "strategy_rehearsal_batch_size": 512,
+    "strategy_rehearsal_dataset_fingerprint": "e256f42305d05c87527924073457d6a4015598bda71b9cea155b2e95a50b9d5e",
+    "strategy_rehearsal_split": "train",
+    "weights_updated_during_hand": false,
+    "test_used_for_selection": false
+  },
+  "held_out_replay_diagnostic": {
+    "complete_hands": 12,
+    "decisions": 29,
+    "incumbent_mae_bb": "4.07549743817",
+    "candidate_mae_bb": "3.69634567458",
+    "incumbent_rmse_bb": "4.31972288258",
+    "candidate_rmse_bb": "4.32432012814",
+    "incumbent_observed_action_accuracy": "0.655172413793",
+    "candidate_observed_action_accuracy": "0.655172413793",
+    "mae_improves": true,
+    "rmse_non_regression": false,
+    "test_reused_during_continual_pipeline_development": true
+  },
+  "raised_postflop_strategy_regression": {
+    "dataset_fingerprint": "f33f1f432838be80fcdf39c8bd65dbf191a2e173bdd8b2a844a9ccf5efa8e809",
+    "examples": 18576,
+    "used_for_training_or_selection": false,
+    "incumbent_mae_bb": "4.38286034047",
+    "candidate_mae_bb": "4.38111213586",
+    "incumbent_rmse_bb": "5.92407312204",
+    "candidate_rmse_bb": "5.91795532781",
+    "incumbent_decision_accuracy": "0.292850990525",
+    "candidate_decision_accuracy": "0.292850990525",
+    "incumbent_chosen_action_regret_bb": "2.39026699633",
+    "candidate_chosen_action_regret_bb": "2.39026699633",
+    "passed": true
+  },
+  "latency": {
+    "audited_visible_tokens": 49,
+    "p50_ms": "7.02415",
+    "p95_ms": "7.5571",
+    "maximum_ms": "8.3616",
+    "threshold_p95_ms": "50",
+    "passed": true
+  },
+  "gates": {
+    "strategy_regression_passed": true,
+    "replay_mae_improves": true,
+    "replay_rmse_non_regression": false,
+    "replay_value_improves": false,
+    "replay_action_non_regression": true,
+    "rollback_verified": true,
+    "calibration_passed": false,
+    "paired_incumbent_confidence_interval_passed": false,
+    "fresh_replay_audit_passed": false,
+    "promotion_authorized": false
+  },
+  "decision": "Retain apc-neural-v4. Strategy rehearsal eliminated the measured old-distribution regression, but replay RMSE narrowly regressed and the small replay test was inspected during pipeline iteration; a new untouched replay audit is required.",
+  "artifact_storage": "Rebuildable checkpoint and weights remain in ignored apc/runs/apc-continual-v7; this card preserves the exact diagnostic evidence."
+}

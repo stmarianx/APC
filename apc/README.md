@@ -61,6 +61,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `neural/continual_training.py` — offline incumbent-distilled replay training, rollback verification, temporal latency and catastrophic-forgetting audit.
 - `neural/apc_neural_candidates_v1.model_card.json` — frozen v1-v3 comparison and closed readiness decision.
 - `neural/apc_continual_candidate_v1.model_card.json` — first completed-replay candidate and explicit strategy-regression rejection.
+- `neural/apc_continual_candidate_v2.model_card.json` — strategy-rehearsed successor, strict replay-value gate and closed promotion decision.
 - `requirements-neural.txt` — portable PyTorch dependency profile for neural development.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
@@ -975,10 +976,22 @@ the candidate regressed the declared strategy audit: MAE 4.3829 -> 5.0786 BB,
 accuracy 29.29% -> 26.10%, and regret 2.3903 -> 2.4232 BB. It was therefore
 rejected, v4 remains the incumbent, and automatic promotion stays disabled.
 
+The next continual iteration fixed the mechanism behind that rejection. It
+keeps v4's value coordinate system unchanged, rehearses complete four-action
+groups from the original training split, distills the incumbent on every legal
+action, and makes original strategy validation the first epoch-selection
+constraint. The selected one-epoch candidate preserved sealed action accuracy
+and regret exactly, while slightly improving strategy MAE (4.3829 -> 4.3811 BB)
+and RMSE (5.9241 -> 5.9180 BB). Replay MAE improved 4.0755 -> 3.6963 BB and
+action agreement was unchanged, but replay RMSE narrowly worsened 4.3197 ->
+4.3243 BB. The stricter aggregate value gate therefore fails. Because the same
+small replay test was inspected during pipeline development, all of these replay
+results are diagnostic and a new untouched replay audit is required.
+
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
-python -m apc.neural.continual_training train apc/runs/continual-replay-v1 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v3 --epochs 3 --batch-size 32 --strategy-regression-dataset apc/runs/raised-postflop-sealed-audit-v1
-python -m apc.neural.continual_training validate apc/runs/apc-continual-v3/checkpoint.json
+python -m apc.neural.continual_training train apc/runs/continual-replay-v1 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v7 --epochs 1 --batch-size 32 --learning-rate 0.00003 --incumbent-retention-weight 1.0 --strategy-rehearsal-dataset apc/runs/raised-postflop-rollouts-v1 --strategy-rehearsal-weight 1.0 --strategy-rehearsal-batch-size 512 --strategy-regression-dataset apc/runs/raised-postflop-sealed-audit-v1
+python -m apc.neural.continual_training validate apc/runs/apc-continual-v7/checkpoint.json
 ```
 
 ```powershell
