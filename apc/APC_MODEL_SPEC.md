@@ -356,6 +356,11 @@ replay error, floored by the incumbent value scale. This prevents 200 BB hands
 from dominating gradients solely by magnitude while retaining BB-denominated
 heads and BB evaluation gates. The scale is fingerprinted in the replay adapter
 manifest and cannot use terminal reward or hidden cards.
+Matched candidate v9 reduced the deep-stack replay-MAE regression and improved
+replay RMSE plus sealed value MAE, but regressed sealed action accuracy and
+chosen-action regret. It was rejected before a fresh audit. Stack normalization
+is therefore retained as a sound data-scale contract, while policy-ordering and
+regret retention remain the next training requirement.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

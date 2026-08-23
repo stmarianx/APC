@@ -67,6 +67,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `neural/apc_continual_fresh_audit_v1.model_card.json` — untouched 27-hand paired audit and closed promotion decision.
 - `neural/apc_diverse_generalization_audit_v1.model_card.json` — one-shot 111-hand held-out-policy audit and closed promotion decision.
 - `neural/apc_diverse_continual_candidate_v1.model_card.json` — profile-conditioned v8 training result rejected before a fresh audit.
+- `neural/apc_diverse_continual_candidate_v2.model_card.json` — stack-normalized v9 result rejected on strategy policy/regret gates.
 - `requirements-neural.txt` — portable PyTorch dependency profile for neural development.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
@@ -1045,6 +1046,15 @@ incumbent value scale during optimization. Model outputs, targets, audits and
 recommendations remain in BB; only gradient weighting is stack-normalized.
 The adapter manifest records the exact loss-scale contract, and malformed or
 negative stack evidence is rejected.
+
+The matched v9 run confirms that normalization changes the intended failure
+mode but is not sufficient for promotion. Replay MAE regression shrank from
+v8's +0.0712 BB to +0.0208 BB; replay RMSE improved by 0.0909 BB and observed-
+action agreement rose by 2.12 percentage points. Sealed strategy MAE improved
+by 0.0396 BB, but action accuracy fell from 29.29% to 26.10% and chosen-action
+regret worsened from 2.3903 to 2.4232 BB. V9 was rejected at development gates,
+v4 remains incumbent, and no fresh audit was consumed. The next trainer change
+must explicitly retain sealed policy ordering/regret as well as value scale.
 
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
