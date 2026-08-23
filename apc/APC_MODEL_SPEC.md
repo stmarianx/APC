@@ -332,6 +332,10 @@ The successor keeps the incumbent normalization fixed and uses group-complete
 strategy rehearsal plus validation-constrained selection. It removed the
 measured strategy regression, but remains rejected because replay RMSE narrowly
 regressed and the replay test had been inspected during pipeline iteration.
+A subsequent disjoint 240-hand one-shot replay audit found statistically
+positive paired MAE improvement on 27 test hands, exact action-accuracy
+non-regression and 7.9661 ms p95 inference. The paired RMSE interval still
+crossed zero, so promotion remains closed and v4 remains the incumbent.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

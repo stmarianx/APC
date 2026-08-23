@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "component": "fresh_completed_hand_temporal_replay_audit_corpus",
+  "version": "continual-replay-audit-v2",
+  "evaluated_at": "2026-08-23",
+  "status": "frozen_one_shot_audit_not_training_or_selection_data",
+  "policy_promotion_eligible": false,
+  "solver_target": false,
+  "gto_verified": false,
+  "artifact": {
+    "local_path": "apc/runs/continual-replay-audit-v2",
+    "manifest_sha256": "d3e032ab7a3ce5549c0095a58de7f691b72fac8ce076d7949f6da128522603f7",
+    "content_fingerprint": "e976c4331e62f0beada8c2e86cf3c09c249829e1658e6475e3c2975cd232fbb2",
+    "adapter_fingerprint": "63c674fbf8a1fb212132bf8b33be7de34d8b156a6d22b87b14ce4864b38cbe17",
+    "object_bytes": 871084
+  },
+  "corpus": {
+    "complete_hands": 240,
+    "hero_decisions": 642,
+    "seed_range": [90000, 90239],
+    "hands_per_session": 3,
+    "split_complete_hands": {"train": 180, "validation": 33, "test": 27},
+    "complete_session_group_exclusive": true,
+    "overlaps_candidate_training_hands": false,
+    "opponent_private_cards_used": false,
+    "external_actuation": false,
+    "units": "BB"
+  },
+  "protocol": {
+    "corpus_frozen_before_candidate_evaluation": true,
+    "evaluated_split": "test",
+    "used_for_training_or_selection": false,
+    "candidate_evaluated_once": true
+  },
+  "limitations": [
+    "Both seats use the same deterministic scripted probe family as the development replay, with disjoint seeds and sessions.",
+    "This is fresh distribution-matched evidence, not diverse-environment, solver, exploitability, or GTO evidence.",
+    "Only 27 complete test hands support the paired interval; larger and more diverse audits remain required."
+  ]
+}

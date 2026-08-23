@@ -59,9 +59,11 @@ models are still required before APC can be trained for arbitrary tables.
 - `neural/replay_adapter.py` — strict completed-hand conversion into ordered, private-safe temporal neural tensors.
 - `neural/self_play_replay.py` — deterministic internal virtual-chip completed-hand replay generation with no external actuation.
 - `neural/continual_training.py` — offline incumbent-distilled replay training, rollback verification, temporal latency and catastrophic-forgetting audit.
+- `neural/evaluate_continual_candidate.py` — disjoint one-shot replay evaluation with complete-hand paired bootstrap and tamper-evident gates.
 - `neural/apc_neural_candidates_v1.model_card.json` — frozen v1-v3 comparison and closed readiness decision.
 - `neural/apc_continual_candidate_v1.model_card.json` — first completed-replay candidate and explicit strategy-regression rejection.
 - `neural/apc_continual_candidate_v2.model_card.json` — strategy-rehearsed successor, strict replay-value gate and closed promotion decision.
+- `neural/apc_continual_fresh_audit_v1.model_card.json` — untouched 27-hand paired audit and closed promotion decision.
 - `requirements-neural.txt` — portable PyTorch dependency profile for neural development.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
@@ -988,10 +990,23 @@ action agreement was unchanged, but replay RMSE narrowly worsened 4.3197 ->
 small replay test was inspected during pipeline development, all of these replay
 results are diagnostic and a new untouched replay audit is required.
 
+That untouched audit is now complete and was not used for training or epoch
+selection. A disjoint 240-hand corpus (seeds 90000-90239) supplied 27 complete
+test hands and 66 Hero decisions. V7 improved MAE from 4.4441 to 4.0220 BB and
+RMSE from 4.8652 to 4.5698 BB with identical 71.21% action agreement. Across
+5,000 complete-hand bootstrap resamples, the MAE-improvement 95% interval was
+[0.0173, 0.7419] BB, while RMSE was [-0.1058, 0.6267] BB and action accuracy
+was exactly [0, 0]. The RMSE interval includes zero, so paired value evidence
+does not pass and v4 remains the incumbent. Temporal inference was 7.9661 ms
+p95. This remains narrow same-policy/same-engine evidence, not GTO or diverse-
+environment proof.
+
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
 python -m apc.neural.continual_training train apc/runs/continual-replay-v1 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v7 --epochs 1 --batch-size 32 --learning-rate 0.00003 --incumbent-retention-weight 1.0 --strategy-rehearsal-dataset apc/runs/raised-postflop-rollouts-v1 --strategy-rehearsal-weight 1.0 --strategy-rehearsal-batch-size 512 --strategy-regression-dataset apc/runs/raised-postflop-sealed-audit-v1
 python -m apc.neural.continual_training validate apc/runs/apc-continual-v7/checkpoint.json
+python -m apc.neural.evaluate_continual_candidate evaluate apc/runs/continual-replay-audit-v2 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v7/checkpoint.json --bootstrap-samples 5000 --bootstrap-seed 20260826 --output apc/runs/continual-replay-audit-v2/fresh-audit.json
+python -m apc.neural.evaluate_continual_candidate validate apc/runs/continual-replay-audit-v2/fresh-audit.json
 ```
 
 ```powershell

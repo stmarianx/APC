@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import hashlib
+import json
 import tempfile
 import unittest
+from pathlib import Path
 
 import numpy as np
 import torch
@@ -11,6 +14,7 @@ from apc.neural.continual_training import (
     audit_completed_replay_candidate,
     train_completed_replay_candidate,
 )
+from apc.neural.evaluate_continual_candidate import paired_hand_bootstrap, validate_fresh_replay_report
 from apc.neural.replay_adapter import encode_completed_hand_replays, load_replay_temporal_corpus
 from apc.neural.replay_buffer import APCReplayBuffer
 from apc.neural.self_play_replay import build_virtual_replay_buffer, generate_virtual_completed_replay
@@ -171,6 +175,63 @@ class APCReplayAdapterTests(unittest.TestCase):
         self.assertIsNotNone(metrics["history"][0]["strategy_rehearsal_loss"])
         self.assertEqual(float(candidate.value_mean_bb), original_mean)
         self.assertEqual(float(candidate.value_scale_bb), original_scale)
+
+    def test_paired_replay_bootstrap_is_complete_hand_grouped_and_deterministic(self) -> None:
+        corpus = encode_completed_hand_replays(
+            [(self.replay(index), "test") for index in range(1, 5)], max_events=3
+        )
+        indices = corpus.indices("test")
+        actual = corpus.target_return_bb[indices]
+        incumbent_policy = np.zeros((len(indices), 6), dtype=np.float32)
+        candidate_policy = np.zeros((len(indices), 6), dtype=np.float32)
+        incumbent_policy[:, 0] = 1
+        candidate_policy[np.arange(len(indices)), corpus.chosen_action_index[indices]] = 1
+        incumbent = {"value": actual + 2, "policy": incumbent_policy, "temporal": np.zeros(len(indices))}
+        candidate = {"value": actual, "policy": candidate_policy, "temporal": np.ones(len(indices))}
+        first = paired_hand_bootstrap(corpus, indices, incumbent, candidate, samples=200, seed=17)
+        second = paired_hand_bootstrap(corpus, indices, incumbent, candidate, samples=200, seed=17)
+        self.assertEqual(first, second)
+        self.assertEqual(first["complete_hands"], 4)
+        self.assertEqual(first["resampling_unit"], "complete_hand")
+        self.assertGreater(float(first["mae_improvement_bb"]["lower_95"]), 0)
+        self.assertGreaterEqual(float(first["action_accuracy_improvement"]["lower_95"]), 0)
+
+    def test_fresh_replay_report_validator_recomputes_evidence_gates(self) -> None:
+        metric = {"mae_bb": "1", "rmse_bb": "1.2", "bias_bb": "0", "observed_action_accuracy": "0.5", "temporal_consistency_mean": "0.7"}
+        report = {
+            "schema_version": "1.0.0", "model_name": "APC",
+            "audit_kind": "fresh_completed_replay_paired_incumbent", "status": "evaluated_not_promoted",
+            "audit_replay": {"used_for_training_or_selection": False, "evaluated_split": "test"},
+            "incumbent_checkpoint_fingerprint": "a" * 64,
+            "candidate_checkpoint_fingerprint": "b" * 64,
+            "incumbent": metric, "candidate": metric,
+            "paired_bootstrap": {
+                "complete_hands": 20,
+                "mae_improvement_bb": {"lower_95": "0.1"},
+                "rmse_improvement_bb": {"lower_95": "-0.1"},
+                "action_accuracy_improvement": {"lower_95": "0"},
+            },
+            "latency": {"p95_ms": "8", "threshold_p95_ms": "50", "passed": True},
+            "gates": {
+                "minimum_20_complete_test_hands": True,
+                "mae_improvement_lower_95_above_zero": True,
+                "rmse_improvement_lower_95_above_zero": False,
+                "action_accuracy_lower_95_nonnegative": True,
+                "calibration_passed": False, "promotion_authorized": False,
+            },
+            "recommendation_allowed": False, "activation_authorized": False,
+        }
+        canonical = lambda value: json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+        report["report_fingerprint"] = hashlib.sha256(canonical(report)).hexdigest()
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "audit.json"
+            path.write_text(json.dumps(report), encoding="utf-8")
+            self.assertTrue(validate_fresh_replay_report(path)["valid"])
+            report["gates"]["rmse_improvement_lower_95_above_zero"] = True
+            report.pop("report_fingerprint")
+            report["report_fingerprint"] = hashlib.sha256(canonical(report)).hexdigest()
+            path.write_text(json.dumps(report), encoding="utf-8")
+            self.assertFalse(validate_fresh_replay_report(path)["valid"])
 
 
 if __name__ == "__main__":

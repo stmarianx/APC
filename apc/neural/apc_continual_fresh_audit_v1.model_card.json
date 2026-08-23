@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "artifact_kind": "fresh_completed_replay_paired_incumbent_audit",
+  "status": "evaluated_not_promoted_rmse_interval_crosses_zero",
+  "candidate_name": "apc-continual-v7",
+  "incumbent_name": "apc-neural-v4",
+  "report_fingerprint": "f1693f32351be9cc0f70eff529956cc8b58f01f57c768b99d6acef7008eabac4",
+  "report_file_sha256": "7b7500c6f0b22b1586e0883d3afd230231b7afa51a67cdcb7ce2ad7461e3cabe",
+  "report_bytes": 2074,
+  "audit_replay_content_fingerprint": "e976c4331e62f0beada8c2e86cf3c09c249829e1658e6475e3c2975cd232fbb2",
+  "evaluated_test": {"complete_hands": 27, "decisions": 66},
+  "incumbent_metrics": {
+    "mae_bb": "4.44414420923",
+    "rmse_bb": "4.86515332969",
+    "observed_action_accuracy": "0.712121212121",
+    "temporal_consistency_mean": "0.521792829037"
+  },
+  "candidate_metrics": {
+    "mae_bb": "4.021953478",
+    "rmse_bb": "4.56980619423",
+    "observed_action_accuracy": "0.712121212121",
+    "temporal_consistency_mean": "0.545950055122"
+  },
+  "paired_complete_hand_bootstrap": {
+    "samples": 5000,
+    "seed": 20260826,
+    "mae_improvement_bb_95": ["0.0173063126962", "0.74193304779"],
+    "rmse_improvement_bb_95": ["-0.105841189136", "0.626699110658"],
+    "action_accuracy_improvement_95": ["0", "0"]
+  },
+  "latency": {
+    "audited_visible_tokens": 53,
+    "p50_ms": "6.6047",
+    "p95_ms": "7.9661",
+    "maximum_ms": "8.7689",
+    "threshold_p95_ms": "50",
+    "passed": true
+  },
+  "gates": {
+    "fresh_buffer_disjoint": true,
+    "minimum_20_complete_test_hands": true,
+    "mae_improvement_lower_95_above_zero": true,
+    "rmse_improvement_lower_95_above_zero": false,
+    "action_accuracy_lower_95_nonnegative": true,
+    "strategy_regression_passed": true,
+    "calibration_passed": false,
+    "promotion_authorized": false
+  },
+  "decision": "Retain apc-neural-v4. Fresh paired evidence supports MAE improvement and action non-regression, but the RMSE improvement interval includes zero; calibration, diverse-environment and GTO/solver gates also remain open.",
+  "artifact_storage": "The rebuildable audit remains in ignored apc/runs/continual-replay-audit-v2; this card preserves exact corpus, report and metric fingerprints."
+}
