@@ -370,6 +370,10 @@ Matched v10 did not supply that proof: value metrics improved relative to v9,
 but sealed action accuracy and regret remained at the same regressed values.
 The normalized pairwise penalty is therefore recorded as insufficient at weight
 1.0; a direct incumbent-argmax constraint is required before another candidate.
+That constraint is now implemented: a BB-space hinge preserves the incumbent-
+best action's prior margin over every alternative in each complete four-action
+rehearsal group. It is checkpointed separately from symmetric margin retention
+and must pass a matched candidate audit before being credited as evidence.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

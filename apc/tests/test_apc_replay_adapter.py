@@ -13,6 +13,7 @@ from apc.neural.model import APCArchitecture, APCNetwork
 from apc.neural.continual_training import (
     action_margin_retention_loss,
     audit_completed_replay_candidate,
+    incumbent_argmax_hinge_loss,
     train_completed_replay_candidate,
 )
 from apc.neural.evaluate_continual_candidate import paired_hand_bootstrap, validate_fresh_replay_report
@@ -202,6 +203,17 @@ class APCReplayAdapterTests(unittest.TestCase):
             action_margin_retention_loss(torch.ones(3), torch.ones(3), 5.0)
         with self.assertRaisesRegex(ValueError, "scale must be positive"):
             action_margin_retention_loss(torch.ones(4), torch.ones(4), 0.0)
+
+    def test_incumbent_argmax_hinge_directly_penalizes_selection_flips(self) -> None:
+        incumbent = torch.tensor([0.0, 4.0, 1.0, 2.0, 3.0, -1.0, 1.0, 0.0])
+        self.assertEqual(float(incumbent_argmax_hinge_loss(incumbent.clone(), incumbent)), 0.0)
+        compressed = torch.tensor([0.0, 1.5, 1.0, 2.0, 3.0, -1.0, 1.0, 0.0])
+        self.assertGreater(float(incumbent_argmax_hinge_loss(compressed, incumbent)), 0.0)
+        restored = compressed.clone()
+        restored[1] = 4.0
+        self.assertEqual(float(incumbent_argmax_hinge_loss(restored, incumbent)), 0.0)
+        with self.assertRaisesRegex(ValueError, "complete four-action groups"):
+            incumbent_argmax_hinge_loss(torch.ones(5), torch.ones(5))
 
     def test_paired_replay_bootstrap_is_complete_hand_grouped_and_deterministic(self) -> None:
         corpus = encode_completed_hand_replays(

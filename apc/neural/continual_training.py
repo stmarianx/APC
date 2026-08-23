@@ -55,6 +55,21 @@ def action_margin_retention_loss(candidate_values: Tensor, incumbent_values: Ten
     return torch.nn.functional.smooth_l1_loss(candidate_margins / scale_bb, incumbent_margins / scale_bb)
 
 
+def incumbent_argmax_hinge_loss(candidate_values: Tensor, incumbent_values: Tensor) -> Tensor:
+    """Keep each incumbent-best action above alternatives by its prior BB margin."""
+    if candidate_values.ndim != 1 or incumbent_values.shape != candidate_values.shape or len(candidate_values) % 4:
+        raise ValueError("APC incumbent-argmax hinge requires aligned complete four-action groups")
+    candidate_grouped = candidate_values.reshape(-1, 4)
+    incumbent_grouped = incumbent_values.reshape(-1, 4)
+    best_index = incumbent_grouped.argmax(dim=1, keepdim=True)
+    incumbent_best = incumbent_grouped.gather(1, best_index)
+    candidate_best = candidate_grouped.gather(1, best_index)
+    required_margin = (incumbent_best - incumbent_grouped).clamp_min(0.0)
+    candidate_margin = candidate_best - candidate_grouped
+    alternatives = ~torch.nn.functional.one_hot(best_index.squeeze(1), num_classes=4).bool()
+    return torch.relu(required_margin - candidate_margin)[alternatives].mean()
+
+
 def _batch(corpus: ReplayTemporalCorpus, indices: np.ndarray) -> dict[str, Tensor]:
     return {
         "state_tokens": torch.from_numpy(corpus.state_tokens[indices]),
@@ -148,6 +163,7 @@ def train_completed_replay_candidate(
     strategy_rehearsal_weight: float = 0.50,
     strategy_rehearsal_batch_size: int = 256,
     strategy_ordering_retention_weight: float = 1.0,
+    strategy_argmax_hinge_weight: float = 1.0,
 ) -> tuple[APCNetwork, dict[str, object]]:
     if (
         epochs <= 0
@@ -156,6 +172,7 @@ def train_completed_replay_candidate(
         or incumbent_retention_weight < 0
         or strategy_rehearsal_weight < 0
         or strategy_ordering_retention_weight < 0
+        or strategy_argmax_hinge_weight < 0
         or strategy_rehearsal_batch_size <= 0
         or strategy_rehearsal_batch_size % 4
     ):
@@ -256,9 +273,14 @@ def train_completed_replay_candidate(
                     rehearsal_prior["candidate_action_value_bb"],
                     scale,
                 )
+                rehearsal_argmax_hinge = incumbent_argmax_hinge_loss(
+                    rehearsal_output["candidate_action_value_bb"],
+                    rehearsal_prior["candidate_action_value_bb"],
+                )
                 rehearsal_loss = rehearsal_value + 0.05 * rehearsal_policy + incumbent_retention_weight * (
                     rehearsal_retention_value + rehearsal_retention_policy
                     + strategy_ordering_retention_weight * rehearsal_ordering_retention
+                    + strategy_argmax_hinge_weight * rehearsal_argmax_hinge
                 )
                 loss = loss + strategy_rehearsal_weight * rehearsal_loss
                 rehearsal_losses.append(float(rehearsal_loss.detach()))
@@ -368,6 +390,7 @@ def build_completed_replay_checkpoint(
     strategy_rehearsal_weight: float = 0.50,
     strategy_rehearsal_batch_size: int = 256,
     strategy_ordering_retention_weight: float = 1.0,
+    strategy_argmax_hinge_weight: float = 1.0,
 ) -> dict[str, object]:
     from apc.neural.train_candidate import validate_checkpoint
 
@@ -397,6 +420,7 @@ def build_completed_replay_checkpoint(
         strategy_rehearsal_weight=strategy_rehearsal_weight,
         strategy_rehearsal_batch_size=strategy_rehearsal_batch_size,
         strategy_ordering_retention_weight=strategy_ordering_retention_weight,
+        strategy_argmax_hinge_weight=strategy_argmax_hinge_weight,
     )
     audit = audit_completed_replay_candidate(corpus, incumbent, candidate, metrics)
     latency = evaluate_temporal_latency(candidate, corpus)
@@ -450,6 +474,8 @@ def build_completed_replay_checkpoint(
                 "strategy_rehearsal_batch_size": strategy_rehearsal_batch_size,
                 "strategy_ordering_retention_weight": format(strategy_ordering_retention_weight, ".12g"),
                 "strategy_ordering_retention": "all_pairwise_candidate_action_value_margins_within_complete_four_action_groups",
+                "strategy_argmax_hinge_weight": format(strategy_argmax_hinge_weight, ".12g"),
+                "strategy_argmax_hinge": "incumbent_best_action_above_each_alternative_by_incumbent_prior_margin_bb",
                 "replay_value_loss_scale": "max(incumbent_value_scale_bb, public_effective_stack_bb_per_decision)",
                 "strategy_rehearsal": None if rehearsal_manifest is None else {
                     "dataset_id": rehearsal_manifest["dataset_id"],
@@ -581,6 +607,7 @@ def main() -> None:
     train.add_argument("--strategy-rehearsal-weight", type=float, default=0.50)
     train.add_argument("--strategy-rehearsal-batch-size", type=int, default=256)
     train.add_argument("--strategy-ordering-retention-weight", type=float, default=1.0)
+    train.add_argument("--strategy-argmax-hinge-weight", type=float, default=1.0)
     validate = subparsers.add_parser("validate")
     validate.add_argument("checkpoint", type=Path)
     args = parser.parse_args()
@@ -602,6 +629,7 @@ def main() -> None:
         strategy_rehearsal_weight=args.strategy_rehearsal_weight,
         strategy_rehearsal_batch_size=args.strategy_rehearsal_batch_size,
         strategy_ordering_retention_weight=args.strategy_ordering_retention_weight,
+        strategy_argmax_hinge_weight=args.strategy_argmax_hinge_weight,
     )
     print(json.dumps(result, indent=2))
 

@@ -1074,6 +1074,13 @@ BB). V10 was rejected before fresh audit. The next experiment requires a
 predeclared incumbent-argmax hinge or materially stronger ordering constraint,
 not another unchanged-weight run.
 
+The trainer now adds that direct constraint. Within each complete four-action
+rehearsal group it identifies the incumbent-best action and applies a BB-space
+hinge whenever the candidate fails to keep that action above each alternative
+by the incumbent's prior margin. Unlike the earlier symmetric loss, this term
+is not divided by the global value scale. Its weight and semantics are stored
+in the checkpoint, and incomplete groups fail closed.
+
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
 python -m apc.neural.continual_training train apc/runs/continual-replay-v1 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v7 --epochs 1 --batch-size 32 --learning-rate 0.00003 --incumbent-retention-weight 1.0 --strategy-rehearsal-dataset apc/runs/raised-postflop-rollouts-v1 --strategy-rehearsal-weight 1.0 --strategy-rehearsal-batch-size 512 --strategy-regression-dataset apc/runs/raised-postflop-sealed-audit-v1
