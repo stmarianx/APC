@@ -3,6 +3,7 @@ from __future__ import annotations
 import math
 import re
 from dataclasses import dataclass
+from functools import lru_cache
 
 import numpy as np
 
@@ -12,10 +13,41 @@ from apc.neural.contract import ACTION_VOCABULARY
 STATE_TOKEN_COUNT = 16
 STATE_TOKEN_DIMENSION = 24
 PROFILE_FEATURE_DIMENSION = 8
+FEATURE_SCHEMA_VERSION = "3.0.0"
 ACTION_INDEX = {action: index for index, action in enumerate(ACTION_VOCABULARY)}
 RANK_INDEX = {rank: index for index, rank in enumerate("23456789TJQKA", start=2)}
 SUIT_INDEX = {suit: index for index, suit in enumerate("cdhs")}
 _ACTION_RE = re.compile(r"^(?P<actor>\S+)\s+(?P<action>[a-z_]+)(?::(?P<amount>-?\d+(?:\.\d+)?))?$")
+
+
+@lru_cache(maxsize=100_000)
+def _poker_math_features(
+    hero_cards: tuple[str, ...], board_cards: tuple[str, ...]
+) -> tuple[float, float, float, float, float]:
+    """Verified public/hero poker invariants; never uses opponent cards."""
+    all_cards = (*hero_cards, *board_cards)
+    category = primary_kicker = 0.0
+    if len(all_cards) >= 5:
+        from apc.full_hand_table import _coach_types
+
+        best_hand_rank, _ = _coach_types()
+        from poker_coach.models import Card
+
+        rank = best_hand_rank(
+            Card(card[0].upper(), card[1].lower()) for card in all_cards
+        )
+        category = rank.category / 8.0
+        primary_kicker = (rank.kickers[0] / 14.0) if rank.kickers else 0.0
+    board_ranks = [RANK_INDEX[card[0]] for card in board_cards]
+    board_paired = 1.0 if len(board_ranks) != len(set(board_ranks)) else 0.0
+    suit_counts = [sum(card[1] == suit for card in all_cards) for suit in "cdhs"]
+    flush_progress = min(max(suit_counts, default=0), 5) / 5.0
+    values = {RANK_INDEX[card[0]] for card in all_cards}
+    if 14 in values:
+        values.add(1)
+    straight_windows = [set(range(start, start + 5)) for start in range(1, 11)]
+    straight_progress = max((len(values & window) for window in straight_windows), default=0) / 5.0
+    return category, primary_kicker, board_paired, flush_progress, straight_progress
 
 
 def _bounded_bb(value: object, scale: float = 25.0) -> float:
@@ -105,9 +137,11 @@ def encode_state(state: dict[str, object]) -> tuple[np.ndarray, np.ndarray]:
             except ValueError:
                 continue
             global_token[13 + index] = 1.0
+    hero_cards = tuple(str(card) for card in state.get("hero_cards", []))
+    board_cards = tuple(str(card) for card in state.get("board", []))
     padding[0] = False
 
-    cards = list(state.get("hero_cards", [])) + list(state.get("board", []))
+    cards = list(hero_cards) + list(board_cards)
     # Canonical first-seen suit IDs make strategically equivalent suit renamings
     # identical before they reach the network.
     canonical_suits: dict[str, int] = {}
@@ -126,6 +160,7 @@ def encode_state(state: dict[str, object]) -> tuple[np.ndarray, np.ndarray]:
         token[9] = 1.0 if offset <= 2 else 0.0
         token[10] = max(0, offset - 2) / 5.0
         padding[offset] = False
+    global_token[19:24] = _poker_math_features(hero_cards, board_cards)
 
     history = state.get("action_history", [])
     history_rows = history[-8:] if isinstance(history, list) else []

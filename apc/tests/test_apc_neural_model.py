@@ -71,6 +71,14 @@ class APCNeuralModelTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "opponent private"):
             encode_state(leaked)
 
+        trips_state = self.state(["As", "Ad", "Ah", "Kc", "2d"])
+        trips, _ = encode_state(trips_state)
+        self.assertGreater(trips[0, 19], first[0, 19])
+        self.assertEqual(float(trips[0, 21]), 0.0)
+        paired_board = self.state(["As", "Kd", "Th", "Tc", "2d"])
+        paired, _ = encode_state(paired_board)
+        self.assertEqual(float(paired[0, 21]), 1.0)
+
     def test_legal_mask_and_pickle_free_weights_round_trip(self) -> None:
         architecture = APCArchitecture(hidden_dimension=32, transformer_layers=1, attention_heads=4, dropout=0.0, profile_hidden=16, visual_channels=(4, 8, 8))
         torch.manual_seed(7)
@@ -165,6 +173,30 @@ class APCNeuralModelTests(unittest.TestCase):
             report = validate_checkpoint(path)
             self.assertFalse(report["valid"])
             self.assertTrue(any("value gate" in issue for issue in report["issues"]))
+
+            checkpoint["metrics"]["sealed_audit"] = metric
+            checkpoint["dataset"] = {
+                "dataset_fingerprint": "training-fingerprint",
+                "sealed_audit": {
+                    "dataset_fingerprint": "sealed-fingerprint",
+                    "evaluated_split": "test",
+                    "used_for_training_or_selection": False,
+                },
+            }
+            checkpoint["gates"].update({
+                "evaluation_basis": "sealed_audit",
+                "test_value_improves_global_mean": None,
+                "sealed_value_improves_global_mean": True,
+            })
+            checkpoint.pop("checkpoint_fingerprint")
+            checkpoint["checkpoint_fingerprint"] = _fingerprint(checkpoint)
+            path.write_text(json.dumps(checkpoint), encoding="utf-8")
+            self.assertTrue(validate_checkpoint(path)["valid"])
+            checkpoint["dataset"]["sealed_audit"]["used_for_training_or_selection"] = True
+            checkpoint.pop("checkpoint_fingerprint")
+            checkpoint["checkpoint_fingerprint"] = _fingerprint(checkpoint)
+            path.write_text(json.dumps(checkpoint), encoding="utf-8")
+            self.assertFalse(validate_checkpoint(path)["valid"])
 
 
 if __name__ == "__main__":

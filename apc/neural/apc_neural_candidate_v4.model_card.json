@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "artifact_kind": "neural_candidate_model_card",
+  "status": "offline_neural_candidate_unpromoted",
+  "candidate": "apc-neural-v4",
+  "training_change": "feature_schema_v3_verified_made_hand_kicker_board_pair_flush_and_straight_progress",
+  "checkpoint_fingerprint": "5586f02ae7db0e2a2d5c8ec731f0aab45abba5ddb84e50d07fc32e0940f353e6",
+  "weights_sha256": "4d5cd304e8ccd54ce90cfc6c12878e5c999e8781a4dca437efc2a5a6928c8ea0",
+  "weights_bytes": 13496332,
+  "selection": {
+    "training_dataset_fingerprint": "e256f42305d05c87527924073457d6a4015598bda71b9cea155b2e95a50b9d5e",
+    "selected_epoch": 1,
+    "criterion": "minimum_validation_chosen_action_regret_then_mae_bb",
+    "validation_mae_bb": "4.12627947298",
+    "validation_chosen_action_regret_bb": "2.31801912559"
+  },
+  "sealed_audit": {
+    "dataset_fingerprint": "f33f1f432838be80fcdf39c8bd65dbf191a2e173bdd8b2a844a9ccf5efa8e809",
+    "examples": 18576,
+    "policy_states": 4644,
+    "used_for_training_or_selection": false,
+    "mae_bb": "4.38286034474",
+    "rmse_bb": "5.92407312779",
+    "decision_accuracy": "0.292850990525",
+    "chosen_action_regret_bb": "2.39026699633",
+    "global_mean_baseline_mae_bb": "5.26612439677"
+  },
+  "same_sealed_states_teacher": {
+    "mae_bb": "3.425365324",
+    "rmse_bb": "5.47182551763",
+    "decision_accuracy": "0.684969853575",
+    "chosen_action_regret_bb": "1.78251507321",
+    "result": "teacher_remains_stronger"
+  },
+  "latency": {"p50_ms": "5.2464", "p95_ms": "7.2061", "maximum_ms": "16.7627", "threshold_p95_ms": "50", "passed": true},
+  "gates": {
+    "sealed_value_improves_global_mean": true,
+    "beats_raised_postflop_teacher": false,
+    "confidence_calibrated": false,
+    "visual_branch_trained": false,
+    "visible_table_training_ready": false,
+    "promotion_authorized": false
+  },
+  "artifact_storage": "Rebuildable checkpoint and weights remain in ignored apc/runs/apc-neural-v4; this card preserves their exact fingerprints and one-shot audit evidence."
+}

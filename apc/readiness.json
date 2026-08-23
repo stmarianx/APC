@@ -170,17 +170,17 @@
         "tests/test_apc_neural_contract.py: 3 passing tests prove the model name remains APC, neural identity is mandatory, completed live virtual-chip hands are training-eligible, and mid-hand policy-weight updates/automatic promotion are prohibited",
         "APC_MODEL_SPEC.md version 0.2.0: tabular checkpoints explicitly classified as teacher baselines/regression controls rather than the final APC neural network",
         "requirements-neural.txt and neural/development_runtime_audit_v1.json: PyTorch 2.13.0+cpu installed and recorded for the four-thread laptop runtime",
-        "neural/features.py and neural/model.py: suit-renaming-invariant private-card-safe tensorization plus executable visual/state/profile encoders, missing-modality gated fusion, legal-action policy and continuous-size-conditioned BB value heads",
-        "neural/train_candidate.py: deterministic complete-hand-exclusive PyTorch trainer, validation-only epoch selection, complete counterfactual batch option, split/slice metrics, sub-50 ms latency audit, pickle-free weight serialization and semantic artifact validator",
-        "tests/test_apc_neural_model.py: 4 passing tests cover suit invariance, leakage rejection, legal masking, deterministic training, exact pickle-free reload, weight tamper detection and semantic gate recomputation",
+        "neural/features.py and neural/model.py: suit-renaming-invariant private-card-safe tensorization, verified made-hand/kicker/board-pair/draw features, plus executable visual/state/profile encoders, missing-modality gated fusion, legal-action policy and continuous-size-conditioned BB value heads",
+        "neural/train_candidate.py: deterministic complete-hand-exclusive PyTorch trainer, validation-only epoch selection, complete counterfactual batch option, frozen one-shot sealed-audit support, split/slice metrics, sub-50 ms latency audit, pickle-free weight serialization and semantic artifact validator",
+        "tests/test_apc_neural_model.py: 4 passing tests cover suit and poker-math invariance, leakage rejection, legal masking, deterministic training, exact pickle-free reload, weight tamper detection and sealed-provenance/gate recomputation",
         "neural/replay_buffer.py: immutable SHA-256 completed-hand objects, atomic versioned manifest, deterministic complete-group splits and seeded priority sampling with incumbent-regression retention",
         "tests/test_apc_replay_buffer.py: 3 passing tests cover idempotence, identity conflicts, incomplete-hand refusal, object tampering, deterministic sampling and incumbent retention",
-        "neural/apc_neural_candidates_v1.model_card.json: three full 129,600-example CPU candidates; validation-selected v2 reached 3.9530 BB validation MAE/2.2400 BB regret and 6.4455 ms p95, but all remain weaker than the raised-postflop teacher and unpromoted"
+        "neural/apc_neural_candidates_v1.model_card.json: three full 129,600-example CPU candidates; validation-selected v2 reached 3.9530 BB validation MAE/2.2400 BB regret and 6.4455 ms p95",
+        "perception/baselines/raised_postflop_sealed_audit_v1.model_card.json and neural/apc_neural_candidate_v4.model_card.json: V4 weights were frozen before a disjoint 600-hand one-shot audit; 4.3829 BB MAE, 29.29% action accuracy, 2.3903 BB regret and 7.2061 ms p95 improved the global-mean baseline but remained below the teacher's 3.4254 BB, 68.50% and 1.7825 BB on the same 18,576 examples"
       ],
       "missing": [
         "convert content-addressed completed-hand events into temporal neural tensors and run replay-driven candidate retraining",
         "train the visual encoder on representative verified controlled-visible frames and join it to temporal state supervision",
-        "add verified made-hand/draw/board-texture math features and train against a new sealed complete-hand audit split",
         "replace controlled-policy terminal-return supervision with representative fingerprinted solver/GTO targets",
         "beat the declared raised-postflop teacher on fresh held-out value, action-regret and accuracy evidence",
         "meet held-out calibration, unseen-opponent, catastrophic-forgetting and rollback gates"

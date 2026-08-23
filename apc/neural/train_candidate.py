@@ -17,6 +17,7 @@ from torch import Tensor
 
 from apc.neural.contract import ACTION_VOCABULARY, load_apc_neural_config
 from apc.neural.features import (
+    FEATURE_SCHEMA_VERSION,
     PROFILE_FEATURE_DIMENSION,
     STATE_TOKEN_COUNT,
     STATE_TOKEN_DIMENSION,
@@ -324,6 +325,7 @@ def build_checkpoint(
     epochs: int = 3,
     batch_size: int = 384,
     learning_rate: float = 3e-4,
+    sealed_audit_dataset: str | Path | None = None,
 ) -> dict[str, object]:
     root = Path(output).resolve()
     checkpoint_path = root / "checkpoint.json"
@@ -332,11 +334,25 @@ def build_checkpoint(
         raise FileExistsError(f"refusing to overwrite APC neural run: {root}")
     manifest, corpus = load_raised_corpus(dataset)
     model, metrics = train_apc_candidate(corpus, seed=seed, epochs=epochs, batch_size=batch_size, learning_rate=learning_rate)
+    sealed_manifest = None
+    if sealed_audit_dataset is not None:
+        sealed_manifest, sealed_corpus = load_raised_corpus(sealed_audit_dataset)
+        if sealed_manifest["dataset_fingerprint"] == manifest["dataset_fingerprint"]:
+            raise ValueError("sealed audit dataset must differ from the training corpus")
+        if set(corpus.group_ids) & set(sealed_corpus.group_ids):
+            raise ValueError("sealed audit complete hands overlap the training corpus")
+        sealed_indices = sealed_corpus.indices("test")
+        sealed_prediction, _, sealed_uncertainty = _predict(
+            model, sealed_corpus, sealed_indices, batch_size
+        )
+        metrics["sealed_audit"] = _sliced_metrics(
+            sealed_corpus, sealed_indices, sealed_prediction, sealed_uncertainty
+        )
     root.mkdir(parents=True)
     weights = save_apc_weights(model, weights_path)
     latency = evaluate_latency(model, corpus)
     config = load_apc_neural_config()
-    test = metrics["test"]
+    test = metrics["sealed_audit"] if sealed_manifest is not None else metrics["test"]
     value_gate = float(test["mae_bb"]) < float(test["train_global_mean_baseline_mae_bb"])
     checkpoint = {
         "schema_version": SCHEMA_VERSION,
@@ -345,12 +361,12 @@ def build_checkpoint(
         "framework": {"name": "pytorch", "version": torch.__version__, "device": "cpu"},
         "architecture_contract_fingerprint": config["config_fingerprint"],
         "architecture": asdict(model.architecture),
-        "dataset": {"dataset_id": manifest["dataset_id"], "dataset_fingerprint": manifest["dataset_fingerprint"], "examples_sha256": manifest["examples_sha256"]},
-        "training": {"pipeline_version": "3.0.0", "feature_schema_version": "2.0.0", "seed": seed, "epochs": epochs, "batch_size": batch_size, "learning_rate": format(learning_rate, ".12g"), "validation_selection": "minimum_chosen_action_regret_then_mae_bb", "group_exclusive_split": True, "counterfactual_groups_kept_complete_per_batch": True, "trained_modalities": ["canonical_state_sequence", "player_profile"], "untrained_modalities": ["visible_frame_sequence"]},
+        "dataset": {"dataset_id": manifest["dataset_id"], "dataset_fingerprint": manifest["dataset_fingerprint"], "examples_sha256": manifest["examples_sha256"], "sealed_audit": None if sealed_manifest is None else {"dataset_id": sealed_manifest["dataset_id"], "dataset_fingerprint": sealed_manifest["dataset_fingerprint"], "examples_sha256": sealed_manifest["examples_sha256"], "evaluated_split": "test", "used_for_training_or_selection": False}},
+        "training": {"pipeline_version": "4.0.0", "feature_schema_version": FEATURE_SCHEMA_VERSION, "seed": seed, "epochs": epochs, "batch_size": batch_size, "learning_rate": format(learning_rate, ".12g"), "validation_selection": "minimum_chosen_action_regret_then_mae_bb", "group_exclusive_split": True, "counterfactual_groups_kept_complete_per_batch": True, "trained_modalities": ["canonical_state_sequence", "player_profile"], "untrained_modalities": ["visible_frame_sequence"]},
         "weights": {"file": weights_path.name, **weights},
         "metrics": metrics,
         "latency": latency,
-        "gates": {"finite_outputs": True, "test_value_improves_global_mean": value_gate, "strategy_p95_under_50_ms": latency["passed"], "visible_table_training_ready": False, "evaluated_coaching_ready": False},
+        "gates": {"finite_outputs": True, "evaluation_basis": "sealed_audit" if sealed_manifest is not None else "test", "test_value_improves_global_mean": value_gate if sealed_manifest is None else None, "sealed_value_improves_global_mean": value_gate if sealed_manifest is not None else None, "strategy_p95_under_50_ms": latency["passed"], "visible_table_training_ready": False, "evaluated_coaching_ready": False},
         "status": "offline_neural_candidate_unpromoted",
         "confidence_calibrated": False,
         "recommendation_allowed": False,
@@ -359,6 +375,7 @@ def build_checkpoint(
             "The first neural checkpoint trains the canonical state/history and controlled-policy profile branches on virtual-chip rollouts.",
             "Rollout returns are policy-matched Monte Carlo targets, not verified GTO solver labels.",
             "The visual encoder is initialized but untrained and the profile branch has only controlled-policy labels, so this checkpoint is not visible-table ready.",
+            "A sealed audit, when present, is evaluated only after validation-selected weights are frozen and is never used for training or selection.",
             "Policy weights never update during a hand and this candidate cannot activate automatically."
         ],
     }
@@ -414,7 +431,7 @@ def validate_checkpoint(path: str | Path) -> dict[str, object]:
             issues.append("checkpoint modality evidence is invalid")
         if checkpoint["training"]["group_exclusive_split"] is not True:
             issues.append("checkpoint group split evidence is invalid")
-        if checkpoint["training"].get("pipeline_version") == "3.0.0" and (
+        if checkpoint["training"].get("pipeline_version") in {"3.0.0", "4.0.0"} and (
             checkpoint["training"].get("counterfactual_groups_kept_complete_per_batch") is not True
             or checkpoint["training"].get("validation_selection") != "minimum_chosen_action_regret_then_mae_bb"
         ):
@@ -425,7 +442,10 @@ def validate_checkpoint(path: str | Path) -> dict[str, object]:
         issues.append("checkpoint training/readiness evidence is missing")
     try:
         metrics = checkpoint["metrics"]
-        for split in ("train", "validation", "test"):
+        metric_splits = ["train", "validation", "test"]
+        if "sealed_audit" in metrics:
+            metric_splits.append("sealed_audit")
+        for split in metric_splits:
             row = metrics[split]
             if int(row["examples"]) <= 0 or int(row["policy_states"]) <= 0:
                 raise ValueError("empty split")
@@ -435,14 +455,26 @@ def validate_checkpoint(path: str | Path) -> dict[str, object]:
             ):
                 if not math.isfinite(float(row[field])):
                     raise ValueError(f"non-finite {split} {field}")
-        test = metrics["test"]
+        basis = checkpoint["gates"].get("evaluation_basis", "test")
+        if basis not in {"test", "sealed_audit"} or basis not in metrics:
+            raise ValueError("evaluation basis is invalid")
+        test = metrics[basis]
         expected_value_gate = float(test["mae_bb"]) < float(test["train_global_mean_baseline_mae_bb"])
         latency = checkpoint["latency"]
         expected_latency_gate = float(latency["p95_ms"]) <= float(latency["threshold_p95_ms"])
         if checkpoint["gates"]["finite_outputs"] is not True:
             issues.append("finite-output gate is invalid")
-        if checkpoint["gates"]["test_value_improves_global_mean"] is not expected_value_gate:
+        gate_field = "sealed_value_improves_global_mean" if basis == "sealed_audit" else "test_value_improves_global_mean"
+        if checkpoint["gates"].get(gate_field) is not expected_value_gate:
             issues.append("value gate does not match held-out metrics")
+        sealed = checkpoint.get("dataset", {}).get("sealed_audit")
+        if basis == "sealed_audit" and (
+            not isinstance(sealed, dict)
+            or sealed.get("used_for_training_or_selection") is not False
+            or sealed.get("evaluated_split") != "test"
+            or sealed.get("dataset_fingerprint") == checkpoint.get("dataset", {}).get("dataset_fingerprint")
+        ):
+            issues.append("sealed audit provenance is invalid")
         if checkpoint["gates"]["strategy_p95_under_50_ms"] is not expected_latency_gate or latency["passed"] is not expected_latency_gate:
             issues.append("latency gate does not match measured latency")
     except (KeyError, TypeError, ValueError) as error:
@@ -458,6 +490,7 @@ def main() -> None:
     parser.add_argument("--epochs", type=int, default=3)
     parser.add_argument("--batch-size", type=int, default=384)
     parser.add_argument("--learning-rate", type=float, default=3e-4)
+    parser.add_argument("--sealed-audit-dataset", type=Path)
     parser.add_argument("--validate", action="store_true")
     args = parser.parse_args()
     if args.validate:
@@ -466,7 +499,15 @@ def main() -> None:
         raise SystemExit(0 if report["valid"] else 1)
     if args.output is None:
         parser.error("output is required for training")
-    checkpoint = build_checkpoint(args.dataset, args.output, seed=args.seed, epochs=args.epochs, batch_size=args.batch_size, learning_rate=args.learning_rate)
+    checkpoint = build_checkpoint(
+        args.dataset,
+        args.output,
+        seed=args.seed,
+        epochs=args.epochs,
+        batch_size=args.batch_size,
+        learning_rate=args.learning_rate,
+        sealed_audit_dataset=args.sealed_audit_dataset,
+    )
     print(json.dumps(checkpoint, indent=2))
 
 

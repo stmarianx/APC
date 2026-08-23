@@ -931,15 +931,20 @@ it was not selected. All candidates reload with exact fingerprints and run in
 under 6.7 ms p95 on the four-thread laptop CPU, well below the 50 ms strategy
 budget.
 
+V4 added verified, suit-invariant made-hand, kicker, board-pair, flush-progress
+and straight-progress features. Its weights were selected only on the original
+validation split, then frozen before a one-shot audit on a separately generated
+600-hand corpus (seeds 70000-70599). On 18,576 sealed test examples it reached
+4.3829 BB MAE, 29.29% action accuracy, 2.3903 BB chosen-action regret and
+7.2061 ms p95. The unchanged teacher reached 3.4254 BB MAE, 68.50% accuracy and
+1.7825 BB regret on exactly the same sealed states.
+
 These candidates are genuine neural checkpoints, not lookup tables, but none
-is promotable. The stronger raised-postflop teacher remains materially better
-(3.4496 BB test MAE and 66.50% action accuracy), confidence is uncalibrated,
-labels are controlled-policy rollouts rather than verified GTO solver targets,
-and the visual encoder remains untrained. Test results were inspected between
-candidate design iterations, so they are diagnostic only; the next candidate
-requires a new sealed complete-hand audit split. Rebuildable weights stay in
-ignored `apc/runs/apc-neural-v*/` directories; the tracked model card preserves
-their exact checkpoint and weight fingerprints.
+is promotable. V4 improves over its global-mean baseline, yet remains materially
+below the teacher; confidence is uncalibrated, labels are controlled-policy
+rollouts rather than verified GTO solver targets, and the visual encoder remains
+untrained. Rebuildable weights stay in ignored `apc/runs/apc-neural-v*/`
+directories; tracked model cards preserve exact fingerprints and audit metrics.
 
 `neural/replay_buffer.py` supplies the persistent continual-learning boundary.
 Only fully completed, validated BB hands enter immutable SHA-256-addressed
@@ -951,8 +956,8 @@ future catastrophic-forgetting checks without changing weights during a hand.
 
 ```powershell
 python -m pip install -r apc/requirements-neural.txt --index-url https://download.pytorch.org/whl/cpu
-python -m apc.neural.train_candidate apc/runs/raised-postflop-rollouts-v1 apc/runs/apc-neural-v4
-python -m apc.neural.train_candidate apc/runs/apc-neural-v3/checkpoint.json --validate
+python -m apc.neural.train_candidate apc/runs/raised-postflop-rollouts-v1 apc/runs/apc-neural-v4 --sealed-audit-dataset apc/runs/raised-postflop-sealed-audit-v1
+python -m apc.neural.train_candidate apc/runs/apc-neural-v4/checkpoint.json --validate
 ```
 
 ## Frozen visible-table OOD reference

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "component": "raised_postflop_sealed_audit_corpus",
+  "version": "raised-postflop-sealed-audit-v1",
+  "evaluated_at": "2026-08-23",
+  "status": "frozen_one_shot_audit_not_training_or_selection_data",
+  "policy_promotion_eligible": false,
+  "solver_target": false,
+  "gto_verified": false,
+  "artifact": {
+    "local_path": "apc/runs/raised-postflop-sealed-audit-v1",
+    "manifest_sha256": "8c7dc40eb271817ceb00df840772b35f3c81fe37d213eae2d75ec6eb5e352e76",
+    "dataset_fingerprint": "f33f1f432838be80fcdf39c8bd65dbf191a2e173bdd8b2a844a9ccf5efa8e809",
+    "examples_sha256": "565f1ea5b0b311882849ecd8e4c75a342e1d8353a572a41b58b5e9d381c4efae",
+    "examples_bytes": 311116245
+  },
+  "corpus": {
+    "complete_hand_groups": 600,
+    "examples": 129600,
+    "public_texture_classes": 84,
+    "hand_seed_range": [70000, 70599],
+    "split_seed": 20260824,
+    "example_split_counts": {"train": 92880, "validation": 18144, "test": 18576},
+    "group_exclusive": true,
+    "overlaps_training_corpus_groups": false
+  },
+  "protocol": {
+    "candidate_weights_frozen_before_loading_audit": true,
+    "evaluated_split": "test",
+    "used_for_training_or_model_selection": false,
+    "audit_opened_once": true
+  },
+  "limitations": [
+    "Terminal returns are controlled virtual-chip policy rollouts, not solver counterfactual values or GTO labels.",
+    "The audit covers one heads-up 2.5 BB raise/call trunk and cannot establish general poker performance.",
+    "The sealed result may be reported but must not be reused for tuning future candidates."
+  ]
+}
