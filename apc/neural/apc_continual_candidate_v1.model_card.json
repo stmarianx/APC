@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "artifact_kind": "completed_replay_continual_candidate_model_card",
+  "status": "offline_candidate_rejected_for_strategy_regression",
+  "candidate": "apc-continual-v3",
+  "incumbent": "apc-neural-v4",
+  "checkpoint_fingerprint": "3b9e09fdefa6ebf87250f651f35a2d873c13e90aa54671b6b86460f6b221e34e",
+  "weights_sha256": "3a759cf2b87cb0a47faa92b324445073497632d4c4b736aff59e064f13de932b",
+  "replay": {
+    "content_fingerprint": "19f505afab86ec83c1be33b88ffd178fa4f717ac695ba0c18b75035f118a06f6",
+    "adapter_fingerprint": "b741efaad493198865d980937a41ddb1a02f8b00cb7e8b32b7e5bc3a30180006",
+    "complete_hands": 90,
+    "decisions": 240
+  },
+  "training": {
+    "seed": 20260825,
+    "epochs": 3,
+    "batch_size": 32,
+    "learning_rate": "0.0001",
+    "incumbent_retention_weight": "0.2",
+    "selection": "validation_mae_then_observed_action_accuracy",
+    "weights_updated_during_hand": false,
+    "test_used_for_selection": false
+  },
+  "held_out_replay_test": {
+    "complete_hands": 12,
+    "decisions": 29,
+    "incumbent_mae_bb": "4.07549743817",
+    "candidate_mae_bb": "1.42910454756",
+    "incumbent_observed_action_accuracy": "0.655172413793",
+    "candidate_observed_action_accuracy": "0.827586206897"
+  },
+  "raised_postflop_strategy_regression": {
+    "dataset_fingerprint": "f33f1f432838be80fcdf39c8bd65dbf191a2e173bdd8b2a844a9ccf5efa8e809",
+    "examples": 18576,
+    "used_for_training_or_selection": false,
+    "incumbent_mae_bb": "4.38286034047",
+    "candidate_mae_bb": "5.07861208585",
+    "incumbent_decision_accuracy": "0.292850990525",
+    "candidate_decision_accuracy": "0.260981912145",
+    "incumbent_chosen_action_regret_bb": "2.39026699633",
+    "candidate_chosen_action_regret_bb": "2.42321273276",
+    "passed": false
+  },
+  "latency": {
+    "audited_visible_tokens": 49,
+    "p50_ms": "8.552",
+    "p95_ms": "9.5579",
+    "maximum_ms": "9.9217",
+    "threshold_p95_ms": "50",
+    "passed": true
+  },
+  "gates": {
+    "held_out_replay_value_improves": true,
+    "held_out_replay_action_non_regression": true,
+    "strategy_regression_passed": false,
+    "rollback_verified": true,
+    "calibration_passed": false,
+    "paired_incumbent_confidence_interval_passed": false,
+    "promotion_authorized": false
+  },
+  "decision": "Reject and retain apc-neural-v4. Narrow self-play adaptation improved its own distribution but catastrophically regressed all three declared raised-postflop strategy measures.",
+  "artifact_storage": "Rebuildable checkpoint and weights remain in ignored apc/runs/apc-continual-v3; this card preserves exact fingerprints and the rejection evidence."
+}

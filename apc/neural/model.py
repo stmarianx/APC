@@ -126,6 +126,21 @@ class APCNetwork(nn.Module):
                 visual = (encoded_frames * visible_frames.unsqueeze(-1)).sum(1) / visible_frames.sum(1).clamp_min(1.0).unsqueeze(-1)
             else:
                 raise ValueError("visual frames must be [batch,channels,height,width] or [batch,frames,channels,height,width]")
+        if state_tokens.ndim == 4:
+            if state_padding_mask.shape != state_tokens.shape[:3]:
+                raise ValueError("temporal state padding mask shape is invalid")
+            state_tokens = state_tokens.flatten(1, 2)
+            state_padding_mask = state_padding_mask.flatten(1, 2)
+        elif state_tokens.ndim != 3 or state_padding_mask.shape != state_tokens.shape[:2]:
+            raise ValueError("state tokens must be [batch,tokens,features] or [batch,time,tokens,features]")
+        # Replay windows are right-padded to a fixed event count. Removing token
+        # columns that are padding for the entire batch is semantically exact and
+        # keeps the live temporal path proportional to observed history length.
+        retained = ~state_padding_mask.all(dim=0)
+        if not bool(retained.any()):
+            raise ValueError("state sequence contains no visible tokens")
+        state_tokens = state_tokens[:, retained]
+        state_padding_mask = state_padding_mask[:, retained]
         encoded = self.state_encoder(
             self.state_projection(state_tokens), src_key_padding_mask=state_padding_mask
         )

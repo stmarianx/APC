@@ -56,7 +56,11 @@ models are still required before APC can be trained for arbitrary tables.
 - `neural/model.py` — executable PyTorch visual/state/profile network, gated fusion, legal mask and pickle-free weights.
 - `neural/train_candidate.py` — complete-hand-exclusive training, validation selection, split metrics, latency and artifact validation.
 - `neural/replay_buffer.py` — content-addressed completed-hand storage, deterministic grouped splits and prioritized incumbent-retaining sampling.
+- `neural/replay_adapter.py` — strict completed-hand conversion into ordered, private-safe temporal neural tensors.
+- `neural/self_play_replay.py` — deterministic internal virtual-chip completed-hand replay generation with no external actuation.
+- `neural/continual_training.py` — offline incumbent-distilled replay training, rollback verification, temporal latency and catastrophic-forgetting audit.
 - `neural/apc_neural_candidates_v1.model_card.json` — frozen v1-v3 comparison and closed readiness decision.
+- `neural/apc_continual_candidate_v1.model_card.json` — first completed-replay candidate and explicit strategy-regression rejection.
 - `requirements-neural.txt` — portable PyTorch dependency profile for neural development.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
@@ -953,6 +957,29 @@ duplicate bytes are idempotent. Split assignment is deterministic by complete
 hand group. Candidate batches use seeded priority-weighted sampling and reserve
 a declared fraction for incumbent examples, providing the input mechanics for
 future catastrophic-forgetting checks without changing weights during a hand.
+
+The replay boundary is now executable end to end. `neural/replay_adapter.py`
+converts each completed hand into ordered 16-event decision windows, rejects
+private-card leakage and invalid BB/action evidence, and preserves complete-
+session splits. The network accepts these temporal tensors directly and drops
+batch-wide padding-only tokens before attention. `neural/self_play_replay.py`
+generated a first 90-hand/240-decision internal virtual-chip corpus with
+72/6/12 hand-exclusive train/validation/test splits and no external actuation.
+
+`neural/continual_training.py` trained a copy of v4 with incumbent policy/value
+distillation, validation-only epoch selection, held-out replay comparison,
+rollback reload and a frozen raised-postflop regression. On 12 untouched replay
+hands, MAE improved from 4.0755 BB to 1.4291 BB and observed-action agreement
+from 65.52% to 82.76%; the longest test history ran at 9.5579 ms p95. However,
+the candidate regressed the declared strategy audit: MAE 4.3829 -> 5.0786 BB,
+accuracy 29.29% -> 26.10%, and regret 2.3903 -> 2.4232 BB. It was therefore
+rejected, v4 remains the incumbent, and automatic promotion stays disabled.
+
+```powershell
+python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
+python -m apc.neural.continual_training train apc/runs/continual-replay-v1 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v3 --epochs 3 --batch-size 32 --strategy-regression-dataset apc/runs/raised-postflop-sealed-audit-v1
+python -m apc.neural.continual_training validate apc/runs/apc-continual-v3/checkpoint.json
+```
 
 ```powershell
 python -m pip install -r apc/requirements-neural.txt --index-url https://download.pytorch.org/whl/cpu

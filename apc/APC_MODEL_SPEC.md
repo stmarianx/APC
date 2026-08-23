@@ -322,7 +322,12 @@ frozen before a one-shot, disjoint 600-hand sealed audit; its 4.3829 BB MAE,
 BB, 68.50% and 1.7825 BB on the same sealed states.
 Completed virtual-chip hands can now enter an immutable content-addressed
 replay buffer with deterministic hand-group splits, priority sampling and
-incumbent-regression retention.
+incumbent-regression retention. The first executable temporal replay adapter,
+internal self-play generator and incumbent-distilled continual trainer have
+also completed a 90-hand audit. The replay-tuned candidate improved on its
+narrow held-out scripted distribution and ran at 9.5579 ms p95, but was rejected
+because it regressed MAE, accuracy and chosen-action regret on the declared
+raised-postflop strategy audit; rollback to v4 was verified.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

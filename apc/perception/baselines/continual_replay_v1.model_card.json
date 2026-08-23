@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "component": "completed_hand_temporal_self_play_replay",
+  "version": "continual-replay-v1",
+  "evaluated_at": "2026-08-23",
+  "status": "training_eligible_narrow_scripted_virtual_chip_replay",
+  "policy_promotion_eligible": false,
+  "solver_target": false,
+  "gto_verified": false,
+  "artifact": {
+    "local_path": "apc/runs/continual-replay-v1",
+    "manifest_sha256": "02dea9104a0178f21f12e0ba9f04ecdc2d02a12d16a5d2bccd2eab290dd070ae",
+    "content_fingerprint": "19f505afab86ec83c1be33b88ffd178fa4f717ac695ba0c18b75035f118a06f6",
+    "adapter_fingerprint": "b741efaad493198865d980937a41ddb1a02f8b00cb7e8b32b7e5bc3a30180006",
+    "object_bytes": 325658
+  },
+  "corpus": {
+    "complete_hands": 90,
+    "hero_decisions": 240,
+    "seed_range": [80000, 80089],
+    "hands_per_session": 3,
+    "split_complete_hands": {"train": 72, "validation": 6, "test": 12},
+    "complete_session_group_exclusive": true,
+    "opponent_private_cards_used": false,
+    "external_actuation": false,
+    "units": "BB"
+  },
+  "limitations": [
+    "Both seats use one deterministic scripted probe policy; this is pipeline evidence, not representative self-play or GTO evidence.",
+    "The corpus contains only heads-up no-rake play from one internal table engine.",
+    "Terminal rewards are on-policy completed-hand outcomes and provide no counterfactual action values."
+  ]
+}
