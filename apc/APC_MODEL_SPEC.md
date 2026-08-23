@@ -361,6 +361,11 @@ replay RMSE plus sealed value MAE, but regressed sealed action accuracy and
 chosen-action regret. It was rejected before a fresh audit. Stack normalization
 is therefore retained as a sound data-scale contract, while policy-ordering and
 regret retention remain the next training requirement.
+The continual trainer now enforces this with an explicit complete-group margin
+loss: all pairwise differences among four candidate-action values are distilled
+from the incumbent during strategy rehearsal. Checkpoints record the loss
+contract and weight, and incomplete action groups are rejected. This mechanism
+must still pass a matched candidate audit before it counts as regression proof.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

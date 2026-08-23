@@ -1056,6 +1056,14 @@ regret worsened from 2.3903 to 2.4232 BB. V9 was rejected at development gates,
 v4 remains incumbent, and no fresh audit was consumed. The next trainer change
 must explicitly retain sealed policy ordering/regret as well as value scale.
 
+`neural/continual_training.py` now implements that requirement directly. For
+every complete four-action rehearsal state it retains all 16 pairwise margins
+between the candidate-action values emitted by the incumbent and candidate.
+This complements policy-logit KL and per-action value retention: any action-
+ordering flip or margin distortion now contributes an explicit differentiable
+penalty. The weight and exact margin contract are stored in every checkpoint;
+partial groups and invalid scales fail closed.
+
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
 python -m apc.neural.continual_training train apc/runs/continual-replay-v1 apc/runs/apc-neural-v4/checkpoint.json apc/runs/apc-continual-v7 --epochs 1 --batch-size 32 --learning-rate 0.00003 --incumbent-retention-weight 1.0 --strategy-rehearsal-dataset apc/runs/raised-postflop-rollouts-v1 --strategy-rehearsal-weight 1.0 --strategy-rehearsal-batch-size 512 --strategy-regression-dataset apc/runs/raised-postflop-sealed-audit-v1

@@ -11,6 +11,7 @@ import torch
 
 from apc.neural.model import APCArchitecture, APCNetwork
 from apc.neural.continual_training import (
+    action_margin_retention_loss,
     audit_completed_replay_candidate,
     train_completed_replay_candidate,
 )
@@ -190,6 +191,17 @@ class APCReplayAdapterTests(unittest.TestCase):
         self.assertIsNotNone(metrics["history"][0]["strategy_rehearsal_loss"])
         self.assertEqual(float(candidate.value_mean_bb), original_mean)
         self.assertEqual(float(candidate.value_scale_bb), original_scale)
+
+    def test_action_margin_retention_covers_all_four_action_orderings(self) -> None:
+        incumbent = torch.tensor([0.0, 1.0, 3.0, 2.0, -1.0, 4.0, 2.0, 0.0])
+        self.assertEqual(float(action_margin_retention_loss(incumbent.clone(), incumbent, 5.0)), 0.0)
+        reordered = incumbent.clone()
+        reordered[1], reordered[2] = incumbent[2], incumbent[1]
+        self.assertGreater(float(action_margin_retention_loss(reordered, incumbent, 5.0)), 0.0)
+        with self.assertRaisesRegex(ValueError, "complete four-action groups"):
+            action_margin_retention_loss(torch.ones(3), torch.ones(3), 5.0)
+        with self.assertRaisesRegex(ValueError, "scale must be positive"):
+            action_margin_retention_loss(torch.ones(4), torch.ones(4), 0.0)
 
     def test_paired_replay_bootstrap_is_complete_hand_grouped_and_deterministic(self) -> None:
         corpus = encode_completed_hand_replays(
