@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "model_name": "APC",
+  "artifact_kind": "diverse_profile_conditioned_continual_candidate",
+  "candidate_name": "apc-continual-v8",
+  "status": "rejected_before_fresh_audit",
+  "checkpoint_fingerprint": "02994f02199491fd8bcafff9e035d8aced054132fab73ee951e5a9a1195b434c",
+  "weights_sha256": "14ebb50f3ff180a63c2aaab8f62ab6ae92a65e92003dde921a42c722489d2498",
+  "incumbent_name": "apc-neural-v4",
+  "training": {
+    "replay_content_fingerprint": "b5439d464d08a1ddc25918f3a6870fca8235b556c34dffa0c270ede87f60a73f",
+    "profile_conditioned_decisions": 4123,
+    "complete_hands": 720,
+    "epochs": 2,
+    "batch_size": 64,
+    "learning_rate": "0.00003",
+    "incumbent_retention_weight": "1.0",
+    "strategy_rehearsal_examples": 129600,
+    "strategy_rehearsal_weight": "1.0"
+  },
+  "inspected_replay_test": {
+    "complete_hands": 111,
+    "decisions": 942,
+    "incumbent_mae_bb": "75.0895265769",
+    "candidate_mae_bb": "75.1606777486",
+    "incumbent_rmse_bb": "106.212020482",
+    "candidate_rmse_bb": "106.074830333",
+    "incumbent_observed_action_accuracy": "0.609341825902",
+    "candidate_observed_action_accuracy": "0.630573248408"
+  },
+  "sealed_strategy_regression": {
+    "dataset_fingerprint": "f33f1f432838be80fcdf39c8bd65dbf191a2e173bdd8b2a844a9ccf5efa8e809",
+    "incumbent_mae_bb": "4.38286034095",
+    "candidate_mae_bb": "4.39164120894",
+    "decision_accuracy_non_regression": true,
+    "chosen_action_regret_non_regression": true,
+    "mae_non_regression": false
+  },
+  "latency": {"p95_ms": "35.8087", "threshold_p95_ms": "50", "passed": true},
+  "gates": {
+    "held_out_value_mae_improves": false,
+    "held_out_value_rmse_non_regression": true,
+    "held_out_observed_action_non_regression": true,
+    "strategy_regression_passed": false,
+    "calibration_passed": false,
+    "promotion_authorized": false
+  },
+  "decision": "Reject v8 and retain v4. Do not generate or inspect a fresh promotion corpus because development and sealed strategy gates already fail.",
+  "artifact_storage": "Rebuildable checkpoint remains ignored at apc/runs/apc-continual-v8."
+}

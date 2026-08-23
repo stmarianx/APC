@@ -346,6 +346,11 @@ This proves diverse replay ingestion and an honest rejection path, but not
 generalization to learned player populations, calibration, solver quality or
 GTO performance. The inspected corpus cannot provide fresh promotion evidence
 for a candidate subsequently trained from it.
+The first such trained candidate (v8) was rejected at the development gates:
+replay-test MAE and sealed-strategy MAE both regressed despite better action
+agreement and replay RMSE. Its 35.8087 ms p95 latency passed. No new fresh audit
+was generated, preserving that evaluation budget for a candidate that first
+passes replay and strategy non-regression.
 They remain unpromoted: the visual branch is untrained, the raised-postflop
 teacher remains stronger, confidence is uncalibrated, and targets are not
 verified GTO labels. The authoritative evidence and missing gates are recorded in

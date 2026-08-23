@@ -66,6 +66,7 @@ models are still required before APC can be trained for arbitrary tables.
 - `neural/apc_continual_candidate_v2.model_card.json` — strategy-rehearsed successor, strict replay-value gate and closed promotion decision.
 - `neural/apc_continual_fresh_audit_v1.model_card.json` — untouched 27-hand paired audit and closed promotion decision.
 - `neural/apc_diverse_generalization_audit_v1.model_card.json` — one-shot 111-hand held-out-policy audit and closed promotion decision.
+- `neural/apc_diverse_continual_candidate_v1.model_card.json` — profile-conditioned v8 training result rejected before a fresh audit.
 - `requirements-neural.txt` — portable PyTorch dependency profile for neural development.
 - `schemas/frame_annotation.schema.json` — one labeled visual frame/sequence item.
 - `schemas/dataset_manifest.schema.json` — grouped dataset and split manifest.
@@ -1027,6 +1028,14 @@ gates fail, so v4 remains the incumbent. This is evidence of profile-conditioned
 ingestion and scripted held-out-policy evaluation, not learned-opponent, solver,
 GTO or promotion evidence. Because the test split is now inspected, a future
 candidate trained from v2 requires a newly frozen corpus for promotion testing.
+
+The first candidate trained on v2 was also rejected without spending another
+fresh audit. V8 used two epochs, full incumbent retention and the 129,600-row
+strategy rehearsal set. On the already inspected replay test, action agreement
+rose from 60.93% to 63.06% and RMSE improved from 106.2120 to 106.0748 BB, but
+MAE worsened from 75.0895 to 75.1607 BB. Sealed strategy MAE also regressed from
+4.3829 to 4.3916 BB. Latency passed at 35.8087 ms p95, but both required MAE
+gates fail; v4 remains incumbent and no new promotion corpus was consumed.
 
 ```powershell
 python -m apc.neural.self_play_replay apc/runs/continual-replay-v1 --hands 90 --seed-start 80000 --hands-per-session 3
