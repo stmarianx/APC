@@ -214,6 +214,10 @@ class APCReplayAdapterTests(unittest.TestCase):
         self.assertEqual(float(incumbent_argmax_hinge_loss(restored, incumbent)), 0.0)
         with self.assertRaisesRegex(ValueError, "complete four-action groups"):
             incumbent_argmax_hinge_loss(torch.ones(5), torch.ones(5))
+        with self.assertRaisesRegex(ValueError, "complete four-action groups"):
+            incumbent_argmax_hinge_loss(torch.empty(0), torch.empty(0))
+        with self.assertRaisesRegex(ValueError, "finite BB values"):
+            incumbent_argmax_hinge_loss(torch.tensor([float('nan'), 1.0, 2.0, 3.0]), torch.ones(4))
 
     def test_paired_replay_bootstrap_is_complete_hand_grouped_and_deterministic(self) -> None:
         corpus = encode_completed_hand_replays(

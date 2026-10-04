@@ -57,8 +57,10 @@ def action_margin_retention_loss(candidate_values: Tensor, incumbent_values: Ten
 
 def incumbent_argmax_hinge_loss(candidate_values: Tensor, incumbent_values: Tensor) -> Tensor:
     """Keep each incumbent-best action above alternatives by its prior BB margin."""
-    if candidate_values.ndim != 1 or incumbent_values.shape != candidate_values.shape or len(candidate_values) % 4:
+    if candidate_values.ndim != 1 or incumbent_values.shape != candidate_values.shape or candidate_values.numel() == 0 or len(candidate_values) % 4:
         raise ValueError("APC incumbent-argmax hinge requires aligned complete four-action groups")
+    if not torch.isfinite(candidate_values).all() or not torch.isfinite(incumbent_values).all():
+        raise ValueError("APC incumbent-argmax hinge requires finite BB values")
     candidate_grouped = candidate_values.reshape(-1, 4)
     incumbent_grouped = incumbent_values.reshape(-1, 4)
     best_index = incumbent_grouped.argmax(dim=1, keepdim=True)
