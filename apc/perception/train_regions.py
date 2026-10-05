@@ -64,9 +64,24 @@ def evaluate(model, targets):
         "full_table_readiness": False}
 
 
-def train(manifest, output, *, epochs=5, seed=42, crop_size=48):
+def jitter_regions(regions, fraction=.04):
+    """Bounded, training-only shifts/scales relative to each region size."""
+    if not np.isfinite(fraction) or not 0 <= fraction <= .25:
+        raise ValueError("jitter fraction must be finite in [0,.25]")
+    result = regions.clone()
+    size = regions[:, 3:5] - regions[:, 1:3]
+    noise = (torch.rand_like(regions[:, 1:]) * 2 - 1) * fraction
+    result[:, 1:] = (regions[:, 1:] + noise * size.repeat(1, 2)).clamp(0, 1)
+    if (result[:, 3:5] <= result[:, 1:3]).any():
+        raise ValueError("Jitter produced invalid regions")
+    return result
+
+
+def train(manifest, output, *, epochs=5, seed=42, crop_size=48, box_jitter=0):
     if epochs < 1:
         raise ValueError("epochs must be positive")
+    if not np.isfinite(box_jitter) or not 0 <= box_jitter <= .25:
+        raise ValueError("box_jitter must be finite in [0,.25]")
     output = Path(output)
     if output.exists():
         raise ValueError("Output directory must be new; existing runs are never overwritten")
@@ -90,6 +105,8 @@ def train(manifest, output, *, epochs=5, seed=42, crop_size=48):
         total = 0
         for target in order:
             regions, labels = region_supervision([target])
+            if box_jitter:
+                regions = jitter_regions(regions, box_jitter)
             optimizer.zero_grad()
             loss, _ = recognition_loss(model(image_tensor(target), regions), labels)
             if not torch.isfinite(loss):
@@ -113,6 +130,7 @@ def train(manifest, output, *, epochs=5, seed=42, crop_size=48):
               "seed": seed, "epochs": epochs, "crop_size": crop_size,
               "architecture_version": "spatial-grid-v2",
               "max_image_dimension": 1280,
+              "training_box_jitter": box_jitter,
               "checkpoint_selection": "validation_mean_head_macro_recall",
               "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
               "torch_version": torch.__version__, "history": history,
@@ -132,8 +150,9 @@ def main():
     parser.add_argument("output", type=Path)
     parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--box-jitter", type=float, default=0)
     args = parser.parse_args()
-    report = train(args.manifest, args.output, epochs=args.epochs, seed=args.seed)
+    report = train(args.manifest, args.output, epochs=args.epochs, seed=args.seed, box_jitter=args.box_jitter)
     print(json.dumps(report["test"], indent=2))
 
 

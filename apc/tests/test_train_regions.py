@@ -8,11 +8,23 @@ import torch
 from PIL import Image
 
 from apc.perception.spatial_targets import encode_annotation
-from apc.perception.train_regions import train
+from apc.perception.train_regions import train, jitter_regions
 from apc.tests.test_validate_dataset import annotation
 
 
 class RegionRunnerTests(unittest.TestCase):
+    def test_jitter_preserves_batch_indices_and_bounds(self):
+        regions = torch.tensor([[0, 0, 0, .1, .2], [1, .9, .8, 1, 1]])
+        torch.manual_seed(17)
+        result = jitter_regions(regions, .1)
+        self.assertTrue(torch.equal(result[:, 0], regions[:, 0]))
+        self.assertTrue(((result[:, 1:] >= 0) & (result[:, 1:] <= 1)).all())
+        self.assertTrue((result[:, 3:5] > result[:, 1:3]).all())
+        self.assertTrue(torch.equal(jitter_regions(regions, 0), regions))
+        for value in (-.1, .3, float("nan")):
+            with self.assertRaises(ValueError):
+                jitter_regions(regions, value)
+
     def test_train_evaluate_checkpoint_on_fixture_frames(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

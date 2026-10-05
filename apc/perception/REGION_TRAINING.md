@@ -105,3 +105,33 @@ and visibility scores cover only one observed class and cannot establish
 disabled/occluded performance. Rank recognition remains inadequate. Hero-card
 versus board-card role confusion also persists: identical local crops require
 table context to disambiguate. No coaching promotion or readiness gate passed.
+
+## Pixel-to-neural integration failure
+
+`infer_cards.CardReader` now consumes image pixels and proposed boxes, with no
+annotation input. First held-out frame test found two regions in 115.964 ms
+(includes image IO/proposals/network, excludes checkpoint loading). Its high-score
+predictions were Qd/Qs, while the separately inspected annotation was 2c/5s.
+This demonstrates that softmax scores are not reliable confidence under proposal
+geometry shifts. The reader therefore emits candidates only: confirmed `card`
+remains null even above the score threshold. Calibration, localization-shift
+robustness and fresh held-out audits are required before identities can feed
+coaching state. Hero/board role remains unresolved.
+
+The complete V4 pixel-proposal audit covered 36 test frames / 180 cards. All
+boxes matched at IoU >= .5, with zero false/missing proposals, but exact card
+candidates were correct only 5/180 (2.78%). Of 138 high-score matched candidates,
+five were correct (3.62%). Frame-pipeline p95 was 116.661 ms. This is stronger
+evidence of failed recognition robustness than the exact-box evaluation.
+The evaluator now includes unmatched high-score proposals in end-to-end
+precision so false boxes cannot disappear from confidence metrics.
+
+V5 is a ten-epoch training experiment with seed 42 and relative box jitter .06.
+Jitter affects training only; validation/test geometry remains untouched. Reports
+record the jitter value, and tests check bounds, batch indices and zero jitter.
+
+Paired V4 validation diagnostic (`--split validation --compare-crops`): 180
+matched cards, 73 correct with annotation crops versus ten with proposal crops;
+63 exact-correct readings became wrong, and 170 candidates changed. Mean IoU
+was .96117 and mean maximum edge shift was one source pixel. This isolates a
+strong crop-geometry sensitivity; it does not establish the only failure cause.
