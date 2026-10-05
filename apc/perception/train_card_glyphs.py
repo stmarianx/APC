@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import torch
+import numpy as np
 from PIL import Image
 from torch.nn import functional as F
 
@@ -13,7 +14,7 @@ from apc.perception.region_model import RANKS, SUITS
 from apc.perception.spatial_targets import load_split
 
 
-def token_dataset(manifest, split):
+def token_dataset(manifest, split, *, glyph_pair=False):
     tokens, ranks, suits = [], [], []
     for target in load_split(manifest, split):
         with Image.open(target["image"]["path"]) as image:
@@ -22,7 +23,20 @@ def token_dataset(manifest, split):
                     continue
                 if not obj["attribute_masks"].get("rank") or not obj["attribute_masks"].get("suit"):
                     continue
-                token, present = glyph_tensor(image, obj["box_xyxy"])
+                if glyph_pair:
+                    regions = obj.get("recognition_regions", {})
+                    if any(not regions.get(key, {}).get("supervised") for key in ("rank", "suit")):
+                        raise ValueError("Glyph-pair training requires explicit verified rank and suit boxes")
+                    coords = [round(value * dimension) for value, dimension in zip(obj["box_xyxy"], (image.width, image.height) * 2)]
+                    background = np.median(np.asarray(image.convert("RGB").crop(coords)).reshape(-1, 3), axis=0)
+                    parts = []
+                    for key in ("rank", "suit"):
+                        box = regions[key]["box"]
+                        xyxy = [box["x"], box["y"], box["x"] + box["width"], box["y"] + box["height"]]
+                        parts.append(glyph_tensor(image, xyxy, border_margin=False, background_rgb=background))
+                    token, present = torch.cat([part[0] for part in parts]), all(part[1] for part in parts)
+                else:
+                    token, present = glyph_tensor(image, obj["box_xyxy"])
                 if not present:
                     raise ValueError("Verified card has no extractable ink; cannot silently drop supervision")
                 tokens.append(token)
@@ -43,15 +57,15 @@ def metrics(model, dataset):
             "suit_correct": int(suit_correct.sum()), "exact_correct": int((rank_correct & suit_correct).sum())}
 
 
-def train(manifest, output, epochs=15, seed=42):
+def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False):
     output = Path(output)
     if output.exists() or epochs < 1:
         raise ValueError("Use a new output directory and positive epochs")
     torch.set_num_threads(1)
     torch.manual_seed(seed)
     torch.use_deterministic_algorithms(True)
-    datasets = {split: token_dataset(manifest, split) for split in ("train", "validation", "test")}
-    model = CardGlyphNetwork()
+    datasets = {split: token_dataset(manifest, split, glyph_pair=glyph_pair) for split in ("train", "validation", "test")}
+    model = CardGlyphNetwork(input_channels=6 if glyph_pair else 3)
     optimizer = torch.optim.AdamW(model.parameters(), lr=.001)
     best, weights, history = -1, None, []
     for epoch in range(epochs):
@@ -78,6 +92,8 @@ def train(manifest, output, epochs=15, seed=42):
               "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
               "history": history, "test_exact_box": metrics(model, datasets["test"]),
               "full_table_readiness": False, "confidence_calibrated": False}
+    if glyph_pair:
+        report.update(model_kind="annotated_card_glyph_pair_recognizer", architecture_version="card-glyph-pair-v1")
     output.mkdir(parents=True)
     torch.save({"state_dict": model.state_dict(), "model_kind": report["model_kind"],
                 "architecture_version": report["architecture_version"]}, output / "glyph_weights.pt")
@@ -90,5 +106,6 @@ if __name__ == "__main__":
     parser.add_argument("manifest")
     parser.add_argument("output")
     parser.add_argument("--epochs", type=int, default=15)
+    parser.add_argument("--glyph-pair", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(train(args.manifest, args.output, args.epochs)["test_exact_box"], indent=2))
+    print(json.dumps(train(args.manifest, args.output, args.epochs, glyph_pair=args.glyph_pair)["test_exact_box"], indent=2))

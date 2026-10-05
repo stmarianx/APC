@@ -176,6 +176,8 @@
       "required": ["box", "rank", "suit", "visibility"],
       "properties": {
         "box": {"$ref": "#/$defs/box"},
+        "rank_box": {"$ref": "#/$defs/box"},
+        "suit_box": {"$ref": "#/$defs/box"},
         "rank": {"enum": ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A", "back", "unknown"]},
         "suit": {"enum": ["c", "d", "h", "s", "none", "unknown"]},
         "visibility": {"$ref": "#/$defs/visibility"}

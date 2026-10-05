@@ -121,6 +121,51 @@ def _card_object(box: tuple[int, int, int, int], card: tuple[str, str]) -> dict[
     }
 
 
+def _card_glyph_boxes(draw, box, card, font):
+    text = card[0] + card[1].upper()
+    bounds = draw.textbbox((0, 0), text, font=font)
+    x = (box[0] + box[2] - (bounds[2] - bounds[0])) / 2
+    y = (box[1] + box[3] - (bounds[3] - bounds[1])) / 2
+    rank = draw.textbbox((x, y), card[0], font=font)
+    suit = draw.textbbox((x + draw.textlength(card[0], font=font), y), card[1].upper(), font=font)
+    return {"rank_box": normalized_box(rank), "suit_box": normalized_box(suit)}
+
+
+def _draw_suit(draw, box, suit, color):
+    x, y, right, bottom = box
+    w, h = right - x, bottom - y
+    if suit == "d":
+        draw.polygon([(x + w / 2, y), (right, y + h / 2), (x + w / 2, bottom), (x, y + h / 2)], fill=color)
+    elif suit == "c":
+        for a, b, c, d in ((.25, 0, .75, .5), (0, .3, .5, .8), (.5, .3, 1, .8)):
+            draw.ellipse((x + a * w, y + b * h, x + c * w, y + d * h), fill=color)
+        draw.polygon([(x + .4 * w, y + .5 * h), (x + .6 * w, y + .5 * h), (x + .7 * w, bottom), (x + .3 * w, bottom)], fill=color)
+    elif suit == "h":
+        draw.ellipse((x, y, x + .55 * w, y + .6 * h), fill=color)
+        draw.ellipse((x + .45 * w, y, right, y + .6 * h), fill=color)
+        draw.polygon([(x, y + .3 * h), (right, y + .3 * h), (x + w / 2, bottom)], fill=color)
+    else:
+        draw.polygon([(x + w / 2, y), (x, y + .55 * h), (right, y + .55 * h)], fill=color)
+        draw.ellipse((x, y + .3 * h, x + .55 * w, y + .8 * h), fill=color)
+        draw.ellipse((x + .45 * w, y + .3 * h, right, y + .8 * h), fill=color)
+        draw.rectangle((x + .4 * w, y + .5 * h, x + .6 * w, bottom), fill=color)
+
+
+def _draw_card_identity(draw, box, card, font, design, include_boxes):
+    if design == "centered_token":
+        _draw_centered(draw, box, card[0] + card[1].upper(), fill=SUIT_COLORS[card[1]], font=font)
+        return _card_glyph_boxes(draw, box, card, font) if include_boxes else {}
+    rank_position = (box[0] + 5, box[1] + 2)
+    rank_box = draw.textbbox(rank_position, card[0], font=font)
+    draw.text(rank_position, card[0], fill=SUIT_COLORS[card[1]], font=font)
+    suit_box = (box[0] + 5, box[1] + 26, box[0] + 19, box[1] + 42)
+    _draw_suit(draw, suit_box, card[1], SUIT_COLORS[card[1]])
+    _draw_suit(draw, (box[0] + 24, box[1] + 44, box[2] - 5, box[3] - 7), card[1], SUIT_COLORS[card[1]])
+    # Pillow primitives include the endpoint pixel; expand glyph label by one.
+    suit_label = (suit_box[0], suit_box[1], suit_box[2] + 1, suit_box[3] + 1)
+    return {"rank_box": normalized_box(rank_box), "suit_box": normalized_box(suit_label)} if include_boxes else {}
+
+
 @dataclass(frozen=True)
 class RenderedFrame:
     image_path: Path
@@ -151,12 +196,17 @@ def render_frame(
     seat_name_overrides: dict[int, str] | None = None,
     hand_start: bool | None = None,
     decision_time_remaining_ms: int | None = None,
+    include_glyph_boxes: bool = False,
+    card_design: str = "centered_token",
 ) -> RenderedFrame:
+    if card_design not in ("centered_token", "corner_symbols"):
+        raise ValueError("Unsupported card design")
     Image, ImageDraw, ImageFont = _pil()
     image = Image.new("RGB", (WIDTH, HEIGHT), theme["background"])
     draw = ImageDraw.Draw(image)
     font = ImageFont.load_default()
     bold = font
+    card_font = font if card_design == "centered_token" else ImageFont.load_default(size=18)
     draw.rounded_rectangle((90, 105, 1190, 600), radius=230, fill=theme["rail"])
     table_box = (115, 130, 1165, 575)
     draw.rounded_rectangle(table_box, radius=210, fill=theme["felt"])
@@ -211,16 +261,20 @@ def render_frame(
     for index, card in enumerate(board):
         box = (board_left + index * (card_width + gap), 295, board_left + index * (card_width + gap) + card_width, 295 + card_height)
         draw.rounded_rectangle(box, radius=6, fill="#f7f3e8", outline="#d7d1c5")
-        _draw_centered(draw, box, f"{card[0]}{card[1].upper()}", fill=SUIT_COLORS[card[1]], font=bold)
+        glyph_boxes = _draw_card_identity(draw, box, card, card_font, card_design, include_glyph_boxes)
         board_payload.append(_card_object(box, card))
+        if include_glyph_boxes:
+            board_payload[-1].update(glyph_boxes)
 
     hero_left = WIDTH // 2 - card_width - gap // 2
     hero_payload = []
     for index, card in enumerate(hero_cards):
         box = (hero_left + index * (card_width + gap), 585, hero_left + index * (card_width + gap) + card_width, 663)
         draw.rounded_rectangle(box, radius=6, fill="#f7f3e8", outline="#d7d1c5")
-        _draw_centered(draw, box, f"{card[0]}{card[1].upper()}", fill=SUIT_COLORS[card[1]], font=bold)
+        glyph_boxes = _draw_card_identity(draw, box, card, card_font, card_design, include_glyph_boxes)
         hero_payload.append(_card_object(box, card))
+        if include_glyph_boxes:
+            hero_payload[-1].update(glyph_boxes)
 
     pot_box = (550, 235, 730, 270)
     draw.rounded_rectangle(pot_box, radius=10, fill=theme["panel"])
@@ -375,6 +429,8 @@ def generate_dataset(
     seed: int,
     include_turn_clock: bool = False,
     include_name_ocr: bool = False,
+    include_glyph_boxes: bool = False,
+    card_design: str = "centered_token",
 ) -> dict[str, object]:
     if sessions < 3:
         raise ValueError("Synthetic dataset generation requires at least three sessions")
@@ -394,6 +450,8 @@ def generate_dataset(
     for session_index in range(sessions):
         seats, layout_id = LAYOUTS[session_index % len(LAYOUTS)]
         theme = THEMES[(session_index // len(LAYOUTS)) % len(THEMES)]
+        if card_design != "centered_token":
+            theme = dict(theme, id=theme["id"] + "-" + card_design)
         session_id = f"synthetic-{session_index:04d}"
         session_names = synthetic_ocr_player_names(rng, seats) if include_name_ocr else None
         environment = {
@@ -417,6 +475,8 @@ def generate_dataset(
                 theme=theme,
                 street=street,
                 seat_name_overrides=session_names,
+                include_glyph_boxes=include_glyph_boxes,
+                card_design=card_design,
                 decision_time_remaining_ms=(
                     CLOCK_VALUES_MS[(session_index * len(STREETS) + sequence_index) % len(CLOCK_VALUES_MS)]
                     if include_turn_clock
@@ -440,6 +500,8 @@ def generate_dataset(
         "seed": seed,
         "include_turn_clock": include_turn_clock,
         "include_name_ocr": include_name_ocr,
+        "include_glyph_boxes": include_glyph_boxes,
+        "card_design": card_design,
     }
 
 
@@ -450,6 +512,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--seed", type=int, default=20260802)
     parser.add_argument("--include-turn-clock", action="store_true")
     parser.add_argument("--include-name-ocr", action="store_true")
+    parser.add_argument("--include-glyph-boxes", action="store_true")
+    parser.add_argument("--card-design", choices=("centered_token", "corner_symbols"), default="centered_token")
     return parser
 
 
@@ -463,6 +527,8 @@ def main(argv: list[str] | None = None) -> int:
         seed=args.seed,
         include_turn_clock=args.include_turn_clock,
         include_name_ocr=args.include_name_ocr,
+        include_glyph_boxes=args.include_glyph_boxes,
+        card_design=args.card_design,
     )
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0

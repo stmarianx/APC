@@ -10,6 +10,18 @@ from apc.perception.infer_cards import CardReader
 
 
 class GlyphTrainingTests(unittest.TestCase):
+    def test_pair_checkpoint_cannot_be_loaded_as_whole_card_reader(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            manifest = root / "manifest.json"
+            manifest.write_text("{}", encoding="utf-8")
+            dataset = (torch.rand(4, 6, 32, 32), torch.tensor([0, 1, 2, 3]), torch.tensor([0, 1, 2, 3]))
+            with patch("apc.perception.train_card_glyphs.token_dataset", return_value=dataset):
+                report = train(manifest, root / "run", epochs=1, glyph_pair=True)
+            self.assertEqual(report["model_kind"], "annotated_card_glyph_pair_recognizer")
+            with self.assertRaises(ValueError):
+                CardReader(root / "run" / "glyph_weights.pt")
+
     def test_runner_checkpoint_selection_and_reader_compatibility(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

@@ -25,6 +25,17 @@ class SpatialTargetTests(unittest.TestCase):
         self.assertFalse(card["attribute_masks"]["rank"])
         self.assertFalse(card["attribute_masks"]["suit"])
 
+    def test_optional_glyph_boxes_are_preserved_and_contained(self):
+        item = self.fixture()
+        card = item["objects"]["hero_cards"][0]
+        card["rank_box"] = {"x": .12, "y": .12, "width": .03, "height": .03}
+        target = encode_annotation(item)["objects"][3]
+        self.assertTrue(target["recognition_regions"]["rank"]["supervised"])
+        self.assertEqual(target["recognition_regions"]["rank"]["box"], card["rank_box"])
+        card["rank_box"]["x"] = .8
+        with self.assertRaises(ValueError):
+            encode_annotation(item)
+
     def test_occluded_and_unknown_masks(self):
         item = self.fixture()
         item["objects"]["hero_cards"][0].update(rank="unknown", suit="unknown", visibility="occluded")

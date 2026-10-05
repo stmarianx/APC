@@ -12,18 +12,18 @@ from PIL import Image
 from torch import nn
 
 
-def glyph_tensor(image: Image.Image, box_xyxy):
+def glyph_tensor(image: Image.Image, box_xyxy, *, border_margin=True, background_rgb=None):
     width, height = image.size
     left, top, right, bottom = [round(value * dimension) for value, dimension in
                                zip(box_xyxy, (width, height, width, height))]
     if not (0 <= left < right <= width and 0 <= top < bottom <= height):
         raise ValueError("Invalid card crop")
     pixels = np.asarray(image.convert("RGB").crop((left, top, right, bottom)), dtype=np.float32)
-    margin = max(2, round(min(pixels.shape[:2]) * .08))
+    margin = max(2, round(min(pixels.shape[:2]) * .08)) if border_margin else 0
     if min(pixels.shape[:2]) <= margin * 2:
         raise ValueError("Card crop is too small")
-    inner = pixels[margin:-margin, margin:-margin]
-    background = np.median(inner.reshape(-1, 3), axis=0)
+    inner = pixels[margin:-margin, margin:-margin] if margin else pixels
+    background = np.median(inner.reshape(-1, 3), axis=0) if background_rgb is None else np.asarray(background_rgb)
     contrast = np.abs(inner - background)
     ink = contrast.max(2) > 60
     ys, xs = np.nonzero(ink)
@@ -40,10 +40,10 @@ def glyph_tensor(image: Image.Image, box_xyxy):
 
 
 class CardGlyphNetwork(nn.Module):
-    def __init__(self):
+    def __init__(self, input_channels=3):
         super().__init__()
         self.encoder = nn.Sequential(
-            nn.Conv2d(3, 16, 3, padding=1), nn.GELU(), nn.MaxPool2d(2),
+            nn.Conv2d(input_channels, 16, 3, padding=1), nn.GELU(), nn.MaxPool2d(2),
             nn.Conv2d(16, 32, 3, padding=1), nn.GELU(), nn.MaxPool2d(2),
             nn.Flatten(), nn.Linear(32 * 8 * 8, 128), nn.GELU())
         self.rank = nn.Linear(128, 13)

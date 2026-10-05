@@ -8,9 +8,22 @@ from PIL import Image
 
 from apc.perception.card_glyphs import glyph_tensor
 from apc.synthetic.render_table import render_frame, THEMES
+from apc.synthetic.render_table import generate_dataset
+from apc.perception.train_card_glyphs import token_dataset
 
 
 class CardGlyphTests(unittest.TestCase):
+    def test_explicit_glyph_dataset_loads_six_channel_pairs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            for design in ("centered_token", "corner_symbols"):
+                result = generate_dataset(Path(directory) / design, sessions=3, seed=19,
+                                          include_glyph_boxes=True, card_design=design)
+                self.assertTrue(result["validation"]["valid"])
+                tokens, ranks, suits = token_dataset(result["manifest"], "train", glyph_pair=True)
+                self.assertEqual(tokens.shape[1:], (6, 32, 32))
+                self.assertEqual(len(tokens), len(ranks))
+                self.assertEqual(len(tokens), len(suits))
+
     def test_one_pixel_shift_preserves_normalized_token(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "frame.png"

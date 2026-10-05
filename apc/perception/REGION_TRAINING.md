@@ -169,3 +169,32 @@ Reproduce the glyph run and independent-box audit:
 Use a fresh output directory if the run already exists. Runtime checkpoint and
 evaluation files are local ignored artifacts. Ink-free proposals explicitly
 report `missing_ink`, null candidate and zero identity scores.
+
+Frozen user-frame audit: the glyph reader produced only one proposal and guessed
+Td (actual localized board card was 2s); score remained uncertain, with no
+confirmed card emitted. Pipeline time was 195.794 ms. This frozen partial frame
+was not used for training or readiness counts. It exposes domain-specific light
+surface/whole-token assumptions. Optional `rank_box`/`suit_box` annotations now
+support separately labeled glyph regions inside card boxes; the validator checks
+containment and finite coordinates. Spatial targets preserve these explicit
+labels without inventing missing glyph regions. Full test suite before this
+schema extension: 262 passed.
+
+The renderer can now emit explicit glyph bounds using `--include-glyph-boxes`;
+the trainer consumes them with `--glyph-pair` and refuses missing glyph labels.
+It normalizes each labeled region independently using the surrounding card's
+background color and concatenates six RGB channels. Pair checkpoints have a
+distinct model kind/architecture and cannot be loaded as a whole-card reader.
+V1 paired run: nine sessions, 36 frames, seed 20261007, 15 epochs, seed 42;
+validation-selected checkpoint achieved 17/20 exact held-out cards, suit 20/20.
+These are annotation-supplied glyph regions, not independent localization.
+Next: diverse fonts/symbols/corner placements and pixel-based glyph proposals.
+
+The renderer now supports `--card-design corner_symbols`: larger corner rank
+glyphs, vector-drawn suit symbols, and a larger suit illustration. The design
+is reflected in the theme identifier rather than silently relabeling identical
+styles. Default centered-token output is preserved. A corner-symbol paired run
+(36 frames / nine sessions, seed 20261008, 15 epochs) achieved 14/20 exact cards
+and 20/20 suits using labeled glyph regions. It is not a promotion candidate.
+Both designs pass dataset validation and six-channel extraction tests. A sample
+render was visually inspected for placement and glyph readability.

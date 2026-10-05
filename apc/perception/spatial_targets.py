@@ -64,6 +64,10 @@ def encode_annotation(annotation: dict[str, Any]) -> dict[str, Any]:
             add(kind, card, {"index": index,
                             "rank": rank if rank not in ("unknown", "back") else None,
                             "suit": suit if suit not in ("unknown", "none") else None})
+            targets[-1]["recognition_regions"] = {
+                key.removesuffix("_box"): {"box": dict(card[key]),
+                                          "supervised": card["visibility"] == "clear" and targets[-1]["attribute_masks"][key.removesuffix("_box")]}
+                for key in ("rank_box", "suit_box") if key in card}
     add("pot", objects["pot"], {"amount_bb": objects["pot"]["amount_bb"]})
     for button in objects["action_buttons"]:
         if button["action"] not in ("fold", "check", "call", "bet", "raise", "all_in"):

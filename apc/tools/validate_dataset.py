@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import sys
 from collections import Counter
 from decimal import Decimal, InvalidOperation
@@ -99,7 +100,7 @@ def _box(value: object, path: str, issues: list[str]) -> None:
     except (TypeError, ValueError):
         _issue(issues, path, "coordinates must be numeric")
         return
-    if x < 0 or y < 0 or width <= 0 or height <= 0 or x + width > 1 or y + height > 1:
+    if not all(math.isfinite(v) for v in (x, y, width, height)) or x < 0 or y < 0 or width <= 0 or height <= 0 or x + width > 1 or y + height > 1:
         _issue(issues, path, "must stay inside normalized image bounds")
 
 
@@ -227,6 +228,20 @@ def validate_annotation(
                 continue
             _required(card, ("box", "rank", "suit", "visibility"), path, issues)
             _box(card.get("box"), f"{path}.box", issues)
+            for glyph_key in ("rank_box", "suit_box"):
+                if glyph_key not in card:
+                    continue
+                _box(card[glyph_key], f"{path}.{glyph_key}", issues)
+                outer, inner = card.get("box"), card[glyph_key]
+                try:
+                    contained = (float(inner["x"]) >= float(outer["x"])
+                                 and float(inner["y"]) >= float(outer["y"])
+                                 and float(inner["x"]) + float(inner["width"]) <= float(outer["x"]) + float(outer["width"])
+                                 and float(inner["y"]) + float(inner["height"]) <= float(outer["y"]) + float(outer["height"]))
+                except (KeyError, TypeError, ValueError):
+                    contained = False
+                if not contained:
+                    _issue(issues, f"{path}.{glyph_key}", "must be contained inside the card box")
             rank, suit = card.get("rank"), card.get("suit")
             if rank not in ("back", "unknown") and suit not in ("none", "unknown", None):
                 cards.append(f"{rank}{suit}")
