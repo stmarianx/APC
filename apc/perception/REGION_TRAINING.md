@@ -135,3 +135,37 @@ matched cards, 73 correct with annotation crops versus ten with proposal crops;
 63 exact-correct readings became wrong, and 170 candidates changed. Mean IoU
 was .96117 and mean maximum edge shift was one source pixel. This isolates a
 strong crop-geometry sensitivity; it does not establish the only failure cause.
+
+V5 completed. Pixel-proposal test: 15/180 correct identities (8.33%), compared
+with V4's 5/180; all 180 boxes still matched. No candidates exceeded the .9
+joint-score threshold, so precision at that threshold is undefined, not 100%.
+Frame-pipeline p95 was 80.008 ms on this run. Jitter improved this development
+metric but did not make recognition usable; no readiness gate passed.
+
+## Ink-normalized neural glyph experiment
+
+`card_glyphs` isolates foreground contrast on light card faces, tightly bounds
+the printed token and rescales it to a centered 32x32 input. A fixture checks
+one-pixel crop invariance. This assumes light cards with simple tokens; artwork,
+other fonts and real suit symbols require broader training/evaluation.
+
+`train_card_glyphs` trains a neural rank/suit recognizer, selects by validation
+exact-card count and evaluates the held-out split once. V1 used the 360-frame
+manifest, seed 42 and 15 epochs. Exact-box test: 180/180 cards. Independent
+pixel-proposal test: 180/180 identities, 180 matched boxes, zero false/missing
+boxes across 36 held-out synthetic frames. 145 readings exceeded .9 raw joint
+score, all correct on this development set; scores remain uncalibrated. Pipeline
+p95 was 90.835 ms, excluding checkpoint loading. This is a synthetic-domain
+milestone only; confirmed cards remain null and full-table readiness remains
+false. Real/controlled-visible and fresh cross-domain audits remain necessary.
+
+Reproduce the glyph run and independent-box audit:
+
+```powershell
+.\.venv\Scripts\python.exe -m apc.perception.train_card_glyphs apc/runs/region-dataset-v2/dataset_manifest.json apc/runs/card-glyph-v1 --epochs 15
+.\.venv\Scripts\python.exe -m apc.perception.evaluate_card_reader apc/runs/card-glyph-v1/glyph_weights.pt apc/runs/region-dataset-v2/dataset_manifest.json
+```
+
+Use a fresh output directory if the run already exists. Runtime checkpoint and
+evaluation files are local ignored artifacts. Ink-free proposals explicitly
+report `missing_ink`, null candidate and zero identity scores.

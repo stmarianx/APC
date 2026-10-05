@@ -16,10 +16,9 @@ class ReaderEvaluationTests(unittest.TestCase):
         suit = torch.zeros(1, 4)
         suit[0, 3] = 1
         with patch("apc.perception.evaluate_card_reader.load_split", return_value=[target]), \
-                patch("apc.perception.evaluate_card_reader.image_tensor", return_value=torch.zeros(1, 3, 10, 10)), \
                 patch("apc.perception.evaluate_card_reader.CardReader") as factory:
             factory.return_value.read.return_value = {"cards": [{"box_xyxy": [.11, .1, .21, .3], "candidate": "Qs"}]}
-            factory.return_value.model.return_value = {"rank": rank, "suit": suit}
+            factory.return_value.predict_regions.return_value = {"rank": rank, "suit": suit}
             report = compare_crops("checkpoint", "manifest")
         self.assertEqual(report["exact_correct_proposed_wrong"], 1)
         self.assertEqual(report["candidate_disagreements"], 1)

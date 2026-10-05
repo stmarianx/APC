@@ -11,7 +11,6 @@ from apc.perception.card_proposals import match_proposals
 from apc.perception.infer_cards import CardReader
 from apc.perception.spatial_targets import load_split
 from apc.perception.region_model import RANKS, SUITS
-from apc.perception.train_regions import image_tensor
 
 
 def evaluate_reader(checkpoint, manifest, split="test"):
@@ -64,9 +63,8 @@ def compare_crops(checkpoint, manifest, split="validation"):
             continue
         detected = reader.read(target["image"]["path"])["cards"]
         matched = match_proposals(detected, cards)["matches"]
-        regions = torch.tensor([[0, *card["box_xyxy"]] for card in cards], dtype=torch.float32)
         with torch.no_grad():
-            logits = reader.model(image_tensor(target), regions)
+            logits = reader.predict_regions(target["image"]["path"], [card["box_xyxy"] for card in cards])
         for match in matched:
             index = match["target_index"]
             truth = cards[index]["attributes"]

@@ -1,0 +1,7 @@
+{
+  "user_authorized_work_until": "2026-10-05T11:00:00+03:00",
+  "timezone": "Europe/Bucharest",
+  "cutoff_utc": "2026-10-05T08:00:00Z",
+  "automation_id": "apc-11-am-safe-cutoff",
+  "cutoff_action": "Preserve checkpoints, record remaining work, commit and push scoped APC changes, pause goal; do not resume without user authorization."
+}

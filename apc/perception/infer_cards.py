@@ -8,10 +8,12 @@ import time
 from pathlib import Path
 
 import torch
+from PIL import Image
 
 from apc.perception.card_proposals import propose_cards
 from apc.perception.region_model import RegionRecognizer, RANKS, SUITS
 from apc.perception.train_regions import image_tensor
+from apc.perception.card_glyphs import CardGlyphNetwork, glyph_tensor
 
 
 class CardReader:
@@ -19,39 +21,53 @@ class CardReader:
         if not math.isfinite(confidence_threshold) or not 0 <= confidence_threshold <= 1:
             raise ValueError("confidence_threshold must be finite in [0,1]")
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
-        if saved.get("architecture_version") != "spatial-grid-v2":
-            raise ValueError("Unsupported region architecture")
-        if saved.get("model_kind") != "region_recognizer_requires_proposed_boxes":
-            raise ValueError("Unsupported checkpoint kind")
-        self.model = RegionRecognizer(saved["crop_size"])
+        self.glyph_model = saved.get("model_kind") == "card_glyph_recognizer"
+        if self.glyph_model and saved.get("architecture_version") == "card-glyph-v1":
+            self.model = CardGlyphNetwork()
+        elif saved.get("architecture_version") == "spatial-grid-v2" and saved.get("model_kind") == "region_recognizer_requires_proposed_boxes":
+            self.model = RegionRecognizer(saved["crop_size"])
+        else:
+            raise ValueError("Unsupported checkpoint kind or architecture")
         self.model.load_state_dict(saved["state_dict"], strict=True)
         self.model.eval()
         self.threshold = confidence_threshold
         self.max_image_dimension = saved.get("max_image_dimension", 1280)
+
+    def predict_regions(self, image_path, boxes):
+        with torch.no_grad():
+            if self.glyph_model:
+                with Image.open(image_path) as image:
+                    tokens = [glyph_tensor(image, box) for box in boxes]
+                result = self.model(torch.stack([item[0] for item in tokens]))
+                result["ink_present"] = torch.tensor([item[1] for item in tokens], dtype=torch.bool)
+                return result
+            image = image_tensor({"image": {"path": str(image_path)}}, size=self.max_image_dimension)
+            regions = torch.tensor([[0, *box] for box in boxes], dtype=torch.float32)
+            return self.model(image, regions)
 
     def read(self, image_path: str | Path):
         started = time.perf_counter()
         proposals = propose_cards(image_path)
         cards = []
         if proposals:
-            image = image_tensor({"image": {"path": str(image_path)}}, size=self.max_image_dimension)
-            regions = torch.tensor([[0, *item["box_xyxy"]] for item in proposals], dtype=torch.float32)
             with torch.no_grad():
-                predictions = self.model(image, regions)
+                predictions = self.predict_regions(image_path, [item["box_xyxy"] for item in proposals])
                 ranks = predictions["rank"].softmax(-1)
                 suits = predictions["suit"].softmax(-1)
             for index, proposal in enumerate(proposals):
                 rank_score, rank_index = ranks[index].max(0)
                 suit_score, suit_index = suits[index].max(0)
                 score = min(float(rank_score), float(suit_score))
-                accepted = score >= self.threshold
+                ink_present = bool(predictions["ink_present"][index]) if "ink_present" in predictions else True
+                accepted = ink_present and score >= self.threshold
                 cards.append({"box_xyxy": proposal["box_xyxy"],
                               "rank_candidate": RANKS[int(rank_index)],
                               "suit_candidate": SUITS[int(suit_index)],
-                              "rank_score": float(rank_score), "suit_score": float(suit_score),
-                              "candidate": RANKS[int(rank_index)] + SUITS[int(suit_index)],
+                              "rank_score": float(rank_score) if ink_present else 0,
+                              "suit_score": float(suit_score) if ink_present else 0,
+                              "candidate": RANKS[int(rank_index)] + SUITS[int(suit_index)] if ink_present else None,
                               "card": None,
-                              "status": "high_score_unvalidated" if accepted else "uncertain",
+                              "status": "missing_ink" if not ink_present else ("high_score_unvalidated" if accepted else "uncertain"),
                               "role": "unresolved"})
             identities = [item["candidate"] for item in cards if item["status"] == "high_score_unvalidated"]
             for item in cards:
