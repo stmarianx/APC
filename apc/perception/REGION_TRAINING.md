@@ -46,3 +46,41 @@ visibility and enabled labels must not obscure failed rank/action recognition.
 This checkpoint is rejected for coaching use. Next work: improve spatial glyph
 features and data coverage, evaluate independently proposed boxes, integrate
 numeric/name recognition, and collect verified controlled-visible sessions.
+
+## Spatial-grid follow-up
+
+Replacing global average pooling with a 4x4 spatial grid and a learned projection
+preserves glyph layout. A second 10-epoch run on the identical manifest and seed
+(`apc/runs/region-recognizer-v2`) achieved class 42/50 (84%), dealer 8/8,
+hero 8/8; rank remained 0/20, suit 6/20, action 2/10. Network-only p95 was
+17.589 ms. This remains a failed coaching candidate, not a readiness milestone.
+Checkpoints now explicitly record architecture version `spatial-grid-v2`.
+The four-frame test set is too small for broad accuracy claims. Since these test
+results have been inspected during development, a fresh session-isolated audit
+set is required for any final promotion decision.
+
+## Native-detail follow-up
+
+Training contains all 13 ranks (4–15 examples per rank); missing classes do not
+explain the failure. The renderer uses small default-font glyphs, so whole-frame
+downscaling from 1280 to 512 is a plausible information bottleneck. The loader
+now caps at 1280 without upscaling. Grouped grid sampling extracts multiple
+regions without allocating a separate full-frame copy for each. An interleaved
+batch test checks that grouping does not reorder predictions.
+
+Run `region-recognizer-v3` used the same manifest, seed and ten epochs: rank 3/20
+(15%), class 42/50, suit 6/20, action 2/10; network p95 15.857 ms. This small
+improvement does not establish causality or readiness. More diverse training and
+dedicated glyph supervision are still necessary. Source-size preprocessing is
+recorded in new checkpoint/report metadata.
+
+## Expanded development corpus
+
+`region-dataset-v2` uses 90 sessions / 360 frames, seed 20261006, with clocks and
+names included. Manifest validation passed, with zero controlled-visible frames.
+Generation commands match the first run above, substituting the new directory,
+`--sessions 90`, and `--seed 20261006`. The `region-recognizer-v4` experiment uses
+ten epochs, seed 42, native-detail spatial-grid architecture. Evaluation now
+records per-head confusion matrices, observed/total class counts and macro recall.
+Checkpoint selection averages validation head macro recall so frequent/easy
+labels cannot dominate by count. Final promotion still requires a fresh audit.

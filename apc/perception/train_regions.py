@@ -16,19 +16,19 @@ from apc.perception.region_model import RegionRecognizer, recognition_loss, regi
 from apc.perception.spatial_targets import load_split
 
 
-def image_tensor(target, size=512):
+def image_tensor(target, size=1280):
     # RGB conversion and normalized boxes share the same full-frame coordinate
     # system. No crop/letterbox transform silently changes the target geometry.
     with Image.open(target["image"]["path"]) as image:
         rgb = image.convert("RGB")
-        scale = size / max(rgb.size)
+        scale = min(1.0, size / max(rgb.size))
         rgb = rgb.resize((max(1, round(rgb.width * scale)), max(1, round(rgb.height * scale))))
         array = np.asarray(rgb, dtype=np.float32).copy() / 255
     return torch.from_numpy(array).permute(2, 0, 1).unsqueeze(0)
 
 
 def evaluate(model, targets):
-    counts, correct, elapsed = {}, {}, []
+    counts, correct, elapsed, confusion = {}, {}, [], {}
     model.eval()
     with torch.no_grad():
         for target in targets:
@@ -40,10 +40,24 @@ def evaluate(model, targets):
             for name, logits in predictions.items():
                 mask = labels[name] != -100
                 counts[name] = counts.get(name, 0) + int(mask.sum())
-                correct[name] = correct.get(name, 0) + int((logits.argmax(-1)[mask] == labels[name][mask]).sum())
+                predicted = logits.argmax(-1)[mask]
+                truth = labels[name][mask]
+                correct[name] = correct.get(name, 0) + int((predicted == truth).sum())
+                size = logits.shape[-1]
+                matrix = torch.bincount(truth * size + predicted, minlength=size * size).reshape(size, size)
+                confusion[name] = confusion.get(name, torch.zeros_like(matrix)) + matrix
+    def head_metrics(name, count):
+        matrix = confusion[name]
+        support = matrix.sum(1)
+        seen = support > 0
+        recall = matrix.diag()[seen].float() / support[seen]
+        return {"supervised_regions": count, "correct": correct[name],
+                "accuracy": correct[name] / count if count else None,
+                "macro_recall": float(recall.mean()) if seen.any() else None,
+                "classes_observed": int(seen.sum()), "classes_total": len(matrix),
+                "confusion_matrix_true_rows": matrix.tolist()}
     return {"frames": len(targets), "heads": {
-        name: {"supervised_regions": count, "correct": correct[name],
-               "accuracy": correct[name] / count if count else None}
+        name: head_metrics(name, count)
         for name, count in counts.items()},
         "region_network_p95_ms": float(np.percentile(elapsed, 95)) if elapsed else None,
         "latency_scope": "network_only_with_ground_truth_regions_not_end_to_end",
@@ -86,20 +100,28 @@ def train(manifest, output, *, epochs=5, seed=42, crop_size=48):
         validation = evaluate(model, splits["validation"])
         # Select using validation only; test is evaluated once after selection.
         heads = validation["heads"]
-        accuracy = sum(v["correct"] for v in heads.values()) / sum(v["supervised_regions"] for v in heads.values())
+        recalls = [v["macro_recall"] for v in heads.values() if v["macro_recall"] is not None]
+        accuracy = sum(recalls) / len(recalls)
         if accuracy > best_accuracy:
             best_accuracy = accuracy
             best_weights = {key: value.detach().clone() for key, value in model.state_dict().items()}
         history.append({"epoch": epoch + 1, "train_loss": total / len(order), "validation": validation})
+        print(json.dumps({"epoch": epoch + 1, "train_loss": total / len(order),
+                          "validation_macro_head_recall": accuracy}), flush=True)
     model.load_state_dict(best_weights)
     report = {"schema_version": "1.0.0", "model_kind": "region_recognizer_requires_proposed_boxes",
               "seed": seed, "epochs": epochs, "crop_size": crop_size,
+              "architecture_version": "spatial-grid-v2",
+              "max_image_dimension": 1280,
+              "checkpoint_selection": "validation_mean_head_macro_recall",
               "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
               "torch_version": torch.__version__, "history": history,
               "test": evaluate(model, splits["test"]), "full_table_readiness": False}
     output.mkdir(parents=True)
     torch.save({"state_dict": model.state_dict(), "crop_size": crop_size,
-                "model_kind": report["model_kind"]}, output / "region_weights.pt")
+                "model_kind": report["model_kind"],
+                "max_image_dimension": report["max_image_dimension"],
+                "architecture_version": report["architecture_version"]}, output / "region_weights.pt")
     (output / "evaluation.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     return report
 

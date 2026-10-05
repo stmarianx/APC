@@ -34,5 +34,10 @@ class RegionRunnerTests(unittest.TestCase):
             self.assertIn("state_dict", saved)
             report = json.loads((root / "run" / "evaluation.json").read_text())
             self.assertEqual(report["test"]["heads"]["rank"]["supervised_regions"], 5)
+            rank_metrics = report["test"]["heads"]["rank"]
+            self.assertEqual(sum(sum(row) for row in rank_metrics["confusion_matrix_true_rows"]), 5)
+            self.assertEqual(rank_metrics["classes_total"], 13)
+            self.assertEqual(rank_metrics["classes_observed"], 5)
+            self.assertEqual(report["checkpoint_selection"], "validation_mean_head_macro_recall")
             with self.assertRaises(ValueError):
                 train(manifest, root / "run", epochs=1)

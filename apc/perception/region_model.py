@@ -27,8 +27,11 @@ class RegionRecognizer(nn.Module):
             nn.Conv2d(3, 16, 3, padding=1), nn.GELU(), nn.MaxPool2d(2),
             nn.Conv2d(16, 32, 3, padding=1), nn.GELU(), nn.MaxPool2d(2),
             nn.Conv2d(32, 64, 3, padding=1), nn.GELU(),
-            nn.AdaptiveAvgPool2d(1), nn.Flatten())
-        self.heads = nn.ModuleDict({name: nn.Linear(64, count) for name, count in (
+            # Preserve glyph position/shape instead of averaging the entire
+            # card into one feature vector before rank/suit classification.
+            nn.AdaptiveAvgPool2d((4, 4)), nn.Flatten(),
+            nn.Linear(64 * 4 * 4, 128), nn.GELU())
+        self.heads = nn.ModuleDict({name: nn.Linear(128, count) for name, count in (
             ("class", len(CLASSES)), ("visibility", len(VISIBILITIES)),
             ("rank", len(RANKS)), ("suit", len(SUITS)),
             ("action", len(ACTIONS)), ("dealer", 2), ("hero", 2), ("enabled", 2))})
@@ -52,7 +55,18 @@ class RegionRecognizer(nn.Module):
         y = boxes[:, 1, None] + axis * (boxes[:, 3] - boxes[:, 1])[:, None]
         grid = torch.stack((x[:, None, :].expand(-1, self.crop_size, -1),
                             y[:, :, None].expand(-1, -1, self.crop_size)), dim=-1) * 2 - 1
-        crops = F.grid_sample(images[indices], grid, align_corners=False, padding_mode="border")
+        # Sample all regions of an image in one tall grid. Advanced-indexing
+        # images[indices] would replicate a full-resolution frame per region,
+        # wasting hundreds of MB before extracting small crops.
+        groups, positions = [], []
+        for batch_index in indices.unique(sorted=True):
+            selected = torch.nonzero(indices == batch_index).flatten()
+            tall_grid = grid[selected].reshape(1, -1, self.crop_size, 2)
+            sampled = F.grid_sample(images[batch_index:batch_index + 1], tall_grid,
+                                    align_corners=False, padding_mode="border")
+            groups.append(sampled.reshape(3, len(selected), self.crop_size, self.crop_size).permute(1, 0, 2, 3))
+            positions.append(selected)
+        crops = torch.cat(groups)[torch.cat(positions).argsort()]
         features = self.encoder(crops)
         return {name: head(features) for name, head in self.heads.items()}
 

@@ -34,3 +34,14 @@ class RegionModelTests(unittest.TestCase):
         for region in ([1, 0, 0, 1, 1], [.5, 0, 0, 1, 1], [0, 0, 0, 2, 1], [0, .5, 0, .4, 1]):
             with self.assertRaises(ValueError):
                 model(image, torch.tensor([region], dtype=torch.float32))
+
+    def test_grouped_sampling_preserves_interleaved_region_order(self):
+        torch.set_num_threads(1)
+        model = RegionRecognizer(16).eval()
+        images = torch.rand(2, 3, 32, 48)
+        regions = torch.tensor([[1, .1, .2, .8, .9], [0, 0, 0, 1, 1], [1, .3, .1, .7, .8]])
+        with torch.no_grad():
+            grouped = model(images, regions)
+            singles = [model(images, region.unsqueeze(0)) for region in regions]
+        for head in grouped:
+            torch.testing.assert_close(grouped[head], torch.cat([item[head] for item in singles]), atol=1e-6, rtol=1e-5)
