@@ -84,3 +84,24 @@ ten epochs, seed 42, native-detail spatial-grid architecture. Evaluation now
 records per-head confusion matrices, observed/total class counts and macro recall.
 Checkpoint selection averages validation head macro recall so frequent/easy
 labels cannot dominate by count. Final promotion still requires a fresh audit.
+
+## Annotation-free card proposals
+
+`card_proposals.propose_cards` finds bright near-neutral connected surfaces and
+filters them by aspect, size and fill. It consumes only frame pixels, not board
+counts or learned fixed geometry. This is a limited light-card appearance
+baseline: dark decks, overlaps, rotation and occlusion can fail. One-to-one IoU
+matching prevents duplicate detections from receiving duplicate credit. Tests
+cover a five-card flop, blank-frame rejection, duplicate matching and all
+renderer layouts/themes on seven-card river frames. These tests do not prove
+cross-platform localization performance.
+
+## Expanded run result
+
+V4 completed ten epochs. Held-out evaluation covered 36 frames / 498 regions:
+class 412/498 (82.73%), rank 78/180 (43.33%, macro recall 38.30%), suit 180/180,
+action 90/90, hero/dealer 120/120 each. Network-only p95 was 14.837 ms. Enabled
+and visibility scores cover only one observed class and cannot establish
+disabled/occluded performance. Rank recognition remains inadequate. Hero-card
+versus board-card role confusion also persists: identical local crops require
+table context to disambiguate. No coaching promotion or readiness gate passed.
