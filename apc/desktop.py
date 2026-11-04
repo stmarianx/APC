@@ -70,11 +70,11 @@ def launch():
     def inspect():
         path = filedialog.askopenfilename(filetypes=[("Table frames", "*.png *.jpg *.jpeg *.bmp")])
         if path:
-            def read():
-                from apc.perception.infer_cards import CardReader
-                reader = CardReader(Path(__file__).parent / "checkpoints/glyph-v1.pt")
-                return json.dumps(reader.read(path), indent=2)
-            run(read)
+            clear()
+            show("Choose the card design in this saved frame. Reads are experimental and are not playing advice.")
+            for label, filename in (("Centered text", "glyph-v1.pt"), ("Corner symbols", "corner-glyph-pair-v2.pt"),
+                                    ("Corner symbols · mixed-font trial", "corner-glyph-mixed-v1.pt")):
+                ttk.Button(actions, text=label, command=lambda name=filename: run(lambda: inspect_saved_frame(path, name))).pack(side="left")
 
     def display_hand():
         clear()
@@ -136,6 +136,15 @@ def launch():
         root.mainloop()
     finally:
         pool.shutdown(wait=False, cancel_futures=True)
+
+
+def inspect_saved_frame(path, filename):
+    from apc.perception.infer_cards import CardReader
+    if filename not in {"glyph-v1.pt", "corner-glyph-pair-v2.pt", "corner-glyph-mixed-v1.pt"}:
+        raise ValueError("Unknown bundled card reader")
+    reader = CardReader(Path(__file__).parent / "checkpoints" / filename, corner_pairs=filename != "glyph-v1.pt")
+    result = reader.read(path)
+    return json.dumps({"checkpoint": filename, "inspection": result}, indent=2)
 
 
 def river_solution_text(bet_bb):
