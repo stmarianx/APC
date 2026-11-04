@@ -45,6 +45,29 @@ See `analysis/research_verification.json` and `coach/verification.json` for mach
 
 ## Launch the application
 
+For the APC neural-model controller, from the repository root:
+
+```powershell
+.\.venv\Scripts\python -m apc desktop
+```
+
+Use **Model status** to validate an existing neural checkpoint and inspect its
+readiness gates. **Inspect frame** compares bundled experimental readers on
+saved images; it is not playing advice. **New practice hand** records completed
+virtual-chip hands for offline learning, but its check/call opponent is not GTO.
+The command-line equivalent supports an explicit recording session:
+
+```powershell
+.\.venv\Scripts\python -m apc practice --replay-dir apc/runs/my-practice --session-id session-01
+```
+
+Reuse the session ID for related hands so evaluation can keep the session
+together. Quitting before completion creates no learning record. Recording
+does not automatically update or activate neural weights. Visible-table
+training and evaluated coaching readiness have not been demonstrated.
+
+For the separate browser-based math and hand-review application:
+
 ```powershell
 Set-Location 'C:\Users\st_ma\Documents\Negreanu\coach'
 $env:PYTHONPATH = (Resolve-Path '.\src')

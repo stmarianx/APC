@@ -1,0 +1,13 @@
+{
+  "status": "generated_not_evaluated",
+  "rebuild": "python -m apc.neural.diverse_self_play_replay apc/runs/feedback-fresh-audit-20261104 --hands 240 --seed-start 930000 --hands-per-session 3",
+  "buffer_validation_passed": true,
+  "hands": 240,
+  "decisions": 1052,
+  "split_complete_hands": {"train": 174, "validation": 39, "test": 27},
+  "adapter_fingerprint": "54ad9955ddbd8de8b70217f65422f29ffe6efc7bb6bd7809b4a2457be68354b3",
+  "training_eligible": false,
+  "limitation": "The generator's diversity coverage gate failed. This set cannot establish full policy/stack coverage or be treated as training-eligible.",
+  "recommendation_allowed": false,
+  "activation_authorized": false
+}
