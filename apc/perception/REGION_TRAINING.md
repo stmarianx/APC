@@ -240,3 +240,10 @@ mixed candidate 77/80; both found 80 boxes with no extra proposals. Of
 high-score candidates v2 was correct on 34/40, mixed on 50/50. This is
 not a calibration set. The mixed checkpoint is corner-glyph-mixed-v1.pt;
 the default reader remains unchanged pending independent captured testing.
+
+Frozen captured flop, mixed-font checkpoint: run
+`python -m apc.perception.infer_cards apc/checkpoints/corner-glyph-mixed-v1.pt apc/data/reference/controlled-reference-v1/frames/user-play-money-flop.png --corner-symbols`.
+Only one of five cards was proposed. Actual 2s was guessed Ks (rank score
+0.986, suit 0.978), now *above* the 0.9 threshold despite the wrong rank.
+The output kept the confirmed card null. Do not interpret synthetic
+high-score precision as a confidence calibration on captured tables.

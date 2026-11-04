@@ -91,9 +91,11 @@ def main():
     parser.add_argument("checkpoint", type=Path)
     parser.add_argument("image", type=Path)
     parser.add_argument("--confidence-threshold", type=float, default=.9)
+    parser.add_argument("--corner-symbols", action="store_true", help="Use separate corner rank/suit extraction for paired checkpoints")
     args = parser.parse_args()
     torch.set_num_threads(1)
-    print(json.dumps(CardReader(args.checkpoint, confidence_threshold=args.confidence_threshold).read(args.image), indent=2))
+    print(json.dumps(CardReader(args.checkpoint, confidence_threshold=args.confidence_threshold,
+                                corner_pairs=args.corner_symbols).read(args.image), indent=2))
 
 
 if __name__ == "__main__":
