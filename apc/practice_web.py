@@ -9,11 +9,15 @@ from pathlib import Path
 from apc.practice_session import PracticeTableSession
 
 
-def create_server(port=8780):
+def create_server(port=8780, model_checkpoint=None):
     holder = {"session": PracticeTableSession(secrets.randbits(32))}
     recording_session = "browser-practice-" + secrets.token_hex(12)
     lock = threading.RLock()
     assets = Path(__file__).parent / "practice_assets"
+    model_preview = None
+    if model_checkpoint is not None:
+        from apc.neural.controlled_preview import ControlledModelPreview
+        model_preview = ControlledModelPreview(model_checkpoint)
 
     class Handler(BaseHTTPRequestHandler):
         def reply(self, value, status=200):
@@ -29,6 +33,15 @@ def create_server(port=8780):
             with lock:
                 if self.path == "/api/state":
                     self.reply(holder["session"].snapshot())
+                elif self.path == "/api/model-preview":
+                    state = holder["session"].snapshot()["state"]
+                    if model_preview is None:
+                        self.reply({"status":"preview_disabled","recommendation":None,
+                                    "state_fingerprint":state["state_fingerprint"],
+                                    "activation_authorized":False})
+                    else:
+                        result = model_preview.inspect(state, internal_virtual_chips=True, opponent_policy="check_call")
+                        self.reply({**result,"state_fingerprint":state["state_fingerprint"]})
                 elif self.path == "/api/replay":
                     try:
                         self.reply(holder["session"].completed_replay(recording_session))
@@ -90,8 +103,9 @@ def create_server(port=8780):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=8780)
+    parser.add_argument("--model-checkpoint", type=Path, help="Opt-in experimental estimates, not a coaching-ready policy")
     args = parser.parse_args()
-    server = create_server(args.port)
+    server = create_server(args.port, args.model_checkpoint)
     print(f"APC practice table: http://127.0.0.1:{server.server_port}/", flush=True)
     try:
         server.serve_forever()

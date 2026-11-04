@@ -25,6 +25,9 @@ pre{white-space:pre-wrap;background:#182a22;border-radius:8px;padding:16px}#repl
 </section>
 <div id="controls"><label>Total bet/raise <input id="size" type="number" min="0" step=".5" aria-label="Bet or raise total in BB"> BB</label><span id="buttons"></span></div>
 <p id="price"></p><h2>Action history</h2><pre id="history"></pre>
+<section><h2>Experimental model inspection</h2>
+<p>Uncalibrated virtual-table estimates only. Unsupported states produce no estimates. No automatic actions.</p>
+<button id="inspectModel">Inspect neural estimates</button><pre id="modelPreview" hidden></pre></section>
 <section id="finished" hidden><h2>Completed hand</h2><pre id="feedback"></pre>
 <a id="replay" href="/api/replay" download="apc-completed-hand.json">Export completed-hand learning record</a>
 <button id="new">New hand</button></section>
@@ -32,7 +35,7 @@ pre{white-space:pre-wrap;background:#182a22;border-radius:8px;padding:16px}#repl
 let state=null,busy=false;
 const el=id=>document.getElementById(id);
 function cards(id,values){const root=el(id);root.replaceChildren();for(const value of values){const node=document.createElement('span');const suit=value.slice(-1);node.className='card '+suit;const rank=document.createElement('span'),symbol=document.createElement('span');rank.textContent=value.slice(0,-1);symbol.textContent=({s:'♠',h:'♥',d:'♦',c:'♣'})[suit]||'?';node.append(rank,symbol);root.append(node)}}
-function render(result){state=result.state;el('street').textContent=state.street;el('pot').textContent=state.pot_bb;
+function render(result){state=result.state;el('modelPreview').hidden=true;el('modelPreview').textContent='';el('street').textContent=state.street;el('pot').textContent=state.pot_bb;
  el('hero').textContent='Hero · '+state.hero_position+' · '+state.stacks_bb.Hero+' BB'+(state.button_position===state.hero_position?' · Dealer':'');
  el('villain').textContent='Opponent · '+state.stacks_bb.Villain+' BB'+(state.button_position!==state.hero_position?' · Dealer':'');
  cards('heroCards',state.hero_cards);cards('board',state.board);cards('villainCards',state.opponent_cards||[]);
@@ -43,6 +46,14 @@ function render(result){state=result.state;el('street').textContent=state.street
  el('finished').hidden=!state.terminal;el('feedback').textContent=result.feedback?JSON.stringify(result.feedback,null,2):'';el('size').disabled=state.terminal||busy;}
 async function request(path,body){const response=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const value=await response.json();if(!response.ok)throw new Error(value.error||'Request failed');return value}
 async function act(action){if(busy)return;busy=true;el('message').textContent='';try{const body={action,state_fingerprint:state.state_fingerprint};if(['bet','raise'].includes(action)){if(!el('size').value)throw new Error('Enter the total bet/raise size in BB');body.to_amount_bb=el('size').value}render(await request('/api/action',body));el('size').value=''}catch(error){el('message').textContent=error.message;render(await request('/api/state'))}finally{busy=false;for(const b of el('buttons').children)b.disabled=false;el('size').disabled=state.terminal}}
+el('inspectModel').addEventListener('click',async()=>{
+ if(!state||busy)return;busy=true;el('inspectModel').disabled=true;
+ try{const result=await request('/api/model-preview');
+  if(result.state_fingerprint!==state.state_fingerprint){render(await request('/api/state'));el('message').textContent='The table changed. Request fresh estimates.';return}
+  el('modelPreview').textContent=JSON.stringify(result,null,2);el('modelPreview').hidden=false;
+ }catch(error){el('message').textContent=error.message}
+ finally{busy=false;el('inspectModel').disabled=false}
+});
 el('new').addEventListener('click',async()=>{if(busy)return;busy=true;try{render(await request('/api/new',{}));el('message').textContent=''}catch(e){el('message').textContent=e.message}finally{busy=false;for(const b of el('buttons').children)b.disabled=false;el('size').disabled=state.terminal}});
 el('capture').addEventListener('click',()=>{
  if(!state||busy)return;

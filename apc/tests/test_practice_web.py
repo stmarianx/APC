@@ -22,6 +22,10 @@ class PracticeWebTests(unittest.TestCase):
                 return json.load(response)
         try:
             state = request("/api/state")["state"]
+            preview = request("/api/model-preview")
+            self.assertEqual(preview["status"],"preview_disabled")
+            self.assertEqual(preview["state_fingerprint"],state["state_fingerprint"])
+            self.assertIsNone(preview["recommendation"])
             with self.assertRaises(HTTPError) as error:
                 request("/api/action", {"action":"fold","state_fingerprint":"stale"})
             self.assertEqual(error.exception.code,409)

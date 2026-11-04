@@ -102,6 +102,17 @@ This creates a review-only suggestion. It does not verify the screenshot/metadat
 pair, import hidden opponent cards, or count the frame toward training readiness.
 Review the boxes and identities in the annotation workbench before saving labels.
 
+For research-only neural estimates in the full-hand table, opt in explicitly:
+
+```text
+python -m apc.practice_web --model-checkpoint apc/runs/apc-paired-regret-v1/checkpoint.json
+```
+
+**Inspect neural estimates** supports only the exact unbet 100 BB, 2.5 BB-open
+postflop trunk against the known check/call simulator. Other states are rejected.
+Estimates are uncalibrated, not GTO recommendations, and never operate buttons.
+They are cleared after a state change. This panel's browser verification remains pending.
+
 ```powershell
 Set-Location 'C:\Users\st_ma\Documents\Negreanu\coach'
 $env:PYTHONPATH = (Resolve-Path '.\src')
