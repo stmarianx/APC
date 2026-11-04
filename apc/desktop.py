@@ -119,10 +119,32 @@ def launch():
         hand = HeadsUpVirtualHand(seed=randbits(32), button_player=0)
         display_hand()
 
-    for label, callback in (("Find lesson", lesson), ("Inspect frame", inspect), ("New practice hand", practice)):
+    def river_drill():
+        clear()
+        show("River exercise\n\nThe pot is 10 BB. The bettor has value or air with equal probability. "
+             "Value always wins at showdown and air always loses. The defender has a bluff-catcher.\n\n"
+             "Choose a bet size. Before revealing the solution, estimate how often air should bet "
+             "and how often the defender should call.")
+        for wager in (5, 10):
+            ttk.Button(actions, text=f"Solve {wager} BB bet",
+                       command=lambda size=wager: run(lambda: river_solution_text(size))).pack(side="left")
+
+    for label, callback in (("Find lesson", lesson), ("Inspect frame", inspect), ("New practice hand", practice), ("River drill", river_drill)):
         ttk.Button(toolbar, text=label, command=callback).pack(side="left")
     show("Search the Negreanu curriculum, inspect a saved frame, or play a virtual-chip hand against a check/call opponent.")
     try:
         root.mainloop()
     finally:
         pool.shutdown(wait=False, cancel_futures=True)
+
+
+def river_solution_text(bet_bb):
+    from coach.src.poker_coach.river_solver import solve_akq_river
+    _, solution = solve_akq_river(pot_bb=10, bet_bb=bet_bb, iterations=40000)
+    bluff = solution.ip_strategy["Air"]["bet"]
+    call = solution.oop_strategy["Bluff-catcher"]["call"]
+    return (f"River solution · 10 BB pot · {bet_bb} BB bet\n\n"
+            f"Bet with air {bluff:.1%} of the time. Call with the bluff-catcher {call:.1%} of the time.\n"
+            f"A bluff risks {bet_bb} BB to win 10 BB. A call risks {bet_bb} BB to win {10 + bet_bb} BB.\n\n"
+            f"Source: APC river CFR solver, 40,000 iterations, equal prior weights for value and air.\n"
+            f"Exploitability in this subgame: {solution.exploitability_bb:.4f} BB.")
