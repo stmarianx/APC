@@ -357,6 +357,7 @@ class AnnotationProject:
         if material.get("kind") not in {
             "apc_perception_suggestion",
             "apc_layout_propagation_suggestion",
+            "apc_capture_metadata_suggestion",
         }:
             raise ValueError("Unsupported APC suggestion kind")
         if material.get("sample_id") != record.sample_id:

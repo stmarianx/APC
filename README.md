@@ -90,6 +90,18 @@ check/call practice opponent, not a GTO opponent. All amounts are BB. Completed
 hands can be exported as replay JSON; there is no automatic weight activation
 or external table control. Browser interaction verification is still pending.
 
+The table's **Export visible-frame metadata** button produces draft geometry,
+not verified annotations. Pair it with the same unchanged screenshot, then use
+a dedicated annotation project whose provider is `apc-full-hand-browser`:
+
+```text
+python -m apc.annotator.import_practice_capture PROJECT SCREENSHOT.png METADATA.json --session SESSION --timestamp-ms 1000
+```
+
+This creates a review-only suggestion. It does not verify the screenshot/metadata
+pair, import hidden opponent cards, or count the frame toward training readiness.
+Review the boxes and identities in the annotation workbench before saving labels.
+
 ```powershell
 Set-Location 'C:\Users\st_ma\Documents\Negreanu\coach'
 $env:PYTHONPATH = (Resolve-Path '.\src')
