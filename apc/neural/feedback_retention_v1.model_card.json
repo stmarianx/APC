@@ -1,0 +1,21 @@
+{
+  "model_name": "APC",
+  "status": "trained_not_promoted",
+  "checkpoint": "apc/runs/cli-feedback-retention-v1/checkpoint.json",
+  "checkpoint_fingerprint": "893291fac57ca692366cf141babb4cbc4397d684a12084fac835f7c58f5012af",
+  "weights_sha256": "88b05f04702fd2885d70a652220f0932c6c074018fdadc9af536df86af2fef8f",
+  "training": {"epochs": 2, "learning_rate": 0.00005, "incumbent_retention_weight": 0.5, "cpu_threads": 4},
+  "internal_test": {
+    "hands": 111,
+    "incumbent_mae_bb": 75.0895265769,
+    "candidate_mae_bb": 75.0538121618,
+    "incumbent_rmse_bb": 106.212020482,
+    "candidate_rmse_bb": 106.47746908
+  },
+  "interpretation": "Small absolute-error improvement accompanied by worse squared-error performance. Observed-action imitation is not proof of better poker decisions.",
+  "strategy_regression_passed": false,
+  "calibration_passed": false,
+  "activation_authorized": false,
+  "recommendation_allowed": false,
+  "fresh_audit": "Pending separate process; see apc/runs/feedback-fresh-audit-expanded-20261104/evaluation.json when complete"
+}
