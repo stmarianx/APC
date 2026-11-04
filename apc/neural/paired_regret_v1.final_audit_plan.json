@@ -1,5 +1,11 @@
 {
-  "status": "audit_corpus_generation_started",
+  "status": "completed_improvement_observed_not_promoted",
+  "comparison_report": "apc/neural/paired_regret_v1.untouched_comparison.json",
+  "audit_dataset_fingerprint": "8a4e76a45410ebbc3cf75bc07cbe39188b3726d237253c03684756a07601b597",
+  "test_hands": 41,
+  "test_policy_states": 2214,
+  "regret_improvement_bb": 1.5378274534237524,
+  "hand_bootstrap_95_interval_bb": [0.7222363314815977, 2.3134710790719004],
   "generation_command": "python -m apc.self_learning.raised_postflop_rollout_dataset build apc/runs/paired-regret-final-audit-v1 --dataset-id paired-regret-final-audit-v1 --rollouts 300 --hand-seed-start 1040000",
   "control_checkpoint_fingerprint": "7a6c7065c9eacd5d15810cd78f9bbcb03bc5f07a320e0a49c8b0ed5887d5b339",
   "candidate_checkpoint_fingerprint": "c2a1a15ece9d0f1110db176411fc59eccbc5860ee7184de48f1f96dc32601fdc",

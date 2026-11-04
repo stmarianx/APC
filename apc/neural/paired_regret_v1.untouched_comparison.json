@@ -1,0 +1,163 @@
+{
+  "dataset_fingerprint": "8a4e76a45410ebbc3cf75bc07cbe39188b3726d237253c03684756a07601b597",
+  "split": "test",
+  "evaluation_target": "paired virtual-chip rollout returns",
+  "incumbent": {
+    "examples": 8856,
+    "policy_states": 2214,
+    "mae_bb": "4.55103759408",
+    "rmse_bb": "6.0513693615",
+    "bias_bb": "-0.123262182417",
+    "train_global_mean_baseline_mae_bb": "5.2590873516",
+    "decision_accuracy": "0.278229448961",
+    "chosen_action_regret_bb": "3.12845526974",
+    "uncertainty_eace": "0.373071694566",
+    "by_position": {
+      "BB": {
+        "examples": 4428,
+        "policy_states": 1107,
+        "mae_bb": "4.55493353294",
+        "rmse_bb": "6.05360496853",
+        "bias_bb": "-0.121727132909",
+        "train_global_mean_baseline_mae_bb": "5.26292655666",
+        "decision_accuracy": "0.278229448961",
+        "chosen_action_regret_bb": "3.1239385579",
+        "uncertainty_eace": "0.372910481279"
+      },
+      "BTN": {
+        "examples": 4428,
+        "policy_states": 1107,
+        "mae_bb": "4.54714165521",
+        "rmse_bb": "6.04913292825",
+        "bias_bb": "-0.124797231924",
+        "train_global_mean_baseline_mae_bb": "5.25524814654",
+        "decision_accuracy": "0.278229448961",
+        "chosen_action_regret_bb": "3.13297198157",
+        "uncertainty_eace": "0.373232907853"
+      }
+    },
+    "by_node": {
+      "facing_33": {
+        "examples": 2952,
+        "policy_states": 738,
+        "mae_bb": "3.72009198917",
+        "rmse_bb": "4.76641233126",
+        "bias_bb": "0.596840781167",
+        "train_global_mean_baseline_mae_bb": "4.56692552486",
+        "decision_accuracy": "0.249322493225",
+        "chosen_action_regret_bb": "2.72682922384",
+        "uncertainty_eace": "0.401467094933"
+      },
+      "facing_75": {
+        "examples": 2952,
+        "policy_states": 738,
+        "mae_bb": "6.08278128311",
+        "rmse_bb": "7.98205386832",
+        "bias_bb": "0.0407035453169",
+        "train_global_mean_baseline_mae_bb": "7.12505556623",
+        "decision_accuracy": "0.249322493225",
+        "chosen_action_regret_bb": "4.87804878049",
+        "uncertainty_eace": "0.32436188661"
+      },
+      "lead": {
+        "examples": 2952,
+        "policy_states": 738,
+        "mae_bb": "3.85023950995",
+        "rmse_bb": "4.83997344823",
+        "bias_bb": "-1.00733087373",
+        "train_global_mean_baseline_mae_bb": "4.08528096372",
+        "decision_accuracy": "0.336043360434",
+        "chosen_action_regret_bb": "1.78048780488",
+        "uncertainty_eace": "0.393386102155"
+      }
+    },
+    "weights_sha256": "fbd0d78c86805d62c754f6b8fa9d97487c29ad78c68766159fae2321eca01d10"
+  },
+  "candidate": {
+    "examples": 8856,
+    "policy_states": 2214,
+    "mae_bb": "3.27228805279",
+    "rmse_bb": "5.4899453399",
+    "bias_bb": "0.641070059719",
+    "train_global_mean_baseline_mae_bb": "5.2590873516",
+    "decision_accuracy": "0.40379403794",
+    "chosen_action_regret_bb": "1.59062781631",
+    "uncertainty_eace": "0.268169425507",
+    "by_position": {
+      "BB": {
+        "examples": 4428,
+        "policy_states": 1107,
+        "mae_bb": "3.28322340801",
+        "rmse_bb": "5.51796806653",
+        "bias_bb": "0.59688722843",
+        "train_global_mean_baseline_mae_bb": "5.26292655666",
+        "decision_accuracy": "0.404697380307",
+        "chosen_action_regret_bb": "1.59692862966",
+        "uncertainty_eace": "0.266380597862"
+      },
+      "BTN": {
+        "examples": 4428,
+        "policy_states": 1107,
+        "mae_bb": "3.26135269757",
+        "rmse_bb": "5.46177883907",
+        "bias_bb": "0.685252891007",
+        "train_global_mean_baseline_mae_bb": "5.25524814654",
+        "decision_accuracy": "0.402890695574",
+        "chosen_action_regret_bb": "1.58432700296",
+        "uncertainty_eace": "0.269958253153"
+      }
+    },
+    "by_node": {
+      "facing_33": {
+        "examples": 2952,
+        "policy_states": 738,
+        "mae_bb": "2.71410331549",
+        "rmse_bb": "4.65059619572",
+        "bias_bb": "1.06503498723",
+        "train_global_mean_baseline_mae_bb": "4.56692552486",
+        "decision_accuracy": "0.390243902439",
+        "chosen_action_regret_bb": "1.25833331343",
+        "uncertainty_eace": "0.279816003084"
+      },
+      "facing_75": {
+        "examples": 2952,
+        "policy_states": 738,
+        "mae_bb": "4.38429015213",
+        "rmse_bb": "7.07983874418",
+        "bias_bb": "0.380898973039",
+        "train_global_mean_baseline_mae_bb": "7.12505556623",
+        "decision_accuracy": "0.391598915989",
+        "chosen_action_regret_bb": "2.5081300813",
+        "uncertainty_eace": "0.254455579261"
+      },
+      "lead": {
+        "examples": 2952,
+        "policy_states": 738,
+        "mae_bb": "2.71847069076",
+        "rmse_bb": "4.3204557498",
+        "bias_bb": "0.477276218888",
+        "train_global_mean_baseline_mae_bb": "4.08528096372",
+        "decision_accuracy": "0.429539295393",
+        "chosen_action_regret_bb": "1.0054200542",
+        "uncertainty_eace": "0.270236694176"
+      }
+    },
+    "weights_sha256": "ff60d105d601329f0af70514f4bdc2eedd55e45b57d54770fc5cc17c7033e9c9"
+  },
+  "training_conditions": {
+    "matched": true,
+    "mismatches": [],
+    "limitation": "Matching conditions alone does not establish a significant improvement"
+  },
+  "paired_regret": {
+    "resampling_unit": "complete_rollout_hand",
+    "hands": 41,
+    "states": 2214,
+    "samples": 2000,
+    "seed": 42,
+    "regret_improvement_bb": 1.5378274534237524,
+    "lower_95_bb": 0.7222363314815977,
+    "upper_95_bb": 2.3134710790719004,
+    "limitation": "Conditional on this frozen model pair; not variation across training seeds"
+  }
+}

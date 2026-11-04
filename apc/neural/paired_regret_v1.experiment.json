@@ -1,6 +1,7 @@
 {
   "model_name": "APC",
-  "status": "trained_validated_matched_control_running",
+  "status": "matched_and_untouched_comparisons_complete_not_promoted",
+  "untouched_audit_report": "apc/neural/paired_regret_v1.untouched_comparison.json",
   "checkpoint_fingerprint": "c2a1a15ece9d0f1110db176411fc59eccbc5860ee7184de48f1f96dc32601fdc",
   "comparison_corpus_result": {
     "chosen_action_regret_bb": 1.7506584297,
