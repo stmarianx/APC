@@ -13,7 +13,7 @@ from PIL import Image
 from apc.perception.card_proposals import propose_cards
 from apc.perception.region_model import RegionRecognizer, RANKS, SUITS
 from apc.perception.train_regions import image_tensor
-from apc.perception.card_glyphs import CardGlyphNetwork, glyph_tensor, corner_pair_tensor, adaptive_pair_tensor
+from apc.perception.card_glyphs import CardGlyphNetwork, SeparatedCardGlyphNetwork, glyph_tensor, corner_pair_tensor, adaptive_pair_tensor
 
 
 class CardReader:
@@ -23,13 +23,13 @@ class CardReader:
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
         self.glyph_model = saved.get("model_kind") == "card_glyph_recognizer"
         self.token_extractor = glyph_tensor
-        paired_checkpoint = saved.get("model_kind") == "annotated_card_glyph_pair_recognizer" and saved.get("architecture_version") == "card-glyph-pair-v1"
+        paired_checkpoint = saved.get("model_kind") == "annotated_card_glyph_pair_recognizer" and saved.get("architecture_version") in ("card-glyph-pair-v1", "card-glyph-pair-split-v1")
         if surface_pairs and (not corner_pairs or not paired_checkpoint):
             raise ValueError("Surface pair extraction requires a paired glyph checkpoint")
-        if corner_pairs and saved.get("model_kind") == "annotated_card_glyph_pair_recognizer" and saved.get("architecture_version") == "card-glyph-pair-v1":
+        if corner_pairs and paired_checkpoint:
             self.glyph_model = True
             self.token_extractor = adaptive_pair_tensor if surface_pairs else corner_pair_tensor
-            self.model = CardGlyphNetwork(input_channels=6)
+            self.model = SeparatedCardGlyphNetwork() if saved["architecture_version"] == "card-glyph-pair-split-v1" else CardGlyphNetwork(input_channels=6)
         elif self.glyph_model and saved.get("architecture_version") == "card-glyph-v1":
             self.model = CardGlyphNetwork()
         elif saved.get("architecture_version") == "spatial-grid-v2" and saved.get("model_kind") == "region_recognizer_requires_proposed_boxes":

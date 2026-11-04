@@ -1,0 +1,43 @@
+{
+  "experiment": "separate-glyph-v1",
+  "status": "negative_result_incumbent_retained",
+  "hypothesis": "Independent rank and suit encoders might reduce cross-glyph shortcuts contributing to suit errors",
+  "architecture": "card-glyph-pair-split-v1",
+  "structural_checks": ["Changing rank pixels cannot affect suit logits", "Changing suit pixels cannot affect rank logits", "Suit gradients do not enter rank inputs"],
+  "training": {
+    "primary_manifest_sha256": "800ed7563c88fc4cc45393c947f2e8f7370d35758df0c920416d81e6707bc340",
+    "rehearsal_manifest_sha256": "da7f1102918c8e40190e5db29e131d7f5f25d9377977666e02fccdf352537f62",
+    "seed": 42,
+    "epochs": 40,
+    "augmentation": "color_scale_translation_v1",
+    "captured_images_used_for_training": 0,
+    "audit_v2_candidate_evaluation_performed": false,
+    "clean_selection_checkpoint_sha256": "e12619e4ba54cd173d8525cf3b9b15d19d3715f2deea87a3b0da961a83a5bf53",
+    "robust_selection_checkpoint_sha256": "1c8341c0f0456d05ea6d2a111572a702a5acf50438d8bf7cb37b8e6d79748379"
+  },
+  "selection": {
+    "clean": "Worst source validation accuracy, then pooled accuracy; first tie wins",
+    "robust": "Clean plus three frozen augmented views per source; worst source/view accuracy, then pooled accuracy, then minimum validation cross-entropy",
+    "robust_view_seeds": [43, 44, 45, 46, 47, 48],
+    "view_order": "Primary/rehearsal clean, then primary/rehearsal for each augmented view",
+    "training_rng_preserved": true,
+    "test_data_used_for_selection": false
+  },
+  "results": {
+    "incumbent_development_exact": 34,
+    "clean_split_development_exact": 26,
+    "robust_split_development_exact": 26,
+    "development_targets": 34,
+    "clean_split_mixed_synthetic_exact": 80,
+    "robust_split_mixed_synthetic_exact": 80,
+    "mixed_synthetic_targets": 80,
+    "both_synthetic_oracle_test_exact": 180,
+    "synthetic_oracle_test_targets": 180,
+    "force_grayscale_robust_diagnostic_exact": 26
+  },
+  "interpretation": "Separate encoders satisfy structural isolation but do not improve captured glyph generalization. Perfect clean or augmented synthetic validation is insufficient; this does not establish cross-glyph leakage as the cause of the audit failures.",
+  "checkpoint_storage": "Failed weights remain local under apc/runs; architecture, recipes, fingerprints and full evaluations are committed, no default weights replaced",
+  "default_model_changed": false,
+  "full_table_readiness": false,
+  "next_work": "Broaden independently generated suit font/rasterization coverage and retain old-domain rehearsal, then test with new captures rather than optimizing against the sealed audit"
+}

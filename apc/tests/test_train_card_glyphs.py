@@ -6,11 +6,29 @@ from unittest.mock import patch
 
 import torch
 
-from apc.perception.train_card_glyphs import train, augment_tokens, audit_source_isolation
+from apc.perception.train_card_glyphs import train, augment_tokens, audit_source_isolation, validation_views
 from apc.perception.infer_cards import CardReader
 
 
 class GlyphTrainingTests(unittest.TestCase):
+    def test_fixed_validation_views_preserve_labels_inputs_and_training_rng(self):
+        data = (torch.rand(4, 6, 32, 32), torch.arange(4), torch.arange(4))
+        unchanged = data[0].clone()
+        rng = torch.get_rng_state().clone()
+        first = validation_views([data], 2, 99)
+        torch.testing.assert_close(torch.get_rng_state(), rng)
+        second = validation_views([data], 2, 99)
+        self.assertEqual(len(first), 3)
+        for before, after in zip(first, second):
+            torch.testing.assert_close(before[0], after[0])
+            torch.testing.assert_close(before[1], data[1])
+            torch.testing.assert_close(before[2], data[2])
+        torch.testing.assert_close(data[0], unchanged)
+        self.assertFalse(torch.equal(first[0][0], first[1][0]))
+        for invalid in (-1, 17, True):
+            with self.assertRaises(ValueError):
+                validation_views([data], invalid, 99)
+
     def test_source_audit_rejects_duplicate_images_and_manifests(self):
         with tempfile.TemporaryDirectory() as directory:
             first, second = Path(directory) / "one.json", Path(directory) / "two.json"

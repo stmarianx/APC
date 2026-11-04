@@ -110,16 +110,36 @@ def adaptive_pair_tensor(image, box):
     return (token, present) if present else corner_pair_tensor(image, box)
 
 
+def _glyph_encoder(input_channels):
+    return nn.Sequential(
+        nn.Conv2d(input_channels, 16, 3, padding=1), nn.GELU(), nn.MaxPool2d(2),
+        nn.Conv2d(16, 32, 3, padding=1), nn.GELU(), nn.MaxPool2d(2),
+        nn.Flatten(), nn.Linear(32 * 8 * 8, 128), nn.GELU())
+
+
 class CardGlyphNetwork(nn.Module):
     def __init__(self, input_channels=3):
         super().__init__()
-        self.encoder = nn.Sequential(
-            nn.Conv2d(input_channels, 16, 3, padding=1), nn.GELU(), nn.MaxPool2d(2),
-            nn.Conv2d(16, 32, 3, padding=1), nn.GELU(), nn.MaxPool2d(2),
-            nn.Flatten(), nn.Linear(32 * 8 * 8, 128), nn.GELU())
+        self.encoder = _glyph_encoder(input_channels)
         self.rank = nn.Linear(128, 13)
         self.suit = nn.Linear(128, 4)
 
     def forward(self, tokens):
         features = self.encoder(tokens)
         return {"rank": self.rank(features), "suit": self.suit(features)}
+
+
+class SeparatedCardGlyphNetwork(nn.Module):
+    """Independent rank/suit encoders prevent cross-glyph identity shortcuts."""
+    def __init__(self):
+        super().__init__()
+        self.rank_encoder = _glyph_encoder(3)
+        self.suit_encoder = _glyph_encoder(3)
+        self.rank = nn.Linear(128, 13)
+        self.suit = nn.Linear(128, 4)
+
+    def forward(self, tokens):
+        if tokens.ndim != 4 or tokens.shape[1:] != (6, 32, 32):
+            raise ValueError("Expected Bx6x32x32 paired glyph tokens")
+        return {"rank": self.rank(self.rank_encoder(tokens[:, :3])),
+                "suit": self.suit(self.suit_encoder(tokens[:, 3:]))}

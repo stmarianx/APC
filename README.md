@@ -295,6 +295,20 @@ frame geometry still requires independent overlay review; coaching gates stay cl
 python -m apc.perception.evaluate_frozen_browser_audit
 ```
 
+A subsequent split-encoder experiment isolates rank and suit inputs structurally,
+with strict checkpoint-version handling. It **did not improve** captured recognition:
+26/34 development identities versus 34/34 for the incumbent, despite 80/80 old
+synthetic identities. Adding three fixed augmented validation views per source and
+a validation-loss tie-break selected a later checkpoint but still scored 26/34.
+The incumbent and frozen audit stay unchanged; failed weights remain local.
+
+```text
+python -m apc.perception.train_card_glyphs apc/runs/browser-symbol-mixture-v1/dataset_manifest.json apc/runs/separate-glyph-robust-v1 --epochs 40 --glyph-pair --augment --rehearsal-manifest apc/runs/mixed-surface-locator-v1/dataset_manifest.json --separate-heads --validation-augmentations 3
+```
+
+Fixed validation views preserve training randomness and labels; test examples never
+select weights. This is a research option, not a promoted model or readiness claim.
+
 1. Collect and double-audit the minimum controlled virtual-chip visible-table dataset required by Gate T.
 2. Collect controlled-visible examples for variable-font name, numeric and turn-clock calibration.
 3. Train card, numeric, dealer, seat, name and event heads and evaluate them against Gate P.

@@ -9,7 +9,7 @@ import numpy as np
 from PIL import Image
 from torch.nn import functional as F
 
-from apc.perception.card_glyphs import CardGlyphNetwork, glyph_tensor
+from apc.perception.card_glyphs import CardGlyphNetwork, SeparatedCardGlyphNetwork, glyph_tensor
 from apc.perception.region_model import RANKS, SUITS
 from apc.perception.spatial_targets import load_split
 
@@ -104,10 +104,26 @@ def audit_source_isolation(manifests):
     return sources
 
 
-def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=False, rehearsal_manifests=()):
+def validation_views(datasets, count, seed):
+    if type(count) is not int or not 0 <= count <= 16:
+        raise ValueError("Validation augmentation count must be an integer from 0 through 16")
+    views = list(datasets)
+    with torch.random.fork_rng(devices=[]):
+        for view in range(count):
+            for index, data in enumerate(datasets):
+                torch.manual_seed(seed + view*len(datasets) + index)
+                views.append((augment_tokens(data[0]), data[1], data[2]))
+    return views
+
+
+def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=False, rehearsal_manifests=(), separate_heads=False, validation_augmentations=0):
     output = Path(output)
     if output.exists() or epochs < 1:
         raise ValueError("Use a new output directory and positive epochs")
+    if separate_heads and not glyph_pair:
+        raise ValueError("Separate rank/suit encoders require paired glyph data")
+    if type(validation_augmentations) is not int or not 0 <= validation_augmentations <= 16:
+        raise ValueError("Validation augmentation count must be an integer from 0 through 16")
     torch.set_num_threads(1)
     torch.manual_seed(seed)
     torch.use_deterministic_algorithms(True)
@@ -117,7 +133,8 @@ def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=Fal
                        for split in ("train", "validation", "test")} for source in manifests]
     datasets = {split: tuple(torch.cat([source[split][part] for source in source_datasets]) for part in range(3))
                 for split in ("train", "validation", "test")}
-    model = CardGlyphNetwork(input_channels=6 if glyph_pair else 3)
+    validation_sets = validation_views([source["validation"] for source in source_datasets], validation_augmentations, seed+1)
+    model = SeparatedCardGlyphNetwork() if separate_heads else CardGlyphNetwork(input_channels=6 if glyph_pair else 3)
     optimizer = torch.optim.AdamW(model.parameters(), lr=.001)
     best, weights, history, selected_epoch = None, None, [], None
     for epoch in range(epochs):
@@ -133,10 +150,19 @@ def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=Fal
                 raise ValueError("Nonfinite loss")
             loss.backward()
             optimizer.step()
-        by_source = [metrics(model, source["validation"]) for source in source_datasets]
+        by_source = [metrics(model, data) for data in validation_sets]
         validation = {key: sum(result[key] for result in by_source) for key in by_source[0]}
         key = (min(result["exact_correct"] / result["cards"] for result in by_source),
                validation["exact_correct"] / validation["cards"])
+        validation_loss = None
+        if validation_augmentations:
+            with torch.no_grad():
+                losses = []
+                for data in validation_sets:
+                    predictions = model(data[0])
+                    losses.append(float(F.cross_entropy(predictions["rank"], data[1]) + F.cross_entropy(predictions["suit"], data[2])))
+                validation_loss = sum(losses) / len(losses)
+            key += (-validation_loss,)
         if best is None or key > best:
             best = key
             selected_epoch = epoch + 1
@@ -144,13 +170,16 @@ def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=Fal
         history.append({"epoch": epoch + 1, "validation": validation})
         if rehearsal_manifests:
             history[-1]["validation_by_source"] = by_source
+        if validation_augmentations:
+            history[-1]["validation_loss"] = validation_loss
         print(json.dumps(history[-1]), flush=True)
     model.load_state_dict(weights)
     report = {"model_kind": "card_glyph_recognizer", "architecture_version": "card-glyph-v1",
               "seed": seed, "epochs": epochs, "torch_version": torch.__version__,
               "token_augmentation": "color_scale_translation_v1" if augment else None,
               "selected_epoch": selected_epoch,
-              "selection_rule": "max_min_domain_validation_accuracy_then_pooled_accuracy",
+              "selection_rule": "max_min_domain_view_accuracy_then_pooled_accuracy_then_min_loss" if validation_augmentations else "max_min_domain_validation_accuracy_then_pooled_accuracy",
+              "validation_augmentations": validation_augmentations,
               "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
               "history": history, "test_exact_box": metrics(model, datasets["test"]),
               "full_table_readiness": False, "confidence_calibrated": False}
@@ -158,7 +187,7 @@ def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=Fal
         report["source_isolation_audit"] = source_audit
         report["test_by_source"] = [metrics(model, source["test"]) for source in source_datasets]
     if glyph_pair:
-        report.update(model_kind="annotated_card_glyph_pair_recognizer", architecture_version="card-glyph-pair-v1")
+        report.update(model_kind="annotated_card_glyph_pair_recognizer", architecture_version="card-glyph-pair-split-v1" if separate_heads else "card-glyph-pair-v1")
     output.mkdir(parents=True)
     torch.save({"state_dict": model.state_dict(), "model_kind": report["model_kind"],
                 "architecture_version": report["architecture_version"]}, output / "glyph_weights.pt")
@@ -174,6 +203,9 @@ if __name__ == "__main__":
     parser.add_argument("--glyph-pair", action="store_true")
     parser.add_argument("--augment", action="store_true", help="Training-only color, scale and translation variation")
     parser.add_argument("--rehearsal-manifest", action="append", default=[], help="Additional disjoint source with its own train/validation/test split")
+    parser.add_argument("--separate-heads", action="store_true", help="Independent rank and suit encoders; requires --glyph-pair")
+    parser.add_argument("--validation-augmentations", type=int, default=0, help="Fixed augmented validation views per source; never used as training data")
     args = parser.parse_args()
     print(json.dumps(train(args.manifest, args.output, args.epochs, glyph_pair=args.glyph_pair,
-        augment=args.augment, rehearsal_manifests=args.rehearsal_manifest)["test_exact_box"], indent=2))
+        augment=args.augment, rehearsal_manifests=args.rehearsal_manifest, separate_heads=args.separate_heads,
+        validation_augmentations=args.validation_augmentations)["test_exact_box"], indent=2))
