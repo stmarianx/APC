@@ -438,10 +438,13 @@ def generate_dataset(
     include_glyph_boxes: bool = False,
     card_design: str = "centered_token",
     rank_font: Path | None = None,
+    alternate_builtin_font: bool = False,
 ) -> dict[str, object]:
     if sessions < 3:
         raise ValueError("Synthetic dataset generation requires at least three sessions")
     rng = random.Random(seed)
+    if alternate_builtin_font and rank_font is None:
+        raise ValueError("Alternating fonts requires a custom rank font")
     if rank_font is not None and card_design != "corner_symbols":
         raise ValueError("Custom rank fonts require corner_symbols")
     font_digest = hashlib.sha256(rank_font.read_bytes()).hexdigest() if rank_font else None
@@ -462,7 +465,8 @@ def generate_dataset(
         theme = THEMES[(session_index // len(LAYOUTS)) % len(THEMES)]
         if card_design != "centered_token":
             theme = dict(theme, id=theme["id"] + "-" + card_design)
-        if font_digest:
+        session_font = rank_font if not alternate_builtin_font or session_index % 2 else None
+        if session_font:
             theme = dict(theme, id=theme["id"] + "-" + font_digest[:12])
         session_id = f"synthetic-{session_index:04d}"
         session_names = synthetic_ocr_player_names(rng, seats) if include_name_ocr else None
@@ -489,7 +493,7 @@ def generate_dataset(
                 seat_name_overrides=session_names,
                 include_glyph_boxes=include_glyph_boxes,
                 card_design=card_design,
-                rank_font=rank_font,
+                rank_font=session_font,
                 decision_time_remaining_ms=(
                     CLOCK_VALUES_MS[(session_index * len(STREETS) + sequence_index) % len(CLOCK_VALUES_MS)]
                     if include_turn_clock
@@ -516,6 +520,7 @@ def generate_dataset(
         "include_glyph_boxes": include_glyph_boxes,
         "card_design": card_design,
         "rank_font_sha256": font_digest,
+        "alternate_builtin_font": alternate_builtin_font,
     }
 
 
@@ -529,6 +534,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--include-glyph-boxes", action="store_true")
     parser.add_argument("--card-design", choices=("centered_token", "corner_symbols"), default="centered_token")
     parser.add_argument("--rank-font", type=Path, help="Local font file for corner ranks; fingerprinted, not copied")
+    parser.add_argument("--alternate-builtin-font", action="store_true", help="Use the built-in rank font on even-numbered sessions")
     return parser
 
 
@@ -545,6 +551,7 @@ def main(argv: list[str] | None = None) -> int:
         include_glyph_boxes=args.include_glyph_boxes,
         card_design=args.card_design,
         rank_font=args.rank_font,
+        alternate_builtin_font=args.alternate_builtin_font,
     )
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0

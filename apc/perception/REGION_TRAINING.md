@@ -229,3 +229,14 @@ v2 read 19/20 held-out cards versus 20/20 with the built-in font. High-score
 candidates fell from 13 to 8; neither poses a coaching accuracy guarantee.
 Both sets had 20/20 localized boxes and correct suits. Four synthetic test
 frames cannot establish generalization to captured tables.
+
+Mixed-font experiment: repeat the v2 recipe (36 sessions, seed 20261104,
+20 epochs, glyph pairs) with `--rank-font C:/Windows/Fonts/times.ttf
+--alternate-builtin-font` at generation. The first maximum validation
+checkpoint was epoch 6. For a separate challenge generate 36 sessions with
+seed 20261105 and `--rank-font C:/Windows/Fonts/georgia.ttf` without alternation.
+On its test partition (16 synthetic frames), v2 read 55/80 cards and the
+mixed candidate 77/80; both found 80 boxes with no extra proposals. Of
+high-score candidates v2 was correct on 34/40, mixed on 50/50. This is
+not a calibration set. The mixed checkpoint is corner-glyph-mixed-v1.pt;
+the default reader remains unchanged pending independent captured testing.
