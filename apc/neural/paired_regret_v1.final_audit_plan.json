@@ -1,0 +1,9 @@
+{
+  "status": "audit_corpus_generation_started",
+  "generation_command": "python -m apc.self_learning.raised_postflop_rollout_dataset build apc/runs/paired-regret-final-audit-v1 --dataset-id paired-regret-final-audit-v1 --rollouts 300 --hand-seed-start 1040000",
+  "control_checkpoint_fingerprint": "7a6c7065c9eacd5d15810cd78f9bbcb03bc5f07a320e0a49c8b0ed5887d5b339",
+  "candidate_checkpoint_fingerprint": "c2a1a15ece9d0f1110db176411fc59eccbc5860ee7184de48f1f96dc32601fdc",
+  "evaluate_command": "python -m apc.neural.compare_strategy apc/runs/paired-regret-final-audit-v1 apc/runs/apc-paired-regret-control-v1/checkpoint.json apc/runs/apc-paired-regret-v1/checkpoint.json apc/runs/paired-regret-final-comparison-v1.json",
+  "requirements": ["Validate generated corpus before comparison", "No training or checkpoint selection on audit examples", "Report complete-hand paired confidence interval", "Disclose single-training-seed limitation", "Do not equate rollout improvement to verified GTO"],
+  "activation_authorized": false
+}
