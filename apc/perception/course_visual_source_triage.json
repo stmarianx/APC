@@ -1,0 +1,33 @@
+{
+  "purpose": "Visual source triage for perception data; no labels or training examples created",
+  "inspection_method": "Existing 12-thumbnail contact sheets, not exhaustive frame review",
+  "sources": [
+    {
+      "lesson": "38 Bonus Material Online Play",
+      "contact_sheet": "analysis/contact_sheets/38-bonus-material-online-play.jpg",
+      "observed": "Presenter with background monitors; sampled tables too small for reliable complete-field labeling",
+      "full_online_table_candidate": false
+    },
+    {
+      "lesson": "09 Three-Betting Hand Review",
+      "contact_sheet": "analysis/contact_sheets/09-three-betting-hand-review.jpg",
+      "observed": "Broadcast poker footage with card/stat overlays",
+      "possible_use": "Separately labeled broadcast glyph domain after full-resolution inspection",
+      "full_online_table_candidate": false
+    },
+    {
+      "lesson": "04 Ranges Hand Review",
+      "contact_sheet": "analysis/contact_sheets/04-ranges-hand-review.jpg",
+      "observed": "Broadcast footage, community-card overlays and range illustrations",
+      "possible_use": "Separately labeled broadcast card/range domain, not live-table hero state",
+      "full_online_table_candidate": false
+    }
+  ],
+  "limitations": [
+    "Thumbnail review cannot rule out useful full-resolution frames elsewhere in these videos",
+    "Broadcast-revealed private cards must not become decision-time opponent-card inputs",
+    "Course footage cannot be assumed to be permitted virtual-chip gameplay",
+    "No controlled-visible readiness counts added"
+  ],
+  "next_perception_data_requirement": "Full-resolution controlled virtual-table captures with cards, stack/pot/action elements, grouped by independent session and layout"
+}
