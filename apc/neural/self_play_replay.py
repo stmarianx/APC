@@ -57,8 +57,13 @@ def generate_virtual_completed_replay(seed: int, *, hands_per_session: int = 3) 
         final = hand.step(command)
     if not events or final is None:
         raise RuntimeError("APC virtual hand produced no Hero decisions")
-    feedback = final["completed_hand_feedback"]
     session = f"self-play-session-{seed // hands_per_session:08d}"
+    return completed_replay(hand, events, final["completed_hand_feedback"], session)
+
+
+def completed_replay(hand, events, feedback, session):
+    if not hand.terminal or not events or not feedback["full_hand_completed"]:
+        raise ValueError("Replay requires a completed hand with observed decisions")
     return {
         "schema_version": "1.0.0",
         "model_name": "APC",

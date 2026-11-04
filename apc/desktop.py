@@ -1,5 +1,7 @@
 """Desktop controls for APC models and virtual-chip practice."""
 import json
+import time
+import uuid
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from secrets import randbits
@@ -26,6 +28,8 @@ def launch():
     output.pack(fill="both", expand=True)
     pool = ThreadPoolExecutor(max_workers=1)
     hand = None
+    events = []
+    session = "desktop-" + uuid.uuid4().hex
     generation = 0
 
     def show(value):
@@ -82,13 +86,25 @@ def launch():
         def act(action):
             try:
                 amount = size.get().strip() if action in ("bet", "raise") else None
-                result = hand.step(ActionCommand(action, to_amount_bb=amount))
+                command = ActionCommand(action, to_amount_bb=amount)
+                observed = time.monotonic_ns() // 1_000_000
+                result = hand.step(command)
+                events.append({"observed_monotonic_ms": observed,
+                               "state_fingerprint": state["state_fingerprint"],
+                               "legal_action_keys": [b["action"] for b in state["action_buttons"]],
+                               "chosen_action_key": action, "chosen_action": command.payload(),
+                               "canonical_state": state})
                 while not hand.terminal and hand.observation()["next_actor"] != "Hero":
                     legal = {b["action"] for b in hand.legal_action_buttons()}
                     result = hand.step(ActionCommand("check" if "check" in legal else "call"))
                 if hand.terminal:
                     clear()
-                    show(json.dumps(result["completed_hand_feedback"], indent=2))
+                    from apc.neural.replay_buffer import APCReplayBuffer
+                    from apc.neural.self_play_replay import completed_replay
+                    feedback = result["completed_hand_feedback"]
+                    buffer = APCReplayBuffer(Path(__file__).parent / "runs" / "desktop-replay" / session)
+                    saved = buffer.ingest(completed_replay(hand, list(events), feedback, session))
+                    show(json.dumps({"result": feedback, "replay": saved}, indent=2))
                 else:
                     display_hand()
             except (ValueError, ArithmeticError) as error:
@@ -99,6 +115,7 @@ def launch():
 
     def practice():
         nonlocal hand
+        events.clear()
         hand = HeadsUpVirtualHand(seed=randbits(32), button_player=0)
         display_hand()
 
