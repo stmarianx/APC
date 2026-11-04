@@ -15,6 +15,13 @@
     "p95_frame_ms": 355.36074999254197
   },
   "previous_unrefined_test_exact_correct": 33,
+  "matched_scanline_optimization": {
+    "pixel_p95_frame_ms": 326.70210010837764,
+    "scanline_p95_frame_ms": 138.77530005993322,
+    "same_accuracy_counts": true,
+    "component_parity": "50 seeded random masks with sparse/dense/empty/full cases",
+    "benchmark_command": "python -m apc.perception.benchmark_refinement apc/checkpoints/glyph-surface-pair-v1.pt apc/checkpoints/card-locator-mixed-v1.pt apc/runs/mixed-surface-locator-v1/dataset_manifest.json"
+  },
   "limitations": ["Synthetic renderer only", "Latency target unmet", "Unseen-layout generalization unproven", "Confidence uncalibrated"],
   "full_table_readiness": false
 }

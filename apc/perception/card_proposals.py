@@ -45,20 +45,57 @@ def box_iou(left, right):
     return intersection / (area_left + area_right - intersection) if intersection else 0
 
 
-def refine_card_surface(image, proposal):
+def scanline_components(mask):
+    """Four-connected components using row runs, not a Python visit per pixel."""
+    parents, runs, previous = [], [], []
+    def root(index):
+        while parents[index] != index:
+            parents[index] = parents[parents[index]]
+            index = parents[index]
+        return index
+    for y, row in enumerate(mask):
+        changes = np.flatnonzero(np.diff(np.r_[False, row, False]))
+        current = []
+        for left, right in zip(changes[::2], changes[1::2]):
+            index = len(parents)
+            parents.append(index)
+            for a,b,other in previous:
+                if b <= left:
+                    continue
+                if a >= right:
+                    break
+                one, two = root(index), root(other)
+                parents[max(one,two)] = min(one,two)
+            current.append((int(left),int(right),index))
+            runs.append((int(left),int(right),y,index))
+        previous = current
+    groups = {}
+    for left,right,y,index in runs:
+        key = root(index)
+        if key not in groups:
+            groups[key] = [left,y,right,y+1,right-left]
+        else:
+            item = groups[key]
+            item[0],item[1],item[2],item[3] = min(item[0],left),min(item[1],y),max(item[2],right),max(item[3],y+1)
+            item[4] += right-left
+    return [tuple(groups[key]) for key in sorted(groups)]
+
+
+def refine_card_surface(image, proposal, *, pixels=None):
     """Experimental local edge refinement, independent of card identity/labels."""
     width, height = image.size
     box = proposal["box_xyxy"]
     x1, y1, x2, y2 = [round(v*d) for v, d in zip(box, (width,height,width,height))]
     if not (0 <= x1 < x2 <= width and 0 <= y1 < y2 <= height):
         raise ValueError("Invalid proposal bounds")
-    pixels = np.asarray(image.convert("RGB"), dtype=np.float32)
+    if pixels is None:
+        pixels = np.asarray(image.convert("RGB"), dtype=np.float32)
     surface = np.median(pixels[y1:y2,x1:x2].reshape(-1,3), axis=0)
     dx, dy = round((x2-x1)*.35), round((y2-y1)*.35)
     left, top, right, bottom = max(0,x1-dx), max(0,y1-dy), min(width,x2+dx), min(height,y2+dy)
     local = pixels[top:bottom,left:right]
     mask = np.abs(local-surface).max(2) < 25
-    components = _components(mask)
+    components = scanline_components(mask)
     candidates = []
     for a,b,c,d,area in components:
         candidate = [(left+a)/width,(top+b)/height,(left+c)/width,(top+d)/height]

@@ -32,7 +32,8 @@ class NeuralCardLocator:
             proposals = decode_locator(self.model(inputs)[0])
         if self.refine_surfaces:
             from apc.perception.card_proposals import refine_card_surface
-            proposals = [refine_card_surface(original, proposal) for proposal in proposals]
+            original_pixels = np.asarray(original, dtype=np.float32)
+            proposals = [refine_card_surface(original, proposal, pixels=original_pixels) for proposal in proposals]
         return {"proposals": proposals, "elapsed_ms": (time.perf_counter()-started)*1000,
                 "confidence_calibrated": False, "full_table_readiness": False,
                 "limitation": "Experimental boxes only, no card identities or confirmed hero/board roles"}

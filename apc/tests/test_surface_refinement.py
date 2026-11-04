@@ -4,6 +4,16 @@ from apc.perception.card_proposals import refine_card_surface
 
 
 class SurfaceRefinementTests(unittest.TestCase):
+    def test_scanline_matches_pixel_components(self):
+        import numpy as np
+        from apc.perception.card_proposals import scanline_components
+        from apc.perception.table_locator import _components
+        rng = np.random.default_rng(42)
+        for probability in (0, .1, .5, .9, 1):
+            for _ in range(10):
+                mask = rng.random((25, 31)) < probability
+                self.assertEqual(scanline_components(mask), _components(mask))
+
     def test_light_and_dim_rectangles_refine_without_identity_labels(self):
         for color in ("#f7f3e8", "#8b8983"):
             image = Image.new("RGB", (200,200), "#183b34")
