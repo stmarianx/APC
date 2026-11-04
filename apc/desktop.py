@@ -92,7 +92,7 @@ def launch():
                 events.append({"observed_monotonic_ms": observed,
                                "state_fingerprint": state["state_fingerprint"],
                                "legal_action_keys": [b["action"] for b in state["action_buttons"]],
-                               "chosen_action_key": action, "chosen_action": command.payload(),
+                               "chosen_action_key": action, "chosen_action": result["command"],
                                "canonical_state": state})
                 while not hand.terminal and hand.observation()["next_actor"] != "Hero":
                     legal = {b["action"] for b in hand.legal_action_buttons()}
