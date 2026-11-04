@@ -81,10 +81,12 @@ def frozen_spatial(data, seed):
         return augment_spatial(data)
 
 
-def train(manifest, destination, epochs=10, seed=42, *, relative_size=False, spatial_augmentation=False):
+def train(manifest, destination, epochs=10, seed=42, *, relative_size=False, spatial_augmentation=False, hard_negative_ratio=None):
     destination = Path(destination)
     if destination.exists() or epochs < 1:
         raise ValueError("Use a new destination and positive epochs")
+    if hard_negative_ratio is not None and (type(hard_negative_ratio) is not int or hard_negative_ratio < 1):
+        raise ValueError("Hard-negative ratio must be a positive integer or None")
     torch.set_num_threads(2)
     torch.manual_seed(seed)
     torch.use_deterministic_algorithms(True)
@@ -104,7 +106,7 @@ def train(manifest, destination, epochs=10, seed=42, *, relative_size=False, spa
             inputs, targets = datasets["train"][0][indices], datasets["train"][1][indices]
             if spatial_augmentation:
                 inputs, targets, _ = augment_spatial((inputs, targets, [datasets["train"][2][i] for i in indices.tolist()]))
-            loss = locator_loss(model(inputs), targets, relative_size=relative_size)
+            loss = locator_loss(model(inputs), targets, relative_size=relative_size, hard_negative_ratio=hard_negative_ratio)
             if not torch.isfinite(loss):
                 raise ValueError("Nonfinite locator loss")
             loss.backward()
@@ -120,6 +122,8 @@ def train(manifest, destination, epochs=10, seed=42, *, relative_size=False, spa
               "seed": seed, "epochs": epochs, "input_size": [320,184], "threshold": .5,
               "geometry_loss": "log_size_ratio" if relative_size else "normalized_smooth_l1",
               "spatial_augmentation": "bounded_scale_translation_v1" if spatial_augmentation else None,
+              "hard_negative_ratio": hard_negative_ratio,
+              "hard_negative_minimum_cells_per_frame": 32 if hard_negative_ratio is not None else None,
               "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
               "history": history, "test": evaluate(model, datasets["test"]),
               "torch_version": torch.__version__, "confidence_calibrated": False,
@@ -142,6 +146,7 @@ if __name__ == "__main__":
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--relative-size", action="store_true")
     parser.add_argument("--spatial-augmentation", action="store_true")
+    parser.add_argument("--hard-negative-ratio", type=int, help="Mine strongest negative cells per frame, with at least 32 negatives")
     args = parser.parse_args()
     print(json.dumps(train(args.manifest, args.output, args.epochs, relative_size=args.relative_size,
-        spatial_augmentation=args.spatial_augmentation)["test"], indent=2))
+        spatial_augmentation=args.spatial_augmentation, hard_negative_ratio=args.hard_negative_ratio)["test"], indent=2))

@@ -1,0 +1,693 @@
+{
+  "model_kind": "full_frame_neural_card_locator",
+  "architecture_version": "card-locator-v1",
+  "seed": 42,
+  "epochs": 50,
+  "input_size": [
+    320,
+    184
+  ],
+  "threshold": 0.5,
+  "geometry_loss": "log_size_ratio",
+  "spatial_augmentation": "bounded_scale_translation_v1",
+  "hard_negative_ratio": 3,
+  "hard_negative_minimum_cells_per_frame": 32,
+  "manifest_sha256": "800ed7563c88fc4cc45393c947f2e8f7370d35758df0c920416d81e6707bc340",
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 4,
+        "false_positives": 308,
+        "false_negatives": 196,
+        "precision": 0.01282051282051282,
+        "recall": 0.02,
+        "f1": 0.015625
+      }
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 45,
+        "false_positives": 128,
+        "false_negatives": 155,
+        "precision": 0.26011560693641617,
+        "recall": 0.225,
+        "f1": 0.24128686327077747
+      }
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 66,
+        "false_positives": 82,
+        "false_negatives": 134,
+        "precision": 0.44594594594594594,
+        "recall": 0.33,
+        "f1": 0.3793103448275862
+      }
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 66,
+        "false_positives": 152,
+        "false_negatives": 134,
+        "precision": 0.30275229357798167,
+        "recall": 0.33,
+        "f1": 0.3157894736842105
+      }
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 152,
+        "false_positives": 28,
+        "false_negatives": 48,
+        "precision": 0.8444444444444444,
+        "recall": 0.76,
+        "f1": 0.8
+      }
+    },
+    {
+      "epoch": 6,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 139,
+        "false_positives": 6,
+        "false_negatives": 61,
+        "precision": 0.9586206896551724,
+        "recall": 0.695,
+        "f1": 0.8057971014492754
+      }
+    },
+    {
+      "epoch": 7,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 191,
+        "false_positives": 7,
+        "false_negatives": 9,
+        "precision": 0.9646464646464646,
+        "recall": 0.955,
+        "f1": 0.9597989949748744
+      }
+    },
+    {
+      "epoch": 8,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 134,
+        "false_positives": 64,
+        "false_negatives": 66,
+        "precision": 0.6767676767676768,
+        "recall": 0.67,
+        "f1": 0.6733668341708543
+      }
+    },
+    {
+      "epoch": 9,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 192,
+        "false_positives": 6,
+        "false_negatives": 8,
+        "precision": 0.9696969696969697,
+        "recall": 0.96,
+        "f1": 0.964824120603015
+      }
+    },
+    {
+      "epoch": 10,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 193,
+        "false_positives": 5,
+        "false_negatives": 7,
+        "precision": 0.9747474747474747,
+        "recall": 0.965,
+        "f1": 0.9698492462311558
+      }
+    },
+    {
+      "epoch": 11,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 196,
+        "false_positives": 2,
+        "false_negatives": 4,
+        "precision": 0.98989898989899,
+        "recall": 0.98,
+        "f1": 0.9849246231155779
+      }
+    },
+    {
+      "epoch": 12,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 190,
+        "false_positives": 8,
+        "false_negatives": 10,
+        "precision": 0.9595959595959596,
+        "recall": 0.95,
+        "f1": 0.9547738693467337
+      }
+    },
+    {
+      "epoch": 13,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 14,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 15,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 1,
+        "false_negatives": 2,
+        "precision": 0.9949748743718593,
+        "recall": 0.99,
+        "f1": 0.9924812030075187
+      }
+    },
+    {
+      "epoch": 16,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 17,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 18,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 19,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 20,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 21,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 22,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 23,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 24,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 197,
+        "false_positives": 1,
+        "false_negatives": 3,
+        "precision": 0.9949494949494949,
+        "recall": 0.985,
+        "f1": 0.9899497487437185
+      }
+    },
+    {
+      "epoch": 25,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 26,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 27,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 28,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 194,
+        "false_positives": 0,
+        "false_negatives": 6,
+        "precision": 1.0,
+        "recall": 0.97,
+        "f1": 0.9847715736040609
+      }
+    },
+    {
+      "epoch": 29,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 30,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 31,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 32,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 197,
+        "false_positives": 2,
+        "false_negatives": 3,
+        "precision": 0.9899497487437185,
+        "recall": 0.985,
+        "f1": 0.9874686716791979
+      }
+    },
+    {
+      "epoch": 33,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 34,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 194,
+        "false_positives": 0,
+        "false_negatives": 6,
+        "precision": 1.0,
+        "recall": 0.97,
+        "f1": 0.9847715736040609
+      }
+    },
+    {
+      "epoch": 35,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 36,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 197,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "precision": 1.0,
+        "recall": 0.985,
+        "f1": 0.9924433249370277
+      }
+    },
+    {
+      "epoch": 37,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 194,
+        "false_positives": 0,
+        "false_negatives": 6,
+        "precision": 1.0,
+        "recall": 0.97,
+        "f1": 0.9847715736040609
+      }
+    },
+    {
+      "epoch": 38,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 39,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 196,
+        "false_positives": 1,
+        "false_negatives": 4,
+        "precision": 0.9949238578680203,
+        "recall": 0.98,
+        "f1": 0.9874055415617129
+      }
+    },
+    {
+      "epoch": 40,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 194,
+        "false_positives": 0,
+        "false_negatives": 6,
+        "precision": 1.0,
+        "recall": 0.97,
+        "f1": 0.9847715736040609
+      }
+    },
+    {
+      "epoch": 41,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 42,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 43,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 198,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.99,
+        "f1": 0.9949748743718593
+      }
+    },
+    {
+      "epoch": 44,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 196,
+        "false_positives": 2,
+        "false_negatives": 4,
+        "precision": 0.98989898989899,
+        "recall": 0.98,
+        "f1": 0.9849246231155779
+      }
+    },
+    {
+      "epoch": 45,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 195,
+        "false_positives": 0,
+        "false_negatives": 5,
+        "precision": 1.0,
+        "recall": 0.975,
+        "f1": 0.9873417721518988
+      }
+    },
+    {
+      "epoch": 46,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 47,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 196,
+        "false_positives": 0,
+        "false_negatives": 4,
+        "precision": 1.0,
+        "recall": 0.98,
+        "f1": 0.98989898989899
+      }
+    },
+    {
+      "epoch": 48,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 49,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 199,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "precision": 1.0,
+        "recall": 0.995,
+        "f1": 0.9974937343358395
+      }
+    },
+    {
+      "epoch": 50,
+      "validation": {
+        "frames": 40,
+        "targets": 200,
+        "true_positives": 193,
+        "false_positives": 0,
+        "false_negatives": 7,
+        "precision": 1.0,
+        "recall": 0.965,
+        "f1": 0.9821882951653944
+      }
+    }
+  ],
+  "test": {
+    "frames": 20,
+    "targets": 100,
+    "true_positives": 100,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "torch_version": "2.14.1+cpu",
+  "confidence_calibrated": false,
+  "full_table_readiness": false,
+  "limitation": "Synthetic-only diagnostic; layout memorization not excluded",
+  "test_frozen_spatial": {
+    "frames": 20,
+    "targets": 100,
+    "true_positives": 90,
+    "false_positives": 2,
+    "false_negatives": 10,
+    "precision": 0.9782608695652174,
+    "recall": 0.9,
+    "f1": 0.9375
+  },
+  "validation_scope": "Original validation frames plus fixed spatial variants; test does not select weights"
+}

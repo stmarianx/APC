@@ -38,9 +38,11 @@ def locator_targets(boxes, height, width):
     return target
 
 
-def locator_loss(output, target, *, relative_size=False):
+def locator_loss(output, target, *, relative_size=False, hard_negative_ratio=None):
     if output.shape != target.shape or output.ndim != 4 or output.shape[1] != 5:
         raise ValueError("Expected aligned Bx5xHxW locator targets")
+    if hard_negative_ratio is not None and (type(hard_negative_ratio) is not int or hard_negative_ratio < 1):
+        raise ValueError("Hard-negative ratio must be a positive integer or None")
     positive = target[:, 0].bool()
     raw = F.binary_cross_entropy_with_logits(output[:, 0], target[:, 0], reduction="none")
     # Balance foreground/background separately; otherwise tiny card centers
@@ -48,6 +50,16 @@ def locator_loss(output, target, *, relative_size=False):
     foreground = raw[positive].mean() if positive.any() else raw.sum() * 0
     negative = ~positive
     background = raw[negative].mean() if negative.any() else raw.sum() * 0
+    if hard_negative_ratio is not None:
+        # Do not dilute a few strong false positives among hundreds of easy cells.
+        # Mine independently per frame, including blank frames; keep every positive.
+        mined = []
+        for index in range(len(raw)):
+            losses = raw[index][negative[index]]
+            if losses.numel():
+                count = min(losses.numel(), max(32, hard_negative_ratio * int(positive[index].sum())))
+                mined.append(losses.topk(count).values.mean())
+        background = torch.stack(mined).mean() if mined else raw.sum() * 0
     geometry = F.smooth_l1_loss(output[:, 1:].sigmoid().permute(0, 2, 3, 1)[positive],
                               target[:, 1:].permute(0, 2, 3, 1)[positive]) if positive.any() else output.sum() * 0
     if relative_size and positive.any():

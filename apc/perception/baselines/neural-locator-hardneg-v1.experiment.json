@@ -1,0 +1,47 @@
+{
+  "experiment": "neural-locator-hardneg-v1",
+  "status": "opt_in_research_not_calibrated_or_promoted",
+  "checkpoint": "apc/checkpoints/card-locator-hardneg-v1.pt",
+  "checkpoint_sha256": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273",
+  "recognizer_fixed": "apc/checkpoints/browser-symbol-rehearsal-v1.pt",
+  "training": {
+    "manifest_sha256": "800ed7563c88fc4cc45393c947f2e8f7370d35758df0c920416d81e6707bc340",
+    "seed": 42,
+    "epochs": 50,
+    "selected_epoch": 13,
+    "spatial_augmentation": "bounded_scale_translation_v1",
+    "geometry_loss": "log_size_ratio",
+    "negative_ratio": 3,
+    "minimum_negative_cells_per_frame": 32,
+    "negative_selection": "Highest binary objectness loss among negative cells, independently per frame; all positive cells retained",
+    "selection": "First highest localization F1 on original plus frozen spatial validation frames",
+    "captured_frames_used_in_training": 0,
+    "test_frames_used_for_selection": 0
+  },
+  "captured_development": {
+    "targets": 34,
+    "spatial_control": {"exact_matched_cards": 34, "false_proposals": 31, "misses": 0},
+    "hard_negative_candidate": {"exact_matched_cards": 34, "false_proposals": 0, "misses": 0}
+  },
+  "mixed_brightness_retention": {
+    "targets": 80,
+    "spatial_control": {"exact_matched_cards": 80, "false_proposals": 12, "misses": 0},
+    "hard_negative_candidate": {"exact_matched_cards": 80, "false_proposals": 0, "misses": 0}
+  },
+  "raw_locator_source_test": {"targets": 100, "localized": 100, "false_proposals": 0, "misses": 0},
+  "frozen_spatial_test": {
+    "targets": 100,
+    "spatial_control": {"localized": 93, "false_proposals": 5, "misses": 7, "f1": 0.9393939393939394},
+    "hard_negative_candidate": {"localized": 90, "false_proposals": 2, "misses": 10, "f1": 0.9375}
+  },
+  "interpretation": "Hard-negative mining greatly improved precision on the reused development captures, but shifted/scaled test recall and F1 declined slightly. This is not uniformly improved generalization.",
+  "limitations": [
+    "Captured results are reused, correlated draft-geometry development examples from one session",
+    "Only one training seed and no independently collected captured-table audit for this detector",
+    "Unknown layouts/scales, clutter, occlusion and backgrounds remain unvalidated",
+    "Card roles, whole-table state, calibrated confidence and coaching activation remain unresolved"
+  ],
+  "default_model_changed": false,
+  "full_table_readiness": false,
+  "next_work": "Freeze this detector/recognizer pair, gather independently reviewed table captures and test scale/spacing failure cases before integration or readiness claims"
+}

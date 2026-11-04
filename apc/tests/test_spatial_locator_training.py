@@ -54,11 +54,13 @@ class SpatialLocatorTrainingTests(unittest.TestCase):
             manifest = root / "manifest.json"
             manifest.write_text("{}")
             with patch("apc.perception.train_card_locator.dataset", return_value=self.data()):
-                report = train(manifest, root / "run", epochs=1, relative_size=True, spatial_augmentation=True)
+                report = train(manifest, root / "run", epochs=1, relative_size=True, spatial_augmentation=True, hard_negative_ratio=3)
             self.assertEqual(report["history"][0]["validation"]["frames"], 2)
             self.assertEqual(report["test"]["frames"], 1)
             self.assertEqual(report["test_frozen_spatial"]["frames"], 1)
             self.assertEqual(report["spatial_augmentation"], "bounded_scale_translation_v1")
+            self.assertEqual(report["hard_negative_ratio"], 3)
+            self.assertEqual(report["hard_negative_minimum_cells_per_frame"], 32)
             self.assertFalse(report["full_table_readiness"])
 
 

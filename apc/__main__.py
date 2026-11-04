@@ -67,6 +67,7 @@ def main():
     inspect.add_argument('--neural-cards', action='store_true', help='Experimental neural localization plus surface-refined recognition; no coaching readiness')
     inspect.add_argument('--adaptive-glyphs', action='store_true', help='Opt-in full-face/corner glyph extraction; requires --neural-cards')
     inspect.add_argument('--glyph-checkpoint', type=Path, help='Explicit experimental glyph weights; requires --neural-cards')
+    inspect.add_argument('--locator-checkpoint', type=Path, help='Explicit experimental detector weights; requires --neural-cards')
     args = parser.parse_args()
     if args.mode == 'desktop':
         from apc.desktop import launch
@@ -83,12 +84,14 @@ def main():
             parser.error('--adaptive-glyphs requires --neural-cards')
         if args.glyph_checkpoint and not args.neural_cards:
             parser.error('--glyph-checkpoint requires --neural-cards')
+        if args.locator_checkpoint and not args.neural_cards:
+            parser.error('--locator-checkpoint requires --neural-cards')
         import torch
         from apc.perception.infer_cards import CardReader
         torch.set_num_threads(1)
         filename = 'glyph-surface-pair-v1.pt' if args.neural_cards else ('corner-glyph-pair-v2.pt' if args.corner_symbols else 'glyph-v1.pt')
         checkpoint = args.glyph_checkpoint or Path(__file__).parent / 'checkpoints' / filename
-        options = {"locator_checkpoint": Path(__file__).parent / "checkpoints/card-locator-mixed-v1.pt",
+        options = {"locator_checkpoint": args.locator_checkpoint or Path(__file__).parent / "checkpoints/card-locator-mixed-v1.pt",
                    "refine_surfaces": True} if args.neural_cards else {}
         if args.adaptive_glyphs:
             options['surface_pairs'] = True

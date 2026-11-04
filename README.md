@@ -255,6 +255,22 @@ For the diagnostic light-surface control, replace the locator argument with
 `--pixel-proposals`. Neural training still needs realistic non-card controls and
 high-scoring negative regions to improve precision without losing recall.
 
+Hard-negative training now retains every positive target and emphasizes the strongest
+negative cells per frame (ratio 3, minimum 32). With the rehearsal recognizer, the
+research detector gets 34/34 captured development card appearances and 80/80 old
+mixed-brightness synthetic cards, both with no false proposals. However, the frozen
+spatial test still has 10/100 missed cards and two false proposals (slightly lower
+F1 than the spatial-only control). This remains an opt-in, uncalibrated component;
+defaults and coaching readiness are unchanged.
+
+```text
+python -m apc.perception.train_card_locator apc/runs/browser-symbol-mixture-v1/dataset_manifest.json apc/runs/neural-locator-hardneg-v1 --epochs 50 --relative-size --spatial-augmentation --hard-negative-ratio 3
+python -m apc inspect --neural-cards --adaptive-glyphs --glyph-checkpoint apc/checkpoints/browser-symbol-rehearsal-v1.pt --locator-checkpoint apc/checkpoints/card-locator-hardneg-v1.pt path/to/saved-frame.png
+```
+
+Do not treat reused development captures as an independent readiness audit. New
+reviewed captured sessions and scale/spacing audits are required next.
+
 1. Collect and double-audit the minimum controlled virtual-chip visible-table dataset required by Gate T.
 2. Collect controlled-visible examples for variable-font name, numeric and turn-clock calibration.
 3. Train card, numeric, dealer, seat, name and event heads and evaluate them against Gate P.
