@@ -42,11 +42,19 @@ def practice(seed):
 def main():
     parser = argparse.ArgumentParser(prog='APC', description=__doc__)
     modes = parser.add_subparsers(dest='mode', required=True)
+    modes.add_parser('desktop', help='Open the APC model controller')
+    modes.add_parser('study', help='Search course evidence').add_argument('query')
     modes.add_parser('practice', help='Play heads-up against a check/call opponent').add_argument('--seed', type=int)
     inspect = modes.add_parser('inspect', help='Read card candidates from a saved table frame')
     inspect.add_argument('image', type=Path)
     args = parser.parse_args()
-    if args.mode == 'practice':
+    if args.mode == 'desktop':
+        from apc.desktop import launch
+        launch()
+    elif args.mode == 'study':
+        from apc.neural.course_encoder import study
+        print(json.dumps(study(args.query), indent=2))
+    elif args.mode == 'practice':
         practice(args.seed if args.seed is not None else randbits(32))
     else:
         import torch
