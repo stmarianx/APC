@@ -1,0 +1,17 @@
+{
+  "locator": "apc/checkpoints/card-locator-mixed-v1.pt",
+  "reader": "apc/checkpoints/corner-glyph-mixed-v1.pt",
+  "manifest": "apc/runs/mixed-surface-locator-v1/dataset_manifest.json",
+  "split": "test",
+  "frames": 16,
+  "targets": 80,
+  "matched_locations": 78,
+  "false_proposals": 0,
+  "rank_correct": 32,
+  "suit_correct": 27,
+  "exact_card_candidates_correct": 26,
+  "whole_frames_exact": 0,
+  "confirmed_cards": 0,
+  "conclusion": "Good synthetic box recall did not establish identity recognition. Proposal-shift and surface-robust recognition remain necessary.",
+  "full_table_readiness": false
+}

@@ -24,6 +24,14 @@ class CardReaderTests(unittest.TestCase):
         self.assertEqual(card["status"], "missing_ink")
         for key in ("candidate", "rank_candidate", "suit_candidate", "card"):
             self.assertIsNone(card[key])
+        from types import SimpleNamespace
+        reader.locator = SimpleNamespace(propose=lambda _: {"proposals": [{"box_xyxy": [0, 0, 1, 1]}]})
+        with patch("apc.perception.infer_cards.propose_cards", side_effect=AssertionError("Unexpected brightness proposal")), \
+                patch.object(reader, "predict_regions", return_value=predictions):
+            result = reader.read("unused.png")
+        self.assertEqual(len(result["cards"]), 1)
+        self.assertIn("experimental_neural_proposals", result["limitations"])
+        self.assertFalse(result["full_table_readiness"])
 
     def checkpoint(self, root):
         path = root / "weights.pt"

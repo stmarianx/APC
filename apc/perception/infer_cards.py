@@ -17,7 +17,7 @@ from apc.perception.card_glyphs import CardGlyphNetwork, glyph_tensor, corner_pa
 
 
 class CardReader:
-    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9, corner_pairs=False):
+    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9, corner_pairs=False, locator_checkpoint=None):
         if not math.isfinite(confidence_threshold) or not 0 <= confidence_threshold <= 1:
             raise ValueError("confidence_threshold must be finite in [0,1]")
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
@@ -35,6 +35,10 @@ class CardReader:
             raise ValueError("Unsupported checkpoint kind or architecture")
         self.model.load_state_dict(saved["state_dict"], strict=True)
         self.model.eval()
+        self.locator = None
+        if locator_checkpoint is not None:
+            from apc.perception.infer_card_locator import NeuralCardLocator
+            self.locator = NeuralCardLocator(locator_checkpoint)
         self.threshold = confidence_threshold
         self.max_image_dimension = saved.get("max_image_dimension", 1280)
 
@@ -52,7 +56,8 @@ class CardReader:
 
     def read(self, image_path: str | Path):
         started = time.perf_counter()
-        proposals = propose_cards(image_path)
+        locator = getattr(self, "locator", None)
+        proposals = propose_cards(image_path) if locator is None else locator.propose(image_path)["proposals"]
         cards = []
         if proposals:
             with torch.no_grad():
@@ -82,7 +87,8 @@ class CardReader:
                 "cards": cards, "elapsed_ms": (time.perf_counter() - started) * 1000,
                 "confidence_threshold": self.threshold, "confidence_calibrated": False,
                 "full_table_readiness": False,
-                "limitations": ["light_card_proposals_only", "hero_board_roles_unresolved",
+                "limitations": ["light_card_proposals_only" if locator is None else "experimental_neural_proposals",
+                                "hero_board_roles_unresolved",
                                 "rank_accuracy_not_ready", "not_for_coaching"]}
 
 
