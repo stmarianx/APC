@@ -250,6 +250,16 @@ class APCReplayAdapterTests(unittest.TestCase):
         self.assertEqual(first["resampling_unit"], "complete_hand")
         self.assertGreater(float(first["mae_improvement_bb"]["lower_95"]), 0)
         self.assertGreaterEqual(float(first["action_accuracy_improvement"]["lower_95"]), 0)
+        for row in corpus.manifest["sources"]:
+            row["split_group_hash"] = "group-" + str(int(row["events"]) % 2)
+        with self.assertRaises(ValueError):
+            paired_hand_bootstrap(corpus, indices, incumbent, candidate, samples=200, session_clusters=True)
+        for index, row in enumerate(corpus.manifest["sources"]):
+            row["split_group_hash"] = str(index // 2)
+        clustered = paired_hand_bootstrap(corpus, indices, incumbent, candidate, samples=200, session_clusters=True)
+        self.assertEqual(clustered["complete_hands"], 4)
+        self.assertEqual(clustered["resampling_clusters"], 2)
+        self.assertEqual(clustered["resampling_unit"], "session_group")
 
     def test_fresh_replay_report_validator_recomputes_evidence_gates(self) -> None:
         metric = {"mae_bb": "1", "rmse_bb": "1.2", "bias_bb": "0", "observed_action_accuracy": "0.5", "temporal_consistency_mean": "0.7"}

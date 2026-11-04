@@ -47,12 +47,19 @@ def paired_hand_bootstrap(
     *,
     samples: int = 5000,
     seed: int = 20260826,
+    session_clusters: bool = False,
 ) -> dict[str, object]:
     if samples < 100 or len(indices) == 0:
         raise ValueError("APC paired replay bootstrap parameters are invalid")
     by_hand: defaultdict[str, list[int]] = defaultdict(list)
+    source_groups = {row["replay_fingerprint"]: row.get("split_group_hash")
+                     for row in corpus.manifest.get("sources", [])}
     for local, global_index in enumerate(indices):
-        by_hand[corpus.replay_fingerprints[int(global_index)]].append(local)
+        identity = corpus.replay_fingerprints[int(global_index)]
+        group = source_groups.get(identity) if session_clusters else identity
+        if group is None:
+            raise ValueError("Session bootstrap requires split-group provenance")
+        by_hand[group].append(local)
     hands = sorted(by_hand)
     if len(hands) < 2:
         raise ValueError("APC paired replay bootstrap needs at least two complete hands")
@@ -73,8 +80,9 @@ def paired_hand_bootstrap(
     result: dict[str, object] = {
         "bootstrap_samples": samples,
         "bootstrap_seed": seed,
-        "complete_hands": len(hands),
-        "resampling_unit": "complete_hand",
+        "complete_hands": len({corpus.replay_fingerprints[int(i)] for i in indices}),
+        "resampling_clusters": len(hands),
+        "resampling_unit": "session_group" if session_clusters else "complete_hand",
     }
     for key, values in distributions.items():
         result[key] = {
@@ -143,6 +151,7 @@ def evaluate_fresh_completed_replay(
         candidate_prediction,
         samples=bootstrap_samples,
         seed=bootstrap_seed,
+        session_clusters=groups_known,
     )
     mae_ci = paired["mae_improvement_bb"]
     rmse_ci = paired["rmse_improvement_bb"]
