@@ -140,11 +140,14 @@ def launch():
 
 def river_solution_text(bet_bb):
     from coach.src.poker_coach.river_solver import solve_akq_river
+    from apc.neural.river_policy import predict
     _, solution = solve_akq_river(pot_bb=10, bet_bb=bet_bb, iterations=40000)
     bluff = solution.ip_strategy["Air"]["bet"]
     call = solution.oop_strategy["Bluff-catcher"]["call"]
+    _, neural_bluff, neural_call = predict(10, bet_bb)
     return (f"River solution · 10 BB pot · {bet_bb} BB bet\n\n"
             f"Bet with air {bluff:.1%} of the time. Call with the bluff-catcher {call:.1%} of the time.\n"
+            f"Neural policy estimate: bluff {neural_bluff:.1%}, bluff-catcher call {neural_call:.1%}.\n"
             f"A bluff risks {bet_bb} BB to win 10 BB. A call risks {bet_bb} BB to win {10 + bet_bb} BB.\n\n"
             f"Source: APC river CFR solver, 40,000 iterations, equal prior weights for value and air.\n"
             f"Exploitability in this subgame: {solution.exploitability_bb:.4f} BB.")
