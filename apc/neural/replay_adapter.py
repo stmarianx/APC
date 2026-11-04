@@ -200,14 +200,34 @@ def load_replay_temporal_corpus(
     buffer_or_path: APCReplayBuffer | str | Path, *, max_events: int = DEFAULT_MAX_EVENTS
 ) -> ReplayTemporalCorpus:
     buffer = buffer_or_path if isinstance(buffer_or_path, APCReplayBuffer) else APCReplayBuffer(buffer_or_path)
+    if not buffer.manifest_path.exists():
+        sessions = sorted(buffer.root.glob("desktop-*/manifest.json"))
+        if sessions:
+            rows = []
+            sources = {}
+            for path in sessions:
+                session = APCReplayBuffer(path.parent)
+                entries, fingerprint = _verified_replay_rows(session)
+                for replay, split in entries:
+                    if replay["session_id"] != path.parent.name or replay["split_group_id"] != replay["session_id"]:
+                        raise ValueError("Desktop replay session identity mismatch")
+                    rows.append((replay, split))
+                sources[path.parent.name] = fingerprint
+            corpus = encode_completed_hand_replays(rows, max_events=max_events)
+            corpus.manifest["replay_buffer_content_fingerprint"] = _sha256(sources)
+            return corpus
+    rows, fingerprint = _verified_replay_rows(buffer)
+    corpus = encode_completed_hand_replays(rows, max_events=max_events)
+    corpus.manifest["replay_buffer_content_fingerprint"] = fingerprint
+    return corpus
+
+
+def _verified_replay_rows(buffer):
     report = buffer.validate()
     if not report["valid"]:
         raise ValueError("APC replay buffer is invalid: " + "; ".join(report["issues"]))
     manifest = buffer._load()
-    rows = [
+    return [
         (json.loads((buffer.root / str(entry["file"])).read_text(encoding="utf-8")), str(entry["split"]))
         for entry in manifest["entries"]
-    ]
-    corpus = encode_completed_hand_replays(rows, max_events=max_events)
-    corpus.manifest["replay_buffer_content_fingerprint"] = manifest.get("content_fingerprint")
-    return corpus
+    ], manifest.get("content_fingerprint")
