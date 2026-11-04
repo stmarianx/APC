@@ -111,7 +111,9 @@ python -m apc.practice_web --model-checkpoint apc/runs/apc-paired-regret-v1/chec
 **Inspect neural estimates** supports only the exact unbet 100 BB, 2.5 BB-open
 postflop trunk against the known check/call simulator. Other states are rejected.
 Estimates are uncalibrated, not GTO recommendations, and never operate buttons.
-They are cleared after a state change. This panel's browser verification remains pending.
+They are cleared after a state change. Browser checks verified preflop rejection,
+supported-flop estimates, and clearing after an action; this is UI verification,
+not coaching readiness.
 
 ```powershell
 Set-Location 'C:\Users\st_ma\Documents\Negreanu\coach'

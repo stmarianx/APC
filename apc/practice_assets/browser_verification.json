@@ -3,4 +3,10 @@
   "pending": ["Browser download completion", "New-hand button after export", "Raise/bet UI behavior", "Responsive viewport checks"],
   "interruption": "Browser session became unavailable during export verification. No successful download claimed.",
   "temporary_server_stopped": true
+  ,"neural_panel": {
+    "verified": ["Unsupported preflop produces no estimates", "2.5 BB raise reaches supported 5 BB flop pot", "Four experimental estimates rendered", "No action taken by model inspection", "Check to turn clears stale estimates"],
+    "checkpoint_fingerprint": "c2a1a15ece9d0f1110db176411fc59eccbc5860ee7184de48f1f96dc32601fdc",
+    "screenshot_local_only": "apc/runs/practice-preview-verification-v1/model-panel.png",
+    "coaching_ready": false
+  }
 }
