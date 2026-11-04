@@ -1,0 +1,45 @@
+{
+  "experiment": "browser-symbol-rehearsal-v1",
+  "status": "opt_in_perception_research_checkpoint",
+  "checkpoint": "apc/checkpoints/browser-symbol-rehearsal-v1.pt",
+  "checkpoint_sha256": "96a95141428a965d15f2cd385659f0663441a9f014dc931b614c0895a864cbef",
+  "training": {
+    "primary_manifest_sha256": "800ed7563c88fc4cc45393c947f2e8f7370d35758df0c920416d81e6707bc340",
+    "rehearsal_manifest_sha256": "da7f1102918c8e40190e5db29e131d7f5f25d9377977666e02fccdf352537f62",
+    "rehearsal_generation": "python -m apc.synthetic.render_table apc/runs/mixed-surface-locator-v1 --sessions 36 --seed 20261107 --include-glyph-boxes --card-design corner_symbols --card-surface mixed",
+    "seed": 42,
+    "epochs": 40,
+    "selected_epoch": 5,
+    "initialization": "random_from_scratch",
+    "augmentation": "color_scale_translation_v1",
+    "selection": "Maximize the worst per-source validation accuracy, then pooled validation accuracy; first tie wins",
+    "captured_images_used_for_training": 0,
+    "test_examples_used_for_selection": 0,
+    "source_isolation": "Source manifests and image hashes checked before training; stronger controlled-session isolation guard rechecked after training with no dataset changes"
+  },
+  "results": {
+    "captured_development": {"correct": 30, "targets": 34, "oracle_glyph_correct": 34, "false_proposals": 26, "missed_cards": 4},
+    "old_synthetic_end_to_end": {"correct": 78, "targets": 80, "incumbent_correct": 78},
+    "combined_source_test_oracle_glyphs": {"correct": 180, "targets": 180},
+    "sealed_font_synthetic_test": {"correct": 60, "targets": 60, "incumbent_correct": 54, "candidate_whole_frames_correct": 12, "frames": 12}
+  },
+  "sealed_audit": {
+    "plan": "browser-symbol-rehearsal-v1.audit-plan.json",
+    "manifest_sha256": "9c1ae9ce58927b144001c7e7b98141bfedc7cbd680040a5328d67e933507e6d1",
+    "font_sha256": "6c3fd894b19950b10c34bf64069ef821eaf2f58f959146306fee5b367472e501",
+    "candidate_frozen_before_generation": true,
+    "test_split_only_evaluated": true,
+    "audit_not_used_for_training_or_selection": true,
+    "scope": "New synthetic seed and font file, not an independent captured-browser or cross-platform audit"
+  },
+  "limitations": [
+    "Captured development results use correlated frames and draft DOM geometry from one session",
+    "Detector false proposals and missed cards remain unresolved",
+    "Confidence, hero/board roles and whole-table temporal state remain unvalidated",
+    "Only one training seed; latency observations are not a repeated latency gate",
+    "This is the card-perception component, not a complete GTO policy or finished APC"
+  ],
+  "default_model_changed": false,
+  "full_table_readiness": false,
+  "next_work": "Improve detector precision/recall on reviewed captured-table images and collect independently reviewed captures before calibration or readiness claims"
+}

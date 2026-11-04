@@ -1,0 +1,16 @@
+{
+  "candidate_checkpoint_sha256": "96a95141428a965d15f2cd385659f0663441a9f014dc931b614c0895a864cbef",
+  "audit_dataset": "apc/runs/browser-symbol-sealed-font-audit-v1",
+  "audit_seed": 20261110,
+  "sessions": 27,
+  "card_design": "mixed_symbols",
+  "font": "C:/Windows/Fonts/seguisb.ttf",
+  "alternate_builtin_font": true,
+  "card_surface": "mixed",
+  "evaluation_split": "test",
+  "candidate_selection_before_audit": true,
+  "comparison": "Compare the frozen candidate and incumbent glyph-surface-pair-v1 using the same locator, refinement and adaptive extractor",
+  "no_audit_training_or_selection": true,
+  "scope": "Previously unused synthetic seed and font file; not an independent captured-table or readiness audit",
+  "full_table_readiness": false
+}

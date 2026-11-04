@@ -213,6 +213,31 @@ experiment; font binaries are not redistributed. The synthetic session split is
 isolated, but neither these synthetic scores nor reused development captures prove
 cross-platform generalization.
 
+The follow-up **rehearsal** candidate trains on both sources and selects weights
+using the worst per-source validation accuracy. It recovered 78/80 old synthetic
+cards while reaching 30/34 captured development card appearances (34/34 with
+supplied glyph boxes). A frozen-candidate synthetic audit using a new seed and font
+scored 60/60, versus 54/60 for the incumbent. Captured detector errors remain:
+26 false proposals and four missed cards. This is still research-only perception,
+with no confidence calibration or coaching readiness.
+
+Inspect a saved frame with this non-default model explicitly:
+
+```text
+python -m apc inspect --neural-cards --adaptive-glyphs --glyph-checkpoint apc/checkpoints/browser-symbol-rehearsal-v1.pt path/to/saved-frame.png
+```
+
+Reproduce its training after generating the two documented source datasets:
+
+```text
+python -m apc.synthetic.render_table apc/runs/mixed-surface-locator-v1 --sessions 36 --seed 20261107 --include-glyph-boxes --card-design corner_symbols --card-surface mixed
+python -m apc.perception.train_card_glyphs apc/runs/browser-symbol-mixture-v1/dataset_manifest.json apc/runs/browser-symbol-rehearsal-v1 --epochs 40 --glyph-pair --augment --rehearsal-manifest apc/runs/mixed-surface-locator-v1/dataset_manifest.json
+```
+
+Each source retains its own train/validation/test split. Duplicate source manifests,
+duplicate images and cross-source captured-session leakage are rejected; generated
+synthetic session IDs are namespaced by dataset ID. Test scores never select weights.
+
 1. Collect and double-audit the minimum controlled virtual-chip visible-table dataset required by Gate T.
 2. Collect controlled-visible examples for variable-font name, numeric and turn-clock calibration.
 3. Train card, numeric, dealer, seat, name and event heads and evaluate them against Gate P.

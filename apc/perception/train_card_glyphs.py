@@ -75,17 +75,51 @@ def augment_tokens(tokens):
     return parts.reshape(shape)
 
 
-def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=False):
+def audit_source_isolation(manifests):
+    """Reject duplicated manifests/images, including cross-source split leakage."""
+    seen_manifests, seen_images, seen_sessions, sources = set(), {}, {}, []
+    for manifest in manifests:
+        raw = Path(manifest).read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        if digest in seen_manifests:
+            raise ValueError("Duplicate training source manifest")
+        seen_manifests.add(digest)
+        metadata = json.loads(raw)
+        synthetic = metadata.get("source_policy", {}).get("allowed_source_kinds") == ["synthetic_render"]
+        namespace = metadata["dataset_id"] if synthetic else "controlled_capture"
+        counts = {}
+        for split in ("train", "validation", "test"):
+            frames = load_split(manifest, split)
+            counts[split] = len(frames)
+            for frame in frames:
+                session = (namespace, frame["capture_session_id"])
+                if session in seen_sessions and seen_sessions[session] != split:
+                    raise ValueError("Capture session crosses source splits")
+                seen_sessions[session] = split
+                fingerprint = frame["image"]["sha256"]
+                if fingerprint in seen_images:
+                    raise ValueError("Duplicate source image or cross-source split leakage")
+                seen_images[fingerprint] = (digest, split)
+        sources.append({"manifest_sha256": digest, "frames_by_split": counts})
+    return sources
+
+
+def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=False, rehearsal_manifests=()):
     output = Path(output)
     if output.exists() or epochs < 1:
         raise ValueError("Use a new output directory and positive epochs")
     torch.set_num_threads(1)
     torch.manual_seed(seed)
     torch.use_deterministic_algorithms(True)
-    datasets = {split: token_dataset(manifest, split, glyph_pair=glyph_pair) for split in ("train", "validation", "test")}
+    manifests = [manifest, *rehearsal_manifests]
+    source_audit = audit_source_isolation(manifests) if rehearsal_manifests else None
+    source_datasets = [{split: token_dataset(source, split, glyph_pair=glyph_pair)
+                       for split in ("train", "validation", "test")} for source in manifests]
+    datasets = {split: tuple(torch.cat([source[split][part] for source in source_datasets]) for part in range(3))
+                for split in ("train", "validation", "test")}
     model = CardGlyphNetwork(input_channels=6 if glyph_pair else 3)
     optimizer = torch.optim.AdamW(model.parameters(), lr=.001)
-    best, weights, history = -1, None, []
+    best, weights, history, selected_epoch = None, None, [], None
     for epoch in range(epochs):
         model.train()
         data = datasets["train"]
@@ -99,19 +133,30 @@ def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=Fal
                 raise ValueError("Nonfinite loss")
             loss.backward()
             optimizer.step()
-        validation = metrics(model, datasets["validation"])
-        if validation["exact_correct"] > best:
-            best = validation["exact_correct"]
+        by_source = [metrics(model, source["validation"]) for source in source_datasets]
+        validation = {key: sum(result[key] for result in by_source) for key in by_source[0]}
+        key = (min(result["exact_correct"] / result["cards"] for result in by_source),
+               validation["exact_correct"] / validation["cards"])
+        if best is None or key > best:
+            best = key
+            selected_epoch = epoch + 1
             weights = {key: value.detach().clone() for key, value in model.state_dict().items()}
         history.append({"epoch": epoch + 1, "validation": validation})
+        if rehearsal_manifests:
+            history[-1]["validation_by_source"] = by_source
         print(json.dumps(history[-1]), flush=True)
     model.load_state_dict(weights)
     report = {"model_kind": "card_glyph_recognizer", "architecture_version": "card-glyph-v1",
               "seed": seed, "epochs": epochs, "torch_version": torch.__version__,
               "token_augmentation": "color_scale_translation_v1" if augment else None,
+              "selected_epoch": selected_epoch,
+              "selection_rule": "max_min_domain_validation_accuracy_then_pooled_accuracy",
               "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
               "history": history, "test_exact_box": metrics(model, datasets["test"]),
               "full_table_readiness": False, "confidence_calibrated": False}
+    if rehearsal_manifests:
+        report["source_isolation_audit"] = source_audit
+        report["test_by_source"] = [metrics(model, source["test"]) for source in source_datasets]
     if glyph_pair:
         report.update(model_kind="annotated_card_glyph_pair_recognizer", architecture_version="card-glyph-pair-v1")
     output.mkdir(parents=True)
@@ -128,5 +173,7 @@ if __name__ == "__main__":
     parser.add_argument("--epochs", type=int, default=15)
     parser.add_argument("--glyph-pair", action="store_true")
     parser.add_argument("--augment", action="store_true", help="Training-only color, scale and translation variation")
+    parser.add_argument("--rehearsal-manifest", action="append", default=[], help="Additional disjoint source with its own train/validation/test split")
     args = parser.parse_args()
-    print(json.dumps(train(args.manifest, args.output, args.epochs, glyph_pair=args.glyph_pair, augment=args.augment)["test_exact_box"], indent=2))
+    print(json.dumps(train(args.manifest, args.output, args.epochs, glyph_pair=args.glyph_pair,
+        augment=args.augment, rehearsal_manifests=args.rehearsal_manifest)["test_exact_box"], indent=2))
