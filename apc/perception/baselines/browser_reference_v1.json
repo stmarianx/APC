@@ -1,0 +1,14 @@
+{
+  "command": "python -m apc.perception.evaluate_browser_reference",
+  "reference": "apc/data/reference/browser-training-v1",
+  "status": "provisional_dom_geometry_pending_independent_review",
+  "targets": 7,
+  "proposals": 6,
+  "matched_locations": 4,
+  "false_detections": 2,
+  "missed_locations": 3,
+  "correct_card_identities": 1,
+  "confirmed_cards": 0,
+  "training_eligible": false,
+  "full_table_readiness": false
+}
