@@ -198,3 +198,17 @@ styles. Default centered-token output is preserved. A corner-symbol paired run
 and 20/20 suits using labeled glyph regions. It is not a promotion candidate.
 Both designs pass dataset validation and six-channel extraction tests. A sample
 render was visually inspected for placement and glyph readability.
+
+Corner candidate v2: regenerate and evaluate from the repository root:
+
+```text
+python -m apc.synthetic.render_table apc/runs/corner_rank_36sessions --sessions 36 --seed 20261104 --include-glyph-boxes --card-design corner_symbols
+python -m apc.perception.train_card_glyphs apc/runs/corner_rank_36sessions/dataset_manifest.json apc/runs/corner_rank_candidate36 --glyph-pair --epochs 20
+python -m apc.perception.evaluate_card_reader apc/checkpoints/corner-glyph-pair-v2.pt apc/runs/corner_rank_36sessions/dataset_manifest.json --corner-symbols
+```
+
+Training used default seed 42; epoch 6 first maximized validation exact matches.
+On 16 held-out synthetic frames the independent pixel reader recovered all 80
+card observations with both checkpoints. V1 read 74 ranks and 80 suits; v2 read
+80 ranks and 80 suits. These observations include cards repeated across streets.
+No captured-table accuracy or calibrated confidence is implied.

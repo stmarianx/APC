@@ -13,10 +13,11 @@ from apc.perception.spatial_targets import load_split
 from apc.perception.region_model import RANKS, SUITS
 
 
-def evaluate_reader(checkpoint, manifest, split="test"):
-    reader = CardReader(checkpoint)
+def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False):
+    reader = CardReader(checkpoint, corner_pairs=True) if corner_pairs else CardReader(checkpoint)
     totals = {"frames": 0, "targets": 0, "true_positives": 0,
               "false_positives": 0, "false_negatives": 0,
+              "candidate_rank_correct": 0, "candidate_suit_correct": 0,
               "candidate_exact_correct": 0, "high_score_candidates": 0,
               "high_score_correct": 0, "high_score_candidates_all": 0}
     latency = []
@@ -36,6 +37,9 @@ def evaluate_reader(checkpoint, manifest, split="test"):
             predicted = result["cards"][item["proposal_index"]]
             truth = cards[item["target_index"]]["attributes"]
             correct = predicted["candidate"] == truth["rank"] + truth["suit"]
+            candidate = predicted["candidate"] or ""
+            totals["candidate_rank_correct"] += int(candidate[:-1] == truth["rank"])
+            totals["candidate_suit_correct"] += int(candidate[-1:] == truth["suit"])
             totals["candidate_exact_correct"] += int(correct)
             high = min(predicted["rank_score"], predicted["suit_score"]) >= reader.threshold
             totals["high_score_candidates"] += int(high)
@@ -50,9 +54,9 @@ def evaluate_reader(checkpoint, manifest, split="test"):
     return totals
 
 
-def compare_crops(checkpoint, manifest, split="validation"):
+def compare_crops(checkpoint, manifest, split="validation", *, corner_pairs=False):
     """Paired diagnostic only: annotations supply the exact-box comparison."""
-    reader = CardReader(checkpoint)
+    reader = CardReader(checkpoint, corner_pairs=True) if corner_pairs else CardReader(checkpoint)
     result = {"matched_cards": 0, "exact_box_correct": 0, "proposed_box_correct": 0,
               "exact_correct_proposed_wrong": 0, "candidate_disagreements": 0}
     overlaps, shifts = [], []
@@ -91,10 +95,11 @@ def main():
     parser.add_argument("manifest")
     parser.add_argument("--split", choices=("train", "validation", "test"), default="test")
     parser.add_argument("--compare-crops", action="store_true")
+    parser.add_argument("--corner-symbols", action="store_true", help="Use independent corner rank/suit proposals")
     args = parser.parse_args()
     torch.set_num_threads(1)
     function = compare_crops if args.compare_crops else evaluate_reader
-    print(json.dumps(function(args.checkpoint, args.manifest, args.split), indent=2))
+    print(json.dumps(function(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols), indent=2))
 
 
 if __name__ == "__main__":

@@ -61,7 +61,7 @@ def main():
         import torch
         from apc.perception.infer_cards import CardReader
         torch.set_num_threads(1)
-        filename = 'corner-glyph-pair-v1.pt' if args.corner_symbols else 'glyph-v1.pt'
+        filename = 'corner-glyph-pair-v2.pt' if args.corner_symbols else 'glyph-v1.pt'
         checkpoint = Path(__file__).parent / 'checkpoints' / filename
         print(json.dumps(CardReader(checkpoint, corner_pairs=args.corner_symbols).read(args.image), indent=2))
 
