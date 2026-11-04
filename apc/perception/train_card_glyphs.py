@@ -57,7 +57,25 @@ def metrics(model, dataset):
             "suit_correct": int(suit_correct.sum()), "exact_correct": int((rank_correct & suit_correct).sum())}
 
 
-def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False):
+def augment_tokens(tokens):
+    """Training-only color/scale/translation variation; never changes labels."""
+    if tokens.ndim != 4 or tokens.shape[1] not in (3, 6) or tokens.shape[2:] != (32, 32):
+        raise ValueError("Expected RGB glyph tokens or paired RGB glyph tokens")
+    shape = tokens.shape
+    parts = tokens.reshape(-1, 3, 32, 32)
+    size = int(torch.randint(20, 33, ()).item())
+    parts = F.interpolate(F.interpolate(parts, size=(size, size), mode="bilinear", align_corners=False),
+                          size=(32, 32), mode="bilinear", align_corners=False)
+    gray = parts.amax(dim=1, keepdim=True).expand_as(parts)
+    use_gray = torch.rand(len(parts), 1, 1, 1, device=parts.device) < .5
+    parts = torch.where(use_gray, gray, parts)
+    parts = (parts * (.75 + .5 * torch.rand(len(parts), 1, 1, 1, device=parts.device))).clamp(0, 1)
+    dx, dy = torch.randint(0, 5, (2,)).tolist()
+    parts = F.pad(parts, (2, 2, 2, 2))[:, :, dy:dy+32, dx:dx+32]
+    return parts.reshape(shape)
+
+
+def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False, augment=False):
     output = Path(output)
     if output.exists() or epochs < 1:
         raise ValueError("Use a new output directory and positive epochs")
@@ -74,7 +92,8 @@ def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False):
         order = torch.randperm(len(data[0]))
         for indices in order.split(64):
             optimizer.zero_grad()
-            result = model(data[0][indices])
+            tokens = data[0][indices]
+            result = model(augment_tokens(tokens) if augment else tokens)
             loss = F.cross_entropy(result["rank"], data[1][indices]) + F.cross_entropy(result["suit"], data[2][indices])
             if not torch.isfinite(loss):
                 raise ValueError("Nonfinite loss")
@@ -89,6 +108,7 @@ def train(manifest, output, epochs=15, seed=42, *, glyph_pair=False):
     model.load_state_dict(weights)
     report = {"model_kind": "card_glyph_recognizer", "architecture_version": "card-glyph-v1",
               "seed": seed, "epochs": epochs, "torch_version": torch.__version__,
+              "token_augmentation": "color_scale_translation_v1" if augment else None,
               "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
               "history": history, "test_exact_box": metrics(model, datasets["test"]),
               "full_table_readiness": False, "confidence_calibrated": False}
@@ -107,5 +127,6 @@ if __name__ == "__main__":
     parser.add_argument("output")
     parser.add_argument("--epochs", type=int, default=15)
     parser.add_argument("--glyph-pair", action="store_true")
+    parser.add_argument("--augment", action="store_true", help="Training-only color, scale and translation variation")
     args = parser.parse_args()
-    print(json.dumps(train(args.manifest, args.output, args.epochs, glyph_pair=args.glyph_pair)["test_exact_box"], indent=2))
+    print(json.dumps(train(args.manifest, args.output, args.epochs, glyph_pair=args.glyph_pair, augment=args.augment)["test_exact_box"], indent=2))

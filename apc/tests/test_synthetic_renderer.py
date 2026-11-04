@@ -20,6 +20,30 @@ from apc.synthetic.render_table import (
 
 
 class SyntheticRendererContractTests(unittest.TestCase):
+    @unittest.skipUnless(Path("C:/Windows/Fonts/segoeuib.ttf").is_file(), "Local Unicode font unavailable")
+    def test_stacked_unicode_cards_have_explicit_contained_glyph_labels(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rendered = render_frame(Path(directory) / "unicode.png", rng=random.Random(7),
+                session_id="unicode-session", sequence_index=0, seats=6, layout_id="six-max",
+                theme=THEMES[0], street="flop", card_design="stacked_symbols",
+                rank_font=Path("C:/Windows/Fonts/segoeuib.ttf"), include_glyph_boxes=True)
+            cards = rendered.annotation["objects"]["hero_cards"] + rendered.annotation["objects"]["board_cards"]
+            for card in cards:
+                parent = card["box"]
+                for kind in ("rank_box", "suit_box"):
+                    child = card[kind]
+                    self.assertGreater(child["width"], 0)
+                    self.assertGreater(child["height"], 0)
+                    for axis, size in (("x", "width"), ("y", "height")):
+                        self.assertGreaterEqual(child[axis], parent[axis])
+                        self.assertLessEqual(child[axis] + child[size], parent[axis] + parent[size] + 1e-9)
+
+    def test_stacked_unicode_cards_require_an_explicit_font(self):
+        with self.assertRaisesRegex(ValueError, "explicit local font"):
+            render_frame(Path("unused.png"), rng=random.Random(7), session_id="unicode-session",
+                sequence_index=0, seats=6, layout_id="six-max", theme=THEMES[0], street="flop",
+                card_design="stacked_symbols")
+
     def test_layout_boxes_are_normalized_and_nonoverlapping_by_identity(self) -> None:
         for seats, _ in LAYOUTS:
             boxes = seat_boxes(seats)

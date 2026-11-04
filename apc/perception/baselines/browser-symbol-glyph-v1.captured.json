@@ -1,0 +1,147 @@
+{
+  "development_diagnostic_only": true,
+  "draft_geometry": true,
+  "capture_sessions": 1,
+  "capture_session_id": "apc-browser-20261104-bridge",
+  "hand_groups": 3,
+  "frames": [
+    {
+      "image": "s1-preflop.png",
+      "hand_group": "hand-1",
+      "targets": 2,
+      "proposals": 4,
+      "localized": 2,
+      "false_positives": 2,
+      "missed_cards": 0,
+      "end_to_end_exact": 1,
+      "oracle_glyph_exact": 1,
+      "oracle_candidates": [
+        "As",
+        "3s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s1-flop.png",
+      "hand_group": "hand-1",
+      "targets": 5,
+      "proposals": 9,
+      "localized": 5,
+      "false_positives": 4,
+      "missed_cards": 0,
+      "end_to_end_exact": 3,
+      "oracle_glyph_exact": 3,
+      "oracle_candidates": [
+        "5s",
+        "3h",
+        "6s",
+        "As",
+        "3c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s1-turn.png",
+      "hand_group": "hand-1",
+      "targets": 6,
+      "proposals": 10,
+      "localized": 5,
+      "false_positives": 5,
+      "missed_cards": 1,
+      "end_to_end_exact": 5,
+      "oracle_glyph_exact": 5,
+      "oracle_candidates": [
+        "5c",
+        "3h",
+        "6s",
+        "Qs",
+        "As",
+        "3c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s1-river.png",
+      "hand_group": "hand-1",
+      "targets": 7,
+      "proposals": 11,
+      "localized": 6,
+      "false_positives": 5,
+      "missed_cards": 1,
+      "end_to_end_exact": 3,
+      "oracle_glyph_exact": 4,
+      "oracle_candidates": [
+        "5s",
+        "3h",
+        "6s",
+        "Qs",
+        "6s",
+        "As",
+        "3c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s2-river.png",
+      "hand_group": "hand-2",
+      "targets": 7,
+      "proposals": 11,
+      "localized": 6,
+      "false_positives": 5,
+      "missed_cards": 1,
+      "end_to_end_exact": 5,
+      "oracle_glyph_exact": 5,
+      "oracle_candidates": [
+        "9s",
+        "8h",
+        "Qd",
+        "Ts",
+        "Ad",
+        "6h",
+        "Kd"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s3-river.png",
+      "hand_group": "hand-3",
+      "targets": 7,
+      "proposals": 11,
+      "localized": 6,
+      "false_positives": 5,
+      "missed_cards": 1,
+      "end_to_end_exact": 3,
+      "oracle_glyph_exact": 4,
+      "oracle_candidates": [
+        "7s",
+        "Qh",
+        "4s",
+        "Ks",
+        "9s",
+        "6s",
+        "Ts"
+      ],
+      "confirmed_cards": 0
+    }
+  ],
+  "unique_visible_identities": 19,
+  "collection_sha256": "6e318dad98ec5a6d46fe1139e04986349670efc9cf950a083b490f72b14e2733",
+  "totals": {
+    "targets": 34,
+    "proposals": 56,
+    "localized": 30,
+    "false_positives": 26,
+    "missed_cards": 4,
+    "end_to_end_exact": 20,
+    "oracle_glyph_exact": 22,
+    "confirmed_cards": 0
+  },
+  "training_performed": false,
+  "full_table_readiness": false,
+  "checkpoint_sha256": {
+    "glyph_weights.pt": "1330fd2c94969b535048ace1c860efa5a4870baf7ae7c4020541e9bf06d748e0",
+    "card-locator-mixed-v1.pt": "cf0f15fba0cfdf4f8217a51cbf65984066b676fc504e5225a46d6f2b2a470197"
+  },
+  "torch_version": "2.14.1+cpu",
+  "pair_extraction": "surface_two_band_then_corner"
+}

@@ -191,6 +191,28 @@ candidates, with two missed cards and no false proposals. These are development
 results, not independent readiness evidence; browser captures still produce many
 false proposals and recognition mistakes. No card identity is confirmed for coaching.
 
+A separately trained, **non-default** glyph candidate now uses mixed procedural
+and browser-style Unicode symbols plus training-only color/scale/translation
+augmentation. It scored 29/34 on the same captured development collection (33/34
+with oracle glyph boxes), but regressed from 78/80 to 74/80 on the old synthetic
+set. It is preserved at `apc/checkpoints/browser-symbol-glyph-aug-v1.pt`, not promoted.
+The six browser captures were not used as training data. These are card-perception
+weights, not the finished poker-strategy model.
+
+Reproduce the synthetic training experiment with a matching local font (font hash
+and full results are recorded in `apc/perception/baselines/browser-symbol-glyph-v1.experiment.json`):
+
+```text
+python -m apc.synthetic.render_table apc/runs/browser-symbol-mixture-v1 --sessions 54 --seed 20261109 --include-glyph-boxes --card-design mixed_symbols --rank-font C:/Windows/Fonts/segoeuib.ttf --alternate-builtin-font --card-surface mixed
+python -m apc.perception.train_card_glyphs apc/runs/browser-symbol-mixture-v1/dataset_manifest.json apc/runs/browser-symbol-glyph-aug-v1 --epochs 40 --glyph-pair --augment
+python -m apc.perception.evaluate_browser_collection apc/data/development/browser-domain-bridge-v1/collection.json --surface-pairs --glyph-checkpoint apc/checkpoints/browser-symbol-glyph-aug-v1.pt
+```
+
+Use new output directories when rerunning. A different font produces a different
+experiment; font binaries are not redistributed. The synthetic session split is
+isolated, but neither these synthetic scores nor reused development captures prove
+cross-platform generalization.
+
 1. Collect and double-audit the minimum controlled virtual-chip visible-table dataset required by Gate T.
 2. Collect controlled-visible examples for variable-font name, numeric and turn-clock calibration.
 3. Train card, numeric, dealer, seat, name and event heads and evaluate them against Gate P.

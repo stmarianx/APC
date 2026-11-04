@@ -1,0 +1,52 @@
+{
+  "experiment": "browser-symbol-glyph-v1",
+  "status": "experimental_candidates_not_promoted",
+  "purpose": "Improve neural card recognition on browser-style glyphs without training on draft captures",
+  "dataset": {
+    "path": "apc/runs/browser-symbol-mixture-v1/dataset_manifest.json",
+    "manifest_sha256": "800ed7563c88fc4cc45393c947f2e8f7370d35758df0c920416d81e6707bc340",
+    "seed": 20261109,
+    "synthetic_sessions": 54,
+    "frames": 216,
+    "card_design": "mixed_symbols",
+    "card_surface": "mixed",
+    "rank_font_local": "C:/Windows/Fonts/segoeuib.ttf",
+    "rank_font_sha256": "b169e636719880976a97e94e3b1cb3dbe5f4a38eabc037bf9f2a9165154c3ad2",
+    "alternate_builtin_font": true,
+    "glyph_boxes": true,
+    "captured_browser_examples_in_training": 0,
+    "font_binary_redistributed": false
+  },
+  "training": {
+    "seed": 42,
+    "epochs": 40,
+    "initialization": "random_from_scratch",
+    "selection": "First epoch with highest exact validation count",
+    "baseline_selected_epoch": 5,
+    "augmented_selected_epoch": 6,
+    "augmentation": "Training-only stochastic grayscale, downsample/upsample, intensity and zero-padded translation",
+    "architecture": "card-glyph-pair-v1",
+    "torch": "2.14.1+cpu"
+  },
+  "results": {
+    "incumbent": {"captured_exact": 14, "captured_targets": 34, "old_synthetic_exact": 78, "old_synthetic_targets": 80},
+    "unaugmented": {"new_synthetic_oracle_exact": 100, "new_synthetic_oracle_targets": 100, "captured_exact": 20, "captured_oracle_exact": 22, "old_synthetic_exact": 76},
+    "augmented": {"new_synthetic_oracle_exact": 100, "new_synthetic_oracle_targets": 100, "captured_exact": 29, "captured_oracle_exact": 33, "old_synthetic_exact": 74}
+  },
+  "preserved_candidate": {
+    "path": "apc/checkpoints/browser-symbol-glyph-aug-v1.pt",
+    "sha256": "ea451192b7a4e907cde62988c7be086456c2155e99b0410be990fe60beb848fe",
+    "bytes": 1084389
+  },
+  "limitations": [
+    "Old-domain regression prevents replacing the incumbent",
+    "Captured examples are correlated, draft-geometry development data from one session",
+    "Captured collection influenced experiment design; not an untouched generalization test",
+    "Detector still emits 26 false proposals and misses four captured card appearances",
+    "No player roles, whole-table state, confidence calibration or coaching readiness is established",
+    "These are perception weights, not a completed GTO strategy model"
+  ],
+  "next_work": "Add old-domain rehearsal during training, then evaluate on newly sealed captures and synthetic sessions before any promotion",
+  "default_checkpoint_changed": false,
+  "full_table_readiness": false
+}

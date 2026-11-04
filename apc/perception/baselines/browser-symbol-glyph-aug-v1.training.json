@@ -1,0 +1,379 @@
+{
+  "model_kind": "annotated_card_glyph_pair_recognizer",
+  "architecture_version": "card-glyph-pair-v1",
+  "seed": 42,
+  "epochs": 40,
+  "torch_version": "2.14.1+cpu",
+  "token_augmentation": "color_scale_translation_v1",
+  "manifest_sha256": "800ed7563c88fc4cc45393c947f2e8f7370d35758df0c920416d81e6707bc340",
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 10,
+        "suit_correct": 68,
+        "exact_correct": 9
+      }
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 64,
+        "suit_correct": 91,
+        "exact_correct": 62
+      }
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 85,
+        "suit_correct": 81,
+        "exact_correct": 66
+      }
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 97,
+        "suit_correct": 89,
+        "exact_correct": 87
+      }
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 99,
+        "suit_correct": 98,
+        "exact_correct": 97
+      }
+    },
+    {
+      "epoch": 6,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 7,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 8,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 9,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 10,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 11,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 12,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 13,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 84,
+        "exact_correct": 84
+      }
+    },
+    {
+      "epoch": 14,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 15,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 16,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 17,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 18,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 19,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 20,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 21,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 22,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 23,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 24,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 25,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 26,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 27,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 28,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 29,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 30,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 31,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 32,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 33,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 34,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 35,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 36,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 37,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 38,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 39,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    },
+    {
+      "epoch": 40,
+      "validation": {
+        "cards": 100,
+        "rank_correct": 100,
+        "suit_correct": 100,
+        "exact_correct": 100
+      }
+    }
+  ],
+  "test_exact_box": {
+    "cards": 100,
+    "rank_correct": 100,
+    "suit_correct": 100,
+    "exact_correct": 100
+  },
+  "full_table_readiness": false,
+  "confidence_calibrated": false
+}

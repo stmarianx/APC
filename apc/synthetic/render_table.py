@@ -152,10 +152,19 @@ def _draw_suit(draw, box, suit, color):
         draw.rectangle((x + .4 * w, y + .5 * h, x + .6 * w, bottom), fill=color)
 
 
-def _draw_card_identity(draw, box, card, font, design, include_boxes):
+def _draw_card_identity(draw, box, card, font, design, include_boxes, *, centered=False):
     if design == "centered_token":
         _draw_centered(draw, box, card[0] + card[1].upper(), fill=SUIT_COLORS[card[1]], font=font)
         return _card_glyph_boxes(draw, box, card, font) if include_boxes else {}
+    if design == "stacked_symbols":
+        labels = {}
+        for kind, text, top in (("rank", card[0], box[1] + 10),
+                                ("suit", {"s": "♠", "h": "♥", "d": "♦", "c": "♣"}[card[1]], box[1] + 40)):
+            left = (box[0] + box[2] - draw.textlength(text, font=font)) / 2 if centered else box[0] + 6
+            bounds = draw.textbbox((left, top), text, font=font, anchor="lt")
+            draw.text((left, top), text, font=font, anchor="lt", fill=SUIT_COLORS[card[1]])
+            labels[kind + "_box"] = normalized_box(bounds)
+        return labels if include_boxes else {}
     rank_position = (box[0] + 5, box[1] + 2)
     rank_box = draw.textbbox(rank_position, card[0], font=font)
     draw.text(rank_position, card[0], fill=SUIT_COLORS[card[1]], font=font)
@@ -206,8 +215,10 @@ def render_frame(
         raise ValueError("Unsupported card surface")
     face_color = "#f7f3e8" if card_surface == "light" else "#8b8983"
     edge_color = "#d7d1c5" if card_surface == "light" else "#77746e"
-    if card_design not in ("centered_token", "corner_symbols"):
+    if card_design not in ("centered_token", "corner_symbols", "stacked_symbols"):
         raise ValueError("Unsupported card design")
+    if card_design == "stacked_symbols" and rank_font is None:
+        raise ValueError("Stacked Unicode symbols require an explicit local font")
     Image, ImageDraw, ImageFont = _pil()
     image = Image.new("RGB", (WIDTH, HEIGHT), theme["background"])
     draw = ImageDraw.Draw(image)
@@ -215,9 +226,9 @@ def render_frame(
     bold = font
     card_font = font if card_design == "centered_token" else ImageFont.load_default(size=18)
     if rank_font is not None:
-        if card_design != "corner_symbols":
-            raise ValueError("Custom rank fonts require corner_symbols")
-        card_font = ImageFont.truetype(str(rank_font), size=18)
+        if card_design not in ("corner_symbols", "stacked_symbols"):
+            raise ValueError("Custom rank fonts require a symbol card design")
+        card_font = ImageFont.truetype(str(rank_font), size=22 if card_design == "stacked_symbols" else 18)
     draw.rounded_rectangle((90, 105, 1190, 600), radius=230, fill=theme["rail"])
     table_box = (115, 130, 1165, 575)
     draw.rounded_rectangle(table_box, radius=210, fill=theme["felt"])
@@ -282,7 +293,7 @@ def render_frame(
     for index, card in enumerate(hero_cards):
         box = (hero_left + index * (card_width + gap), 585, hero_left + index * (card_width + gap) + card_width, 663)
         draw.rounded_rectangle(box, radius=6, fill=face_color, outline=edge_color)
-        glyph_boxes = _draw_card_identity(draw, box, card, card_font, card_design, include_glyph_boxes)
+        glyph_boxes = _draw_card_identity(draw, box, card, card_font, card_design, include_glyph_boxes, centered=card_design == "stacked_symbols")
         hero_payload.append(_card_object(box, card))
         if include_glyph_boxes:
             hero_payload[-1].update(glyph_boxes)
@@ -448,13 +459,17 @@ def generate_dataset(
 ) -> dict[str, object]:
     if card_surface not in ("light", "dim", "mixed"):
         raise ValueError("Unsupported card surface")
+    if card_design not in ("centered_token", "corner_symbols", "stacked_symbols", "mixed_symbols"):
+        raise ValueError("Unsupported card design")
+    if card_design in ("stacked_symbols", "mixed_symbols") and rank_font is None:
+        raise ValueError("Stacked Unicode symbols require an explicit local font")
     if sessions < 3:
         raise ValueError("Synthetic dataset generation requires at least three sessions")
     rng = random.Random(seed)
     if alternate_builtin_font and rank_font is None:
         raise ValueError("Alternating fonts requires a custom rank font")
-    if rank_font is not None and card_design != "corner_symbols":
-        raise ValueError("Custom rank fonts require corner_symbols")
+    if rank_font is not None and card_design == "centered_token":
+        raise ValueError("Custom rank fonts require a symbol card design")
     font_digest = hashlib.sha256(rank_font.read_bytes()).hexdigest() if rank_font else None
     project = AnnotationProject.create(
         root,
@@ -471,9 +486,12 @@ def generate_dataset(
     for session_index in range(sessions):
         seats, layout_id = LAYOUTS[session_index % len(LAYOUTS)]
         theme = THEMES[(session_index // len(LAYOUTS)) % len(THEMES)]
-        if card_design != "centered_token":
-            theme = dict(theme, id=theme["id"] + "-" + card_design)
+        session_design = ("stacked_symbols" if (session_index // len(LAYOUTS)) % 2 else "corner_symbols") if card_design == "mixed_symbols" else card_design
+        if session_design != "centered_token":
+            theme = dict(theme, id=theme["id"] + "-" + session_design)
         session_font = rank_font if not alternate_builtin_font or session_index % 2 else None
+        if session_design == "stacked_symbols":
+            session_font = rank_font
         if session_font:
             theme = dict(theme, id=theme["id"] + "-" + font_digest[:12])
         session_surface = ("dim" if session_index % 2 else "light") if card_surface == "mixed" else card_surface
@@ -503,7 +521,7 @@ def generate_dataset(
                 street=street,
                 seat_name_overrides=session_names,
                 include_glyph_boxes=include_glyph_boxes,
-                card_design=card_design,
+                card_design=session_design,
                 rank_font=session_font,
                 card_surface=session_surface,
                 decision_time_remaining_ms=(
@@ -545,7 +563,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--include-turn-clock", action="store_true")
     parser.add_argument("--include-name-ocr", action="store_true")
     parser.add_argument("--include-glyph-boxes", action="store_true")
-    parser.add_argument("--card-design", choices=("centered_token", "corner_symbols"), default="centered_token")
+    parser.add_argument("--card-design", choices=("centered_token", "corner_symbols", "stacked_symbols", "mixed_symbols"), default="centered_token")
     parser.add_argument("--rank-font", type=Path, help="Local font file for corner ranks; fingerprinted, not copied")
     parser.add_argument("--alternate-builtin-font", action="store_true", help="Use the built-in rank font on even-numbered sessions")
     parser.add_argument("--card-surface", choices=("light", "dim", "mixed"), default="light")

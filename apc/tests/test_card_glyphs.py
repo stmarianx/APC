@@ -13,6 +13,20 @@ from apc.perception.train_card_glyphs import token_dataset
 
 
 class CardGlyphTests(unittest.TestCase):
+    @unittest.skipUnless(Path("C:/Windows/Fonts/segoeuib.ttf").is_file(), "Local Unicode font unavailable")
+    def test_mixed_unicode_dataset_loads_verified_glyph_pairs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            result = generate_dataset(Path(directory) / "mixed", sessions=6, seed=29,
+                include_glyph_boxes=True, card_design="mixed_symbols",
+                rank_font=Path("C:/Windows/Fonts/segoeuib.ttf"),
+                alternate_builtin_font=True, card_surface="mixed")
+            self.assertTrue(result["validation"]["valid"])
+            for split in ("train", "validation", "test"):
+                tokens, ranks, suits = token_dataset(result["manifest"], split, glyph_pair=True)
+                self.assertEqual(tokens.shape[1:], (6, 32, 32))
+                self.assertEqual(len(tokens), len(ranks))
+                self.assertEqual(len(tokens), len(suits))
+
     def test_surface_pairs_preserve_two_centered_separated_glyphs(self):
         image = Image.new("RGB", (100, 100), "white")
         draw = ImageDraw.Draw(image)
