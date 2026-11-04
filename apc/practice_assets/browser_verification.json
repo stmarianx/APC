@@ -1,0 +1,6 @@
+{
+  "completed": ["Initial preflop display", "Call advances to flop", "Check advances to turn", "Check advances to river", "Check reaches showdown", "Opponent cards stay hidden until showdown", "Feedback shows 1 BB Hero reward and 2 BB final pot", "Action buttons removed after completion"],
+  "pending": ["Browser download completion", "New-hand button after export", "Raise/bet UI behavior", "Responsive viewport checks"],
+  "interruption": "Browser session became unavailable during export verification. No successful download claimed.",
+  "temporary_server_stopped": true
+}

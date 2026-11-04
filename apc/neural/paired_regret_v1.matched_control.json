@@ -1,0 +1,16 @@
+{
+  "status": "matched_single_seed_comparison_not_promoted",
+  "control_checkpoint_fingerprint": "7a6c7065c9eacd5d15810cd78f9bbcb03bc5f07a320e0a49c8b0ed5887d5b339",
+  "candidate_checkpoint_fingerprint": "c2a1a15ece9d0f1110db176411fc59eccbc5860ee7184de48f1f96dc32601fdc",
+  "comparison_dataset_fingerprint": "8c00c27a7892cf3ca662c10d1ad94cf9e5fa805e6d9d16875a68e483b2e280f4",
+  "control": {"regret_weight": 0, "chosen_action_regret_bb": 2.93835389565, "decision_accuracy": 0.295473251029, "mae_bb": 4.53259044457},
+  "candidate": {"regret_weight": 1, "chosen_action_regret_bb": 1.7506584297, "decision_accuracy": 0.4, "mae_bb": 3.46502909398},
+  "limitations": [
+    "Single initialization seed, not a confidence interval over training runs",
+    "Comparison corpus has been used in earlier diagnostics; final untouched evaluation remains required",
+    "Targets are sampled virtual-chip rollout outcomes, not GTO solver values",
+    "No visual modality was trained by this experiment"
+  ],
+  "activation_authorized": false,
+  "recommendation_allowed": false
+}
