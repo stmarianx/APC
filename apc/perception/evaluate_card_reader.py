@@ -13,10 +13,11 @@ from apc.perception.spatial_targets import load_split
 from apc.perception.region_model import RANKS, SUITS
 
 
-def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None):
+def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False):
     options = {"corner_pairs": True} if corner_pairs else {}
     if locator_checkpoint is not None:
         options["locator_checkpoint"] = locator_checkpoint
+        options["refine_surfaces"] = refine_surfaces
     reader = CardReader(checkpoint, **options)
     totals = {"frames": 0, "targets": 0, "true_positives": 0,
               "false_positives": 0, "false_negatives": 0,

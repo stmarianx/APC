@@ -1,0 +1,20 @@
+{
+  "locator": "apc/checkpoints/card-locator-mixed-v1.pt",
+  "reader": "apc/checkpoints/glyph-surface-pair-v1.pt",
+  "manifest": "apc/runs/mixed-surface-locator-v1/dataset_manifest.json",
+  "refinement": "Local surface-color component; no labels used at inference",
+  "validation": {"frames": 16, "targets": 80, "exact_correct": 80, "false_proposals": 0},
+  "test": {
+    "frames": 16,
+    "targets": 80,
+    "exact_correct": 78,
+    "false_proposals": 0,
+    "missed_cards": 2,
+    "whole_frames_exact": 14,
+    "confirmed_cards": 0,
+    "p95_frame_ms": 355.36074999254197
+  },
+  "previous_unrefined_test_exact_correct": 33,
+  "limitations": ["Synthetic renderer only", "Latency target unmet", "Unseen-layout generalization unproven", "Confidence uncalibrated"],
+  "full_table_readiness": false
+}

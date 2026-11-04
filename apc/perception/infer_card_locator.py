@@ -12,7 +12,8 @@ from apc.perception.card_locator import CardLocator, decode_locator
 
 
 class NeuralCardLocator:
-    def __init__(self, checkpoint):
+    def __init__(self, checkpoint, *, refine_surfaces=False):
+        self.refine_surfaces = refine_surfaces
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
         if (saved.get("model_kind") != "full_frame_neural_card_locator" or
                 saved.get("architecture_version") != "card-locator-v1" or saved.get("input_size") != [320, 184]):
@@ -24,10 +25,14 @@ class NeuralCardLocator:
     def propose(self, path):
         started = time.perf_counter()
         with Image.open(path) as image:
+            original = image.convert("RGB")
             pixels = np.asarray(image.convert("RGB").resize((320, 184)), dtype=np.float32).copy() / 255
         inputs = torch.from_numpy(pixels).permute(2, 0, 1)[None]
         with torch.no_grad():
             proposals = decode_locator(self.model(inputs)[0])
+        if self.refine_surfaces:
+            from apc.perception.card_proposals import refine_card_surface
+            proposals = [refine_card_surface(original, proposal) for proposal in proposals]
         return {"proposals": proposals, "elapsed_ms": (time.perf_counter()-started)*1000,
                 "confidence_calibrated": False, "full_table_readiness": False,
                 "limitation": "Experimental boxes only, no card identities or confirmed hero/board roles"}

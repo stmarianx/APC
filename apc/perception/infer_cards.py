@@ -17,7 +17,7 @@ from apc.perception.card_glyphs import CardGlyphNetwork, glyph_tensor, corner_pa
 
 
 class CardReader:
-    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9, corner_pairs=False, locator_checkpoint=None):
+    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False):
         if not math.isfinite(confidence_threshold) or not 0 <= confidence_threshold <= 1:
             raise ValueError("confidence_threshold must be finite in [0,1]")
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
@@ -38,7 +38,7 @@ class CardReader:
         self.locator = None
         if locator_checkpoint is not None:
             from apc.perception.infer_card_locator import NeuralCardLocator
-            self.locator = NeuralCardLocator(locator_checkpoint)
+            self.locator = NeuralCardLocator(locator_checkpoint, refine_surfaces=refine_surfaces)
         self.threshold = confidence_threshold
         self.max_image_dimension = saved.get("max_image_dimension", 1280)
 

@@ -45,6 +45,31 @@ def box_iou(left, right):
     return intersection / (area_left + area_right - intersection) if intersection else 0
 
 
+def refine_card_surface(image, proposal):
+    """Experimental local edge refinement, independent of card identity/labels."""
+    width, height = image.size
+    box = proposal["box_xyxy"]
+    x1, y1, x2, y2 = [round(v*d) for v, d in zip(box, (width,height,width,height))]
+    if not (0 <= x1 < x2 <= width and 0 <= y1 < y2 <= height):
+        raise ValueError("Invalid proposal bounds")
+    pixels = np.asarray(image.convert("RGB"), dtype=np.float32)
+    surface = np.median(pixels[y1:y2,x1:x2].reshape(-1,3), axis=0)
+    dx, dy = round((x2-x1)*.35), round((y2-y1)*.35)
+    left, top, right, bottom = max(0,x1-dx), max(0,y1-dy), min(width,x2+dx), min(height,y2+dy)
+    local = pixels[top:bottom,left:right]
+    mask = np.abs(local-surface).max(2) < 25
+    components = _components(mask)
+    candidates = []
+    for a,b,c,d,area in components:
+        candidate = [(left+a)/width,(top+b)/height,(left+c)/width,(top+d)/height]
+        if area >= .4*(x2-x1)*(y2-y1) and box_iou(box,candidate) >= .4:
+            candidates.append((area,candidate))
+    if not candidates:
+        return dict(proposal, refinement="no_surface_match")
+    return dict(proposal, box_xyxy=max(candidates, key=lambda row: row[0])[1],
+                refinement="local_surface_component")
+
+
 def match_proposals(proposals, targets, threshold=.5):
     """One-to-one IoU audit; no duplicated credit for one detected card."""
     if not 0 < threshold <= 1:
