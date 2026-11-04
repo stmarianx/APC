@@ -13,16 +13,21 @@ from PIL import Image
 from apc.perception.card_proposals import propose_cards
 from apc.perception.region_model import RegionRecognizer, RANKS, SUITS
 from apc.perception.train_regions import image_tensor
-from apc.perception.card_glyphs import CardGlyphNetwork, glyph_tensor
+from apc.perception.card_glyphs import CardGlyphNetwork, glyph_tensor, corner_pair_tensor
 
 
 class CardReader:
-    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9):
+    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9, corner_pairs=False):
         if not math.isfinite(confidence_threshold) or not 0 <= confidence_threshold <= 1:
             raise ValueError("confidence_threshold must be finite in [0,1]")
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
         self.glyph_model = saved.get("model_kind") == "card_glyph_recognizer"
-        if self.glyph_model and saved.get("architecture_version") == "card-glyph-v1":
+        self.token_extractor = glyph_tensor
+        if corner_pairs and saved.get("model_kind") == "annotated_card_glyph_pair_recognizer" and saved.get("architecture_version") == "card-glyph-pair-v1":
+            self.glyph_model = True
+            self.token_extractor = corner_pair_tensor
+            self.model = CardGlyphNetwork(input_channels=6)
+        elif self.glyph_model and saved.get("architecture_version") == "card-glyph-v1":
             self.model = CardGlyphNetwork()
         elif saved.get("architecture_version") == "spatial-grid-v2" and saved.get("model_kind") == "region_recognizer_requires_proposed_boxes":
             self.model = RegionRecognizer(saved["crop_size"])
@@ -37,7 +42,7 @@ class CardReader:
         with torch.no_grad():
             if self.glyph_model:
                 with Image.open(image_path) as image:
-                    tokens = [glyph_tensor(image, box) for box in boxes]
+                    tokens = [self.token_extractor(image, box) for box in boxes]
                 result = self.model(torch.stack([item[0] for item in tokens]))
                 result["ink_present"] = torch.tensor([item[1] for item in tokens], dtype=torch.bool)
                 return result

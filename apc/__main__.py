@@ -47,6 +47,7 @@ def main():
     modes.add_parser('practice', help='Play heads-up against a check/call opponent').add_argument('--seed', type=int)
     inspect = modes.add_parser('inspect', help='Read card candidates from a saved table frame')
     inspect.add_argument('image', type=Path)
+    inspect.add_argument('--corner-symbols', action='store_true', help='Read separate rank and suit glyphs on light corner-indexed cards')
     args = parser.parse_args()
     if args.mode == 'desktop':
         from apc.desktop import launch
@@ -60,8 +61,9 @@ def main():
         import torch
         from apc.perception.infer_cards import CardReader
         torch.set_num_threads(1)
-        checkpoint = Path(__file__).parent / 'checkpoints' / 'glyph-v1.pt'
-        print(json.dumps(CardReader(checkpoint).read(args.image), indent=2))
+        filename = 'corner-glyph-pair-v1.pt' if args.corner_symbols else 'glyph-v1.pt'
+        checkpoint = Path(__file__).parent / 'checkpoints' / filename
+        print(json.dumps(CardReader(checkpoint, corner_pairs=args.corner_symbols).read(args.image), indent=2))
 
 
 if __name__ == '__main__':

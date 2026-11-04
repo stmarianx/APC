@@ -39,6 +39,35 @@ def glyph_tensor(image: Image.Image, box_xyxy, *, border_margin=True, background
     return torch.from_numpy(np.asarray(canvas, dtype=np.float32).copy() / 255).permute(2, 0, 1), True
 
 
+def corner_pair_tensor(image, box):
+    """Find two vertically separated ink bands inside the upper-left corner."""
+    w, h = image.size
+    x, y, right, bottom = [round(v*d) for v, d in zip(box, (w,h,w,h))]
+    face = np.asarray(image.crop((x,y,right,bottom)).convert("RGB"), dtype=np.float32)
+    height, width = face.shape[:2]
+    if height < 16 or width < 12:
+        return torch.zeros(6,32,32), False
+    bg = np.median(face.reshape(-1,3), axis=0)
+    margin = max(2, round(width*.04))
+    corner = face[margin:round(height*.60), margin:round(width*.45)]
+    ink = np.abs(corner-bg).max(2) > 60
+    rows = np.flatnonzero(ink.any(axis=1))
+    bands = np.split(rows, np.flatnonzero(np.diff(rows)>1)+1)
+    bands = [band for band in bands if len(band)>=2]
+    if len(bands) != 2:
+        return torch.zeros(6,32,32), False
+    tokens = []
+    for band in bands:
+        cols = np.flatnonzero(ink[band].any(axis=0))
+        bounds = [(x+margin+cols[0])/w,(y+margin+band[0])/h,
+                  (x+margin+cols[-1]+1)/w,(y+margin+band[-1]+1)/h]
+        token, present = glyph_tensor(image,bounds,border_margin=False,background_rgb=bg)
+        if not present:
+            return torch.zeros(6,32,32), False
+        tokens.append(token)
+    return torch.cat(tokens), True
+
+
 class CardGlyphNetwork(nn.Module):
     def __init__(self, input_channels=3):
         super().__init__()
