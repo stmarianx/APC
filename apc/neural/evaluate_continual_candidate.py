@@ -85,6 +85,18 @@ def paired_hand_bootstrap(
     return result
 
 
+def verify_session_separation(training, audit):
+    """Legacy records lack provenance: report unknown, never certify separation."""
+    known = bool(training and audit)
+    for key in ("session_hash", "split_group_hash"):
+        left = {row[key] for row in training if row.get(key)}
+        right = {row[key] for row in audit if row.get(key)}
+        if left & right:
+            raise ValueError("APC fresh replay audit overlaps candidate session groups")
+        known = known and all(row.get(key) for row in (*training, *audit))
+    return known
+
+
 def evaluate_fresh_completed_replay(
     replay_buffer: str | Path,
     incumbent_checkpoint: str | Path,
@@ -110,6 +122,9 @@ def evaluate_fresh_completed_replay(
     audit_fingerprints = set(corpus.replay_fingerprints)
     if training_fingerprints & audit_fingerprints:
         raise ValueError("APC fresh replay audit overlaps candidate training hands")
+    training_sources = candidate_record["replay"]["sources"]
+    audit_sources = corpus.manifest["sources"]
+    groups_known = verify_session_separation(training_sources, audit_sources)
     if corpus.manifest.get("replay_buffer_content_fingerprint") == candidate_record["replay"].get("replay_buffer_content_fingerprint"):
         raise ValueError("APC fresh replay audit reuses the candidate training buffer")
     incumbent = load_apc_weights(incumbent_path.parent / str(incumbent_record["weights"]["file"]), str(incumbent_record["weights"]["weights_sha256"]))
@@ -134,6 +149,7 @@ def evaluate_fresh_completed_replay(
     action_ci = paired["action_accuracy_improvement"]
     gates = {
         "fresh_buffer_disjoint": True,
+        "fresh_session_groups_verified_disjoint": groups_known,
         "minimum_20_complete_test_hands": True,
         "mae_improvement_lower_95_above_zero": float(mae_ci["lower_95"]) > 0,
         "rmse_improvement_lower_95_above_zero": float(rmse_ci["lower_95"]) > 0,

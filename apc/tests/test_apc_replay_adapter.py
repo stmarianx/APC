@@ -29,6 +29,18 @@ from apc.neural.train_candidate import encode_rows
 
 
 class APCReplayAdapterTests(unittest.TestCase):
+    def test_audit_session_separation(self):
+        from apc.neural.evaluate_continual_candidate import verify_session_separation
+        def sources(index):
+            return encode_completed_hand_replays([(self.replay(index), "train")]).manifest["sources"]
+        a, b = sources(1), sources(2)
+        self.assertTrue(verify_session_separation(a, b))
+        self.assertFalse(verify_session_separation([{}], b))
+        for key in ("session_hash", "split_group_hash"):
+            overlapping = dict(b[0], **{key: a[0][key]})
+            with self.assertRaisesRegex(ValueError, "overlaps"):
+                verify_session_separation([{}, *a], [overlapping])
+
     @staticmethod
     def replay(index: int = 1) -> dict[str, object]:
         return {

@@ -158,7 +158,9 @@ def encode_completed_hand_replays(
                 "fingerprint": fingerprint,
                 "decision_id": f"{fingerprint}:{event_index}",
             })
-        source_rows.append({"replay_fingerprint": fingerprint, "split": split, "events": len(replay["events"])})
+        source_rows.append({"replay_fingerprint": fingerprint, "split": split, "events": len(replay["events"]),
+                            "split_group_hash": _sha256(replay["split_group_id"]),
+                            "session_hash": _sha256(replay["session_id"])})
     if not samples:
         raise ValueError("APC replay adapter requires at least one completed decision")
     manifest_material = {
