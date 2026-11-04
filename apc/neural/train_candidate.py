@@ -197,6 +197,16 @@ def _sliced_metrics(corpus: EncodedCorpus, indices: np.ndarray, predicted: np.nd
     return result
 
 
+def paired_expected_regret(predicted_values, target_values, temperature=2.0):
+    """Differentiable regret against paired rollout outcomes, not a GTO claim."""
+    if predicted_values.shape != target_values.shape or predicted_values.ndim != 2 or predicted_values.shape[1] != 4:
+        raise ValueError("Expected complete four-action groups")
+    if not math.isfinite(temperature) or temperature <= 0:
+        raise ValueError("Temperature must be positive and finite")
+    advantages = target_values.max(dim=1, keepdim=True).values - target_values
+    return (predicted_values.div(temperature).softmax(dim=1) * advantages).sum(dim=1).mean()
+
+
 def train_apc_candidate(
     corpus: EncodedCorpus,
     *,
@@ -205,8 +215,9 @@ def train_apc_candidate(
     epochs: int = 3,
     batch_size: int = 384,
     learning_rate: float = 3e-4,
+    regret_weight: float = 0.0,
 ) -> tuple[APCNetwork, dict[str, object]]:
-    if epochs <= 0 or batch_size <= 0 or learning_rate <= 0:
+    if epochs <= 0 or batch_size <= 0 or learning_rate <= 0 or not math.isfinite(regret_weight) or regret_weight < 0:
         raise ValueError("APC neural training parameters must be positive")
     for split in SPLIT_INDEX:
         if len(corpus.indices(split)) == 0:
@@ -257,6 +268,8 @@ def train_apc_candidate(
                 uncertainty_target = normalized_error.detach().abs().clamp(0, 1)
                 uncertainty_loss = torch.nn.functional.mse_loss(output["uncertainty"], uncertainty_target)
                 loss = value_loss + 0.30 * ranking_loss + 0.05 * policy_loss + 0.02 * uncertainty_loss
+                if regret_weight:
+                    loss = loss + regret_weight * paired_expected_regret(grouped_values, target.reshape(-1,4)) / scale
                 optimizer.zero_grad(set_to_none=True)
                 loss.backward()
                 torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
@@ -326,6 +339,7 @@ def build_checkpoint(
     batch_size: int = 384,
     learning_rate: float = 3e-4,
     sealed_audit_dataset: str | Path | None = None,
+    regret_weight: float = 0.0,
 ) -> dict[str, object]:
     root = Path(output).resolve()
     checkpoint_path = root / "checkpoint.json"
@@ -333,7 +347,7 @@ def build_checkpoint(
     if root.exists() or checkpoint_path.exists() or weights_path.exists():
         raise FileExistsError(f"refusing to overwrite APC neural run: {root}")
     manifest, corpus = load_raised_corpus(dataset)
-    model, metrics = train_apc_candidate(corpus, seed=seed, epochs=epochs, batch_size=batch_size, learning_rate=learning_rate)
+    model, metrics = train_apc_candidate(corpus, seed=seed, epochs=epochs, batch_size=batch_size, learning_rate=learning_rate, regret_weight=regret_weight)
     sealed_manifest = None
     if sealed_audit_dataset is not None:
         sealed_manifest, sealed_corpus = load_raised_corpus(sealed_audit_dataset)
@@ -379,6 +393,7 @@ def build_checkpoint(
             "Policy weights never update during a hand and this candidate cannot activate automatically."
         ],
     }
+    checkpoint["training"]["paired_expected_regret_weight"] = regret_weight
     checkpoint["checkpoint_fingerprint"] = _fingerprint(checkpoint)
     checkpoint_path.write_bytes(_canonical(checkpoint) + b"\n")
     return checkpoint
@@ -491,6 +506,7 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=384)
     parser.add_argument("--learning-rate", type=float, default=3e-4)
     parser.add_argument("--sealed-audit-dataset", type=Path)
+    parser.add_argument("--regret-weight", type=float, default=0.0)
     parser.add_argument("--validate", action="store_true")
     args = parser.parse_args()
     if args.validate:
@@ -507,6 +523,7 @@ def main() -> None:
         batch_size=args.batch_size,
         learning_rate=args.learning_rate,
         sealed_audit_dataset=args.sealed_audit_dataset,
+        regret_weight=args.regret_weight,
     )
     print(json.dumps(checkpoint, indent=2))
 
