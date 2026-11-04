@@ -17,5 +17,7 @@
   "calibration_passed": false,
   "activation_authorized": false,
   "recommendation_allowed": false,
-  "fresh_audit": "Pending separate process; see apc/runs/feedback-fresh-audit-expanded-20261104/evaluation.json when complete"
+  "fresh_audit": "apc/neural/feedback_retention_fresh_audit_v1.json",
+  "fresh_audit_decision": "No established value improvement; retain incumbent. Better imitation of observed actions is not better poker.",
+  "next_experiment": "Diagnose held-out opponent/stack distribution shift and retain paired counterfactual strategy supervision before another replay-only candidate."
 }
