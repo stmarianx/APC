@@ -1,0 +1,158 @@
+{
+  "model_kind": "full_frame_neural_card_locator",
+  "architecture_version": "card-locator-v1",
+  "seed": 42,
+  "epochs": 10,
+  "input_size": [
+    320,
+    184
+  ],
+  "threshold": 0.5,
+  "manifest_sha256": "004c9c96696a7f8fb2fc6dee7c2377bee1f7b9c5594adabf5280029c5690ffb1",
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 0,
+        "false_positives": 297,
+        "false_negatives": 20,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 0,
+        "false_positives": 293,
+        "false_negatives": 20,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 0,
+        "false_positives": 282,
+        "false_negatives": 20,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 0,
+        "false_positives": 265,
+        "false_negatives": 20,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 0,
+        "false_positives": 24,
+        "false_negatives": 20,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "epoch": 6,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 0,
+        "false_positives": 20,
+        "false_negatives": 20,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "epoch": 7,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 1,
+        "false_positives": 19,
+        "false_negatives": 19,
+        "precision": 0.05,
+        "recall": 0.05,
+        "f1": 0.05
+      }
+    },
+    {
+      "epoch": 8,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 0,
+        "false_positives": 20,
+        "false_negatives": 20,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "epoch": 9,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 0,
+        "false_positives": 10,
+        "false_negatives": 20,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "epoch": 10,
+      "validation": {
+        "frames": 4,
+        "targets": 20,
+        "true_positives": 0,
+        "false_positives": 20,
+        "false_negatives": 20,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    }
+  ],
+  "test": {
+    "frames": 4,
+    "targets": 20,
+    "true_positives": 3,
+    "false_positives": 19,
+    "false_negatives": 17,
+    "precision": 0.13636363636363635,
+    "recall": 0.15,
+    "f1": 0.14285714285714285
+  },
+  "torch_version": "2.14.1+cpu",
+  "confidence_calibrated": false,
+  "full_table_readiness": false,
+  "limitation": "Synthetic-only diagnostic; layout memorization not excluded"
+}

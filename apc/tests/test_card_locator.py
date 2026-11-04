@@ -19,3 +19,14 @@ class LocatorTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             locator_targets([[.1,.1,.2,.2]] * 2, 8, 12)
         self.assertEqual(decode_locator(torch.full((5,8,12), -20.0)), [])
+
+    def test_decode_recovers_geometry_without_target_at_inference(self):
+        box = [.1, .1, .2, .4]
+        target = locator_targets([box], 8, 12)
+        row, col = target[0].nonzero()[0].tolist()
+        output = torch.full_like(target, -20)
+        output[0, row, col] = 10
+        output[1:, row, col] = torch.logit(target[1:, row, col])
+        proposals = decode_locator(output)
+        self.assertEqual(len(proposals), 1)
+        torch.testing.assert_close(torch.tensor(proposals[0]["box_xyxy"]), torch.tensor(box))
