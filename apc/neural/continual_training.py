@@ -7,6 +7,7 @@ import json
 import math
 import os
 import random
+import sys
 import tempfile
 import time
 from pathlib import Path
@@ -214,6 +215,7 @@ def train_completed_replay_candidate(
             strategy_rehearsal, rehearsal_validation_indices, prior_value, prior_uncertainty
         )
     for epoch in range(epochs):
+        print(f"APC replay epoch {epoch + 1}/{epochs}", file=sys.stderr, flush=True)
         candidate.train()
         shuffled = split_indices["train"][torch.randperm(len(split_indices["train"]), generator=generator).numpy()]
         shuffled_rehearsal = None if rehearsal_groups is None else rehearsal_groups[
@@ -397,6 +399,10 @@ def build_completed_replay_checkpoint(
     from apc.neural.train_candidate import validate_checkpoint
 
     incumbent_path = Path(incumbent_checkpoint).resolve()
+    target = Path(output).resolve()
+    if target.exists():
+        raise FileExistsError(f"refusing to overwrite APC continual checkpoint: {target}")
+    print("Verifying incumbent checkpoint", file=sys.stderr, flush=True)
     validation = validate_checkpoint(incumbent_path)
     if not validation["valid"]:
         raise ValueError("APC incumbent checkpoint is invalid: " + "; ".join(validation["issues"]))
@@ -405,6 +411,7 @@ def build_completed_replay_checkpoint(
         incumbent_path.parent / str(incumbent_record["weights"]["file"]),
         str(incumbent_record["weights"]["weights_sha256"]),
     )
+    print("Loading completed replay hands", file=sys.stderr, flush=True)
     corpus = load_replay_temporal_corpus(replay_buffer)
     rehearsal_manifest = None
     rehearsal_corpus = None
@@ -448,7 +455,6 @@ def build_completed_replay_checkpoint(
             "chosen_action_regret_non_regression": float(candidate_metrics["chosen_action_regret_bb"]) <= float(incumbent_metrics["chosen_action_regret_bb"]),
             "decision_accuracy_non_regression": float(candidate_metrics["decision_accuracy"]) >= float(incumbent_metrics["decision_accuracy"]),
         }
-    target = Path(output).resolve()
     if target.exists():
         raise FileExistsError(f"refusing to overwrite APC continual checkpoint: {target}")
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -601,6 +607,7 @@ def main() -> None:
     train.add_argument("output", type=Path)
     train.add_argument("--seed", type=int, default=20260825)
     train.add_argument("--epochs", type=int, default=3)
+    train.add_argument("--cpu-threads", type=int, default=4, help="Maximum CPU threads for this training process")
     train.add_argument("--batch-size", type=int, default=64)
     train.add_argument("--learning-rate", type=float, default=1e-4)
     train.add_argument("--incumbent-retention-weight", type=float, default=0.20)
@@ -617,6 +624,9 @@ def main() -> None:
         report = validate_completed_replay_checkpoint(args.checkpoint)
         print(json.dumps(report, indent=2))
         raise SystemExit(0 if report["valid"] else 1)
+    if args.cpu_threads < 1:
+        parser.error("--cpu-threads must be positive")
+    torch.set_num_threads(min(torch.get_num_threads(), args.cpu_threads))
     result = build_completed_replay_checkpoint(
         args.replay_buffer,
         args.incumbent_checkpoint,
