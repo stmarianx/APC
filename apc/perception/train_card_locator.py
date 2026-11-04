@@ -6,6 +6,7 @@ from pathlib import Path
 
 import numpy as np
 import torch
+from torch.nn import functional as F
 from PIL import Image
 
 from apc.perception.card_locator import CardLocator, locator_targets, locator_loss, decode_locator
@@ -47,7 +48,40 @@ def evaluate(model, data):
     return totals
 
 
-def train(manifest, destination, epochs=10, seed=42, *, relative_size=False):
+def augment_spatial(data):
+    """Move/zoom complete frames and labels together, retaining all card faces."""
+    images, labels, truths = [], [], []
+    for image, cards in zip(data[0], data[2]):
+        boxes = [card["box_xyxy"] for card in cards]
+        if boxes:
+            min_x, min_y = min(b[0] for b in boxes), min(b[1] for b in boxes)
+            max_x, max_y = max(b[2] for b in boxes), max(b[3] for b in boxes)
+            maximum = min(1.2, 1 / (max_x-min_x), 1 / (max_y-min_y))
+            scale = .75 + float(torch.rand(())) * (maximum-.75)
+            dx = -scale*min_x + float(torch.rand(())) * (1-scale*(max_x-min_x))
+            dy = -scale*min_y + float(torch.rand(())) * (1-scale*(max_y-min_y))
+        else:
+            scale, dx, dy = 1.0, 0.0, 0.0
+        transformed = []
+        for card in cards:
+            bounds = [min(1.0, max(0.0, scale*v + (dx if index % 2 == 0 else dy))) for index, v in enumerate(card["box_xyxy"])]
+            transformed.append(dict(card, box_xyxy=bounds))
+        theta = image.new_tensor([[1/scale, 0, (1-scale-2*dx)/scale],
+                                  [0, 1/scale, (1-scale-2*dy)/scale]])[None]
+        grid = F.affine_grid(theta, image[None].shape, align_corners=False)
+        images.append(F.grid_sample(image[None], grid, align_corners=False, padding_mode="zeros")[0])
+        labels.append(locator_targets([c["box_xyxy"] for c in transformed], data[1].shape[-2], data[1].shape[-1]))
+        truths.append(transformed)
+    return torch.stack(images), torch.stack(labels), truths
+
+
+def frozen_spatial(data, seed):
+    with torch.random.fork_rng(devices=[]):
+        torch.manual_seed(seed)
+        return augment_spatial(data)
+
+
+def train(manifest, destination, epochs=10, seed=42, *, relative_size=False, spatial_augmentation=False):
     destination = Path(destination)
     if destination.exists() or epochs < 1:
         raise ValueError("Use a new destination and positive epochs")
@@ -55,6 +89,10 @@ def train(manifest, destination, epochs=10, seed=42, *, relative_size=False):
     torch.manual_seed(seed)
     torch.use_deterministic_algorithms(True)
     datasets = {split: dataset(manifest, split) for split in ("train", "validation", "test")}
+    if spatial_augmentation:
+        varied = frozen_spatial(datasets["validation"], seed+1)
+        original = datasets["validation"]
+        datasets["validation"] = (torch.cat([original[0], varied[0]]), torch.cat([original[1], varied[1]]), original[2]+varied[2])
     model = CardLocator()
     optimizer = torch.optim.AdamW(model.parameters(), lr=.001)
     best, saved, history = -1, None, []
@@ -63,7 +101,10 @@ def train(manifest, destination, epochs=10, seed=42, *, relative_size=False):
         order = torch.randperm(len(datasets["train"][0]))
         for indices in order.split(8):
             optimizer.zero_grad()
-            loss = locator_loss(model(datasets["train"][0][indices]), datasets["train"][1][indices], relative_size=relative_size)
+            inputs, targets = datasets["train"][0][indices], datasets["train"][1][indices]
+            if spatial_augmentation:
+                inputs, targets, _ = augment_spatial((inputs, targets, [datasets["train"][2][i] for i in indices.tolist()]))
+            loss = locator_loss(model(inputs), targets, relative_size=relative_size)
             if not torch.isfinite(loss):
                 raise ValueError("Nonfinite locator loss")
             loss.backward()
@@ -78,10 +119,14 @@ def train(manifest, destination, epochs=10, seed=42, *, relative_size=False):
     report = {"model_kind": "full_frame_neural_card_locator", "architecture_version": "card-locator-v1",
               "seed": seed, "epochs": epochs, "input_size": [320,184], "threshold": .5,
               "geometry_loss": "log_size_ratio" if relative_size else "normalized_smooth_l1",
+              "spatial_augmentation": "bounded_scale_translation_v1" if spatial_augmentation else None,
               "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
               "history": history, "test": evaluate(model, datasets["test"]),
               "torch_version": torch.__version__, "confidence_calibrated": False,
               "full_table_readiness": False, "limitation": "Synthetic-only diagnostic; layout memorization not excluded"}
+    if spatial_augmentation:
+        report["test_frozen_spatial"] = evaluate(model, frozen_spatial(datasets["test"], seed+2))
+        report["validation_scope"] = "Original validation frames plus fixed spatial variants; test does not select weights"
     destination.mkdir(parents=True)
     torch.save({"state_dict": saved, "model_kind": report["model_kind"],
                 "architecture_version": report["architecture_version"], "input_size": report["input_size"]},
@@ -96,5 +141,7 @@ if __name__ == "__main__":
     parser.add_argument("output", type=Path)
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--relative-size", action="store_true")
+    parser.add_argument("--spatial-augmentation", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(train(args.manifest, args.output, args.epochs, relative_size=args.relative_size)["test"], indent=2))
+    print(json.dumps(train(args.manifest, args.output, args.epochs, relative_size=args.relative_size,
+        spatial_augmentation=args.spatial_augmentation)["test"], indent=2))

@@ -1,0 +1,46 @@
+{
+  "experiment": "neural-locator-spatial-v1",
+  "status": "high_recall_research_candidate_not_promoted",
+  "checkpoint": "apc/checkpoints/card-locator-spatial-v1.pt",
+  "checkpoint_sha256": "db06ecc09692f66109a6e84e9a67627e24ac01e6716fe83b4c528a5dd14d2367",
+  "checkpoint_bytes": 246917,
+  "recognizer_fixed": "apc/checkpoints/browser-symbol-rehearsal-v1.pt",
+  "training": {
+    "manifest": "apc/runs/browser-symbol-mixture-v1/dataset_manifest.json",
+    "manifest_sha256": "800ed7563c88fc4cc45393c947f2e8f7370d35758df0c920416d81e6707bc340",
+    "seed": 42,
+    "epochs": 50,
+    "selected_epoch": 34,
+    "geometry_loss": "log_size_ratio",
+    "augmentation": "Uniform bounded translation and scale 0.75 through at most 1.2; all labeled faces retained inside the frame",
+    "validation": "Original validation frames plus frozen spatial variants using seed 43",
+    "selection": "Highest validation localization F1, first tie wins",
+    "test_spatial_seed": 44,
+    "captured_frames_used_for_training": 0,
+    "torch": "2.14.1+cpu"
+  },
+  "captured_development": {
+    "targets": 34,
+    "old_neural": {"localized": 30, "exact_matched_cards": 30, "false_proposals": 26},
+    "new_neural": {"localized": 34, "exact_matched_cards": 34, "false_proposals": 31},
+    "light_surface_control": {"localized": 34, "exact_matched_cards": 34, "false_proposals": 0}
+  },
+  "old_mixed_brightness_synthetic": {
+    "targets": 80,
+    "old_neural": {"localized": 78, "exact_matched_cards": 78, "false_proposals": 0},
+    "new_neural": {"localized": 80, "exact_matched_cards": 80, "false_proposals": 12},
+    "light_surface_control": {"localized": 40, "exact_matched_cards": 40, "false_proposals": 0}
+  },
+  "new_source_raw_locator_test": {"targets": 100, "localized": 99, "false_proposals": 18},
+  "new_source_frozen_spatial_test": {"targets": 100, "localized": 93, "false_proposals": 5},
+  "interpretation": "Removing fixed-layout dependence recovered missed cards but worsened precision. Perfect matched-card recall is not perfect whole-frame recognition.",
+  "limitations": [
+    "Development captures are correlated, draft-geometry examples from one session",
+    "Synthetic tests do not establish captured-table generalization",
+    "Light-surface control cannot handle dim card faces and is not a replacement for the neural model",
+    "No calibration, hero/board role confirmation, temporal integration or coaching activation"
+  ],
+  "next_work": "Train against realistic non-card controls and mine high-scoring negative regions, then re-evaluate precision and recall together",
+  "default_model_changed": false,
+  "full_table_readiness": false
+}

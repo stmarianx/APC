@@ -238,6 +238,23 @@ Each source retains its own train/validation/test split. Duplicate source manife
 duplicate images and cross-source captured-session leakage are rejected; generated
 synthetic session IDs are namespaced by dataset ID. Test scores never select weights.
 
+The next locator experiment adds bounded scale/translation during training, with
+pixels and boxes transformed together and all card faces kept visible. It recovered
+all 34 captured card appearances, but false proposals increased from 26 to 31;
+on the old mixed-brightness synthetic set it found 80/80 with 12 false proposals.
+`apc/checkpoints/card-locator-spatial-v1.pt` is therefore not promoted. The light-surface
+control gets 34/34 captured cards with no false proposals, but misses 40/80 cards
+in the mixed-brightness set. None of these results clears readiness gates.
+
+```text
+python -m apc.perception.train_card_locator apc/runs/browser-symbol-mixture-v1/dataset_manifest.json apc/runs/neural-locator-spatial-v1 --epochs 50 --relative-size --spatial-augmentation
+python -m apc.perception.evaluate_browser_collection apc/data/development/browser-domain-bridge-v1/collection.json --surface-pairs --glyph-checkpoint apc/checkpoints/browser-symbol-rehearsal-v1.pt --locator-checkpoint apc/checkpoints/card-locator-spatial-v1.pt
+```
+
+For the diagnostic light-surface control, replace the locator argument with
+`--pixel-proposals`. Neural training still needs realistic non-card controls and
+high-scoring negative regions to improve precision without losing recall.
+
 1. Collect and double-audit the minimum controlled virtual-chip visible-table dataset required by Gate T.
 2. Collect controlled-visible examples for variable-font name, numeric and turn-clock calibration.
 3. Train card, numeric, dealer, seat, name and event heads and evaluate them against Gate P.
