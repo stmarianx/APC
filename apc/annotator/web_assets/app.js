@@ -44,7 +44,7 @@ function boxLabelRows(annotation) {
     (objects[collection] || []).forEach((item, index) => {
       for (const glyph of ["rank", "suit"]) {
         if (item[glyph + "_box"]) rows.push({type: collection === "hero_cards" ? "hero_card" : "board_card",
-          label: `${collection} ${index+1} ${glyph}`, box: item[glyph + "_box"]});
+          label: "", box: item[glyph + "_box"]});
       }
     });
   }
@@ -69,6 +69,7 @@ function sizeCanvas() {
 function drawBox(context, box, color, label, width, height) {
   const x = box.x * width, y = box.y * height, w = box.width * width, h = box.height * height;
   context.strokeStyle = color; context.lineWidth = 2; context.strokeRect(x, y, w, h);
+  if (!label) return;
   context.font = "11px Segoe UI";
   const labelWidth = context.measureText(label).width + 8;
   context.fillStyle = color; context.fillRect(x, Math.max(0, y - 18), labelWidth, 18);
