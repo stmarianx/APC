@@ -1,6 +1,13 @@
 {
   "model_name": "APC",
-  "status": "training_started_not_evaluated",
+  "status": "trained_validated_matched_control_running",
+  "checkpoint_fingerprint": "c2a1a15ece9d0f1110db176411fc59eccbc5860ee7184de48f1f96dc32601fdc",
+  "comparison_corpus_result": {
+    "chosen_action_regret_bb": 1.7506584297,
+    "decision_accuracy": 0.4,
+    "mae_bb": 3.46502909398
+  },
+  "control_output": "apc/runs/apc-paired-regret-control-v1",
   "command": "python -m apc.neural.train_candidate apc/runs/raised-rehearsal-rebuild-20261104 apc/runs/apc-paired-regret-v1 --epochs 3 --batch-size 128 --regret-weight 1 --sealed-audit-dataset apc/runs/raised-independent-regression-20261104",
   "seed": 20260823,
   "initialization": "New APC network, not resumed replay candidate",
