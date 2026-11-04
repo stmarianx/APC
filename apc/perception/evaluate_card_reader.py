@@ -19,15 +19,20 @@ def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False):
               "false_positives": 0, "false_negatives": 0,
               "candidate_rank_correct": 0, "candidate_suit_correct": 0,
               "candidate_exact_correct": 0, "high_score_candidates": 0,
-              "high_score_correct": 0, "high_score_candidates_all": 0}
+              "high_score_correct": 0, "high_score_candidates_all": 0,
+              "confirmed_cards_emitted": 0, "frames_with_card_targets": 0,
+              "frames_all_card_candidates_exact": 0, "frames_with_high_score_error": 0}
     latency = []
     for target in load_split(manifest, split):
         cards = [item for item in target["objects"] if item["class_name"] in ("hero_card", "board_card")
                  and item["box_mask"] and item["attribute_masks"].get("rank")
                  and item["attribute_masks"].get("suit")]
         result = reader.read(target["image"]["path"])
-        totals["high_score_candidates_all"] += sum(
+        frame_high = sum(
             min(item["rank_score"], item["suit_score"]) >= reader.threshold for item in result["cards"])
+        totals["high_score_candidates_all"] += frame_high
+        totals["confirmed_cards_emitted"] += sum(item.get("card") is not None for item in result["cards"])
+        frame_exact = frame_high_correct = 0
         match = match_proposals(result["cards"], cards)
         totals["frames"] += 1
         totals["targets"] += len(cards)
@@ -44,13 +49,21 @@ def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False):
             high = min(predicted["rank_score"], predicted["suit_score"]) >= reader.threshold
             totals["high_score_candidates"] += int(high)
             totals["high_score_correct"] += int(high and correct)
+            frame_exact += int(correct)
+            frame_high_correct += int(high and correct)
+        totals["frames_with_card_targets"] += int(bool(cards))
+        totals["frames_all_card_candidates_exact"] += int(bool(cards) and frame_exact == len(cards)
+                                                          and not match["false_positives"])
+        totals["frames_with_high_score_error"] += int(frame_high > frame_high_correct)
         latency.append(result["elapsed_ms"])
     totals.update({"candidate_exact_recall": totals["candidate_exact_correct"] / totals["targets"] if totals["targets"] else None,
                    "high_score_matched_precision": totals["high_score_correct"] / totals["high_score_candidates"] if totals["high_score_candidates"] else None,
                    "high_score_end_to_end_precision": totals["high_score_correct"] / totals["high_score_candidates_all"] if totals["high_score_candidates_all"] else None,
                    "p95_frame_ms": float(np.percentile(latency, 95)) if latency else None,
                    "latency_scope": "image_io_proposals_neural_not_checkpoint_loading",
-                   "confirmed_cards_emitted": 0, "full_table_readiness": False})
+                   "high_score_wrong_matched": totals["high_score_candidates"] - totals["high_score_correct"],
+                   "high_score_unmatched": totals["high_score_candidates_all"] - totals["high_score_candidates"],
+                   "full_table_readiness": False})
     return totals
 
 
