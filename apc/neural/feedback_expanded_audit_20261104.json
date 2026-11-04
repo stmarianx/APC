@@ -1,0 +1,16 @@
+{
+  "status": "coverage_verified_not_model_evaluated",
+  "rebuild": "python -m apc.neural.diverse_self_play_replay apc/runs/feedback-fresh-audit-expanded-20261104 --hands 960 --seed-start 940000 --hands-per-session 3",
+  "purpose": "Independent replay evaluation; do not use for training or selection",
+  "hands": 960,
+  "decisions": 6142,
+  "split_complete_hands": {"train": 663, "validation": 165, "test": 132},
+  "required_training_configurations": 36,
+  "covered_training_configurations": 36,
+  "required_held_out_configurations": 12,
+  "covered_held_out_configurations": 12,
+  "adapter_fingerprint": "283c4768c2beef6dd7f44d77250104c46fd0a7733cc0a148a691c37eb170d0a0",
+  "buffer_validation_passed": true,
+  "generator_coverage_passed": true,
+  "activation_authorized": false
+}

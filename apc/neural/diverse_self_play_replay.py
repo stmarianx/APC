@@ -256,9 +256,18 @@ def main() -> None:
     parser.add_argument("--seed-start", type=int, default=100000)
     parser.add_argument("--hands-per-session", type=int, default=3)
     parser.add_argument("--stack-depth-bb", action="append", dest="stacks")
+    parser.add_argument("--report", type=Path, help="Write generation evidence to a new JSON file")
     args = parser.parse_args()
+    if args.report is not None and args.report.exists():
+        parser.error("Report exists; use a new path")
     stacks = DEFAULT_STACK_DEPTHS_BB if not args.stacks else tuple(args.stacks)
-    print(json.dumps(build_diverse_virtual_replay_buffer(args.destination, hands=args.hands, seed_start=args.seed_start, hands_per_session=args.hands_per_session, stack_depths_bb=stacks), indent=2))
+    report = build_diverse_virtual_replay_buffer(args.destination, hands=args.hands, seed_start=args.seed_start,
+                                               hands_per_session=args.hands_per_session, stack_depths_bb=stacks)
+    payload = json.dumps(report, indent=2)
+    if args.report is not None:
+        with args.report.open("x", encoding="utf-8") as destination:
+            destination.write(payload + "\n")
+    print(payload)
 
 
 if __name__ == "__main__":
