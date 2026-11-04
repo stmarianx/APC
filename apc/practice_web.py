@@ -41,6 +41,13 @@ def create_server(port=8780):
                     self.send_header("Content-Length", str(len(payload)))
                     self.end_headers()
                     self.wfile.write(payload)
+                elif self.path == "/capture_metadata.js":
+                    payload = (assets / "capture_metadata.js").read_bytes()
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/javascript; charset=utf-8")
+                    self.send_header("Content-Length",str(len(payload)))
+                    self.end_headers()
+                    self.wfile.write(payload)
                 else:
                     self.reply({"error": "Not found"}, 404)
 

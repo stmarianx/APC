@@ -1,0 +1,12 @@
+const assert=require("node:assert/strict");
+const {buildVisibleFrameMetadata}=require("../practice_assets/capture_metadata.js");
+const state={units:"BB",hero_cards:["As","Kh"],board:[],stacks_bb:{Hero:"100",Villain:"100"},opponent_cards:["Ac","Ad"]};
+const metadata=buildVisibleFrameMetadata(state,{width:1280,height:720},[]);
+assert.equal(metadata.opponent_cards,undefined);
+assert.equal(metadata.public_state.opponent_cards,undefined);
+assert.equal(metadata.draft_only,true);
+assert.equal(metadata.image_hash_required,true);
+metadata.public_state.hero_cards[0]="2c";
+assert.equal(state.hero_cards[0],"As");
+assert.throws(()=>buildVisibleFrameMetadata({units:"USD"},{width:1,height:1},[]));
+console.log("Visible-frame metadata isolation tests passed");
