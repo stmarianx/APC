@@ -1,0 +1,16 @@
+{
+  "manifest": "apc/runs/mixed-surface-locator-v1/dataset_manifest.json",
+  "reproduction": "python -m apc.perception.train_card_glyphs apc/runs/mixed-surface-locator-v1/dataset_manifest.json apc/runs/glyph-mixed-surface-v1 --glyph-pair --epochs 20",
+  "exact_glyph_test": {"cards": 80, "old_reader_exact_correct": 61, "new_reader_exact_correct": 80},
+  "neural_proposal_test": {
+    "locator": "apc/checkpoints/card-locator-mixed-v1.pt",
+    "targets": 80,
+    "matched_locations": 78,
+    "old_reader_exact_correct": 26,
+    "new_reader_exact_correct": 33,
+    "whole_frames_exact": 0,
+    "confirmed_cards": 0
+  },
+  "interpretation": "Surface training improved identity recognition on oracle glyphs but did not solve proposal geometry.",
+  "full_table_readiness": false
+}
