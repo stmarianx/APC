@@ -1,0 +1,13 @@
+{
+  "model_name": "APC",
+  "status": "training_started_not_evaluated",
+  "command": "python -m apc.neural.train_candidate apc/runs/raised-rehearsal-rebuild-20261104 apc/runs/apc-paired-regret-v1 --epochs 3 --batch-size 128 --regret-weight 1 --sealed-audit-dataset apc/runs/raised-independent-regression-20261104",
+  "seed": 20260823,
+  "initialization": "New APC network, not resumed replay candidate",
+  "training_dataset_fingerprint": "f9f049ae1cec7eeaf74661f408a2fceba6b7df5804171558ef3657b4b28a2d6d",
+  "comparison_corpus_fingerprint": "8c00c27a7892cf3ca662c10d1ad94cf9e5fa805e6d9d16875a68e483b2e280f4",
+  "evaluation_limit": "This comparison corpus was used for earlier strategy-regression diagnostics. A new untouched final audit is required for promotion evidence.",
+  "control_required": "Same data, initialization seed, epochs, batch size, and learning rate with regret-weight 0 before attributing gains to the objective",
+  "targets": "Paired virtual-chip rollout returns, not GTO solver values",
+  "activation_authorized": false
+}

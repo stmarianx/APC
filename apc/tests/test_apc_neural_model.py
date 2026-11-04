@@ -129,6 +129,17 @@ class APCNeuralModelTests(unittest.TestCase):
         self.assertEqual(first_metrics["test"]["examples"], 4)
         self.assertEqual(first_metrics["test"]["policy_states"], 1)
 
+    def test_paired_regret_training_is_deterministic(self):
+        corpus = encode_rows(self.rows())
+        architecture = APCArchitecture(hidden_dimension=32, transformer_layers=1, attention_heads=4,
+                                       dropout=0.0, profile_hidden=16, visual_channels=(4,8,8))
+        options = dict(architecture=architecture, seed=71, epochs=1, batch_size=4, regret_weight=1.0)
+        first, metrics = train_apc_candidate(corpus, **options)
+        second, repeated = train_apc_candidate(corpus, **options)
+        self.assertEqual(metrics, repeated)
+        for key, value in first.state_dict().items():
+            torch.testing.assert_close(value, second.state_dict()[key], rtol=0, atol=0)
+
     def test_checkpoint_validator_recomputes_semantic_gates(self) -> None:
         architecture = APCArchitecture(hidden_dimension=32, transformer_layers=1, attention_heads=4, dropout=0.0, profile_hidden=16, visual_channels=(4, 8, 8))
         model = APCNetwork(architecture)
