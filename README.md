@@ -79,6 +79,17 @@ confirms card identities. Synthetic test accuracy is not captured-table readines
 
 For the separate browser-based math and hand-review application:
 
+The new full-hand virtual-chip browser table can be launched separately:
+
+```powershell
+.\.venv\Scripts\python -m apc.practice_web --port 8780
+```
+
+Open `http://127.0.0.1:8780/`. It uses the complete heads-up engine with a
+check/call practice opponent, not a GTO opponent. All amounts are BB. Completed
+hands can be exported as replay JSON; there is no automatic weight activation
+or external table control. Browser interaction verification is still pending.
+
 ```powershell
 Set-Location 'C:\Users\st_ma\Documents\Negreanu\coach'
 $env:PYTHONPATH = (Resolve-Path '.\src')

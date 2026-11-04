@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>APC · Full-hand practice</title>
+<style>
+:root{font-family:system-ui;color:#eff6f2;background:#101b19}body{max-width:1000px;margin:auto;padding:24px}
+h1{font-size:24px;margin-bottom:4px}p{color:#b4c6bd}button,input{font:inherit;padding:12px;border-radius:8px;border:1px solid #486357}
+button{background:#c9ed9a;color:#12221a;cursor:pointer}button:disabled{opacity:.4;cursor:default}
+#table{background:radial-gradient(#276c52,#123e32);border:12px solid #40382d;border-radius:180px;min-height:400px;display:flex;flex-direction:column;justify-content:space-around;align-items:center;padding:20px;margin:24px 0}
+.seat{background:#12261f;border:1px solid #658773;border-radius:12px;padding:10px 24px;text-align:center}
+.cards{display:flex;gap:8px;min-height:80px;align-items:center}.card{background:#f5f3e9;color:#131d19;border-radius:7px;width:50px;height:66px;box-shadow:0 2px 5px #0006;padding:6px;font-size:22px;font-weight:700;display:flex;flex-direction:column}
+.card.h{color:#d0313e}.card.d{color:#276bc5}.card.c{color:#228454}.card.back{background:#33495a;color:#a2c4db}
+#controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}#size{width:110px}#message{min-height:26px;color:#f3d89b}
+pre{white-space:pre-wrap;background:#182a22;border-radius:8px;padding:16px}#replay{color:#c9ed9a}
+@media(max-width:600px){body{padding:12px}.card{width:32px;height:52px;font-size:18px}.cards{gap:4px}#table{border-radius:90px;padding:12px}}
+</style>
+<h1>APC · Full-hand practice</h1>
+<p>Virtual chips only · Check/call practice opponent, not GTO · No AI recommendation is active</p>
+<div id="message" role="status"></div>
+<section id="table" aria-label="Virtual poker table">
+ <div class="seat"><strong id="villain"></strong><div id="villainCards" class="cards" aria-label="Opponent cards"></div></div>
+ <div><span id="street"></span> · Pot <strong id="pot"></strong> BB</div>
+ <div id="board" class="cards" aria-label="Community cards"></div>
+ <div class="seat"><div id="heroCards" class="cards" aria-label="Hero cards"></div><strong id="hero"></strong></div>
+</section>
+<div id="controls"><label>Total bet/raise <input id="size" type="number" min="0" step=".5" aria-label="Bet or raise total in BB"> BB</label><span id="buttons"></span></div>
+<p id="price"></p><h2>Action history</h2><pre id="history"></pre>
+<section id="finished" hidden><h2>Completed hand</h2><pre id="feedback"></pre>
+<a id="replay" href="/api/replay" download="apc-completed-hand.json">Export completed-hand learning record</a>
+<button id="new">New hand</button></section>
+<script>
+let state=null,busy=false;
+const el=id=>document.getElementById(id);
+function cards(id,values){const root=el(id);root.replaceChildren();for(const value of values){const node=document.createElement('span');const suit=value.slice(-1);node.className='card '+suit;const rank=document.createElement('span'),symbol=document.createElement('span');rank.textContent=value.slice(0,-1);symbol.textContent=({s:'♠',h:'♥',d:'♦',c:'♣'})[suit]||'?';node.append(rank,symbol);root.append(node)}}
+function render(result){state=result.state;el('street').textContent=state.street;el('pot').textContent=state.pot_bb;
+ el('hero').textContent='Hero · '+state.hero_position+' · '+state.stacks_bb.Hero+' BB'+(state.button_position===state.hero_position?' · Dealer':'');
+ el('villain').textContent='Opponent · '+state.stacks_bb.Villain+' BB'+(state.button_position!==state.hero_position?' · Dealer':'');
+ cards('heroCards',state.hero_cards);cards('board',state.board);cards('villainCards',state.opponent_cards||[]);
+ if(!state.opponent_cards)el('villainCards').textContent='Hidden';
+ el('price').textContent=state.terminal?'Hand complete':'To call '+state.to_call_bb+' BB';
+ el('history').textContent=JSON.stringify(state.action_history,null,2);el('buttons').replaceChildren();
+ for(const row of state.action_buttons){const button=document.createElement('button');button.textContent=row.action+(row.minimum_to_bb?' ≥ '+row.minimum_to_bb+' BB':'');button.disabled=busy;button.addEventListener('click',()=>act(row.action));el('buttons').append(button)}
+ el('finished').hidden=!state.terminal;el('feedback').textContent=result.feedback?JSON.stringify(result.feedback,null,2):'';el('size').disabled=state.terminal||busy;}
+async function request(path,body){const response=await fetch(path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const value=await response.json();if(!response.ok)throw new Error(value.error||'Request failed');return value}
+async function act(action){if(busy)return;busy=true;el('message').textContent='';try{const body={action,state_fingerprint:state.state_fingerprint};if(['bet','raise'].includes(action)){if(!el('size').value)throw new Error('Enter the total bet/raise size in BB');body.to_amount_bb=el('size').value}render(await request('/api/action',body));el('size').value=''}catch(error){el('message').textContent=error.message;render(await request('/api/state'))}finally{busy=false;for(const b of el('buttons').children)b.disabled=false;el('size').disabled=state.terminal}}
+el('new').addEventListener('click',async()=>{if(busy)return;busy=true;try{render(await request('/api/new',{}));el('message').textContent=''}catch(e){el('message').textContent=e.message}finally{busy=false;for(const b of el('buttons').children)b.disabled=false;el('size').disabled=state.terminal}});
+request('/api/state').then(render).catch(e=>el('message').textContent=e.message);
+</script></html>
