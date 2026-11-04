@@ -6,6 +6,7 @@ const DEFAULT_FIELDS = {
   seat: { seat_no: 1, occupied: true, is_hero: false, has_dealer_button: false, player_name: "Player", stack_bb: "100", raw_stack_text: "100 BB", status: "active", visibility: "clear" },
   hero_card: { rank: "A", suit: "s", visibility: "clear" },
   board_card: { rank: "A", suit: "s", visibility: "clear" },
+  hero_rank: {}, hero_suit: {}, board_rank: {}, board_suit: {},
   pot: { amount_bb: "0", raw_text: "0 BB", visibility: "clear" },
   action_button: { action: "check", enabled: true, raw_text: "Check", visibility: "clear" },
   turn_clock: { remaining_ms: 30000, raw_text: "30", visibility: "clear" },
@@ -39,6 +40,14 @@ function boxLabelRows(annotation) {
   (objects.seats || []).forEach((item, index) => rows.push({ type: "seat", label: `seat ${item.seat_no || index + 1}`, box: item.box }));
   (objects.hero_cards || []).forEach((item, index) => rows.push({ type: "hero_card", label: `hero ${index + 1}`, box: item.box }));
   (objects.board_cards || []).forEach((item, index) => rows.push({ type: "board_card", label: `board ${index + 1}`, box: item.box }));
+  for (const collection of ["hero_cards", "board_cards"]) {
+    (objects[collection] || []).forEach((item, index) => {
+      for (const glyph of ["rank", "suit"]) {
+        if (item[glyph + "_box"]) rows.push({type: collection === "hero_cards" ? "hero_card" : "board_card",
+          label: `${collection} ${index+1} ${glyph}`, box: item[glyph + "_box"]});
+      }
+    });
+  }
   if (objects.pot?.box) rows.push({ type: "pot", label: "pot", box: objects.pot.box });
   (objects.action_buttons || []).forEach((item, index) => rows.push({ type: "action_button", label: item.action || `action ${index + 1}`, box: item.box }));
   if (objects.turn_clock?.box) rows.push({ type: "turn_clock", label: "turn clock", box: objects.turn_clock.box });
@@ -298,7 +307,8 @@ $("applyBoxButton").addEventListener("click", () => {
     const fields = JSON.parse($("objectFields").value || "{}");
     annotation.objects = annotation.objects || {};
     const object = { box: state.drawnBox, ...fields };
-    if (type === "table") annotation.objects.table = state.drawnBox;
+    if (/^(hero|board)_(rank|suit)$/.test(type)) applyGlyphBox(annotation, type, index, state.drawnBox);
+    else if (type === "table") annotation.objects.table = state.drawnBox;
     else if (type === "pot") annotation.objects.pot = object;
     else if (type === "turn_clock") annotation.objects.turn_clock = object;
     else {

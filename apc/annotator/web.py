@@ -177,7 +177,7 @@ def create_server(
                 if path in ("/", "/index.html"):
                     self._static("index.html")
                     return
-                if path in ("/app.js", "/styles.css"):
+                if path in ("/app.js", "/glyph_boxes.js", "/styles.css"):
                     self._static(path[1:])
                     return
                 self.send_error(404)
