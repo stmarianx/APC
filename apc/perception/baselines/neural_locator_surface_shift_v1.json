@@ -1,0 +1,20 @@
+{
+  "checkpoint": "apc/checkpoints/card-locator-relative-v1.pt",
+  "trained_surface": "dim",
+  "evaluation_surface": "light",
+  "evaluation_manifest": "apc/runs/corner_rank_36sessions/dataset_manifest.json",
+  "split": "test",
+  "frames": 16,
+  "targets": 80,
+  "true_positives": 0,
+  "false_positives": 67,
+  "false_negatives": 80,
+  "matching_iou_threshold": 0.5,
+  "saved_user_capture": {
+    "proposals": 7,
+    "scores_calibrated": false,
+    "manual_localization_accuracy_not_measured": true
+  },
+  "conclusion": "Dim-only training did not generalize to light cards. No application promotion.",
+  "full_table_readiness": false
+}

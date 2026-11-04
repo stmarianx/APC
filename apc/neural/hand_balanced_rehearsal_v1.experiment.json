@@ -1,6 +1,16 @@
 {
   "model_name": "APC",
-  "status": "training_started_not_evaluated",
+  "status": "trained_not_promoted_fresh_audit_pending",
+  "candidate_checkpoint_fingerprint": "8f7161e8097ab54ce7f2e24fd7ea0a400300bd0a714215b6b451d5904a42860a",
+  "strategy_regression_passed": true,
+  "internal_test": {
+    "candidate_mae_bb": 75.0965563336,
+    "incumbent_mae_bb": 75.0895265769,
+    "candidate_rmse_bb": 106.171096344,
+    "incumbent_rmse_bb": 106.212020482,
+    "playing_strength_improvement_established": false
+  },
+  "fresh_audit_generation": "960 hands, seed-start 980000; generated after candidate freeze",
   "output": "apc/runs/hand-balanced-rehearsal-v1",
   "incumbent": "apc/runs/apc-neural-v4/checkpoint.json",
   "incumbent_checkpoint_fingerprint": "5586f02ae7db0e2a2d5c8ec731f0aab45abba5ddb84e50d07fc32e0940f353e6",
