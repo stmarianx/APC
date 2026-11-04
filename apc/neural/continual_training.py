@@ -40,6 +40,14 @@ def inverse_hand_weights(fingerprints):
     return np.asarray([len(fingerprints) / (len(counts) * counts[item]) for item in fingerprints], dtype=np.float32)
 
 
+def hand_balanced_mae(actual, predicted, fingerprints):
+    errors = np.abs(np.asarray(predicted, dtype=np.float64) - np.asarray(actual, dtype=np.float64))
+    weights = inverse_hand_weights(fingerprints)
+    if errors.shape != weights.shape or not np.isfinite(errors).all():
+        raise ValueError("Hand-balanced MAE requires finite aligned decision vectors")
+    return float(np.average(errors, weights=weights))
+
+
 def _canonical(value: object) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
 
@@ -312,6 +320,13 @@ def train_completed_replay_candidate(
             losses.append(float(loss.detach()))
         validation_prediction = _predict(candidate, corpus, split_indices["validation"], batch_size)
         validation = _metrics(corpus, split_indices["validation"], validation_prediction)
+        selection_mae = float(validation["mae_bb"])
+        if hand_balanced:
+            validation_indices = split_indices["validation"]
+            selection_mae = hand_balanced_mae(
+                corpus.target_return_bb[validation_indices], validation_prediction["value"],
+                [corpus.replay_fingerprints[int(i)] for i in validation_indices])
+            validation["hand_balanced_mae_bb"] = format(selection_mae, ".12g")
         strategy_validation = None
         if strategy_rehearsal is not None and rehearsal_validation_indices is not None and rehearsal_validation_incumbent is not None:
             strategy_value, _, strategy_uncertainty = _strategy_predict(
@@ -325,9 +340,9 @@ def train_completed_replay_candidate(
             accuracy_delta = float(rehearsal_validation_incumbent["decision_accuracy"]) - float(strategy_validation["decision_accuracy"])
             violations = sum(delta > 0 for delta in (mae_delta, regret_delta, accuracy_delta))
             regression_penalty = max(0.0, mae_delta) + max(0.0, regret_delta) + 10.0 * max(0.0, accuracy_delta)
-            selection = (float(violations), regression_penalty, float(validation["mae_bb"]), -float(validation["observed_action_accuracy"]))
+            selection = (float(violations), regression_penalty, selection_mae, -float(validation["observed_action_accuracy"]))
         else:
-            selection = (float(validation["mae_bb"]), -float(validation["observed_action_accuracy"]))
+            selection = (selection_mae, -float(validation["observed_action_accuracy"]))
         history.append({
             "epoch": epoch + 1,
             "training_loss": format(float(np.mean(losses)), ".12g"),

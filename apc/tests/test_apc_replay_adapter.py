@@ -38,6 +38,10 @@ class APCReplayAdapterTests(unittest.TestCase):
         np.testing.assert_array_equal(inverse_hand_weights(["a", "b"]), [1, 1])
         with self.assertRaises(ValueError):
             inverse_hand_weights([])
+        from apc.neural.continual_training import hand_balanced_mae
+        self.assertAlmostEqual(hand_balanced_mae([0]*4, [10, 0, 0, 0], identities), 5, places=6)
+        with self.assertRaises(ValueError):
+            hand_balanced_mae([0], [float("nan")], ["a"])
 
     def test_audit_session_separation(self):
         from apc.neural.evaluate_continual_candidate import verify_session_separation
@@ -213,6 +217,7 @@ class APCReplayAdapterTests(unittest.TestCase):
             hand_balanced=True,
         )
         self.assertIsNotNone(metrics["history"][0]["strategy_rehearsal_loss"])
+        self.assertIn("hand_balanced_mae_bb", metrics["history"][0])
         self.assertEqual(float(candidate.value_mean_bb), original_mean)
         self.assertEqual(float(candidate.value_scale_bb), original_scale)
 
