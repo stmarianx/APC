@@ -10,6 +10,7 @@ import random
 import sys
 import tempfile
 import time
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -29,6 +30,14 @@ from apc.neural.train_candidate import (
 
 
 SCHEMA_VERSION = "1.0.0"
+
+
+def inverse_hand_weights(fingerprints):
+    """Mean-one decision weights giving each completed hand equal total mass."""
+    counts = Counter(fingerprints)
+    if not counts:
+        raise ValueError("Hand weights require decisions")
+    return np.asarray([len(fingerprints) / (len(counts) * counts[item]) for item in fingerprints], dtype=np.float32)
 
 
 def _canonical(value: object) -> bytes:
@@ -167,6 +176,7 @@ def train_completed_replay_candidate(
     strategy_rehearsal_batch_size: int = 256,
     strategy_ordering_retention_weight: float = 1.0,
     strategy_argmax_hinge_weight: float = 1.0,
+    hand_balanced: bool = False,
 ) -> tuple[APCNetwork, dict[str, object]]:
     if (
         epochs <= 0
@@ -199,6 +209,10 @@ def train_completed_replay_candidate(
     best_state = None
     best_validation: tuple[float, ...] = (math.inf, math.inf)
     history = []
+    decision_weights = np.ones(len(corpus.target_return_bb), dtype=np.float32)
+    if hand_balanced:
+        train_indices = split_indices["train"]
+        decision_weights[train_indices] = inverse_hand_weights([corpus.replay_fingerprints[int(i)] for i in train_indices])
     rehearsal_groups = None if strategy_rehearsal is None else _strategy_groups(strategy_rehearsal, "train")
     if strategy_rehearsal is not None and len(rehearsal_groups) == 0:
         raise ValueError("APC strategy rehearsal corpus has no complete training groups")
@@ -232,9 +246,12 @@ def train_completed_replay_candidate(
             target = torch.from_numpy(corpus.target_return_bb[indices])
             replay_scale = torch.from_numpy(corpus.target_scale_bb[indices]).clamp_min(scale)
             normalized_error = (output["candidate_action_value_bb"] - target) / replay_scale
-            value_loss = torch.nn.functional.smooth_l1_loss(normalized_error, torch.zeros_like(normalized_error))
-            imitation_loss = torch.nn.functional.cross_entropy(output["policy_logits"], inputs["candidate_action_index"])
-            temporal_loss = torch.nn.functional.binary_cross_entropy(output["temporal_consistency"], torch.ones_like(output["temporal_consistency"]))
+            weights = torch.from_numpy(decision_weights[indices])
+            def weighted_mean(per_decision):
+                return (per_decision * weights).mean()
+            value_loss = weighted_mean(torch.nn.functional.smooth_l1_loss(normalized_error, torch.zeros_like(normalized_error), reduction="none"))
+            imitation_loss = weighted_mean(torch.nn.functional.cross_entropy(output["policy_logits"], inputs["candidate_action_index"], reduction="none"))
+            temporal_loss = weighted_mean(torch.nn.functional.binary_cross_entropy(output["temporal_consistency"], torch.ones_like(output["temporal_consistency"]), reduction="none"))
             finite_legal = inputs["legal_action_mask"]
             retention_value = torch.nn.functional.smooth_l1_loss(output["action_value_bb"][finite_legal], prior["action_value_bb"][finite_legal])
             prior_probability = torch.softmax(prior["policy_logits"], dim=-1)
@@ -395,6 +412,7 @@ def build_completed_replay_checkpoint(
     strategy_rehearsal_batch_size: int = 256,
     strategy_ordering_retention_weight: float = 1.0,
     strategy_argmax_hinge_weight: float = 1.0,
+    hand_balanced: bool = False,
 ) -> dict[str, object]:
     from apc.neural.train_candidate import validate_checkpoint
 
@@ -430,6 +448,7 @@ def build_completed_replay_checkpoint(
         strategy_rehearsal_batch_size=strategy_rehearsal_batch_size,
         strategy_ordering_retention_weight=strategy_ordering_retention_weight,
         strategy_argmax_hinge_weight=strategy_argmax_hinge_weight,
+        hand_balanced=hand_balanced,
     )
     audit = audit_completed_replay_candidate(corpus, incumbent, candidate, metrics)
     latency = evaluate_temporal_latency(candidate, corpus)
@@ -475,6 +494,7 @@ def build_completed_replay_checkpoint(
                 "pipeline_version": "1.0.0",
                 "seed": seed,
                 "epochs": epochs,
+                "hand_balanced_replay_targets": hand_balanced,
                 "batch_size": batch_size,
                 "learning_rate": format(learning_rate, ".12g"),
                 "incumbent_retention_weight": format(incumbent_retention_weight, ".12g"),
@@ -608,6 +628,7 @@ def main() -> None:
     train.add_argument("--seed", type=int, default=20260825)
     train.add_argument("--epochs", type=int, default=3)
     train.add_argument("--cpu-threads", type=int, default=4, help="Maximum CPU threads for this training process")
+    train.add_argument("--hand-balanced", action="store_true", help="Give each hand equal total replay-target weight; retention remains decision-weighted")
     train.add_argument("--batch-size", type=int, default=64)
     train.add_argument("--learning-rate", type=float, default=1e-4)
     train.add_argument("--incumbent-retention-weight", type=float, default=0.20)
@@ -642,6 +663,7 @@ def main() -> None:
         strategy_rehearsal_batch_size=args.strategy_rehearsal_batch_size,
         strategy_ordering_retention_weight=args.strategy_ordering_retention_weight,
         strategy_argmax_hinge_weight=args.strategy_argmax_hinge_weight,
+        hand_balanced=args.hand_balanced,
     )
     print(json.dumps(result, indent=2))
 

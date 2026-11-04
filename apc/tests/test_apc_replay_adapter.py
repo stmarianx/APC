@@ -29,6 +29,16 @@ from apc.neural.train_candidate import encode_rows
 
 
 class APCReplayAdapterTests(unittest.TestCase):
+    def test_hand_weights_equalize_total_mass_without_using_rewards(self):
+        from apc.neural.continual_training import inverse_hand_weights
+        identities = ["short", "long", "long", "long"]
+        weights = inverse_hand_weights(identities)
+        self.assertAlmostEqual(float(weights[0]), float(weights[1:].sum()))
+        self.assertAlmostEqual(float(weights.mean()), 1)
+        np.testing.assert_array_equal(inverse_hand_weights(["a", "b"]), [1, 1])
+        with self.assertRaises(ValueError):
+            inverse_hand_weights([])
+
     def test_audit_session_separation(self):
         from apc.neural.evaluate_continual_candidate import verify_session_separation
         def sources(index):
@@ -200,6 +210,7 @@ class APCReplayAdapterTests(unittest.TestCase):
             corpus, incumbent, seed=29, epochs=1, batch_size=2,
             strategy_rehearsal=strategy, strategy_rehearsal_weight=0.5,
             strategy_rehearsal_batch_size=4,
+            hand_balanced=True,
         )
         self.assertIsNotNone(metrics["history"][0]["strategy_rehearsal_loss"])
         self.assertEqual(float(candidate.value_mean_bb), original_mean)
