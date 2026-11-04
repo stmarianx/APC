@@ -48,3 +48,22 @@ class ReaderEvaluationTests(unittest.TestCase):
         self.assertEqual(report["candidate_exact_recall"], .5)
         self.assertEqual(report["high_score_end_to_end_precision"], .5)
         self.assertFalse(report["full_table_readiness"])
+
+    def test_partial_labels_cannot_create_perfect_frame_or_spurious_error(self):
+        known = {"class_name": "hero_card", "box_mask": True, "box_xyxy": [.1,.1,.2,.3],
+                 "attributes": {"rank": "A", "suit": "s"}, "attribute_masks": {"rank": True, "suit": True}}
+        unknown = dict(known, box_xyxy=[.4,.1,.5,.3], attribute_masks={"rank": False, "suit": True})
+        target = {"image": {"path": "fixture"}, "objects": [known, unknown]}
+        proposed = {"candidate": "As", "rank_score": .99, "suit_score": .99, "box_xyxy": known["box_xyxy"]}
+        with patch("apc.perception.evaluate_card_reader.load_split", return_value=[target, target]), \
+                patch("apc.perception.evaluate_card_reader.CardReader") as factory:
+            factory.return_value.threshold = .9
+            factory.return_value.read.side_effect = [
+                {"cards": [proposed], "elapsed_ms": 1},
+                {"cards": [proposed, dict(proposed, box_xyxy=unknown["box_xyxy"])], "elapsed_ms": 2}]
+            report = evaluate_reader("checkpoint", "manifest")
+        self.assertEqual(report["frames_excluded_partial_card_labels"], 2)
+        self.assertEqual(report["excluded_partial_frame_proposals"], 3)
+        self.assertEqual(report["frames_all_card_candidates_exact"], 0)
+        self.assertEqual(report["frames_with_high_score_error"], 0)
+        self.assertIsNone(report["high_score_end_to_end_precision"])
