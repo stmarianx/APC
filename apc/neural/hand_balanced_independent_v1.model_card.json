@@ -1,0 +1,17 @@
+{
+  "model_name": "APC",
+  "status": "validated_checkpoint_fresh_evaluation_pending",
+  "checkpoint": "apc/runs/hand-balanced-independent-v1/checkpoint.json",
+  "checkpoint_fingerprint": "c1e34afd1eb60ff1d61de9382c2c3be010214640cf8a25e9891e16a02114833e",
+  "weights_sha256": "96bf9a10495eb39e506b5bb7ed2d5ebdff1ad895d619dc4cc9946dd8351b86bc",
+  "rehearsal_dataset_fingerprint": "f9f049ae1cec7eeaf74661f408a2fceba6b7df5804171558ef3657b4b28a2d6d",
+  "regression_dataset_fingerprint": "8c00c27a7892cf3ca662c10d1ad94cf9e5fa805e6d9d16875a68e483b2e280f4",
+  "rebuild_regression": "python -m apc.self_learning.raised_postflop_rollout_dataset build apc/runs/raised-independent-regression-20261104 --dataset-id raised-independent-regression-20261104 --rollouts 300 --hand-seed-start 990000",
+  "reproduction": "Use hand_balanced_rehearsal_v1.experiment.json training command with output hand-balanced-independent-v1 and strategy-regression-dataset apc/runs/raised-independent-regression-20261104",
+  "checkpoint_validation_passed": true,
+  "strategy_regression_passed": true,
+  "internal_replay_value_improvement_passed": false,
+  "fresh_audit_test_hands": 159,
+  "activation_authorized": false,
+  "recommendation_allowed": false
+}
