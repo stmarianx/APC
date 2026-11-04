@@ -1,0 +1,147 @@
+{
+  "dataset_fingerprint": "b488961328c3b8602746aec7d51f0d8d83eee8fce04a1fac7bcf0bca72cbab27",
+  "split": "test",
+  "evaluation_target": "paired virtual-chip rollout returns",
+  "incumbent": {
+    "examples": 10584,
+    "policy_states": 2646,
+    "mae_bb": "4.26505183477",
+    "rmse_bb": "5.76611690819",
+    "bias_bb": "-0.203224534118",
+    "train_global_mean_baseline_mae_bb": "5.18125873769",
+    "decision_accuracy": "0.299319727891",
+    "chosen_action_regret_bb": "2.17520784521",
+    "uncertainty_eace": "0.386450212719",
+    "by_position": {
+      "BB": {
+        "examples": 5292,
+        "policy_states": 1323,
+        "mae_bb": "4.26733616261",
+        "rmse_bb": "5.76758114438",
+        "bias_bb": "-0.20306751321",
+        "train_global_mean_baseline_mae_bb": "5.18352631138",
+        "decision_accuracy": "0.299319727891",
+        "chosen_action_regret_bb": "2.17105062676",
+        "uncertainty_eace": "0.386353844741"
+      },
+      "BTN": {
+        "examples": 5292,
+        "policy_states": 1323,
+        "mae_bb": "4.26276750694",
+        "rmse_bb": "5.76465230008",
+        "bias_bb": "-0.203381555027",
+        "train_global_mean_baseline_mae_bb": "5.17899116399",
+        "decision_accuracy": "0.299319727891",
+        "chosen_action_regret_bb": "2.17936506365",
+        "uncertainty_eace": "0.386546580697"
+      }
+    },
+    "by_node": {
+      "facing_33": {
+        "examples": 3528,
+        "policy_states": 882,
+        "mae_bb": "3.50104873914",
+        "rmse_bb": "4.52748628904",
+        "bias_bb": "-0.124147848308",
+        "train_global_mean_baseline_mae_bb": "4.48965754865",
+        "decision_accuracy": "0.269841269841",
+        "chosen_action_regret_bb": "1.50294779866",
+        "uncertainty_eace": "0.413904461828"
+      },
+      "facing_75": {
+        "examples": 3528,
+        "policy_states": 882,
+        "mae_bb": "5.88620132471",
+        "rmse_bb": "7.68242546029",
+        "bias_bb": "-0.5215311412",
+        "train_global_mean_baseline_mae_bb": "6.98846703062",
+        "decision_accuracy": "0.269841269841",
+        "chosen_action_regret_bb": "3.36961451247",
+        "uncertainty_eace": "0.327836967885"
+      },
+      "lead": {
+        "examples": 3528,
+        "policy_states": 882,
+        "mae_bb": "3.40790544047",
+        "rmse_bb": "4.49739030397",
+        "bias_bb": "0.0360053871545",
+        "train_global_mean_baseline_mae_bb": "4.06565163379",
+        "decision_accuracy": "0.358276643991",
+        "chosen_action_regret_bb": "1.65306122449",
+        "uncertainty_eace": "0.417609208445"
+      }
+    },
+    "weights_sha256": "4d5cd304e8ccd54ce90cfc6c12878e5c999e8781a4dca437efc2a5a6928c8ea0"
+  },
+  "candidate": {
+    "examples": 10584,
+    "policy_states": 2646,
+    "mae_bb": "4.34127043242",
+    "rmse_bb": "5.77586419607",
+    "bias_bb": "-0.262596938271",
+    "train_global_mean_baseline_mae_bb": "5.18125873769",
+    "decision_accuracy": "0.299319727891",
+    "chosen_action_regret_bb": "2.17520784521",
+    "uncertainty_eace": "0.398814842253",
+    "by_position": {
+      "BB": {
+        "examples": 5292,
+        "policy_states": 1323,
+        "mae_bb": "4.34364927757",
+        "rmse_bb": "5.77748235893",
+        "bias_bb": "-0.261488278496",
+        "train_global_mean_baseline_mae_bb": "5.18352631138",
+        "decision_accuracy": "0.299319727891",
+        "chosen_action_regret_bb": "2.17105062676",
+        "uncertainty_eace": "0.398593521289"
+      },
+      "BTN": {
+        "examples": 5292,
+        "policy_states": 1323,
+        "mae_bb": "4.33889158727",
+        "rmse_bb": "5.77424557974",
+        "bias_bb": "-0.263705598045",
+        "train_global_mean_baseline_mae_bb": "5.17899116399",
+        "decision_accuracy": "0.299319727891",
+        "chosen_action_regret_bb": "2.17936506365",
+        "uncertainty_eace": "0.399036163216"
+      }
+    },
+    "by_node": {
+      "facing_33": {
+        "examples": 3528,
+        "policy_states": 882,
+        "mae_bb": "3.55280323797",
+        "rmse_bb": "4.52548790219",
+        "bias_bb": "-0.179142134032",
+        "train_global_mean_baseline_mae_bb": "4.48965754865",
+        "decision_accuracy": "0.269841269841",
+        "chosen_action_regret_bb": "1.50294779866",
+        "uncertainty_eace": "0.428274106597"
+      },
+      "facing_75": {
+        "examples": 3528,
+        "policy_states": 882,
+        "mae_bb": "6.02899488543",
+        "rmse_bb": "7.70828853035",
+        "bias_bb": "-0.578736257408",
+        "train_global_mean_baseline_mae_bb": "6.98846703062",
+        "decision_accuracy": "0.269841269841",
+        "chosen_action_regret_bb": "3.36961451247",
+        "uncertainty_eace": "0.335601283184"
+      },
+      "lead": {
+        "examples": 3528,
+        "policy_states": 882,
+        "mae_bb": "3.44201317386",
+        "rmse_bb": "4.49266834012",
+        "bias_bb": "-0.029912423372",
+        "train_global_mean_baseline_mae_bb": "4.06565163379",
+        "decision_accuracy": "0.358276643991",
+        "chosen_action_regret_bb": "1.65306122449",
+        "uncertainty_eace": "0.432569136978"
+      }
+    },
+    "weights_sha256": "905452b93ec3c87824a3a5de06e3a930e848b094e70a254b468abeab5153f6f2"
+  }
+}
