@@ -13,19 +13,22 @@ from PIL import Image
 from apc.perception.card_proposals import propose_cards
 from apc.perception.region_model import RegionRecognizer, RANKS, SUITS
 from apc.perception.train_regions import image_tensor
-from apc.perception.card_glyphs import CardGlyphNetwork, glyph_tensor, corner_pair_tensor
+from apc.perception.card_glyphs import CardGlyphNetwork, glyph_tensor, corner_pair_tensor, adaptive_pair_tensor
 
 
 class CardReader:
-    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False):
+    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False):
         if not math.isfinite(confidence_threshold) or not 0 <= confidence_threshold <= 1:
             raise ValueError("confidence_threshold must be finite in [0,1]")
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
         self.glyph_model = saved.get("model_kind") == "card_glyph_recognizer"
         self.token_extractor = glyph_tensor
+        paired_checkpoint = saved.get("model_kind") == "annotated_card_glyph_pair_recognizer" and saved.get("architecture_version") == "card-glyph-pair-v1"
+        if surface_pairs and (not corner_pairs or not paired_checkpoint):
+            raise ValueError("Surface pair extraction requires a paired glyph checkpoint")
         if corner_pairs and saved.get("model_kind") == "annotated_card_glyph_pair_recognizer" and saved.get("architecture_version") == "card-glyph-pair-v1":
             self.glyph_model = True
-            self.token_extractor = corner_pair_tensor
+            self.token_extractor = adaptive_pair_tensor if surface_pairs else corner_pair_tensor
             self.model = CardGlyphNetwork(input_channels=6)
         elif self.glyph_model and saved.get("architecture_version") == "card-glyph-v1":
             self.model = CardGlyphNetwork()
@@ -35,6 +38,7 @@ class CardReader:
             raise ValueError("Unsupported checkpoint kind or architecture")
         self.model.load_state_dict(saved["state_dict"], strict=True)
         self.model.eval()
+        self.pair_extraction = "surface_two_band_then_corner" if surface_pairs else ("upper_left_corner" if self.token_extractor is corner_pair_tensor else "not_paired")
         self.locator = None
         if locator_checkpoint is not None:
             from apc.perception.infer_card_locator import NeuralCardLocator
@@ -86,6 +90,7 @@ class CardReader:
         return {"schema_version": "1.0.0", "image_path": str(Path(image_path).resolve()),
                 "cards": cards, "elapsed_ms": (time.perf_counter() - started) * 1000,
                 "confidence_threshold": self.threshold, "confidence_calibrated": False,
+                "pair_extraction": getattr(self, "pair_extraction", "unspecified"),
                 "full_table_readiness": False,
                 "limitations": ["light_card_proposals_only" if locator is None else "experimental_neural_proposals",
                                 "hero_board_roles_unresolved",

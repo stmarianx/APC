@@ -68,6 +68,48 @@ def corner_pair_tensor(image, box):
     return torch.cat(tokens), True
 
 
+def surface_pair_tensor(image, box):
+    """Extract exactly two ink bands across a simple card face, without labels.
+
+    Unlike the corner extractor this supports centered identities and lower suit
+    positions. Artwork/extra bands are ambiguous and return missing ink rather
+    than choosing bands by their expected identity.
+    """
+    w, h = image.size
+    x, y, right, bottom = [round(v*d) for v, d in zip(box, (w, h, w, h))]
+    if not (0 <= x < right <= w and 0 <= y < bottom <= h):
+        raise ValueError("Invalid card crop")
+    face = np.asarray(image.crop((x, y, right, bottom)).convert("RGB"), dtype=np.float32)
+    height, width = face.shape[:2]
+    if height < 16 or width < 12:
+        return torch.zeros(6, 32, 32), False
+    bg = np.median(face.reshape(-1, 3), axis=0)
+    margin = max(2, round(min(width, height) * .08))
+    inner = face[margin:-margin, margin:-margin]
+    ink = np.abs(inner - bg).max(2) > 60
+    rows = np.flatnonzero(ink.any(axis=1))
+    bands = np.split(rows, np.flatnonzero(np.diff(rows) > 1) + 1)
+    bands = [band for band in bands if len(band) >= 2]
+    if len(bands) != 2:
+        return torch.zeros(6, 32, 32), False
+    tokens = []
+    for band in bands:
+        cols = np.flatnonzero(ink[band].any(axis=0))
+        bounds = [(x + margin + cols[0]) / w, (y + margin + band[0]) / h,
+                  (x + margin + cols[-1] + 1) / w, (y + margin + band[-1] + 1) / h]
+        token, present = glyph_tensor(image, bounds, border_margin=False, background_rgb=bg)
+        if not present:
+            return torch.zeros(6, 32, 32), False
+        tokens.append(token)
+    return torch.cat(tokens), True
+
+
+def adaptive_pair_tensor(image, box):
+    """Prefer an unambiguous simple face, retaining corner art-card support."""
+    token, present = surface_pair_tensor(image, box)
+    return (token, present) if present else corner_pair_tensor(image, box)
+
+
 class CardGlyphNetwork(nn.Module):
     def __init__(self, input_channels=3):
         super().__init__()

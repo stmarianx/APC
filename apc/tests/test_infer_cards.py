@@ -62,6 +62,8 @@ class CardReaderTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             checkpoint = self.checkpoint(root)
+            with self.assertRaisesRegex(ValueError, "paired glyph checkpoint"):
+                CardReader(checkpoint, corner_pairs=True, surface_pairs=True)
             image = root / "blank.png"
             Image.new("RGB", (640, 360), "black").save(image)
             self.assertEqual(CardReader(checkpoint).read(image)["cards"], [])

@@ -65,6 +65,7 @@ def main():
     inspect.add_argument('image', type=Path)
     inspect.add_argument('--corner-symbols', action='store_true', help='Read separate rank and suit glyphs on light corner-indexed cards')
     inspect.add_argument('--neural-cards', action='store_true', help='Experimental neural localization plus surface-refined recognition; no coaching readiness')
+    inspect.add_argument('--adaptive-glyphs', action='store_true', help='Opt-in full-face/corner glyph extraction; requires --neural-cards')
     args = parser.parse_args()
     if args.mode == 'desktop':
         from apc.desktop import launch
@@ -77,6 +78,8 @@ def main():
             parser.error('Recording requires both --replay-dir and a nonempty --session-id')
         practice(args.seed if args.seed is not None else randbits(32), replay_dir=args.replay_dir, session_id=args.session_id)
     else:
+        if args.adaptive_glyphs and not args.neural_cards:
+            parser.error('--adaptive-glyphs requires --neural-cards')
         import torch
         from apc.perception.infer_cards import CardReader
         torch.set_num_threads(1)
@@ -84,6 +87,8 @@ def main():
         checkpoint = Path(__file__).parent / 'checkpoints' / filename
         options = {"locator_checkpoint": Path(__file__).parent / "checkpoints/card-locator-mixed-v1.pt",
                    "refine_surfaces": True} if args.neural_cards else {}
+        if args.adaptive_glyphs:
+            options['surface_pairs'] = True
         print(json.dumps(CardReader(checkpoint, corner_pairs=args.corner_symbols or args.neural_cards, **options).read(args.image), indent=2))
 
 

@@ -177,6 +177,20 @@ PokerStars desktop clients can save text hand histories under Settings -> Playin
 
 ## Next implementation milestones
 
+The captured-browser development diagnostic now has an opt-in adaptive glyph
+extractor: simple two-band card faces use the full face, while artwork cards fall
+back to corner extraction. No model weights or default inspector behavior change.
+
+```text
+python -m apc inspect --neural-cards --adaptive-glyphs path/to/saved-frame.png
+```
+
+On the six-frame development collection, exact candidates improved from 2/34 to
+14/34 card appearances. The same synthetic test split retained 78/80 exact
+candidates, with two missed cards and no false proposals. These are development
+results, not independent readiness evidence; browser captures still produce many
+false proposals and recognition mistakes. No card identity is confirmed for coaching.
+
 1. Collect and double-audit the minimum controlled virtual-chip visible-table dataset required by Gate T.
 2. Collect controlled-visible examples for variable-font name, numeric and turn-clock calibration.
 3. Train card, numeric, dealer, seat, name and event heads and evaluate them against Gate P.

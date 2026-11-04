@@ -4,15 +4,49 @@ import unittest
 from pathlib import Path
 
 import torch
-from PIL import Image
+from PIL import Image, ImageDraw
 
-from apc.perception.card_glyphs import glyph_tensor
+from apc.perception.card_glyphs import glyph_tensor, surface_pair_tensor, adaptive_pair_tensor, corner_pair_tensor
 from apc.synthetic.render_table import render_frame, THEMES
 from apc.synthetic.render_table import generate_dataset
 from apc.perception.train_card_glyphs import token_dataset
 
 
 class CardGlyphTests(unittest.TestCase):
+    def test_surface_pairs_preserve_two_centered_separated_glyphs(self):
+        image = Image.new("RGB", (100, 100), "white")
+        draw = ImageDraw.Draw(image)
+        draw.rectangle((40, 15, 58, 30), fill="black")
+        draw.ellipse((39, 62, 59, 80), fill="green")
+        token, present = surface_pair_tensor(image, [0, 0, 1, 1])
+        self.assertTrue(present)
+        self.assertEqual(token.shape, (6, 32, 32))
+        expected_rank, _ = glyph_tensor(image, [.4, .15, .59, .31], border_margin=False, background_rgb=[255]*3)
+        expected_suit, _ = glyph_tensor(image, [.39, .62, .60, .81], border_margin=False, background_rgb=[255]*3)
+        torch.testing.assert_close(token, torch.cat([expected_rank, expected_suit]))
+
+    def test_surface_pairs_reject_blank_extra_bands_and_invalid_crop(self):
+        image = Image.new("RGB", (100, 100), "white")
+        self.assertFalse(surface_pair_tensor(image, [0, 0, 1, 1])[1])
+        draw = ImageDraw.Draw(image)
+        for top in (10, 40, 70):
+            draw.rectangle((40, top, 60, top+10), fill="black")
+        self.assertFalse(surface_pair_tensor(image, [0, 0, 1, 1])[1])
+        with self.assertRaises(ValueError):
+            surface_pair_tensor(image, [-.1, 0, 1, 1])
+
+    def test_adaptive_falls_back_for_corner_cards_with_large_decorative_suit(self):
+        image = Image.new("RGB", (100, 100), "white")
+        draw = ImageDraw.Draw(image)
+        draw.rectangle((10, 10, 25, 20), fill="black")
+        draw.rectangle((10, 30, 25, 40), fill="green")
+        draw.ellipse((50, 65, 85, 85), fill="green")
+        self.assertFalse(surface_pair_tensor(image, [0, 0, 1, 1])[1])
+        expected, expected_present = corner_pair_tensor(image, [0, 0, 1, 1])
+        actual, present = adaptive_pair_tensor(image, [0, 0, 1, 1])
+        self.assertTrue(expected_present and present)
+        torch.testing.assert_close(actual, expected)
+
     def test_explicit_glyph_dataset_loads_six_channel_pairs(self):
         with tempfile.TemporaryDirectory() as directory:
             for design, surface in (("centered_token", "light"), ("corner_symbols", "light"), ("corner_symbols", "dim")):

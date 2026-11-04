@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from pathlib import Path
 
 import numpy as np
 import torch
@@ -13,8 +14,10 @@ from apc.perception.spatial_targets import load_split
 from apc.perception.region_model import RANKS, SUITS
 
 
-def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False):
+def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False):
     options = {"corner_pairs": True} if corner_pairs else {}
+    if surface_pairs:
+        options["surface_pairs"] = True
     if locator_checkpoint is not None:
         options["locator_checkpoint"] = locator_checkpoint
         options["refine_surfaces"] = refine_surfaces
@@ -119,10 +122,23 @@ def main():
     parser.add_argument("--split", choices=("train", "validation", "test"), default="test")
     parser.add_argument("--compare-crops", action="store_true")
     parser.add_argument("--corner-symbols", action="store_true", help="Use independent corner rank/suit proposals")
+    parser.add_argument("--surface-pairs", action="store_true", help="Experimental full-face two-band extraction")
+    parser.add_argument("--locator-checkpoint", type=Path)
+    parser.add_argument("--refine-surfaces", action="store_true")
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     torch.set_num_threads(1)
-    function = compare_crops if args.compare_crops else evaluate_reader
-    print(json.dumps(function(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols), indent=2))
+    if args.compare_crops:
+        if args.surface_pairs or args.locator_checkpoint or args.refine_surfaces:
+            parser.error("Extended extraction/locator options are currently supported only by the end-to-end audit")
+        report = compare_crops(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols)
+    else:
+        report = evaluate_reader(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols,
+            surface_pairs=args.surface_pairs, locator_checkpoint=args.locator_checkpoint, refine_surfaces=args.refine_surfaces)
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps(report, indent=2))
 
 
 if __name__ == "__main__":

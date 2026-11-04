@@ -1,0 +1,35 @@
+{
+  "experiment": "adaptive-pair-v1",
+  "status": "opt_in_development_only",
+  "weights_updated": false,
+  "default_behavior_changed": false,
+  "hypothesis": "The upper-left corner search clips centered identities and low suit symbols on browser cards",
+  "initial_full_face_only_result": {
+    "browser_exact": 14,
+    "browser_targets": 34,
+    "synthetic_exact": 0,
+    "synthetic_targets": 80,
+    "interpretation": "Synthetic cards include a third decorative symbol, so a strict two-band whole-face extractor abstains"
+  },
+  "retained_experimental_path": "Full-face extraction only when exactly two bands exist; otherwise use the existing corner extractor",
+  "browser_control": "browser-domain-bridge-v1.json",
+  "browser_candidate": "adaptive-pair-browser-v1.json",
+  "synthetic_control": "adaptive-pair-synthetic-control-v1.json",
+  "synthetic_candidate": "adaptive-pair-synthetic-v1.json",
+  "synthetic_manifest_sha256": "da7f1102918c8e40190e5db29e131d7f5f25d9377977666e02fccdf352537f62",
+  "latency_observation": {
+    "control_synthetic_p95_ms": 83.71809992240742,
+    "candidate_synthetic_p95_ms": 111.30925011821091,
+    "scope": "Single sequential evaluation passes, image IO through neural inference; not a repeated controlled latency benchmark",
+    "interpretation": "Adaptive extraction adds work; unchanged accuracy does not imply unchanged latency"
+  },
+  "limitations": [
+    "Browser examples influenced extractor design and are development data, not an independent evaluation",
+    "One capture session with correlated frames and draft DOM geometry",
+    "Browser recognition remains weak even with oracle glyph crops",
+    "False card proposals, unresolved hero/board roles and uncalibrated probabilities remain",
+    "No card identity is confirmed for coaching"
+  ],
+  "next_work": "Review browser glyph geometry, collect additional independent browser sessions and train a recognizer with font/suit domain variation under a declared split protocol",
+  "full_table_readiness": false
+}

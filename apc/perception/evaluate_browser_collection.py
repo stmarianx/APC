@@ -98,15 +98,17 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("collection", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--surface-pairs", action="store_true", help="Experimental full-face two-band extraction")
     args = parser.parse_args()
     torch.set_num_threads(2)
     checkpoints = Path(__file__).resolve().parents[1] / "checkpoints"
     reader = CardReader(checkpoints / "glyph-surface-pair-v1.pt", corner_pairs=True,
-        locator_checkpoint=checkpoints / "card-locator-mixed-v1.pt", refine_surfaces=True)
+        locator_checkpoint=checkpoints / "card-locator-mixed-v1.pt", refine_surfaces=True, surface_pairs=args.surface_pairs)
     report = evaluate(args.collection, reader)
     report["checkpoint_sha256"] = {name: hashlib.sha256((checkpoints / name).read_bytes()).hexdigest()
         for name in ("glyph-surface-pair-v1.pt", "card-locator-mixed-v1.pt")}
     report["torch_version"] = str(torch.__version__)
+    report["pair_extraction"] = "surface_two_band_then_corner" if args.surface_pairs else "upper_left_corner"
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
