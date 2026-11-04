@@ -66,6 +66,17 @@ together. Quitting before completion creates no learning record. Recording
 does not automatically update or activate neural weights. Visible-table
 training and evaluated coaching readiness have not been demonstrated.
 
+The optional neural-card trial combines neural localization with pixel-based
+surface refinement and rank/suit recognition:
+
+```powershell
+.\.venv\Scripts\python -m apc inspect --neural-cards path/to/saved-frame.png
+```
+
+It is also available under **Inspect frame → Neural cards · trial** in the
+controller. It still fails on the frozen captured-table reference and never
+confirms card identities. Synthetic test accuracy is not captured-table readiness.
+
 For the separate browser-based math and hand-review application:
 
 ```powershell

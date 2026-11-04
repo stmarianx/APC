@@ -64,6 +64,7 @@ def main():
     inspect = modes.add_parser('inspect', help='Read card candidates from a saved table frame')
     inspect.add_argument('image', type=Path)
     inspect.add_argument('--corner-symbols', action='store_true', help='Read separate rank and suit glyphs on light corner-indexed cards')
+    inspect.add_argument('--neural-cards', action='store_true', help='Experimental neural localization plus surface-refined recognition; no coaching readiness')
     args = parser.parse_args()
     if args.mode == 'desktop':
         from apc.desktop import launch
@@ -79,9 +80,11 @@ def main():
         import torch
         from apc.perception.infer_cards import CardReader
         torch.set_num_threads(1)
-        filename = 'corner-glyph-pair-v2.pt' if args.corner_symbols else 'glyph-v1.pt'
+        filename = 'glyph-surface-pair-v1.pt' if args.neural_cards else ('corner-glyph-pair-v2.pt' if args.corner_symbols else 'glyph-v1.pt')
         checkpoint = Path(__file__).parent / 'checkpoints' / filename
-        print(json.dumps(CardReader(checkpoint, corner_pairs=args.corner_symbols).read(args.image), indent=2))
+        options = {"locator_checkpoint": Path(__file__).parent / "checkpoints/card-locator-mixed-v1.pt",
+                   "refine_surfaces": True} if args.neural_cards else {}
+        print(json.dumps(CardReader(checkpoint, corner_pairs=args.corner_symbols or args.neural_cards, **options).read(args.image), indent=2))
 
 
 if __name__ == '__main__':

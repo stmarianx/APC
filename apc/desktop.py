@@ -73,7 +73,8 @@ def launch():
             clear()
             show("Choose the card design in this saved frame. Reads are experimental and are not playing advice.")
             for label, filename in (("Centered text", "glyph-v1.pt"), ("Corner symbols", "corner-glyph-pair-v2.pt"),
-                                    ("Corner symbols · mixed-font trial", "corner-glyph-mixed-v1.pt")):
+                                    ("Corner symbols · mixed-font trial", "corner-glyph-mixed-v1.pt"),
+                                    ("Neural cards · trial", "glyph-surface-pair-v1.pt")):
                 ttk.Button(actions, text=label, command=lambda name=filename: run(lambda: inspect_saved_frame(path, name))).pack(side="left")
 
     def display_hand():
@@ -146,9 +147,11 @@ def launch():
 
 def inspect_saved_frame(path, filename):
     from apc.perception.infer_cards import CardReader
-    if filename not in {"glyph-v1.pt", "corner-glyph-pair-v2.pt", "corner-glyph-mixed-v1.pt"}:
+    if filename not in {"glyph-v1.pt", "corner-glyph-pair-v2.pt", "corner-glyph-mixed-v1.pt", "glyph-surface-pair-v1.pt"}:
         raise ValueError("Unknown bundled card reader")
-    reader = CardReader(Path(__file__).parent / "checkpoints" / filename, corner_pairs=filename != "glyph-v1.pt")
+    options = {"locator_checkpoint": Path(__file__).parent / "checkpoints/card-locator-mixed-v1.pt",
+               "refine_surfaces": True} if filename == "glyph-surface-pair-v1.pt" else {}
+    reader = CardReader(Path(__file__).parent / "checkpoints" / filename, corner_pairs=filename != "glyph-v1.pt", **options)
     result = reader.read(path)
     return json.dumps({"checkpoint": filename, "inspection": result}, indent=2)
 
