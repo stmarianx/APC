@@ -1,0 +1,24 @@
+{
+  "model_name": "APC",
+  "status": "training_started_not_evaluated",
+  "output": "apc/runs/hand-balanced-rehearsal-v1",
+  "incumbent": "apc/runs/apc-neural-v4/checkpoint.json",
+  "incumbent_checkpoint_fingerprint": "5586f02ae7db0e2a2d5c8ec731f0aab45abba5ddb84e50d07fc32e0940f353e6",
+  "replay_buffer": "apc/runs/diverse-continual-replay-v2",
+  "rebuild_strategy_data": "python -m apc.self_learning.raised_postflop_rollout_dataset build apc/runs/raised-rehearsal-rebuild-20261104 --dataset-id raised-rehearsal-rebuild-20261104 --rollouts 300 --hand-seed-start 970000",
+  "strategy_dataset": {
+    "dataset_fingerprint": "f9f049ae1cec7eeaf74661f408a2fceba6b7df5804171558ef3657b4b28a2d6d",
+    "examples": 64800,
+    "eligibility_passed": true,
+    "policy_promotion_eligible": false,
+    "training_split": "train",
+    "checkpoint_selection_split": "validation",
+    "regression_split": "test",
+    "independently_generated_regression_corpus": false,
+    "targets": "Sampled virtual-chip policy rollouts, not GTO solver values"
+  },
+  "train": "python -m apc.neural.continual_training train apc/runs/diverse-continual-replay-v2 apc/runs/apc-neural-v4/checkpoint.json apc/runs/hand-balanced-rehearsal-v1 --epochs 2 --incumbent-retention-weight 0.5 --learning-rate 0.00005 --cpu-threads 4 --hand-balanced --strategy-rehearsal-dataset apc/runs/raised-rehearsal-rebuild-20261104 --strategy-rehearsal-batch-size 64 --strategy-regression-dataset apc/runs/raised-rehearsal-rebuild-20261104",
+  "comparison_requirement": "Freeze candidate before fresh replay audit. Prior candidate test results informed this experiment, so prior test buffers are exploratory comparisons only, not untouched final evidence.",
+  "recommendation_allowed": false,
+  "activation_authorized": false
+}
