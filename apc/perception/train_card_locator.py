@@ -47,7 +47,7 @@ def evaluate(model, data):
     return totals
 
 
-def train(manifest, destination, epochs=10, seed=42):
+def train(manifest, destination, epochs=10, seed=42, *, relative_size=False):
     destination = Path(destination)
     if destination.exists() or epochs < 1:
         raise ValueError("Use a new destination and positive epochs")
@@ -63,7 +63,7 @@ def train(manifest, destination, epochs=10, seed=42):
         order = torch.randperm(len(datasets["train"][0]))
         for indices in order.split(8):
             optimizer.zero_grad()
-            loss = locator_loss(model(datasets["train"][0][indices]), datasets["train"][1][indices])
+            loss = locator_loss(model(datasets["train"][0][indices]), datasets["train"][1][indices], relative_size=relative_size)
             if not torch.isfinite(loss):
                 raise ValueError("Nonfinite locator loss")
             loss.backward()
@@ -77,6 +77,7 @@ def train(manifest, destination, epochs=10, seed=42):
     model.load_state_dict(saved)
     report = {"model_kind": "full_frame_neural_card_locator", "architecture_version": "card-locator-v1",
               "seed": seed, "epochs": epochs, "input_size": [320,184], "threshold": .5,
+              "geometry_loss": "log_size_ratio" if relative_size else "normalized_smooth_l1",
               "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
               "history": history, "test": evaluate(model, datasets["test"]),
               "torch_version": torch.__version__, "confidence_calibrated": False,
@@ -94,5 +95,6 @@ if __name__ == "__main__":
     parser.add_argument("manifest", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--relative-size", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(train(args.manifest, args.output, args.epochs)["test"], indent=2))
+    print(json.dumps(train(args.manifest, args.output, args.epochs, relative_size=args.relative_size)["test"], indent=2))

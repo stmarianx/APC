@@ -30,3 +30,15 @@ class LocatorTests(unittest.TestCase):
         proposals = decode_locator(output)
         self.assertEqual(len(proposals), 1)
         torch.testing.assert_close(torch.tensor(proposals[0]["box_xyxy"]), torch.tensor(box))
+
+    def test_relative_size_loss_pushes_collapsed_width_up(self):
+        target = locator_targets([[.1,.1,.2,.4]], 8, 12)[None]
+        row, col = target[0,0].nonzero()[0].tolist()
+        raw = torch.zeros_like(target)
+        raw[0,3,row,col] = torch.logit(torch.tensor(.01))
+        standard = raw.clone().requires_grad_()
+        relative = raw.clone().requires_grad_()
+        locator_loss(standard, target).backward()
+        locator_loss(relative, target, relative_size=True).backward()
+        self.assertLess(float(relative.grad[0,3,row,col]), 0)
+        self.assertGreater(abs(float(relative.grad[0,3,row,col])), abs(float(standard.grad[0,3,row,col])))

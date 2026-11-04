@@ -38,7 +38,7 @@ def locator_targets(boxes, height, width):
     return target
 
 
-def locator_loss(output, target):
+def locator_loss(output, target, *, relative_size=False):
     if output.shape != target.shape or output.ndim != 4 or output.shape[1] != 5:
         raise ValueError("Expected aligned Bx5xHxW locator targets")
     positive = target[:, 0].bool()
@@ -50,6 +50,12 @@ def locator_loss(output, target):
     background = raw[negative].mean() if negative.any() else raw.sum() * 0
     geometry = F.smooth_l1_loss(output[:, 1:].sigmoid().permute(0, 2, 3, 1)[positive],
                               target[:, 1:].permute(0, 2, 3, 1)[positive]) if positive.any() else output.sum() * 0
+    if relative_size and positive.any():
+        predicted = output[:, 1:].sigmoid().permute(0, 2, 3, 1)[positive]
+        truth = target[:, 1:].permute(0, 2, 3, 1)[positive]
+        offsets = F.smooth_l1_loss(predicted[:, :2], truth[:, :2])
+        size_error = predicted[:, 2:].clamp_min(1e-7).log() - truth[:, 2:].clamp_min(1e-7).log()
+        geometry = offsets + F.smooth_l1_loss(size_error, torch.zeros_like(size_error))
     return foreground + background + geometry
 
 
