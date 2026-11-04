@@ -1,4 +1,5 @@
 """Trainable full-frame card locator; no brightness threshold or known boxes at inference."""
+import math
 import torch
 from torch import nn
 from torch.nn import functional as F
@@ -71,20 +72,44 @@ def locator_loss(output, target, *, relative_size=False, hard_negative_ratio=Non
     return foreground + background + geometry
 
 
-def decode_locator(output, threshold=.5):
+def decode_locator(output, threshold=.5, *, box_nms=False, iou_threshold=.5):
     """Uncalibrated proposals only; no card identity/readiness claims."""
     if not 0 < threshold <= 1:
         raise ValueError("Threshold must be in (0,1]")
     if output.ndim != 3 or output.shape[0] != 5:
         raise ValueError("Expected 5xHxW output")
+    if not 0 < iou_threshold <= 1:
+        raise ValueError("IoU threshold must be in (0,1]")
     values = output.detach().sigmoid()
     score = values[0]
-    peaks = score == F.max_pool2d(score[None, None], 3, stride=1, padding=1)[0, 0]
+    peaks = torch.ones_like(score, dtype=torch.bool) if box_nms else score == F.max_pool2d(score[None, None], 3, stride=1, padding=1)[0, 0]
     height, width = score.shape
     proposals = []
     for row, col in (peaks & (score >= threshold)).nonzero().tolist():
         dx, dy, w, h = values[1:, row, col].tolist()
+        if not all(math.isfinite(v) for v in (dx, dy, w, h)):
+            continue
         cx, cy = (col + dx) / width, (row + dy) / height
         box = [max(0, cx-w/2), max(0, cy-h/2), min(1, cx+w/2), min(1, cy+h/2)]
+        if not (box[0] < box[2] and box[1] < box[3]):
+            continue
         proposals.append({"box_xyxy": box, "score": float(score[row, col]), "kind": "neural_card_candidate"})
-    return sorted(proposals, key=lambda item: -item["score"])
+    proposals = sorted(proposals, key=lambda item: -item["score"])
+    if not box_nms or not proposals:
+        return proposals
+    # Compare predicted geometry, not grid proximity: adjacent cards may occupy
+    # neighboring cells without overlapping at all. No known card count is used.
+    boxes = torch.tensor([p["box_xyxy"] for p in proposals], dtype=torch.float64)
+    areas = (boxes[:, 2]-boxes[:, 0]) * (boxes[:, 3]-boxes[:, 1])
+    remaining = torch.arange(len(proposals))
+    retained = []
+    while remaining.numel():
+        index = int(remaining[0])
+        retained.append(proposals[index])
+        remaining = remaining[1:]
+        lower = torch.maximum(boxes[index, :2], boxes[remaining, :2])
+        upper = torch.minimum(boxes[index, 2:], boxes[remaining, 2:])
+        intersection = (upper-lower).clamp_min(0).prod(1)
+        overlap = intersection / (areas[index]+areas[remaining]-intersection).clamp_min(1e-12)
+        remaining = remaining[overlap <= iou_threshold]
+    return retained

@@ -1,0 +1,32 @@
+{
+  "experiment": "box-overlap-decoder-v1",
+  "status": "diagnostic_only_no_default_change",
+  "weights_changed": false,
+  "hypothesis": "Grid-neighbor maximum suppression may remove closely spaced cards even when their boxes do not overlap",
+  "proof": "A unit fixture with exact predicted boxes for two nonoverlapping cards in adjacent grid cells emits one card under grid suppression and both under box suppression",
+  "fixed_iou_0_5": {
+    "original_test": {"targets": 100, "localized": 100, "false_proposals": 62},
+    "frozen_spatial_test": {"targets": 100, "localized": 92, "false_proposals": 14},
+    "interpretation": "Recovers two shifted cards but introduces too many poorly localized neighboring-cell proposals"
+  },
+  "validation_selection": {
+    "iou_candidates": [0.1, 0.2, 0.3, 0.5],
+    "selected_iou": 0.1,
+    "rule": "Highest original-plus-frozen validation F1, prefer higher IoU on ties",
+    "test_result": "Matches the grid baseline: original 100 TP / 0 FP; spatial 90 TP / 2 FP / 10 FN",
+    "interpretation": "No net benefit demonstrated for this checkpoint"
+  },
+  "missed_spatial_card_diagnosis": {
+    "total": 10,
+    "low_target_cell_score": 5,
+    "box_geometry": 3,
+    "grid_suppression_or_assignment": 2,
+    "uses_truth_for_offline_diagnosis_only": true,
+    "caution": "These are diagnostic categories, not proof that a single change will recover each card"
+  },
+  "scope": "Reused synthetic diagnostic data, not an untouched evaluation or captured-table readiness evidence",
+  "artifacts": ["box-overlap-decoder-v1.synthetic.json", "box-overlap-decoder-v1.validation-selected.json"],
+  "default_decoder_changed": false,
+  "full_table_readiness": false,
+  "next_work": "Collect independent captured examples; target low-score and geometry failures rather than treating all misses as suppression errors"
+}

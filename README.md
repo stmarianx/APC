@@ -271,6 +271,18 @@ python -m apc inspect --neural-cards --adaptive-glyphs --glyph-checkpoint apc/ch
 Do not treat reused development captures as an independent readiness audit. New
 reviewed captured sessions and scale/spacing audits are required next.
 
+The spacing audit confirmed that grid suppression can remove neighboring cards,
+but replacing it with box-overlap suppression did not improve the current model
+overall: a 0.5 IoU rule adds false proposals; validation-selected 0.1 IoU matches
+the existing decoder. The default is unchanged. Of the 10 missed spatial-test cards,
+the offline diagnostic attributes five to low target-cell scores, three to box
+geometry, and two to suppression/assignment. These categories guide development;
+they are not readiness evidence or guaranteed fixes.
+
+```text
+python -m apc.perception.evaluate_locator_decoding apc/checkpoints/card-locator-hardneg-v1.pt apc/runs/browser-symbol-mixture-v1/dataset_manifest.json --select-validation
+```
+
 1. Collect and double-audit the minimum controlled virtual-chip visible-table dataset required by Gate T.
 2. Collect controlled-visible examples for variable-font name, numeric and turn-clock calibration.
 3. Train card, numeric, dealer, seat, name and event heads and evaluate them against Gate P.

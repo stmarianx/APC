@@ -1,0 +1,58 @@
+{
+  "checkpoint_sha256": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273",
+  "manifest_sha256": "800ed7563c88fc4cc45393c947f2e8f7370d35758df0c920416d81e6707bc340",
+  "spatial_seed": 44,
+  "objectness_threshold": 0.5,
+  "box_iou_threshold": 0.5,
+  "scopes": {
+    "original_test": {
+      "grid_peak": {
+        "frames": 20,
+        "targets": 100,
+        "true_positives": 100,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "box_overlap": {
+        "frames": 20,
+        "targets": 100,
+        "true_positives": 100,
+        "false_positives": 62,
+        "false_negatives": 0,
+        "precision": 0.6172839506172839,
+        "recall": 1.0,
+        "f1": 0.7633587786259542
+      }
+    },
+    "frozen_spatial_test": {
+      "grid_peak": {
+        "frames": 20,
+        "targets": 100,
+        "true_positives": 90,
+        "false_positives": 2,
+        "false_negatives": 10,
+        "precision": 0.9782608695652174,
+        "recall": 0.9,
+        "f1": 0.9375
+      },
+      "box_overlap": {
+        "frames": 20,
+        "targets": 100,
+        "true_positives": 92,
+        "false_positives": 14,
+        "false_negatives": 8,
+        "precision": 0.8679245283018868,
+        "recall": 0.92,
+        "f1": 0.8932038834951457
+      }
+    }
+  },
+  "training_performed": false,
+  "weights_changed": false,
+  "default_decoder_changed": false,
+  "full_table_readiness": false,
+  "limitation": "Reused synthetic test diagnostic, not an independent captured-table readiness audit"
+}

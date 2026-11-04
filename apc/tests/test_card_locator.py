@@ -4,6 +4,37 @@ from apc.perception.card_locator import CardLocator, locator_targets, locator_lo
 
 
 class LocatorTests(unittest.TestCase):
+    def test_box_suppression_retains_adjacent_cards_that_grid_peaks_drop(self):
+        boxes = [[.09, .2, .12, .3], [.125, .2, .155, .3]]
+        target = locator_targets(boxes, 23, 40)
+        output = torch.full_like(target, -20)
+        for index, (row, col) in enumerate(target[0].nonzero().tolist()):
+            output[0, row, col] = 10-index
+            output[1:, row, col] = torch.logit(target[1:, row, col])
+        self.assertEqual(len(decode_locator(output)), 1)
+        proposals = decode_locator(output, box_nms=True)
+        self.assertEqual(len(proposals), 2)
+        for proposal, box in zip(proposals, boxes):
+            torch.testing.assert_close(torch.tensor(proposal["box_xyxy"]), torch.tensor(box))
+
+    def test_box_suppression_removes_overlapping_duplicate_regions(self):
+        output = torch.full((5, 23, 40), -20.0)
+        for col, score in ((5, 10), (6, 9)):
+            output[0, 5, col] = score
+            output[1:, 5, col] = torch.logit(torch.tensor([.6, .75, .1, .1]))
+        proposals = decode_locator(output, box_nms=True)
+        self.assertEqual(len(proposals), 1)
+        self.assertAlmostEqual(proposals[0]["score"], float(torch.sigmoid(torch.tensor(10.0))))
+        with self.assertRaises(ValueError):
+            decode_locator(output, box_nms=True, iou_threshold=0)
+
+    def test_nonfinite_predicted_geometry_is_not_emitted(self):
+        output = torch.full((5, 8, 12), -20.0)
+        output[0, 3, 4] = 10
+        output[1, 3, 4] = float("nan")
+        self.assertEqual(decode_locator(output), [])
+        self.assertEqual(decode_locator(output, box_nms=True), [])
+
     def test_hard_negative_mining_emphasizes_false_positives_without_dropping_positives(self):
         target = locator_targets([[.1, .1, .2, .3]], 23, 40)[None]
         raw = torch.zeros_like(target)

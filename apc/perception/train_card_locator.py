@@ -30,7 +30,7 @@ def dataset(manifest, split):
     return torch.stack(images), torch.stack(labels), truths
 
 
-def evaluate(model, data):
+def evaluate(model, data, *, box_nms=False, iou_threshold=.5):
     totals = {"frames": len(data[0]), "targets": 0, "true_positives": 0, "false_positives": 0, "false_negatives": 0}
     model.eval()
     with torch.no_grad():
@@ -38,7 +38,7 @@ def evaluate(model, data):
             outputs = model(data[0][start:start+8])
             for offset, output in enumerate(outputs):
                 truth = data[2][start+offset]
-                matches = match_proposals(decode_locator(output), truth)
+                matches = match_proposals(decode_locator(output, box_nms=True, iou_threshold=iou_threshold) if box_nms else decode_locator(output), truth)
                 totals["targets"] += len(truth)
                 for key in ("true_positives", "false_positives", "false_negatives"):
                     totals[key] += matches[key]
