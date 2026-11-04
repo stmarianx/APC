@@ -247,3 +247,13 @@ Only one of five cards was proposed. Actual 2s was guessed Ks (rank score
 0.986, suit 0.978), now *above* the 0.9 threshold despite the wrong rank.
 The output kept the confirmed card null. Do not interpret synthetic
 high-score precision as a confidence calibration on captured tables.
+
+Dim-surface diagnostic: generate nine sessions with seed 20261106,
+`--card-design corner_symbols --include-glyph-boxes --card-surface dim`.
+The renderer changes face and border colors, not rank/suit identities;
+the theme ID records the surface variant. This is an isolated synthetic
+surface-color probe, not a faithful model of client dimming.
+The mixed-font reader found 0/20 target cards in four test frames, with
+zero false proposals. No rank prediction was attempted. This demonstrates
+the bright-surface proposal stage must be replaced or supplemented before
+dim cards can benefit from neural identity improvements.

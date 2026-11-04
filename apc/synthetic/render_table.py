@@ -200,7 +200,12 @@ def render_frame(
     include_glyph_boxes: bool = False,
     card_design: str = "centered_token",
     rank_font: Path | None = None,
+    card_surface: str = "light",
 ) -> RenderedFrame:
+    if card_surface not in ("light", "dim"):
+        raise ValueError("Unsupported card surface")
+    face_color = "#f7f3e8" if card_surface == "light" else "#8b8983"
+    edge_color = "#d7d1c5" if card_surface == "light" else "#77746e"
     if card_design not in ("centered_token", "corner_symbols"):
         raise ValueError("Unsupported card design")
     Image, ImageDraw, ImageFont = _pil()
@@ -266,7 +271,7 @@ def render_frame(
     board_payload = []
     for index, card in enumerate(board):
         box = (board_left + index * (card_width + gap), 295, board_left + index * (card_width + gap) + card_width, 295 + card_height)
-        draw.rounded_rectangle(box, radius=6, fill="#f7f3e8", outline="#d7d1c5")
+        draw.rounded_rectangle(box, radius=6, fill=face_color, outline=edge_color)
         glyph_boxes = _draw_card_identity(draw, box, card, card_font, card_design, include_glyph_boxes)
         board_payload.append(_card_object(box, card))
         if include_glyph_boxes:
@@ -276,7 +281,7 @@ def render_frame(
     hero_payload = []
     for index, card in enumerate(hero_cards):
         box = (hero_left + index * (card_width + gap), 585, hero_left + index * (card_width + gap) + card_width, 663)
-        draw.rounded_rectangle(box, radius=6, fill="#f7f3e8", outline="#d7d1c5")
+        draw.rounded_rectangle(box, radius=6, fill=face_color, outline=edge_color)
         glyph_boxes = _draw_card_identity(draw, box, card, card_font, card_design, include_glyph_boxes)
         hero_payload.append(_card_object(box, card))
         if include_glyph_boxes:
@@ -439,7 +444,10 @@ def generate_dataset(
     card_design: str = "centered_token",
     rank_font: Path | None = None,
     alternate_builtin_font: bool = False,
+    card_surface: str = "light",
 ) -> dict[str, object]:
+    if card_surface not in ("light", "dim"):
+        raise ValueError("Unsupported card surface")
     if sessions < 3:
         raise ValueError("Synthetic dataset generation requires at least three sessions")
     rng = random.Random(seed)
@@ -468,6 +476,8 @@ def generate_dataset(
         session_font = rank_font if not alternate_builtin_font or session_index % 2 else None
         if session_font:
             theme = dict(theme, id=theme["id"] + "-" + font_digest[:12])
+        if card_surface != "light":
+            theme = dict(theme, id=theme["id"] + "-surface-" + card_surface)
         session_id = f"synthetic-{session_index:04d}"
         session_names = synthetic_ocr_player_names(rng, seats) if include_name_ocr else None
         environment = {
@@ -494,6 +504,7 @@ def generate_dataset(
                 include_glyph_boxes=include_glyph_boxes,
                 card_design=card_design,
                 rank_font=session_font,
+                card_surface=card_surface,
                 decision_time_remaining_ms=(
                     CLOCK_VALUES_MS[(session_index * len(STREETS) + sequence_index) % len(CLOCK_VALUES_MS)]
                     if include_turn_clock
@@ -521,6 +532,7 @@ def generate_dataset(
         "card_design": card_design,
         "rank_font_sha256": font_digest,
         "alternate_builtin_font": alternate_builtin_font,
+        "card_surface": card_surface,
     }
 
 
@@ -535,6 +547,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--card-design", choices=("centered_token", "corner_symbols"), default="centered_token")
     parser.add_argument("--rank-font", type=Path, help="Local font file for corner ranks; fingerprinted, not copied")
     parser.add_argument("--alternate-builtin-font", action="store_true", help="Use the built-in rank font on even-numbered sessions")
+    parser.add_argument("--card-surface", choices=("light", "dim"), default="light")
     return parser
 
 
@@ -552,6 +565,7 @@ def main(argv: list[str] | None = None) -> int:
         card_design=args.card_design,
         rank_font=args.rank_font,
         alternate_builtin_font=args.alternate_builtin_font,
+        card_surface=args.card_surface,
     )
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0

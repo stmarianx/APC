@@ -15,9 +15,9 @@ from apc.perception.train_card_glyphs import token_dataset
 class CardGlyphTests(unittest.TestCase):
     def test_explicit_glyph_dataset_loads_six_channel_pairs(self):
         with tempfile.TemporaryDirectory() as directory:
-            for design in ("centered_token", "corner_symbols"):
-                result = generate_dataset(Path(directory) / design, sessions=3, seed=19,
-                                          include_glyph_boxes=True, card_design=design)
+            for design, surface in (("centered_token", "light"), ("corner_symbols", "light"), ("corner_symbols", "dim")):
+                result = generate_dataset(Path(directory) / (design + surface), sessions=3, seed=19,
+                                          include_glyph_boxes=True, card_design=design, card_surface=surface)
                 self.assertTrue(result["validation"]["valid"])
                 tokens, ranks, suits = token_dataset(result["manifest"], "train", glyph_pair=True)
                 self.assertEqual(tokens.shape[1:], (6, 32, 32))
