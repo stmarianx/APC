@@ -9,6 +9,7 @@ from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
+import torch
 
 from apc.neural.continual_training import (
     _metrics,
@@ -249,6 +250,7 @@ def main() -> None:
     evaluate.add_argument("--bootstrap-samples", type=int, default=5000)
     evaluate.add_argument("--bootstrap-seed", type=int, default=20260826)
     evaluate.add_argument("--output", type=Path)
+    evaluate.add_argument("--cpu-threads", type=int, default=4)
     validate = subparsers.add_parser("validate")
     validate.add_argument("report", type=Path)
     args = parser.parse_args()
@@ -256,6 +258,9 @@ def main() -> None:
         validation = validate_fresh_replay_report(args.report)
         print(json.dumps(validation, indent=2))
         raise SystemExit(0 if validation["valid"] else 1)
+    if args.cpu_threads < 1:
+        parser.error("--cpu-threads must be positive")
+    torch.set_num_threads(min(torch.get_num_threads(), args.cpu_threads))
     report = evaluate_fresh_completed_replay(
         args.replay_buffer,
         args.incumbent_checkpoint,
