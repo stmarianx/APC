@@ -1,0 +1,15 @@
+{
+  "audit": "browser-capture-audit-v2",
+  "detector_sha256": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273",
+  "recognizer_sha256": "96a95141428a965d15f2cd385659f0663441a9f014dc931b614c0895a864cbef",
+  "decoder": "Existing grid-peak decoder, objectness threshold 0.5, local surface refinement, adaptive glyph extraction",
+  "collection": "New APC full-hand browser session: first hand preflop/flop/turn/river, second and third hands river only",
+  "maximum_frames": 6,
+  "frame_schedule": [["hand-1", "preflop"], ["hand-1", "flop"], ["hand-1", "turn"], ["hand-1", "river"], ["hand-2", "river"], ["hand-3", "river"]],
+  "all_captures_retained_even_if_model_fails": true,
+  "source": "APC local virtual-chip practice table only",
+  "labels": "Visible DOM card identities and geometry, visual identity review; independent overlay review remains pending",
+  "training_prohibited": true,
+  "weights_frozen_before_collection": true,
+  "scope": "New capture session and hands, same application/layout; no cross-platform or readiness claim"
+}

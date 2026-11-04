@@ -1,0 +1,23 @@
+{
+  "schema_version": "apc_browser_card_development_v1",
+  "capture_session_id": "apc-browser-frozen-audit-v2",
+  "source": "apc_full_hand_browser",
+  "virtual_chips": true,
+  "draft_only": true,
+  "readiness_credit": false,
+  "use_policy": "sealed_audit_no_training",
+  "review": "All visible identities visually checked against screenshots; independent glyph/box overlay review pending",
+  "timing": "Ordered observations only; measured temporal timestamps unavailable",
+  "viewport": [1280, 720],
+  "card_size": [62, 78],
+  "rank_region_offset_xywh": [6, 6, 50, 29.333],
+  "suit_region_offset_xywh": [6, 35.333, 50, 29.333],
+  "frames": [
+    {"image": "frames/h1-preflop.png", "sha256": "586ad163064cfdfcd5930c1fe62b36b46be27cbb7646e5ca02087dba39ae61dc", "hand_group": "hand-1", "street": "preflop", "cards": [["hero", "9h", 525.385, 536.406], ["hero", "7s", 595.385, 536.406]]},
+    {"image": "frames/h1-flop.png", "sha256": "997c03027cc638f81a73d07d9c150b3c8e79dda6ee37b92ddf0108c3fb30aa70", "hand_group": "hand-1", "street": "flop", "cards": [["board", "5c", 531.333, 59.073], ["board", "Kh", 601.333, 59.073], ["board", "3h", 671.333, 59.073], ["hero", "9h", 532.156, 163.073], ["hero", "7s", 602.156, 163.073]]},
+    {"image": "frames/h1-turn.png", "sha256": "8b81209f79c495c88eaf3b2ec8e72cd3bf74f0b31b034fc3847f35df40144a06", "hand_group": "hand-1", "street": "turn", "cards": [["board", "5c", 496.333, 59.073], ["board", "Kh", 566.333, 59.073], ["board", "3h", 636.333, 59.073], ["board", "7c", 706.333, 59.073], ["hero", "9h", 532.156, 163.073], ["hero", "7s", 602.156, 163.073]]},
+    {"image": "frames/h1-river.png", "sha256": "09cbc227fdb6379b009d8d804838790ca323622fa329cf7b049d8b38370273fa", "hand_group": "hand-1", "street": "river", "cards": [["board", "5c", 461.333, 59.073], ["board", "Kh", 531.333, 59.073], ["board", "3h", 601.333, 59.073], ["board", "7c", 671.333, 59.073], ["board", "Ts", 741.333, 59.073], ["hero", "9h", 532.156, 163.073], ["hero", "7s", 602.156, 163.073]]},
+    {"image": "frames/h2-river.png", "sha256": "42545c6ec22edf271a64d65a6d94c52aec43c3904459a02ee00643176ca8fb8c", "hand_group": "hand-2", "street": "river", "cards": [["board", "2d", 461.333, 59.073], ["board", "4c", 531.333, 59.073], ["board", "2c", 601.333, 59.073], ["board", "6h", 671.333, 59.073], ["board", "8s", 741.333, 59.073], ["hero", "Qc", 532.156, 163.073], ["hero", "Ks", 602.156, 163.073]]},
+    {"image": "frames/h3-river.png", "sha256": "73c5561562ffdb690b8d827d6b1aee0a2cef02b1347bb4050a30639cf5e98fb7", "hand_group": "hand-3", "street": "river", "cards": [["board", "3s", 461.333, 59.073], ["board", "4c", 531.333, 59.073], ["board", "2s", 601.333, 59.073], ["board", "Kh", 671.333, 59.073], ["board", "4d", 741.333, 59.073], ["hero", "9d", 532.156, 163.073], ["hero", "6h", 602.156, 163.073]]}
+  ]
+}

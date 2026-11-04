@@ -283,6 +283,18 @@ they are not readiness evidence or guaranteed fixes.
 python -m apc.perception.evaluate_locator_decoding apc/checkpoints/card-locator-hardneg-v1.pt apc/runs/browser-symbol-mixture-v1/dataset_manifest.json --select-validation
 ```
 
+A frozen-model check on a **new browser capture session** now provides a less
+optimistic result than the reused development set: 34/34 localized cards, no false
+proposals, but 32/34 correct identities. Both errors confuse spades with clubs and
+remain with oracle glyph boxes. All six planned frames are saved under
+`apc/data/reference/browser-capture-audit-v2`, marked audit-only/no-training. This
+is new hands in the same application/layout, not cross-platform validation. The
+frame geometry still requires independent overlay review; coaching gates stay closed.
+
+```text
+python -m apc.perception.evaluate_frozen_browser_audit
+```
+
 1. Collect and double-audit the minimum controlled virtual-chip visible-table dataset required by Gate T.
 2. Collect controlled-visible examples for variable-font name, numeric and turn-clock calibration.
 3. Train card, numeric, dealer, seat, name and event heads and evaluate them against Gate P.
