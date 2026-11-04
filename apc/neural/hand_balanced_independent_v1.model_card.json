@@ -1,6 +1,16 @@
 {
   "model_name": "APC",
-  "status": "validated_checkpoint_fresh_evaluation_pending",
+  "status": "evaluated_rejected_retain_incumbent",
+  "fresh_audit": "apc/neural/hand_balanced_independent_v1.fresh_audit.json",
+  "fresh_test": {
+    "hands": 159,
+    "sessions": 53,
+    "incumbent_mae_bb": 59.2948383985,
+    "candidate_mae_bb": 59.3666074641,
+    "mae_improvement_95_interval_bb": [-0.113719203189, -0.0182615344307],
+    "observed_action_accuracy_changed": false
+  },
+  "decision": "Retain incumbent. Independent value error regressed despite strategy retention. Do not promote.",
   "checkpoint": "apc/runs/hand-balanced-independent-v1/checkpoint.json",
   "checkpoint_fingerprint": "c1e34afd1eb60ff1d61de9382c2c3be010214640cf8a25e9891e16a02114833e",
   "weights_sha256": "96bf9a10495eb39e506b5bb7ed2d5ebdff1ad895d619dc4cc9946dd8351b86bc",
