@@ -212,3 +212,10 @@ On 16 held-out synthetic frames the independent pixel reader recovered all 80
 card observations with both checkpoints. V1 read 74 ranks and 80 suits; v2 read
 80 ranks and 80 suits. These observations include cards repeated across streets.
 No captured-table accuracy or calibrated confidence is implied.
+
+Frozen captured-frame check (v2, default proposals): one proposal for five
+visible cards. Its candidate was Ks for the actual 2s; none confirmed. The
+8d and 5s board cards and both dimmed hero cards were missed. A diagnostic
+relaxation of the component fill threshold from .65 to .60 proposed all
+three board locations but read none correctly; it was not adopted. This
+audit-only image must not supply training examples or readiness counts.

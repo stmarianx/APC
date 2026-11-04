@@ -12,6 +12,19 @@ from apc.synthetic.render_table import render_frame, THEMES
 
 
 class CardReaderTests(unittest.TestCase):
+    def test_missing_corner_ink_has_no_identity_fields(self):
+        from unittest.mock import patch
+        reader = object.__new__(CardReader)
+        reader.threshold = .9
+        predictions = {"rank": torch.zeros(1, 13), "suit": torch.zeros(1, 4),
+                       "ink_present": torch.tensor([False])}
+        with patch("apc.perception.infer_cards.propose_cards", return_value=[{"box_xyxy": [0, 0, 1, 1]}]), \
+                patch.object(reader, "predict_regions", return_value=predictions):
+            card, = reader.read("unused.png")["cards"]
+        self.assertEqual(card["status"], "missing_ink")
+        for key in ("candidate", "rank_candidate", "suit_candidate", "card"):
+            self.assertIsNone(card[key])
+
     def checkpoint(self, root):
         path = root / "weights.pt"
         torch.save({"state_dict": RegionRecognizer(16).state_dict(), "crop_size": 16,

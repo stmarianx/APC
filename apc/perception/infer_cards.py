@@ -66,8 +66,8 @@ class CardReader:
                 ink_present = bool(predictions["ink_present"][index]) if "ink_present" in predictions else True
                 accepted = ink_present and score >= self.threshold
                 cards.append({"box_xyxy": proposal["box_xyxy"],
-                              "rank_candidate": RANKS[int(rank_index)],
-                              "suit_candidate": SUITS[int(suit_index)],
+                              "rank_candidate": RANKS[int(rank_index)] if ink_present else None,
+                              "suit_candidate": SUITS[int(suit_index)] if ink_present else None,
                               "rank_score": float(rank_score) if ink_present else 0,
                               "suit_score": float(suit_score) if ink_present else 0,
                               "candidate": RANKS[int(rank_index)] + SUITS[int(suit_index)] if ink_present else None,
