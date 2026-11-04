@@ -2,7 +2,7 @@ import json
 import unittest
 from unittest.mock import patch
 
-from apc.desktop import inspect_saved_frame
+from apc.desktop import inspect_saved_frame, checkpoint_status_text
 
 
 class DesktopInspectionTests(unittest.TestCase):
@@ -20,3 +20,18 @@ class DesktopInspectionTests(unittest.TestCase):
     def test_unknown_checkpoint_rejected(self):
         with self.assertRaises(ValueError):
             inspect_saved_frame("frame.png", "../unknown.pt")
+
+    def test_checkpoint_evidence_failure_is_visible(self):
+        from unittest.mock import mock_open
+        record = {"status": "offline_neural_candidate_unpromoted", "gates": {"visible_table_training_ready": False}}
+        with patch("pathlib.Path.read_text", return_value=json.dumps(record)), \
+                patch("apc.neural.train_candidate.validate_checkpoint", return_value={"valid": False, "issues": ["weights changed"]}):
+            result = json.loads(checkpoint_status_text("checkpoint.json"))
+        self.assertFalse(result["validation"]["valid"])
+        self.assertFalse(result["gates"]["visible_table_training_ready"])
+        self.assertIn("does not activate", result["notice"])
+
+    def test_unknown_evidence_type_is_rejected(self):
+        with patch("pathlib.Path.read_text", return_value='{"status": "ready"}'):
+            with self.assertRaises(ValueError):
+                checkpoint_status_text("checkpoint.json")

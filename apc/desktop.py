@@ -129,7 +129,13 @@ def launch():
             ttk.Button(actions, text=f"Solve {wager} BB bet",
                        command=lambda size=wager: run(lambda: river_solution_text(size))).pack(side="left")
 
-    for label, callback in (("Find lesson", lesson), ("Inspect frame", inspect), ("New practice hand", practice), ("River drill", river_drill)):
+    def checkpoint_status():
+        path = filedialog.askopenfilename(title="Choose APC checkpoint", filetypes=[("Checkpoint", "*.json")])
+        if path:
+            run(lambda: checkpoint_status_text(path))
+
+    for label, callback in (("Find lesson", lesson), ("Inspect frame", inspect), ("New practice hand", practice),
+                            ("River drill", river_drill), ("Model status", checkpoint_status)):
         ttk.Button(toolbar, text=label, command=callback).pack(side="left")
     show("Search the Negreanu curriculum, inspect a saved frame, or play a virtual-chip hand against a check/call opponent.")
     try:
@@ -145,6 +151,28 @@ def inspect_saved_frame(path, filename):
     reader = CardReader(Path(__file__).parent / "checkpoints" / filename, corner_pairs=filename != "glyph-v1.pt")
     result = reader.read(path)
     return json.dumps({"checkpoint": filename, "inspection": result}, indent=2)
+
+
+def checkpoint_status_text(path):
+    from apc.neural.train_candidate import validate_checkpoint
+    from apc.neural.continual_training import validate_completed_replay_checkpoint
+    record = json.loads(Path(path).read_text(encoding="utf-8"))
+    family = record.get("status")
+    if family == "offline_completed_replay_candidate_unpromoted":
+        validation = validate_completed_replay_checkpoint(path)
+    elif family == "offline_neural_candidate_unpromoted":
+        validation = validate_checkpoint(path)
+    else:
+        raise ValueError("Unsupported checkpoint type; no readiness claim can be made")
+    return json.dumps({
+        "checkpoint_path": str(Path(path).resolve()),
+        "validation": validation,
+        "status": family,
+        "gates": record.get("gates", {}),
+        "latency": record.get("latency", {}),
+        "limitations": record.get("limitations", []),
+        "notice": "Inspection only. Valid evidence does not activate weights or establish full-table readiness.",
+    }, indent=2)
 
 
 def river_solution_text(bet_bb):
