@@ -219,3 +219,13 @@ visible cards. Its candidate was Ks for the actual 2s; none confirmed. The
 relaxation of the component fill threshold from .65 to .60 proposed all
 three board locations but read none correctly; it was not adopted. This
 audit-only image must not supply training examples or readiness counts.
+
+Rank typography probe: with the seed 20261008 nine-session corner dataset,
+pass `--rank-font C:/Windows/Fonts/times.ttf` to change only the rank font.
+Font files are not redistributed; the generator reports their SHA-256 and
+includes a fingerprint in the theme ID. With installed font digest
+`931c5de5c70401d9324d5014c123802b4fb753000360ceb2f56c589403cd58c5`,
+v2 read 19/20 held-out cards versus 20/20 with the built-in font. High-score
+candidates fell from 13 to 8; neither poses a coaching accuracy guarantee.
+Both sets had 20/20 localized boxes and correct suits. Four synthetic test
+frames cannot establish generalization to captured tables.

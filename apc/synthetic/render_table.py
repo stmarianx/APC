@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import math
 import random
 from dataclasses import dataclass
@@ -198,6 +199,7 @@ def render_frame(
     decision_time_remaining_ms: int | None = None,
     include_glyph_boxes: bool = False,
     card_design: str = "centered_token",
+    rank_font: Path | None = None,
 ) -> RenderedFrame:
     if card_design not in ("centered_token", "corner_symbols"):
         raise ValueError("Unsupported card design")
@@ -207,6 +209,10 @@ def render_frame(
     font = ImageFont.load_default()
     bold = font
     card_font = font if card_design == "centered_token" else ImageFont.load_default(size=18)
+    if rank_font is not None:
+        if card_design != "corner_symbols":
+            raise ValueError("Custom rank fonts require corner_symbols")
+        card_font = ImageFont.truetype(str(rank_font), size=18)
     draw.rounded_rectangle((90, 105, 1190, 600), radius=230, fill=theme["rail"])
     table_box = (115, 130, 1165, 575)
     draw.rounded_rectangle(table_box, radius=210, fill=theme["felt"])
@@ -431,10 +437,14 @@ def generate_dataset(
     include_name_ocr: bool = False,
     include_glyph_boxes: bool = False,
     card_design: str = "centered_token",
+    rank_font: Path | None = None,
 ) -> dict[str, object]:
     if sessions < 3:
         raise ValueError("Synthetic dataset generation requires at least three sessions")
     rng = random.Random(seed)
+    if rank_font is not None and card_design != "corner_symbols":
+        raise ValueError("Custom rank fonts require corner_symbols")
+    font_digest = hashlib.sha256(rank_font.read_bytes()).hexdigest() if rank_font else None
     project = AnnotationProject.create(
         root,
         project_id=f"apc-synthetic-{seed}",
@@ -452,6 +462,8 @@ def generate_dataset(
         theme = THEMES[(session_index // len(LAYOUTS)) % len(THEMES)]
         if card_design != "centered_token":
             theme = dict(theme, id=theme["id"] + "-" + card_design)
+        if font_digest:
+            theme = dict(theme, id=theme["id"] + "-" + font_digest[:12])
         session_id = f"synthetic-{session_index:04d}"
         session_names = synthetic_ocr_player_names(rng, seats) if include_name_ocr else None
         environment = {
@@ -477,6 +489,7 @@ def generate_dataset(
                 seat_name_overrides=session_names,
                 include_glyph_boxes=include_glyph_boxes,
                 card_design=card_design,
+                rank_font=rank_font,
                 decision_time_remaining_ms=(
                     CLOCK_VALUES_MS[(session_index * len(STREETS) + sequence_index) % len(CLOCK_VALUES_MS)]
                     if include_turn_clock
@@ -502,6 +515,7 @@ def generate_dataset(
         "include_name_ocr": include_name_ocr,
         "include_glyph_boxes": include_glyph_boxes,
         "card_design": card_design,
+        "rank_font_sha256": font_digest,
     }
 
 
@@ -514,6 +528,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--include-name-ocr", action="store_true")
     parser.add_argument("--include-glyph-boxes", action="store_true")
     parser.add_argument("--card-design", choices=("centered_token", "corner_symbols"), default="centered_token")
+    parser.add_argument("--rank-font", type=Path, help="Local font file for corner ranks; fingerprinted, not copied")
     return parser
 
 
@@ -529,6 +544,7 @@ def main(argv: list[str] | None = None) -> int:
         include_name_ocr=args.include_name_ocr,
         include_glyph_boxes=args.include_glyph_boxes,
         card_design=args.card_design,
+        rank_font=args.rank_font,
     )
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0
