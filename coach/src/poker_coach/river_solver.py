@@ -169,6 +169,19 @@ class RiverCFRSolver:
         )
 
     @staticmethod
+    def policy_exploitability_bb(game, bet_rates, call_rates):
+        """Half the best-response gap for supplied bucket action frequencies."""
+        if len(bet_rates) != len(game.ip_buckets) or len(call_rates) != len(game.oop_buckets):
+            raise ValueError("Supply one action frequency per hand bucket")
+        if any(not 0 <= p <= 1 for p in (*bet_rates, *call_rates)):
+            raise ValueError("Action frequencies must be within [0,1]")
+        ip = [[1-p, p] for p in bet_rates]
+        oop = [[1-p, p] for p in call_rates]
+        best = RiverCFRSolver._ip_best_response(game, oop)
+        worst = RiverCFRSolver._oop_best_response_value(game, ip)
+        return max(0.0, best - worst) / 2
+
+    @staticmethod
     def _expected_value(game: RiverSubgame, ip: list[list[float]], oop: list[list[float]]) -> float:
         value = 0.0
         for i in range(len(game.ip_buckets)):
