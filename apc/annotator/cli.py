@@ -38,6 +38,11 @@ def build_parser() -> argparse.ArgumentParser:
     add_folder.add_argument("--recursive", action="store_true")
     add_folder.add_argument("--sample-every", type=int, default=1)
 
+    capture = sub.add_parser("import-capture", help="Verify a measured capture report and preserve its timestamps")
+    capture.add_argument("project", type=Path)
+    capture.add_argument("folder", type=Path)
+    capture.add_argument("--allow-partial", action="store_true")
+
     template = sub.add_parser("template", help="Print or write the annotation template for a frame")
     template.add_argument("project", type=Path)
     template.add_argument("sample_id")
@@ -106,6 +111,9 @@ def main(argv: list[str] | None = None) -> int:
                     sample_every=args.sample_every,
                 )
             )
+        elif args.command == "import-capture":
+            from .import_capture_session import import_capture_session
+            _emit(import_capture_session(AnnotationProject(args.project), args.folder, allow_partial=args.allow_partial))
         elif args.command == "template":
             project = AnnotationProject(args.project)
             _emit(project.annotation_template(args.sample_id), args.output)

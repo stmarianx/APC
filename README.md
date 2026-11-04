@@ -102,6 +102,33 @@ This creates a review-only suggestion. It does not verify the screenshot/metadat
 pair, import hidden opponent cards, or count the frame toward training readiness.
 Review the boxes and identities in the annotation workbench before saving labels.
 
+For a measured sequence from an explicitly selected virtual-table screen region:
+
+```text
+python -m apc.capture.screen_capture apc/runs/table-session-01 --session table-session-01 --region 100,50,1380,770 --frames 250 --interval-ms 200
+python -m apc.annotator.cli import-capture PROJECT apc/runs/table-session-01
+```
+
+Choose the region for your own screen; these example coordinates are not automatic
+table detection. Capture is read-only and sends no clicks or keys. Version 1.1
+reports record measured monotonic capture start/end times separately from requested
+intervals. Millisecond ordering adjustments are explicit; original nanoseconds are
+retained. Image encoding and report-writing time are included in scheduling, so a
+slow capture does not silently claim a faster sampling rate.
+
+The report is replaced after each completed frame. A capture error or Ctrl+C saves
+a partial report; `import-capture --allow-partial` explicitly permits a failed or
+interrupted session, but never a report still marked running. Abrupt process or
+machine termination may leave the last report marked running and an unlisted image;
+automatic crash recovery is not implemented. Keep the original capture folder for
+its full timing/provenance evidence.
+
+Import verifies the plan, manifest, every image hash, dimensions, paths and timing
+before adding frames. Identical images are deduplicated, including across sessions;
+duplicates do not inflate the dataset. No labels or readiness credit are created.
+Legacy reports with synthetic interval timestamps cannot use this measured import;
+the existing `import-folder` workflow remains available with explicitly assumed timing.
+
 For research-only neural estimates in the full-hand table, opt in explicitly:
 
 ```text

@@ -79,6 +79,7 @@ class CapturePlan:
 
 Grabber = Callable[[tuple[int, int, int, int]], Image.Image]
 Sleeper = Callable[[float], None]
+Clock = Callable[[], int]
 
 
 def _default_grabber(bbox: tuple[int, int, int, int]) -> Image.Image:
@@ -86,10 +87,12 @@ def _default_grabber(bbox: tuple[int, int, int, int]) -> Image.Image:
 
 
 def _write_json(path: Path, payload: object) -> None:
-    path.write_text(
+    pending = path.with_suffix(path.suffix + ".pending")
+    pending.write_text(
         json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+    pending.replace(path)
 
 
 def capture_frames(
@@ -98,6 +101,7 @@ def capture_frames(
     *,
     grabber: Grabber | None = None,
     sleeper: Sleeper = time.sleep,
+    clock_ns: Clock = time.perf_counter_ns,
 ) -> dict[str, object]:
     root = Path(output).expanduser().resolve()
     if root.exists() and any(root.iterdir()):
@@ -110,42 +114,13 @@ def capture_frames(
 
     take = grabber or _default_grabber
     rows: list[dict[str, object]] = []
-    for index in range(plan.frames):
-        timestamp_ms = index * plan.interval_ms
-        image = take(plan.region.bbox())
-        if not isinstance(image, Image.Image):
-            raise ValueError("Screen grabber must return a Pillow image")
-        image = image.convert("RGB")
-        if image.size != (plan.region.width, plan.region.height):
-            raise ValueError(
-                f"Captured image is {image.width}x{image.height}; expected "
-                f"{plan.region.width}x{plan.region.height}"
-            )
-        filename = f"frame-{index:06d}-{timestamp_ms:09d}ms.png"
-        path = root / filename
-        image.save(path, format="PNG", optimize=False)
-        digest = hashlib.sha256(path.read_bytes()).hexdigest()
-        rows.append(
-            {
-                "index": index,
-                "timestamp_ms": timestamp_ms,
-                "filename": filename,
-                "sha256": digest,
-                "width": image.width,
-                "height": image.height,
-            }
-        )
-        if index + 1 < plan.frames:
-            sleeper(plan.interval_ms / 1000)
-
     report = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "session_id": plan.session_id,
-        "completed_at": utc_now(),
+        "status": "running",
+        "timing_basis": "monotonic_capture_start_relative_to_session",
         "plan_sha256": plan_payload["plan_sha256"],
-        "captured_frames": len(rows),
         "frames": rows,
-        "frames_sha256": canonical_sha256(rows),
         "policy": {
             "read_only_pixels": True,
             "input_control": False,
@@ -153,7 +128,66 @@ def capture_frames(
             "explicit_region_required": True,
         },
     }
-    _write_json(root / "capture_report.json", report)
+
+    def checkpoint() -> None:
+        report["captured_frames"] = len(rows)
+        report["frames_sha256"] = canonical_sha256(rows)
+        report["updated_at"] = utc_now()
+        _write_json(root / "capture_report.json", report)
+
+    checkpoint()
+    started_ns = clock_ns()
+    try:
+        for index in range(plan.frames):
+            scheduled_ms = index * plan.interval_ms
+            remaining_ns = started_ns + scheduled_ms * 1_000_000 - clock_ns()
+            if remaining_ns > 0:
+                sleeper(remaining_ns / 1_000_000_000)
+            capture_start_ns = clock_ns() - started_ns
+            if capture_start_ns < 0 or (rows and capture_start_ns < rows[-1]["capture_end_ns"]):
+                raise ValueError("Capture clock must be monotonic")
+            raw_ms = capture_start_ns // 1_000_000
+            # Preserve sub-ms evidence while satisfying the dataset's strict ms ordering.
+            timestamp_ms = max(raw_ms, rows[-1]["timestamp_ms"] + 1 if rows else 0)
+            image = take(plan.region.bbox())
+            capture_end_ns = clock_ns() - started_ns
+            if capture_end_ns < capture_start_ns:
+                raise ValueError("Capture clock must be monotonic")
+            if not isinstance(image, Image.Image):
+                raise ValueError("Screen grabber must return a Pillow image")
+            image = image.convert("RGB")
+            if image.size != (plan.region.width, plan.region.height):
+                raise ValueError(
+                    f"Captured image is {image.width}x{image.height}; expected "
+                    f"{plan.region.width}x{plan.region.height}"
+                )
+            filename = f"frame-{index:06d}-{timestamp_ms:09d}ms.png"
+            path = root / filename
+            image.save(path, format="PNG", optimize=False)
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            rows.append(
+                {
+                    "index": index,
+                    "timestamp_ms": timestamp_ms,
+                    "scheduled_timestamp_ms": scheduled_ms,
+                    "capture_start_ns": capture_start_ns,
+                    "capture_end_ns": capture_end_ns,
+                    "timestamp_resolution_adjusted": timestamp_ms != raw_ms,
+                    "filename": filename,
+                    "sha256": digest,
+                    "width": image.width,
+                    "height": image.height,
+                }
+            )
+            checkpoint()
+    except (Exception, KeyboardInterrupt) as error:
+        report["status"] = "interrupted" if isinstance(error, KeyboardInterrupt) else "failed"
+        report["error_type"] = type(error).__name__
+        checkpoint()
+        raise
+    report["status"] = "completed"
+    report["completed_at"] = utc_now()
+    checkpoint()
     return report
 
 
@@ -186,6 +220,9 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, ValueError, RuntimeError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 2
+    except KeyboardInterrupt:
+        print("Capture interrupted; completed frames are listed in capture_report.json.", file=sys.stderr)
+        return 130
 
 
 if __name__ == "__main__":
