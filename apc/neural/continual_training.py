@@ -450,6 +450,13 @@ def build_completed_replay_checkpoint(
     rehearsal_corpus = None
     if strategy_rehearsal_dataset is not None:
         rehearsal_manifest, rehearsal_corpus = load_raised_corpus(strategy_rehearsal_dataset)
+        if strategy_regression_dataset is None:
+            raise ValueError("Strategy rehearsal requires an independent regression corpus")
+        if Path(strategy_rehearsal_dataset).resolve() == Path(strategy_regression_dataset).resolve():
+            raise ValueError("Strategy rehearsal and regression must use independent corpora")
+        regression_source = json.loads((Path(strategy_regression_dataset) / "manifest.json").read_text(encoding="utf-8"))
+        if rehearsal_manifest["dataset_fingerprint"] == regression_source.get("dataset_fingerprint"):
+            raise ValueError("Strategy rehearsal and regression reuse the same corpus fingerprint")
     candidate, metrics = train_completed_replay_candidate(
         corpus,
         incumbent,

@@ -446,7 +446,7 @@ def generate_dataset(
     alternate_builtin_font: bool = False,
     card_surface: str = "light",
 ) -> dict[str, object]:
-    if card_surface not in ("light", "dim"):
+    if card_surface not in ("light", "dim", "mixed"):
         raise ValueError("Unsupported card surface")
     if sessions < 3:
         raise ValueError("Synthetic dataset generation requires at least three sessions")
@@ -476,8 +476,9 @@ def generate_dataset(
         session_font = rank_font if not alternate_builtin_font or session_index % 2 else None
         if session_font:
             theme = dict(theme, id=theme["id"] + "-" + font_digest[:12])
-        if card_surface != "light":
-            theme = dict(theme, id=theme["id"] + "-surface-" + card_surface)
+        session_surface = ("dim" if session_index % 2 else "light") if card_surface == "mixed" else card_surface
+        if session_surface != "light":
+            theme = dict(theme, id=theme["id"] + "-surface-" + session_surface)
         session_id = f"synthetic-{session_index:04d}"
         session_names = synthetic_ocr_player_names(rng, seats) if include_name_ocr else None
         environment = {
@@ -504,7 +505,7 @@ def generate_dataset(
                 include_glyph_boxes=include_glyph_boxes,
                 card_design=card_design,
                 rank_font=session_font,
-                card_surface=card_surface,
+                card_surface=session_surface,
                 decision_time_remaining_ms=(
                     CLOCK_VALUES_MS[(session_index * len(STREETS) + sequence_index) % len(CLOCK_VALUES_MS)]
                     if include_turn_clock
@@ -547,7 +548,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--card-design", choices=("centered_token", "corner_symbols"), default="centered_token")
     parser.add_argument("--rank-font", type=Path, help="Local font file for corner ranks; fingerprinted, not copied")
     parser.add_argument("--alternate-builtin-font", action="store_true", help="Use the built-in rank font on even-numbered sessions")
-    parser.add_argument("--card-surface", choices=("light", "dim"), default="light")
+    parser.add_argument("--card-surface", choices=("light", "dim", "mixed"), default="light")
     return parser
 
 

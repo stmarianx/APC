@@ -1,6 +1,7 @@
 {
   "model_name": "APC",
-  "status": "trained_not_promoted_fresh_audit_pending",
+  "status": "trained_checkpoint_validation_failed",
+  "qualification_failure": "Rehearsal and regression share a corpus fingerprint. Existing checkpoint validator correctly rejected this configuration. Fresh model evaluation did not run.",
   "candidate_checkpoint_fingerprint": "8f7161e8097ab54ce7f2e24fd7ea0a400300bd0a714215b6b451d5904a42860a",
   "strategy_regression_passed": true,
   "internal_test": {

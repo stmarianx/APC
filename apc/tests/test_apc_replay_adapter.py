@@ -29,6 +29,21 @@ from apc.neural.train_candidate import encode_rows
 
 
 class APCReplayAdapterTests(unittest.TestCase):
+    def test_rehearsal_cannot_train_with_same_regression_corpus(self):
+        from unittest.mock import patch
+        from apc.neural.continual_training import build_completed_replay_checkpoint
+        record = {"weights": {"file": "unused", "weights_sha256": "unused"}}
+        with patch("apc.neural.train_candidate.validate_checkpoint", return_value={"valid": True}), \
+                patch("pathlib.Path.read_text", return_value=json.dumps(record)), \
+                patch("apc.neural.continual_training.load_apc_weights"), \
+                patch("apc.neural.continual_training.load_replay_temporal_corpus"), \
+                patch("apc.neural.continual_training.load_raised_corpus", return_value=({}, None)), \
+                patch("apc.neural.continual_training.train_completed_replay_candidate") as train:
+            with self.assertRaisesRegex(ValueError, "independent corpora"):
+                build_completed_replay_checkpoint("replays", "checkpoint.json", "unused-new-output",
+                    strategy_rehearsal_dataset="same", strategy_regression_dataset="same")
+            train.assert_not_called()
+
     def test_hand_weights_equalize_total_mass_without_using_rewards(self):
         from apc.neural.continual_training import inverse_hand_weights
         identities = ["short", "long", "long", "long"]
