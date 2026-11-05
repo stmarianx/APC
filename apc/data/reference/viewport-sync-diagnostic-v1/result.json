@@ -1,0 +1,275 @@
+{
+  "experiment": "viewport-sync-diagnostic-v1",
+  "pairs": [
+    {
+      "viewport": [
+        920,
+        900
+      ],
+      "captures": [
+        {
+          "frame_key": "w920-first",
+          "image_size": [
+            905,
+            509
+          ],
+          "sha256": "3b384a5b4ab72ff593bc69150d5cc2967e9317250e96ea771e4bf302cd079ba3",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": false,
+          "rejection_reason": "Card outside saved screenshot",
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "4s",
+                345.38543701171875,
+                536.40625,
+                62,
+                78
+              ],
+              [
+                "hero",
+                "2c",
+                415.3854370117187,
+                536.40625,
+                62,
+                78
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              920,
+              900
+            ]
+          }
+        },
+        {
+          "frame_key": "w920-second",
+          "image_size": [
+            905,
+            860
+          ],
+          "sha256": "e60edb5e07ebfabc9e81d23bdc3b5f7c5f71c348f8241e39c24195ed6f4b6e07",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": true,
+          "rejection_reason": null,
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "4s",
+                345.38543701171875,
+                536.40625,
+                62,
+                78
+              ],
+              [
+                "hero",
+                "2c",
+                415.3854370117187,
+                536.40625,
+                62,
+                78
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              920,
+              900
+            ]
+          }
+        }
+      ],
+      "same_image_dimensions": false,
+      "same_dom_geometry": true
+    },
+    {
+      "viewport": [
+        600,
+        900
+      ],
+      "captures": [
+        {
+          "frame_key": "w600-first",
+          "image_size": [
+            585,
+            556
+          ],
+          "sha256": "6788b09b5e087d8ab9708446c3531ee9f4bb8335c64a4b78300b36600a524bb9",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": false,
+          "rejection_reason": "Card outside saved screenshot",
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "4s",
+                185.3854217529297,
+                544.7396240234375,
+                44,
+                64
+              ],
+              [
+                "hero",
+                "2c",
+                233.3854217529297,
+                544.7396240234375,
+                44,
+                64
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              600,
+              900
+            ]
+          }
+        },
+        {
+          "frame_key": "w600-second",
+          "image_size": [
+            585,
+            853
+          ],
+          "sha256": "90660eb3852b544c8b0c4888b50edacce568249ec2b5c6536bc5965cdd0ccb02",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": true,
+          "rejection_reason": null,
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "4s",
+                185.3854217529297,
+                544.7396240234375,
+                44,
+                64
+              ],
+              [
+                "hero",
+                "2c",
+                233.3854217529297,
+                544.7396240234375,
+                44,
+                64
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              600,
+              900
+            ]
+          }
+        }
+      ],
+      "same_image_dimensions": false,
+      "same_dom_geometry": true
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "captures": [
+        {
+          "frame_key": "w1440-first",
+          "image_size": [
+            600,
+            875
+          ],
+          "sha256": "8c40a956ca20c6a1290328097de0eb151e34a4614d424996ea1b1eefe3bfd0ef",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": true,
+          "rejection_reason": null,
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "4s",
+                605.3854370117188,
+                536.40625,
+                62,
+                78
+              ],
+              [
+                "hero",
+                "2c",
+                675.3854370117188,
+                536.40625,
+                62,
+                78
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              1440,
+              900
+            ]
+          }
+        },
+        {
+          "frame_key": "w1440-second",
+          "image_size": [
+            1425,
+            866
+          ],
+          "sha256": "a626a5fd559e13a0551a17619e22e5d52b74844ee01df6439d1c31a800719e23",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": true,
+          "rejection_reason": null,
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "4s",
+                605.3854370117188,
+                536.40625,
+                62,
+                78
+              ],
+              [
+                "hero",
+                "2c",
+                675.3854370117188,
+                536.40625,
+                62,
+                78
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              1440,
+              900
+            ]
+          }
+        }
+      ],
+      "same_image_dimensions": false,
+      "same_dom_geometry": true
+    }
+  ],
+  "dimension_disagreement_pairs": 3,
+  "all_captures_retained": true,
+  "model_inference_performed": false,
+  "pixel_alignment_proven": false,
+  "readiness_credit": false,
+  "interpretation": "Equal DOM endpoints and a passing bounds check do not prove raster alignment. Repeated captures are diagnostic evidence, not replacement audit samples."
+}

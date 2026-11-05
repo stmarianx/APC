@@ -1,0 +1,10 @@
+{
+  "experiment": "viewport-sync-diagnostic-v1",
+  "purpose": "Compare two consecutive setup screenshots after each fixed resize; no model inference, training, audit scoring or sample selection",
+  "viewports": [[920,900],[600,900],[1440,900]],
+  "captures_per_viewport": 2,
+  "capture_order": "Observe DOM after resize, capture first and second with existing adapter/saver; retain every result including rejection",
+  "use_policy": "sealed_audit_no_training",
+  "does_not_resume_aborted_v7": true,
+  "readiness_credit": false
+}

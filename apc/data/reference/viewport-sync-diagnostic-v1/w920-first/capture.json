@@ -1,0 +1,93 @@
+{
+  "schema_version": "apc_browser_frame_acquisition_v1",
+  "image": "frame.jpg",
+  "image_format": "JPEG",
+  "sha256": "3b384a5b4ab72ff593bc69150d5cc2967e9317250e96ea771e4bf302cd079ba3",
+  "image_size": [
+    905,
+    509
+  ],
+  "cards": [
+    [
+      "hero",
+      "4s",
+      345.38543701171875,
+      536.40625
+    ],
+    [
+      "hero",
+      "2c",
+      415.3854370117187,
+      536.40625
+    ]
+  ],
+  "use_policy": "sealed_audit_no_training",
+  "capture_stability": {
+    "schema_version": "apc_capture_stability_v1",
+    "image_sha256": "3b384a5b4ab72ff593bc69150d5cc2967e9317250e96ea771e4bf302cd079ba3",
+    "image_size": [
+      905,
+      509
+    ],
+    "before": {
+      "cards": [
+        [
+          "hero",
+          "4s",
+          345.38543701171875,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "2c",
+          415.3854370117187,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        920,
+        900
+      ]
+    },
+    "after": {
+      "cards": [
+        [
+          "hero",
+          "4s",
+          345.38543701171875,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "2c",
+          415.3854370117187,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        920,
+        900
+      ]
+    }
+  },
+  "eligible_for_draft_scoring": false,
+  "rejection_reason": "Card outside saved screenshot",
+  "pixel_geometry_reviewed": false,
+  "readiness_credit": false
+}

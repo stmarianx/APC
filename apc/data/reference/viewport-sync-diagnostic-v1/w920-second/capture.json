@@ -1,0 +1,93 @@
+{
+  "schema_version": "apc_browser_frame_acquisition_v1",
+  "image": "frame.jpg",
+  "image_format": "JPEG",
+  "sha256": "e60edb5e07ebfabc9e81d23bdc3b5f7c5f71c348f8241e39c24195ed6f4b6e07",
+  "image_size": [
+    905,
+    860
+  ],
+  "cards": [
+    [
+      "hero",
+      "4s",
+      345.38543701171875,
+      536.40625
+    ],
+    [
+      "hero",
+      "2c",
+      415.3854370117187,
+      536.40625
+    ]
+  ],
+  "use_policy": "sealed_audit_no_training",
+  "capture_stability": {
+    "schema_version": "apc_capture_stability_v1",
+    "image_sha256": "e60edb5e07ebfabc9e81d23bdc3b5f7c5f71c348f8241e39c24195ed6f4b6e07",
+    "image_size": [
+      905,
+      860
+    ],
+    "before": {
+      "cards": [
+        [
+          "hero",
+          "4s",
+          345.38543701171875,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "2c",
+          415.3854370117187,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        920,
+        900
+      ]
+    },
+    "after": {
+      "cards": [
+        [
+          "hero",
+          "4s",
+          345.38543701171875,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "2c",
+          415.3854370117187,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        920,
+        900
+      ]
+    }
+  },
+  "eligible_for_draft_scoring": true,
+  "rejection_reason": null,
+  "pixel_geometry_reviewed": false,
+  "readiness_credit": false
+}
