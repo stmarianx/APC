@@ -1,0 +1,394 @@
+{
+  "schema_version": "apc_locator_stage_trace_v1",
+  "training_performed": false,
+  "readiness_credit": false,
+  "reference_reuse_not_fresh_audit": true,
+  "collection_sha256": "c8e5724d7c1c8154e6c7ef875d17c94dade5103c0a2ed836c377d0d9aa96efa3",
+  "locator_sha256": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273",
+  "frames": [
+    {
+      "image": "h1-preflop-800.png",
+      "targets": [
+        {
+          "identity": "As",
+          "best_iou_by_stage": {
+            "decoded_default": 0.46367331321386507,
+            "box_nms_decode_control": 0.46367331321386507,
+            "refined_all_views": 0.9874017026285444,
+            "after_added_view_policy": 0.9874017026285444,
+            "final": 0.9874017026285444
+          }
+        },
+        {
+          "identity": "Qh",
+          "best_iou_by_stage": {
+            "decoded_default": 0.4563767056348709,
+            "box_nms_decode_control": 0.4563767056348709,
+            "refined_all_views": 0.9764079089500523,
+            "after_added_view_policy": 0.9764079089500523,
+            "final": 0.9764079089500523
+          }
+        }
+      ],
+      "stage_proposal_counts": {
+        "decoded_default": 49,
+        "box_nms_decode_control": 58,
+        "refined_all_views": 49,
+        "after_added_view_policy": 8,
+        "final": 2
+      },
+      "box_nms_is_diagnostic_control_only": true
+    },
+    {
+      "image": "h1-river-800.png",
+      "targets": [
+        {
+          "identity": "4d",
+          "best_iou_by_stage": {
+            "decoded_default": 0.45071882980443806,
+            "box_nms_decode_control": 0.45071882980443806,
+            "refined_all_views": 0.9849015880438474,
+            "after_added_view_policy": 0.9849015880438474,
+            "final": 0.9849015880438474
+          }
+        },
+        {
+          "identity": "Jc",
+          "best_iou_by_stage": {
+            "decoded_default": 0.5408735797579476,
+            "box_nms_decode_control": 0.5408735797579476,
+            "refined_all_views": 0.9746083879346902,
+            "after_added_view_policy": 0.9746083879346902,
+            "final": 0.9746083879346902
+          }
+        },
+        {
+          "identity": "Tc",
+          "best_iou_by_stage": {
+            "decoded_default": 0.47688061424503075,
+            "box_nms_decode_control": 0.5302217766785836,
+            "refined_all_views": 0.9746083879346901,
+            "after_added_view_policy": 0.9746083879346901,
+            "final": 0.9746083879346901
+          }
+        },
+        {
+          "identity": "Qc",
+          "best_iou_by_stage": {
+            "decoded_default": 0.5345861991891182,
+            "box_nms_decode_control": 0.5345861991891182,
+            "refined_all_views": 0.9746083879346894,
+            "after_added_view_policy": 0.9746083879346894,
+            "final": 0.9746083879346894
+          }
+        },
+        {
+          "identity": "6d",
+          "best_iou_by_stage": {
+            "decoded_default": 0.47019415686516436,
+            "box_nms_decode_control": 0.47019415686516436,
+            "refined_all_views": 0.9746083879346894,
+            "after_added_view_policy": 0.9746083879346894,
+            "final": 0.9746083879346894
+          }
+        },
+        {
+          "identity": "As",
+          "best_iou_by_stage": {
+            "decoded_default": 0.41248653133320073,
+            "box_nms_decode_control": 0.41248653133320073,
+            "refined_all_views": 0.9758783872199163,
+            "after_added_view_policy": 0.9758783872199163,
+            "final": 0.9758783872199163
+          }
+        },
+        {
+          "identity": "Qh",
+          "best_iou_by_stage": {
+            "decoded_default": 0.4529580504758691,
+            "box_nms_decode_control": 0.4529580504758691,
+            "refined_all_views": 0.9803318706937686,
+            "after_added_view_policy": 0.9803318706937686,
+            "final": 0.9803318706937686
+          }
+        }
+      ],
+      "stage_proposal_counts": {
+        "decoded_default": 80,
+        "box_nms_decode_control": 94,
+        "refined_all_views": 80,
+        "after_added_view_policy": 29,
+        "final": 8
+      },
+      "box_nms_is_diagnostic_control_only": true
+    },
+    {
+      "image": "h2-preflop-560.png",
+      "targets": [
+        {
+          "identity": "4c",
+          "best_iou_by_stage": {
+            "decoded_default": 0.3070817261598971,
+            "box_nms_decode_control": 0.3547351557751804,
+            "refined_all_views": 0.3070817261598971,
+            "after_added_view_policy": 0.3070817261598971,
+            "final": 0.3070817261598971
+          }
+        },
+        {
+          "identity": "6c",
+          "best_iou_by_stage": {
+            "decoded_default": 0.35851708936097826,
+            "box_nms_decode_control": 0.35851708936097826,
+            "refined_all_views": 0.9717110572945805,
+            "after_added_view_policy": 0.9717110572945805,
+            "final": 0.9717110572945805
+          }
+        }
+      ],
+      "stage_proposal_counts": {
+        "decoded_default": 59,
+        "box_nms_decode_control": 69,
+        "refined_all_views": 59,
+        "after_added_view_policy": 10,
+        "final": 10
+      },
+      "box_nms_is_diagnostic_control_only": true
+    },
+    {
+      "image": "h2-river-560.png",
+      "targets": [
+        {
+          "identity": "Tc",
+          "best_iou_by_stage": {
+            "decoded_default": 0.3994396328260725,
+            "box_nms_decode_control": 0.3994396328260725,
+            "refined_all_views": 0.9751930363372733,
+            "after_added_view_policy": 0.9751930363372733,
+            "final": 0.9751930363372733
+          }
+        },
+        {
+          "identity": "7h",
+          "best_iou_by_stage": {
+            "decoded_default": 0.39581163434582556,
+            "box_nms_decode_control": 0.39581163434582556,
+            "refined_all_views": 0.9861835025702624,
+            "after_added_view_policy": 0.9861835025702624,
+            "final": 0.9861835025702624
+          }
+        },
+        {
+          "identity": "Qh",
+          "best_iou_by_stage": {
+            "decoded_default": 0.3780702913432706,
+            "box_nms_decode_control": 0.3780702913432706,
+            "refined_all_views": 0.9731737213593029,
+            "after_added_view_policy": 0.9731737213593029,
+            "final": 0.9731737213593029
+          }
+        },
+        {
+          "identity": "5d",
+          "best_iou_by_stage": {
+            "decoded_default": 0.39631930606179133,
+            "box_nms_decode_control": 0.39631930606179133,
+            "refined_all_views": 0.9751930363372738,
+            "after_added_view_policy": 0.9751930363372738,
+            "final": 0.9751930363372738
+          }
+        },
+        {
+          "identity": "Ts",
+          "best_iou_by_stage": {
+            "decoded_default": 0.43593619620541724,
+            "box_nms_decode_control": 0.43593619620541724,
+            "refined_all_views": 0.9696130702274671,
+            "after_added_view_policy": 0.9696130702274671,
+            "final": 0.9696130702274671
+          }
+        },
+        {
+          "identity": "4c",
+          "best_iou_by_stage": {
+            "decoded_default": 0.43465535657148296,
+            "box_nms_decode_control": 0.43465535657148296,
+            "refined_all_views": 0.9763181856439999,
+            "after_added_view_policy": 0.9763181856439999,
+            "final": 0.9763181856439999
+          }
+        },
+        {
+          "identity": "6c",
+          "best_iou_by_stage": {
+            "decoded_default": 0.42548239053886017,
+            "box_nms_decode_control": 0.42548239053886017,
+            "refined_all_views": 0.9875877375244037,
+            "after_added_view_policy": 0.9875877375244037,
+            "final": 0.9875877375244037
+          }
+        }
+      ],
+      "stage_proposal_counts": {
+        "decoded_default": 84,
+        "box_nms_decode_control": 103,
+        "refined_all_views": 84,
+        "after_added_view_policy": 20,
+        "final": 15
+      },
+      "box_nms_is_diagnostic_control_only": true
+    },
+    {
+      "image": "h3-preflop-1280.png",
+      "targets": [
+        {
+          "identity": "Ac",
+          "best_iou_by_stage": {
+            "decoded_default": 0.7005635581597676,
+            "box_nms_decode_control": 0.7005635581597676,
+            "refined_all_views": 0.987023376760975,
+            "after_added_view_policy": 0.987023376760975,
+            "final": 0.987023376760975
+          }
+        },
+        {
+          "identity": "6d",
+          "best_iou_by_stage": {
+            "decoded_default": 0.6726143384785576,
+            "box_nms_decode_control": 0.6726143384785576,
+            "refined_all_views": 0.9781254783998862,
+            "after_added_view_policy": 0.9781254783998862,
+            "final": 0.9781254783998862
+          }
+        }
+      ],
+      "stage_proposal_counts": {
+        "decoded_default": 25,
+        "box_nms_decode_control": 30,
+        "refined_all_views": 25,
+        "after_added_view_policy": 15,
+        "final": 3
+      },
+      "box_nms_is_diagnostic_control_only": true
+    },
+    {
+      "image": "h3-river-1280.png",
+      "targets": [
+        {
+          "identity": "Qd",
+          "best_iou_by_stage": {
+            "decoded_default": 0.7616346288830529,
+            "box_nms_decode_control": 0.7616346288830529,
+            "refined_all_views": 0.9815129259441284,
+            "after_added_view_policy": 0.9815129259441284,
+            "final": 0.9815129259441284
+          }
+        },
+        {
+          "identity": "Ah",
+          "best_iou_by_stage": {
+            "decoded_default": 0.7656713932308639,
+            "box_nms_decode_control": 0.7656713932308639,
+            "refined_all_views": 0.9781132813465576,
+            "after_added_view_policy": 0.9781132813465576,
+            "final": 0.9781132813465576
+          }
+        },
+        {
+          "identity": "Js",
+          "best_iou_by_stage": {
+            "decoded_default": 0.6268728789344749,
+            "box_nms_decode_control": 0.6268728789344749,
+            "refined_all_views": 0.9654225501089779,
+            "after_added_view_policy": 0.9654225501089779,
+            "final": 0.9654225501089779
+          }
+        },
+        {
+          "identity": "Ad",
+          "best_iou_by_stage": {
+            "decoded_default": 0.6217460281476711,
+            "box_nms_decode_control": 0.6217460281476711,
+            "refined_all_views": 0.9654225501089798,
+            "after_added_view_policy": 0.9654225501089798,
+            "final": 0.9654225501089798
+          }
+        },
+        {
+          "identity": "9d",
+          "best_iou_by_stage": {
+            "decoded_default": 0.716712395525975,
+            "box_nms_decode_control": 0.716712395525975,
+            "refined_all_views": 0.9789436325822373,
+            "after_added_view_policy": 0.9789436325822373,
+            "final": 0.9789436325822373
+          }
+        },
+        {
+          "identity": "Ac",
+          "best_iou_by_stage": {
+            "decoded_default": 0.7106351732852124,
+            "box_nms_decode_control": 0.7106351732852124,
+            "refined_all_views": 0.9815129259441284,
+            "after_added_view_policy": 0.9815129259441284,
+            "final": 0.9815129259441284
+          }
+        },
+        {
+          "identity": "6d",
+          "best_iou_by_stage": {
+            "decoded_default": 0.49510721104186783,
+            "box_nms_decode_control": 0.738802465734944,
+            "refined_all_views": 0.9783382540286337,
+            "after_added_view_policy": 0.9783382540286337,
+            "final": 0.9783382540286337
+          }
+        }
+      ],
+      "stage_proposal_counts": {
+        "decoded_default": 40,
+        "box_nms_decode_control": 54,
+        "refined_all_views": 40,
+        "after_added_view_policy": 20,
+        "final": 7
+      },
+      "box_nms_is_diagnostic_control_only": true
+    },
+    {
+      "image": "negative-800.png",
+      "targets": [],
+      "stage_proposal_counts": {
+        "decoded_default": 38,
+        "box_nms_decode_control": 81,
+        "refined_all_views": 38,
+        "after_added_view_policy": 12,
+        "final": 12
+      },
+      "box_nms_is_diagnostic_control_only": true
+    },
+    {
+      "image": "negative-560.png",
+      "targets": [],
+      "stage_proposal_counts": {
+        "decoded_default": 60,
+        "box_nms_decode_control": 117,
+        "refined_all_views": 60,
+        "after_added_view_policy": 14,
+        "final": 14
+      },
+      "box_nms_is_diagnostic_control_only": true
+    },
+    {
+      "image": "negative-1280.png",
+      "targets": [],
+      "stage_proposal_counts": {
+        "decoded_default": 23,
+        "box_nms_decode_control": 46,
+        "refined_all_views": 23,
+        "after_added_view_policy": 9,
+        "final": 9
+      },
+      "box_nms_is_diagnostic_control_only": true
+    }
+  ]
+}
