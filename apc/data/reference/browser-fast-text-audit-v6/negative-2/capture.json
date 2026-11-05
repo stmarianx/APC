@@ -1,0 +1,48 @@
+{
+  "schema_version": "apc_browser_frame_acquisition_v1",
+  "image": "frame.jpg",
+  "image_format": "JPEG",
+  "sha256": "eb5e23f2b1865e273f3aadb6f561cba45b6c82526747fac1f600a688b4555232",
+  "image_size": [
+    800,
+    875
+  ],
+  "cards": [],
+  "use_policy": "sealed_audit_no_training",
+  "capture_stability": {
+    "schema_version": "apc_capture_stability_v1",
+    "image_sha256": "eb5e23f2b1865e273f3aadb6f561cba45b6c82526747fac1f600a688b4555232",
+    "image_size": [
+      800,
+      875
+    ],
+    "before": {
+      "cards": [],
+      "fixture_scene": "lobby",
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        800,
+        900
+      ]
+    },
+    "after": {
+      "cards": [],
+      "fixture_scene": "lobby",
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        800,
+        900
+      ]
+    }
+  },
+  "eligible_for_draft_scoring": true,
+  "rejection_reason": null,
+  "pixel_geometry_reviewed": false,
+  "readiness_credit": false
+}

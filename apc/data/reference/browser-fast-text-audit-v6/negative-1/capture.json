@@ -1,0 +1,48 @@
+{
+  "schema_version": "apc_browser_frame_acquisition_v1",
+  "image": "frame.jpg",
+  "image_format": "JPEG",
+  "sha256": "f54932b2135d2a3b3c10b540931f8dd41808615ce2d514cc693ef9bdf59d7d3b",
+  "image_size": [
+    560,
+    875
+  ],
+  "cards": [],
+  "use_policy": "sealed_audit_no_training",
+  "capture_stability": {
+    "schema_version": "apc_capture_stability_v1",
+    "image_sha256": "f54932b2135d2a3b3c10b540931f8dd41808615ce2d514cc693ef9bdf59d7d3b",
+    "image_size": [
+      560,
+      875
+    ],
+    "before": {
+      "cards": [],
+      "fixture_scene": "text",
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        560,
+        900
+      ]
+    },
+    "after": {
+      "cards": [],
+      "fixture_scene": "text",
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        560,
+        900
+      ]
+    }
+  },
+  "eligible_for_draft_scoring": true,
+  "rejection_reason": null,
+  "pixel_geometry_reviewed": false,
+  "readiness_credit": false
+}
