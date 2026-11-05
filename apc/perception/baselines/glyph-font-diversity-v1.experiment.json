@@ -1,0 +1,40 @@
+{
+  "experiment": "glyph-font-diversity-v1",
+  "status": "preserved_research_candidate_pending_fresh_audit",
+  "checkpoint": "apc/checkpoints/glyph-font-diversity-v1.pt",
+  "checkpoint_sha256": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+  "checkpoint_bytes": 1084389,
+  "architecture": "card-glyph-pair-v1",
+  "detector_fixed": "card-locator-hardneg-v1.pt",
+  "data": {
+    "seed": 20261111, "sessions": 72, "synthetic_frames": 288,
+    "manifest_sha256": "312d1014b3046c7380293e90f4d7b84fc04a980fab14b75dcf0f162a765586bb",
+    "design": "mixed_symbols", "surfaces": "mixed",
+    "font_files_local_only": ["segoeuib.ttf", "segoeui.ttf", "seguisym.ttf", "arialbd.ttf"],
+    "font_sha256": ["b169e636719880976a97e94e3b1cb3dbe5f4a38eabc037bf9f2a9165154c3ad2", "704eada12961a27fd271f7d3b09e2066520e758390c1776744eff430fee30f6e", "a4a35dcc62cd30e1a6c97b695ecef83e59d2b149e3af834f6a49f11851d56b37", "e8f4e3baf6cc35fed6fcce3a540e8b39e8f6cda1d22a28f2ec8f526fef7a43f5"],
+    "stacked_glyph_sizes": [18, 22, 26],
+    "font_coverage_guard": "All 13 ranks and four suits must have nonempty, distinct rasterized masks",
+    "captured_training_images": 0, "font_binaries_redistributed": false
+  },
+  "training": {
+    "seed": 42, "epochs": 40, "selected_epoch": 36,
+    "initialization": "random_from_scratch", "augmentation": "color_scale_translation_v1",
+    "rehearsal_manifest_sha256": "da7f1102918c8e40190e5db29e131d7f5f25d9377977666e02fccdf352537f62",
+    "fixed_augmented_validation_views_per_source": 3,
+    "selection": "Worst domain/view accuracy, then pooled accuracy, then minimum validation cross-entropy"
+  },
+  "results": {
+    "combined_synthetic_oracle_test": {"correct": 220, "targets": 220},
+    "captured_development": {"correct": 34, "targets": 34, "false_proposals": 0},
+    "old_synthetic_end_to_end": {"correct": 80, "targets": 80, "false_proposals": 0},
+    "reused_audit_v2_reference": {"correct": 34, "targets": 34, "false_proposals": 0, "incumbent_correct": 32, "independent_untouched_audit": false}
+  },
+  "limitations": [
+    "Audit-v2 errors informed experiment design; re-evaluation is a reused-reference diagnostic only",
+    "Captured examples remain same-application, correlated and draft geometry",
+    "Only one training seed; no independent latency/calibration gate",
+    "Full table fields, temporal state and strategy coaching readiness remain unproven"
+  ],
+  "default_model_changed": false, "full_table_readiness": false,
+  "next_work": "Freeze this pair and collect fresh captures with viewport/layout variation before research-controller integration"
+}

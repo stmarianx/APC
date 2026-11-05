@@ -1,5 +1,7 @@
 # APC — AI Poker Coach
 
+Current phase and experiment progress: [APC_PROGRESS.md](APC_PROGRESS.md).
+
 > Development repository: rebuildable runtime caches and large checkpoints are
 > kept separate from source. See `apc/PORTABILITY_AND_RELEASE.md` for the
 > laptop-to-training-machine workflow.
@@ -308,6 +310,19 @@ python -m apc.perception.train_card_glyphs apc/runs/browser-symbol-mixture-v1/da
 
 Fixed validation views preserve training randomness and labels; test examples never
 select weights. This is a research option, not a promoted model or readiness claim.
+
+The broader-font shared-encoder candidate uses four local Unicode fonts, three
+stacked-symbol sizes and old-domain rehearsal. Font masks are checked for missing
+or indistinguishable ranks/suits before generation; font binaries are not copied.
+It scored 220/220 synthetic oracle glyphs, 34/34 captured development identities,
+and 80/80 old synthetic identities. Reusing audit-v2 as a reference scored 34/34
+versus the incumbent's frozen 32/34, but is not a fresh independent audit. No audit
+images entered training. Defaults and readiness remain unchanged.
+
+```text
+python -m apc.synthetic.render_table apc/runs/glyph-font-diversity-v1 --sessions 72 --seed 20261111 --include-glyph-boxes --card-design mixed_symbols --rank-font C:/Windows/Fonts/segoeuib.ttf --extra-rank-font C:/Windows/Fonts/segoeui.ttf --extra-rank-font C:/Windows/Fonts/seguisym.ttf --extra-rank-font C:/Windows/Fonts/arialbd.ttf --glyph-font-size 18 --glyph-font-size 22 --glyph-font-size 26 --alternate-builtin-font --card-surface mixed
+python -m apc.perception.train_card_glyphs apc/runs/glyph-font-diversity-v1/dataset_manifest.json apc/runs/glyph-font-diversity-shared-v1 --epochs 40 --glyph-pair --augment --rehearsal-manifest apc/runs/mixed-surface-locator-v1/dataset_manifest.json --validation-augmentations 3
+```
 
 1. Collect and double-audit the minimum controlled virtual-chip visible-table dataset required by Gate T.
 2. Collect controlled-visible examples for variable-font name, numeric and turn-clock calibration.

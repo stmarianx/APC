@@ -176,6 +176,18 @@ def _draw_card_identity(draw, box, card, font, design, include_boxes, *, centere
     return {"rank_box": normalized_box(rank_box), "suit_box": normalized_box(suit_label)} if include_boxes else {}
 
 
+def validate_symbol_font(path, sizes):
+    """Fail before labeling unsupported glyphs (e.g. identical missing-glyph boxes)."""
+    _, _, ImageFont = _pil()
+    for size in set(sizes):
+        font = ImageFont.truetype(str(path), size=size)
+        for alphabet in ("23456789TJQKA", "♣♦♥♠"):
+            masks = [font.getmask(character) for character in alphabet]
+            identities = {(mask.size, bytes(mask)) for mask in masks}
+            if len(identities) != len(alphabet) or any(not any(bytes(mask)) for mask in masks):
+                raise ValueError("Symbol font must visibly distinguish all ranks and suits")
+
+
 @dataclass(frozen=True)
 class RenderedFrame:
     image_path: Path
@@ -210,7 +222,12 @@ def render_frame(
     card_design: str = "centered_token",
     rank_font: Path | None = None,
     card_surface: str = "light",
+    glyph_font_size: int | None = None,
 ) -> RenderedFrame:
+    if glyph_font_size is not None and (type(glyph_font_size) is not int or not 12 <= glyph_font_size <= 28):
+        raise ValueError("Glyph font size must be an integer from 12 through 28")
+    if glyph_font_size is not None and card_design != "stacked_symbols":
+        raise ValueError("Explicit glyph sizes apply only to stacked symbols")
     if card_surface not in ("light", "dim"):
         raise ValueError("Unsupported card surface")
     face_color = "#f7f3e8" if card_surface == "light" else "#8b8983"
@@ -228,7 +245,7 @@ def render_frame(
     if rank_font is not None:
         if card_design not in ("corner_symbols", "stacked_symbols"):
             raise ValueError("Custom rank fonts require a symbol card design")
-        card_font = ImageFont.truetype(str(rank_font), size=22 if card_design == "stacked_symbols" else 18)
+        card_font = ImageFont.truetype(str(rank_font), size=glyph_font_size or (22 if card_design == "stacked_symbols" else 18))
     draw.rounded_rectangle((90, 105, 1190, 600), radius=230, fill=theme["rail"])
     table_box = (115, 130, 1165, 575)
     draw.rounded_rectangle(table_box, radius=210, fill=theme["felt"])
@@ -456,6 +473,8 @@ def generate_dataset(
     rank_font: Path | None = None,
     alternate_builtin_font: bool = False,
     card_surface: str = "light",
+    extra_rank_fonts: tuple[Path, ...] = (),
+    glyph_font_sizes: tuple[int, ...] = (),
 ) -> dict[str, object]:
     if card_surface not in ("light", "dim", "mixed"):
         raise ValueError("Unsupported card surface")
@@ -465,12 +484,23 @@ def generate_dataset(
         raise ValueError("Stacked Unicode symbols require an explicit local font")
     if sessions < 3:
         raise ValueError("Synthetic dataset generation requires at least three sessions")
+    if (extra_rank_fonts or glyph_font_sizes) and (rank_font is None or card_design not in ("stacked_symbols", "mixed_symbols")):
+        raise ValueError("Font diversity requires an explicit font and stacked or mixed symbols")
+    if any(type(size) is not int or not 12 <= size <= 28 for size in glyph_font_sizes):
+        raise ValueError("Glyph font sizes must be integers from 12 through 28")
+    font_pool = [rank_font, *extra_rank_fonts] if rank_font else []
+    font_hashes = [hashlib.sha256(Path(font).read_bytes()).hexdigest() for font in font_pool]
+    if len(set(font_hashes)) != len(font_hashes):
+        raise ValueError("Font pool must contain distinct font binaries")
+    if card_design in ("stacked_symbols", "mixed_symbols"):
+        for font in font_pool:
+            validate_symbol_font(font, glyph_font_sizes or (22,))
     rng = random.Random(seed)
     if alternate_builtin_font and rank_font is None:
         raise ValueError("Alternating fonts requires a custom rank font")
     if rank_font is not None and card_design == "centered_token":
         raise ValueError("Custom rank fonts require a symbol card design")
-    font_digest = hashlib.sha256(rank_font.read_bytes()).hexdigest() if rank_font else None
+    font_digest = font_hashes[0] if font_hashes else None
     project = AnnotationProject.create(
         root,
         project_id=f"apc-synthetic-{seed}",
@@ -489,11 +519,18 @@ def generate_dataset(
         session_design = ("stacked_symbols" if (session_index // len(LAYOUTS)) % 2 else "corner_symbols") if card_design == "mixed_symbols" else card_design
         if session_design != "centered_token":
             theme = dict(theme, id=theme["id"] + "-" + session_design)
-        session_font = rank_font if not alternate_builtin_font or session_index % 2 else None
+        pool_index = (session_index // (2*len(LAYOUTS))) % len(font_pool) if extra_rank_fonts else 0
+        chosen_font = font_pool[pool_index] if font_pool else None
+        session_font = chosen_font if not alternate_builtin_font or session_index % 2 else None
         if session_design == "stacked_symbols":
-            session_font = rank_font
+            session_font = chosen_font
         if session_font:
-            theme = dict(theme, id=theme["id"] + "-" + font_digest[:12])
+            theme = dict(theme, id=theme["id"] + "-" + font_hashes[pool_index][:12])
+        session_font_size = None
+        if session_design == "stacked_symbols" and glyph_font_sizes:
+            size_index = (session_index // (2*len(LAYOUTS)*max(1, len(font_pool)))) % len(glyph_font_sizes)
+            session_font_size = glyph_font_sizes[size_index]
+            theme = dict(theme, id=theme["id"] + "-glyph-size-" + str(session_font_size))
         session_surface = ("dim" if session_index % 2 else "light") if card_surface == "mixed" else card_surface
         if session_surface != "light":
             theme = dict(theme, id=theme["id"] + "-surface-" + session_surface)
@@ -524,6 +561,7 @@ def generate_dataset(
                 card_design=session_design,
                 rank_font=session_font,
                 card_surface=session_surface,
+                glyph_font_size=session_font_size,
                 decision_time_remaining_ms=(
                     CLOCK_VALUES_MS[(session_index * len(STREETS) + sequence_index) % len(CLOCK_VALUES_MS)]
                     if include_turn_clock
@@ -552,6 +590,8 @@ def generate_dataset(
         "rank_font_sha256": font_digest,
         "alternate_builtin_font": alternate_builtin_font,
         "card_surface": card_surface,
+        "font_pool_sha256": font_hashes,
+        "glyph_font_sizes": list(glyph_font_sizes),
     }
 
 
@@ -565,6 +605,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--include-glyph-boxes", action="store_true")
     parser.add_argument("--card-design", choices=("centered_token", "corner_symbols", "stacked_symbols", "mixed_symbols"), default="centered_token")
     parser.add_argument("--rank-font", type=Path, help="Local font file for corner ranks; fingerprinted, not copied")
+    parser.add_argument("--extra-rank-font", type=Path, action="append", default=[], help="Additional local Unicode font; fingerprinted, never copied")
+    parser.add_argument("--glyph-font-size", type=int, action="append", default=[], help="Stacked-glyph rendering size, 12 through 28; repeat for variation")
     parser.add_argument("--alternate-builtin-font", action="store_true", help="Use the built-in rank font on even-numbered sessions")
     parser.add_argument("--card-surface", choices=("light", "dim", "mixed"), default="light")
     return parser
@@ -585,6 +627,8 @@ def main(argv: list[str] | None = None) -> int:
         rank_font=args.rank_font,
         alternate_builtin_font=args.alternate_builtin_font,
         card_surface=args.card_surface,
+        extra_rank_fonts=tuple(args.extra_rank_font),
+        glyph_font_sizes=tuple(args.glyph_font_size),
     )
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0

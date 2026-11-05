@@ -1,0 +1,2454 @@
+{
+  "model_kind": "annotated_card_glyph_pair_recognizer",
+  "architecture_version": "card-glyph-pair-v1",
+  "seed": 42,
+  "epochs": 40,
+  "torch_version": "2.14.1+cpu",
+  "token_augmentation": "color_scale_translation_v1",
+  "selected_epoch": 36,
+  "selection_rule": "max_min_domain_view_accuracy_then_pooled_accuracy_then_min_loss",
+  "validation_augmentations": 3,
+  "manifest_sha256": "312d1014b3046c7380293e90f4d7b84fc04a980fab14b75dcf0f162a765586bb",
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 450,
+        "suit_correct": 654,
+        "exact_correct": 339
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 63,
+          "suit_correct": 110,
+          "exact_correct": 50
+        },
+        {
+          "cards": 80,
+          "rank_correct": 40,
+          "suit_correct": 61,
+          "exact_correct": 32
+        },
+        {
+          "cards": 140,
+          "rank_correct": 75,
+          "suit_correct": 102,
+          "exact_correct": 57
+        },
+        {
+          "cards": 80,
+          "rank_correct": 50,
+          "suit_correct": 58,
+          "exact_correct": 34
+        },
+        {
+          "cards": 140,
+          "rank_correct": 73,
+          "suit_correct": 106,
+          "exact_correct": 57
+        },
+        {
+          "cards": 80,
+          "rank_correct": 43,
+          "suit_correct": 56,
+          "exact_correct": 29
+        },
+        {
+          "cards": 140,
+          "rank_correct": 64,
+          "suit_correct": 100,
+          "exact_correct": 47
+        },
+        {
+          "cards": 80,
+          "rank_correct": 42,
+          "suit_correct": 61,
+          "exact_correct": 33
+        }
+      ],
+      "validation_loss": 2.7350527346134186
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 829,
+        "suit_correct": 761,
+        "exact_correct": 717
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 134,
+          "suit_correct": 138,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 77,
+          "suit_correct": 80,
+          "exact_correct": 77
+        },
+        {
+          "cards": 140,
+          "rank_correct": 123,
+          "suit_correct": 111,
+          "exact_correct": 97
+        },
+        {
+          "cards": 80,
+          "rank_correct": 75,
+          "suit_correct": 69,
+          "exact_correct": 64
+        },
+        {
+          "cards": 140,
+          "rank_correct": 133,
+          "suit_correct": 112,
+          "exact_correct": 108
+        },
+        {
+          "cards": 80,
+          "rank_correct": 76,
+          "suit_correct": 69,
+          "exact_correct": 65
+        },
+        {
+          "cards": 140,
+          "rank_correct": 135,
+          "suit_correct": 110,
+          "exact_correct": 105
+        },
+        {
+          "cards": 80,
+          "rank_correct": 76,
+          "suit_correct": 72,
+          "exact_correct": 68
+        }
+      ],
+      "validation_loss": 0.8565409854054451
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 855,
+        "suit_correct": 837,
+        "exact_correct": 814
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 136,
+          "suit_correct": 122,
+          "exact_correct": 119
+        },
+        {
+          "cards": 80,
+          "rank_correct": 77,
+          "suit_correct": 80,
+          "exact_correct": 77
+        },
+        {
+          "cards": 140,
+          "rank_correct": 138,
+          "suit_correct": 129,
+          "exact_correct": 127
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 134,
+          "suit_correct": 129,
+          "exact_correct": 124
+        },
+        {
+          "cards": 80,
+          "rank_correct": 74,
+          "suit_correct": 78,
+          "exact_correct": 72
+        }
+      ],
+      "validation_loss": 0.47208841890096664
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 857,
+        "suit_correct": 794,
+        "exact_correct": 775
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 123,
+          "exact_correct": 123
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 132,
+          "suit_correct": 120,
+          "exact_correct": 115
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 121,
+          "exact_correct": 120
+        },
+        {
+          "cards": 80,
+          "rank_correct": 77,
+          "suit_correct": 80,
+          "exact_correct": 77
+        },
+        {
+          "cards": 140,
+          "rank_correct": 134,
+          "suit_correct": 115,
+          "exact_correct": 110
+        },
+        {
+          "cards": 80,
+          "rank_correct": 75,
+          "suit_correct": 75,
+          "exact_correct": 70
+        }
+      ],
+      "validation_loss": 0.3598536681383848
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 864,
+        "suit_correct": 846,
+        "exact_correct": 832
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 136,
+          "exact_correct": 136
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 136,
+          "suit_correct": 129,
+          "exact_correct": 126
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 133,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 135,
+          "suit_correct": 128,
+          "exact_correct": 124
+        },
+        {
+          "cards": 80,
+          "rank_correct": 77,
+          "suit_correct": 80,
+          "exact_correct": 77
+        }
+      ],
+      "validation_loss": 0.19366965629160404
+    },
+    {
+      "epoch": 6,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 876,
+        "suit_correct": 842,
+        "exact_correct": 840
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 138,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 137,
+          "suit_correct": 129,
+          "exact_correct": 127
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 130,
+          "exact_correct": 130
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 79,
+          "exact_correct": 79
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 126,
+          "exact_correct": 126
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.17183405254036188
+    },
+    {
+      "epoch": 7,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 865,
+        "suit_correct": 847,
+        "exact_correct": 833
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 134,
+          "exact_correct": 134
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 138,
+          "suit_correct": 131,
+          "exact_correct": 129
+        },
+        {
+          "cards": 80,
+          "rank_correct": 77,
+          "suit_correct": 80,
+          "exact_correct": 77
+        },
+        {
+          "cards": 140,
+          "rank_correct": 138,
+          "suit_correct": 133,
+          "exact_correct": 131
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 138,
+          "suit_correct": 129,
+          "exact_correct": 128
+        },
+        {
+          "cards": 80,
+          "rank_correct": 76,
+          "suit_correct": 80,
+          "exact_correct": 76
+        }
+      ],
+      "validation_loss": 0.14788398053497076
+    },
+    {
+      "epoch": 8,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 877,
+        "suit_correct": 856,
+        "exact_correct": 853
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 129,
+          "exact_correct": 129
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 137,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 78,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 134,
+          "exact_correct": 134
+        },
+        {
+          "cards": 80,
+          "rank_correct": 79,
+          "suit_correct": 78,
+          "exact_correct": 77
+        }
+      ],
+      "validation_loss": 0.11245845444500446
+    },
+    {
+      "epoch": 9,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 878,
+        "suit_correct": 845,
+        "exact_correct": 843
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 134,
+          "exact_correct": 134
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 131,
+          "exact_correct": 131
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 133,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 127,
+          "exact_correct": 127
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.10972382593899965
+    },
+    {
+      "epoch": 10,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 869,
+        "exact_correct": 869
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 131,
+          "exact_correct": 131
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.0663129249587655
+    },
+    {
+      "epoch": 11,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 856,
+        "exact_correct": 856
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 133,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 79,
+          "exact_correct": 79
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 133,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 133,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 78,
+          "exact_correct": 78
+        }
+      ],
+      "validation_loss": 0.11171213909983635
+    },
+    {
+      "epoch": 12,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 872,
+        "suit_correct": 857,
+        "exact_correct": 849
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 137,
+          "suit_correct": 130,
+          "exact_correct": 127
+        },
+        {
+          "cards": 80,
+          "rank_correct": 79,
+          "suit_correct": 77,
+          "exact_correct": 76
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 136,
+          "exact_correct": 135
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 138,
+          "suit_correct": 135,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 79,
+          "suit_correct": 79,
+          "exact_correct": 78
+        }
+      ],
+      "validation_loss": 0.11818335554562509
+    },
+    {
+      "epoch": 13,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 879,
+        "suit_correct": 827,
+        "exact_correct": 826
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 132,
+          "exact_correct": 132
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 127,
+          "exact_correct": 127
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 130,
+          "exact_correct": 130
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 123,
+          "exact_correct": 123
+        },
+        {
+          "cards": 80,
+          "rank_correct": 79,
+          "suit_correct": 75,
+          "exact_correct": 74
+        }
+      ],
+      "validation_loss": 0.15086340438574553
+    },
+    {
+      "epoch": 14,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 867,
+        "exact_correct": 867
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 137,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 79,
+          "exact_correct": 79
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 133,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 79,
+          "exact_correct": 79
+        }
+      ],
+      "validation_loss": 0.053025958593934774
+    },
+    {
+      "epoch": 15,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 855,
+        "exact_correct": 855
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 137,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 132,
+          "exact_correct": 132
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 136,
+          "exact_correct": 136
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 130,
+          "exact_correct": 130
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.0645950116449967
+    },
+    {
+      "epoch": 16,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 866,
+        "exact_correct": 866
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 136,
+          "exact_correct": 136
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 131,
+          "exact_correct": 131
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 79,
+          "exact_correct": 79
+        }
+      ],
+      "validation_loss": 0.04159560869447887
+    },
+    {
+      "epoch": 17,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 867,
+        "suit_correct": 869,
+        "exact_correct": 856
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 138,
+          "suit_correct": 139,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 79,
+          "exact_correct": 77
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 137,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 79,
+          "suit_correct": 80,
+          "exact_correct": 79
+        },
+        {
+          "cards": 140,
+          "rank_correct": 138,
+          "suit_correct": 134,
+          "exact_correct": 132
+        },
+        {
+          "cards": 80,
+          "rank_correct": 74,
+          "suit_correct": 80,
+          "exact_correct": 74
+        }
+      ],
+      "validation_loss": 0.0753741015214473
+    },
+    {
+      "epoch": 18,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 877,
+        "suit_correct": 874,
+        "exact_correct": 871
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 79,
+          "exact_correct": 77
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 137,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 79,
+          "suit_correct": 79,
+          "exact_correct": 78
+        }
+      ],
+      "validation_loss": 0.038183602038770914
+    },
+    {
+      "epoch": 19,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 876,
+        "suit_correct": 874,
+        "exact_correct": 870
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 138,
+          "suit_correct": 140,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 79,
+          "exact_correct": 79
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 136,
+          "exact_correct": 135
+        },
+        {
+          "cards": 80,
+          "rank_correct": 79,
+          "suit_correct": 80,
+          "exact_correct": 79
+        }
+      ],
+      "validation_loss": 0.040569748962298036
+    },
+    {
+      "epoch": 20,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 870,
+        "exact_correct": 870
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 138,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 132,
+          "exact_correct": 132
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.042940852348692715
+    },
+    {
+      "epoch": 21,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 879,
+        "suit_correct": 870,
+        "exact_correct": 870
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 132,
+          "exact_correct": 132
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.03359829980763607
+    },
+    {
+      "epoch": 22,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 867,
+        "exact_correct": 867
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 138,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 137,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 132,
+          "exact_correct": 132
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.037524769868468866
+    },
+    {
+      "epoch": 23,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 858,
+        "suit_correct": 866,
+        "exact_correct": 844
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 139,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 74,
+          "suit_correct": 80,
+          "exact_correct": 74
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 137,
+          "exact_correct": 136
+        },
+        {
+          "cards": 80,
+          "rank_correct": 75,
+          "suit_correct": 80,
+          "exact_correct": 75
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 131,
+          "exact_correct": 130
+        },
+        {
+          "cards": 80,
+          "rank_correct": 74,
+          "suit_correct": 79,
+          "exact_correct": 73
+        }
+      ],
+      "validation_loss": 0.11737511889077723
+    },
+    {
+      "epoch": 24,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 871,
+        "suit_correct": 853,
+        "exact_correct": 844
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 137,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 131,
+          "exact_correct": 131
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 135,
+          "exact_correct": 135
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 137,
+          "suit_correct": 130,
+          "exact_correct": 127
+        },
+        {
+          "cards": 80,
+          "rank_correct": 76,
+          "suit_correct": 80,
+          "exact_correct": 76
+        }
+      ],
+      "validation_loss": 0.10983484704047441
+    },
+    {
+      "epoch": 25,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 876,
+        "suit_correct": 849,
+        "exact_correct": 845
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 135,
+          "exact_correct": 135
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 130,
+          "exact_correct": 129
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 133,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 131,
+          "exact_correct": 131
+        },
+        {
+          "cards": 80,
+          "rank_correct": 77,
+          "suit_correct": 80,
+          "exact_correct": 77
+        }
+      ],
+      "validation_loss": 0.08612362435087562
+    },
+    {
+      "epoch": 26,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 873,
+        "suit_correct": 874,
+        "exact_correct": 867
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 79,
+          "suit_correct": 80,
+          "exact_correct": 79
+        },
+        {
+          "cards": 140,
+          "rank_correct": 139,
+          "suit_correct": 134,
+          "exact_correct": 133
+        },
+        {
+          "cards": 80,
+          "rank_correct": 77,
+          "suit_correct": 80,
+          "exact_correct": 77
+        }
+      ],
+      "validation_loss": 0.05071681062690914
+    },
+    {
+      "epoch": 27,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 877,
+        "suit_correct": 878,
+        "exact_correct": 875
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 78,
+          "suit_correct": 80,
+          "exact_correct": 78
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 79,
+          "suit_correct": 79,
+          "exact_correct": 78
+        }
+      ],
+      "validation_loss": 0.029060838744044304
+    },
+    {
+      "epoch": 28,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 877,
+        "exact_correct": 877
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 138,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.020454895013244823
+    },
+    {
+      "epoch": 29,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 872,
+        "exact_correct": 872
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 137,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 135,
+          "exact_correct": 135
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.025938786013284698
+    },
+    {
+      "epoch": 30,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 879,
+        "exact_correct": 879
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.015291060961317271
+    },
+    {
+      "epoch": 31,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 875,
+        "exact_correct": 875
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 136,
+          "exact_correct": 136
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.018461594852851704
+    },
+    {
+      "epoch": 32,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 878,
+        "exact_correct": 878
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 138,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.016436993959359825
+    },
+    {
+      "epoch": 33,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 817,
+        "exact_correct": 817
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 128,
+          "exact_correct": 128
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 122,
+          "exact_correct": 122
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 128,
+          "exact_correct": 128
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 120,
+          "exact_correct": 120
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 79,
+          "exact_correct": 79
+        }
+      ],
+      "validation_loss": 0.16018536448245868
+    },
+    {
+      "epoch": 34,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 877,
+        "exact_correct": 877
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 138,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.014815557573456317
+    },
+    {
+      "epoch": 35,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 878,
+        "exact_correct": 878
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 138,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.013303692394401878
+    },
+    {
+      "epoch": 36,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 879,
+        "exact_correct": 879
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 139,
+          "exact_correct": 139
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.011270781425992027
+    },
+    {
+      "epoch": 37,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 872,
+        "exact_correct": 872
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 132,
+          "exact_correct": 132
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.027617605053819716
+    },
+    {
+      "epoch": 38,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 816,
+        "exact_correct": 816
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 138,
+          "exact_correct": 138
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 125,
+          "exact_correct": 125
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 73,
+          "exact_correct": 73
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 118,
+          "exact_correct": 118
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 76,
+          "exact_correct": 76
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 128,
+          "exact_correct": 128
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 78,
+          "exact_correct": 78
+        }
+      ],
+      "validation_loss": 0.2593443737132475
+    },
+    {
+      "epoch": 39,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 791,
+        "exact_correct": 791
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 134,
+          "exact_correct": 134
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 127,
+          "exact_correct": 127
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 126,
+          "exact_correct": 126
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 76,
+          "exact_correct": 76
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 113,
+          "exact_correct": 113
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 55,
+          "exact_correct": 55
+        }
+      ],
+      "validation_loss": 0.3352190970326774
+    },
+    {
+      "epoch": 40,
+      "validation": {
+        "cards": 880,
+        "rank_correct": 880,
+        "suit_correct": 877,
+        "exact_correct": 877
+      },
+      "validation_by_source": [
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 140,
+          "exact_correct": 140
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        },
+        {
+          "cards": 140,
+          "rank_correct": 140,
+          "suit_correct": 137,
+          "exact_correct": 137
+        },
+        {
+          "cards": 80,
+          "rank_correct": 80,
+          "suit_correct": 80,
+          "exact_correct": 80
+        }
+      ],
+      "validation_loss": 0.02056610054569319
+    }
+  ],
+  "test_exact_box": {
+    "cards": 220,
+    "rank_correct": 220,
+    "suit_correct": 220,
+    "exact_correct": 220
+  },
+  "full_table_readiness": false,
+  "confidence_calibrated": false,
+  "source_isolation_audit": [
+    {
+      "manifest_sha256": "312d1014b3046c7380293e90f4d7b84fc04a980fab14b75dcf0f162a765586bb",
+      "frames_by_split": {
+        "train": 232,
+        "validation": 28,
+        "test": 28
+      }
+    },
+    {
+      "manifest_sha256": "da7f1102918c8e40190e5db29e131d7f5f25d9377977666e02fccdf352537f62",
+      "frames_by_split": {
+        "train": 112,
+        "validation": 16,
+        "test": 16
+      }
+    }
+  ],
+  "test_by_source": [
+    {
+      "cards": 140,
+      "rank_correct": 140,
+      "suit_correct": 140,
+      "exact_correct": 140
+    },
+    {
+      "cards": 80,
+      "rank_correct": 80,
+      "suit_correct": 80,
+      "exact_correct": 80
+    }
+  ]
+}
