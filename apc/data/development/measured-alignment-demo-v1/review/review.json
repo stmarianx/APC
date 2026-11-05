@@ -1,0 +1,77 @@
+{
+  "schema_version": "apc_browser_geometry_review_v1",
+  "collection_sha256": "21e1be26b01c3c6ebeb650c2b1b184e11d913e22f77baf46b414f4e713da54d4",
+  "capture_session_id": "measured-alignment-demo-v1",
+  "legend": {
+    "card": "yellow",
+    "rank": "cyan",
+    "suit": "magenta"
+  },
+  "model_used": false,
+  "labels_changed": false,
+  "readiness_credit": false,
+  "independently_reviewed": false,
+  "frames": [
+    {
+      "source_image": "C:\\Users\\st_ma\\Documents\\Negreanu\\apc\\data\\development\\measured-alignment-demo-v1\\acquisition\\frame.jpg",
+      "source_sha256": "de8fcd8d0688770b5f31b976a6ad308bd177c3fae937f6b1d34483b93011e403",
+      "overlay": "000-frame.png",
+      "image_size": [
+        1265,
+        712
+      ],
+      "targets": [
+        {
+          "identity": "Js",
+          "role": "hero",
+          "card_xyxy": [
+            519,
+            530,
+            581,
+            607
+          ],
+          "glyph_xyxy": {
+            "rank": [
+              525,
+              536,
+              575,
+              568
+            ],
+            "suit": [
+              525,
+              568,
+              575,
+              601
+            ]
+          }
+        },
+        {
+          "identity": "Th",
+          "role": "hero",
+          "card_xyxy": [
+            588,
+            530,
+            650,
+            607
+          ],
+          "glyph_xyxy": {
+            "rank": [
+              594,
+              536,
+              644,
+              568
+            ],
+            "suit": [
+              594,
+              568,
+              644,
+              601
+            ]
+          }
+        }
+      ],
+      "review_status": "pending",
+      "mapping": "measured_pixel_alignment_v1"
+    }
+  ]
+}

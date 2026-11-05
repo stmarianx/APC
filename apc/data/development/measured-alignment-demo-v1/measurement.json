@@ -1,0 +1,14 @@
+{
+  "schema_version": "apc_pixel_alignment_v1",
+  "image_sha256": "de8fcd8d0688770b5f31b976a6ad308bd177c3fae937f6b1d34483b93011e403",
+  "image_size": [1265, 712],
+  "viewport": [1280, 720],
+  "measurement_method": "manual_visible_landmarks",
+  "measurement_notes": "Developer visual measurement of native saved image outer border extrema; not independent annotation approval.",
+  "anchors": [
+    {"description":"table outer border top midpoint","dom_xy":[632.3333435058594,222.0729217529297],"pixel_xy":[625,219]},
+    {"description":"table outer border right midpoint","dom_xy":[1132.3333435058594,454.0729217529297],"pixel_xy":[1119,448]},
+    {"description":"table outer border bottom midpoint","dom_xy":[632.3333435058594,686.0729217529297],"pixel_xy":[625,678]},
+    {"description":"table outer border left midpoint","dom_xy":[132.33334350585938,454.0729217529297],"pixel_xy":[131,448]}
+  ]
+}

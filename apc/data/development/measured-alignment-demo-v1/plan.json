@@ -1,0 +1,10 @@
+{
+  "experiment": "measured-alignment-demo-v1",
+  "purpose": "One default-viewport setup capture with visible table-border landmarks, followed by manual pixel measurement and draft overlay rendering",
+  "captures": 1,
+  "retakes": false,
+  "model_inference": false,
+  "training": false,
+  "readiness_credit": false,
+  "independent_annotation_review": "pending"
+}

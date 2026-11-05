@@ -31,6 +31,35 @@ async function capturePracticeFrame(tab) {
   return {before, png, after};
 }
 
+async function observePracticeAlignmentFrame(tab) {
+  const frame = await observePracticeFrame(tab);
+  frame.alignment_landmarks = await tab.playwright.evaluate(() => {
+    const element = document.querySelector('#table[aria-label="Virtual poker table"]');
+    const r = element.getBoundingClientRect();
+    const style = getComputedStyle(element);
+    if (style.visibility !== 'visible' || r.x < 0 || r.y < 0
+        || r.right > innerWidth || r.bottom > innerHeight) {
+      throw new Error('Full practice table must be visible for alignment landmarks');
+    }
+    // Outer border extrema, not rounded bounding-box corners. Pixel locations
+    // must be independently measured; this records only visible DOM geometry.
+    return [
+      {description:'table outer border top midpoint',dom_xy:[r.x+r.width/2,r.y]},
+      {description:'table outer border right midpoint',dom_xy:[r.right,r.y+r.height/2]},
+      {description:'table outer border bottom midpoint',dom_xy:[r.x+r.width/2,r.bottom]},
+      {description:'table outer border left midpoint',dom_xy:[r.x,r.y+r.height/2]},
+    ];
+  });
+  return frame;
+}
+
+async function capturePracticeAlignmentFrame(tab) {
+  const before = structuredClone(await observePracticeAlignmentFrame(tab));
+  const png = await tab.screenshot({fullPage:false});
+  const after = structuredClone(await observePracticeAlignmentFrame(tab));
+  return {before,png,after};
+}
+
 async function observeNegativeFrame(tab) {
   return tab.playwright.evaluate(() => {
     const fixture = document.querySelector('main[data-apc-audit-negative]');
@@ -51,3 +80,4 @@ async function captureNegativeFrame(tab) {
 }
 
 export {observePracticeFrame, capturePracticeFrame, observeNegativeFrame, captureNegativeFrame};
+export {observePracticeAlignmentFrame, capturePracticeAlignmentFrame};
