@@ -1,0 +1,172 @@
+{
+  "audit": "browser-surface-rescue-audit-v7",
+  "recognizer_sha256": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+  "detector_sha256": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273",
+  "verifier_sha256": "41e45f326beeb935f218f33c4ba31d268e30f7d8f2bbaa41ef9ffd6020a7d9fc",
+  "bounded_verifier_sha256": "41e45f326beeb935f218f33c4ba31d268e30f7d8f2bbaa41ef9ffd6020a7d9fc",
+  "inference_options": {
+    "adaptive_surfaces": true,
+    "deduplicate_surfaces": true,
+    "tiled_views": true
+  },
+  "inference_source_sha256": {
+    "apc/perception/bright_surface_candidate.py": "f1f6d11c272970f79c7ccd14ea3b44308ed3f400e281d55f90f842fded1ae56a",
+    "apc/perception/evaluate_browser_collection.py": "7ab90bfa05f5ed2cf99a453c4263842c387a628e77443a6468f800a8691528b1",
+    "apc/practice_web.py": "6db55a980e99ca965b66b7f71d7e706da97f15ae6c1d46a2425a63d2e0dd8980",
+    "apc/perception/card_proposals.py": "20e85d64dc9ad15b75926f56037e0fe48fb281f5035badd3d26c81df451ddf8a",
+    "apc/perception/card_verifier.py": "c7fc38ebfe7c9ad7da6b69fb33338b22c089bf750f18c1181a159228fd16cb69",
+    "apc/practice_assets/index.html": "bade32cec7a53156c1dbda274ab5e14e79165d7ffc2ee24042a528ffeb50a521",
+    "apc/practice_assets/negative_fixtures.py": "e96343aa07c0faf310173cd39553e8ac8f94623545d14430fe9106b992e3b4b9",
+    "apc/perception/fast_refinement.py": "abec22aaad7f773d44c6a31d62516eb881c9c7c40b64da010d5812724f010355",
+    "apc/perception/fast_components.py": "fa6b7de050fd3877f3bdfecf4a16d25e2a6f90b96e674dc74be4f32303e86849",
+    "apc/perception/card_glyphs.py": "1ff3745b31edce7796c5e2756c39cd868ea1f59ffd4fe329be837eb32df607f0",
+    "apc/perception/infer_card_locator.py": "170277e4cbcaa87e1aeef5cd42c191be330423185e9abe8f7f38775d06a5ed9e",
+    "apc/perception/verified_card_reader.py": "960bd080403e0cceb1d11cb45a6c7372040f196f7a6b27eb77c2d4390776a951",
+    "apc/capture/practice_browser_adapter.mjs": "f3e36eaf18e8b1f458264721e46ce71819c18dae350bf5d312335ff0b11583dc",
+    "apc/perception/card_locator.py": "3ca40797d541aed97adb2942735987ef82472574d43684285ed397d6f9e9f89c",
+    "apc/perception/infer_cards.py": "0efbccb698cbb20a90f5003718502494530b6be589c1cc67b64f8b1dfb4dd9f8",
+    "apc/capture/save_browser_acquisition.mjs": "4d2f511f321e77df284f71cfc505489a69926d92f509f7c8bba7abb7e8d1bf5f",
+    "apc/perception/capture_stability.py": "cfc9193032f2273bedf56c0ecd5ce6cfdcc50ecb2402771817b646b59b89eacc",
+    "apc/perception/surface_rescue.py": "671e8fde94f6e114b0540e4d88890e1509dd7fd762813d993bbe0db1755163b8",
+    "apc/perception/evaluate_frozen_browser_audit.py": "ab6fbd66da05935b89cda91d272dc234bd6a495f3dcf21ffa401ea26c04b9eca"
+  },
+  "training_prohibited": true,
+  "weights_frozen_before_collection": true,
+  "maximum_frames": 15,
+  "frame_schedule": [
+    [
+      "hand-1",
+      "preflop"
+    ],
+    [
+      "hand-1",
+      "flop"
+    ],
+    [
+      "hand-1",
+      "turn"
+    ],
+    [
+      "hand-1",
+      "river"
+    ],
+    [
+      "hand-2",
+      "preflop"
+    ],
+    [
+      "hand-2",
+      "flop"
+    ],
+    [
+      "hand-2",
+      "turn"
+    ],
+    [
+      "hand-2",
+      "river"
+    ],
+    [
+      "hand-3",
+      "preflop"
+    ],
+    [
+      "hand-3",
+      "flop"
+    ],
+    [
+      "hand-3",
+      "turn"
+    ],
+    [
+      "hand-3",
+      "river"
+    ],
+    [
+      "negative-1",
+      "empty"
+    ],
+    [
+      "negative-2",
+      "empty"
+    ],
+    [
+      "negative-3",
+      "empty"
+    ]
+  ],
+  "frame_viewports": [
+    [
+      920,
+      900
+    ],
+    [
+      920,
+      900
+    ],
+    [
+      920,
+      900
+    ],
+    [
+      920,
+      900
+    ],
+    [
+      600,
+      900
+    ],
+    [
+      600,
+      900
+    ],
+    [
+      600,
+      900
+    ],
+    [
+      600,
+      900
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      600,
+      900
+    ],
+    [
+      920,
+      900
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "all_captures_retained_even_if_model_fails": true,
+  "negative_scene": "Distinct static text panel, lobby and disabled-control fixtures at /audit-negative/text, /audit-negative/lobby, /audit-negative/controls",
+  "scope": "One new same-application capture session at widths 920/600/1440, different from v6 but partly overlapping older viewport references; three four-street sequences and three static negative designs reused from v6. Card perception only; correlated frames, not cross-platform/full-table/independent geometry validation.",
+  "readiness_credit": false,
+  "wide_surface_recovery": true,
+  "fast_surface_components": true,
+  "fast_locator_refinement": true,
+  "capture_stability_required": true,
+  "rejection_policy": "Retain all raw acquisitions including instability. Any rejected acquisition invalidates scoring of this schedule; stop and preregister a new collection, no prediction-based retries or replacement.",
+  "collection_policy": "sealed_audit_no_training; JPEG originals retained with native extension; before/after geometry evidence required for every frame; independent overlay review remains separate.",
+  "collection_started": false,
+  "surface_proposal_rescue": true
+}
