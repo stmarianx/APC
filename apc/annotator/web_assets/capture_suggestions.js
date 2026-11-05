@@ -24,6 +24,26 @@ function applyCaptureSuggestion(annotation, suggestion) {
     });
   }
   if (!count) throw new Error("Capture suggestion has no visible cards.");
+  const visible=suggestion.suggested_visible_state;
+  if (visible && typeof visible === 'object') {
+    result.state=result.state || {};
+    for (const key of ['street','hero_seat','dealer_seat','pot_bb','to_call_bb','legal_actions']) {
+      if (visible[key] != null) result.state[key]=structuredClone(visible[key]);
+    }
+  }
+  const suggested=suggestion.suggested_objects;
+  if (Array.isArray(suggested.seats)) {
+    result.objects.seats=Array.isArray(result.objects.seats) ? result.objects.seats : [];
+    for (const row of suggested.seats) {
+      const index=result.objects.seats.findIndex(seat=>seat.seat_no===row.seat_no);
+      const merged={...(index>=0 ? result.objects.seats[index] : {}),...structuredClone(row),visibility:'uncertain'};
+      if(index>=0) result.objects.seats[index]=merged; else result.objects.seats.push(merged);
+    }
+  }
+  if (suggested.pot?.box) result.objects.pot={...structuredClone(suggested.pot),visibility:'uncertain'};
+  if (Array.isArray(suggested.action_buttons)) {
+    result.objects.action_buttons=suggested.action_buttons.map(row=>({...structuredClone(row),visibility:'uncertain'}));
+  }
   result.provenance = result.provenance || {annotator:"human-review",annotation_version:1,created_at:new Date().toISOString()};
   result.provenance.verified = false;
   result.provenance.reviewer = null;

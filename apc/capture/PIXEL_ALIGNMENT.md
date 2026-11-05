@@ -88,3 +88,27 @@ evaluator rejects an undeclared/mixed mapping, missing geometry-source lock,
 changed helper or missing stability requirement before constructing the reader.
 This protects reproducibility; it still does not independently certify manually
 supplied pixel correspondences. Existing sealed reports/plans are not rewritten.
+
+## Broader owned-table draft labels
+
+The optional `capturePracticePublicFrame` adapter reads only visible owned-table
+DOM text and rectangles for the table's two seats, stacks, dealer labels, pot,
+street, call-price text and enabled action buttons. It does not query JavaScript
+game objects, network state, exported metadata or opponent cards. These regions
+are included in both endpoint snapshots, so a public-label change rejects the
+acquisition through the existing exact stability check.
+
+When `public_regions` is present, import requires measured alignment and maps
+supported regions into review-only objects/state. Regions beyond the measured
+landmark coverage are explicitly listed as skipped, not extrapolated. In
+particular, table-border landmarks alone usually do not cover the action buttons
+below the table. The reviewer must supply further landmarks or draw those boxes.
+Semantic values may be present in the draft even when their boxes are skipped;
+this is incomplete annotation evidence, not verified model perception.
+
+The workbench's explicit Apply action copies the available public fields while
+leaving verification false and visibility uncertain. It does not invent a hand
+ID, history or unseen seat information. This also preserves pot/call-price fields
+from older capture suggestions. Current broader-field coverage is unit/integration
+tested with controlled fixtures; an actual full-field browser capture check and
+independent review are still pending. No new model training has occurred.

@@ -28,3 +28,19 @@ test('malformed capture suggestion never partially modifies input',()=>{
     assert.deepEqual(original,{objects:{},state:{}});
   }
 });
+test('visible public fields and legacy price/pot labels remain review-only',()=>{
+  const s=suggestion();
+  s.suggested_visible_state={street:'preflop',pot_bb:'1.5',to_call_bb:'0.5',hero_seat:1,dealer_seat:1,
+    legal_actions:['fold','call'],hand_id:'must-not-copy'};
+  s.suggested_objects.seats=[{seat_no:1,stack_bb:'99.5',player_name:'Hero',box:{x:.2,y:.3,width:.1,height:.2}}];
+  s.suggested_objects.pot={amount_bb:'1.5',box:{x:.4,y:.3,width:.1,height:.05}};
+  s.suggested_objects.action_buttons=[{action:'call',enabled:true,box:{x:.3,y:.8,width:.1,height:.05}}];
+  const result=applyCaptureSuggestion({state:{hand_id:'existing'},objects:{}},s);
+  assert.equal(result.state.hand_id,'existing');
+  assert.equal(result.state.to_call_bb,'0.5');
+  assert.equal(result.objects.seats[0].stack_bb,'99.5');
+  assert.equal(result.objects.pot.amount_bb,'1.5');
+  assert.equal(result.objects.action_buttons[0].action,'call');
+  assert.equal(result.provenance.verified,false);
+  assert.equal(result.objects.seats[0].visibility,'uncertain');
+});

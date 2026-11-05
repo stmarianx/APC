@@ -79,6 +79,11 @@ def import_acquisition(project, manifest, session, timestamp_ms, *, pixel_alignm
         identities.append(identity)
     if len(identities) != len(set(identities)):
         raise ValueError("Duplicate visible identity")
+    public_labels = None
+    if "public_regions" in evidence["before"]:
+        from apc.annotator.public_table_labels import public_table_suggestions
+        public_labels = public_table_suggestions(evidence["before"]["public_regions"],alignment)
+        objects.update(public_labels[0])
     # All capture integrity/geometry checks precede project mutations.
     if expected_format == "JPEG":
         # Dataset v1 requires PNG. Preserve original acquisition/hash; import a
@@ -108,6 +113,10 @@ def import_acquisition(project, manifest, session, timestamp_ms, *, pixel_alignm
         suggestion["pixel_alignment"] = measured
         suggestion["pixel_alignment_metadata_sha256"] = measurement_digest
         suggestion["capture_import_version"] = "measured_browser_acquisition_v1"
+    if public_labels is not None:
+        suggestion["suggested_visible_state"] = public_labels[1]
+        suggestion["skipped_unmeasured_public_regions"] = public_labels[2]
+        suggestion["public_label_source"] = "owned_practice_visible_dom_v1_not_model_prediction"
     path = project.save_suggestion(record.sample_id, suggestion)
     return {"sample_id":record.sample_id,"inserted":inserted,"suggestion":str(path),"verified":False}
 

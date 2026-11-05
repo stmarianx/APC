@@ -60,6 +60,57 @@ async function capturePracticeAlignmentFrame(tab) {
   return {before,png,after};
 }
 
+async function observePracticePublicFrame(tab) {
+  const frame = await observePracticeAlignmentFrame(tab);
+  frame.public_regions = await tab.playwright.evaluate(() => {
+    const region = (element) => {
+      const r = element.getBoundingClientRect(), style = getComputedStyle(element);
+      if (style.display === 'none' || style.visibility !== 'visible' || Number(style.opacity) === 0
+          || r.width <= 0 || r.height <= 0 || r.x < 0 || r.y < 0
+          || r.right > innerWidth || r.bottom > innerHeight) {
+        throw new Error('Public label region not fully visible');
+      }
+      return {text:element.innerText.trim(),box_xywh:[r.x,r.y,r.width,r.height]};
+    };
+    const bb = (text) => {
+      if (!/^(?:0|[1-9][0-9]*)(?:\.[0-9]+)?$/.test(text)) throw new Error('Expected visible nonnegative BB number');
+      return text;
+    };
+    const seats = ['hero','villain'].map((id,index) => {
+      const label = region(document.getElementById(id));
+      const parts = label.text.split('·').map(s=>s.trim());
+      const stack = parts.find(part=>/ BB$/.test(part));
+      if (!stack) throw new Error('Visible stack label missing');
+      return {...region(document.getElementById(id).parentElement),seat_no:index+1,
+              player_name:parts[0],stack_bb:bb(stack.slice(0,-3)),is_hero:id==='hero',
+              has_dealer_button:parts.includes('Dealer')};
+    });
+    if (seats.filter(s=>s.has_dealer_button).length !== 1) throw new Error('Visible dealer label ambiguous');
+    const pot = region(document.getElementById('pot'));
+    const buttons = Array.from(document.querySelectorAll('#buttons button')).map(element=>{
+      const row = region(element), action = row.text.split(' ')[0];
+      if (!['fold','check','call','bet','raise','all_in'].includes(action)) throw new Error('Unsupported visible action button');
+      return {...row,action,enabled:!element.disabled};
+    });
+    const street = region(document.getElementById('street')).text;
+    if (!['preflop','flop','turn','river'].includes(street)) throw new Error('Unsupported visible street');
+    const price = region(document.getElementById('price')).text;
+    const match = /^To call ((?:0|[1-9][0-9]*)(?:\.[0-9]+)?) BB$/.exec(price);
+    if (!match) throw new Error('Expected active-hand visible call price');
+    // No window.state, network endpoints, exported metadata, or opponent cards.
+    return {source:'owned_practice_visible_dom_v1',units:'BB',seats,pot:{...pot,amount_bb:bb(pot.text)},
+            action_buttons:buttons,street,to_call_bb:bb(match[1])};
+  });
+  return frame;
+}
+
+async function capturePracticePublicFrame(tab) {
+  const before = structuredClone(await observePracticePublicFrame(tab));
+  const png = await tab.screenshot({fullPage:false});
+  const after = structuredClone(await observePracticePublicFrame(tab));
+  return {before,png,after};
+}
+
 async function observeNegativeFrame(tab) {
   return tab.playwright.evaluate(() => {
     const fixture = document.querySelector('main[data-apc-audit-negative]');
@@ -81,3 +132,4 @@ async function captureNegativeFrame(tab) {
 
 export {observePracticeFrame, capturePracticeFrame, observeNegativeFrame, captureNegativeFrame};
 export {observePracticeAlignmentFrame, capturePracticeAlignmentFrame};
+export {observePracticePublicFrame, capturePracticePublicFrame};
