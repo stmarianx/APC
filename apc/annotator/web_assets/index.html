@@ -21,6 +21,13 @@
         <button id="importButton">Import</button>
       </section>
       <section>
+        <h2>Import measured table capture</h2>
+        <p class="hint">Uses the session and timestamp above. Requires a dedicated APC practice-table project. Labels remain unverified.</p>
+        <label>Capture manifest path <input id="captureManifest" placeholder="Absolute path to capture.json"></label>
+        <label>Landmark measurements path <input id="captureAlignment" placeholder="Absolute path to measurement.json"></label>
+        <button id="importCaptureButton">Import measured capture</button>
+      </section>
+      <section>
         <div class="section-head"><h2>Frames</h2><button id="refreshButton" class="quiet">Refresh</button></div>
         <div id="frameList" class="frame-list"></div>
       </section>
@@ -62,7 +69,7 @@
       <div class="editor">
         <div class="section-head"><div><span class="eyebrow">Canonical target</span><h2>Annotation JSON</h2></div><button id="formatButton" class="quiet">Format</button></div>
         <section id="suggestionPanel" class="suggestion-panel" hidden>
-          <div class="section-head"><div><span class="eyebrow">Review aid only</span><h2>Model suggestion</h2></div><span id="suggestionConfidence" class="badge">unreviewed</span></div>
+          <div class="section-head"><div><span class="eyebrow">Review aid only</span><h2>Unverified suggestion</h2></div><span id="suggestionConfidence" class="badge">unreviewed</span></div>
           <p class="hint">This output is unverified. Applying it only copies supported fields into the local draft; it never saves or verifies an annotation.</p>
           <pre id="suggestionPreview" class="suggestion-preview"></pre>
           <button id="applySuggestionButton" class="quiet">Apply suggested fields to draft</button>
@@ -74,6 +81,7 @@
     </section>
   </main>
   <script src="/glyph_boxes.js" defer></script>
+  <script src="/capture_suggestions.js" defer></script>
   <script src="/app.js" defer></script>
 </body>
 </html>

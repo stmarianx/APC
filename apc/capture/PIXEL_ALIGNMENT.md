@@ -54,3 +54,25 @@ workflows; it is explicitly named in new suggestions, not asserted to be a
 verified pixel mapping. Prefer measured alignment for new captures. The saved
 `measured-alignment-demo-v1` provides a real one-frame developer check; independent
 review and cross-size/cross-layout evidence are still outstanding.
+
+## Workbench import
+
+The local annotation workbench now has **Import measured table capture**. Supply
+the absolute paths to the original capture manifest and its measurement JSON,
+plus the correct session and measured relative timestamp in the shared fields.
+This invokes the same validated importer under the application's project lock.
+The new endpoint accepts JSON and rejects cross-origin browser submissions.
+
+After import, **Apply suggested fields to draft** supports capture-derived card
+boxes and identities as well as model suggestions. It copies capture cards into
+a new unsaved draft, marks visibility uncertain and provenance unverified, and
+does not invent missing seats, pot or hand state. Explicit application replaces
+the draft's hero/board card arrays; other object/state fields are preserved.
+Applying is not saving or approving: all remaining fields still need review.
+
+Developer UI verification imported the real measured J-spade/T-heart example into
+the local ignored `apc/runs/workbench-measured-import-demo-v1` project and applied
+its suggestion. The screen showed one frame, zero verified annotations, card
+outlines, and the unsaved-draft confirmation. No annotation was saved. Screenshot
+proof is local in that project's `ui-proof.jpg`; this is application integration
+evidence, not an additional training sample or independent label review.

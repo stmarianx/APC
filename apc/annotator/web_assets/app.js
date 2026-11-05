@@ -120,6 +120,7 @@ function syncCanonicalState(annotation) {
 }
 
 function applySuggestionToDraft(annotation, suggestion) {
+  if (suggestion?.kind === "apc_capture_metadata_suggestion") return applyCaptureSuggestion(annotation,suggestion);
   if (!suggestion || suggestion.review_required !== true || suggestion.auto_applied !== false) {
     throw new Error("Only review-required, non-auto-applied suggestions are supported.");
   }
@@ -230,6 +231,9 @@ function renderSuggestion(suggestion) {
     suggestion_sha256: suggestion.suggestion_sha256,
     checkpoint_provenance: suggestion.checkpoint_provenance,
     visible_state: suggestion.suggested_visible_state,
+    screenshot_mapping: suggestion.screenshot_mapping,
+    draft_card_labels: suggestion.draft_card_labels,
+    pixel_alignment_metadata_sha256: suggestion.pixel_alignment_metadata_sha256,
     suggested_objects: suggestion.suggested_objects,
     abstentions: suggestion.perception_abstentions,
   }, null, 2);
@@ -348,6 +352,20 @@ $("exportButton").addEventListener("click", async () => {
     const result = await api("/api/export", { method: "POST", body: JSON.stringify({ dataset_version: $("datasetVersion").value.trim() }) });
     message(`Manifest exported: ${result.manifest}\nMinimum dataset ready: ${result.validation.minimum_dataset.ready}`, "ok");
   } catch (error) { message(error.message, "error"); }
+});
+
+$("importCaptureButton").addEventListener("click", async () => {
+  const button = $("importCaptureButton"); button.disabled = true;
+  try {
+    const result = await api("/api/import-browser-capture", {method:"POST",body:JSON.stringify({
+      manifest:$("captureManifest").value.trim(),pixel_alignment:$("captureAlignment").value.trim(),
+      capture_session_id:$("sessionId").value.trim(),timestamp_ms:Number($("timestampMs").value)
+    })});
+    renderProject(result.project);
+    await selectFrame(result.imported.sample_id);
+    message("Capture imported as an unverified suggestion. Apply it to the draft, then review all fields. Nothing has been approved.","ok");
+  } catch (error) { message(error.message,"error"); }
+  finally { button.disabled = false; }
 });
 
 setDefaultFields();

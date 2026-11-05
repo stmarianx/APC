@@ -24,6 +24,38 @@ class AnnotatorWebTests(unittest.TestCase):
         self.assertIn("normalizedPointer", script)
         self.assertIn("syncCanonicalState", script)
         self.assertIn("applySuggestionToDraft", script)
+        self.assertIn('id="importCaptureButton"',index)
+        self.assertIn('/capture_suggestions.js',index)
+
+    def test_measured_capture_import_endpoint_never_verifies(self):
+        root = Path(__file__).resolve().parents[1]/"data/development/measured-alignment-demo-v1"
+        # Test the dedicated practice project, separate from generic fixture.
+        dedicated = AnnotationProject.create(Path(self.directory.name)/"measured-project",project_id="web-measured",
+            source_kind="controlled_training_table",provider_id="apc-full-hand-browser",
+            layout_id="heads-up",theme_id="test",max_seats=2,locale="en-US")
+        app = AnnotatorApplication(dedicated)
+        payload={"manifest":str(root/"acquisition/capture.json"),"pixel_alignment":str(root/"measurement.json"),
+                 "capture_session_id":"web-measured-session","timestamp_ms":0}
+        result = app.import_browser_capture(payload)
+        self.assertFalse(result["imported"]["verified"])
+        self.assertEqual(result["project"]["status"]["verified_annotations"],0)
+        sample=result["imported"]["sample_id"]
+        self.assertEqual(app.annotation(sample)["suggestion"]["screenshot_mapping"],"measured_pixel_alignment_v1")
+        self.assertFalse(app.annotation(sample)["saved"])
+
+    def test_import_endpoint_validation_and_static_helper(self):
+        status,body=self.request('/capture_suggestions.js')
+        self.assertEqual(status,200)
+        self.assertIn(b'applyCaptureSuggestion',body)
+        status,body=self.request('/api/import-browser-capture',payload={"manifest":"relative.json"})
+        self.assertEqual(status,422)
+        self.assertIn('absolute',json.loads(body)['error'])
+        request=urllib.request.Request(self.base+'/api/import-browser-capture',data=b'{}',method='POST',
+            headers={"Content-Type":"application/json","Origin":"http://unrelated.invalid"})
+        with self.assertRaises(urllib.error.HTTPError) as raised:
+            urllib.request.urlopen(request,timeout=3)
+        self.assertEqual(raised.exception.code,422)
+        raised.exception.close()
 
     def setUp(self) -> None:
         self.directory = tempfile.TemporaryDirectory()

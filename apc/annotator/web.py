@@ -76,6 +76,23 @@ class AnnotatorApplication:
                 "suggestion": suggestion,
             }
 
+    def import_browser_capture(self, payload: dict[str, object]) -> dict[str, object]:
+        from .import_browser_acquisition import import_acquisition
+        for field in ("manifest", "pixel_alignment"):
+            value = payload.get(field)
+            if not isinstance(value,str) or not value.strip() or not Path(value).is_absolute():
+                raise ValueError(f"{field} must be an absolute local path")
+        timestamp = payload.get("timestamp_ms")
+        if type(timestamp) is not int or timestamp < 0:
+            raise ValueError("timestamp_ms must be a measured nonnegative integer")
+        session = payload.get("capture_session_id")
+        if not isinstance(session,str) or not session.strip():
+            raise ValueError("capture_session_id is required")
+        with self._lock:
+            imported = import_acquisition(self.project,payload["manifest"],session,timestamp,
+                                          pixel_alignment=payload["pixel_alignment"])
+        return {"imported":imported,"project":self.project_state()}
+
     def save_annotation(
         self, sample_id: str, payload: dict[str, object]
     ) -> dict[str, object]:
@@ -177,7 +194,7 @@ def create_server(
                 if path in ("/", "/index.html"):
                     self._static("index.html")
                     return
-                if path in ("/app.js", "/glyph_boxes.js", "/styles.css"):
+                if path in ("/app.js", "/glyph_boxes.js", "/capture_suggestions.js", "/styles.css"):
                     self._static(path[1:])
                     return
                 self.send_error(404)
@@ -188,6 +205,14 @@ def create_server(
             path = urlparse(self.path).path
             try:
                 payload = self._body()
+                if path == "/api/import-browser-capture":
+                    origin = self.headers.get("Origin")
+                    if origin is not None and origin != "http://" + self.headers.get("Host", ""):
+                        raise ValueError("Capture import requires a same-origin request")
+                    if self.headers.get_content_type() != "application/json":
+                        raise ValueError("Capture import requires application/json")
+                    self._json(200, application.import_browser_capture(payload))
+                    return
                 if path == "/api/import":
                     self._json(200, application.import_frames(payload))
                     return
