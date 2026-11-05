@@ -57,9 +57,11 @@ class FrozenBrowserAuditTests(unittest.TestCase):
         primary = ROOT / "apc/checkpoints/card-face-verifier-appearance-v4.pt"
         plan = json.loads(PLAN.read_text())
         plan.update(verifier_sha256=hashlib.sha256(primary.read_bytes()).hexdigest(),
-                    inference_options={"adaptive_surfaces":True},wide_surface_recovery=True)
+                    inference_options={"adaptive_surfaces":True},wide_surface_recovery=True,
+                    fast_surface_components=True,fast_locator_refinement=True)
         names = ("infer_cards.py","infer_card_locator.py","card_proposals.py","card_locator.py",
-                 "card_glyphs.py","card_verifier.py","verified_card_reader.py","bright_surface_candidate.py")
+                 "card_glyphs.py","card_verifier.py","verified_card_reader.py","bright_surface_candidate.py",
+                 "fast_components.py","fast_refinement.py")
         plan["inference_source_sha256"] = {"apc/perception/"+name:
             hashlib.sha256((ROOT/"apc/perception"/name).read_bytes()).hexdigest() for name in names}
         with tempfile.TemporaryDirectory() as directory:
@@ -70,6 +72,8 @@ class FrozenBrowserAuditTests(unittest.TestCase):
                 reader.return_value.verifier_metadata = {"research_only":True}
                 result = run_audit(path,COLLECTION,GLYPH,LOCATOR,verifier_checkpoint=primary)
                 self.assertTrue(reader.call_args.kwargs["wide_search"])
+                self.assertTrue(reader.call_args.kwargs["fast_components"])
+                self.assertTrue(reader.call_args.kwargs["fast_refinement"])
                 self.assertTrue(result["frozen_wide_surface_recovery"])
             del plan["inference_source_sha256"]["apc/perception/bright_surface_candidate.py"]
             path.write_text(json.dumps(plan))

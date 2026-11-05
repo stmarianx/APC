@@ -31,6 +31,11 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
     wide_recovery = plan.get("wide_surface_recovery", False)
     if type(wide_recovery) is not bool or (wide_recovery and (verifier_checkpoint is None or not options.get("adaptive_surfaces"))):
         raise ValueError("Wide surface audit requires a boolean option, verifier and adaptive surfaces")
+    fast_components = plan.get("fast_surface_components",False)
+    fast_refinement = plan.get("fast_locator_refinement",False)
+    if (type(fast_components) is not bool or type(fast_refinement) is not bool
+            or ((fast_components or fast_refinement) and not wide_recovery)):
+        raise ValueError("Fast component/refinement audit options require explicit wide recovery")
     verifier_options = {}
     if bounded_verifier_checkpoint is not None and verifier_checkpoint is None:
         raise ValueError("Bounded verifier requires a primary verifier")
@@ -49,6 +54,10 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
         required_sources.update({"apc/perception/card_verifier.py", "apc/perception/verified_card_reader.py"})
     if wide_recovery:
         required_sources.add("apc/perception/bright_surface_candidate.py")
+    if fast_components or fast_refinement:
+        required_sources.add("apc/perception/fast_components.py")
+    if fast_refinement:
+        required_sources.add("apc/perception/fast_refinement.py")
     if not isinstance(sources, dict) or ((options or verifier_options) and not required_sources.issubset(sources)):
         raise ValueError("Explicit inference options require frozen source fingerprints")
     for relative, expected in sources.items():
@@ -82,6 +91,10 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
         from apc.perception.bright_surface_candidate import BrightSurfaceReader
         reader_type = BrightSurfaceReader
         recovery_options["wide_search"] = True
+        if fast_components:
+            recovery_options["fast_components"] = True
+        if fast_refinement:
+            recovery_options["fast_refinement"] = True
     reader = reader_type(glyph_checkpoint, corner_pairs=True, surface_pairs=True,
                         locator_checkpoint=locator_checkpoint, refine_surfaces=True, **options, **verifier_options, **recovery_options)
     report = evaluate(collection_path, reader)
@@ -100,6 +113,8 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
         report["audit_checks"]["inference_sources_match"] = True
     if wide_recovery:
         report["frozen_wide_surface_recovery"] = True
+        report["frozen_fast_components"] = fast_components
+        report["frozen_fast_refinement"] = fast_refinement
     if "frame_viewports" in plan:
         report["audit_checks"]["planned_viewports_match"] = True
     return report

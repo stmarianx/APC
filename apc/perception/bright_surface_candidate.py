@@ -61,8 +61,11 @@ class BrightRecoveryLocator:
 
 
 class BrightSurfaceReader(VerifiedCardReader):
-    def __init__(self,*args,wide_search=False,fast_components=False,**kwargs):
+    def __init__(self,*args,wide_search=False,fast_components=False,fast_refinement=False,**kwargs):
         super().__init__(*args,**kwargs)
+        if fast_refinement:
+            from apc.perception.fast_refinement import FastRefinementLocator
+            self.locator.locator = FastRefinementLocator(self.locator.locator)
         self.locator.locator = BrightRecoveryLocator(self.locator.locator,wide_search=wide_search,fast_components=fast_components)
 
 
@@ -78,6 +81,8 @@ if __name__ == "__main__":
     parser.add_argument("--output",type=Path,required=True)
     parser.add_argument("--wide-search",action="store_true",help="Opt-in v2 extra expansion for narrow proposals")
     parser.add_argument("--verifier-checkpoint",type=Path,help="Explicit experimental ambiguous-surface verifier; bounded expert unchanged")
+    parser.add_argument("--fast-components",action="store_true",help="Opt-in vectorized recovery components")
+    parser.add_argument("--fast-refinement",action="store_true",help="Opt-in vectorized adaptive locator refinement")
     parser.add_argument("--checkpoint-dir",type=Path,default=Path(__file__).resolve().parents[1]/"checkpoints")
     args = parser.parse_args()
     p = args.checkpoint_dir
@@ -89,11 +94,16 @@ if __name__ == "__main__":
     reader = BrightSurfaceReader(paths["glyph"],corner_pairs=True,surface_pairs=True,
         locator_checkpoint=paths["locator"],refine_surfaces=True,adaptive_surfaces=True,
         deduplicate_surfaces=True,tiled_views=True,verifier_checkpoint=paths["verifier"],
-        bounded_verifier_checkpoint=paths["bounded"],wide_search=args.wide_search)
+        bounded_verifier_checkpoint=paths["bounded"],wide_search=args.wide_search,
+        fast_components=args.fast_components,fast_refinement=args.fast_refinement)
     report = evaluate(args.collection,reader)
     report.update(experiment="bright_seed_wide_v2" if args.wide_search else "bright_seed_v1",promotion_authorized=False,
+        fast_components=args.fast_components,fast_refinement=args.fast_refinement,
         candidate_source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         checkpoint_sha256={name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in paths.items()})
+    if args.fast_components or args.fast_refinement:
+        helpers = ["fast_components.py"]+(["fast_refinement.py"] if args.fast_refinement else [])
+        report["component_source_sha256"] = {name:hashlib.sha256((Path(__file__).parent/name).read_bytes()).hexdigest() for name in helpers}
     with args.output.open("x",encoding="utf-8") as output:
         output.write(json.dumps(report,indent=2)+"\n")
     print(json.dumps(report["totals"]))

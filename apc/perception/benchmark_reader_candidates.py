@@ -54,7 +54,9 @@ if __name__ == "__main__":
     parser.add_argument("collection",type=Path)
     parser.add_argument("--new-verifier",type=Path,required=True)
     parser.add_argument("--output",type=Path,required=True)
-    parser.add_argument("--compare-fast",action="store_true",help="Compare identical v5 stacks with only recovery component extraction changed")
+    comparison = parser.add_mutually_exclusive_group()
+    comparison.add_argument("--compare-fast",action="store_true",help="Compare identical v5 stacks with only recovery component extraction changed")
+    comparison.add_argument("--compare-full-fast",action="store_true",help="Compare original, recovery-only and full refinement acceleration")
     args = parser.parse_args()
     p = Path(__file__).resolve().parents[1]/"checkpoints"
     paths = {"glyph":p/"glyph-font-diversity-v1.pt","locator":p/"card-locator-hardneg-v1.pt",
@@ -72,12 +74,19 @@ if __name__ == "__main__":
         readers = {"wide_v2_v5":readers["wide_v2_v5"],
             "wide_v2_v5_fast_recovery":BrightSurfaceReader(paths["glyph"],wide_search=True,fast_components=True,
                 verifier_checkpoint=paths["new_verifier"],**options)}
+    if args.compare_full_fast:
+        readers = {"wide_v2_v5":readers["wide_v2_v5"],
+            "fast_recovery":BrightSurfaceReader(paths["glyph"],wide_search=True,fast_components=True,
+                verifier_checkpoint=paths["new_verifier"],**options),
+            "fast_recovery_and_refinement":BrightSurfaceReader(paths["glyph"],wide_search=True,
+                fast_components=True,fast_refinement=True,verifier_checkpoint=paths["new_verifier"],**options)}
     report = benchmark_readers(args.collection,readers)
     report.update(torch_threads=2,torch_version=str(torch.__version__),
         checkpoint_sha256={name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in paths.items()})
     report["fast_recovery_comparison"] = args.compare_fast
+    report["fast_refinement_comparison"] = args.compare_full_fast
     report["candidate_source_sha256"] = {name:hashlib.sha256((p.parent/"perception"/name).read_bytes()).hexdigest()
-        for name in ("bright_surface_candidate.py","fast_components.py")}
+        for name in ("bright_surface_candidate.py","fast_components.py","fast_refinement.py")}
     with args.output.open("x",encoding="utf-8") as output:
         output.write(json.dumps(report,indent=2)+"\n")
     print(json.dumps(report["summary"],indent=2))
