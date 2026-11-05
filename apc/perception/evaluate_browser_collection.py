@@ -13,6 +13,7 @@ from apc.perception.card_glyphs import glyph_tensor
 from apc.perception.card_proposals import match_proposals
 from apc.perception.infer_cards import CardReader
 from apc.perception.region_model import RANKS, SUITS
+from apc.perception.capture_stability import validate_capture_stability
 
 
 def load_collection(path):
@@ -42,6 +43,11 @@ def load_collection(path):
             raise ValueError("Invalid collection image path")
         if hashlib.sha256(image.read_bytes()).hexdigest() != row["sha256"]:
             raise ValueError("Collection image fingerprint mismatch")
+        if data.get("capture_stability_required") is True or "capture_stability" in row:
+            with Image.open(image) as captured:
+                validate_capture_stability(row.get("capture_stability"),
+                    image_size=captured.size, image_sha256=row["sha256"],
+                    viewport=[width, height], cards=row["cards"])
         viewport = [width, height]
         mapping = row.get("screenshot_mapping", data.get("screenshot_mapping", "normalized_viewport"))
         if mapping == "uniform_width_scale_top_left_crop":
@@ -120,6 +126,12 @@ def evaluate(collection, reader):
             "scope": "One sequential pass, image I/O/proposals/glyph inference; excludes checkpoint loading and coaching backend; not a matched benchmark"},
         "unique_visible_identities": len({target["identity"] for frame in frames for target in frame["targets"]}),
         "collection_sha256": hashlib.sha256(Path(collection).read_bytes()).hexdigest(),
+        "capture_stability": {
+            "required": data.get("capture_stability_required") is True,
+            "frames_with_validated_evidence": sum("capture_stability" in row for row in data["frames"]),
+            "all_frames_have_evidence": all("capture_stability" in row for row in data["frames"]),
+            "pixel_geometry_reviewed": False,
+            "limitation": "Before/after equality cannot exclude transient movement during the screenshot"},
         "totals": totals, "training_performed": False, "full_table_readiness": False}
 
 
