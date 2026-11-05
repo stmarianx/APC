@@ -1,0 +1,16 @@
+{
+  "schema_version": "apc_browser_card_development_v1",
+  "capture_session_id": "apc-browser-routed-audit-v5",
+  "source": "apc_full_hand_browser",
+  "virtual_chips": true,
+  "draft_only": true,
+  "readiness_credit": false,
+  "use_policy": "sealed_audit_no_training",
+  "collection_status": "incomplete_1_of_9_no_scoring",
+  "screenshot_mapping": "uniform_width_scale_top_left_crop",
+  "viewport": [800, 900],
+  "card_size": [62, 78],
+  "rank_region_offset_xywh": [6, 6, 50, 29.33333396911621],
+  "suit_region_offset_xywh": [6, 35.3333740234375, 50, 29.33333396911621],
+  "frames": [{"image": "frames/h1-preflop-800.png", "sha256": "96d896cdf215cf954c1a36b38927ebc9a43b71979e0e56d73e728d4714a27fe8", "hand_group": "hand-1", "street": "preflop", "cards": [["hero", "As", 285.38543701171875, 536.40625], ["hero", "Qh", 355.38543701171875, 536.40625]]}]
+}
