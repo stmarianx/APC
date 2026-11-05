@@ -1,0 +1,15 @@
+{
+  "audit": "browser-viewport-audit-v3",
+  "recognizer_sha256": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+  "detector_sha256": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273",
+  "training_prohibited": true,
+  "weights_frozen_before_collection": true,
+  "maximum_frames": 6,
+  "frame_schedule": [["hand-1", "preflop"], ["hand-1", "flop"], ["hand-1", "turn"], ["hand-1", "river"], ["hand-2", "river"], ["hand-3", "river"]],
+  "planned_viewports": [[960, 800], [600, 800], [1440, 900]],
+  "frame_viewports": [[960, 800], [960, 800], [960, 800], [960, 800], [600, 800], [1440, 900]],
+  "viewport_assignment": "Hand 1: 960x800; hand 2: 600x800 (compact CSS); hand 3: 1440x900",
+  "source": "APC local virtual-chip practice table only",
+  "all_captures_retained_even_if_model_fails": true,
+  "scope": "One new capture session at three viewport sizes, not three independent sessions or cross-platform validation"
+}

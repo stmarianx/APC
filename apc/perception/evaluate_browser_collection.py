@@ -33,11 +33,24 @@ def load_collection(path):
         return values
     frames = []
     for row in data["frames"]:
+        width, height = row.get("viewport", data["viewport"])
+        card_width, card_height = row.get("card_size", data["card_size"])
+        if not all(math.isfinite(v) and v > 0 for v in (width, height, card_width, card_height)):
+            raise ValueError("Invalid per-frame DOM dimensions")
         image = (path.parent / row["image"]).resolve()
         if not image.is_relative_to(path.parent) or image.suffix.lower() != ".png":
             raise ValueError("Invalid collection image path")
         if hashlib.sha256(image.read_bytes()).hexdigest() != row["sha256"]:
             raise ValueError("Collection image fingerprint mismatch")
+        viewport = [width, height]
+        mapping = row.get("screenshot_mapping", data.get("screenshot_mapping", "normalized_viewport"))
+        if mapping == "uniform_width_scale_top_left_crop":
+            # This explicit capture-provider mapping preserves scale when the
+            # screenshot is cropped vertically, rather than stretching labels.
+            with Image.open(image) as captured:
+                height = captured.height * width / captured.width
+        elif mapping != "normalized_viewport":
+            raise ValueError("Unknown screenshot coordinate mapping")
         targets = []
         for role, identity, x, y in row["cards"]:
             if role not in {"hero", "board"} or len(identity) != 2 or identity[0] not in RANKS or identity[1] not in SUITS:
@@ -45,7 +58,7 @@ def load_collection(path):
             regions = {}
             parent = box(x, y, card_width, card_height)
             for kind in ("rank", "suit"):
-                dx, dy, w, h = data[kind + "_region_offset_xywh"]
+                dx, dy, w, h = row.get(kind + "_region_offset_xywh", data[kind + "_region_offset_xywh"])
                 region = box(x + dx, y + dy, w, h)
                 if not (parent[0] <= region[0] < region[2] <= parent[2] and parent[1] <= region[1] < region[3] <= parent[3]):
                     raise ValueError("Glyph region outside its card")
@@ -53,7 +66,9 @@ def load_collection(path):
             targets.append({"role": role, "identity": identity, "box_xyxy": parent, "regions": regions})
         if len({t["identity"] for t in targets}) != len(targets):
             raise ValueError("Duplicate visible card identity")
-        frames.append({"image": image, "hand_group": row["hand_group"], "targets": targets})
+        frames.append({"image": image, "hand_group": row["hand_group"], "targets": targets,
+                       "viewport": viewport, "coordinate_extent": [width, height],
+                       "screenshot_mapping": mapping, "card_size": [card_width, card_height]})
     if not frames:
         raise ValueError("Empty browser collection")
     return data, frames
@@ -80,6 +95,8 @@ def evaluate(collection, reader):
             predicted = reader.model(torch.stack(tokens))
         identities = [RANKS[r] + SUITS[s] for r, s in zip(predicted["rank"].argmax(1).tolist(), predicted["suit"].argmax(1).tolist())]
         rows.append({"image": frame["image"].name, "hand_group": frame["hand_group"],
+            "viewport": frame["viewport"], "card_size": frame["card_size"],
+            "screenshot_mapping": frame["screenshot_mapping"], "coordinate_extent": frame["coordinate_extent"],
             "targets": len(targets), "proposals": len(result["cards"]), "localized": len(matched["matches"]),
             "false_positives": len(result["cards"]) - len(matched["matches"]),
             "missed_cards": len(targets) - len(matched["matches"]),

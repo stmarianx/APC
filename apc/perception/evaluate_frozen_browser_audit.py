@@ -14,7 +14,8 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
-              previous_collection=ROOT / "apc/data/development/browser-domain-bridge-v1/collection.json"):
+              previous_collection=ROOT / "apc/data/development/browser-domain-bridge-v1/collection.json",
+              additional_previous_collections=()):
     plan_raw = Path(plan_path).read_bytes()
     plan = json.loads(plan_raw)
     if plan.get("training_prohibited") is not True or plan.get("weights_frozen_before_collection") is not True:
@@ -28,12 +29,15 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
     schedule = [[row["hand_group"], row["street"]] for row in data["frames"]]
     if schedule != plan["frame_schedule"] or len(frames) > plan["maximum_frames"]:
         raise ValueError("Audit frame schedule incomplete or changed")
-    previous, _ = load_collection(previous_collection)
-    if previous["capture_session_id"] == data["capture_session_id"]:
-        raise ValueError("Audit must use a new capture session")
-    previous_hashes = {row["sha256"] for row in previous["frames"]}
-    if any(row["sha256"] in previous_hashes for row in data["frames"]):
-        raise ValueError("Audit reuses development images")
+    if "frame_viewports" in plan and [frame["viewport"] for frame in frames] != plan["frame_viewports"]:
+        raise ValueError("Audit viewport schedule changed")
+    for previous_path in (previous_collection, *additional_previous_collections):
+        previous, _ = load_collection(previous_path)
+        if previous["capture_session_id"] == data["capture_session_id"]:
+            raise ValueError("Audit must use a new capture session")
+        previous_hashes = {row["sha256"] for row in previous["frames"]}
+        if any(row["sha256"] in previous_hashes for row in data["frames"]):
+            raise ValueError("Audit reuses development images")
     torch.set_num_threads(2)
     reader = CardReader(glyph_checkpoint, corner_pairs=True, surface_pairs=True,
                         locator_checkpoint=locator_checkpoint, refine_surfaces=True)
@@ -43,18 +47,23 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
         audit_checks={"frozen_model_hashes_match": True, "complete_planned_schedule": True,
                       "new_session": True, "images_disjoint_from_development": True},
         collection_use_policy=data["use_policy"],
-        scope="New hands/session in the same application and layout; correlated frames and draft geometry, not cross-platform readiness")
+        scope=plan.get("scope", "New hands/session in the same application and layout; correlated frames and draft geometry, not cross-platform readiness"))
+    if "frame_viewports" in plan:
+        report["audit_checks"]["planned_viewports_match"] = True
     return report
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--viewport-v3", action="store_true", help="Run the separately planned multi-viewport audit")
     args = parser.parse_args()
-    report = run_audit(ROOT / "apc/perception/baselines/browser-capture-audit-v2.plan.json",
-        ROOT / "apc/data/reference/browser-capture-audit-v2/collection.json",
-        ROOT / "apc/checkpoints/browser-symbol-rehearsal-v1.pt",
-        ROOT / "apc/checkpoints/card-locator-hardneg-v1.pt")
+    name = "browser-viewport-audit-v3" if args.viewport_v3 else "browser-capture-audit-v2"
+    report = run_audit(ROOT / f"apc/perception/baselines/{name}.plan.json",
+        ROOT / f"apc/data/reference/{name}/collection.json",
+        ROOT / ("apc/checkpoints/glyph-font-diversity-v1.pt" if args.viewport_v3 else "apc/checkpoints/browser-symbol-rehearsal-v1.pt"),
+        ROOT / "apc/checkpoints/card-locator-hardneg-v1.pt",
+        additional_previous_collections=(ROOT / "apc/data/reference/browser-capture-audit-v2/collection.json",) if args.viewport_v3 else ())
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
