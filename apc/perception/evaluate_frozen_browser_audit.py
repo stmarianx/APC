@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
               previous_collection=ROOT / "apc/data/development/browser-domain-bridge-v1/collection.json",
-              additional_previous_collections=()):
+              additional_previous_collections=(), *, verifier_checkpoint=None, bounded_verifier_checkpoint=None):
     plan_raw = Path(plan_path).read_bytes()
     plan = json.loads(plan_raw)
     if plan.get("training_prohibited") is not True or plan.get("weights_frozen_before_collection") is not True:
@@ -28,8 +28,23 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
     if not isinstance(options, dict) or set(options)-allowed or any(type(v) is not bool for v in options.values()):
         raise ValueError("Unsupported frozen inference options")
     sources = plan.get("inference_source_sha256", {})
+    verifier_options = {}
+    if bounded_verifier_checkpoint is not None and verifier_checkpoint is None:
+        raise ValueError("Bounded verifier requires a primary verifier")
+    for checkpoint, key, option in ((verifier_checkpoint, "verifier_sha256", "verifier_checkpoint"),
+                                    (bounded_verifier_checkpoint, "bounded_verifier_sha256", "bounded_verifier_checkpoint")):
+        if (checkpoint is None) != (key not in plan):
+            raise ValueError("Verifier configuration differs from frozen plan")
+        if checkpoint is not None:
+            if hashlib.sha256(Path(checkpoint).read_bytes()).hexdigest() != plan[key]:
+                raise ValueError("Verifier checkpoint differs from frozen plan")
+            verifier_options[option] = checkpoint
+    if bounded_verifier_checkpoint is not None and not options.get("adaptive_surfaces"):
+        raise ValueError("Routed audit requires adaptive surfaces")
     required_sources = {"apc/perception/" + name for name in ("infer_cards.py", "infer_card_locator.py", "card_proposals.py", "card_locator.py", "card_glyphs.py")}
-    if not isinstance(sources, dict) or (options and not required_sources.issubset(sources)):
+    if verifier_options:
+        required_sources.update({"apc/perception/card_verifier.py", "apc/perception/verified_card_reader.py"})
+    if not isinstance(sources, dict) or ((options or verifier_options) and not required_sources.issubset(sources)):
         raise ValueError("Explicit inference options require frozen source fingerprints")
     for relative, expected in sources.items():
         source = (ROOT / relative).resolve()
@@ -51,9 +66,16 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
         if any(row["sha256"] in previous_hashes for row in data["frames"]):
             raise ValueError("Audit reuses development images")
     torch.set_num_threads(2)
-    reader = CardReader(glyph_checkpoint, corner_pairs=True, surface_pairs=True,
-                        locator_checkpoint=locator_checkpoint, refine_surfaces=True, **options)
+    reader_type = CardReader
+    if verifier_options:
+        from apc.perception.verified_card_reader import VerifiedCardReader
+        reader_type = VerifiedCardReader
+    reader = reader_type(glyph_checkpoint, corner_pairs=True, surface_pairs=True,
+                        locator_checkpoint=locator_checkpoint, refine_surfaces=True, **options, **verifier_options)
     report = evaluate(collection_path, reader)
+    if verifier_options:
+        report["frozen_verifier"] = reader.verifier_metadata
+        report["audit_checks_verifier_hashes_match"] = True
     report.update(audit_id=plan["audit"], plan_sha256=hashlib.sha256(plan_raw).hexdigest(),
         frozen_recognizer_sha256=plan["recognizer_sha256"], frozen_detector_sha256=plan["detector_sha256"],
         audit_checks={"frozen_model_hashes_match": True, "complete_planned_schedule": True,

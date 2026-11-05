@@ -16,6 +16,15 @@ LOCATOR = ROOT / "apc/checkpoints/card-locator-hardneg-v1.pt"
 
 
 class FrozenBrowserAuditTests(unittest.TestCase):
+    def test_unplanned_verifier_and_unpaired_bounded_expert_are_rejected(self):
+        verifier = ROOT / "apc/checkpoints/card-face-verifier-v1.pt"
+        with patch("apc.perception.evaluate_frozen_browser_audit.CardReader") as reader:
+            with self.assertRaisesRegex(ValueError, "configuration differs"):
+                run_audit(PLAN, COLLECTION, GLYPH, LOCATOR, verifier_checkpoint=verifier)
+            with self.assertRaisesRegex(ValueError, "primary verifier"):
+                run_audit(PLAN, COLLECTION, GLYPH, LOCATOR, bounded_verifier_checkpoint=verifier)
+            reader.assert_not_called()
+
     def test_new_collection_retains_every_planned_frame_and_disallows_training(self):
         data, frames = load_collection(COLLECTION)
         plan = json.loads(PLAN.read_text())
