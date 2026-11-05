@@ -44,13 +44,16 @@ def diagnose_frame(frame, reader):
                         "raw_matches":raw_matches,"rejected_matches":dropped})
     used = {m["proposal_index"] for m in matched["matches"]}
     false_proposals = [dict(p,candidate=candidate_by_index[i]) for i,p in enumerate(kept) if i not in used]
-    return {"image":frame["image"].name,"raw_proposals":len(raw),"retained":len(kept),
+    return {"image":frame["image"].name,"frame_key":frame.get("frame_key",frame["image"].as_posix()),
+            "hand_group":frame.get("hand_group"),"street":frame.get("street"),"raw_proposals":len(raw),"retained":len(kept),
             "rejected":len(rejected),"targets":targets,"false_proposals":false_proposals}
 
 
 def diagnose_collection(collection,reader):
     data,frames = load_collection(collection)
-    rows = [diagnose_frame(frame,reader) for frame in frames]
+    root = Path(collection).resolve().parent
+    rows = [diagnose_frame(dict(frame,frame_key=frame["image"].relative_to(root).as_posix(),street=row["street"]),reader)
+            for frame,row in zip(frames,data["frames"])]
     counts = {}
     for row in rows:
         for target in row["targets"]:
@@ -68,14 +71,26 @@ if __name__ == "__main__":
     for name in ("glyph", "locator", "verifier", "bounded-verifier"):
         parser.add_argument("--"+name+"-checkpoint",type=Path,required=True)
     parser.add_argument("--output",type=Path,required=True)
+    parser.add_argument("--wide-search",action="store_true")
+    parser.add_argument("--fast-components",action="store_true")
+    parser.add_argument("--fast-refinement",action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(2)
-    reader = VerifiedCardReader(args.glyph_checkpoint,corner_pairs=True,surface_pairs=True,
+    reader_type,extra = VerifiedCardReader,{}
+    if args.fast_components or args.fast_refinement:
+        if not args.wide_search:
+            parser.error("Fast diagnostics require explicit wide-search candidate")
+    if args.wide_search:
+        from apc.perception.bright_surface_candidate import BrightSurfaceReader
+        reader_type = BrightSurfaceReader
+        extra = dict(wide_search=True,fast_components=args.fast_components,fast_refinement=args.fast_refinement)
+    reader = reader_type(args.glyph_checkpoint,corner_pairs=True,surface_pairs=True,
         locator_checkpoint=args.locator_checkpoint,refine_surfaces=True,adaptive_surfaces=True,
         deduplicate_surfaces=True,tiled_views=True,verifier_checkpoint=args.verifier_checkpoint,
-        bounded_verifier_checkpoint=args.bounded_verifier_checkpoint)
+        bounded_verifier_checkpoint=args.bounded_verifier_checkpoint,**extra)
     with torch.no_grad():
         report = diagnose_collection(args.collection,reader)
+    report["candidate_options"] = extra
     report["checkpoints"] = {name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in
         (("glyph",args.glyph_checkpoint),("locator",args.locator_checkpoint),
          ("verifier",args.verifier_checkpoint),("bounded_verifier",args.bounded_verifier_checkpoint))}

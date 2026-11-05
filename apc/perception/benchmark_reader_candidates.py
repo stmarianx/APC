@@ -17,6 +17,10 @@ def benchmark_readers(collection,readers,repeats=3):
     if type(repeats) is not int or repeats < 1 or len(readers) < 2:
         raise ValueError("Expected positive repeats and at least two readers")
     _,frames = load_collection(collection)
+    root = Path(collection).resolve().parent
+    frame_keys = [frame["image"].resolve().relative_to(root).as_posix() for frame in frames]
+    if len(set(frame_keys)) != len(frame_keys):
+        raise ValueError("Duplicate frame paths cannot be benchmarked as distinct captures")
     names = list(readers)
     for reader in readers.values():
         reader.read(frames[0]["image"])
@@ -30,9 +34,9 @@ def benchmark_readers(collection,readers,repeats=3):
                 result = readers[name].read(frame["image"])
                 elapsed = (time.perf_counter()-start)*1000
                 digest = hashlib.sha256(json.dumps(result["cards"],sort_keys=True,allow_nan=False).encode()).hexdigest()
-                key = (name,frame["image"].name)
+                key = (name,frame_keys[frame_index])
                 fingerprints.setdefault(key,set()).add(digest)
-                observations.append({"repeat":repeat,"image":frame["image"].name,"mode":name,
+                observations.append({"repeat":repeat,"image":frame["image"].name,"frame_key":frame_keys[frame_index],"mode":name,
                     "elapsed_ms":elapsed,"proposal_count":len(result["cards"]),"cards_sha256":digest})
     summary = {}
     for name in names:
@@ -41,7 +45,7 @@ def benchmark_readers(collection,readers,repeats=3):
                          "p95_ms":float(np.percentile(values,95)),"max_ms":max(values)}
     return {"schema_version":"apc_matched_reader_timing_v1","summary":summary,"observations":observations,
         "repeats":repeats,"prediction_repeatability_passed":all(len(v)==1 for v in fingerprints.values()),
-        "cross_variant_predictions_equal":all(len({row["cards_sha256"] for row in observations if row["image"] == f["image"].name}) == 1 for f in frames),
+        "cross_variant_predictions_equal":all(len({row["cards_sha256"] for row in observations if row["frame_key"] == key}) == 1 for key in frame_keys),
         "collection_sha256":hashlib.sha256(Path(collection).read_bytes()).hexdigest(),
         "warmup":"One untimed first-frame read per reader; rotating variant order across frames/repeats",
         "scope":"Warm saved-frame I/O, proposals, verification and glyphs; excludes loading/capture/state/strategy/UI",

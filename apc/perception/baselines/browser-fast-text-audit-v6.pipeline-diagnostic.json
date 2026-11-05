@@ -1,0 +1,1143 @@
+{
+  "schema_version": "apc_card_pipeline_diagnostic_v1",
+  "collection_sha256": "91a61e3a6d717130e3b39c0a3b7ddbc523294a4121faf2b415f0333dfb07c27a",
+  "capture_session_id": "apc-browser-fast-text-audit-v6",
+  "frames": [
+    {
+      "image": "frame.jpg",
+      "frame_key": "h1-preflop/frame.jpg",
+      "hand_group": "hand-1",
+      "street": "preflop",
+      "raw_proposals": 2,
+      "retained": 2,
+      "rejected": 0,
+      "targets": [
+        {
+          "identity": "Qh",
+          "stage": "correct",
+          "candidate": "Qh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9874017026285444,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Ts",
+          "stage": "correct",
+          "candidate": "Ts",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9764079089500523,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h1-flop/frame.jpg",
+      "hand_group": "hand-1",
+      "street": "flop",
+      "raw_proposals": 6,
+      "retained": 4,
+      "rejected": 2,
+      "targets": [
+        {
+          "identity": "Jh",
+          "stage": "correct",
+          "candidate": "Jh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 2,
+              "iou": 0.9793077940840262,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qc",
+          "stage": "locator_or_refinement",
+          "candidate": null,
+          "raw_matches": [],
+          "rejected_matches": []
+        },
+        {
+          "identity": "6d",
+          "stage": "correct",
+          "candidate": "6d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 3,
+              "iou": 0.9793077940840255,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qh",
+          "stage": "correct",
+          "candidate": "Qh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9793077940840272,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Ts",
+          "stage": "correct",
+          "candidate": "Ts",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9837847201281352,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h1-turn/frame.jpg",
+      "hand_group": "hand-1",
+      "street": "turn",
+      "raw_proposals": 6,
+      "retained": 6,
+      "rejected": 0,
+      "targets": [
+        {
+          "identity": "Jh",
+          "stage": "correct",
+          "candidate": "Jh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 4,
+              "iou": 0.9793077940840272,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qc",
+          "stage": "correct",
+          "candidate": "Qc",
+          "raw_matches": [
+            {
+              "diagnostic_index": 5,
+              "iou": 0.9793077940840265,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "6d",
+          "stage": "correct",
+          "candidate": "6d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9871834550055358,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Kh",
+          "stage": "correct",
+          "candidate": "Kh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 3,
+              "iou": 0.9793077940840265,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qh",
+          "stage": "correct",
+          "candidate": "Qh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9793077940840267,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Ts",
+          "stage": "correct",
+          "candidate": "Ts",
+          "raw_matches": [
+            {
+              "diagnostic_index": 2,
+              "iou": 0.9837847201281344,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h1-river/frame.jpg",
+      "hand_group": "hand-1",
+      "street": "river",
+      "raw_proposals": 8,
+      "retained": 7,
+      "rejected": 1,
+      "targets": [
+        {
+          "identity": "Jh",
+          "stage": "correct",
+          "candidate": "Jh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 3,
+              "iou": 0.9849015880438474,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qc",
+          "stage": "correct",
+          "candidate": "Qc",
+          "raw_matches": [
+            {
+              "diagnostic_index": 5,
+              "iou": 0.9746083879346902,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "6d",
+          "stage": "correct",
+          "candidate": "6d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 6,
+              "iou": 0.9746083879346901,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Kh",
+          "stage": "correct",
+          "candidate": "Kh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 4,
+              "iou": 0.9746083879346894,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "3c",
+          "stage": "correct",
+          "candidate": "3c",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9746083879346894,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qh",
+          "stage": "correct",
+          "candidate": "Qh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9758783872199163,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Ts",
+          "stage": "correct",
+          "candidate": "Ts",
+          "raw_matches": [
+            {
+              "diagnostic_index": 2,
+              "iou": 0.9803318706937686,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h2-preflop/frame.jpg",
+      "hand_group": "hand-2",
+      "street": "preflop",
+      "raw_proposals": 11,
+      "retained": 2,
+      "rejected": 9,
+      "targets": [
+        {
+          "identity": "As",
+          "stage": "correct",
+          "candidate": "As",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9691336868197663,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "2h",
+          "stage": "correct",
+          "candidate": "2h",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9691336868197663,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h2-flop/frame.jpg",
+      "hand_group": "hand-2",
+      "street": "flop",
+      "raw_proposals": 10,
+      "retained": 4,
+      "rejected": 6,
+      "targets": [
+        {
+          "identity": "3h",
+          "stage": "correct",
+          "candidate": "3h",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9862125902006751,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "7d",
+          "stage": "correct",
+          "candidate": "7d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 2,
+              "iou": 0.9732022372441433,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "8s",
+          "stage": "correct",
+          "candidate": "8s",
+          "raw_matches": [
+            {
+              "diagnostic_index": 3,
+              "iou": 0.9752216406360946,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "As",
+          "stage": "correct",
+          "candidate": "As",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9685821385358548,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "2h",
+          "stage": "locator_or_refinement",
+          "candidate": null,
+          "raw_matches": [],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h2-turn/frame.jpg",
+      "hand_group": "hand-2",
+      "street": "turn",
+      "raw_proposals": 8,
+      "retained": 5,
+      "rejected": 3,
+      "targets": [
+        {
+          "identity": "3h",
+          "stage": "correct",
+          "candidate": "3h",
+          "raw_matches": [
+            {
+              "diagnostic_index": 3,
+              "iou": 0.9605711181336134,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "7d",
+          "stage": "correct",
+          "candidate": "7d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 2,
+              "iou": 0.9605711181336128,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "8s",
+          "stage": "correct",
+          "candidate": "8s",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9519354184282721,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "2c",
+          "stage": "correct",
+          "candidate": "2c",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9619415881010526,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "As",
+          "stage": "locator_or_refinement",
+          "candidate": null,
+          "raw_matches": [],
+          "rejected_matches": []
+        },
+        {
+          "identity": "2h",
+          "stage": "correct",
+          "candidate": "2h",
+          "raw_matches": [
+            {
+              "diagnostic_index": 6,
+              "iou": 0.9873845833498555,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h2-river/frame.jpg",
+      "hand_group": "hand-2",
+      "street": "river",
+      "raw_proposals": 12,
+      "retained": 7,
+      "rejected": 5,
+      "targets": [
+        {
+          "identity": "3h",
+          "stage": "correct",
+          "candidate": "3h",
+          "raw_matches": [
+            {
+              "diagnostic_index": 6,
+              "iou": 0.9751930363372733,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "7d",
+          "stage": "correct",
+          "candidate": "7d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9631198304144869,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "8s",
+          "stage": "correct",
+          "candidate": "8s",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9731737213593029,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "2c",
+          "stage": "correct",
+          "candidate": "2c",
+          "raw_matches": [
+            {
+              "diagnostic_index": 2,
+              "iou": 0.9751930363372738,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qs",
+          "stage": "correct",
+          "candidate": "Qs",
+          "raw_matches": [
+            {
+              "diagnostic_index": 3,
+              "iou": 0.9696130702274671,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "As",
+          "stage": "correct",
+          "candidate": "As",
+          "raw_matches": [
+            {
+              "diagnostic_index": 5,
+              "iou": 0.9763181856439999,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "2h",
+          "stage": "correct",
+          "candidate": "2h",
+          "raw_matches": [
+            {
+              "diagnostic_index": 4,
+              "iou": 0.9875877375244037,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h3-preflop/frame.jpg",
+      "hand_group": "hand-3",
+      "street": "preflop",
+      "raw_proposals": 4,
+      "retained": 2,
+      "rejected": 2,
+      "targets": [
+        {
+          "identity": "6d",
+          "stage": "correct",
+          "candidate": "6d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9856857699273925,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Kh",
+          "stage": "correct",
+          "candidate": "Kh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9768058577357996,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h3-flop/frame.jpg",
+      "hand_group": "hand-3",
+      "street": "flop",
+      "raw_proposals": 5,
+      "retained": 5,
+      "rejected": 0,
+      "targets": [
+        {
+          "identity": "Ad",
+          "stage": "correct",
+          "candidate": "Ad",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9781132813465588,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "6s",
+          "stage": "correct",
+          "candidate": "6s",
+          "raw_matches": [
+            {
+              "diagnostic_index": 4,
+              "iou": 0.965422550108979,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qs",
+          "stage": "correct",
+          "candidate": "Qs",
+          "raw_matches": [
+            {
+              "diagnostic_index": 2,
+              "iou": 0.965422550108981,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "6d",
+          "stage": "correct",
+          "candidate": "6d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 3,
+              "iou": 0.9930749139167213,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Kh",
+          "stage": "correct",
+          "candidate": "Kh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9898441639029304,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h3-turn/frame.jpg",
+      "hand_group": "hand-3",
+      "street": "turn",
+      "raw_proposals": 6,
+      "retained": 6,
+      "rejected": 0,
+      "targets": [
+        {
+          "identity": "Ad",
+          "stage": "correct",
+          "candidate": "Ad",
+          "raw_matches": [
+            {
+              "diagnostic_index": 3,
+              "iou": 0.9810956745421526,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "6s",
+          "stage": "correct",
+          "candidate": "6s",
+          "raw_matches": [
+            {
+              "diagnostic_index": 4,
+              "iou": 0.9868584836164773,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qs",
+          "stage": "correct",
+          "candidate": "Qs",
+          "raw_matches": [
+            {
+              "diagnostic_index": 5,
+              "iou": 0.9878207566438311,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Ac",
+          "stage": "correct",
+          "candidate": "Ac",
+          "raw_matches": [
+            {
+              "diagnostic_index": 2,
+              "iou": 0.9716797413141489,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "6d",
+          "stage": "correct",
+          "candidate": "6d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9815129259441284,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Kh",
+          "stage": "correct",
+          "candidate": "Kh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9783382540286337,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "h3-river/frame.jpg",
+      "hand_group": "hand-3",
+      "street": "river",
+      "raw_proposals": 7,
+      "retained": 7,
+      "rejected": 0,
+      "targets": [
+        {
+          "identity": "Ad",
+          "stage": "correct",
+          "candidate": "Ad",
+          "raw_matches": [
+            {
+              "diagnostic_index": 4,
+              "iou": 0.9815129259441284,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "6s",
+          "stage": "correct",
+          "candidate": "6s",
+          "raw_matches": [
+            {
+              "diagnostic_index": 6,
+              "iou": 0.9781132813465576,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Qs",
+          "stage": "correct",
+          "candidate": "Qs",
+          "raw_matches": [
+            {
+              "diagnostic_index": 5,
+              "iou": 0.9654225501089779,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Ac",
+          "stage": "correct",
+          "candidate": "Ac",
+          "raw_matches": [
+            {
+              "diagnostic_index": 2,
+              "iou": 0.9654225501089798,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "9h",
+          "stage": "correct",
+          "candidate": "9h",
+          "raw_matches": [
+            {
+              "diagnostic_index": 3,
+              "iou": 0.9789436325822373,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "6d",
+          "stage": "correct",
+          "candidate": "6d",
+          "raw_matches": [
+            {
+              "diagnostic_index": 1,
+              "iou": 0.9815129259441284,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        },
+        {
+          "identity": "Kh",
+          "stage": "correct",
+          "candidate": "Kh",
+          "raw_matches": [
+            {
+              "diagnostic_index": 0,
+              "iou": 0.9783382540286337,
+              "verifier_score": null,
+              "verifier_route": null,
+              "refinement": "adaptive_bounded_surface"
+            }
+          ],
+          "rejected_matches": []
+        }
+      ],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "negative-1/frame.jpg",
+      "hand_group": "negative-1",
+      "street": "empty",
+      "raw_proposals": 10,
+      "retained": 0,
+      "rejected": 10,
+      "targets": [],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "negative-2/frame.jpg",
+      "hand_group": "negative-2",
+      "street": "empty",
+      "raw_proposals": 3,
+      "retained": 0,
+      "rejected": 3,
+      "targets": [],
+      "false_proposals": []
+    },
+    {
+      "image": "frame.jpg",
+      "frame_key": "negative-3/frame.jpg",
+      "hand_group": "negative-3",
+      "street": "empty",
+      "raw_proposals": 8,
+      "retained": 3,
+      "rejected": 5,
+      "targets": [],
+      "false_proposals": [
+        {
+          "box_xyxy": [
+            0.128125,
+            0.4697142857142857,
+            0.1625,
+            0.5611428571428572
+          ],
+          "score": 0.9960143566131592,
+          "kind": "neural_card_candidate",
+          "source_view": 1,
+          "refinement": "adaptive_bounded_surface",
+          "expansion": 0.35,
+          "diagnostic_index": 0,
+          "verifier_score": 0.9984291195869446,
+          "verifier_confidence_calibrated": false,
+          "verifier_route": "bounded_surface",
+          "candidate": null
+        },
+        {
+          "box_xyxy": [
+            0.04375,
+            0.4697142857142857,
+            0.078125,
+            0.5611428571428572
+          ],
+          "score": 0.9955011010169983,
+          "kind": "neural_card_candidate",
+          "source_view": 1,
+          "refinement": "adaptive_bounded_surface",
+          "expansion": 0.35,
+          "diagnostic_index": 1,
+          "verifier_score": 0.9845402836799622,
+          "verifier_confidence_calibrated": false,
+          "verifier_route": "bounded_surface",
+          "candidate": null
+        },
+        {
+          "box_xyxy": [
+            0.0859375,
+            0.4697142857142857,
+            0.1203125,
+            0.5611428571428572
+          ],
+          "score": 0.9900520443916321,
+          "kind": "neural_card_candidate",
+          "source_view": 1,
+          "refinement": "adaptive_bounded_surface",
+          "expansion": 0.35,
+          "diagnostic_index": 3,
+          "verifier_score": 0.8794037103652954,
+          "verifier_confidence_calibrated": false,
+          "verifier_route": "bounded_surface",
+          "candidate": null
+        }
+      ]
+    }
+  ],
+  "target_stage_counts": {
+    "correct": 57,
+    "locator_or_refinement": 3
+  },
+  "proposal_verifier": {
+    "checkpoint_sha256": "41e45f326beeb935f218f33c4ba31d268e30f7d8f2bbaa41ef9ffd6020a7d9fc",
+    "threshold": 0.5,
+    "confidence_calibrated": false,
+    "research_only": true,
+    "route": "bounded_surface_v1_else_ambiguous_v4",
+    "bounded_checkpoint_sha256": "392ce66439a75015b13ad8f0f00349ebc523c82c0f62dd66034a95462a675a71",
+    "bounded_threshold": 0.5
+  },
+  "iou_threshold": 0.5,
+  "reference_reuse_not_fresh_audit": true,
+  "training_performed": false,
+  "readiness_credit": false,
+  "candidate_options": {
+    "wide_search": true,
+    "fast_components": true,
+    "fast_refinement": true
+  },
+  "checkpoints": {
+    "glyph": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+    "locator": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273",
+    "verifier": "41e45f326beeb935f218f33c4ba31d268e30f7d8f2bbaa41ef9ffd6020a7d9fc",
+    "bounded_verifier": "392ce66439a75015b13ad8f0f00349ebc523c82c0f62dd66034a95462a675a71"
+  }
+}
