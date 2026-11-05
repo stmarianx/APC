@@ -122,6 +122,55 @@ await saveBrowserAcquisition({png:await readFile(image),before:snapshot,after:st
 
 
 class RealBrowserBridgeEvidenceTests(unittest.TestCase):
+    def test_measured_real_capture_imports_image_aligned_draft_only(self):
+        root = Path(__file__).resolve().parents[1]/"data/development/measured-alignment-demo-v1"
+        from apc.perception.evaluate_browser_collection import load_collection
+        _,frames = load_collection(root/"collection.json")
+        with tempfile.TemporaryDirectory() as directory:
+            project = AnnotationProject.create(Path(directory)/"project", project_id="measured-import",
+                source_kind="controlled_training_table",provider_id="apc-full-hand-browser",
+                layout_id="heads-up",theme_id="test",max_seats=2,locale="en-US")
+            result = import_acquisition(project,root/"acquisition/capture.json","measured-session",0,
+                                        pixel_alignment=root/"measurement.json")
+            suggestion = project.load_suggestion(result["sample_id"])
+            self.assertEqual(suggestion["screenshot_mapping"],"measured_pixel_alignment_v1")
+            self.assertEqual(suggestion["capture_import_version"],"measured_browser_acquisition_v1")
+            self.assertEqual(suggestion["pixel_alignment_metadata_sha256"],
+                             hashlib.sha256((root/"measurement.json").read_bytes()).hexdigest())
+            self.assertFalse(suggestion["auto_applied"])
+            self.assertFalse(suggestion["pixel_geometry_reviewed"])
+            self.assertFalse(suggestion["readiness_counts_added"])
+            self.assertIsNone(project.load_annotation(result["sample_id"]))
+            for obj,target in zip(suggestion["suggested_objects"]["hero_cards"],frames[0]["targets"]):
+                box = obj["box"]
+                for a,b in zip((box["x"],box["y"],box["x"]+box["width"],box["y"]+box["height"]),target["box_xyxy"]):
+                    self.assertAlmostEqual(a,b)
+            record = project.records[0]
+            with Image.open(root/"acquisition/frame.jpg") as source, Image.open(project.root/record.frame_path) as derivative:
+                self.assertIsNone(ImageChops.difference(source.convert("RGB"),derivative.convert("RGB")).getbbox())
+
+    def test_wrong_measurement_refused_before_project_mutation(self):
+        root = Path(__file__).resolve().parents[1]/"data/development/measured-alignment-demo-v1"
+        for corruption in ("image","dom"):
+            with self.subTest(corruption=corruption), tempfile.TemporaryDirectory() as directory:
+                project = AnnotationProject.create(Path(directory)/"project",project_id="reject-measurement",
+                    source_kind="controlled_training_table",provider_id="apc-full-hand-browser",
+                    layout_id="heads-up",theme_id="test",max_seats=2,locale="en-US")
+                data = json.loads((root/"measurement.json").read_text())
+                if corruption == "image":
+                    data["image_sha256"] = "wrong-image"
+                else:
+                    # Shift every DOM point equally: still geometrically consistent,
+                    # but no longer matches the captured landmark observations.
+                    for anchor in data["anchors"]:
+                        anchor["dom_xy"][0] += 1
+                measurement = Path(directory)/"measurement.json"
+                measurement.write_text(json.dumps(data))
+                with self.assertRaises(ValueError):
+                    import_acquisition(project,root/"acquisition/capture.json","rejected-session",0,
+                                       pixel_alignment=measurement)
+                self.assertEqual(len(project.records),0)
+
     def test_actual_capture_derivative_and_suggestion_match_source_pixels(self):
         root = Path(__file__).resolve().parents[1] / "data/development/browser-bridge-demo-v1"
         acquisition = json.loads((root / "capture.json").read_text())

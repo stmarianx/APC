@@ -9,9 +9,10 @@ from PIL import Image
 
 from apc.annotator.project import AnnotationProject
 from apc.perception.capture_stability import validate_capture_stability
+from apc.perception.pixel_alignment import PixelAlignment
 
 
-def import_acquisition(project, manifest, session, timestamp_ms):
+def import_acquisition(project, manifest, session, timestamp_ms, *, pixel_alignment=None):
     manifest = Path(manifest).resolve()
     raw = manifest.read_bytes()
     data = json.loads(raw)
@@ -47,6 +48,18 @@ def import_acquisition(project, manifest, session, timestamp_ms):
         image_sha256=data["sha256"], viewport=viewport, cards=cards)
     width, _ = viewport
     extent_height = image_height * width / image_width
+    alignment, measured, measurement_digest = None, None, None
+    if pixel_alignment is not None:
+        measurement_raw = Path(pixel_alignment).read_bytes()
+        measured = json.loads(measurement_raw)
+        measurement_digest = hashlib.sha256(measurement_raw).hexdigest()
+        alignment = PixelAlignment(measured, image_sha256=data["sha256"],
+            image_size=(image_width,image_height), viewport=viewport)
+        declared = evidence["before"].get("alignment_landmarks")
+        if (not isinstance(declared,list)
+                or [{key: anchor[key] for key in ("description","dom_xy")}
+                    for anchor in measured["anchors"]] != declared):
+            raise ValueError("Measured landmarks do not match captured DOM evidence")
     objects, labels = {"hero_cards": [], "board_cards": []}, {"hero_cards": [], "board": []}
     identities = []
     for observed in evidence["before"]["cards"]:
@@ -54,11 +67,14 @@ def import_acquisition(project, manifest, session, timestamp_ms):
         if (role not in {"hero", "board"} or not isinstance(identity, str) or len(identity) != 2
                 or identity[0] not in "23456789TJQKA" or identity[1] not in "shdc"):
             raise ValueError("Invalid visible card identity/role")
-        if not (0 <= x < x+w <= width and 0 <= y < y+h <= extent_height):
-            raise ValueError("Card outside saved screenshot")
+        if alignment is not None:
+            x1,y1,x2,y2 = alignment.box(x,y,w,h)
+        else:
+            if not (0 <= x < x+w <= width and 0 <= y < y+h <= extent_height):
+                raise ValueError("Card outside saved screenshot")
+            x1,y1,x2,y2 = x/width,y/extent_height,(x+w)/width,(y+h)/extent_height
         key = "hero_cards" if role == "hero" else "board_cards"
-        objects[key].append({"box":{"x":x/width,"y":y/extent_height,
-                                     "width":w/width,"height":h/extent_height}})
+        objects[key].append({"box":{"x":x1,"y":y1,"width":x2-x1,"height":y2-y1}})
         labels["hero_cards" if role == "hero" else "board"].append(identity)
         identities.append(identity)
     if len(identities) != len(set(identities)):
@@ -86,6 +102,12 @@ def import_acquisition(project, manifest, session, timestamp_ms):
         "screenshot_binding":"hash_dimensions_and_before_after_geometry_validated",
         "capture_stability":evidence, "suggested_objects":objects, "draft_card_labels":labels,
         "pixel_geometry_reviewed":False, "readiness_counts_added":False}
+    suggestion["screenshot_mapping"] = ("measured_pixel_alignment_v1" if alignment is not None
+                                         else "uniform_width_scale_top_left_crop")
+    if measured is not None:
+        suggestion["pixel_alignment"] = measured
+        suggestion["pixel_alignment_metadata_sha256"] = measurement_digest
+        suggestion["capture_import_version"] = "measured_browser_acquisition_v1"
     path = project.save_suggestion(record.sample_id, suggestion)
     return {"sample_id":record.sample_id,"inserted":inserted,"suggestion":str(path),"verified":False}
 
@@ -96,6 +118,8 @@ if __name__ == "__main__":
     parser.add_argument("manifest", type=Path)
     parser.add_argument("--session", required=True)
     parser.add_argument("--timestamp-ms", type=int, required=True)
+    parser.add_argument("--pixel-alignment", type=Path,
+                        help="Image-bound manual landmark measurements; still requires annotation review")
     args = parser.parse_args()
     print(json.dumps(import_acquisition(AnnotationProject(args.project), args.manifest,
-        args.session,args.timestamp_ms),indent=2))
+        args.session,args.timestamp_ms,pixel_alignment=args.pixel_alignment),indent=2))

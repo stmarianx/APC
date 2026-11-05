@@ -34,5 +34,23 @@ Legacy collection mappings remain available for historical diagnostics; this
 change does not retroactively validate them, alter sealed captures, or award
 readiness/training approval. New frozen audits must include the new helper and
 updated loader hashes in their source contract; old plans require archived code.
-The six-frame resize diagnostic remains unapproved. Real landmark measurement
-and overlay review are the next steps, not yet completed by this implementation.
+The six-frame resize diagnostic remains unapproved. Real landmark measurements
+and overlays must be checked per image, not inferred from these software tests.
+
+## Importing into the labeling project
+
+`python -m apc.annotator.import_browser_acquisition <project> <capture.json> --session <id> --timestamp-ms <measured-relative-time> --pixel-alignment <measurement.json>`
+
+The optional measured path uses the same transform as collection evaluation and
+review overlays. It requires matching landmark descriptions/DOM points in the
+capture's before/after observations. Image bytes, size, endpoint geometry,
+measurement/image binding, and all mapped card boxes are checked before any
+project mutation. The suggestion records the original measurement and its hash.
+JPEG-to-PNG import preserves decoded RGB pixels without rescaling, so normalized
+coordinates remain unchanged. No annotation is approved automatically.
+
+Omitting the option retains the legacy width-scale assumption for historical
+workflows; it is explicitly named in new suggestions, not asserted to be a
+verified pixel mapping. Prefer measured alignment for new captures. The saved
+`measured-alignment-demo-v1` provides a real one-frame developer check; independent
+review and cross-size/cross-layout evidence are still outstanding.
