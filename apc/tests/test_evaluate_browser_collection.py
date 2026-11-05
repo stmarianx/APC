@@ -1,5 +1,6 @@
 import json
 import tempfile
+import shutil
 import unittest
 from pathlib import Path
 
@@ -10,6 +11,19 @@ COLLECTION = Path(__file__).resolve().parents[1] / "data/development/browser-dom
 
 
 class BrowserCollectionTests(unittest.TestCase):
+    def test_native_jpeg_with_stability_evidence_loads_without_transcoding(self):
+        source = Path(__file__).resolve().parents[1]/"data/reference/capture-stability-demo-v1"
+        data = json.loads((source/"collection.json").read_text())
+        data["frames"][0]["image"] = "frame.jpg"
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            shutil.copyfile(source/"frame.png",root/"frame.jpg")  # Original bytes are JPEG despite legacy suffix.
+            manifest = root/"collection.json"
+            manifest.write_text(json.dumps(data))
+            _,frames = load_collection(manifest)
+            self.assertEqual(frames[0]["image"].suffix,".jpg")
+            self.assertEqual([t["identity"] for t in frames[0]["targets"]],["4h","2s"])
+
     def test_captured_development_collection_is_one_session_not_three(self):
         data, frames = load_collection(COLLECTION)
         self.assertTrue(data["draft_only"])

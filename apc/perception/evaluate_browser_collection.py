@@ -39,7 +39,7 @@ def load_collection(path):
         if not all(math.isfinite(v) and v > 0 for v in (width, height, card_width, card_height)):
             raise ValueError("Invalid per-frame DOM dimensions")
         image = (path.parent / row["image"]).resolve()
-        if not image.is_relative_to(path.parent) or image.suffix.lower() != ".png":
+        if not image.is_relative_to(path.parent) or image.suffix.lower() not in {".png", ".jpg"}:
             raise ValueError("Invalid collection image path")
         if hashlib.sha256(image.read_bytes()).hexdigest() != row["sha256"]:
             raise ValueError("Collection image fingerprint mismatch")

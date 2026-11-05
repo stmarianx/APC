@@ -31,4 +31,23 @@ async function capturePracticeFrame(tab) {
   return {before, png, after};
 }
 
-export {observePracticeFrame, capturePracticeFrame};
+async function observeNegativeFrame(tab) {
+  return tab.playwright.evaluate(() => {
+    const fixture = document.querySelector('main[data-apc-audit-negative]');
+    if (!fixture || !['text','lobby','controls'].includes(fixture.getAttribute('data-apc-audit-negative'))
+        || !fixture.textContent.trim() || document.querySelector('.card')) {
+      throw new Error('Expected explicit card-free APC audit fixture');
+    }
+    return {viewport:[innerWidth,innerHeight],scroll:[scrollX,scrollY],cards:[],
+      fixture_scene:fixture.getAttribute('data-apc-audit-negative')};
+  });
+}
+
+async function captureNegativeFrame(tab) {
+  const before = structuredClone(await observeNegativeFrame(tab));
+  const png = await tab.screenshot({fullPage:false});
+  const after = structuredClone(await observeNegativeFrame(tab));
+  return {before,png,after};
+}
+
+export {observePracticeFrame, capturePracticeFrame, observeNegativeFrame, captureNegativeFrame};

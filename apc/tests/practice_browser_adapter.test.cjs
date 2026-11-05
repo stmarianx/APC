@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict');
 (async () => {
-  const {capturePracticeFrame} = await import('../capture/practice_browser_adapter.mjs');
+  const {capturePracticeFrame,captureNegativeFrame} = await import('../capture/practice_browser_adapter.mjs');
   const events = [];
   const snapshot = {viewport:[800,900],scroll:[0,0],cards:[['hero','As',100,200,62,78]]};
   const tab = {
@@ -12,5 +12,13 @@ const assert = require('node:assert/strict');
   assert.deepEqual(result.before.scroll,[0,0]);
   assert.deepEqual(result.after.scroll,[0,80]);
   assert.deepEqual(Array.from(result.png),[1,2]);
+  const negative = {viewport:[800,900],scroll:[0,0],cards:[]};
+  const negativeEvents = [];
+  const negativeResult = await captureNegativeFrame({
+    playwright:{evaluate:async () => {negativeEvents.push('observe');return negative;}},
+    screenshot:async () => {negativeEvents.push('screenshot');return new Uint8Array([3]);}
+  });
+  assert.deepEqual(negativeEvents,['observe','screenshot','observe']);
+  assert.deepEqual(negativeResult.before.cards,[]);
   console.log('Practice adapter orchestration tests passed');
 })().catch(error => {console.error(error);process.exitCode=1;});

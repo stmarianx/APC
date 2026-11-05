@@ -28,6 +28,17 @@ class PracticeWebTests(unittest.TestCase):
             self.assertIn("not a captured gameplay transition", negative)
             self.assertNotIn('class="card', negative)
             self.assertEqual(request("/api/state")["state"], state)
+            negative_scenes = []
+            for scene in ("text","lobby","controls"):
+                with urlopen(url+"/audit-negative/"+scene,timeout=5) as response:
+                    html = response.read().decode("utf-8")
+                self.assertIn('data-apc-audit-negative="'+scene+'"',html)
+                self.assertIn("No cards are present",html)
+                self.assertIn("not an observed gameplay transition",html)
+                self.assertNotIn('class="card',html)
+                negative_scenes.append(html)
+            self.assertEqual(len(set(negative_scenes)),3)
+            self.assertEqual(request("/api/state")["state"],state)
             preview = request("/api/model-preview")
             self.assertEqual(preview["status"],"preview_disabled")
             self.assertEqual(preview["state_fingerprint"],state["state_fingerprint"])

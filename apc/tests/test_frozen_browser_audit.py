@@ -19,6 +19,20 @@ LOCATOR = ROOT / "apc/checkpoints/card-locator-hardneg-v1.pt"
 
 
 class FrozenBrowserAuditTests(unittest.TestCase):
+    def test_v6_plan_preserves_full_street_and_distinct_negative_schedule(self):
+        plan = json.loads((ROOT/"apc/perception/baselines/browser-fast-text-audit-v6.plan.json").read_text())
+        self.assertTrue(plan["capture_stability_required"])
+        self.assertTrue(plan["training_prohibited"])
+        self.assertTrue(plan["fast_locator_refinement"])
+        self.assertTrue(plan["fast_surface_components"])
+        self.assertEqual(len(plan["frame_schedule"]),15)
+        self.assertEqual(len(plan["frame_viewports"]),15)
+        for index in range(3):
+            self.assertEqual([row[1] for row in plan["frame_schedule"][index*4:index*4+4]],
+                             ["preflop","flop","turn","river"])
+        self.assertIn("apc/perception/fast_refinement.py",plan["inference_source_sha256"])
+        self.assertIn("apc/practice_assets/negative_fixtures.py",plan["inference_source_sha256"])
+
     def test_custom_audit_cli_rejects_partial_or_ambiguous_inputs(self):
         cases = (["--plan", "missing.json"], ["--verifier-checkpoint", "missing.pt"],
                  ["--plan", "p", "--collection", "c", "--glyph-checkpoint", "g",
