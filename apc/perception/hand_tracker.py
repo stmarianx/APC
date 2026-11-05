@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import math
 import threading
 from dataclasses import dataclass, field
 from decimal import Decimal
@@ -13,6 +14,15 @@ from apc.visual_identity_signature import registry_observations_from_state
 
 
 STREET_ORDER = {"preflop": 0, "flop": 1, "turn": 2, "river": 3}
+TRACKING_PREREQUISITES = frozenset({"hero_cards", "board_cards", "street", "hero_seat",
+                                    "dealer_seat", "seat_stacks_bb", "pot_bb",
+                                    "temporally_consistent_state"})
+
+
+def _boundary_probability(value: object) -> float:
+    if (type(value) not in (int,float) or not math.isfinite(value) or not 0 <= value <= 1):
+        raise ValueError("boundary confidence must be a finite number between zero and one")
+    return float(value)
 
 
 @dataclass
@@ -195,9 +205,7 @@ class TemporalHandTracker:
     """Accumulate adjacent-frame observations into an evidence-bounded hand state."""
 
     def __init__(self, *, minimum_boundary_confidence: float = 0.90) -> None:
-        if not 0 <= minimum_boundary_confidence <= 1:
-            raise ValueError("minimum_boundary_confidence must be between zero and one")
-        self.minimum_boundary_confidence = float(minimum_boundary_confidence)
+        self.minimum_boundary_confidence = _boundary_probability(minimum_boundary_confidence)
         self._tracks: dict[str, _Track] = {}
         self._lock = threading.RLock()
 
@@ -216,13 +224,20 @@ class TemporalHandTracker:
     ) -> dict[str, object]:
         if not isinstance(track_id, str) or not track_id.strip():
             raise ValueError("track_id must be a non-empty string")
-        if not 0 <= float(boundary_confidence) <= 1:
-            raise ValueError("boundary_confidence must be between zero and one")
+        boundary_confidence = _boundary_probability(boundary_confidence)
+        if type(hand_start) is not bool:
+            raise ValueError("hand_start must be an explicit boolean")
         if temporal_result.get("schema_version") != "1.0.0":
             raise ValueError("unsupported temporal result schema")
         transition = temporal_result.get("transition_audit")
         if not isinstance(transition, dict) or transition.get("status") != "accepted":
             return self._abstain("transition_rejected", track_id, temporal_result)
+        upstream_missing = temporal_result.get("missing_critical_fields", [])
+        if not isinstance(upstream_missing,list) or any(not isinstance(v,str) or not v for v in upstream_missing):
+            raise ValueError("missing_critical_fields must be an array of field names")
+        if TRACKING_PREREQUISITES.intersection(upstream_missing):
+            return self._abstain("perception_incomplete", track_id, temporal_result,
+                                 {"missing_prerequisites":sorted(TRACKING_PREREQUISITES.intersection(upstream_missing))})
         before = temporal_result.get("previous_visible_state")
         after = temporal_result.get("visible_state")
         frames = temporal_result.get("frames")
@@ -292,9 +307,12 @@ class TemporalHandTracker:
             current["revision"] = track.revision
             track.last_after = current
             track.seen_after_frames.add(frame_sha)
-            missing = ["player_identities"]
+            # Tracking establishes history, not unrelated perception evidence.
+            # Preserve every other warning instead of silently upgrading state.
+            missing = set(upstream_missing) - {"action_history"}
+            missing.add("player_identities")
             if current.get("effective_stack_bb") is None:
-                missing.append("effective_stack_bb")
+                missing.add("effective_stack_bb")
             return {
                 "schema_version": "1.0.0",
                 "status": "state_tracked_incomplete_identity",
@@ -311,7 +329,7 @@ class TemporalHandTracker:
                     "minimum_supported_confidence": temporal_result.get("minimum_supported_confidence"),
                     "event_confidence": copy.deepcopy(temporal_result.get("event_confidence")),
                 },
-                "missing_critical_fields": missing,
+                "missing_critical_fields": sorted(missing),
                 "recommendation": None,
                 "limitations": [
                     "Hand start evidence is supplied by a boundary detector and remains uncalibrated in the synthetic pipeline.",

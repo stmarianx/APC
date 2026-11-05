@@ -46,6 +46,52 @@ def result(*, before: dict[str, object], after: dict[str, object], event: dict[s
 
 
 class HandTrackerTests(unittest.TestCase):
+    def test_core_uncertainty_cannot_advance_hand_or_erase_history(self):
+        tracker=TemporalHandTracker()
+        before=visible(street="preflop",board=[],pot="1.5",stacks=("100","100"))
+        payload=result(before=before,after=before,event={"actor_seat":2,"action":"check"},frame="1")
+        original=copy.deepcopy(payload)
+        for field in ("hero_cards","board_cards","seat_stacks_bb","temporally_consistent_state"):
+            payload["missing_critical_fields"]=[field]
+            rejected=tracker.submit("table",payload,hand_start=True,boundary_confidence=1.0)
+            self.assertEqual(rejected["status"],"abstain_perception_incomplete")
+            self.assertFalse(rejected["changed"])
+            self.assertIsNone(rejected["state"])
+            self.assertEqual(tracker.prior_history("table"),[])
+        accepted=tracker.submit("table",original,hand_start=True,boundary_confidence=1.0)
+        self.assertEqual(accepted["revision"],0)
+        broken=copy.deepcopy(original)
+        broken["missing_critical_fields"]=["hero_cards"]
+        rejected=tracker.submit("table",broken,hand_start=False,boundary_confidence=0.0)
+        self.assertFalse(rejected["changed"])
+        self.assertEqual(len(tracker.prior_history("table")),1)
+
+    def test_nonresolved_warnings_survive_tracking_and_identity_resolution(self):
+        tracker=TemporalHandTracker()
+        before=visible(street="preflop",board=[],pot="1.5",stacks=("100","100"))
+        payload=result(before=before,after=before,event={"actor_seat":2,"action":"check"},frame="1")
+        payload["missing_critical_fields"]=["action_history","turn_clock","action_buttons"]
+        tracked=tracker.submit("table",payload,hand_start=True,boundary_confidence=1.0)
+        self.assertEqual(tracked["missing_critical_fields"],["action_buttons","player_identities","turn_clock"])
+        enriched=attach_player_identities(tracked,[{"seat_no":1,"status":"resolved","identity_id":"hero"},
+                                                  {"seat_no":2,"status":"resolved","identity_id":"opponent"}])
+        self.assertEqual(enriched["missing_critical_fields"],["action_buttons","turn_clock"])
+        self.assertIsNone(enriched["recommendation"])
+
+    def test_boundary_flags_reject_nonfinite_boolean_and_truthy_text(self):
+        for value in (float("nan"),float("inf"),True,"0.99"):
+            with self.subTest(value=value),self.assertRaises(ValueError):
+                TemporalHandTracker(minimum_boundary_confidence=value)
+        before=visible(street="preflop",board=[],pot="1.5",stacks=("100","100"))
+        payload=result(before=before,after=before,event={"actor_seat":2,"action":"check"},frame="1")
+        tracker=TemporalHandTracker()
+        for value in (float("nan"),float("inf"),True,"0.99"):
+            with self.subTest(value=value),self.assertRaises(ValueError):
+                tracker.submit("table",payload,hand_start=True,boundary_confidence=value)
+        for value in ("false",1,None):
+            with self.subTest(value=value),self.assertRaises(ValueError):
+                tracker.submit("table",payload,hand_start=value,boundary_confidence=1.0)
+
     def test_tracks_complete_history_from_evidenced_hand_start(self) -> None:
         tracker = TemporalHandTracker()
         before = visible(street="preflop", board=[], pot="1.5", stacks=("100", "100"))
