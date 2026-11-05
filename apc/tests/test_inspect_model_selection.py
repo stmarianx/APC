@@ -8,6 +8,16 @@ from apc.__main__ import main
 
 
 class InspectModelSelectionTests(unittest.TestCase):
+    def test_explicit_verifier_selection_uses_research_reader(self):
+        with patch("sys.argv", ["apc", "inspect", "frame.png", "--neural-cards", "--verifier-checkpoint", "verifier.pt"]), \
+             patch("apc.perception.verified_card_reader.VerifiedCardReader") as reader, contextlib.redirect_stdout(io.StringIO()):
+            reader.return_value.read.return_value = {}
+            main()
+        self.assertEqual(reader.call_args.kwargs["verifier_checkpoint"], Path("verifier.pt"))
+        with patch("sys.argv", ["apc", "inspect", "frame.png", "--verifier-checkpoint", "verifier.pt"]), \
+             contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            main()
+
     def test_tiled_inspection_is_opt_in_and_preserves_selected_weights(self):
         arguments = ["apc", "inspect", "frame.png", "--neural-cards", "--adaptive-glyphs",
                      "--adaptive-surfaces", "--deduplicate-surfaces", "--tiled-views",

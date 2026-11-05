@@ -135,18 +135,26 @@ if __name__ == "__main__":
     parser.add_argument("--adaptive-surfaces", action="store_true", help="Experimental bounded surface expansion")
     parser.add_argument("--deduplicate-surfaces", action="store_true")
     parser.add_argument("--tiled-views", action="store_true")
+    parser.add_argument("--verifier-checkpoint", type=Path, help="Opt-in learned binary proposal filter")
     args = parser.parse_args()
-    if args.pixel_proposals and args.adaptive_surfaces:
+    if args.pixel_proposals and (args.adaptive_surfaces or args.verifier_checkpoint):
         parser.error("Adaptive surfaces require neural proposals")
     torch.set_num_threads(2)
-    reader = CardReader(args.glyph_checkpoint, corner_pairs=True,
+    reader_type, verifier_options = CardReader, {}
+    if args.verifier_checkpoint:
+        from apc.perception.verified_card_reader import VerifiedCardReader
+        reader_type = VerifiedCardReader
+        verifier_options["verifier_checkpoint"] = args.verifier_checkpoint
+    reader = reader_type(args.glyph_checkpoint, corner_pairs=True,
         locator_checkpoint=None if args.pixel_proposals else args.locator_checkpoint,
         refine_surfaces=True, surface_pairs=args.surface_pairs, adaptive_surfaces=args.adaptive_surfaces,
-        deduplicate_surfaces=args.deduplicate_surfaces, tiled_views=args.tiled_views)
+        deduplicate_surfaces=args.deduplicate_surfaces, tiled_views=args.tiled_views, **verifier_options)
     report = evaluate(args.collection, reader)
     report["checkpoint_sha256"] = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
         for path in ([args.glyph_checkpoint] if args.pixel_proposals else [args.glyph_checkpoint, args.locator_checkpoint])}
     report["torch_version"] = str(torch.__version__)
+    if args.verifier_checkpoint:
+        report["proposal_verifier"] = reader.verifier_metadata
     report["pair_extraction"] = "surface_two_band_then_corner" if args.surface_pairs else "upper_left_corner"
     report["proposal_mode"] = "light_surface_pixels" if args.pixel_proposals else "neural_locator_refined"
     report["surface_refinement"] = "none" if args.pixel_proposals else ("adaptive_bounded" if args.adaptive_surfaces else "legacy_fixed_roi")

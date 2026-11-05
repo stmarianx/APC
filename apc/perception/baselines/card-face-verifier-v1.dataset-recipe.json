@@ -1,0 +1,21 @@
+{
+  "schema_version": "apc_synthetic_card_verifier_recipe_v1",
+  "source_kind": "synthetic_render",
+  "audit_or_capture_training_prohibited": true,
+  "source_manifest": "apc/runs/glyph-font-diversity-v1/dataset_manifest.json",
+  "source_manifest_sha256": "312d1014b3046c7380293e90f4d7b84fc04a980fab14b75dcf0f162a765586bb",
+  "source_generation_reference": "apc/perception/baselines/glyph-font-diversity-v1.experiment.json",
+  "seed": 20261112,
+  "split_seed_offsets": {"train": 0, "validation": 1, "test": 2},
+  "split_policy": "Use verified source manifest capture_session_id splits unchanged; generated UI patches inherit source frame split",
+  "sessions": {"train": 58, "validation": 7, "test": 7},
+  "samples": {"train": 8448, "validation": 998, "test": 970},
+  "positives": "Each verified clear card: exact crop plus two bounded outward-padded variants, no rank/suit class supplied to verifier",
+  "negatives": "Nonoverlapping annotated seat/pot/action-button regions plus 12 separately generated controls/background patches per source frame",
+  "crop_encoding": "RGB, aspect-preserving thumbnail in 48x64 black canvas; no inferred role/card identity used",
+  "generator_source_sha256": "a53e55dc19d57505b85b74a2789a70c36db2270ff8993ed735df8b683fb8ab9e",
+  "model_preprocessing_source_sha256": "c7fc38ebfe7c9ad7da6b69fb33338b22c089bf750f18c1181a159228fd16cb69",
+  "pillow_version": "12.3.0",
+  "torch_version": "2.14.1+cpu",
+  "limitations": "Source images are session-disjoint; shared synthetic styles and potentially repeated simple background patch pixels are not independent real-domain validation. Recipe is not the full-table annotation manifest schema."
+}

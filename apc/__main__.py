@@ -71,6 +71,7 @@ def main():
     inspect.add_argument('--tiled-views', action='store_true', help='Experimental overlapping zoom views; requires --adaptive-surfaces')
     inspect.add_argument('--glyph-checkpoint', type=Path, help='Explicit experimental glyph weights; requires --neural-cards')
     inspect.add_argument('--locator-checkpoint', type=Path, help='Explicit experimental detector weights; requires --neural-cards')
+    inspect.add_argument('--verifier-checkpoint', type=Path, help='Opt-in learned card-face filter; requires --neural-cards')
     args = parser.parse_args()
     if args.mode == 'desktop':
         from apc.desktop import launch
@@ -93,6 +94,8 @@ def main():
             parser.error('--glyph-checkpoint requires --neural-cards')
         if args.locator_checkpoint and not args.neural_cards:
             parser.error('--locator-checkpoint requires --neural-cards')
+        if args.verifier_checkpoint and not args.neural_cards:
+            parser.error('--verifier-checkpoint requires --neural-cards')
         import torch
         from apc.perception.infer_cards import CardReader
         torch.set_num_threads(1)
@@ -104,7 +107,12 @@ def main():
             options['surface_pairs'] = True
         if args.adaptive_surfaces:
             options.update(adaptive_surfaces=True, deduplicate_surfaces=args.deduplicate_surfaces, tiled_views=args.tiled_views)
-        print(json.dumps(CardReader(checkpoint, corner_pairs=args.corner_symbols or args.neural_cards, **options).read(args.image), indent=2))
+        reader_type = CardReader
+        if args.verifier_checkpoint:
+            from apc.perception.verified_card_reader import VerifiedCardReader
+            reader_type = VerifiedCardReader
+            options['verifier_checkpoint'] = args.verifier_checkpoint
+        print(json.dumps(reader_type(checkpoint, corner_pairs=args.corner_symbols or args.neural_cards, **options).read(args.image), indent=2))
 
 
 if __name__ == '__main__':
