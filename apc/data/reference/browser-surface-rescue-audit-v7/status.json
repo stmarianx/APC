@@ -1,0 +1,25 @@
+{
+  "schema_version": "apc_audit_collection_status_v1",
+  "audit": "browser-surface-rescue-audit-v7",
+  "status": "aborted_capture_rejected_no_scoring",
+  "plan_sha256": "c7ac0c0aaaad4b8071d6c8780524034ad8dc0abe6d5d275454c31308369b19b0",
+  "planned_frames": 15,
+  "acquired_frames": 1,
+  "accepted_frames": 0,
+  "rejected_frame": "h1-preflop/capture.json",
+  "rejection_reason": "Card outside saved screenshot",
+  "interpretation": "Rejected under assumed uniform-width screenshot mapping; developer inspection shows cards present at another scale within a wider canvas. Suspected stale/mismatched render dimensions after viewport change, not proven physical card omission.",
+  "screenshot_size": [
+    905,
+    509
+  ],
+  "dom_viewport": [
+    920,
+    900
+  ],
+  "before_after_equal": true,
+  "images_scored": 0,
+  "retakes_performed": 0,
+  "training_performed": false,
+  "readiness_credit": false
+}
