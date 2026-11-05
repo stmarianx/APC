@@ -1,11 +1,22 @@
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from PIL import Image,ImageDraw
 
-from apc.perception.bright_surface_candidate import recover_surface
+from apc.perception.bright_surface_candidate import recover_surface,BrightSurfaceReader
 
 
 class BrightSurfaceTests(unittest.TestCase):
+    def test_expert_metadata_uses_hashes_not_hardcoded_model_versions(self):
+        def fake_init(reader,*args,**kwargs):
+            reader.locator = SimpleNamespace(locator=object())
+            reader.verifier_metadata = {"checkpoint_sha256":"new","bounded_checkpoint_sha256":kwargs["bounded_verifier_checkpoint"]}
+        with patch("apc.perception.bright_surface_candidate.VerifiedCardReader.__init__",new=fake_init):
+            for bounded,shared in (("old",False),("new",True)):
+                reader = BrightSurfaceReader("unused",bounded_verifier_checkpoint=bounded)
+                self.assertEqual(reader.verifier_metadata["route"],"bounded_surface_expert_else_ambiguous_expert")
+                self.assertEqual(reader.verifier_metadata["shared_expert_checkpoint"],shared)
     def test_recovers_complete_light_card_from_background_majority_proposal(self):
         image = Image.new("RGB",(120,160),(20,50,30))
         ImageDraw.Draw(image).rectangle((40,40,79,99),fill=(245,243,233))

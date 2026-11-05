@@ -63,6 +63,9 @@ class BrightRecoveryLocator:
 class BrightSurfaceReader(VerifiedCardReader):
     def __init__(self,*args,wide_search=False,fast_components=False,fast_refinement=False,**kwargs):
         super().__init__(*args,**kwargs)
+        if "bounded_checkpoint_sha256" in self.verifier_metadata:
+            self.verifier_metadata.update(route="bounded_surface_expert_else_ambiguous_expert",
+                shared_expert_checkpoint=self.verifier_metadata["checkpoint_sha256"] == self.verifier_metadata["bounded_checkpoint_sha256"])
         if fast_refinement:
             from apc.perception.fast_refinement import FastRefinementLocator
             self.locator.locator = FastRefinementLocator(self.locator.locator)
@@ -81,6 +84,7 @@ if __name__ == "__main__":
     parser.add_argument("--output",type=Path,required=True)
     parser.add_argument("--wide-search",action="store_true",help="Opt-in v2 extra expansion for narrow proposals")
     parser.add_argument("--verifier-checkpoint",type=Path,help="Explicit experimental ambiguous-surface verifier; bounded expert unchanged")
+    parser.add_argument("--bounded-verifier-checkpoint",type=Path,help="Explicit experimental bounded-surface expert override")
     parser.add_argument("--fast-components",action="store_true",help="Opt-in vectorized recovery components")
     parser.add_argument("--fast-refinement",action="store_true",help="Opt-in vectorized adaptive locator refinement")
     parser.add_argument("--checkpoint-dir",type=Path,default=Path(__file__).resolve().parents[1]/"checkpoints")
@@ -90,6 +94,8 @@ if __name__ == "__main__":
              "verifier":p/"card-face-verifier-appearance-v4.pt","bounded":p/"card-face-verifier-v1.pt"}
     if args.verifier_checkpoint is not None:
         paths["verifier"] = args.verifier_checkpoint
+    if args.bounded_verifier_checkpoint is not None:
+        paths["bounded"] = args.bounded_verifier_checkpoint
     torch.set_num_threads(2)
     reader = BrightSurfaceReader(paths["glyph"],corner_pairs=True,surface_pairs=True,
         locator_checkpoint=paths["locator"],refine_surfaces=True,adaptive_surfaces=True,
