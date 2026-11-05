@@ -1,0 +1,11 @@
+{
+  "experiment": "public-label-capture-demo-v1",
+  "purpose": "Two setup captures at 1280x900 with visible public regions and table-border DOM landmarks; retain both, manually measure corresponding visible landmarks, import eligible measured capture as unverified suggestion",
+  "captures": 2,
+  "retakes": false,
+  "replace_rejected_frames": false,
+  "model_inference": false,
+  "training": false,
+  "readiness_credit": false,
+  "independent_review": "pending"
+}

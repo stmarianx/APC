@@ -1,0 +1,62 @@
+{
+  "sample_id": "public-label-capture-demo-v1-000000-02a07b700412",
+  "source_image_sha256": "02a07b7004126656ecde6c42c4be76e9a7d8bfa6b92a7d276c6931b6449427d9",
+  "suggestion_sha256": "ebfd0ed06c968d625b4e5bab5bdf89829e7903b079aaaf8e479a79de2a1dc192",
+  "objects": [
+    {
+      "label": "hero_cards:1",
+      "pixel_xyxy": [
+        519,
+        530,
+        581,
+        607
+      ]
+    },
+    {
+      "label": "hero_cards:2",
+      "pixel_xyxy": [
+        588,
+        530,
+        650,
+        607
+      ]
+    },
+    {
+      "label": "seat 1 99.5 BB",
+      "pixel_xyxy": [
+        495,
+        518,
+        755,
+        640
+      ]
+    },
+    {
+      "label": "seat 2 99 BB",
+      "pixel_xyxy": [
+        535,
+        257,
+        715,
+        378
+      ]
+    },
+    {
+      "label": "pot 1.5 BB",
+      "pixel_xyxy": [
+        647,
+        392,
+        670,
+        413
+      ]
+    }
+  ],
+  "skipped_unmeasured_regions": [
+    "action:fold",
+    "action:call",
+    "action:raise",
+    "action:all_in"
+  ],
+  "review_status": "pending",
+  "independent_review": false,
+  "readiness_credit": false,
+  "model_used": false
+}

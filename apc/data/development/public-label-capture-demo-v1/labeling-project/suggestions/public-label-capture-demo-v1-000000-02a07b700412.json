@@ -1,0 +1,511 @@
+{
+  "schema_version": "1.0.0",
+  "sample_id": "public-label-capture-demo-v1-000000-02a07b700412",
+  "capture_session_id": "public-label-capture-demo-v1",
+  "sequence_index": 0,
+  "image": {
+    "path": "../frames/public-label-capture-demo-v1/public-label-capture-demo-v1-000000-02a07b700412.png",
+    "sha256": "02a07b7004126656ecde6c42c4be76e9a7d8bfa6b92a7d276c6931b6449427d9",
+    "width": 1265,
+    "height": 864,
+    "timestamp_ms": 0
+  },
+  "environment": {
+    "source_kind": "controlled_training_table",
+    "provider_id": "apc-full-hand-browser",
+    "layout_id": "heads-up",
+    "theme_id": "local-practice",
+    "locale": "en-US",
+    "max_seats": 2,
+    "virtual_chips": true
+  },
+  "kind": "apc_capture_metadata_suggestion",
+  "review_required": true,
+  "capture_import_version": "measured_browser_acquisition_v1",
+  "auto_applied": false,
+  "model_status": "visible_dom_draft_not_model_prediction",
+  "metadata_sha256": "0909e02a4562a5d042b6260f3e55360fee5a91c0a9a259e9ac502775152ad529",
+  "source_image_sha256": "47ebdd32f541628556508fd9e288b1bd8556f0b44084a97236d1abff843ef709",
+  "source_image_format": "JPEG",
+  "image_derivation": "decoded_rgb_lossless_png",
+  "screenshot_binding": "hash_dimensions_and_before_after_geometry_validated",
+  "capture_stability": {
+    "schema_version": "apc_capture_stability_v1",
+    "image_sha256": "47ebdd32f541628556508fd9e288b1bd8556f0b44084a97236d1abff843ef709",
+    "image_size": [
+      1265,
+      864
+    ],
+    "before": {
+      "cards": [
+        [
+          "hero",
+          "2d",
+          525.3854370117188,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "6c",
+          595.3854370117188,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        1280,
+        900
+      ],
+      "alignment_landmarks": [
+        {
+          "description": "table outer border top midpoint",
+          "dom_xy": [
+            632.3333435058594,
+            222.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border right midpoint",
+          "dom_xy": [
+            1132.3333435058594,
+            454.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border bottom midpoint",
+          "dom_xy": [
+            632.3333435058594,
+            686.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border left midpoint",
+          "dom_xy": [
+            132.33334350585938,
+            454.0729217529297
+          ]
+        }
+      ],
+      "public_regions": {
+        "action_buttons": [
+          {
+            "action": "fold",
+            "box_xywh": [
+              404.9583435058594,
+              710.0729370117188,
+              53.02083587646485,
+              46.66666793823242
+            ],
+            "enabled": true,
+            "text": "fold"
+          },
+          {
+            "action": "call",
+            "box_xywh": [
+              457.9791870117187,
+              710.0729370117188,
+              48.61458587646485,
+              46.66666793823242
+            ],
+            "enabled": true,
+            "text": "call"
+          },
+          {
+            "action": "raise",
+            "box_xywh": [
+              506.59375,
+              710.0729370117188,
+              109.14583587646484,
+              46.66666793823242
+            ],
+            "enabled": true,
+            "text": "raise ≥ 2 BB"
+          },
+          {
+            "action": "all_in",
+            "box_xywh": [
+              615.7396240234375,
+              710.0729370117188,
+              60.80208587646485,
+              46.66666793823242
+            ],
+            "enabled": true,
+            "text": "all_in"
+          }
+        ],
+        "pot": {
+          "amount_bb": "1.5",
+          "box_xywh": [
+            654.9791870117188,
+            396.7395935058594,
+            22.75,
+            21.33333396911621
+          ],
+          "text": "1.5"
+        },
+        "seats": [
+          {
+            "box_xywh": [
+              500.71875,
+              524.7396240234375,
+              263.22918701171875,
+              122.66667175292967
+            ],
+            "has_dealer_button": true,
+            "is_hero": true,
+            "player_name": "Hero",
+            "seat_no": 1,
+            "stack_bb": "99.5",
+            "text": "2\n♦\n6\n♣\nHero · BTN · 99.5 BB · Dealer"
+          },
+          {
+            "box_xywh": [
+              541.4166870117188,
+              260.7395935058594,
+              181.83334350585935,
+              122.66667175292967
+            ],
+            "has_dealer_button": false,
+            "is_hero": false,
+            "player_name": "Opponent",
+            "seat_no": 2,
+            "stack_bb": "99",
+            "text": "Opponent · 99 BB\nHidden"
+          }
+        ],
+        "source": "owned_practice_visible_dom_v1",
+        "street": "preflop",
+        "to_call_bb": "0.5",
+        "units": "BB"
+      }
+    },
+    "after": {
+      "cards": [
+        [
+          "hero",
+          "2d",
+          525.3854370117188,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "6c",
+          595.3854370117188,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        1280,
+        900
+      ],
+      "alignment_landmarks": [
+        {
+          "description": "table outer border top midpoint",
+          "dom_xy": [
+            632.3333435058594,
+            222.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border right midpoint",
+          "dom_xy": [
+            1132.3333435058594,
+            454.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border bottom midpoint",
+          "dom_xy": [
+            632.3333435058594,
+            686.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border left midpoint",
+          "dom_xy": [
+            132.33334350585938,
+            454.0729217529297
+          ]
+        }
+      ],
+      "public_regions": {
+        "action_buttons": [
+          {
+            "action": "fold",
+            "box_xywh": [
+              404.9583435058594,
+              710.0729370117188,
+              53.02083587646485,
+              46.66666793823242
+            ],
+            "enabled": true,
+            "text": "fold"
+          },
+          {
+            "action": "call",
+            "box_xywh": [
+              457.9791870117187,
+              710.0729370117188,
+              48.61458587646485,
+              46.66666793823242
+            ],
+            "enabled": true,
+            "text": "call"
+          },
+          {
+            "action": "raise",
+            "box_xywh": [
+              506.59375,
+              710.0729370117188,
+              109.14583587646484,
+              46.66666793823242
+            ],
+            "enabled": true,
+            "text": "raise ≥ 2 BB"
+          },
+          {
+            "action": "all_in",
+            "box_xywh": [
+              615.7396240234375,
+              710.0729370117188,
+              60.80208587646485,
+              46.66666793823242
+            ],
+            "enabled": true,
+            "text": "all_in"
+          }
+        ],
+        "pot": {
+          "amount_bb": "1.5",
+          "box_xywh": [
+            654.9791870117188,
+            396.7395935058594,
+            22.75,
+            21.33333396911621
+          ],
+          "text": "1.5"
+        },
+        "seats": [
+          {
+            "box_xywh": [
+              500.71875,
+              524.7396240234375,
+              263.22918701171875,
+              122.66667175292967
+            ],
+            "has_dealer_button": true,
+            "is_hero": true,
+            "player_name": "Hero",
+            "seat_no": 1,
+            "stack_bb": "99.5",
+            "text": "2\n♦\n6\n♣\nHero · BTN · 99.5 BB · Dealer"
+          },
+          {
+            "box_xywh": [
+              541.4166870117188,
+              260.7395935058594,
+              181.83334350585935,
+              122.66667175292967
+            ],
+            "has_dealer_button": false,
+            "is_hero": false,
+            "player_name": "Opponent",
+            "seat_no": 2,
+            "stack_bb": "99",
+            "text": "Opponent · 99 BB\nHidden"
+          }
+        ],
+        "source": "owned_practice_visible_dom_v1",
+        "street": "preflop",
+        "to_call_bb": "0.5",
+        "units": "BB"
+      }
+    }
+  },
+  "suggested_objects": {
+    "hero_cards": [
+      {
+        "box": {
+          "x": 0.41054187224014943,
+          "y": 0.6130742079377327,
+          "width": 0.04842371541501972,
+          "height": 0.08930495689655171
+        }
+      },
+      {
+        "box": {
+          "x": 0.4652138089990427,
+          "y": 0.6130742079377327,
+          "width": 0.04842371541501972,
+          "height": 0.08930495689655171
+        }
+      }
+    ],
+    "board_cards": [],
+    "seats": [
+      {
+        "seat_no": 1,
+        "box": {
+          "x": 0.3912765072064909,
+          "y": 0.5997166755022826,
+          "width": 0.20558927807713678,
+          "height": 0.1404454081222929
+        },
+        "occupied": true,
+        "is_hero": true,
+        "has_dealer_button": true,
+        "player_name": "Hero",
+        "stack_bb": "99.5",
+        "raw_stack_text": "99.5 BB",
+        "status": "unknown",
+        "visibility": "uncertain"
+      },
+      {
+        "seat_no": 2,
+        "box": {
+          "x": 0.423062722042521,
+          "y": 0.29745370952714595,
+          "width": 0.14201687224014942,
+          "height": 0.1404454081222929
+        },
+        "occupied": true,
+        "is_hero": false,
+        "has_dealer_button": false,
+        "player_name": "Opponent",
+        "stack_bb": "99",
+        "raw_stack_text": "99 BB",
+        "status": "unknown",
+        "visibility": "uncertain"
+      }
+    ],
+    "action_buttons": [],
+    "pot": {
+      "box": {
+        "x": 0.5117581765879755,
+        "y": 0.4531649164236977,
+        "width": 0.017768379446640337,
+        "height": 0.024425288084252095
+      },
+      "amount_bb": "1.5",
+      "raw_text": "1.5",
+      "visibility": "uncertain"
+    }
+  },
+  "draft_card_labels": {
+    "hero_cards": [
+      "2d",
+      "6c"
+    ],
+    "board": []
+  },
+  "pixel_geometry_reviewed": false,
+  "readiness_counts_added": false,
+  "screenshot_mapping": "measured_pixel_alignment_v1",
+  "pixel_alignment": {
+    "schema_version": "apc_pixel_alignment_v1",
+    "image_sha256": "47ebdd32f541628556508fd9e288b1bd8556f0b44084a97236d1abff843ef709",
+    "image_size": [
+      1265,
+      864
+    ],
+    "viewport": [
+      1280,
+      900
+    ],
+    "measurement_method": "manual_visible_landmarks",
+    "measurement_notes": "Developer native-image measurements of visible outer table border extrema; no independent approval.",
+    "anchors": [
+      {
+        "description": "table outer border top midpoint",
+        "dom_xy": [
+          632.3333435058594,
+          222.0729217529297
+        ],
+        "pixel_xy": [
+          625,
+          219
+        ]
+      },
+      {
+        "description": "table outer border right midpoint",
+        "dom_xy": [
+          1132.3333435058594,
+          454.0729217529297
+        ],
+        "pixel_xy": [
+          1119,
+          448
+        ]
+      },
+      {
+        "description": "table outer border bottom midpoint",
+        "dom_xy": [
+          632.3333435058594,
+          686.0729217529297
+        ],
+        "pixel_xy": [
+          625,
+          678
+        ]
+      },
+      {
+        "description": "table outer border left midpoint",
+        "dom_xy": [
+          132.33334350585938,
+          454.0729217529297
+        ],
+        "pixel_xy": [
+          131,
+          448
+        ]
+      }
+    ]
+  },
+  "pixel_alignment_metadata_sha256": "46a05625211c43f77fefa2d1f367a0b332660deb12510d25a6fcf7b1acbb5cab",
+  "suggested_visible_state": {
+    "street": "preflop",
+    "hero_seat": 1,
+    "dealer_seat": 1,
+    "pot_bb": "1.5",
+    "to_call_bb": "0.5",
+    "seat_stacks_bb": [
+      {
+        "seat_no": 1,
+        "stack_bb": "99.5"
+      },
+      {
+        "seat_no": 2,
+        "stack_bb": "99"
+      }
+    ],
+    "legal_actions": [
+      "fold",
+      "call",
+      "raise",
+      "all_in"
+    ]
+  },
+  "skipped_unmeasured_public_regions": [
+    "action:fold",
+    "action:call",
+    "action:raise",
+    "action:all_in"
+  ],
+  "public_label_source": "owned_practice_visible_dom_v1_not_model_prediction",
+  "suggestion_sha256": "ebfd0ed06c968d625b4e5bab5bdf89829e7903b079aaaf8e479a79de2a1dc192"
+}

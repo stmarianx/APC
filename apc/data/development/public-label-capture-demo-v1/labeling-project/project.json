@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "public-label-capture-demo",
+  "created_at": "2026-11-05T23:36:47.157705+00:00",
+  "environment": {
+    "source_kind": "controlled_training_table",
+    "provider_id": "apc-full-hand-browser",
+    "layout_id": "heads-up",
+    "theme_id": "local-practice",
+    "locale": "en-US",
+    "max_seats": 2,
+    "virtual_chips": true
+  },
+  "records": [
+    {
+      "sample_id": "public-label-capture-demo-v1-000000-02a07b700412",
+      "capture_session_id": "public-label-capture-demo-v1",
+      "sequence_index": 0,
+      "frame_path": "frames/public-label-capture-demo-v1/public-label-capture-demo-v1-000000-02a07b700412.png",
+      "sha256": "02a07b7004126656ecde6c42c4be76e9a7d8bfa6b92a7d276c6931b6449427d9",
+      "width": 1265,
+      "height": 864,
+      "timestamp_ms": 0,
+      "imported_at": "2026-11-05T23:36:52.165213+00:00",
+      "environment": {
+        "source_kind": "controlled_training_table",
+        "provider_id": "apc-full-hand-browser",
+        "layout_id": "heads-up",
+        "theme_id": "local-practice",
+        "locale": "en-US",
+        "max_seats": 2,
+        "virtual_chips": true
+      }
+    }
+  ]
+}
