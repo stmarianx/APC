@@ -61,7 +61,7 @@ class BrightRecoveryLocator:
 
 
 class BrightSurfaceReader(VerifiedCardReader):
-    def __init__(self,*args,wide_search=False,fast_components=False,fast_refinement=False,**kwargs):
+    def __init__(self,*args,wide_search=False,fast_components=False,fast_refinement=False,surface_rescue=False,**kwargs):
         super().__init__(*args,**kwargs)
         if "bounded_checkpoint_sha256" in self.verifier_metadata:
             self.verifier_metadata.update(route="bounded_surface_expert_else_ambiguous_expert",
@@ -70,6 +70,9 @@ class BrightSurfaceReader(VerifiedCardReader):
             from apc.perception.fast_refinement import FastRefinementLocator
             self.locator.locator = FastRefinementLocator(self.locator.locator)
         self.locator.locator = BrightRecoveryLocator(self.locator.locator,wide_search=wide_search,fast_components=fast_components)
+        if surface_rescue:
+            from apc.perception.surface_rescue import SurfaceRescueLocator
+            self.locator.locator = SurfaceRescueLocator(self.locator.locator)
 
 
 if __name__ == "__main__":
@@ -87,6 +90,7 @@ if __name__ == "__main__":
     parser.add_argument("--bounded-verifier-checkpoint",type=Path,help="Explicit experimental bounded-surface expert override")
     parser.add_argument("--fast-components",action="store_true",help="Opt-in vectorized recovery components")
     parser.add_argument("--fast-refinement",action="store_true",help="Opt-in vectorized adaptive locator refinement")
+    parser.add_argument("--surface-rescue",action="store_true",help="Supplement neural peaks with verified light-surface proposals")
     parser.add_argument("--checkpoint-dir",type=Path,default=Path(__file__).resolve().parents[1]/"checkpoints")
     args = parser.parse_args()
     p = args.checkpoint_dir
@@ -101,15 +105,17 @@ if __name__ == "__main__":
         locator_checkpoint=paths["locator"],refine_surfaces=True,adaptive_surfaces=True,
         deduplicate_surfaces=True,tiled_views=True,verifier_checkpoint=paths["verifier"],
         bounded_verifier_checkpoint=paths["bounded"],wide_search=args.wide_search,
-        fast_components=args.fast_components,fast_refinement=args.fast_refinement)
+        fast_components=args.fast_components,fast_refinement=args.fast_refinement,surface_rescue=args.surface_rescue)
     report = evaluate(args.collection,reader)
     report.update(experiment="bright_seed_wide_v2" if args.wide_search else "bright_seed_v1",promotion_authorized=False,
-        fast_components=args.fast_components,fast_refinement=args.fast_refinement,
+        fast_components=args.fast_components,fast_refinement=args.fast_refinement,surface_rescue=args.surface_rescue,
         candidate_source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         checkpoint_sha256={name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in paths.items()})
-    if args.fast_components or args.fast_refinement:
+    if args.fast_components or args.fast_refinement or args.surface_rescue:
         helpers = ["fast_components.py"]+(["fast_refinement.py"] if args.fast_refinement else [])
         report["component_source_sha256"] = {name:hashlib.sha256((Path(__file__).parent/name).read_bytes()).hexdigest() for name in helpers}
+    if args.surface_rescue:
+        report["surface_rescue_source_sha256"] = hashlib.sha256((Path(__file__).parent/"surface_rescue.py").read_bytes()).hexdigest()
     with args.output.open("x",encoding="utf-8") as output:
         output.write(json.dumps(report,indent=2)+"\n")
     print(json.dumps(report["totals"]))
