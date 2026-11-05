@@ -17,6 +17,12 @@ Legacy collections remain readable for reproducibility but are not retroactively
 
 ## Collector API
 
+## Import saved acquisitions into the labeling app
+
+`python -m apc.annotator.import_browser_acquisition PROJECT CAPTURE_JSON --session SESSION --timestamp-ms MEASURED_TIMESTAMP` imports the Python collector's saved manifest directly into a dedicated `apc-full-hand-browser` project. Supply the actual measured timestamp; the importer does not invent timing. It revalidates bytes, PNG dimensions, before/after evidence, labels and screenshot crop bounds before importing a frame. It creates a review suggestion, never an approved annotation or readiness credit. Sealed-audit captures are rejected; original audit collections must stay outside training. Existing review work is preserved. Rejected acquisition files remain unchanged at their source.
+
+The supported mapping for this importer is the capture provider's uniform-width-scale/top-left crop. Other providers require an explicit adapter before use. This removes manual conversion for saved Python acquisitions; the JavaScript adapter still needs an automatic persistence bridge.
+
 Real-browser adapter: `apc/capture/practice_browser_adapter.mjs` exports `observePracticeFrame(tab)` and `capturePracticeFrame(tab)` for an authorized browser tab exposing the documented Playwright/evaluate and screenshot APIs. It reads only APC's own visible card DOM, not private game state; it is labeling infrastructure, not the neural perception model. The single-frame demonstration at `apc/data/reference/capture-stability-demo-v1` verifies actual browser acquisition and loader integration. Automatic cross-runtime persistence/import remains unfinished.
 
 `apc.capture.browser_frame.capture_browser_frame(observe, screenshot)` accepts two async callbacks from the permitted browser adapter. `observe` must return the visible-only snapshot described above; `screenshot` must return PNG bytes. The collector calls observe, screenshot, observe exactly once, copies observations immediately, binds image dimensions/hash, validates stability and returns bytes plus eligibility/rejection evidence. It does not control a table, retry, or inspect model predictions.
