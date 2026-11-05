@@ -1,0 +1,26 @@
+{
+  "audit": "browser-routed-audit-v5",
+  "recognizer_sha256": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+  "detector_sha256": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273",
+  "verifier_sha256": "59b3cb7bf2d8c6b262fc59a73a6e00d8327ef72f71e2136f00c5aa6520c65aa3",
+  "bounded_verifier_sha256": "392ce66439a75015b13ad8f0f00349ebc523c82c0f62dd66034a95462a675a71",
+  "inference_options": {"adaptive_surfaces": true, "deduplicate_surfaces": true, "tiled_views": true},
+  "inference_source_sha256": {
+    "apc/perception/infer_cards.py": "0efbccb698cbb20a90f5003718502494530b6be589c1cc67b64f8b1dfb4dd9f8",
+    "apc/perception/infer_card_locator.py": "170277e4cbcaa87e1aeef5cd42c191be330423185e9abe8f7f38775d06a5ed9e",
+    "apc/perception/card_proposals.py": "20e85d64dc9ad15b75926f56037e0fe48fb281f5035badd3d26c81df451ddf8a",
+    "apc/perception/card_locator.py": "3ca40797d541aed97adb2942735987ef82472574d43684285ed397d6f9e9f89c",
+    "apc/perception/card_glyphs.py": "1ff3745b31edce7796c5e2756c39cd868ea1f59ffd4fe329be837eb32df607f0",
+    "apc/perception/card_verifier.py": "c7fc38ebfe7c9ad7da6b69fb33338b22c089bf750f18c1181a159228fd16cb69",
+    "apc/perception/verified_card_reader.py": "960bd080403e0cceb1d11cb45a6c7372040f196f7a6b27eb77c2d4390776a951"
+  },
+  "training_prohibited": true,
+  "weights_frozen_before_collection": true,
+  "maximum_frames": 9,
+  "frame_schedule": [["hand-1", "preflop"], ["hand-1", "river"], ["hand-2", "preflop"], ["hand-2", "river"], ["hand-3", "preflop"], ["hand-3", "river"], ["negative-1", "empty"], ["negative-2", "empty"], ["negative-3", "empty"]],
+  "frame_viewports": [[800,900],[800,900],[560,900],[560,900],[1280,900],[1280,900],[800,900],[560,900],[1280,900]],
+  "all_captures_retained_even_if_model_fails": true,
+  "negative_scene": "Existing static APC /audit-empty fixture, not a new negative design or an observed transition",
+  "scope": "One new same-application capture session, three hands and three resized views of one static negative fixture; not multi-session, cross-platform or transition validation",
+  "readiness_credit": false
+}
