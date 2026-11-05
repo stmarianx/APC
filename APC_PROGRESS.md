@@ -1,6 +1,8 @@
 # APC progress
 
-Updated: 2026-11-05 03:50 UTC. This is a saved checkpoint snapshot, not an always-running live dashboard.
+Routed audit v5: all nine planned frames are preserved with hashes and draft labels. The frozen scoring run completed; source/model/schedule/disjointness checks passed. Its provisional totals are 24/27 exact, three misses, four false proposals (all four produced high uncalibrated ink candidates), and zero confirmed identities. IMPORTANT: visual review found a vertical capture/label mismatch in h3-preflop-1280.png: recovered DOM y=536.40625 does not match the saved image card top near y=457 (image scale about 0.988). Non-atomic DOM/screenshot capture or scrolling is suspected; the exact cause is not yet verified. Do not interpret its two misses/two false proposals or aggregate recognition as valid accuracy until annotation review. Preserve the raw result unchanged. The wide empty scene independently has two false proposals; the compact preflop has one provisional miss. No audit images may enter training. Next: review every frame's geometry against saved pixels, version any corrections separately, and add an atomic/stability-checked collection workflow before another fresh audit. Temporary viewport override reset; capture server session 50932 stopped; no training job remains active.
+
+Updated: 2026-11-05. This is a saved checkpoint snapshot, not an always-running live dashboard.
 
 Current experiment — composite negatives and positive-appearance coverage:
 
