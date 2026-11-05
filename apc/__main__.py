@@ -66,6 +66,9 @@ def main():
     inspect.add_argument('--corner-symbols', action='store_true', help='Read separate rank and suit glyphs on light corner-indexed cards')
     inspect.add_argument('--neural-cards', action='store_true', help='Experimental neural localization plus surface-refined recognition; no coaching readiness')
     inspect.add_argument('--adaptive-glyphs', action='store_true', help='Opt-in full-face/corner glyph extraction; requires --neural-cards')
+    inspect.add_argument('--adaptive-surfaces', action='store_true', help='Opt-in bounded surface expansion; requires --neural-cards')
+    inspect.add_argument('--deduplicate-surfaces', action='store_true', help='Geometry-only deduplication; requires --adaptive-surfaces')
+    inspect.add_argument('--tiled-views', action='store_true', help='Experimental overlapping zoom views; requires --adaptive-surfaces')
     inspect.add_argument('--glyph-checkpoint', type=Path, help='Explicit experimental glyph weights; requires --neural-cards')
     inspect.add_argument('--locator-checkpoint', type=Path, help='Explicit experimental detector weights; requires --neural-cards')
     args = parser.parse_args()
@@ -82,6 +85,10 @@ def main():
     else:
         if args.adaptive_glyphs and not args.neural_cards:
             parser.error('--adaptive-glyphs requires --neural-cards')
+        if args.adaptive_surfaces and not args.neural_cards:
+            parser.error('--adaptive-surfaces requires --neural-cards')
+        if (args.deduplicate_surfaces or args.tiled_views) and not args.adaptive_surfaces:
+            parser.error('Surface deduplication/tiled views require --adaptive-surfaces')
         if args.glyph_checkpoint and not args.neural_cards:
             parser.error('--glyph-checkpoint requires --neural-cards')
         if args.locator_checkpoint and not args.neural_cards:
@@ -95,6 +102,8 @@ def main():
                    "refine_surfaces": True} if args.neural_cards else {}
         if args.adaptive_glyphs:
             options['surface_pairs'] = True
+        if args.adaptive_surfaces:
+            options.update(adaptive_surfaces=True, deduplicate_surfaces=args.deduplicate_surfaces, tiled_views=args.tiled_views)
         print(json.dumps(CardReader(checkpoint, corner_pairs=args.corner_symbols or args.neural_cards, **options).read(args.image), indent=2))
 
 

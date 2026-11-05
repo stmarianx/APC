@@ -14,12 +14,16 @@ from apc.perception.spatial_targets import load_split
 from apc.perception.region_model import RANKS, SUITS
 
 
-def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False, adaptive_surfaces=False):
+def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False, adaptive_surfaces=False, deduplicate_surfaces=False, tiled_views=False):
     options = {"corner_pairs": True} if corner_pairs else {}
     if adaptive_surfaces:
         if locator_checkpoint is None or not refine_surfaces:
             raise ValueError("Adaptive surfaces require a refined neural locator")
         options["adaptive_surfaces"] = True
+    if deduplicate_surfaces or tiled_views:
+        if not adaptive_surfaces:
+            raise ValueError("Surface deduplication/tiled views require adaptive refinement")
+        options.update(deduplicate_surfaces=deduplicate_surfaces, tiled_views=tiled_views)
     if surface_pairs:
         options["surface_pairs"] = True
     if locator_checkpoint is not None:
@@ -84,6 +88,8 @@ def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, l
     if adaptive_surfaces:
         from apc.perception.card_proposals import ADAPTIVE_SURFACE_VERSION
         totals["surface_refinement_version"] = ADAPTIVE_SURFACE_VERSION
+        totals.update(deduplicate_surfaces=deduplicate_surfaces, tiled_views=tiled_views,
+            added_view_policy="bounded_surfaces_only" if tiled_views else None)
     return totals
 
 
@@ -133,17 +139,19 @@ def main():
     parser.add_argument("--locator-checkpoint", type=Path)
     parser.add_argument("--refine-surfaces", action="store_true")
     parser.add_argument("--adaptive-surfaces", action="store_true")
+    parser.add_argument("--deduplicate-surfaces", action="store_true")
+    parser.add_argument("--tiled-views", action="store_true")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     torch.set_num_threads(1)
     if args.compare_crops:
-        if args.surface_pairs or args.locator_checkpoint or args.refine_surfaces or args.adaptive_surfaces:
+        if args.surface_pairs or args.locator_checkpoint or args.refine_surfaces or args.adaptive_surfaces or args.deduplicate_surfaces or args.tiled_views:
             parser.error("Extended extraction/locator options are currently supported only by the end-to-end audit")
         report = compare_crops(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols)
     else:
         report = evaluate_reader(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols,
             surface_pairs=args.surface_pairs, locator_checkpoint=args.locator_checkpoint, refine_surfaces=args.refine_surfaces,
-            adaptive_surfaces=args.adaptive_surfaces)
+            adaptive_surfaces=args.adaptive_surfaces, deduplicate_surfaces=args.deduplicate_surfaces, tiled_views=args.tiled_views)
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

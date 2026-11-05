@@ -16,6 +16,17 @@ from apc.perception.table_locator import _components
 ADAPTIVE_SURFACE_VERSION = "bounded_smaller_area_overlap_v2"
 
 
+def suppress_duplicate_surfaces(proposals, *, threshold=.9):
+    """Deduplicate converged boxes using geometry, never predicted identities."""
+    if not 0 < threshold <= 1:
+        raise ValueError("Duplicate overlap threshold must be in (0,1]")
+    retained = []
+    for proposal in sorted(proposals, key=lambda item: -item.get("score", 0)):
+        if not any(box_iou(proposal["box_xyxy"], other["box_xyxy"]) >= threshold for other in retained):
+            retained.append(proposal)
+    return retained
+
+
 def propose_cards(image_path: str | Path, *, analysis_width: int = 640):
     if analysis_width < 160:
         raise ValueError("analysis_width must be at least 160")

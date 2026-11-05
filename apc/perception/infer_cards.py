@@ -17,7 +17,7 @@ from apc.perception.card_glyphs import CardGlyphNetwork, SeparatedCardGlyphNetwo
 
 
 class CardReader:
-    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False, adaptive_surfaces=False):
+    def __init__(self, checkpoint: str | Path, *, confidence_threshold=.9, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False, adaptive_surfaces=False, deduplicate_surfaces=False, tiled_views=False):
         if not math.isfinite(confidence_threshold) or not 0 <= confidence_threshold <= 1:
             raise ValueError("confidence_threshold must be finite in [0,1]")
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
@@ -40,11 +40,16 @@ class CardReader:
         self.model.eval()
         self.pair_extraction = "surface_two_band_then_corner" if surface_pairs else ("upper_left_corner" if self.token_extractor is corner_pair_tensor else "not_paired")
         self.locator = None
+        self.proposal_options = dict(adaptive_surfaces=adaptive_surfaces, deduplicate_surfaces=deduplicate_surfaces,
+                                     tiled_views=tiled_views, added_view_policy="bounded_surfaces_only" if tiled_views else None)
+        if (deduplicate_surfaces or tiled_views) and not adaptive_surfaces:
+            raise ValueError("Surface deduplication/tiled views require adaptive refinement")
         if adaptive_surfaces and (locator_checkpoint is None or not refine_surfaces):
             raise ValueError("Adaptive surfaces require a refined neural locator")
         if locator_checkpoint is not None:
             from apc.perception.infer_card_locator import NeuralCardLocator
-            self.locator = NeuralCardLocator(locator_checkpoint, refine_surfaces=refine_surfaces, adaptive_surfaces=adaptive_surfaces)
+            self.locator = NeuralCardLocator(locator_checkpoint, refine_surfaces=refine_surfaces, adaptive_surfaces=adaptive_surfaces,
+                deduplicate_surfaces=deduplicate_surfaces, tiled_views=tiled_views)
         self.threshold = confidence_threshold
         self.max_image_dimension = saved.get("max_image_dimension", 1280)
 
@@ -90,6 +95,7 @@ class CardReader:
                 if item["status"] == "high_score_unvalidated" and identities.count(item["candidate"]) > 1:
                     item.update(card=None, status="duplicate_conflict")
         return {"schema_version": "1.0.0", "image_path": str(Path(image_path).resolve()),
+                "proposal_options": getattr(self, "proposal_options", {}),
                 "cards": cards, "elapsed_ms": (time.perf_counter() - started) * 1000,
                 "confidence_threshold": self.threshold, "confidence_calibrated": False,
                 "pair_extraction": getattr(self, "pair_extraction", "unspecified"),

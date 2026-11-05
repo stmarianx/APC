@@ -121,13 +121,16 @@ if __name__ == "__main__":
     parser.add_argument("--locator-checkpoint", type=Path, default=checkpoints / "card-locator-mixed-v1.pt")
     parser.add_argument("--pixel-proposals", action="store_true", help="Diagnostic light-surface proposal control; no neural locator")
     parser.add_argument("--adaptive-surfaces", action="store_true", help="Experimental bounded surface expansion")
+    parser.add_argument("--deduplicate-surfaces", action="store_true")
+    parser.add_argument("--tiled-views", action="store_true")
     args = parser.parse_args()
     if args.pixel_proposals and args.adaptive_surfaces:
         parser.error("Adaptive surfaces require neural proposals")
     torch.set_num_threads(2)
     reader = CardReader(args.glyph_checkpoint, corner_pairs=True,
         locator_checkpoint=None if args.pixel_proposals else args.locator_checkpoint,
-        refine_surfaces=True, surface_pairs=args.surface_pairs, adaptive_surfaces=args.adaptive_surfaces)
+        refine_surfaces=True, surface_pairs=args.surface_pairs, adaptive_surfaces=args.adaptive_surfaces,
+        deduplicate_surfaces=args.deduplicate_surfaces, tiled_views=args.tiled_views)
     report = evaluate(args.collection, reader)
     report["checkpoint_sha256"] = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
         for path in ([args.glyph_checkpoint] if args.pixel_proposals else [args.glyph_checkpoint, args.locator_checkpoint])}
@@ -135,6 +138,9 @@ if __name__ == "__main__":
     report["pair_extraction"] = "surface_two_band_then_corner" if args.surface_pairs else "upper_left_corner"
     report["proposal_mode"] = "light_surface_pixels" if args.pixel_proposals else "neural_locator_refined"
     report["surface_refinement"] = "none" if args.pixel_proposals else ("adaptive_bounded" if args.adaptive_surfaces else "legacy_fixed_roi")
+    report["deduplicate_surfaces"] = args.deduplicate_surfaces
+    report["tiled_views"] = args.tiled_views
+    report["added_view_policy"] = "bounded_surfaces_only" if args.tiled_views else None
     if args.adaptive_surfaces:
         from apc.perception.card_proposals import ADAPTIVE_SURFACE_VERSION
         report["surface_refinement_version"] = ADAPTIVE_SURFACE_VERSION
