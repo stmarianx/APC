@@ -81,6 +81,8 @@ def evaluate(collection, reader):
         targets = frame["targets"]
         result = reader.read(frame["image"])
         matched = match_proposals(result["cards"], targets)
+        matched_indices = {m["proposal_index"] for m in matched["matches"]}
+        spurious = [c for index, c in enumerate(result["cards"]) if index not in matched_indices]
         exact = sum(result["cards"][m["proposal_index"]]["candidate"] == targets[m["target_index"]]["identity"] for m in matched["matches"])
         # Oracle crops isolate recognizer/domain errors from detector/crop errors.
         with Image.open(frame["image"]) as image:
@@ -91,21 +93,31 @@ def evaluate(collection, reader):
                 parts = [glyph_tensor(image, target["regions"][kind], border_margin=False, background_rgb=background) for kind in ("rank", "suit")]
                 tokens.append(torch.cat([part[0] for part in parts]))
                 present.append(all(part[1] for part in parts))
-        with torch.no_grad():
-            predicted = reader.model(torch.stack(tokens))
-        identities = [RANKS[r] + SUITS[s] for r, s in zip(predicted["rank"].argmax(1).tolist(), predicted["suit"].argmax(1).tolist())]
+        identities = []
+        if tokens:
+            with torch.no_grad():
+                predicted = reader.model(torch.stack(tokens))
+            identities = [RANKS[r] + SUITS[s] for r, s in zip(predicted["rank"].argmax(1).tolist(), predicted["suit"].argmax(1).tolist())]
         rows.append({"image": frame["image"].name, "hand_group": frame["hand_group"],
             "viewport": frame["viewport"], "card_size": frame["card_size"],
             "screenshot_mapping": frame["screenshot_mapping"], "coordinate_extent": frame["coordinate_extent"],
             "targets": len(targets), "proposals": len(result["cards"]), "localized": len(matched["matches"]),
             "false_positives": len(result["cards"]) - len(matched["matches"]),
+            "spurious_ink_candidates": sum(c.get("candidate") is not None for c in spurious),
+            "spurious_high_score_candidates": sum(c.get("status") == "high_score_unvalidated" for c in spurious),
+            "elapsed_ms": result.get("elapsed_ms"),
             "missed_cards": len(targets) - len(matched["matches"]),
             "end_to_end_exact": exact, "oracle_glyph_exact": sum(ok and value == target["identity"] for ok, value, target in zip(present, identities, targets)),
             "oracle_candidates": identities, "confirmed_cards": sum(c["card"] is not None for c in result["cards"])})
-    totals = {key: sum(row[key] for row in rows) for key in ("targets", "proposals", "localized", "false_positives", "missed_cards", "end_to_end_exact", "oracle_glyph_exact", "confirmed_cards")}
+    totals = {key: sum(row[key] for row in rows) for key in ("targets", "proposals", "localized", "false_positives", "spurious_ink_candidates", "spurious_high_score_candidates", "missed_cards", "end_to_end_exact", "oracle_glyph_exact", "confirmed_cards")}
+    latency = [r["elapsed_ms"] for r in rows if isinstance(r["elapsed_ms"], (int, float)) and math.isfinite(r["elapsed_ms"])]
     return {"development_diagnostic_only": True, "draft_geometry": True,
         "capture_sessions": 1, "capture_session_id": data["capture_session_id"],
-        "hand_groups": len({row["hand_group"] for row in rows}), "frames": rows,
+        "hand_groups": len({row["hand_group"] for row in rows if row["targets"]}),
+        "observation_groups": len({row["hand_group"] for row in rows}),
+        "empty_frames": sum(not row["targets"] for row in rows), "frames": rows,
+        "observed_latency": {"samples": len(latency), "p95_ms": float(np.percentile(latency, 95)) if latency else None,
+            "scope": "One sequential pass, image I/O/proposals/glyph inference; excludes checkpoint loading and coaching backend; not a matched benchmark"},
         "unique_visible_identities": len({target["identity"] for frame in frames for target in frame["targets"]}),
         "collection_sha256": hashlib.sha256(Path(collection).read_bytes()).hexdigest(),
         "totals": totals, "training_performed": False, "full_table_readiness": False}

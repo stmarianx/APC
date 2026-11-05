@@ -22,6 +22,12 @@ class PracticeWebTests(unittest.TestCase):
                 return json.load(response)
         try:
             state = request("/api/state")["state"]
+            with urlopen(url + "/audit-empty", timeout=5) as response:
+                negative = response.read().decode("utf-8")
+            self.assertIn("static test scene", negative)
+            self.assertIn("not a captured gameplay transition", negative)
+            self.assertNotIn('class="card', negative)
+            self.assertEqual(request("/api/state")["state"], state)
             preview = request("/api/model-preview")
             self.assertEqual(preview["status"],"preview_disabled")
             self.assertEqual(preview["state_fingerprint"],state["state_fingerprint"])

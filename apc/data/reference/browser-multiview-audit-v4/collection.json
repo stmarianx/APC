@@ -1,0 +1,26 @@
+{
+  "schema_version": "apc_browser_card_development_v1",
+  "capture_session_id": "apc-browser-multiview-audit-v4-20261105",
+  "source": "apc_full_hand_browser_and_explicit_static_negative_fixture",
+  "virtual_chips": true,
+  "draft_only": true,
+  "readiness_credit": false,
+  "use_policy": "sealed_audit_no_training",
+  "screenshot_mapping": "uniform_width_scale_top_left_crop",
+  "review": "Visible card identities visually checked at capture; DOM-derived draft bounds; independent geometry review pending. Negative screenshots have provider-dependent cropping/scaling but no target boxes.",
+  "viewport": [960, 800],
+  "card_size": [62, 78],
+  "rank_region_offset_xywh": [6, 6, 50, 29.33333396911621],
+  "suit_region_offset_xywh": [6, 35.33332824707031, 50, 29.33333396911621],
+  "frames": [
+    {"image":"frames/h1-preflop-960.png","sha256":"577e565306dd2fc61a350364febe708d8173f1c26fc88431d45348fea84727b1","hand_group":"hand-1","street":"preflop","viewport":[960,800],"cards":[["hero","4h",365.3854370117187,536.40625],["hero","7h",435.3854370117187,536.40625]],"suit_region_offset_xywh":[6,35.3333740234375,50,29.33333396911621]},
+    {"image":"frames/h1-river-960.png","sha256":"e032903e0b2f03364080729635948f7d6c6e56a28c979feac299fdacb69bfe78","hand_group":"hand-1","street":"river","viewport":[960,800],"cards":[["board","6s",301.3333435058594,99.07292175292967],["board","9d",371.3333435058594,99.07292175292967],["board","Qh",441.3333435058594,99.07292175292967],["board","Ac",511.3333435058594,99.07292175292967],["board","3d",581.3333740234375,99.07292175292967],["hero","4h",372.15625,203.0729217529297],["hero","7h",442.15625,203.0729217529297]]},
+    {"image":"frames/h2-preflop-600.png","sha256":"4d16ef0cfd2ee0eac6d3ec99d93921bcff2709b000ae593479c5ce6c87201c1d","hand_group":"hand-2","street":"preflop","viewport":[600,800],"cards":[["hero","3s",185.3854217529297,544.7396240234375],["hero","6h",233.3854217529297,544.7396240234375]],"card_size":[44,64],"rank_region_offset_xywh":[6,6,32,24],"suit_region_offset_xywh":[6,30,32,24]},
+    {"image":"frames/h2-river-600.png","sha256":"18cc385c88aa2cf587eaeaf283c3442fd806670ec5d359a5055c5b1e69bd0519","hand_group":"hand-2","street":"river","viewport":[600,800],"cards":[["board","3d",174.33334350585938,114.07292175292967],["board","5c",222.33334350585935,114.07292175292967],["board","Kh",270.3333435058594,114.07292175292967],["board","Qh",318.3333435058594,114.07292175292967],["board","As",366.3333435058594,114.07292175292967],["hero","3s",192.15625,218.0729217529297],["hero","6h",240.15625,218.0729217529297]],"card_size":[44,64],"rank_region_offset_xywh":[6,6,32,24],"suit_region_offset_xywh":[6,30,32,24]},
+    {"image":"frames/h3-preflop-1440.png","sha256":"26a82e1ea55b2fbde62394754a481c7a08cf1717f311041812a4b27014382031","hand_group":"hand-3","street":"preflop","viewport":[1440,900],"cards":[["hero","5s",605.3854370117188,536.40625],["hero","5h",675.3854370117188,536.40625]],"suit_region_offset_xywh":[6,35.3333740234375,50,29.33333396911621]},
+    {"image":"frames/h3-river-1440.png","sha256":"b8b3bae59e7232b88eb9dc09ad90a2c2c2f0dc27c060fa0d1ab36707d197bcd5","hand_group":"hand-3","street":"river","viewport":[1440,900],"cards":[["board","Jd",541.3333740234375,149.0729217529297],["board","5c",611.3333740234375,149.0729217529297],["board","8h",681.3333740234375,149.0729217529297],["board","Kd",751.3333740234375,149.0729217529297],["board","3d",821.3333740234375,149.0729217529297],["hero","5s",612.15625,253.0729217529297],["hero","5h",682.15625,253.0729217529297]]},
+    {"image":"frames/negative-960.png","sha256":"b5d775f18e358b252f0920310c990504487d9d3566e2de56c7d3136c67c72307","hand_group":"negative-1","street":"empty","viewport":[960,800],"cards":[]},
+    {"image":"frames/negative-600.png","sha256":"0ff7b3b5b2df5239b9a08847a3050c8ea0c1fcfb529f9d94235ad9a2a565d5ad","hand_group":"negative-2","street":"empty","viewport":[600,800],"cards":[]},
+    {"image":"frames/negative-1440.png","sha256":"a4e2d3a1a76d64b601f1fe4da845009ba38299dd3fe0a9b92218baeeb574f227","hand_group":"negative-3","street":"empty","viewport":[1440,900],"cards":[]}
+  ]
+}

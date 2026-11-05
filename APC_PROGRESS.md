@@ -1,10 +1,10 @@
 # APC progress
 
-Updated: 2026-11-05 03:11 UTC. This is a saved checkpoint snapshot, not an always-running live dashboard.
+Updated: 2026-11-05 03:20 UTC. This is a saved checkpoint snapshot, not an always-running live dashboard.
 
-Current experiment — multi-view card detection:
+Current experiment — fresh multiview/negative-frame audit:
 
-`[██████████] 100% — optional multi-view candidate verified on reused references; fresh capture audit pending`
+`[██████████] 100% — fresh audit complete; false-positive/confidence failures recorded; no promotion`
 
 Current phase: visible-table perception research. Latest candidate: `apc/checkpoints/glyph-font-diversity-v1.pt`.
 
@@ -14,12 +14,12 @@ Current phase: visible-table perception research. Latest candidate: `apc/checkpo
 - Earlier audit images, reused as a reference: 34/34, improved from 32/34. This is not a fresh independent audit.
 - Prior font-model regressions: 34 passed. New viewport/mapping regressions: 17 passed. Default model and coaching readiness are unchanged.
 
-Latest viewport audit: 27/34 correct end-to-end, three false proposals and two missed cards. With supplied glyph boxes the recognizer gets 34/34. Compact-layout crop quality and wide-layout detection need work. A provider-specific screenshot-coordinate correction was visually checked; independent label review remains pending.
+Latest fresh audit v4: 27/27 visible card appearances correct across three new hands at three sizes, zero misses, but 24 false proposals (four gameplay, 20 on three static empty-scene captures). Seven false proposals produced ink-based identities; two had high unvalidated scores. No confirmed identities emitted. This is one same-application session, not cross-platform readiness. Independent geometry review remains pending.
 
-Latest completed work: identified the remaining wide-view misses as low neural detector scores. Optional overlapping zoom views with bounded-surface evidence recover both cards. Geometry-only suppression removes one duplicate compact proposal. Reused viewport identities now reach 34/34, with two false proposals and zero misses. Old development and reused audit-v2 each remain 34/34; synthetic retention remains 80/80, all with zero false proposals/misses. Unrestricted tiled proposals were rejected due to 118 false proposals. No neural weights or defaults changed. Saved-frame CLI inspection exposes the explicit candidate options; it still emits unconfirmed identities and unresolved roles.
+Latest completed work: froze weights/options/inference-source bytes before a planned nine-frame capture session; collected and retained all six gameplay and three explicit static negative screenshots. Added empty-frame scoring and frozen-configuration/source checks. Computer-use capture was limited to APC's own virtual-chip table/fixture; browser sizing restored and temporary server stopped. No neural training, weight changes or default promotion occurred. Earlier candidate retains 34/34 reused viewport identities and 80/80 synthetic retention, but those results do not override the fresh negative-scene failures.
 
-Next work: freeze the complete optional inference configuration for a new capture audit including multi-viewport, blank/transition frames and distractors; independently review geometry and measure matched latency. Two false proposals remain, so recall alone is not readiness. Detailed results and reproduction instructions: `apc/perception/baselines/tiled-surfaces-bounded-v1.experiment.md`. No training job remains running from this checkpoint.
+Next work: generate separate synthetic card-vs-controls/background/blank examples and train/evaluate proposal discrimination, including high-score errors. Keep all audit images excluded from training. Independently review geometry and measure matched latency; a new candidate will need another fresh audit. Detailed results and reproduction instructions: `apc/data/reference/browser-multiview-audit-v4/README.md`. No training or capture server remains running from this checkpoint.
 
-Verification for this checkpoint: 54 targeted regression tests passed, including tiled coordinate mapping, bounded added-view filtering, geometry deduplication, CLI model selection and desktop compatibility. Observed synthetic p95 approximately 305 ms; this is not a full-coach latency gate. Unrelated name-OCR edits were left untouched.
+Verification for this checkpoint: 40 targeted regression tests passed, covering frozen sources/options, complete capture schedule, empty-frame false positives, browser/table fixture, inference and application compatibility. Fresh observed one-pass p95 approximately 919 ms over nine frames, not a matched benchmark or full-coach latency gate. Unrelated name-OCR edits were left untouched.
 
 Overall APC: **in development, not coaching-ready**. There is no defensible overall completion percentage yet. Completion still needs independently evaluated full-table perception, temporally consistent state, uncertainty-aware player profiles, solver/GTO and neural-strategy integration, virtual-chip self-play/completed-hand improvement, fast audited BB recommendations, and a verified controlling application. Existing experimental components do not by themselves prove those requirements complete.
