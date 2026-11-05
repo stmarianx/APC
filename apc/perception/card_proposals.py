@@ -81,7 +81,7 @@ def scanline_components(mask):
     return [tuple(groups[key]) for key in sorted(groups)]
 
 
-def refine_card_surface(image, proposal, *, pixels=None):
+def refine_card_surface(image, proposal, *, pixels=None, adaptive=False):
     """Experimental local edge refinement, independent of card identity/labels."""
     width, height = image.size
     box = proposal["box_xyxy"]
@@ -91,6 +91,30 @@ def refine_card_surface(image, proposal, *, pixels=None):
     if pixels is None:
         pixels = np.asarray(image.convert("RGB"), dtype=np.float32)
     surface = np.median(pixels[y1:y2,x1:x2].reshape(-1,3), axis=0)
+    if adaptive:
+        original_area = (x2-x1)*(y2-y1)
+        for expansion in (.35, .7, 1.4):
+            dx, dy = round((x2-x1)*expansion), round((y2-y1)*expansion)
+            left, top = max(0, x1-dx), max(0, y1-dy)
+            right, bottom = min(width, x2+dx), min(height, y2+dy)
+            mask = np.abs(pixels[top:bottom, left:right]-surface).max(2) < 25
+            candidates = []
+            for a, b, c, d, area in scanline_components(mask):
+                # An ROI-clipped component is not evidence of a complete card.
+                if a == 0 or b == 0 or c == right-left or d == bottom-top:
+                    continue
+                bounds = [left+a, top+b, left+c, top+d]
+                candidate_area = (c-a)*(d-b)
+                intersection = max(0, min(x2, bounds[2])-max(x1, bounds[0])) * max(0, min(y2, bounds[3])-max(y1, bounds[1]))
+                if (.35 <= (c-a)/(d-b) <= 1.2 and area/candidate_area >= .55
+                        and .4*original_area <= candidate_area <= 8*original_area
+                        and intersection/original_area >= .7):
+                    candidate = [v/s for v, s in zip(bounds, (width, height, width, height))]
+                    candidates.append((intersection/original_area, area, candidate))
+            if candidates:
+                return dict(proposal, box_xyxy=max(candidates, key=lambda row: (row[0], row[1]))[2],
+                            refinement="adaptive_bounded_surface", expansion=expansion)
+        return dict(proposal, refinement="adaptive_no_bounded_surface")
     dx, dy = round((x2-x1)*.35), round((y2-y1)*.35)
     left, top, right, bottom = max(0,x1-dx), max(0,y1-dy), min(width,x2+dx), min(height,y2+dy)
     local = pixels[top:bottom,left:right]

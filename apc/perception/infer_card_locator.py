@@ -12,8 +12,11 @@ from apc.perception.card_locator import CardLocator, decode_locator
 
 
 class NeuralCardLocator:
-    def __init__(self, checkpoint, *, refine_surfaces=False):
+    def __init__(self, checkpoint, *, refine_surfaces=False, adaptive_surfaces=False):
         self.refine_surfaces = refine_surfaces
+        if adaptive_surfaces and not refine_surfaces:
+            raise ValueError("Adaptive surfaces require surface refinement")
+        self.adaptive_surfaces = adaptive_surfaces
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
         if (saved.get("model_kind") != "full_frame_neural_card_locator" or
                 saved.get("architecture_version") != "card-locator-v1" or saved.get("input_size") != [320, 184]):
@@ -33,7 +36,7 @@ class NeuralCardLocator:
         if self.refine_surfaces:
             from apc.perception.card_proposals import refine_card_surface
             original_pixels = np.asarray(original, dtype=np.float32)
-            proposals = [refine_card_surface(original, proposal, pixels=original_pixels) for proposal in proposals]
+            proposals = [refine_card_surface(original, proposal, pixels=original_pixels, adaptive=self.adaptive_surfaces) for proposal in proposals]
         return {"proposals": proposals, "elapsed_ms": (time.perf_counter()-started)*1000,
                 "confidence_calibrated": False, "full_table_readiness": False,
                 "limitation": "Experimental boxes only, no card identities or confirmed hero/board roles"}

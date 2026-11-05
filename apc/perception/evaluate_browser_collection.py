@@ -120,17 +120,21 @@ if __name__ == "__main__":
     parser.add_argument("--glyph-checkpoint", type=Path, default=checkpoints / "glyph-surface-pair-v1.pt")
     parser.add_argument("--locator-checkpoint", type=Path, default=checkpoints / "card-locator-mixed-v1.pt")
     parser.add_argument("--pixel-proposals", action="store_true", help="Diagnostic light-surface proposal control; no neural locator")
+    parser.add_argument("--adaptive-surfaces", action="store_true", help="Experimental bounded surface expansion")
     args = parser.parse_args()
+    if args.pixel_proposals and args.adaptive_surfaces:
+        parser.error("Adaptive surfaces require neural proposals")
     torch.set_num_threads(2)
     reader = CardReader(args.glyph_checkpoint, corner_pairs=True,
         locator_checkpoint=None if args.pixel_proposals else args.locator_checkpoint,
-        refine_surfaces=True, surface_pairs=args.surface_pairs)
+        refine_surfaces=True, surface_pairs=args.surface_pairs, adaptive_surfaces=args.adaptive_surfaces)
     report = evaluate(args.collection, reader)
     report["checkpoint_sha256"] = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
         for path in ([args.glyph_checkpoint] if args.pixel_proposals else [args.glyph_checkpoint, args.locator_checkpoint])}
     report["torch_version"] = str(torch.__version__)
     report["pair_extraction"] = "surface_two_band_then_corner" if args.surface_pairs else "upper_left_corner"
     report["proposal_mode"] = "light_surface_pixels" if args.pixel_proposals else "neural_locator_refined"
+    report["surface_refinement"] = "none" if args.pixel_proposals else ("adaptive_bounded" if args.adaptive_surfaces else "legacy_fixed_roi")
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

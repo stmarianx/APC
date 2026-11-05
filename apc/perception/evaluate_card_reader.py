@@ -14,8 +14,12 @@ from apc.perception.spatial_targets import load_split
 from apc.perception.region_model import RANKS, SUITS
 
 
-def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False):
+def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False, adaptive_surfaces=False):
     options = {"corner_pairs": True} if corner_pairs else {}
+    if adaptive_surfaces:
+        if locator_checkpoint is None or not refine_surfaces:
+            raise ValueError("Adaptive surfaces require a refined neural locator")
+        options["adaptive_surfaces"] = True
     if surface_pairs:
         options["surface_pairs"] = True
     if locator_checkpoint is not None:
@@ -125,16 +129,18 @@ def main():
     parser.add_argument("--surface-pairs", action="store_true", help="Experimental full-face two-band extraction")
     parser.add_argument("--locator-checkpoint", type=Path)
     parser.add_argument("--refine-surfaces", action="store_true")
+    parser.add_argument("--adaptive-surfaces", action="store_true")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     torch.set_num_threads(1)
     if args.compare_crops:
-        if args.surface_pairs or args.locator_checkpoint or args.refine_surfaces:
+        if args.surface_pairs or args.locator_checkpoint or args.refine_surfaces or args.adaptive_surfaces:
             parser.error("Extended extraction/locator options are currently supported only by the end-to-end audit")
         report = compare_crops(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols)
     else:
         report = evaluate_reader(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols,
-            surface_pairs=args.surface_pairs, locator_checkpoint=args.locator_checkpoint, refine_surfaces=args.refine_surfaces)
+            surface_pairs=args.surface_pairs, locator_checkpoint=args.locator_checkpoint, refine_surfaces=args.refine_surfaces,
+            adaptive_surfaces=args.adaptive_surfaces)
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
