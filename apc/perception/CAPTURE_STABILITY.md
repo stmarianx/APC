@@ -14,3 +14,9 @@ Retain rejected frames and their evidence for diagnosis; never replace samples b
 This is a stability check, not an atomic screenshot guarantee: identical endpoints do not exclude transient movement. Review image-space card and glyph rectangles over saved pixels independently before reporting validated accuracy. Provider scaling/cropping must still use an explicit mapping. This evidence provides no coaching-readiness credit.
 
 Legacy collections remain readable for reproducibility but are not retroactively certified. Evaluation reports count frames with validated stability evidence and explicitly leave pixel review false. Audit v5's original labels and result are preserved; its detected wide-preflop mismatch remains unresolved.
+
+## Collector API
+
+`apc.capture.browser_frame.capture_browser_frame(observe, screenshot)` accepts two async callbacks from the permitted browser adapter. `observe` must return the visible-only snapshot described above; `screenshot` must return PNG bytes. The collector calls observe, screenshot, observe exactly once, copies observations immediately, binds image dimensions/hash, validates stability and returns bytes plus eligibility/rejection evidence. It does not control a table, retry, or inspect model predictions.
+
+`save_browser_frame(result, folder)` writes `frame.png` and `capture.json` in a new folder only, retaining both eligible and rejected acquisitions. Existing folders are refused. Capture callback failures propagate without fabricating frames. Persistence errors must also propagate; a folder without `capture.json` is incomplete and must not be imported. Non-JSON-safe malformed observations cause persistence to fail before folder creation. This API is tested with controlled callbacks; an actual browser adapter and end-to-end capture demonstration are still required.
