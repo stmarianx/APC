@@ -14,6 +14,7 @@ from apc.perception.card_proposals import match_proposals
 from apc.perception.infer_cards import CardReader
 from apc.perception.region_model import RANKS, SUITS
 from apc.perception.capture_stability import validate_capture_stability
+from apc.perception.pixel_alignment import PixelAlignment
 
 
 def load_collection(path):
@@ -27,13 +28,17 @@ def load_collection(path):
     card_width, card_height = data["card_size"]
     if not all(math.isfinite(v) and v > 0 for v in (width, height, card_width, card_height)):
         raise ValueError("Invalid DOM dimensions")
+    alignment = None
     def box(x, y, w, h):
+        if alignment is not None:
+            return alignment.box(x, y, w, h)
         values = [x / width, y / height, (x + w) / width, (y + h) / height]
         if not all(math.isfinite(v) for v in values) or not (0 <= values[0] < values[2] <= 1 and 0 <= values[1] < values[3] <= 1):
             raise ValueError("Box outside DOM viewport")
         return values
     frames = []
     for row in data["frames"]:
+        alignment = None
         width, height = row.get("viewport", data["viewport"])
         card_width, card_height = row.get("card_size", data["card_size"])
         if not all(math.isfinite(v) and v > 0 for v in (width, height, card_width, card_height)):
@@ -50,7 +55,11 @@ def load_collection(path):
                     viewport=[width, height], cards=row["cards"])
         viewport = [width, height]
         mapping = row.get("screenshot_mapping", data.get("screenshot_mapping", "normalized_viewport"))
-        if mapping == "uniform_width_scale_top_left_crop":
+        if mapping == "measured_pixel_alignment_v1":
+            with Image.open(image) as captured:
+                alignment = PixelAlignment(row.get("pixel_alignment"), image_sha256=row["sha256"],
+                                           image_size=captured.size, viewport=viewport)
+        elif mapping == "uniform_width_scale_top_left_crop":
             # This explicit capture-provider mapping preserves scale when the
             # screenshot is cropped vertically, rather than stretching labels.
             with Image.open(image) as captured:

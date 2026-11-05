@@ -11,6 +11,40 @@ COLLECTION = Path(__file__).resolve().parents[1] / "data/development/browser-dom
 
 
 class BrowserCollectionTests(unittest.TestCase):
+    def test_measured_pixel_mapping_is_used_for_cards_and_glyphs(self):
+        source = Path(__file__).resolve().parents[1]/"data/reference/capture-stability-demo-v1"
+        data = json.loads((source/"collection.json").read_text())
+        row = data["frames"][0]
+        data["frames"] = [row]
+        row["image"] = "frame.jpg"
+        from PIL import Image
+        with Image.open(source/"frame.png") as image:
+            iw, ih = image.size
+        vw, vh = row.get("viewport", data["viewport"])
+        # Controlled test correspondences, not real capture approval.
+        scale = min(iw/vw, ih/vh) * .9
+        row["screenshot_mapping"] = "measured_pixel_alignment_v1"
+        row["pixel_alignment"] = {"schema_version": "apc_pixel_alignment_v1",
+            "image_sha256": row["sha256"], "image_size": [iw, ih], "viewport": [vw, vh],
+            "measurement_method": "manual_visible_landmarks",
+            "anchors": [{"description": str(i), "dom_xy": [x, y],
+                         "pixel_xy": [x*scale+1, y*scale+1]}
+                        for i, (x, y) in enumerate(((0,0),(vw,0),(0,vh),(vw,vh)))]}
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            shutil.copyfile(source/"frame.png", root/"frame.jpg")
+            path = root/"collection.json"
+            path.write_text(json.dumps(data))
+            _, frames = load_collection(path)
+            x, y = row["cards"][0][2:]
+            self.assertAlmostEqual(frames[0]["targets"][0]["box_xyxy"][0], (x*scale+1)/iw)
+            self.assertAlmostEqual(frames[0]["targets"][0]["box_xyxy"][1], (y*scale+1)/ih)
+            self.assertIn("rank", frames[0]["targets"][0]["regions"])
+            row.pop("pixel_alignment")
+            path.write_text(json.dumps(data))
+            with self.assertRaisesRegex(ValueError, "alignment evidence"):
+                load_collection(path)
+
     def test_native_jpeg_with_stability_evidence_loads_without_transcoding(self):
         source = Path(__file__).resolve().parents[1]/"data/reference/capture-stability-demo-v1"
         data = json.loads((source/"collection.json").read_text())
