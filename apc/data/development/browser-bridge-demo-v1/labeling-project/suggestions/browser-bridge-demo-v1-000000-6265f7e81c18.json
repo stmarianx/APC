@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "sample_id": "browser-bridge-demo-v1-000000-6265f7e81c18",
+  "capture_session_id": "browser-bridge-demo-v1",
+  "sequence_index": 0,
+  "image": {
+    "path": "../frames/browser-bridge-demo-v1/browser-bridge-demo-v1-000000-6265f7e81c18.png",
+    "sha256": "6265f7e81c182a7eb2ba659e0570758e758370fdc5cf10fb3b7b51369174e862",
+    "width": 1265,
+    "height": 712,
+    "timestamp_ms": 0
+  },
+  "environment": {
+    "source_kind": "controlled_training_table",
+    "provider_id": "apc-full-hand-browser",
+    "layout_id": "heads-up",
+    "theme_id": "practice",
+    "locale": "en-US",
+    "max_seats": 2,
+    "virtual_chips": true
+  },
+  "kind": "apc_capture_metadata_suggestion",
+  "review_required": true,
+  "capture_import_version": "stable_browser_acquisition_v1",
+  "auto_applied": false,
+  "model_status": "visible_dom_draft_not_model_prediction",
+  "metadata_sha256": "e325312db3fd99ebddefdbe2519433c7acf0947eebbae6c160432f2f17d35754",
+  "source_image_sha256": "5b9e5fba4863ba824a3180b099c42558976318e624ca9c7c60d624dd8143603c",
+  "source_image_format": "JPEG",
+  "image_derivation": "decoded_rgb_lossless_png",
+  "screenshot_binding": "hash_dimensions_and_before_after_geometry_validated",
+  "capture_stability": {
+    "schema_version": "apc_capture_stability_v1",
+    "image_sha256": "5b9e5fba4863ba824a3180b099c42558976318e624ca9c7c60d624dd8143603c",
+    "image_size": [
+      1265,
+      712
+    ],
+    "before": {
+      "cards": [
+        [
+          "hero",
+          "7h",
+          525.3854370117188,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "4d",
+          595.3854370117188,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    "after": {
+      "cards": [
+        [
+          "hero",
+          "7h",
+          525.3854370117188,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "4d",
+          595.3854370117188,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        1280,
+        720
+      ]
+    }
+  },
+  "suggested_objects": {
+    "hero_cards": [
+      {
+        "box": {
+          "x": 0.4104573726654053,
+          "y": 0.7445508978340063,
+          "width": 0.0484375,
+          "height": 0.10826676615168539
+        }
+      },
+      {
+        "box": {
+          "x": 0.4651448726654053,
+          "y": 0.7445508978340063,
+          "width": 0.0484375,
+          "height": 0.10826676615168539
+        }
+      }
+    ],
+    "board_cards": []
+  },
+  "draft_card_labels": {
+    "hero_cards": [
+      "7h",
+      "4d"
+    ],
+    "board": []
+  },
+  "pixel_geometry_reviewed": false,
+  "readiness_counts_added": false,
+  "suggestion_sha256": "87cad354403105304df50bbee4f51a39d7f6ea8e8f24d1b86b0ce212881ecc74"
+}

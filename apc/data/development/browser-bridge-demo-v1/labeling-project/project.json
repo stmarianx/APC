@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "browser-bridge-demo-v1",
+  "created_at": "2026-11-05T20:06:39.349290+00:00",
+  "environment": {
+    "source_kind": "controlled_training_table",
+    "provider_id": "apc-full-hand-browser",
+    "layout_id": "heads-up",
+    "theme_id": "practice",
+    "locale": "en-US",
+    "max_seats": 2,
+    "virtual_chips": true
+  },
+  "records": [
+    {
+      "sample_id": "browser-bridge-demo-v1-000000-6265f7e81c18",
+      "capture_session_id": "browser-bridge-demo-v1",
+      "sequence_index": 0,
+      "frame_path": "frames/browser-bridge-demo-v1/browser-bridge-demo-v1-000000-6265f7e81c18.png",
+      "sha256": "6265f7e81c182a7eb2ba659e0570758e758370fdc5cf10fb3b7b51369174e862",
+      "width": 1265,
+      "height": 712,
+      "timestamp_ms": 0,
+      "imported_at": "2026-11-05T20:06:39.721334+00:00",
+      "environment": {
+        "source_kind": "controlled_training_table",
+        "provider_id": "apc-full-hand-browser",
+        "layout_id": "heads-up",
+        "theme_id": "practice",
+        "locale": "en-US",
+        "max_seats": 2,
+        "virtual_chips": true
+      }
+    }
+  ]
+}

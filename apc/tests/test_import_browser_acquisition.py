@@ -8,7 +8,7 @@ import shutil
 import subprocess
 import unittest
 
-from PIL import Image
+from PIL import Image, ImageChops
 
 from apc.annotator.import_browser_acquisition import import_acquisition
 from apc.annotator.project import AnnotationProject
@@ -119,6 +119,25 @@ await saveBrowserAcquisition({png:await readFile(image),before:snapshot,after:st
         self.assertEqual(suggestion["image_derivation"],"decoded_rgb_lossless_png")
         self.assertEqual(suggestion["source_image_sha256"],hashlib.sha256(jpeg.read_bytes()).hexdigest())
         self.assertEqual((destination / "frame.jpg").read_bytes(),jpeg.read_bytes())
+
+
+class RealBrowserBridgeEvidenceTests(unittest.TestCase):
+    def test_actual_capture_derivative_and_suggestion_match_source_pixels(self):
+        root = Path(__file__).resolve().parents[1] / "data/development/browser-bridge-demo-v1"
+        acquisition = json.loads((root / "capture.json").read_text())
+        project = AnnotationProject(root / "labeling-project")
+        self.assertEqual(len(project.records),1)
+        record = project.records[0]
+        suggestion = project.load_suggestion(record.sample_id)
+        self.assertIsNone(project.load_annotation(record.sample_id))
+        self.assertEqual(suggestion["source_image_sha256"],acquisition["sha256"])
+        self.assertFalse(suggestion["auto_applied"])
+        self.assertEqual(suggestion["draft_card_labels"]["hero_cards"],["7h","4d"])
+        self.assertEqual(hashlib.sha256((root / acquisition["image"]).read_bytes()).hexdigest(),acquisition["sha256"])
+        with Image.open(root / acquisition["image"]) as source, Image.open(project.root / record.frame_path) as derivative:
+            self.assertEqual(source.format,"JPEG")
+            self.assertEqual(derivative.format,"PNG")
+            self.assertIsNone(ImageChops.difference(source.convert("RGB"),derivative.convert("RGB")).getbbox())
 
 
 if __name__ == "__main__":
