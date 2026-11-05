@@ -6,7 +6,7 @@
   "draft_only": true,
   "readiness_credit": false,
   "use_policy": "sealed_audit_no_training",
-  "collection_status": "incomplete_2_of_9_no_scoring",
+  "collection_status": "incomplete_3_of_9_no_scoring",
   "screenshot_mapping": "uniform_width_scale_top_left_crop",
   "viewport": [800, 900],
   "card_size": [62, 78],
@@ -15,5 +15,6 @@
   "frames": [
     {"image": "frames/h1-preflop-800.png", "sha256": "96d896cdf215cf954c1a36b38927ebc9a43b71979e0e56d73e728d4714a27fe8", "hand_group": "hand-1", "street": "preflop", "cards": [["hero", "As", 285.38543701171875, 536.40625], ["hero", "Qh", 355.38543701171875, 536.40625]]},
     {"image": "frames/h1-river-800.png", "sha256": "afc6b3dbed56de996b5ea28fed0a47d8827adaa1c88feafcc053097be6283e54", "hand_group": "hand-1", "street": "river", "cards": [["board", "4d", 221.33334350585935, 149.0729217529297], ["board", "Jc", 291.3333435058594, 149.0729217529297], ["board", "Tc", 361.3333435058594, 149.0729217529297], ["board", "Qc", 431.3333435058594, 149.0729217529297], ["board", "6d", 501.3333435058594, 149.0729217529297], ["hero", "As", 292.15625, 253.0729217529297], ["hero", "Qh", 362.15625, 253.0729217529297]]}
+    ,{"image": "frames/h2-preflop-560.png", "sha256": "dacd7654085db0929a0217801d9ffa11edd1c34c1066152ce68ad0b54d2aa031", "hand_group": "hand-2", "street": "preflop", "viewport": [560,900], "card_size": [44,64], "rank_region_offset_xywh": [6,6,32,24], "suit_region_offset_xywh": [6,30,32,24], "cards": [["hero","4c",165.3854217529297,544.7396240234375],["hero","6c",213.3854217529297,544.7396240234375]]}
   ]
 }
