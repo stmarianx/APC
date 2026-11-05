@@ -23,6 +23,17 @@ class BrightSurfaceTests(unittest.TestCase):
         proposal = {"box_xyxy":[.2,.2,.8,.8],"refinement":"adaptive_bounded_surface"}
         self.assertEqual(recover_surface(Image.new("RGB",(100,100),"white"),proposal),proposal)
 
+    def test_wide_search_recovers_card_clipped_by_narrow_proposal_roi(self):
+        image = Image.new("RGB",(560,900),(20,50,30))
+        draw = ImageDraw.Draw(image)
+        draw.rounded_rectangle((223,540,266,603),radius=5,fill=(245,243,233))
+        draw.rounded_rectangle((269,540,312,603),radius=5,fill=(245,243,233))
+        proposal = {"box_xyxy":[225/560,540/900,242/560,611/900],"refinement":"adaptive_no_bounded_surface"}
+        self.assertEqual(recover_surface(image,proposal),proposal)
+        recovered = recover_surface(image,proposal,wide_search=True)
+        self.assertEqual(recovered["box_xyxy"],[223/560,540/900,267/560,604/900])
+        self.assertEqual(recovered["surface_recovery"],"bright_seed_wide_v2")
+
 
 if __name__ == "__main__":
     unittest.main()

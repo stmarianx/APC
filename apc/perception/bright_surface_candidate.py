@@ -6,7 +6,7 @@ from apc.perception.card_proposals import scanline_components, suppress_duplicat
 from apc.perception.verified_card_reader import VerifiedCardReader
 
 
-def recover_surface(image,proposal,pixels=None):
+def recover_surface(image,proposal,pixels=None,*,wide_search=False):
     if proposal.get("refinement") == "adaptive_bounded_surface":
         return dict(proposal)
     pixels = np.asarray(image.convert("RGB"),dtype=np.float32) if pixels is None else pixels
@@ -20,7 +20,8 @@ def recover_surface(image,proposal,pixels=None):
         return dict(proposal)
     surface = np.median(bright,axis=0)
     original_area = (x2-x1)*(y2-y1)
-    for expansion in (.35,.7,1.4):
+    expansions = (.35,.7,1.4,2.8) if wide_search else (.35,.7,1.4)
+    for expansion in expansions:
         dx,dy = round((x2-x1)*expansion),round((y2-y1)*expansion)
         left,top,right,bottom = max(0,x1-dx),max(0,y1-dy),min(width,x2+dx),min(height,y2+dy)
         mask = np.abs(pixels[top:bottom,left:right]-surface).max(2) < 25
@@ -38,26 +39,27 @@ def recover_surface(image,proposal,pixels=None):
         if candidates:
             bounds = max(candidates,key=lambda row:(row[0],row[1]))[2]
             return dict(proposal,box_xyxy=[v/s for v,s in zip(bounds,image.size*2)],
-                        refinement="adaptive_bounded_surface",surface_recovery="bright_seed_v1")
+                        refinement="adaptive_bounded_surface",surface_recovery="bright_seed_wide_v2" if wide_search else "bright_seed_v1")
     return dict(proposal)
 
 
 class BrightRecoveryLocator:
-    def __init__(self,locator):
+    def __init__(self,locator,*,wide_search=False):
         self.locator = locator
+        self.wide_search = wide_search
 
     def propose(self,path):
         result = self.locator.propose(path)
         with Image.open(path) as image:
             pixels = np.asarray(image.convert("RGB"),dtype=np.float32)
-            proposals = [recover_surface(image,p,pixels) for p in result["proposals"]]
-        return dict(result,proposals=suppress_duplicate_surfaces(proposals),surface_recovery="bright_seed_v1")
+            proposals = [recover_surface(image,p,pixels,wide_search=self.wide_search) for p in result["proposals"]]
+        return dict(result,proposals=suppress_duplicate_surfaces(proposals),surface_recovery="bright_seed_wide_v2" if self.wide_search else "bright_seed_v1")
 
 
 class BrightSurfaceReader(VerifiedCardReader):
-    def __init__(self,*args,**kwargs):
+    def __init__(self,*args,wide_search=False,**kwargs):
         super().__init__(*args,**kwargs)
-        self.locator.locator = BrightRecoveryLocator(self.locator.locator)
+        self.locator.locator = BrightRecoveryLocator(self.locator.locator,wide_search=wide_search)
 
 
 if __name__ == "__main__":
@@ -70,6 +72,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("collection",type=Path)
     parser.add_argument("--output",type=Path,required=True)
+    parser.add_argument("--wide-search",action="store_true",help="Opt-in v2 extra expansion for narrow proposals")
     parser.add_argument("--checkpoint-dir",type=Path,default=Path(__file__).resolve().parents[1]/"checkpoints")
     args = parser.parse_args()
     p = args.checkpoint_dir
@@ -79,9 +82,9 @@ if __name__ == "__main__":
     reader = BrightSurfaceReader(paths["glyph"],corner_pairs=True,surface_pairs=True,
         locator_checkpoint=paths["locator"],refine_surfaces=True,adaptive_surfaces=True,
         deduplicate_surfaces=True,tiled_views=True,verifier_checkpoint=paths["verifier"],
-        bounded_verifier_checkpoint=paths["bounded"])
+        bounded_verifier_checkpoint=paths["bounded"],wide_search=args.wide_search)
     report = evaluate(args.collection,reader)
-    report.update(experiment="bright_seed_v1",promotion_authorized=False,
+    report.update(experiment="bright_seed_wide_v2" if args.wide_search else "bright_seed_v1",promotion_authorized=False,
         candidate_source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         checkpoint_sha256={name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in paths.items()})
     with args.output.open("x",encoding="utf-8") as output:
