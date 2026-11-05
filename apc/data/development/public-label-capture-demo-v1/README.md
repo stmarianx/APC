@@ -40,3 +40,27 @@ Temporary browser sizing was reset and the local server stopped. Next: add
 visible landmark coverage around controls, independently review complete labels,
 then expand to additional hands, streets and layouts. No neural recognition,
 strategy quality, speed or visible-table readiness claim follows from this demo.
+
+## Extended controls measurement v2
+
+`second/measurement-controls-v2.json` adds four manually measured visible button
+border extrema to the original four table anchors. Its DOM positions are derived
+only from `public_regions.action_buttons` rectangles already preserved in both
+capture endpoint snapshots. The binder requires all original table anchors and
+rejects unknown descriptions, changed DOM coordinates and duplicate controls.
+The raw capture, original measurement, initial project and initial review are
+unchanged. No new screenshot was taken for this extension.
+
+`review-controls-v2/overlay.png` now contains nine mapped regions: two card faces,
+two seats, pot, and fold/call/raise/all_in buttons. None are skipped. Developer
+visual inspection found button outlines on the corresponding visible controls.
+Independent review remains pending; these are still incomplete, unapproved
+full-table annotations and not model predictions. This is the **same source
+frame**, not an additional dataset example or independent capture session.
+
+Reproduce in a fresh dedicated `apc-full-hand-browser` annotation project using
+`import_browser_acquisition` with the v2 measurement, session
+`public-label-capture-demo-v1`, timestamp 0, then `review_capture_suggestion` into a
+new folder. The local comparison project is ignored under
+`apc/runs/public-controls-import-v2`; regression tests reconstruct it in a new
+temporary project and compare the fingerprinted review report exactly.

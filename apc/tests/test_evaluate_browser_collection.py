@@ -30,6 +30,9 @@ class BrowserCollectionTests(unittest.TestCase):
             "anchors": [{"description": str(i), "dom_xy": [x, y],
                          "pixel_xy": [x*scale+1, y*scale+1]}
                         for i, (x, y) in enumerate(((0,0),(vw,0),(0,vh),(vw,vh)))]}
+        for end in ("before","after"):
+            row["capture_stability"][end]["alignment_landmarks"] = [
+                {key:a[key] for key in ("description","dom_xy")} for a in row["pixel_alignment"]["anchors"]]
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             shutil.copyfile(source/"frame.png", root/"frame.jpg")

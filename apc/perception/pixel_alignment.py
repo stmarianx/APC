@@ -8,6 +8,61 @@ import math
 import numpy as np
 
 
+def validate_alignment_landmarks(measured, snapshot):
+    """Bind manual correspondences to recorded visible DOM, including controls.
+
+    Optional control extrema are derived from immutable observed rectangles; no
+    new DOM positions or screenshot pixel locations are invented here.
+    """
+    declared=snapshot.get("alignment_landmarks")
+    if not isinstance(declared,list) or not declared:
+        raise ValueError("Missing captured alignment landmarks")
+    available={}
+    for anchor in declared:
+        if not isinstance(anchor,dict) or not isinstance(anchor.get("description"),str):
+            raise ValueError("Invalid captured alignment landmark")
+        name=anchor["description"]
+        if name in available:
+            raise ValueError("Duplicate captured alignment landmark")
+        available[name]=anchor.get("dom_xy")
+    base_names=set(available)
+    public=snapshot.get("public_regions")
+    if public is not None:
+        if not isinstance(public,dict) or public.get("source") != "owned_practice_visible_dom_v1":
+            raise ValueError("Unsupported captured public landmark source")
+        buttons=public.get("action_buttons")
+        if not isinstance(buttons,list):
+            raise ValueError("Missing captured control rectangles")
+        for row in buttons:
+            if not isinstance(row,dict) or row.get("action") not in {"fold","check","call","bet","raise","all_in"}:
+                raise ValueError("Invalid captured control")
+            values=row.get("box_xywh")
+            if (not isinstance(values,list) or len(values)!=4
+                    or any(type(v) not in (int,float) or not math.isfinite(v) for v in values)
+                    or values[2]<=0 or values[3]<=0):
+                raise ValueError("Invalid captured control rectangle")
+            x,y,w,h=values
+            for edge,point in (("top",[x+w/2,y]),("right",[x+w,y+h/2]),
+                               ("bottom",[x+w/2,y+h]),("left",[x,y+h/2])):
+                name=f"action {row['action']} outer border {edge} midpoint"
+                if name in available:
+                    raise ValueError("Duplicate captured control landmark")
+                available[name]=point
+    anchors=measured.get("anchors")
+    if not isinstance(anchors,list):
+        raise ValueError("Missing measured landmarks")
+    seen=set()
+    for anchor in anchors:
+        if not isinstance(anchor,dict):
+            raise ValueError("Invalid measured landmark")
+        name=anchor.get("description")
+        if not isinstance(name,str) or name in seen or name not in available or anchor.get("dom_xy")!=available[name]:
+            raise ValueError("Measured landmarks do not match captured DOM evidence")
+        seen.add(name)
+    if not base_names.issubset(seen):
+        raise ValueError("Measured landmarks must retain all captured table anchors")
+
+
 class PixelAlignment:
     def __init__(self, evidence, *, image_sha256, image_size, viewport):
         if not isinstance(evidence, dict) or evidence.get("schema_version") != "apc_pixel_alignment_v1":

@@ -14,7 +14,7 @@ from apc.perception.card_proposals import match_proposals
 from apc.perception.infer_cards import CardReader
 from apc.perception.region_model import RANKS, SUITS
 from apc.perception.capture_stability import validate_capture_stability
-from apc.perception.pixel_alignment import PixelAlignment
+from apc.perception.pixel_alignment import PixelAlignment, validate_alignment_landmarks
 
 
 def load_collection(path):
@@ -59,6 +59,10 @@ def load_collection(path):
             with Image.open(image) as captured:
                 alignment = PixelAlignment(row.get("pixel_alignment"), image_sha256=row["sha256"],
                                            image_size=captured.size, viewport=viewport)
+            stability=row.get("capture_stability")
+            if not isinstance(stability,dict):
+                raise ValueError("Measured alignment requires captured DOM stability evidence")
+            validate_alignment_landmarks(row["pixel_alignment"],stability["before"])
         elif mapping == "uniform_width_scale_top_left_crop":
             # This explicit capture-provider mapping preserves scale when the
             # screenshot is cropped vertically, rather than stretching labels.

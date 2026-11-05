@@ -8,7 +8,7 @@ from pathlib import Path
 from PIL import Image
 
 from apc.perception.capture_stability import validate_capture_stability
-from apc.perception.pixel_alignment import PixelAlignment
+from apc.perception.pixel_alignment import PixelAlignment, validate_alignment_landmarks
 
 
 def prepare(capture, measurement, output, *, session_id="measured-alignment-demo-v1"):
@@ -30,9 +30,7 @@ def prepare(capture, measurement, output, *, session_id="measured-alignment-demo
                                viewport=viewport, cards=data["cards"])
     measured = json.loads(measurement.read_text(encoding="utf-8"))
     alignment = PixelAlignment(measured, image_size=size, image_sha256=digest, viewport=viewport)
-    declared = stability["before"]["alignment_landmarks"]
-    if ([{k: a[k] for k in ("description", "dom_xy")} for a in measured["anchors"]] != declared):
-        raise ValueError("Measured landmarks do not match captured DOM evidence")
+    validate_alignment_landmarks(measured,stability["before"])
     cards = stability["before"]["cards"]
     if not cards or len({tuple(c[4:]) for c in cards}) != 1:
         raise ValueError("Expected nonempty uniform practice card dimensions")

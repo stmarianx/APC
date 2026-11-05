@@ -1,0 +1,93 @@
+{
+  "sample_id": "public-label-capture-demo-v1-000000-02a07b700412",
+  "source_image_sha256": "02a07b7004126656ecde6c42c4be76e9a7d8bfa6b92a7d276c6931b6449427d9",
+  "suggestion_sha256": "ebcd7d71851d374b9420336b575a7b7b103c97ccd5ecf66f807ec053718e7928",
+  "objects": [
+    {
+      "label": "hero_cards:1",
+      "pixel_xyxy": [
+        519,
+        530,
+        580,
+        607
+      ]
+    },
+    {
+      "label": "hero_cards:2",
+      "pixel_xyxy": [
+        588,
+        530,
+        649,
+        607
+      ]
+    },
+    {
+      "label": "seat 1 99.5 BB",
+      "pixel_xyxy": [
+        495,
+        518,
+        755,
+        640
+      ]
+    },
+    {
+      "label": "seat 2 99 BB",
+      "pixel_xyxy": [
+        535,
+        257,
+        715,
+        378
+      ]
+    },
+    {
+      "label": "fold",
+      "pixel_xyxy": [
+        400,
+        702,
+        452,
+        748
+      ]
+    },
+    {
+      "label": "call",
+      "pixel_xyxy": [
+        452,
+        702,
+        500,
+        748
+      ]
+    },
+    {
+      "label": "raise",
+      "pixel_xyxy": [
+        500,
+        702,
+        608,
+        748
+      ]
+    },
+    {
+      "label": "all_in",
+      "pixel_xyxy": [
+        608,
+        702,
+        668,
+        748
+      ]
+    },
+    {
+      "label": "pot 1.5 BB",
+      "pixel_xyxy": [
+        647,
+        392,
+        670,
+        413
+      ]
+    }
+  ],
+  "skipped_unmeasured_regions": [],
+  "review_status": "pending",
+  "independent_review": false,
+  "readiness_credit": false,
+  "model_used": false
+}

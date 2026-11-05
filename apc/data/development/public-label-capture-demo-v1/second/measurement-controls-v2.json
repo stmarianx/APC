@@ -1,0 +1,17 @@
+{
+  "schema_version":"apc_pixel_alignment_v1",
+  "image_sha256":"47ebdd32f541628556508fd9e288b1bd8556f0b44084a97236d1abff843ef709",
+  "image_size":[1265,864],"viewport":[1280,900],
+  "measurement_method":"manual_visible_landmarks",
+  "measurement_notes":"Developer native-image visible border extrema measurements, extended to controls using captured DOM rectangle extrema. Same original image; not a new sample or independent approval.",
+  "anchors":[
+    {"description":"table outer border top midpoint","dom_xy":[632.3333435058594,222.0729217529297],"pixel_xy":[625,219]},
+    {"description":"table outer border right midpoint","dom_xy":[1132.3333435058594,454.0729217529297],"pixel_xy":[1119,448]},
+    {"description":"table outer border bottom midpoint","dom_xy":[632.3333435058594,686.0729217529297],"pixel_xy":[625,678]},
+    {"description":"table outer border left midpoint","dom_xy":[132.33334350585938,454.0729217529297],"pixel_xy":[131,448]},
+    {"description":"action fold outer border left midpoint","dom_xy":[404.9583435058594,733.406270980835],"pixel_xy":[400,724.5]},
+    {"description":"action fold outer border bottom midpoint","dom_xy":[431.4687614440918,756.7396049499512],"pixel_xy":[426,748]},
+    {"description":"action all_in outer border right midpoint","dom_xy":[676.5417098999023,733.406270980835],"pixel_xy":[668,724.5]},
+    {"description":"action all_in outer border bottom midpoint","dom_xy":[646.1406669616699,756.7396049499512],"pixel_xy":[638,748]}
+  ]
+}

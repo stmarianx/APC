@@ -9,7 +9,7 @@ from PIL import Image
 
 from apc.annotator.project import AnnotationProject
 from apc.perception.capture_stability import validate_capture_stability
-from apc.perception.pixel_alignment import PixelAlignment
+from apc.perception.pixel_alignment import PixelAlignment, validate_alignment_landmarks
 
 
 def import_acquisition(project, manifest, session, timestamp_ms, *, pixel_alignment=None):
@@ -55,11 +55,7 @@ def import_acquisition(project, manifest, session, timestamp_ms, *, pixel_alignm
         measurement_digest = hashlib.sha256(measurement_raw).hexdigest()
         alignment = PixelAlignment(measured, image_sha256=data["sha256"],
             image_size=(image_width,image_height), viewport=viewport)
-        declared = evidence["before"].get("alignment_landmarks")
-        if (not isinstance(declared,list)
-                or [{key: anchor[key] for key in ("description","dom_xy")}
-                    for anchor in measured["anchors"]] != declared):
-            raise ValueError("Measured landmarks do not match captured DOM evidence")
+        validate_alignment_landmarks(measured,evidence["before"])
     objects, labels = {"hero_cards": [], "board_cards": []}, {"hero_cards": [], "board": []}
     identities = []
     for observed in evidence["before"]["cards"]:
