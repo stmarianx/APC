@@ -22,6 +22,7 @@ class ReaderBenchmarkTests(unittest.TestCase):
         self.assertEqual(calls[2:6],[("a","one.png"),("b","one.png"),("b","two.png"),("a","two.png")])
         self.assertEqual(report["summary"]["a"]["samples"],4)
         self.assertTrue(report["prediction_repeatability_passed"])
+        self.assertFalse(report["cross_variant_predictions_equal"])
         self.assertFalse(report["full_table_readiness"])
         for bad in (0,True,1.5):
             with self.assertRaises(ValueError):

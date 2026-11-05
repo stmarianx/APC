@@ -41,6 +41,7 @@ def benchmark_readers(collection,readers,repeats=3):
                          "p95_ms":float(np.percentile(values,95)),"max_ms":max(values)}
     return {"schema_version":"apc_matched_reader_timing_v1","summary":summary,"observations":observations,
         "repeats":repeats,"prediction_repeatability_passed":all(len(v)==1 for v in fingerprints.values()),
+        "cross_variant_predictions_equal":all(len({row["cards_sha256"] for row in observations if row["image"] == f["image"].name}) == 1 for f in frames),
         "collection_sha256":hashlib.sha256(Path(collection).read_bytes()).hexdigest(),
         "warmup":"One untimed first-frame read per reader; rotating variant order across frames/repeats",
         "scope":"Warm saved-frame I/O, proposals, verification and glyphs; excludes loading/capture/state/strategy/UI",
@@ -53,6 +54,7 @@ if __name__ == "__main__":
     parser.add_argument("collection",type=Path)
     parser.add_argument("--new-verifier",type=Path,required=True)
     parser.add_argument("--output",type=Path,required=True)
+    parser.add_argument("--compare-fast",action="store_true",help="Compare identical v5 stacks with only recovery component extraction changed")
     args = parser.parse_args()
     p = Path(__file__).resolve().parents[1]/"checkpoints"
     paths = {"glyph":p/"glyph-font-diversity-v1.pt","locator":p/"card-locator-hardneg-v1.pt",
@@ -66,9 +68,16 @@ if __name__ == "__main__":
         "incumbent_routed":VerifiedCardReader(paths["glyph"],verifier_checkpoint=paths["incumbent_verifier"],**options),
         "wide_v2_v4":BrightSurfaceReader(paths["glyph"],wide_search=True,verifier_checkpoint=paths["incumbent_verifier"],**options),
         "wide_v2_v5":BrightSurfaceReader(paths["glyph"],wide_search=True,verifier_checkpoint=paths["new_verifier"],**options)}
+    if args.compare_fast:
+        readers = {"wide_v2_v5":readers["wide_v2_v5"],
+            "wide_v2_v5_fast_recovery":BrightSurfaceReader(paths["glyph"],wide_search=True,fast_components=True,
+                verifier_checkpoint=paths["new_verifier"],**options)}
     report = benchmark_readers(args.collection,readers)
     report.update(torch_threads=2,torch_version=str(torch.__version__),
         checkpoint_sha256={name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in paths.items()})
+    report["fast_recovery_comparison"] = args.compare_fast
+    report["candidate_source_sha256"] = {name:hashlib.sha256((p.parent/"perception"/name).read_bytes()).hexdigest()
+        for name in ("bright_surface_candidate.py","fast_components.py")}
     with args.output.open("x",encoding="utf-8") as output:
         output.write(json.dumps(report,indent=2)+"\n")
     print(json.dumps(report["summary"],indent=2))

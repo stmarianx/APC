@@ -6,7 +6,7 @@ from apc.perception.card_proposals import scanline_components, suppress_duplicat
 from apc.perception.verified_card_reader import VerifiedCardReader
 
 
-def recover_surface(image,proposal,pixels=None,*,wide_search=False):
+def recover_surface(image,proposal,pixels=None,*,wide_search=False,fast_components=False):
     if proposal.get("refinement") == "adaptive_bounded_surface":
         return dict(proposal)
     pixels = np.asarray(image.convert("RGB"),dtype=np.float32) if pixels is None else pixels
@@ -26,7 +26,10 @@ def recover_surface(image,proposal,pixels=None,*,wide_search=False):
         left,top,right,bottom = max(0,x1-dx),max(0,y1-dy),min(width,x2+dx),min(height,y2+dy)
         mask = np.abs(pixels[top:bottom,left:right]-surface).max(2) < 25
         candidates = []
-        for a,b,c,d,area in scanline_components(mask):
+        extractor = scanline_components
+        if fast_components:
+            from apc.perception.fast_components import fast_components as extractor
+        for a,b,c,d,area in extractor(mask):
             if a == 0 or b == 0 or c == right-left or d == bottom-top:
                 continue
             bounds = [left+a,top+b,left+c,top+d]
@@ -44,22 +47,23 @@ def recover_surface(image,proposal,pixels=None,*,wide_search=False):
 
 
 class BrightRecoveryLocator:
-    def __init__(self,locator,*,wide_search=False):
+    def __init__(self,locator,*,wide_search=False,fast_components=False):
         self.locator = locator
         self.wide_search = wide_search
+        self.fast_components = fast_components
 
     def propose(self,path):
         result = self.locator.propose(path)
         with Image.open(path) as image:
             pixels = np.asarray(image.convert("RGB"),dtype=np.float32)
-            proposals = [recover_surface(image,p,pixels,wide_search=self.wide_search) for p in result["proposals"]]
+            proposals = [recover_surface(image,p,pixels,wide_search=self.wide_search,fast_components=self.fast_components) for p in result["proposals"]]
         return dict(result,proposals=suppress_duplicate_surfaces(proposals),surface_recovery="bright_seed_wide_v2" if self.wide_search else "bright_seed_v1")
 
 
 class BrightSurfaceReader(VerifiedCardReader):
-    def __init__(self,*args,wide_search=False,**kwargs):
+    def __init__(self,*args,wide_search=False,fast_components=False,**kwargs):
         super().__init__(*args,**kwargs)
-        self.locator.locator = BrightRecoveryLocator(self.locator.locator,wide_search=wide_search)
+        self.locator.locator = BrightRecoveryLocator(self.locator.locator,wide_search=wide_search,fast_components=fast_components)
 
 
 if __name__ == "__main__":
