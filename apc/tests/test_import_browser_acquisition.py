@@ -4,6 +4,8 @@ import hashlib
 import json
 from pathlib import Path
 import tempfile
+import shutil
+import subprocess
 import unittest
 
 from PIL import Image
@@ -89,6 +91,34 @@ class BrowserAcquisitionImportTests(unittest.TestCase):
         self.assertEqual(suggestion["draft_card_labels"]["hero_cards"],["As"])
         self.assertEqual(suggestion["capture_import_version"],"stable_browser_acquisition_v1")
         self.assertFalse(imported["verified"])
+
+    @unittest.skipUnless(shutil.which("node"), "Node required for cross-runtime integration")
+    def test_javascript_persistence_to_python_import_preserves_jpeg(self):
+        jpeg = self.folder / "source.jpg"
+        Image.new("RGB",(790,850),"blue").save(jpeg,format="JPEG")
+        module = (Path(__file__).resolve().parents[1] / "capture/save_browser_acquisition.mjs").as_uri()
+        destination = self.root / "js-saved"
+        script = """
+import {readFile} from 'node:fs/promises';
+const [modulePath,image,folder,snapshotJSON] = process.argv.slice(1);
+const {saveBrowserAcquisition} = await import(modulePath);
+const snapshot = JSON.parse(snapshotJSON);
+await saveBrowserAcquisition({png:await readFile(image),before:snapshot,after:structuredClone(snapshot)},folder);
+"""
+        subprocess.run([shutil.which("node"),"--input-type=module","-e",script,module,str(jpeg),
+            str(destination),json.dumps(self.data["capture_stability"]["before"])],check=True,
+            capture_output=True,text=True,timeout=30)
+        manifest = destination / "capture.json"
+        saved = json.loads(manifest.read_text())
+        self.assertEqual(saved["image_format"],"JPEG")
+        self.assertEqual((destination / "frame.jpg").read_bytes(),jpeg.read_bytes())
+        imported = import_acquisition(self.project,manifest,"session-one",0)
+        self.assertFalse(imported["verified"])
+        suggestion = self.project.load_suggestion(imported["sample_id"])
+        self.assertEqual(suggestion["draft_card_labels"]["hero_cards"],["As"])
+        self.assertEqual(suggestion["image_derivation"],"decoded_rgb_lossless_png")
+        self.assertEqual(suggestion["source_image_sha256"],hashlib.sha256(jpeg.read_bytes()).hexdigest())
+        self.assertEqual((destination / "frame.jpg").read_bytes(),jpeg.read_bytes())
 
 
 if __name__ == "__main__":

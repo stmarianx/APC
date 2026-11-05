@@ -1,5 +1,13 @@
 # Stable visible-frame collection
 
+## Automatic browser persistence bridge
+
+The authorized JS caller can pass the result of `capturePracticeFrame(tab)` to `saveBrowserAcquisition(acquired, NEW_FOLDER, {usePolicy: 'draft_review_no_training'})` from `apc/capture/save_browser_acquisition.mjs`. Parent folder must already exist. It writes original image bytes plus `capture.json` without manual metadata transcription; existing leaf folders are refused. Use `sealed_audit_no_training` for audit acquisitions; that policy is carried into the manifest and refused by the labeling importer. This bridge has controlled callback and cross-runtime integration coverage; a new live-browser persistence demonstration remains pending.
+
+Both PNG and JPEG browser output are detected from bytes. JPEG originals are saved as `frame.jpg`, PNG as `frame.png`; no capture bytes are transcoded by JS. Python revalidates actual image decoding and dimensions. Dataset v1 accepts PNG only, so the importer creates a lossless PNG encoding of decoded JPEG RGB pixels, preserving the original acquisition, source hash/format and derivative method in the suggestion. This is not an additional JPEG compression pass or approval of labels.
+
+Legacy audit/demo files ending in `.png` may contain JPEG bytes from the browser provider. Their original files/hashes remain unchanged for reproducibility. New acquisitions use truthful extensions. Existing collection-loader behavior does not retroactively certify native format or annotation geometry.
+
 New browser collections should set `capture_stability_required: true`. Each frame must include `capture_stability` with:
 
 - `schema_version`: `apc_capture_stability_v1`

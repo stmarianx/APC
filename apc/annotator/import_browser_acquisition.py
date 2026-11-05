@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import tempfile
 
 from PIL import Image
 
@@ -24,15 +25,17 @@ def import_acquisition(project, manifest, session, timestamp_ms):
     if project.config["environment"]["provider_id"] != "apc-full-hand-browser":
         raise ValueError("Use a dedicated apc-full-hand-browser annotation project")
     name = data.get("image")
-    if not isinstance(name, str) or Path(name).name != name or not name.endswith(".png"):
-        raise ValueError("Acquisition image must be a local PNG filename")
+    if not isinstance(name, str) or Path(name).name != name or Path(name).suffix.lower() not in {".png", ".jpg"}:
+        raise ValueError("Acquisition image must be a local PNG/JPEG filename")
     image_path = (manifest.parent / name).resolve()
     if image_path.parent != manifest.parent:
         raise ValueError("Acquisition image escapes manifest folder")
     if hashlib.sha256(image_path.read_bytes()).hexdigest() != data.get("sha256"):
         raise ValueError("Acquisition image hash mismatch")
     with Image.open(image_path) as image:
-        if image.format != "PNG" or list(image.size) != data.get("image_size"):
+        expected_format = "PNG" if image_path.suffix.lower() == ".png" else "JPEG"
+        if (image.format != expected_format or list(image.size) != data.get("image_size")
+                or data.get("image_format", expected_format) != expected_format):
             raise ValueError("Acquisition image dimensions/format mismatch")
         image_width, image_height = image.size
     evidence = data.get("capture_stability")
@@ -61,7 +64,16 @@ def import_acquisition(project, manifest, session, timestamp_ms):
     if len(identities) != len(set(identities)):
         raise ValueError("Duplicate visible identity")
     # All capture integrity/geometry checks precede project mutations.
-    record, inserted = project.import_frame(image_path, capture_session_id=session, timestamp_ms=timestamp_ms)
+    if expected_format == "JPEG":
+        # Dataset v1 requires PNG. Preserve original acquisition/hash; import a
+        # lossless encoding of decoded RGB pixels and record the derivation.
+        with tempfile.TemporaryDirectory(prefix="apc-jpeg-import-") as directory:
+            derived = Path(directory) / "decoded.png"
+            with Image.open(image_path) as image:
+                image.convert("RGB").save(derived,format="PNG")
+            record, inserted = project.import_frame(derived, capture_session_id=session, timestamp_ms=timestamp_ms)
+    else:
+        record, inserted = project.import_frame(image_path, capture_session_id=session, timestamp_ms=timestamp_ms)
     if project.load_annotation(record.sample_id) is not None or project.load_suggestion(record.sample_id) is not None:
         raise ValueError("Existing review work preserved")
     suggestion = {**project.annotation_template(record.sample_id),
@@ -69,6 +81,8 @@ def import_acquisition(project, manifest, session, timestamp_ms):
         "capture_import_version":"stable_browser_acquisition_v1",
         "auto_applied":False, "model_status":"visible_dom_draft_not_model_prediction",
         "metadata_sha256":hashlib.sha256(raw).hexdigest(),
+        "source_image_sha256":data["sha256"], "source_image_format":expected_format,
+        "image_derivation":"decoded_rgb_lossless_png" if expected_format == "JPEG" else "original_png",
         "screenshot_binding":"hash_dimensions_and_before_after_geometry_validated",
         "capture_stability":evidence, "suggested_objects":objects, "draft_card_labels":labels,
         "pixel_geometry_reviewed":False, "readiness_counts_added":False}

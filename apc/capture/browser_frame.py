@@ -26,8 +26,9 @@ async def capture_browser_frame(observe, screenshot):
     png = bytes(await screenshot())
     after = copy.deepcopy(await observe())
     with Image.open(io.BytesIO(png)) as image:
-        if image.format != "PNG":
-            raise ValueError("Browser collector requires PNG screenshots")
+        if image.format not in {"PNG", "JPEG"}:
+            raise ValueError("Browser collector requires PNG or JPEG screenshots")
+        image_format = image.format
         image.load()
         size = list(image.size)
     digest = hashlib.sha256(png).hexdigest()
@@ -43,7 +44,7 @@ async def capture_browser_frame(observe, screenshot):
         rejection = None
     except ValueError as error:
         rejection = str(error)
-    return {"png": png, "sha256": digest, "image_size": size,
+    return {"png": png, "sha256": digest, "image_size": size, "image_format": image_format,
             "capture_stability": evidence, "cards": cards,
             "eligible_for_draft_scoring": rejection is None,
             "rejection_reason": rejection, "pixel_geometry_reviewed": False,
@@ -60,11 +61,11 @@ def save_browser_frame(result, folder):
     if hashlib.sha256(png).hexdigest() != result["sha256"]:
         raise ValueError("Capture bytes changed before saving")
     metadata = {key: value for key, value in result.items() if key != "png"}
-    metadata["image"] = "frame.png"
+    metadata["image"] = "frame.jpg" if result.get("image_format") == "JPEG" else "frame.png"
     metadata["schema_version"] = "apc_browser_frame_acquisition_v1"
     serialized = json.dumps(metadata, indent=2, allow_nan=False) + "\n"
     folder = Path(folder)
     folder.mkdir(parents=True, exist_ok=False)
-    (folder / "frame.png").write_bytes(png)
+    (folder / metadata["image"]).write_bytes(png)
     (folder / "capture.json").write_text(serialized, encoding="utf-8")
     return folder / "capture.json"

@@ -63,7 +63,7 @@ class BrowserFrameTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_non_png_rejected(self):
         stream = io.BytesIO()
-        Image.new("RGB", (2, 2)).save(stream, format="JPEG")
+        Image.new("RGB", (2, 2)).save(stream, format="BMP")
         self.png = stream.getvalue()
         with self.assertRaisesRegex(ValueError, "PNG"):
             await capture_browser_frame(self.observe, self.screenshot)

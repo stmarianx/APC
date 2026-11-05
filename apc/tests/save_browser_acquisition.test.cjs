@@ -1,0 +1,42 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs/promises');
+const os = require('node:os');
+const path = require('node:path');
+(async () => {
+  const {buildAcquisition,saveBrowserAcquisition} = await import('../capture/save_browser_acquisition.mjs');
+  const png = await fs.readFile(path.join(__dirname,'../data/reference/capture-stability-demo-v1/frame.png'));
+  const collection = JSON.parse(await fs.readFile(path.join(__dirname,'../data/reference/capture-stability-demo-v1/collection.json'),'utf8'));
+  const evidence = collection.frames[0].capture_stability;
+  const acquired = {png,before:evidence.before,after:evidence.after};
+  const built = buildAcquisition(acquired,{usePolicy:'sealed_audit_no_training'});
+  assert.equal(built.metadata.sha256,collection.frames[0].sha256);
+  assert.deepEqual(built.metadata.image_size,[1265,712]);
+  assert.equal(built.metadata.image_format,'JPEG');
+  assert.equal(built.metadata.image,'frame.jpg');
+  assert.equal(built.metadata.eligible_for_draft_scoring,true);
+  assert.equal(built.metadata.use_policy,'sealed_audit_no_training');
+  const tinyPNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a3ioAAAAASUVORK5CYII=','base64');
+  const empty = {viewport:[1,1],scroll:[0,0],cards:[]};
+  const pngBuilt = buildAcquisition({png:tinyPNG,before:empty,after:empty});
+  assert.equal(pngBuilt.metadata.image,'frame.png');
+  assert.equal(pngBuilt.metadata.image_format,'PNG');
+  assert.deepEqual(pngBuilt.metadata.image_size,[1,1]);
+  const moved = {...acquired,after:structuredClone(acquired.after)};
+  moved.after.scroll[1]++;
+  assert.equal(buildAcquisition(moved).metadata.eligible_for_draft_scoring,false);
+  assert.throws(()=>buildAcquisition({...acquired,png:Buffer.from('bad')}),/PNG/);
+  assert.throws(()=>buildAcquisition(acquired,{usePolicy:'train_now'}),/policy/);
+  const nonfinite = {...acquired,before:structuredClone(acquired.before)};
+  nonfinite.before.scroll[0]=NaN;
+  assert.throws(()=>buildAcquisition(nonfinite),/JSON-safe/);
+  const root = await fs.mkdtemp(path.join(os.tmpdir(),'apc-acquisition-'));
+  try {
+    const folder = path.join(root,'capture');
+    const result = await saveBrowserAcquisition(moved,folder,{usePolicy:'sealed_audit_no_training'});
+    const saved = JSON.parse(await fs.readFile(result.manifest,'utf8'));
+    assert.equal(saved.eligible_for_draft_scoring,false);
+    assert.deepEqual(await fs.readFile(path.join(folder,saved.image)),png);
+    await assert.rejects(saveBrowserAcquisition(acquired,folder),/exist/i);
+  } finally {await fs.rm(root,{recursive:true,force:true});}
+  console.log('Browser acquisition persistence tests passed');
+})().catch(error=>{console.error(error);process.exitCode=1;});
