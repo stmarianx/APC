@@ -94,12 +94,31 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--plan", type=Path, help="Explicit preregistered audit plan")
+    parser.add_argument("--collection", type=Path)
+    parser.add_argument("--glyph-checkpoint", type=Path)
+    parser.add_argument("--locator-checkpoint", type=Path)
+    parser.add_argument("--verifier-checkpoint", type=Path)
+    parser.add_argument("--bounded-verifier-checkpoint", type=Path)
+    parser.add_argument("--previous-collection", type=Path, action="append", default=[])
     audit_version = parser.add_mutually_exclusive_group()
     audit_version.add_argument("--viewport-v3", action="store_true", help="Run the separately planned multi-viewport audit")
     audit_version.add_argument("--multiview-v4", action="store_true", help="Run the source/config-frozen multiview audit")
     args = parser.parse_args()
+    custom = (args.plan, args.collection, args.glyph_checkpoint, args.locator_checkpoint)
+    if any(custom) and not all(custom):
+        parser.error("Custom audits require plan, collection, glyph and locator checkpoints")
+    if all(custom) and (args.viewport_v3 or args.multiview_v4):
+        parser.error("Choose custom inputs or a bundled audit, not both")
+    if (args.verifier_checkpoint or args.bounded_verifier_checkpoint or args.previous_collection) and not all(custom):
+        parser.error("Verifier overrides and prior collections require explicit custom inputs")
     name = "browser-multiview-audit-v4" if args.multiview_v4 else ("browser-viewport-audit-v3" if args.viewport_v3 else "browser-capture-audit-v2")
-    report = run_audit(ROOT / f"apc/perception/baselines/{name}.plan.json",
+    if all(custom):
+        report = run_audit(args.plan, args.collection, args.glyph_checkpoint, args.locator_checkpoint,
+            additional_previous_collections=tuple(args.previous_collection),
+            verifier_checkpoint=args.verifier_checkpoint, bounded_verifier_checkpoint=args.bounded_verifier_checkpoint)
+    else:
+        report = run_audit(ROOT / f"apc/perception/baselines/{name}.plan.json",
         ROOT / f"apc/data/reference/{name}/collection.json",
         ROOT / ("apc/checkpoints/glyph-font-diversity-v1.pt" if args.viewport_v3 or args.multiview_v4 else "apc/checkpoints/browser-symbol-rehearsal-v1.pt"),
         ROOT / "apc/checkpoints/card-locator-hardneg-v1.pt",

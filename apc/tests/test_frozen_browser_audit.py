@@ -2,6 +2,8 @@ import copy
 import hashlib
 import json
 import tempfile
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -17,6 +19,16 @@ LOCATOR = ROOT / "apc/checkpoints/card-locator-hardneg-v1.pt"
 
 
 class FrozenBrowserAuditTests(unittest.TestCase):
+    def test_custom_audit_cli_rejects_partial_or_ambiguous_inputs(self):
+        cases = (["--plan", "missing.json"], ["--verifier-checkpoint", "missing.pt"],
+                 ["--plan", "p", "--collection", "c", "--glyph-checkpoint", "g",
+                  "--locator-checkpoint", "l", "--multiview-v4"])
+        for args in cases:
+            result = subprocess.run([sys.executable, "-m", "apc.perception.evaluate_frozen_browser_audit", *args],
+                cwd=ROOT, capture_output=True, text=True, timeout=30)
+            self.assertEqual(result.returncode, 2, result.stderr)
+            self.assertIn("error:", result.stderr)
+
     def test_planned_routed_reader_receives_both_frozen_experts(self):
         primary = ROOT / "apc/checkpoints/card-face-verifier-appearance-v4.pt"
         bounded = ROOT / "apc/checkpoints/card-face-verifier-v1.pt"
