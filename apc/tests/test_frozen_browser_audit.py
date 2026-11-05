@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 import tempfile
 import unittest
@@ -16,6 +17,30 @@ LOCATOR = ROOT / "apc/checkpoints/card-locator-hardneg-v1.pt"
 
 
 class FrozenBrowserAuditTests(unittest.TestCase):
+    def test_planned_routed_reader_receives_both_frozen_experts(self):
+        primary = ROOT / "apc/checkpoints/card-face-verifier-appearance-v4.pt"
+        bounded = ROOT / "apc/checkpoints/card-face-verifier-v1.pt"
+        plan = json.loads(PLAN.read_text())
+        plan.update(verifier_sha256=hashlib.sha256(primary.read_bytes()).hexdigest(),
+                    bounded_verifier_sha256=hashlib.sha256(bounded.read_bytes()).hexdigest(),
+                    inference_options={"adaptive_surfaces": True, "tiled_views": True, "deduplicate_surfaces": True})
+        names = ("infer_cards.py", "infer_card_locator.py", "card_proposals.py", "card_locator.py",
+                 "card_glyphs.py", "card_verifier.py", "verified_card_reader.py")
+        plan["inference_source_sha256"] = {"apc/perception/"+name:
+            hashlib.sha256((ROOT/"apc/perception"/name).read_bytes()).hexdigest() for name in names}
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"plan.json"
+            path.write_text(json.dumps(plan))
+            with patch("apc.perception.verified_card_reader.VerifiedCardReader") as reader, \
+                 patch("apc.perception.evaluate_frozen_browser_audit.evaluate", return_value={"full_table_readiness": False}):
+                reader.return_value.verifier_metadata = {"research_only": True}
+                result = run_audit(path, COLLECTION, GLYPH, LOCATOR,
+                    verifier_checkpoint=primary, bounded_verifier_checkpoint=bounded)
+        self.assertEqual(reader.call_args.kwargs["verifier_checkpoint"], primary)
+        self.assertEqual(reader.call_args.kwargs["bounded_verifier_checkpoint"], bounded)
+        self.assertTrue(result["audit_checks_verifier_hashes_match"])
+        self.assertFalse(result["full_table_readiness"])
+
     def test_unplanned_verifier_and_unpaired_bounded_expert_are_rejected(self):
         verifier = ROOT / "apc/checkpoints/card-face-verifier-v1.pt"
         with patch("apc.perception.evaluate_frozen_browser_audit.CardReader") as reader:
