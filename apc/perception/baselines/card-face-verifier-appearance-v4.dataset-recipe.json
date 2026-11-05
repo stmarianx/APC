@@ -1,0 +1,23 @@
+{
+  "schema_version": "apc_synthetic_card_verifier_recipe_v2",
+  "source_manifest": "apc/runs/glyph-font-diversity-v1/dataset_manifest.json",
+  "source_manifest_sha256": "312d1014b3046c7380293e90f4d7b84fc04a980fab14b75dcf0f162a765586bb",
+  "source_generation_reference": "apc/perception/baselines/glyph-font-diversity-v1.experiment.json",
+  "source_kind": "synthetic_render",
+  "audit_or_capture_training_prohibited": true,
+  "seed": 20261112,
+  "split_seed_offsets": {"train": 0, "validation": 1, "test": 2},
+  "session_splits": {"train": 58, "validation": 7, "test": 7},
+  "samples": {"train": 14480, "validation": 1726, "test": 1698},
+  "original_examples": "Unchanged v1 exact/padded clear cards, nonoverlapping annotated UI, 12 standalone controls/background patches per source frame",
+  "extra_composite_negatives_per_frame": 8,
+  "extra_positive_aspect_variants_per_card": 2,
+  "generated_positive_faces_per_frame": 8,
+  "independent_rng_offsets": {"composite_ui": 10000000, "positive_aspect": 20000000, "generated_faces": 30000000},
+  "generated_face_styles": "Known rank/suit, left/center alignment, variable border/face colors, 40-76 width and 64-100 height, four validated local fonts; no captured pixels",
+  "font_fingerprints_reference": "card-face-verifier-appearance-v4.training.json:positive_font_sha256",
+  "generator_source_sha256": "f4d1bac0df5e2542fe39aeaffc7eaf09fb374dc176e1a4976eb7a0fb092704e8",
+  "pillow_version": "12.3.0",
+  "torch_version": "2.14.1+cpu",
+  "limitation": "Source sessions are exclusive, but generator styles/fonts are shared across splits; not independent captured-domain validation"
+}

@@ -136,7 +136,10 @@ if __name__ == "__main__":
     parser.add_argument("--deduplicate-surfaces", action="store_true")
     parser.add_argument("--tiled-views", action="store_true")
     parser.add_argument("--verifier-checkpoint", type=Path, help="Opt-in learned binary proposal filter")
+    parser.add_argument("--bounded-verifier-checkpoint", type=Path, help="Optional bounded-surface expert")
     args = parser.parse_args()
+    if args.bounded_verifier_checkpoint and not args.verifier_checkpoint:
+        parser.error("Bounded expert requires a primary verifier")
     if args.pixel_proposals and (args.adaptive_surfaces or args.verifier_checkpoint):
         parser.error("Adaptive surfaces require neural proposals")
     torch.set_num_threads(2)
@@ -145,6 +148,8 @@ if __name__ == "__main__":
         from apc.perception.verified_card_reader import VerifiedCardReader
         reader_type = VerifiedCardReader
         verifier_options["verifier_checkpoint"] = args.verifier_checkpoint
+        if args.bounded_verifier_checkpoint:
+            verifier_options["bounded_verifier_checkpoint"] = args.bounded_verifier_checkpoint
     reader = reader_type(args.glyph_checkpoint, corner_pairs=True,
         locator_checkpoint=None if args.pixel_proposals else args.locator_checkpoint,
         refine_surfaces=True, surface_pairs=args.surface_pairs, adaptive_surfaces=args.adaptive_surfaces,

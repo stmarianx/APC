@@ -1,0 +1,134 @@
+{
+  "reports": [
+    {
+      "checkpoint": "apc\\checkpoints\\card-face-verifier-v1.pt",
+      "sha256": "392ce66439a75015b13ad8f0f00349ebc523c82c0f62dd66034a95462a675a71",
+      "threshold": 0.5,
+      "totals": {
+        "samples": 1194,
+        "true_positives": 420,
+        "false_positives": 27,
+        "false_negatives": 0,
+        "true_negatives": 747,
+        "positive_recall": 1.0,
+        "negative_rejection": 0.9651162790697675
+      },
+      "per_kind": {
+        "annotated_ui": {
+          "samples": 214,
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 214,
+          "positive_recall": null,
+          "negative_rejection": 1.0
+        },
+        "card_exact": {
+          "samples": 140,
+          "true_positives": 140,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 0,
+          "positive_recall": 1.0,
+          "negative_rejection": null
+        },
+        "card_padded": {
+          "samples": 280,
+          "true_positives": 280,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 0,
+          "positive_recall": 1.0,
+          "negative_rejection": null
+        },
+        "generated_composite_ui": {
+          "samples": 224,
+          "true_positives": 0,
+          "false_positives": 26,
+          "false_negatives": 0,
+          "true_negatives": 198,
+          "positive_recall": null,
+          "negative_rejection": 0.8839285714285714
+        },
+        "generated_ui_background": {
+          "samples": 336,
+          "true_positives": 0,
+          "false_positives": 1,
+          "false_negatives": 0,
+          "true_negatives": 335,
+          "positive_recall": null,
+          "negative_rejection": 0.9970238095238095
+        }
+      }
+    },
+    {
+      "checkpoint": "apc\\runs\\card-face-verifier-composite-v2\\weights.pt",
+      "sha256": "c8e4623adbaa4394364f4cb9e42186335cab350186d8086293cea39cfb7c97a5",
+      "threshold": 0.5,
+      "totals": {
+        "samples": 1194,
+        "true_positives": 420,
+        "false_positives": 1,
+        "false_negatives": 0,
+        "true_negatives": 773,
+        "positive_recall": 1.0,
+        "negative_rejection": 0.9987080103359173
+      },
+      "per_kind": {
+        "annotated_ui": {
+          "samples": 214,
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 214,
+          "positive_recall": null,
+          "negative_rejection": 1.0
+        },
+        "card_exact": {
+          "samples": 140,
+          "true_positives": 140,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 0,
+          "positive_recall": 1.0,
+          "negative_rejection": null
+        },
+        "card_padded": {
+          "samples": 280,
+          "true_positives": 280,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 0,
+          "positive_recall": 1.0,
+          "negative_rejection": null
+        },
+        "generated_composite_ui": {
+          "samples": 224,
+          "true_positives": 0,
+          "false_positives": 1,
+          "false_negatives": 0,
+          "true_negatives": 223,
+          "positive_recall": null,
+          "negative_rejection": 0.9955357142857143
+        },
+        "generated_ui_background": {
+          "samples": 336,
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "true_negatives": 336,
+          "positive_recall": null,
+          "negative_rejection": 1.0
+        }
+      }
+    }
+  ],
+  "split": "test",
+  "seed": 20261114,
+  "negative_scenes": 8,
+  "manifest_sha256": "312d1014b3046c7380293e90f4d7b84fc04a980fab14b75dcf0f162a765586bb",
+  "synthetic_test_reuse": true,
+  "checkpoint_selection_performed": false,
+  "captured_images_used": false,
+  "full_table_readiness": false
+}

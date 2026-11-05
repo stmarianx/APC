@@ -14,7 +14,7 @@ from apc.perception.spatial_targets import load_split
 from apc.perception.region_model import RANKS, SUITS
 
 
-def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False, adaptive_surfaces=False, deduplicate_surfaces=False, tiled_views=False, verifier_checkpoint=None):
+def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, locator_checkpoint=None, refine_surfaces=False, surface_pairs=False, adaptive_surfaces=False, deduplicate_surfaces=False, tiled_views=False, verifier_checkpoint=None, bounded_verifier_checkpoint=None):
     options = {"corner_pairs": True} if corner_pairs else {}
     if adaptive_surfaces:
         if locator_checkpoint is None or not refine_surfaces:
@@ -31,8 +31,12 @@ def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, l
         options["refine_surfaces"] = refine_surfaces
     if verifier_checkpoint is not None:
         from apc.perception.verified_card_reader import VerifiedCardReader
+        if bounded_verifier_checkpoint is not None:
+            options["bounded_verifier_checkpoint"] = bounded_verifier_checkpoint
         reader = VerifiedCardReader(checkpoint, verifier_checkpoint=verifier_checkpoint, **options)
     else:
+        if bounded_verifier_checkpoint is not None:
+            raise ValueError("Bounded expert requires a primary verifier")
         reader = CardReader(checkpoint, **options)
     totals = {"frames": 0, "targets": 0, "true_positives": 0,
               "false_positives": 0, "false_negatives": 0,
@@ -148,18 +152,19 @@ def main():
     parser.add_argument("--deduplicate-surfaces", action="store_true")
     parser.add_argument("--tiled-views", action="store_true")
     parser.add_argument("--verifier-checkpoint", type=Path)
+    parser.add_argument("--bounded-verifier-checkpoint", type=Path)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     torch.set_num_threads(1)
     if args.compare_crops:
-        if args.surface_pairs or args.locator_checkpoint or args.refine_surfaces or args.adaptive_surfaces or args.deduplicate_surfaces or args.tiled_views or args.verifier_checkpoint:
+        if args.surface_pairs or args.locator_checkpoint or args.refine_surfaces or args.adaptive_surfaces or args.deduplicate_surfaces or args.tiled_views or args.verifier_checkpoint or args.bounded_verifier_checkpoint:
             parser.error("Extended extraction/locator options are currently supported only by the end-to-end audit")
         report = compare_crops(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols)
     else:
         report = evaluate_reader(args.checkpoint, args.manifest, args.split, corner_pairs=args.corner_symbols,
             surface_pairs=args.surface_pairs, locator_checkpoint=args.locator_checkpoint, refine_surfaces=args.refine_surfaces,
             adaptive_surfaces=args.adaptive_surfaces, deduplicate_surfaces=args.deduplicate_surfaces, tiled_views=args.tiled_views,
-            verifier_checkpoint=args.verifier_checkpoint)
+            verifier_checkpoint=args.verifier_checkpoint, bounded_verifier_checkpoint=args.bounded_verifier_checkpoint)
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

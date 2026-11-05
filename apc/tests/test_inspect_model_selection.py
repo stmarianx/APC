@@ -18,6 +18,19 @@ class InspectModelSelectionTests(unittest.TestCase):
              contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
             main()
 
+    def test_explicit_surface_routing_requires_both_verifiers_and_adaptive_mode(self):
+        args = ["apc", "inspect", "frame.png", "--neural-cards", "--adaptive-surfaces",
+                "--verifier-checkpoint", "ambiguous.pt", "--bounded-verifier-checkpoint", "bounded.pt"]
+        with patch("sys.argv", args), patch("apc.perception.verified_card_reader.VerifiedCardReader") as reader, \
+             contextlib.redirect_stdout(io.StringIO()):
+            reader.return_value.read.return_value = {}
+            main()
+        self.assertEqual(reader.call_args.kwargs["bounded_verifier_checkpoint"], Path("bounded.pt"))
+        for missing in (["apc", "inspect", "frame.png", "--bounded-verifier-checkpoint", "bounded.pt"],
+                        ["apc", "inspect", "frame.png", "--neural-cards", "--verifier-checkpoint", "ambiguous.pt", "--bounded-verifier-checkpoint", "bounded.pt"]):
+            with patch("sys.argv", missing), contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+                main()
+
     def test_tiled_inspection_is_opt_in_and_preserves_selected_weights(self):
         arguments = ["apc", "inspect", "frame.png", "--neural-cards", "--adaptive-glyphs",
                      "--adaptive-surfaces", "--deduplicate-surfaces", "--tiled-views",

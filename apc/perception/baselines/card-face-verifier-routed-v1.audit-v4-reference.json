@@ -1,0 +1,347 @@
+{
+  "development_diagnostic_only": true,
+  "draft_geometry": true,
+  "capture_sessions": 1,
+  "capture_session_id": "apc-browser-multiview-audit-v4-20261105",
+  "hand_groups": 3,
+  "observation_groups": 6,
+  "empty_frames": 3,
+  "frames": [
+    {
+      "image": "h1-preflop-960.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        960,
+        800
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        960,
+        800.5079365079365
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 295.3993999399245,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "4h",
+        "7h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h1-river-960.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        960,
+        800
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        960,
+        800.5079365079365
+      ],
+      "targets": 7,
+      "proposals": 7,
+      "localized": 7,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 544.672799995169,
+      "missed_cards": 0,
+      "end_to_end_exact": 7,
+      "oracle_glyph_exact": 7,
+      "oracle_candidates": [
+        "6s",
+        "9d",
+        "Qh",
+        "Ac",
+        "3d",
+        "4h",
+        "7h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h2-preflop-600.png",
+      "hand_group": "hand-2",
+      "viewport": [
+        600,
+        800
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        600,
+        800.0
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 635.8441999182105,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "3s",
+        "6h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h2-river-600.png",
+      "hand_group": "hand-2",
+      "viewport": [
+        600,
+        800
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        600,
+        800.0
+      ],
+      "targets": 7,
+      "proposals": 7,
+      "localized": 7,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 990.8094999846071,
+      "missed_cards": 0,
+      "end_to_end_exact": 7,
+      "oracle_glyph_exact": 7,
+      "oracle_candidates": [
+        "3d",
+        "5c",
+        "Kh",
+        "Qh",
+        "As",
+        "3s",
+        "6h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h3-preflop-1440.png",
+      "hand_group": "hand-3",
+      "viewport": [
+        1440,
+        900
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        1440,
+        875.1157894736842
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 208.6225999519229,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "5s",
+        "5h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h3-river-1440.png",
+      "hand_group": "hand-3",
+      "viewport": [
+        1440,
+        900
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        1440,
+        875.1157894736842
+      ],
+      "targets": 7,
+      "proposals": 7,
+      "localized": 7,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 457.0573999080807,
+      "missed_cards": 0,
+      "end_to_end_exact": 7,
+      "oracle_glyph_exact": 7,
+      "oracle_candidates": [
+        "Jd",
+        "5c",
+        "8h",
+        "Kd",
+        "3d",
+        "5s",
+        "5h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-960.png",
+      "hand_group": "negative-1",
+      "viewport": [
+        960,
+        800
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        960,
+        583.1111111111111
+      ],
+      "targets": 0,
+      "proposals": 1,
+      "localized": 0,
+      "false_positives": 1,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 370.6291001290083,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-600.png",
+      "hand_group": "negative-2",
+      "viewport": [
+        600,
+        800
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        600,
+        500.0
+      ],
+      "targets": 0,
+      "proposals": 0,
+      "localized": 0,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 355.7007999625057,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-1440.png",
+      "hand_group": "negative-3",
+      "viewport": [
+        1440,
+        900
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        1440,
+        1920.0
+      ],
+      "targets": 0,
+      "proposals": 0,
+      "localized": 0,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 624.0499999839813,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    }
+  ],
+  "observed_latency": {
+    "samples": 9,
+    "p95_ms": 848.8233799580483,
+    "scope": "One sequential pass, image I/O/proposals/glyph inference; excludes checkpoint loading and coaching backend; not a matched benchmark"
+  },
+  "unique_visible_identities": 17,
+  "collection_sha256": "9db9a681612f8186d605caff8cc6270ba505339b8eb6e52d3d314c24966e39cd",
+  "totals": {
+    "targets": 27,
+    "proposals": 28,
+    "localized": 27,
+    "false_positives": 1,
+    "spurious_ink_candidates": 0,
+    "spurious_high_score_candidates": 0,
+    "missed_cards": 0,
+    "end_to_end_exact": 27,
+    "oracle_glyph_exact": 27,
+    "confirmed_cards": 0
+  },
+  "training_performed": false,
+  "full_table_readiness": false,
+  "checkpoint_sha256": {
+    "glyph-font-diversity-v1.pt": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+    "card-locator-hardneg-v1.pt": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273"
+  },
+  "torch_version": "2.14.1+cpu",
+  "proposal_verifier": {
+    "checkpoint_sha256": "59b3cb7bf2d8c6b262fc59a73a6e00d8327ef72f71e2136f00c5aa6520c65aa3",
+    "threshold": 0.5,
+    "confidence_calibrated": false,
+    "research_only": true,
+    "route": "bounded_surface_v1_else_ambiguous_v4",
+    "bounded_checkpoint_sha256": "392ce66439a75015b13ad8f0f00349ebc523c82c0f62dd66034a95462a675a71",
+    "bounded_threshold": 0.5
+  },
+  "pair_extraction": "surface_two_band_then_corner",
+  "proposal_mode": "neural_locator_refined",
+  "surface_refinement": "adaptive_bounded",
+  "deduplicate_surfaces": true,
+  "tiled_views": true,
+  "added_view_policy": "bounded_surfaces_only",
+  "surface_refinement_version": "bounded_smaller_area_overlap_v2"
+}

@@ -72,6 +72,7 @@ def main():
     inspect.add_argument('--glyph-checkpoint', type=Path, help='Explicit experimental glyph weights; requires --neural-cards')
     inspect.add_argument('--locator-checkpoint', type=Path, help='Explicit experimental detector weights; requires --neural-cards')
     inspect.add_argument('--verifier-checkpoint', type=Path, help='Opt-in learned card-face filter; requires --neural-cards')
+    inspect.add_argument('--bounded-verifier-checkpoint', type=Path, help='Optional bounded-surface verifier expert')
     args = parser.parse_args()
     if args.mode == 'desktop':
         from apc.desktop import launch
@@ -96,6 +97,8 @@ def main():
             parser.error('--locator-checkpoint requires --neural-cards')
         if args.verifier_checkpoint and not args.neural_cards:
             parser.error('--verifier-checkpoint requires --neural-cards')
+        if args.bounded_verifier_checkpoint and (not args.verifier_checkpoint or not args.adaptive_surfaces):
+            parser.error('--bounded-verifier-checkpoint requires --verifier-checkpoint and --adaptive-surfaces')
         import torch
         from apc.perception.infer_cards import CardReader
         torch.set_num_threads(1)
@@ -112,6 +115,8 @@ def main():
             from apc.perception.verified_card_reader import VerifiedCardReader
             reader_type = VerifiedCardReader
             options['verifier_checkpoint'] = args.verifier_checkpoint
+            if args.bounded_verifier_checkpoint:
+                options['bounded_verifier_checkpoint'] = args.bounded_verifier_checkpoint
         print(json.dumps(reader_type(checkpoint, corner_pairs=args.corner_symbols or args.neural_cards, **options).read(args.image), indent=2))
 
 
