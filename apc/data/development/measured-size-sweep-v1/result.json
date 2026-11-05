@@ -1,0 +1,307 @@
+{
+  "experiment": "measured-size-sweep-v1",
+  "pairs": [
+    {
+      "viewport": [
+        600,
+        900
+      ],
+      "captures": [
+        {
+          "frame_key": "w600-first",
+          "image_size": [
+            585,
+            329
+          ],
+          "sha256": "a3659775c2e94d7315aa7126d78d13a925c133ec7574294e055b1a16e73882ae",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": false,
+          "rejection_reason": "Card outside saved screenshot",
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "9s",
+                185.3854217529297,
+                544.7396240234375,
+                44,
+                64
+              ],
+              [
+                "hero",
+                "Ts",
+                233.3854217529297,
+                544.7396240234375,
+                44,
+                64
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              600,
+              900
+            ],
+            "alignment_landmarks": [
+              {
+                "description": "table outer border top midpoint",
+                "dom_xy": [
+                  292.3333435058594,
+                  231.40625
+                ]
+              },
+              {
+                "description": "table outer border right midpoint",
+                "dom_xy": [
+                  572.6666870117188,
+                  455.40625
+                ]
+              },
+              {
+                "description": "table outer border bottom midpoint",
+                "dom_xy": [
+                  292.3333435058594,
+                  679.40625
+                ]
+              },
+              {
+                "description": "table outer border left midpoint",
+                "dom_xy": [
+                  12,
+                  455.40625
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "frame_key": "w600-second",
+          "image_size": [
+            585,
+            853
+          ],
+          "sha256": "c458c4442a478266b527948a72ac0a977d3d078ebc53eddd635d4027548baa63",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": true,
+          "rejection_reason": null,
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "9s",
+                185.3854217529297,
+                544.7396240234375,
+                44,
+                64
+              ],
+              [
+                "hero",
+                "Ts",
+                233.3854217529297,
+                544.7396240234375,
+                44,
+                64
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              600,
+              900
+            ],
+            "alignment_landmarks": [
+              {
+                "description": "table outer border top midpoint",
+                "dom_xy": [
+                  292.3333435058594,
+                  231.40625
+                ]
+              },
+              {
+                "description": "table outer border right midpoint",
+                "dom_xy": [
+                  572.6666870117188,
+                  455.40625
+                ]
+              },
+              {
+                "description": "table outer border bottom midpoint",
+                "dom_xy": [
+                  292.3333435058594,
+                  679.40625
+                ]
+              },
+              {
+                "description": "table outer border left midpoint",
+                "dom_xy": [
+                  12,
+                  455.40625
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "same_image_dimensions": false,
+      "same_dom_geometry": true
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "captures": [
+        {
+          "frame_key": "w1440-first",
+          "image_size": [
+            600,
+            875
+          ],
+          "sha256": "8c40a956ca20c6a1290328097de0eb151e34a4614d424996ea1b1eefe3bfd0ef",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": true,
+          "rejection_reason": null,
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "9s",
+                605.3854370117188,
+                536.40625,
+                62,
+                78
+              ],
+              [
+                "hero",
+                "Ts",
+                675.3854370117188,
+                536.40625,
+                62,
+                78
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              1440,
+              900
+            ],
+            "alignment_landmarks": [
+              {
+                "description": "table outer border top midpoint",
+                "dom_xy": [
+                  712.3333435058594,
+                  222.0729217529297
+                ]
+              },
+              {
+                "description": "table outer border right midpoint",
+                "dom_xy": [
+                  1212.3333435058594,
+                  454.0729217529297
+                ]
+              },
+              {
+                "description": "table outer border bottom midpoint",
+                "dom_xy": [
+                  712.3333435058594,
+                  686.0729217529297
+                ]
+              },
+              {
+                "description": "table outer border left midpoint",
+                "dom_xy": [
+                  212.33334350585935,
+                  454.0729217529297
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "frame_key": "w1440-second",
+          "image_size": [
+            1425,
+            866
+          ],
+          "sha256": "ab6b2b8b092053e1e240581da29e380d1261c443451787a3308c19ccfe1105a0",
+          "endpoint_geometry_equal": true,
+          "bounds_check_passed": true,
+          "rejection_reason": null,
+          "snapshot": {
+            "cards": [
+              [
+                "hero",
+                "9s",
+                605.3854370117188,
+                536.40625,
+                62,
+                78
+              ],
+              [
+                "hero",
+                "Ts",
+                675.3854370117188,
+                536.40625,
+                62,
+                78
+              ]
+            ],
+            "scroll": [
+              0,
+              0
+            ],
+            "viewport": [
+              1440,
+              900
+            ],
+            "alignment_landmarks": [
+              {
+                "description": "table outer border top midpoint",
+                "dom_xy": [
+                  712.3333435058594,
+                  222.0729217529297
+                ]
+              },
+              {
+                "description": "table outer border right midpoint",
+                "dom_xy": [
+                  1212.3333435058594,
+                  454.0729217529297
+                ]
+              },
+              {
+                "description": "table outer border bottom midpoint",
+                "dom_xy": [
+                  712.3333435058594,
+                  686.0729217529297
+                ]
+              },
+              {
+                "description": "table outer border left midpoint",
+                "dom_xy": [
+                  212.33334350585935,
+                  454.0729217529297
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "same_image_dimensions": false,
+      "same_dom_geometry": true
+    }
+  ],
+  "dimension_disagreement_pairs": 2,
+  "all_captures_retained": true,
+  "model_inference_performed": false,
+  "pixel_alignment_proven": false,
+  "readiness_credit": false,
+  "interpretation": "Equal DOM endpoints and a passing bounds check do not prove raster alignment. Repeated captures are diagnostic evidence, not replacement audit samples."
+}

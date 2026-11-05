@@ -1,0 +1,13 @@
+{
+  "experiment": "measured-size-sweep-v1",
+  "purpose": "Four setup captures with DOM table-border landmarks, compare raster geometry after compact/wide resize, manually measure only visible corresponding landmarks",
+  "viewports": [[600,900],[1440,900]],
+  "captures_per_viewport": 2,
+  "retain_all": true,
+  "use_policy": "draft_review_no_training",
+  "replace_rejected_frames": false,
+  "model_inference": false,
+  "training": false,
+  "readiness_credit": false,
+  "independent_annotation_review": "pending"
+}

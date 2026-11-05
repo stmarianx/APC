@@ -11,7 +11,7 @@ from apc.perception.capture_stability import validate_capture_stability
 from apc.perception.pixel_alignment import PixelAlignment
 
 
-def prepare(capture, measurement, output):
+def prepare(capture, measurement, output, *, session_id="measured-alignment-demo-v1"):
     capture, measurement, output = map(lambda p: Path(p).resolve(), (capture, measurement, output))
     data = json.loads(capture.read_text(encoding="utf-8"))
     if data.get("use_policy") != "draft_review_no_training" or data.get("eligible_for_draft_scoring") is not True:
@@ -50,7 +50,7 @@ def prepare(capture, measurement, output):
            "screenshot_mapping":"measured_pixel_alignment_v1", "pixel_alignment":measured}
     collection = {"schema_version":"apc_browser_card_development_v1", "draft_only":True,
                   "readiness_credit":False, "virtual_chips":True, "capture_stability_required":True,
-                  "capture_session_id":"measured-alignment-demo-v1", "viewport":viewport,
+                  "capture_session_id":session_id, "viewport":viewport,
                   "card_size":card_size, **offsets, "frames":[row]}
     with output.open("x",encoding="utf-8") as stream:
         json.dump(collection,stream,indent=2)
@@ -63,5 +63,6 @@ if __name__ == "__main__":
     parser.add_argument("capture")
     parser.add_argument("measurement")
     parser.add_argument("output")
+    parser.add_argument("--session", default="measured-alignment-demo-v1")
     args = parser.parse_args()
-    prepare(args.capture,args.measurement,args.output)
+    prepare(args.capture,args.measurement,args.output,session_id=args.session)

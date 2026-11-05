@@ -1,0 +1,14 @@
+{
+  "schema_version": "apc_pixel_alignment_v1",
+  "image_sha256": "ab6b2b8b092053e1e240581da29e380d1261c443451787a3308c19ccfe1105a0",
+  "image_size": [1425,866],
+  "viewport": [1440,900],
+  "measurement_method": "manual_visible_landmarks",
+  "measurement_notes": "Developer native-image outer-border extrema measurements; independent review pending.",
+  "anchors": [
+    {"description":"table outer border top midpoint","dom_xy":[712.3333435058594,222.0729217529297],"pixel_xy":[705,220]},
+    {"description":"table outer border right midpoint","dom_xy":[1212.3333435058594,454.0729217529297],"pixel_xy":[1200,449.5]},
+    {"description":"table outer border bottom midpoint","dom_xy":[712.3333435058594,686.0729217529297],"pixel_xy":[705,679]},
+    {"description":"table outer border left midpoint","dom_xy":[212.33334350585935,454.0729217529297],"pixel_xy":[210,449.5]}
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "schema_version": "apc_browser_frame_acquisition_v1",
+  "image": "frame.jpg",
+  "image_format": "JPEG",
+  "sha256": "ab6b2b8b092053e1e240581da29e380d1261c443451787a3308c19ccfe1105a0",
+  "image_size": [
+    1425,
+    866
+  ],
+  "cards": [
+    [
+      "hero",
+      "9s",
+      605.3854370117188,
+      536.40625
+    ],
+    [
+      "hero",
+      "Ts",
+      675.3854370117188,
+      536.40625
+    ]
+  ],
+  "use_policy": "draft_review_no_training",
+  "capture_stability": {
+    "schema_version": "apc_capture_stability_v1",
+    "image_sha256": "ab6b2b8b092053e1e240581da29e380d1261c443451787a3308c19ccfe1105a0",
+    "image_size": [
+      1425,
+      866
+    ],
+    "before": {
+      "cards": [
+        [
+          "hero",
+          "9s",
+          605.3854370117188,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "Ts",
+          675.3854370117188,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        1440,
+        900
+      ],
+      "alignment_landmarks": [
+        {
+          "description": "table outer border top midpoint",
+          "dom_xy": [
+            712.3333435058594,
+            222.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border right midpoint",
+          "dom_xy": [
+            1212.3333435058594,
+            454.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border bottom midpoint",
+          "dom_xy": [
+            712.3333435058594,
+            686.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border left midpoint",
+          "dom_xy": [
+            212.33334350585935,
+            454.0729217529297
+          ]
+        }
+      ]
+    },
+    "after": {
+      "cards": [
+        [
+          "hero",
+          "9s",
+          605.3854370117188,
+          536.40625,
+          62,
+          78
+        ],
+        [
+          "hero",
+          "Ts",
+          675.3854370117188,
+          536.40625,
+          62,
+          78
+        ]
+      ],
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        1440,
+        900
+      ],
+      "alignment_landmarks": [
+        {
+          "description": "table outer border top midpoint",
+          "dom_xy": [
+            712.3333435058594,
+            222.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border right midpoint",
+          "dom_xy": [
+            1212.3333435058594,
+            454.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border bottom midpoint",
+          "dom_xy": [
+            712.3333435058594,
+            686.0729217529297
+          ]
+        },
+        {
+          "description": "table outer border left midpoint",
+          "dom_xy": [
+            212.33334350585935,
+            454.0729217529297
+          ]
+        }
+      ]
+    }
+  },
+  "eligible_for_draft_scoring": true,
+  "rejection_reason": null,
+  "pixel_geometry_reviewed": false,
+  "readiness_credit": false
+}

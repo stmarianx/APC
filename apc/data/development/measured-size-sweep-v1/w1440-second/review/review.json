@@ -1,0 +1,77 @@
+{
+  "schema_version": "apc_browser_geometry_review_v1",
+  "collection_sha256": "5bad21969b33a74a5394422252bac67a6553df33e323e7cf9eae5fc9ec609144",
+  "capture_session_id": "measured-size-sweep-v1",
+  "legend": {
+    "card": "yellow",
+    "rank": "cyan",
+    "suit": "magenta"
+  },
+  "model_used": false,
+  "labels_changed": false,
+  "readiness_credit": false,
+  "independently_reviewed": false,
+  "frames": [
+    {
+      "source_image": "C:\\Users\\st_ma\\Documents\\Negreanu\\apc\\data\\development\\measured-size-sweep-v1\\w1440-second\\frame.jpg",
+      "source_sha256": "ab6b2b8b092053e1e240581da29e380d1261c443451787a3308c19ccfe1105a0",
+      "overlay": "000-frame.png",
+      "image_size": [
+        1425,
+        866
+      ],
+      "targets": [
+        {
+          "identity": "9s",
+          "role": "hero",
+          "card_xyxy": [
+            599,
+            531,
+            661,
+            608
+          ],
+          "glyph_xyxy": {
+            "rank": [
+              605,
+              537,
+              655,
+              570
+            ],
+            "suit": [
+              605,
+              570,
+              655,
+              602
+            ]
+          }
+        },
+        {
+          "identity": "Ts",
+          "role": "hero",
+          "card_xyxy": [
+            668,
+            531,
+            730,
+            608
+          ],
+          "glyph_xyxy": {
+            "rank": [
+              674,
+              537,
+              724,
+              570
+            ],
+            "suit": [
+              674,
+              570,
+              724,
+              602
+            ]
+          }
+        }
+      ],
+      "review_status": "pending",
+      "mapping": "measured_pixel_alignment_v1"
+    }
+  ]
+}
