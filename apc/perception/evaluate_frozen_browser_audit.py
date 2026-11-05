@@ -28,6 +28,9 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
     if not isinstance(options, dict) or set(options)-allowed or any(type(v) is not bool for v in options.values()):
         raise ValueError("Unsupported frozen inference options")
     sources = plan.get("inference_source_sha256", {})
+    wide_recovery = plan.get("wide_surface_recovery", False)
+    if type(wide_recovery) is not bool or (wide_recovery and (verifier_checkpoint is None or not options.get("adaptive_surfaces"))):
+        raise ValueError("Wide surface audit requires a boolean option, verifier and adaptive surfaces")
     verifier_options = {}
     if bounded_verifier_checkpoint is not None and verifier_checkpoint is None:
         raise ValueError("Bounded verifier requires a primary verifier")
@@ -44,6 +47,8 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
     required_sources = {"apc/perception/" + name for name in ("infer_cards.py", "infer_card_locator.py", "card_proposals.py", "card_locator.py", "card_glyphs.py")}
     if verifier_options:
         required_sources.update({"apc/perception/card_verifier.py", "apc/perception/verified_card_reader.py"})
+    if wide_recovery:
+        required_sources.add("apc/perception/bright_surface_candidate.py")
     if not isinstance(sources, dict) or ((options or verifier_options) and not required_sources.issubset(sources)):
         raise ValueError("Explicit inference options require frozen source fingerprints")
     for relative, expected in sources.items():
@@ -53,6 +58,8 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
     data, frames = load_collection(collection_path)
     if data.get("use_policy") != "sealed_audit_no_training":
         raise ValueError("Audit collection must prohibit training")
+    if plan.get("capture_stability_required") is True and data.get("capture_stability_required") is not True:
+        raise ValueError("Audit plan requires capture stability evidence")
     schedule = [[row["hand_group"], row["street"]] for row in data["frames"]]
     if schedule != plan["frame_schedule"] or len(frames) > plan["maximum_frames"]:
         raise ValueError("Audit frame schedule incomplete or changed")
@@ -70,8 +77,13 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
     if verifier_options:
         from apc.perception.verified_card_reader import VerifiedCardReader
         reader_type = VerifiedCardReader
+    recovery_options = {}
+    if wide_recovery:
+        from apc.perception.bright_surface_candidate import BrightSurfaceReader
+        reader_type = BrightSurfaceReader
+        recovery_options["wide_search"] = True
     reader = reader_type(glyph_checkpoint, corner_pairs=True, surface_pairs=True,
-                        locator_checkpoint=locator_checkpoint, refine_surfaces=True, **options, **verifier_options)
+                        locator_checkpoint=locator_checkpoint, refine_surfaces=True, **options, **verifier_options, **recovery_options)
     report = evaluate(collection_path, reader)
     if verifier_options:
         report["frozen_verifier"] = reader.verifier_metadata
@@ -86,6 +98,8 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
         report["frozen_inference_options"] = options
         report["frozen_inference_source_sha256"] = plan["inference_source_sha256"]
         report["audit_checks"]["inference_sources_match"] = True
+    if wide_recovery:
+        report["frozen_wide_surface_recovery"] = True
     if "frame_viewports" in plan:
         report["audit_checks"]["planned_viewports_match"] = True
     return report

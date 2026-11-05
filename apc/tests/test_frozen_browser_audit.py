@@ -53,6 +53,35 @@ class FrozenBrowserAuditTests(unittest.TestCase):
         self.assertTrue(result["audit_checks_verifier_hashes_match"])
         self.assertFalse(result["full_table_readiness"])
 
+    def test_wide_recovery_audit_requires_frozen_wrapper_and_stability(self):
+        primary = ROOT / "apc/checkpoints/card-face-verifier-appearance-v4.pt"
+        plan = json.loads(PLAN.read_text())
+        plan.update(verifier_sha256=hashlib.sha256(primary.read_bytes()).hexdigest(),
+                    inference_options={"adaptive_surfaces":True},wide_surface_recovery=True)
+        names = ("infer_cards.py","infer_card_locator.py","card_proposals.py","card_locator.py",
+                 "card_glyphs.py","card_verifier.py","verified_card_reader.py","bright_surface_candidate.py")
+        plan["inference_source_sha256"] = {"apc/perception/"+name:
+            hashlib.sha256((ROOT/"apc/perception"/name).read_bytes()).hexdigest() for name in names}
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"plan.json"
+            path.write_text(json.dumps(plan))
+            with patch("apc.perception.bright_surface_candidate.BrightSurfaceReader") as reader, \
+                 patch("apc.perception.evaluate_frozen_browser_audit.evaluate",return_value={"full_table_readiness":False}):
+                reader.return_value.verifier_metadata = {"research_only":True}
+                result = run_audit(path,COLLECTION,GLYPH,LOCATOR,verifier_checkpoint=primary)
+                self.assertTrue(reader.call_args.kwargs["wide_search"])
+                self.assertTrue(result["frozen_wide_surface_recovery"])
+            del plan["inference_source_sha256"]["apc/perception/bright_surface_candidate.py"]
+            path.write_text(json.dumps(plan))
+            with self.assertRaisesRegex(ValueError,"fingerprints"):
+                run_audit(path,COLLECTION,GLYPH,LOCATOR,verifier_checkpoint=primary)
+            plan["inference_source_sha256"]["apc/perception/bright_surface_candidate.py"] = hashlib.sha256(
+                (ROOT/"apc/perception/bright_surface_candidate.py").read_bytes()).hexdigest()
+            plan["capture_stability_required"] = True
+            path.write_text(json.dumps(plan))
+            with self.assertRaisesRegex(ValueError,"stability"):
+                run_audit(path,COLLECTION,GLYPH,LOCATOR,verifier_checkpoint=primary)
+
     def test_unplanned_verifier_and_unpaired_bounded_expert_are_rejected(self):
         verifier = ROOT / "apc/checkpoints/card-face-verifier-v1.pt"
         with patch("apc.perception.evaluate_frozen_browser_audit.CardReader") as reader:
