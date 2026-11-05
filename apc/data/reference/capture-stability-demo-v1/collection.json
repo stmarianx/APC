@@ -1,0 +1,29 @@
+{
+  "schema_version": "apc_browser_card_development_v1",
+  "capture_session_id": "apc-capture-stability-demo-v1",
+  "source": "apc_full_hand_browser",
+  "virtual_chips": true,
+  "draft_only": true,
+  "readiness_credit": false,
+  "use_policy": "sealed_audit_no_training",
+  "capture_stability_required": true,
+  "screenshot_mapping": "uniform_width_scale_top_left_crop",
+  "viewport": [1280,720],
+  "card_size": [62,78],
+  "rank_region_offset_xywh": [6,6,50,29.33333396911621],
+  "suit_region_offset_xywh": [6,35.3333740234375,50,29.33333396911621],
+  "frames": [{
+    "image": "frame.png",
+    "sha256": "fe9f6d46679cd993572a02970303f4bcc220d1bbccc9a2d2178e2376a4ccd7be",
+    "hand_group": "hand-1",
+    "street": "preflop",
+    "cards": [["hero","4h",525.3854370117188,536.40625],["hero","2s",595.3854370117188,536.40625]],
+    "capture_stability": {
+      "schema_version": "apc_capture_stability_v1",
+      "image_sha256": "fe9f6d46679cd993572a02970303f4bcc220d1bbccc9a2d2178e2376a4ccd7be",
+      "image_size": [1265,712],
+      "before": {"viewport":[1280,720],"scroll":[0,0],"cards":[["hero","4h",525.3854370117188,536.40625,62,78],["hero","2s",595.3854370117188,536.40625,62,78]]},
+      "after": {"viewport":[1280,720],"scroll":[0,0],"cards":[["hero","4h",525.3854370117188,536.40625,62,78],["hero","2s",595.3854370117188,536.40625,62,78]]}
+    }
+  }]
+}

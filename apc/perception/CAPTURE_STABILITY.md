@@ -17,6 +17,8 @@ Legacy collections remain readable for reproducibility but are not retroactively
 
 ## Collector API
 
+Real-browser adapter: `apc/capture/practice_browser_adapter.mjs` exports `observePracticeFrame(tab)` and `capturePracticeFrame(tab)` for an authorized browser tab exposing the documented Playwright/evaluate and screenshot APIs. It reads only APC's own visible card DOM, not private game state; it is labeling infrastructure, not the neural perception model. The single-frame demonstration at `apc/data/reference/capture-stability-demo-v1` verifies actual browser acquisition and loader integration. Automatic cross-runtime persistence/import remains unfinished.
+
 `apc.capture.browser_frame.capture_browser_frame(observe, screenshot)` accepts two async callbacks from the permitted browser adapter. `observe` must return the visible-only snapshot described above; `screenshot` must return PNG bytes. The collector calls observe, screenshot, observe exactly once, copies observations immediately, binds image dimensions/hash, validates stability and returns bytes plus eligibility/rejection evidence. It does not control a table, retry, or inspect model predictions.
 
 `save_browser_frame(result, folder)` writes `frame.png` and `capture.json` in a new folder only, retaining both eligible and rejected acquisitions. Existing folders are refused. Capture callback failures propagate without fabricating frames. Persistence errors must also propagate; a folder without `capture.json` is incomplete and must not be imported. Non-JSON-safe malformed observations cause persistence to fail before folder creation. This API is tested with controlled callbacks; an actual browser adapter and end-to-end capture demonstration are still required.

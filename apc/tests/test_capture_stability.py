@@ -67,6 +67,15 @@ class CaptureStabilityTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "stability evidence"):
                 load_collection(path)
 
+    def test_real_browser_demo_loads_with_required_evidence(self):
+        from apc.perception.evaluate_browser_collection import load_collection
+        path = Path(__file__).resolve().parents[1] / "data/reference/capture-stability-demo-v1/collection.json"
+        data, frames = load_collection(path)
+        self.assertTrue(data["capture_stability_required"])
+        self.assertEqual([t["identity"] for t in frames[0]["targets"]], ["4h", "2s"])
+        self.assertEqual(frames[0]["viewport"], [1280,720])
+        self.assertEqual(data["use_policy"], "sealed_audit_no_training")
+
 
 if __name__ == "__main__":
     unittest.main()
