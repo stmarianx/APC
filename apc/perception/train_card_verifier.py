@@ -79,7 +79,25 @@ def generated_card_patch(rng, fonts):
     return image
 
 
-def patch_dataset(manifest, split, seed, *, negative_scenes=0, positive_aspect_variants=0, generated_positive_faces=0, positive_fonts=()):
+def text_fragment_patch(rng, fonts=()):
+    """Narrow subcrops of synthetic text panels; no playing cards rendered."""
+    image = Image.new("RGB",(240,180),rng.choice(("#102620","#164833","#242d3a")))
+    draw = ImageDraw.Draw(image)
+    left,top = rng.randint(0,18),rng.randint(0,14)
+    draw.rounded_rectangle((left,top,225,165),radius=rng.randint(0,8),
+        fill=rng.choice(("#e5e4d7","#f4f0e3","#b8e780","#aaa79e")))
+    font = _face_font(str(rng.choice(fonts)),rng.randint(14,26)) if fonts else ImageFont.load_default(size=rng.randint(14,26))
+    for line in range(5):
+        draw.text((left+3,top+3+line*30),rng.choice(("Stack 100 BB","Player 7","Call 2.5 BB","Raise","Check / Fold","Pot 30 BB")),
+            font=font,fill=rng.choice(("#14251d","#276bc5","#228454")),anchor="lt")
+    w,h = rng.randint(20,54),rng.randint(54,110)
+    x,y = rng.randint(0,240-w),rng.randint(0,180-h)
+    return image.crop((x,y,x+w,y+h))
+
+
+def patch_dataset(manifest, split, seed, *, negative_scenes=0, positive_aspect_variants=0, generated_positive_faces=0, positive_fonts=(), text_fragments=0):
+    if type(text_fragments) is not int or not 0 <= text_fragments <= 64:
+        raise ValueError("Expected 0 through 64 text fragments per frame")
     if type(negative_scenes) is not int or not 0 <= negative_scenes <= 64:
         raise ValueError("Expected 0 through 64 composite negatives per frame")
     if type(positive_aspect_variants) is not int or not 0 <= positive_aspect_variants <= 8:
@@ -97,6 +115,7 @@ def patch_dataset(manifest, split, seed, *, negative_scenes=0, positive_aspect_v
     scene_rng = random.Random(seed+10_000_000)
     aspect_rng = random.Random(seed+20_000_000)
     face_rng = random.Random(seed+30_000_000)
+    fragment_rng = random.Random(seed+40_000_000)
     tensors, labels, kinds = [], [], []
     for row in load_split(manifest, split):
         cards = [o for o in row["objects"] if o["class_name"] in ("hero_card", "board_card")]
@@ -132,6 +151,9 @@ def patch_dataset(manifest, split, seed, *, negative_scenes=0, positive_aspect_v
         for _ in range(generated_positive_faces):
             patch = generated_card_patch(face_rng, positive_fonts)
             tensors.append(proposal_tensor(patch, [0, 0, 1, 1])); labels.append(1.); kinds.append("generated_card_face")
+        for _ in range(text_fragments):
+            patch = text_fragment_patch(fragment_rng,positive_fonts)
+            tensors.append(proposal_tensor(patch,[0,0,1,1])); labels.append(0.); kinds.append("generated_text_fragment")
     if not tensors or not any(labels) or all(labels):
         raise ValueError("Verifier split needs both positive and negative examples")
     return torch.stack(tensors), torch.tensor(labels), kinds
@@ -148,7 +170,7 @@ def metrics(model, data, threshold=.5):
             "balanced_accuracy": (tp/(tp+fn)+tn/(tn+fp))/2}
 
 
-def train(manifest, destination, *, epochs=20, seed=20261112, negative_scenes=0, positive_aspect_variants=0, generated_positive_faces=0, positive_fonts=()):
+def train(manifest, destination, *, epochs=20, seed=20261112, negative_scenes=0, positive_aspect_variants=0, generated_positive_faces=0, positive_fonts=(), text_fragments=0):
     destination = Path(destination)
     if destination.exists() or epochs < 1:
         raise ValueError("Use a new output directory and positive epochs")
@@ -157,7 +179,7 @@ def train(manifest, destination, *, epochs=20, seed=20261112, negative_scenes=0,
     torch.use_deterministic_algorithms(True)
     splits = {split: patch_dataset(manifest, split, seed+index, negative_scenes=negative_scenes,
         positive_aspect_variants=positive_aspect_variants, generated_positive_faces=generated_positive_faces,
-        positive_fonts=positive_fonts) for index, split in enumerate(("train", "validation", "test"))}
+        positive_fonts=positive_fonts,text_fragments=text_fragments) for index, split in enumerate(("train", "validation", "test"))}
     model = CardFaceVerifier()
     optimizer = torch.optim.AdamW(model.parameters(), lr=.001)
     positive_weight = (1-splits["train"][1]).sum()/splits["train"][1].sum()
@@ -188,6 +210,7 @@ def train(manifest, destination, *, epochs=20, seed=20261112, negative_scenes=0,
         "extra_composite_negatives_per_frame": negative_scenes,
         "extra_positive_aspect_variants_per_card": positive_aspect_variants,
         "generated_positive_faces_per_frame": generated_positive_faces,
+        "text_fragments_per_frame": text_fragments,
         "positive_font_sha256": {str(path): hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in positive_fonts},
         "splits": {name: {"samples": len(data[1]), "positives": int(data[1].sum()),
             "kinds": {kind: data[2].count(kind) for kind in sorted(set(data[2]))}} for name, data in splits.items()},
@@ -208,7 +231,8 @@ if __name__ == "__main__":
     parser.add_argument("--positive-aspect-variants", type=int, default=0, help="Complete-card aspect/scale variation per source card")
     parser.add_argument("--generated-positive-faces", type=int, default=0)
     parser.add_argument("--positive-font", type=Path, action="append", default=[])
+    parser.add_argument("--text-fragments",type=int,default=0)
     args = parser.parse_args()
     print(json.dumps(train(args.manifest, args.output, epochs=args.epochs, negative_scenes=args.negative_scenes,
         positive_aspect_variants=args.positive_aspect_variants, generated_positive_faces=args.generated_positive_faces,
-        positive_fonts=tuple(args.positive_font))["test"], indent=2))
+        positive_fonts=tuple(args.positive_font),text_fragments=args.text_fragments)["test"], indent=2))

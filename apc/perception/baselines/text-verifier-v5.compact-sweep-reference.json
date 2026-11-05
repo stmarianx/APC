@@ -1,0 +1,1932 @@
+{
+  "development_diagnostic_only": true,
+  "draft_geometry": true,
+  "capture_sessions": 1,
+  "capture_session_id": "synthetic-compact-sweep-20261106",
+  "hand_groups": 48,
+  "observation_groups": 60,
+  "empty_frames": 12,
+  "frames": [
+    {
+      "image": "positive-000.png",
+      "hand_group": "synthetic-000",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 248.52430005557835,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Qd",
+        "2s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-001.png",
+      "hand_group": "synthetic-001",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 251.57540012151003,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "3d",
+        "4c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-002.png",
+      "hand_group": "synthetic-002",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 180.32970000058413,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "5s",
+        "2c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-003.png",
+      "hand_group": "synthetic-003",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 228.0976998154074,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Js",
+        "7c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-004.png",
+      "hand_group": "synthetic-004",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 151.7209999728948,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "8d",
+        "6d"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-005.png",
+      "hand_group": "synthetic-005",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 206.96379989385605,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Qh",
+        "2c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-006.png",
+      "hand_group": "synthetic-006",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 197.9036999400705,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Qd",
+        "2d"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-007.png",
+      "hand_group": "synthetic-007",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 242.04430007375777,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "3s",
+        "5d"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-008.png",
+      "hand_group": "synthetic-008",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 195.45140000991523,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "6d",
+        "4c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-009.png",
+      "hand_group": "synthetic-009",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 298.8888998515904,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "4h",
+        "6s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-010.png",
+      "hand_group": "synthetic-010",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 270.80780011601746,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Jd",
+        "4c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-011.png",
+      "hand_group": "synthetic-011",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 296.34899995289743,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "7d",
+        "Qs"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-012.png",
+      "hand_group": "synthetic-012",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 199.97710012830794,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "2c",
+        "5s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-013.png",
+      "hand_group": "synthetic-013",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 277.99360011704266,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Kd",
+        "Ad"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-014.png",
+      "hand_group": "synthetic-014",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 207.9725000075996,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Kc",
+        "Tc"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-015.png",
+      "hand_group": "synthetic-015",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 271.1058999411762,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "2c",
+        "3c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-016.png",
+      "hand_group": "synthetic-016",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 201.84480003081262,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Jc",
+        "Tc"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-017.png",
+      "hand_group": "synthetic-017",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 224.22600002028048,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Kh",
+        "9h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-018.png",
+      "hand_group": "synthetic-018",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 184.4819998368621,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Ah",
+        "Td"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-019.png",
+      "hand_group": "synthetic-019",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 216.65839990600944,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "5h",
+        "Kc"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-020.png",
+      "hand_group": "synthetic-020",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 198.16070003435016,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "5c",
+        "3c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-021.png",
+      "hand_group": "synthetic-021",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 263.9353999402374,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "7s",
+        "Kd"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-022.png",
+      "hand_group": "synthetic-022",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 161.88040003180504,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "8h",
+        "Th"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-023.png",
+      "hand_group": "synthetic-023",
+      "viewport": [
+        560,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        560,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 223.31429994665086,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "8s",
+        "Kh"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-024.png",
+      "hand_group": "synthetic-024",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 174.83150004409254,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "3c",
+        "4h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-025.png",
+      "hand_group": "synthetic-025",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 254.71420004032552,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Ah",
+        "Ad"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-026.png",
+      "hand_group": "synthetic-026",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 133.91689979471266,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "8h",
+        "3d"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-027.png",
+      "hand_group": "synthetic-027",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 173.1509999372065,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Jc",
+        "6h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-028.png",
+      "hand_group": "synthetic-028",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 120.0372998137027,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Ac",
+        "4s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-029.png",
+      "hand_group": "synthetic-029",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 191.86339993029833,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Kc",
+        "8d"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-030.png",
+      "hand_group": "synthetic-030",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 162.13080007582903,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "8s",
+        "5d"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-031.png",
+      "hand_group": "synthetic-031",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 262.36630021594465,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "9c",
+        "5h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-032.png",
+      "hand_group": "synthetic-032",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 206.87630004249513,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "7c",
+        "Ac"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-033.png",
+      "hand_group": "synthetic-033",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 300.99510005675256,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "2s",
+        "5d"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-034.png",
+      "hand_group": "synthetic-034",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 192.93290004134178,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "2h",
+        "9c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-035.png",
+      "hand_group": "synthetic-035",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 260.5854000430554,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Kd",
+        "Ts"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-036.png",
+      "hand_group": "synthetic-036",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 164.33320008218288,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Js",
+        "2s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-037.png",
+      "hand_group": "synthetic-037",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 266.1890999879688,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Qh",
+        "4c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-038.png",
+      "hand_group": "synthetic-038",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 182.61170014739037,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "5c",
+        "7s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-039.png",
+      "hand_group": "synthetic-039",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 253.48219997249544,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Qc",
+        "8s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-040.png",
+      "hand_group": "synthetic-040",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 167.80079994350672,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "3h",
+        "9h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-041.png",
+      "hand_group": "synthetic-041",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 226.23619996011257,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "6h",
+        "5h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-042.png",
+      "hand_group": "synthetic-042",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 155.4169999435544,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Th",
+        "2d"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-043.png",
+      "hand_group": "synthetic-043",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 189.34949999675155,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "8d",
+        "2h"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-044.png",
+      "hand_group": "synthetic-044",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 144.04639997519553,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "3d",
+        "7s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-045.png",
+      "hand_group": "synthetic-045",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 198.56130005791783,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "9d",
+        "Jh"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-046.png",
+      "hand_group": "synthetic-046",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 131.85840006917715,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "2d",
+        "5d"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "positive-047.png",
+      "hand_group": "synthetic-047",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 201.2321997899562,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "3c",
+        "Jh"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-000.png",
+      "hand_group": "negative-000",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 0,
+      "localized": 0,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 527.8527999762446,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-001.png",
+      "hand_group": "negative-001",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 0,
+      "localized": 0,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 591.5992001537234,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-002.png",
+      "hand_group": "negative-002",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 0,
+      "localized": 0,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 441.51809997856617,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-003.png",
+      "hand_group": "negative-003",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 0,
+      "localized": 0,
+      "false_positives": 0,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 613.1899000611156,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-004.png",
+      "hand_group": "negative-004",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 1,
+      "localized": 0,
+      "false_positives": 1,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 462.6932998653501,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-005.png",
+      "hand_group": "negative-005",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 1,
+      "localized": 0,
+      "false_positives": 1,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 586.0601000022143,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-006.png",
+      "hand_group": "negative-006",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 1,
+      "localized": 0,
+      "false_positives": 1,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 430.07220001891255,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-007.png",
+      "hand_group": "negative-007",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 1,
+      "localized": 0,
+      "false_positives": 1,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 616.7369000613689,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-008.png",
+      "hand_group": "negative-008",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 1,
+      "localized": 0,
+      "false_positives": 1,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 575.6749000865966,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-009.png",
+      "hand_group": "negative-009",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 1,
+      "localized": 0,
+      "false_positives": 1,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 643.7056998256594,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-010.png",
+      "hand_group": "negative-010",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 1,
+      "localized": 0,
+      "false_positives": 1,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 422.8018999565393,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "negative-011.png",
+      "hand_group": "negative-011",
+      "viewport": [
+        800,
+        900
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        800,
+        900
+      ],
+      "targets": 0,
+      "proposals": 1,
+      "localized": 0,
+      "false_positives": 1,
+      "spurious_ink_candidates": 0,
+      "spurious_high_score_candidates": 0,
+      "elapsed_ms": 656.6864000633359,
+      "missed_cards": 0,
+      "end_to_end_exact": 0,
+      "oracle_glyph_exact": 0,
+      "oracle_candidates": [],
+      "confirmed_cards": 0
+    }
+  ],
+  "observed_latency": {
+    "samples": 60,
+    "p95_ms": 613.3672500611283,
+    "scope": "One sequential pass, image I/O/proposals/glyph inference; excludes checkpoint loading and coaching backend; not a matched benchmark"
+  },
+  "unique_visible_identities": 45,
+  "collection_sha256": "2c1b77f728271308c76f9c2a292bed2dd0ad6a8da21718c2e799b1a913f1cb93",
+  "capture_stability": {
+    "required": false,
+    "frames_with_validated_evidence": 0,
+    "all_frames_have_evidence": false,
+    "pixel_geometry_reviewed": false,
+    "limitation": "Before/after equality cannot exclude transient movement during the screenshot"
+  },
+  "totals": {
+    "targets": 96,
+    "proposals": 104,
+    "localized": 96,
+    "false_positives": 8,
+    "spurious_ink_candidates": 0,
+    "spurious_high_score_candidates": 0,
+    "missed_cards": 0,
+    "end_to_end_exact": 96,
+    "oracle_glyph_exact": 96,
+    "confirmed_cards": 0
+  },
+  "training_performed": false,
+  "full_table_readiness": false,
+  "experiment": "bright_seed_wide_v2",
+  "promotion_authorized": false,
+  "candidate_source_sha256": "d3e2a1e553ea60db71344aeb3c01d16f4db586b746aa8c829037d39c37d8f3c6",
+  "checkpoint_sha256": {
+    "glyph": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+    "locator": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273",
+    "verifier": "41e45f326beeb935f218f33c4ba31d268e30f7d8f2bbaa41ef9ffd6020a7d9fc",
+    "bounded": "392ce66439a75015b13ad8f0f00349ebc523c82c0f62dd66034a95462a675a71"
+  }
+}

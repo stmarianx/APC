@@ -73,11 +73,14 @@ if __name__ == "__main__":
     parser.add_argument("collection",type=Path)
     parser.add_argument("--output",type=Path,required=True)
     parser.add_argument("--wide-search",action="store_true",help="Opt-in v2 extra expansion for narrow proposals")
+    parser.add_argument("--verifier-checkpoint",type=Path,help="Explicit experimental ambiguous-surface verifier; bounded expert unchanged")
     parser.add_argument("--checkpoint-dir",type=Path,default=Path(__file__).resolve().parents[1]/"checkpoints")
     args = parser.parse_args()
     p = args.checkpoint_dir
     paths = {"glyph":p/"glyph-font-diversity-v1.pt","locator":p/"card-locator-hardneg-v1.pt",
              "verifier":p/"card-face-verifier-appearance-v4.pt","bounded":p/"card-face-verifier-v1.pt"}
+    if args.verifier_checkpoint is not None:
+        paths["verifier"] = args.verifier_checkpoint
     torch.set_num_threads(2)
     reader = BrightSurfaceReader(paths["glyph"],corner_pairs=True,surface_pairs=True,
         locator_checkpoint=paths["locator"],refine_surfaces=True,adaptive_surfaces=True,

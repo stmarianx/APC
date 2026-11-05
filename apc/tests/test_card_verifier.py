@@ -9,7 +9,7 @@ import torch
 from PIL import Image, ImageFont
 
 from apc.perception.card_verifier import CardFaceVerifier, ProposalVerifier, proposal_tensor
-from apc.perception.train_card_verifier import control_patch, control_scene_patch, generated_card_patch, patch_dataset, train
+from apc.perception.train_card_verifier import control_patch, control_scene_patch, generated_card_patch, text_fragment_patch, patch_dataset, train
 
 
 class CardVerifierTests(unittest.TestCase):
@@ -32,6 +32,14 @@ class CardVerifierTests(unittest.TestCase):
         self.assertEqual(left.size, right.size)
         self.assertEqual(left.tobytes(), right.tobytes())
         self.assertGreaterEqual(min(left.size), 30)
+
+    def test_text_fragments_are_reproducible_narrow_controls(self):
+        left,right = text_fragment_patch(random.Random(78)),text_fragment_patch(random.Random(78))
+        self.assertEqual(left.tobytes(),right.tobytes())
+        self.assertTrue(20 <= left.width <= 54)
+        self.assertTrue(54 <= left.height <= 110)
+        with self.assertRaises(ValueError):
+            patch_dataset("unused", "train", 1, text_fragments=True)
 
     def test_generated_card_faces_are_deterministic_with_explicit_fonts(self):
         with patch("apc.perception.train_card_verifier._face_font", return_value=ImageFont.load_default(size=20)):
@@ -64,6 +72,8 @@ class CardVerifierTests(unittest.TestCase):
                 old = patch_dataset(manifest, "train", 55)
                 new = patch_dataset(manifest, "train", 55, negative_scenes=3)
                 varied = patch_dataset(manifest, "train", 55, negative_scenes=3, positive_aspect_variants=2)
+                fragments = patch_dataset(manifest,"train",55,negative_scenes=3,
+                    positive_aspect_variants=2,text_fragments=3)
                 with patch("apc.synthetic.render_table.validate_symbol_font"), \
                      patch("apc.perception.train_card_verifier.generated_card_patch", return_value=Image.new("RGB", (50, 70))):
                     faces = patch_dataset(manifest, "train", 55, negative_scenes=3, positive_aspect_variants=2,
@@ -79,6 +89,10 @@ class CardVerifierTests(unittest.TestCase):
             same = [i for i, kind in enumerate(faces[2]) if kind != "generated_card_face"]
             torch.testing.assert_close(varied[0], faces[0][same])
             self.assertEqual(faces[2].count("generated_card_face"), 4)
+            same = [i for i,kind in enumerate(fragments[2]) if kind != "generated_text_fragment"]
+            torch.testing.assert_close(varied[0],fragments[0][same])
+            torch.testing.assert_close(varied[1],fragments[1][same])
+            self.assertEqual(fragments[2].count("generated_text_fragment"),6)
         for count in (-1, 65, True, 1.5):
             with self.assertRaises(ValueError):
                 patch_dataset("missing.json", "train", 55, negative_scenes=count)

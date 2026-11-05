@@ -19,10 +19,10 @@ def binary_counts(actual, predicted):
             "negative_rejection": tn/(tn+fp) if tn+fp else None}
 
 
-def compare(manifest, checkpoints, *, negative_scenes=8, seed=20261114, positive_aspect_variants=0, generated_positive_faces=0, positive_fonts=()):
+def compare(manifest, checkpoints, *, negative_scenes=8, seed=20261114, positive_aspect_variants=0, generated_positive_faces=0, positive_fonts=(), text_fragments=0):
     torch.set_num_threads(2)
     data = patch_dataset(manifest, "test", seed, negative_scenes=negative_scenes,
-        positive_aspect_variants=positive_aspect_variants, generated_positive_faces=generated_positive_faces, positive_fonts=positive_fonts)
+        positive_aspect_variants=positive_aspect_variants, generated_positive_faces=generated_positive_faces, positive_fonts=positive_fonts,text_fragments=text_fragments)
     reports = []
     for checkpoint in checkpoints:
         verifier = ProposalVerifier(checkpoint)
@@ -37,6 +37,7 @@ def compare(manifest, checkpoints, *, negative_scenes=8, seed=20261114, positive
                         "threshold": verifier.threshold, "totals": binary_counts(data[1], predicted), "per_kind": per_kind})
     return {"reports": reports, "split": "test", "seed": seed, "negative_scenes": negative_scenes,
         "positive_aspect_variants": positive_aspect_variants, "generated_positive_faces": generated_positive_faces,
+        "text_fragments": text_fragments,
         "positive_font_sha256": {str(path): hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in positive_fonts},
         "manifest_sha256": hashlib.sha256(Path(manifest).read_bytes()).hexdigest(),
         "synthetic_test_reuse": True, "checkpoint_selection_performed": False,
@@ -51,9 +52,10 @@ if __name__ == "__main__":
     parser.add_argument("--positive-aspect-variants", type=int, default=0)
     parser.add_argument("--generated-positive-faces", type=int, default=0)
     parser.add_argument("--positive-font", type=Path, action="append", default=[])
+    parser.add_argument("--text-fragments",type=int,default=0)
     args = parser.parse_args()
     report = compare(args.manifest, args.checkpoint, positive_aspect_variants=args.positive_aspect_variants,
-                     generated_positive_faces=args.generated_positive_faces, positive_fonts=tuple(args.positive_font))
+                     generated_positive_faces=args.generated_positive_faces, positive_fonts=tuple(args.positive_font),text_fragments=args.text_fragments)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2)+"\n", encoding="utf-8")
     print(json.dumps([{key: row[key] for key in ("checkpoint", "totals")} for row in report["reports"]], indent=2))
