@@ -81,6 +81,9 @@ def evaluate_reader(checkpoint, manifest, split="test", *, corner_pairs=False, l
                    "high_score_wrong_matched": totals["high_score_candidates"] - totals["high_score_correct"],
                    "high_score_unmatched": totals["high_score_candidates_all"] - totals["high_score_candidates"],
                    "full_table_readiness": False})
+    if adaptive_surfaces:
+        from apc.perception.card_proposals import ADAPTIVE_SURFACE_VERSION
+        totals["surface_refinement_version"] = ADAPTIVE_SURFACE_VERSION
     return totals
 
 

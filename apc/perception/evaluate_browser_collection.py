@@ -135,6 +135,9 @@ if __name__ == "__main__":
     report["pair_extraction"] = "surface_two_band_then_corner" if args.surface_pairs else "upper_left_corner"
     report["proposal_mode"] = "light_surface_pixels" if args.pixel_proposals else "neural_locator_refined"
     report["surface_refinement"] = "none" if args.pixel_proposals else ("adaptive_bounded" if args.adaptive_surfaces else "legacy_fixed_roi")
+    if args.adaptive_surfaces:
+        from apc.perception.card_proposals import ADAPTIVE_SURFACE_VERSION
+        report["surface_refinement_version"] = ADAPTIVE_SURFACE_VERSION
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

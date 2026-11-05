@@ -13,6 +13,9 @@ from PIL import Image
 from apc.perception.table_locator import _components
 
 
+ADAPTIVE_SURFACE_VERSION = "bounded_smaller_area_overlap_v2"
+
+
 def propose_cards(image_path: str | Path, *, analysis_width: int = 640):
     if analysis_width < 160:
         raise ValueError("analysis_width must be at least 160")
@@ -106,11 +109,15 @@ def refine_card_surface(image, proposal, *, pixels=None, adaptive=False):
                 bounds = [left+a, top+b, left+c, top+d]
                 candidate_area = (c-a)*(d-b)
                 intersection = max(0, min(x2, bounds[2])-max(x1, bounds[0])) * max(0, min(y2, bounds[3])-max(y1, bounds[1]))
+                # A detector can under- OR over-estimate the surface. Requiring
+                # 70% of the original box wrongly rejects a complete bounded
+                # card inside an oversized proposal. Compare the smaller area.
+                containment = intersection/min(original_area, candidate_area)
                 if (.35 <= (c-a)/(d-b) <= 1.2 and area/candidate_area >= .55
                         and .4*original_area <= candidate_area <= 8*original_area
-                        and intersection/original_area >= .7):
+                        and containment >= .7):
                     candidate = [v/s for v, s in zip(bounds, (width, height, width, height))]
-                    candidates.append((intersection/original_area, area, candidate))
+                    candidates.append((containment, area, candidate))
             if candidates:
                 return dict(proposal, box_xyxy=max(candidates, key=lambda row: (row[0], row[1]))[2],
                             refinement="adaptive_bounded_surface", expansion=expansion)

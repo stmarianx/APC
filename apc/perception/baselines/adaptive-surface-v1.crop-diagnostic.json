@@ -1,0 +1,1652 @@
+{
+  "surface_refinement_version": "bounded_original_area_overlap_v1",
+  "reference_reuse": true,
+  "training_performed": false,
+  "full_table_readiness": false,
+  "selection_uses_labels": false,
+  "diagnostic_matching_uses_labels": true,
+  "collection_sha256": "3b161979441f461632c7d792f5193680092a43409b11698a965c161c6400f16f",
+  "checkpoints": {
+    "glyph": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+    "locator": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273"
+  },
+  "frames": [
+    {
+      "image": "h1-preflop-960.png",
+      "modes": {
+        "raw": [
+          {
+            "box_xyxy": [
+              0.46316106282174585,
+              0.6735219443621843,
+              0.5059097189456224,
+              0.7801556373419969
+            ],
+            "score": 0.8997637629508972,
+            "kind": "neural_card_candidate",
+            "candidate": "Qd",
+            "target": "Ts",
+            "iou": 0.5880699494351239,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.38825778439641,
+              0.6758483384290467,
+              0.4277732722461224,
+              0.7799426425734292
+            ],
+            "score": 0.895900547504425,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "Jd",
+            "iou": 0.5339897510554914,
+            "exact": false
+          }
+        ],
+        "legacy": [
+          {
+            "box_xyxy": [
+              0.45396825396825397,
+              0.6713197969543148,
+              0.5174603174603175,
+              0.7677664974619289
+            ],
+            "score": 0.8997637629508972,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Ts",
+            "target": "Ts",
+            "iou": 0.9682085120205016,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.38095238095238093,
+              0.6713197969543148,
+              0.44126984126984126,
+              0.7677664974619289
+            ],
+            "score": 0.895900547504425,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Jd",
+            "target": "Jd",
+            "iou": 0.9199121097556139,
+            "exact": true
+          }
+        ],
+        "adaptive": [
+          {
+            "box_xyxy": [
+              0.45396825396825397,
+              0.6713197969543148,
+              0.5174603174603175,
+              0.7677664974619289
+            ],
+            "score": 0.8997637629508972,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "Ts",
+            "target": "Ts",
+            "iou": 0.9682085120205016,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.38095238095238093,
+              0.6713197969543148,
+              0.4444444444444444,
+              0.7677664974619289
+            ],
+            "score": 0.895900547504425,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.7,
+            "candidate": "Jd",
+            "target": "Jd",
+            "iou": 0.9682085120205007,
+            "exact": true
+          }
+        ]
+      }
+    },
+    {
+      "image": "h1-flop-960.png",
+      "modes": {
+        "raw": [
+          {
+            "box_xyxy": [
+              0.48724589049816136,
+              0.30913151833026303,
+              0.5221479266881943,
+              0.4072563055416812
+            ],
+            "score": 0.9900434017181396,
+            "kind": "neural_card_candidate",
+            "candidate": "7s",
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.5436370216310025,
+              0.17182893273623093,
+              0.5869200594723225,
+              0.27682722327501874
+            ],
+            "score": 0.9771758317947388,
+            "kind": "neural_card_candidate",
+            "candidate": "Td",
+            "target": "3s",
+            "iou": 0.637062070907113,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.39168135412037375,
+              0.3071092883853809,
+              0.43370038978755476,
+              0.4141692365317241
+            ],
+            "score": 0.9665082097053528,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "Jd",
+            "iou": 0.5770958227738193,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.39052472114562986,
+              0.17148034954848496,
+              0.43300498127937315,
+              0.28193030441584793
+            ],
+            "score": 0.9628896713256836,
+            "kind": "neural_card_candidate",
+            "candidate": "8s",
+            "target": "8d",
+            "iou": 0.6046485573750108,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.4697073571383953,
+              0.1713628938988499,
+              0.5114844836294651,
+              0.27385092737234157
+            ],
+            "score": 0.949026346206665,
+            "kind": "neural_card_candidate",
+            "candidate": "Td",
+            "target": "3d",
+            "iou": 0.6258885741911993,
+            "exact": false
+          }
+        ],
+        "legacy": [
+          {
+            "box_xyxy": [
+              0.4740740740740741,
+              0.30456852791878175,
+              0.5248677248677248,
+              0.4010152284263959
+            ],
+            "score": 0.9900434017181396,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Ts",
+            "target": "Ts",
+            "iou": 0.7784798691096685,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.5333333333333333,
+              0.1751269035532995,
+              0.5968253968253968,
+              0.2715736040609137
+            ],
+            "score": 0.9771758317947388,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "3s",
+            "target": "3s",
+            "iou": 0.9650794479414053,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.30456852791878175,
+              0.4486772486772487,
+              0.4010152284263959
+            ],
+            "score": 0.9665082097053528,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Jd",
+            "target": "Jd",
+            "iou": 0.9299875179599898,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.1751269035532995,
+              0.44761904761904764,
+              0.2715736040609137
+            ],
+            "score": 0.9628896713256836,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "8d",
+            "target": "8d",
+            "iou": 0.9170118521059164,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4603174603174603,
+              0.1751269035532995,
+              0.5238095238095238,
+              0.2715736040609137
+            ],
+            "score": 0.949026346206665,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "3d",
+            "target": "3d",
+            "iou": 0.9650794479414073,
+            "exact": true
+          }
+        ],
+        "adaptive": [
+          {
+            "box_xyxy": [
+              0.4603174603174603,
+              0.30456852791878175,
+              0.5248677248677248,
+              0.4010152284263959
+            ],
+            "score": 0.9900434017181396,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "Ts",
+            "target": "Ts",
+            "iou": 0.9813708964749599,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.5333333333333333,
+              0.1751269035532995,
+              0.5968253968253968,
+              0.2715736040609137
+            ],
+            "score": 0.9771758317947388,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "3s",
+            "target": "3s",
+            "iou": 0.9650794479414053,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.30456852791878175,
+              0.45185185185185184,
+              0.4010152284263959
+            ],
+            "score": 0.9665082097053528,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.7,
+            "candidate": "Jd",
+            "target": "Jd",
+            "iou": 0.9783748569372295,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.1751269035532995,
+              0.4507936507936508,
+              0.2715736040609137
+            ],
+            "score": 0.9628896713256836,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.7,
+            "candidate": "8d",
+            "target": "8d",
+            "iou": 0.965079447941407,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4603174603174603,
+              0.1751269035532995,
+              0.5238095238095238,
+              0.2715736040609137
+            ],
+            "score": 0.949026346206665,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "3d",
+            "target": "3d",
+            "iou": 0.9650794479414073,
+            "exact": true
+          }
+        ]
+      }
+    },
+    {
+      "image": "h1-turn-960.png",
+      "modes": {
+        "raw": [
+          {
+            "box_xyxy": [
+              0.486398920789361,
+              0.26093245864562364,
+              0.5228002298623323,
+              0.35956086785249086
+            ],
+            "score": 0.9773464798927307,
+            "kind": "neural_card_candidate",
+            "candidate": "7s",
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.5084608767181635,
+              0.1006171176938907,
+              0.5590443547815085,
+              0.22136029552506364
+            ],
+            "score": 0.8837363123893738,
+            "kind": "neural_card_candidate",
+            "candidate": "Qd",
+            "target": "3s",
+            "iou": 0.6596544520238667,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.39201272204518317,
+              0.2572623653256375,
+              0.4344214491546154,
+              0.36198216806287353
+            ],
+            "score": 0.8793880343437195,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "Jd",
+            "iou": 0.5893613094140764,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.5887119367718696,
+              0.12880876320211784,
+              0.6237793833017349,
+              0.22337761926262276
+            ],
+            "score": 0.8788841962814331,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "Td",
+            "iou": 0.508689543363553,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.432861639931798,
+              0.10215761933637701,
+              0.4844561468809843,
+              0.22310977850271307
+            ],
+            "score": 0.8650320172309875,
+            "kind": "neural_card_candidate",
+            "candidate": "Qd",
+            "target": "3d",
+            "iou": 0.6697605817662701,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.3637743335217237,
+              0.12603041157126427,
+              0.4009493816643953,
+              0.22571604326367378
+            ],
+            "score": 0.7795621752738953,
+            "kind": "neural_card_candidate",
+            "candidate": "Tc",
+            "target": "8d",
+            "iou": 0.5476102425725288,
+            "exact": false
+          }
+        ],
+        "legacy": [
+          {
+            "box_xyxy": [
+              0.4740740740740741,
+              0.2550761421319797,
+              0.5248677248677248,
+              0.35152284263959394
+            ],
+            "score": 0.9773464798927307,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Ts",
+            "target": "Ts",
+            "iou": 0.772691736183629,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4973544973544973,
+              0.12436548223350254,
+              0.5608465608465608,
+              0.22081218274111675
+            ],
+            "score": 0.8837363123893738,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "3s",
+            "target": "3s",
+            "iou": 0.9705924964320709,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.2550761421319797,
+              0.4497354497354497,
+              0.35152284263959394
+            ],
+            "score": 0.8793880343437195,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Jd",
+            "target": "Jd",
+            "iou": 0.9384244155423878,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.5756613756613757,
+              0.12436548223350254,
+              0.6338624338624339,
+              0.22081218274111675
+            ],
+            "score": 0.8788841962814331,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Td",
+            "target": "Td",
+            "iou": 0.8867388101278425,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.42433862433862435,
+              0.12436548223350254,
+              0.48783068783068784,
+              0.22081218274111675
+            ],
+            "score": 0.8650320172309875,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "3d",
+            "target": "3d",
+            "iou": 0.9730998363870871,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3513227513227513,
+              0.12436548223350254,
+              0.41375661375661377,
+              0.22081218274111675
+            ],
+            "score": 0.7795621752738953,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "8d",
+            "target": "8d",
+            "iou": 0.956881505780635,
+            "exact": true
+          }
+        ],
+        "adaptive": [
+          {
+            "box_xyxy": [
+              0.4603174603174603,
+              0.2550761421319797,
+              0.5248677248677248,
+              0.35152284263959394
+            ],
+            "score": 0.9773464798927307,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "Ts",
+            "target": "Ts",
+            "iou": 0.9732487112025195,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4973544973544973,
+              0.12436548223350254,
+              0.5608465608465608,
+              0.22081218274111675
+            ],
+            "score": 0.8837363123893738,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "3s",
+            "target": "3s",
+            "iou": 0.9705924964320709,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.2550761421319797,
+              0.45185185185185184,
+              0.35152284263959394
+            ],
+            "score": 0.8793880343437195,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.7,
+            "candidate": "Jd",
+            "target": "Jd",
+            "iou": 0.9702896108985678,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.5693121693121693,
+              0.12436548223350254,
+              0.6338624338624339,
+              0.22081218274111675
+            ],
+            "score": 0.8788841962814331,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.7,
+            "candidate": "Td",
+            "target": "Td",
+            "iou": 0.9837777787534999,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.42433862433862435,
+              0.12436548223350254,
+              0.48783068783068784,
+              0.22081218274111675
+            ],
+            "score": 0.8650320172309875,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "3d",
+            "target": "3d",
+            "iou": 0.9730998363870871,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3513227513227513,
+              0.12436548223350254,
+              0.4148148148148148,
+              0.22081218274111675
+            ],
+            "score": 0.7795621752738953,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.7,
+            "candidate": "8d",
+            "target": "8d",
+            "iou": 0.973099836387086,
+            "exact": true
+          }
+        ]
+      }
+    },
+    {
+      "image": "h1-river-960.png",
+      "modes": {
+        "raw": [
+          {
+            "box_xyxy": [
+              0.48639998994767664,
+              0.2609313094745512,
+              0.5227998536080122,
+              0.35956181229456613
+            ],
+            "score": 0.9773482084274292,
+            "kind": "neural_card_candidate",
+            "candidate": "7s",
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.392005455493927,
+              0.25725528111924295,
+              0.43442645370960237,
+              0.3619898360060609
+            ],
+            "score": 0.8795875310897827,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "Jd",
+            "iou": 0.5895363090900583,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.31720885559916495,
+              0.12390814089904661,
+              0.35989984050393103,
+              0.23121002429853316
+            ],
+            "score": 0.8504791259765625,
+            "kind": "neural_card_candidate",
+            "candidate": "8s",
+            "target": "8d",
+            "iou": 0.6180664556129402,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.6180963687598705,
+              0.12650752699245577,
+              0.6590292103588581,
+              0.22577936833967333
+            ],
+            "score": 0.8478764295578003,
+            "kind": "neural_card_candidate",
+            "candidate": "7d",
+            "target": "Qd",
+            "iou": 0.5981311145953379,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.395308231189847,
+              0.12556175838993944,
+              0.4379790436476469,
+              0.22695440005349077
+            ],
+            "score": 0.8303399085998535,
+            "kind": "neural_card_candidate",
+            "candidate": "Td",
+            "target": "3d",
+            "iou": 0.6241591224192109,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.46294144727289677,
+              0.09562258357587067,
+              0.5182591881603003,
+              0.2231617414433023
+            ],
+            "score": 0.8297021985054016,
+            "kind": "neural_card_candidate",
+            "candidate": "Qc",
+            "target": "3s",
+            "iou": 0.6773130672341817,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.5453834816813469,
+              0.12862561724108199,
+              0.5846588745713234,
+              0.22295240393799284
+            ],
+            "score": 0.7698442339897156,
+            "kind": "neural_card_candidate",
+            "candidate": "9d",
+            "target": "Td",
+            "iou": 0.5715361596200438,
+            "exact": false
+          }
+        ],
+        "legacy": [
+          {
+            "box_xyxy": [
+              0.4740740740740741,
+              0.2550761421319797,
+              0.5248677248677248,
+              0.35152284263959394
+            ],
+            "score": 0.9773482084274292,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Ts",
+            "target": "Ts",
+            "iou": 0.772691736183629,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.2550761421319797,
+              0.4497354497354497,
+              0.35152284263959394
+            ],
+            "score": 0.8795875310897827,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Jd",
+            "target": "Jd",
+            "iou": 0.9384244155423878,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3142857142857143,
+              0.12436548223350254,
+              0.3746031746031746,
+              0.22081218274111675
+            ],
+            "score": 0.8504791259765625,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "8d",
+            "target": "8d",
+            "iou": 0.9244448445677326,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.6063492063492063,
+              0.12436548223350254,
+              0.6698412698412698,
+              0.22081218274111675
+            ],
+            "score": 0.8478764295578003,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Qd",
+            "target": "Qd",
+            "iou": 0.9730998363870871,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.12436548223350254,
+              0.4507936507936508,
+              0.22081218274111675
+            ],
+            "score": 0.8303399085998535,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "3d",
+            "target": "3d",
+            "iou": 0.9730998363870871,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4603174603174603,
+              0.12436548223350254,
+              0.5238095238095238,
+              0.22081218274111675
+            ],
+            "score": 0.8297021985054016,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "3s",
+            "target": "3s",
+            "iou": 0.9730998363870871,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.5333333333333333,
+              0.12436548223350254,
+              0.5968253968253968,
+              0.22081218274111675
+            ],
+            "score": 0.7698442339897156,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Td",
+            "target": "Td",
+            "iou": 0.9730998363870854,
+            "exact": true
+          }
+        ],
+        "adaptive": [
+          {
+            "box_xyxy": [
+              0.4603174603174603,
+              0.2550761421319797,
+              0.5248677248677248,
+              0.35152284263959394
+            ],
+            "score": 0.9773482084274292,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "Ts",
+            "target": "Ts",
+            "iou": 0.9732487112025195,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.2550761421319797,
+              0.45185185185185184,
+              0.35152284263959394
+            ],
+            "score": 0.8795875310897827,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.7,
+            "candidate": "Jd",
+            "target": "Jd",
+            "iou": 0.9702896108985678,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3142857142857143,
+              0.12436548223350254,
+              0.37777777777777777,
+              0.22081218274111675
+            ],
+            "score": 0.8504791259765625,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.7,
+            "candidate": "8d",
+            "target": "8d",
+            "iou": 0.9730998363870871,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.6063492063492063,
+              0.12436548223350254,
+              0.6698412698412698,
+              0.22081218274111675
+            ],
+            "score": 0.8478764295578003,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "Qd",
+            "target": "Qd",
+            "iou": 0.9730998363870871,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.3873015873015873,
+              0.12436548223350254,
+              0.4507936507936508,
+              0.22081218274111675
+            ],
+            "score": 0.8303399085998535,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "3d",
+            "target": "3d",
+            "iou": 0.9730998363870871,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4603174603174603,
+              0.12436548223350254,
+              0.5238095238095238,
+              0.22081218274111675
+            ],
+            "score": 0.8297021985054016,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "3s",
+            "target": "3s",
+            "iou": 0.9730998363870871,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.5333333333333333,
+              0.12436548223350254,
+              0.5968253968253968,
+              0.22081218274111675
+            ],
+            "score": 0.7698442339897156,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "Td",
+            "target": "Td",
+            "iou": 0.9730998363870854,
+            "exact": true
+          }
+        ]
+      }
+    },
+    {
+      "image": "h2-river-600.png",
+      "modes": {
+        "raw": [
+          {
+            "box_xyxy": [
+              0.64107875674963,
+              0.14344838488361109,
+              0.6737540379166603,
+              0.23148848343154657
+            ],
+            "score": 0.9871905446052551,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.4399420814588666,
+              0.2795099883299807,
+              0.4705884335562587,
+              0.35951626738128456
+            ],
+            "score": 0.9805113673210144,
+            "kind": "neural_card_candidate",
+            "candidate": "7c",
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.3259674644097686,
+              0.2831716518039289,
+              0.3563920909538865,
+              0.3650018851394239
+            ],
+            "score": 0.9796469211578369,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.3997996348887682,
+              0.27625868453279784,
+              0.4320895981043577,
+              0.36166037602917006
+            ],
+            "score": 0.9549131989479065,
+            "kind": "neural_card_candidate",
+            "candidate": "2s",
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.3181121539324522,
+              0.14448838016909102,
+              0.349084347859025,
+              0.2275897198073242
+            ],
+            "score": 0.9414027333259583,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.5682372378185392,
+              0.14346766617635023,
+              0.5994424132630229,
+              0.22275210317710173
+            ],
+            "score": 0.8623065948486328,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.3962509073317051,
+              0.14186718816990437,
+              0.42562801763415337,
+              0.22245190049643102
+            ],
+            "score": 0.824009358882904,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.47370540965348484,
+              0.14252936354149942,
+              0.5020288867875934,
+              0.21913091352452402
+            ],
+            "score": 0.6338609457015991,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.9432437174022198,
+              0.27431104008270346,
+              1,
+              0.44870566252780997
+            ],
+            "score": 0.5064186453819275,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.06969729587435722,
+              0.711991442448419,
+              0.10954972878098487,
+              0.8120374289219794
+            ],
+            "score": 0.5050123929977417,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          }
+        ],
+        "legacy": [
+          {
+            "box_xyxy": [
+              0.629059829059829,
+              0.1423076923076923,
+              0.6837606837606838,
+              0.22179487179487178
+            ],
+            "score": 0.9871905446052551,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Td",
+            "target": "Qc",
+            "iou": 0.7365479529794964,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.42905982905982903,
+              0.27307692307692305,
+              0.4735042735042735,
+              0.3525641025641026
+            ],
+            "score": 0.9805113673210144,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "9d",
+            "target": "9s",
+            "iou": 0.6021756021756027,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.31965811965811963,
+              0.27307692307692305,
+              0.3658119658119658,
+              0.3525641025641026
+            ],
+            "score": 0.9796469211578369,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "7d",
+            "target": "7s",
+            "iou": 0.6121890467810356,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.4,
+              0.27307692307692305,
+              0.4444444444444444,
+              0.3525641025641026
+            ],
+            "score": 0.9549131989479065,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "5d",
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.3076923076923077,
+              0.1423076923076923,
+              0.358974358974359,
+              0.22179487179487178
+            ],
+            "score": 0.9414027333259583,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Td",
+            "target": "8c",
+            "iou": 0.6906275266361427,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.5555555555555556,
+              0.1423076923076923,
+              0.6034188034188034,
+              0.22179487179487178
+            ],
+            "score": 0.8623065948486328,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": null,
+            "target": "6s",
+            "iou": 0.6446919592245369,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.38632478632478634,
+              0.1423076923076923,
+              0.4358974358974359,
+              0.22179487179487178
+            ],
+            "score": 0.824009358882904,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "6c",
+            "target": "6c",
+            "iou": 0.6676616360318687,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.46324786324786327,
+              0.1423076923076923,
+              0.5128205128205128,
+              0.22179487179487178
+            ],
+            "score": 0.6338609457015991,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "5d",
+            "target": "5d",
+            "iou": 0.6676616360318668,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.9432437174022198,
+              0.27431104008270346,
+              1,
+              0.44870566252780997
+            ],
+            "score": 0.5064186453819275,
+            "kind": "neural_card_candidate",
+            "refinement": "no_surface_match",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.06969729587435722,
+              0.711991442448419,
+              0.10954972878098487,
+              0.8120374289219794
+            ],
+            "score": 0.5050123929977417,
+            "kind": "neural_card_candidate",
+            "refinement": "no_surface_match",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          }
+        ],
+        "adaptive": [
+          {
+            "box_xyxy": [
+              0.611965811965812,
+              0.1423076923076923,
+              0.6837606837606838,
+              0.22179487179487178
+            ],
+            "score": 0.9871905446052551,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "Qc",
+            "target": "Qc",
+            "iou": 0.9659232304700228,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4,
+              0.27307692307692305,
+              0.4735042735042735,
+              0.3525641025641026
+            ],
+            "score": 0.9805113673210144,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "9s",
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.31965811965811963,
+              0.27307692307692305,
+              0.39316239316239315,
+              0.3525641025641026
+            ],
+            "score": 0.9796469211578369,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "7s",
+            "target": "7s",
+            "iou": 0.9797611537199155,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4,
+              0.27307692307692305,
+              0.4735042735042735,
+              0.3525641025641026
+            ],
+            "score": 0.9549131989479065,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "9s",
+            "target": "9s",
+            "iou": 0.9888994532514307,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.2923076923076923,
+              0.1423076923076923,
+              0.3641025641025641,
+              0.22179487179487178
+            ],
+            "score": 0.9414027333259583,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "8c",
+            "target": "8c",
+            "iou": 0.9602732409091225,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.5316239316239316,
+              0.1423076923076923,
+              0.6034188034188034,
+              0.22179487179487178
+            ],
+            "score": 0.8623065948486328,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "6s",
+            "target": "6s",
+            "iou": 0.9659232304700228,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.37094017094017095,
+              0.1423076923076923,
+              0.4444444444444444,
+              0.22179487179487178
+            ],
+            "score": 0.824009358882904,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "6c",
+            "target": "6c",
+            "iou": 0.9740714351956236,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4512820512820513,
+              0.1423076923076923,
+              0.5247863247863248,
+              0.22179487179487178
+            ],
+            "score": 0.6338609457015991,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 1.4,
+            "candidate": "5d",
+            "target": "5d",
+            "iou": 0.9651005487771526,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.9432437174022198,
+              0.27431104008270346,
+              1,
+              0.44870566252780997
+            ],
+            "score": 0.5064186453819275,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_no_bounded_surface",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.06969729587435722,
+              0.711991442448419,
+              0.10954972878098487,
+              0.8120374289219794
+            ],
+            "score": 0.5050123929977417,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_no_bounded_surface",
+            "candidate": null,
+            "target": null,
+            "iou": null,
+            "exact": false
+          }
+        ]
+      }
+    },
+    {
+      "image": "h3-river-1440.png",
+      "modes": {
+        "raw": [
+          {
+            "box_xyxy": [
+              0.5687277913093567,
+              0.1696150053454482,
+              0.609276294708252,
+              0.2709030855609023
+            ],
+            "score": 0.9319320917129517,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "5h",
+            "iou": 0.7745831140899693,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.37220076806843283,
+              0.1680127377419368,
+              0.4160572808235884,
+              0.2775975535421268
+            ],
+            "score": 0.8520187139511108,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "As",
+            "iou": 0.7059870004680244,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.4632538892328739,
+              0.14594765671569368,
+              0.5132378898561001,
+              0.2694168678768303
+            ],
+            "score": 0.8324626684188843,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "2h",
+            "iou": 0.5552155125683438,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.5146196082234382,
+              0.14879676553866136,
+              0.5621590808033943,
+              0.2674575060929941
+            ],
+            "score": 0.8186137676239014,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "Ah",
+            "iou": 0.6126316174765563,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.4209919162094593,
+              0.16897920259962912,
+              0.45970093831419945,
+              0.2688434768630111
+            ],
+            "score": 0.5246428847312927,
+            "kind": "neural_card_candidate",
+            "candidate": null,
+            "target": "Js",
+            "iou": 0.6859713880899398,
+            "exact": false
+          }
+        ],
+        "legacy": [
+          {
+            "box_xyxy": [
+              0.5705263157894737,
+              0.17090069284064666,
+              0.6133333333333333,
+              0.25981524249422633
+            ],
+            "score": 0.9319320917129517,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "5h",
+            "target": "5h",
+            "iou": 0.984340172422551,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.376140350877193,
+              0.17090069284064666,
+              0.4189473684210526,
+              0.25981524249422633
+            ],
+            "score": 0.8520187139511108,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "As",
+            "target": "As",
+            "iou": 0.9843401724225497,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4729824561403509,
+              0.17090069284064666,
+              0.5157894736842106,
+              0.25981524249422633
+            ],
+            "score": 0.8324626684188843,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "2h",
+            "target": "2h",
+            "iou": 0.976818896448302,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.5221052631578947,
+              0.17090069284064666,
+              0.5649122807017544,
+              0.25981524249422633
+            ],
+            "score": 0.8186137676239014,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Ah",
+            "target": "Ah",
+            "iou": 0.9798922759923332,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4245614035087719,
+              0.17090069284064666,
+              0.4673684210526316,
+              0.25981524249422633
+            ],
+            "score": 0.5246428847312927,
+            "kind": "neural_card_candidate",
+            "refinement": "local_surface_component",
+            "candidate": "Js",
+            "target": "Js",
+            "iou": 0.9843401724225508,
+            "exact": true
+          }
+        ],
+        "adaptive": [
+          {
+            "box_xyxy": [
+              0.5705263157894737,
+              0.17090069284064666,
+              0.6133333333333333,
+              0.25981524249422633
+            ],
+            "score": 0.9319320917129517,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "5h",
+            "target": "5h",
+            "iou": 0.984340172422551,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.376140350877193,
+              0.17090069284064666,
+              0.4189473684210526,
+              0.25981524249422633
+            ],
+            "score": 0.8520187139511108,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "As",
+            "target": "As",
+            "iou": 0.9843401724225497,
+            "exact": true
+          },
+          {
+            "box_xyxy": [
+              0.4632538892328739,
+              0.14594765671569368,
+              0.5132378898561001,
+              0.2694168678768303
+            ],
+            "score": 0.8324626684188843,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_no_bounded_surface",
+            "candidate": null,
+            "target": "2h",
+            "iou": 0.5552155125683438,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.5146196082234382,
+              0.14879676553866136,
+              0.5621590808033943,
+              0.2674575060929941
+            ],
+            "score": 0.8186137676239014,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_no_bounded_surface",
+            "candidate": null,
+            "target": "Ah",
+            "iou": 0.6126316174765563,
+            "exact": false
+          },
+          {
+            "box_xyxy": [
+              0.4245614035087719,
+              0.17090069284064666,
+              0.4673684210526316,
+              0.25981524249422633
+            ],
+            "score": 0.5246428847312927,
+            "kind": "neural_card_candidate",
+            "refinement": "adaptive_bounded_surface",
+            "expansion": 0.35,
+            "candidate": "Js",
+            "target": "Js",
+            "iou": 0.9843401724225508,
+            "exact": true
+          }
+        ]
+      }
+    }
+  ]
+}

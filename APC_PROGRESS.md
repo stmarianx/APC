@@ -1,10 +1,10 @@
 # APC progress
 
-Updated: 2026-11-05 03:00 UTC. This is a saved checkpoint snapshot, not an always-running live dashboard.
+Updated: 2026-11-05 03:04 UTC. This is a saved checkpoint snapshot, not an always-running live dashboard.
 
-Current experiment — scale-aware detector training:
+Current experiment — wide-table crop regression:
 
-`[██████████] 100% — experiment complete; neither candidate promoted; next experiment pending`
+`[██████████] 100% — crop fix verified on reused references; remains opt-in; next detector experiment pending`
 
 Current phase: visible-table perception research. Latest candidate: `apc/checkpoints/glyph-font-diversity-v1.pt`.
 
@@ -16,10 +16,10 @@ Current phase: visible-table perception research. Latest candidate: `apc/checkpo
 
 Latest viewport audit: 27/34 correct end-to-end, three false proposals and two missed cards. With supplied glyph boxes the recognizer gets 34/34. Compact-layout crop quality and wide-layout detection need work. A provider-specific screenshot-coordinate correction was visually checked; independent label review remains pending.
 
-Latest completed work: trained and evaluated independent horizontal/vertical scale augmentation (0.55–1.8), and implemented opt-in bounded card-surface expansion. Broader augmentation produced 39 false proposals on the reused viewport reference and is rejected as a replacement. Bounded expansion with the incumbent detector improved aggregate identities from 27/34 to 30/34, preserving 34/34 old captured and 80/80 old synthetic results, but wide-view recognition regressed from 5/7 to 3/7. It remains research-only. All these comparisons reuse reference images; no fresh audit or coaching-readiness claim is made.
+Latest completed work: diagnosed the bounded-surface regression as oversized detector boxes failing an original-area overlap rule. Comparing against the smaller area restores wide-view recognition to 5/7 while retaining compact recognition at 7/7. Reused viewport identities improve from legacy 27/34 and adaptive-v1 30/34 to adaptive-v2 32/34; three false proposals and two missed cards remain. Old captured development stays 34/34 and synthetic retention 80/80 with no false proposals. Broader independent-axis training remains rejected due to false detections. No neural weights or defaults changed. No fresh audit or coaching-readiness claim is made.
 
-Next work: diagnose wide-frame crop regression and strengthen synthetic responsive-layout/distractor coverage before another detector experiment. A new frozen-model capture audit is required after selecting a candidate. Detailed results and reproduction instructions: `apc/perception/baselines/locator-axis-diversity-v1.experiment.md`. No training job remains running from this checkpoint.
+Next work: address missed wide-view cards and false proposals, strengthening synthetic responsive-layout/distractor coverage while retaining original-scale examples. A new frozen-model capture audit is required after selecting a candidate. Detailed results and reproduction instructions: `apc/perception/baselines/adaptive-surface-v2.experiment.md`. No training job remains running from this checkpoint.
 
-Verification for this checkpoint: 39 targeted regression tests passed (surface refinement, spatial training, detector/reader inference, evaluation and frozen viewport audit checks). Unrelated name-OCR edits were left untouched.
+Verification for this checkpoint: 41 targeted regression tests passed (including oversized/narrow/unbounded surfaces, neighboring distractors, paired-crop diagnostics, detector/reader inference and frozen viewport audit checks). Unrelated name-OCR edits were left untouched.
 
 Overall APC: **in development, not coaching-ready**. There is no defensible overall completion percentage yet. Completion still needs independently evaluated full-table perception, temporally consistent state, uncertainty-aware player profiles, solver/GTO and neural-strategy integration, virtual-chip self-play/completed-hand improvement, fast audited BB recommendations, and a verified controlling application. Existing experimental components do not by themselves prove those requirements complete.

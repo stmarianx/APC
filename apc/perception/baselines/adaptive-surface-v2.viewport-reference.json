@@ -1,0 +1,228 @@
+{
+  "development_diagnostic_only": true,
+  "draft_geometry": true,
+  "capture_sessions": 1,
+  "capture_session_id": "apc-browser-viewport-audit-v3",
+  "hand_groups": 3,
+  "frames": [
+    {
+      "image": "h1-preflop-960.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        960,
+        800
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        960,
+        800.5079365079365
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "Jd",
+        "Ts"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h1-flop-960.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        960,
+        800
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        960,
+        800.5079365079365
+      ],
+      "targets": 5,
+      "proposals": 5,
+      "localized": 5,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 5,
+      "oracle_glyph_exact": 5,
+      "oracle_candidates": [
+        "8d",
+        "3d",
+        "3s",
+        "Jd",
+        "Ts"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h1-turn-960.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        960,
+        800
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        960,
+        800.5079365079365
+      ],
+      "targets": 6,
+      "proposals": 6,
+      "localized": 6,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 6,
+      "oracle_glyph_exact": 6,
+      "oracle_candidates": [
+        "8d",
+        "3d",
+        "3s",
+        "Td",
+        "Jd",
+        "Ts"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h1-river-960.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        960,
+        800
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        960,
+        800.5079365079365
+      ],
+      "targets": 7,
+      "proposals": 7,
+      "localized": 7,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 7,
+      "oracle_glyph_exact": 7,
+      "oracle_candidates": [
+        "8d",
+        "3d",
+        "3s",
+        "Td",
+        "Qd",
+        "Jd",
+        "Ts"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h2-river-600.png",
+      "hand_group": "hand-2",
+      "viewport": [
+        600,
+        800
+      ],
+      "card_size": [
+        44,
+        64
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        600,
+        800.0
+      ],
+      "targets": 7,
+      "proposals": 10,
+      "localized": 7,
+      "false_positives": 3,
+      "missed_cards": 0,
+      "end_to_end_exact": 7,
+      "oracle_glyph_exact": 7,
+      "oracle_candidates": [
+        "8c",
+        "6c",
+        "5d",
+        "6s",
+        "Qc",
+        "7s",
+        "9s"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "h3-river-1440.png",
+      "hand_group": "hand-3",
+      "viewport": [
+        1440,
+        900
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "uniform_width_scale_top_left_crop",
+      "coordinate_extent": [
+        1440,
+        875.1157894736842
+      ],
+      "targets": 7,
+      "proposals": 5,
+      "localized": 5,
+      "false_positives": 0,
+      "missed_cards": 2,
+      "end_to_end_exact": 5,
+      "oracle_glyph_exact": 7,
+      "oracle_candidates": [
+        "As",
+        "Js",
+        "2h",
+        "Ah",
+        "5h",
+        "2c",
+        "Jd"
+      ],
+      "confirmed_cards": 0
+    }
+  ],
+  "unique_visible_identities": 20,
+  "collection_sha256": "3b161979441f461632c7d792f5193680092a43409b11698a965c161c6400f16f",
+  "totals": {
+    "targets": 34,
+    "proposals": 35,
+    "localized": 32,
+    "false_positives": 3,
+    "missed_cards": 2,
+    "end_to_end_exact": 32,
+    "oracle_glyph_exact": 34,
+    "confirmed_cards": 0
+  },
+  "training_performed": false,
+  "full_table_readiness": false,
+  "checkpoint_sha256": {
+    "glyph-font-diversity-v1.pt": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+    "card-locator-hardneg-v1.pt": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273"
+  },
+  "torch_version": "2.14.1+cpu",
+  "pair_extraction": "surface_two_band_then_corner",
+  "proposal_mode": "neural_locator_refined",
+  "surface_refinement": "adaptive_bounded",
+  "surface_refinement_version": "bounded_smaller_area_overlap_v2"
+}

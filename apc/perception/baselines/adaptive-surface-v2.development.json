@@ -1,0 +1,228 @@
+{
+  "development_diagnostic_only": true,
+  "draft_geometry": true,
+  "capture_sessions": 1,
+  "capture_session_id": "apc-browser-20261104-bridge",
+  "hand_groups": 3,
+  "frames": [
+    {
+      "image": "s1-preflop.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        1280,
+        720
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        1280,
+        720
+      ],
+      "targets": 2,
+      "proposals": 2,
+      "localized": 2,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 2,
+      "oracle_glyph_exact": 2,
+      "oracle_candidates": [
+        "As",
+        "3c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s1-flop.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        1280,
+        720
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        1280,
+        720
+      ],
+      "targets": 5,
+      "proposals": 5,
+      "localized": 5,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 5,
+      "oracle_glyph_exact": 5,
+      "oracle_candidates": [
+        "5c",
+        "3h",
+        "6c",
+        "As",
+        "3c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s1-turn.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        1280,
+        720
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        1280,
+        720
+      ],
+      "targets": 6,
+      "proposals": 6,
+      "localized": 6,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 6,
+      "oracle_glyph_exact": 6,
+      "oracle_candidates": [
+        "5c",
+        "3h",
+        "6c",
+        "Qs",
+        "As",
+        "3c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s1-river.png",
+      "hand_group": "hand-1",
+      "viewport": [
+        1280,
+        720
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        1280,
+        720
+      ],
+      "targets": 7,
+      "proposals": 7,
+      "localized": 7,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 7,
+      "oracle_glyph_exact": 7,
+      "oracle_candidates": [
+        "5c",
+        "3h",
+        "6c",
+        "Qs",
+        "6d",
+        "As",
+        "3c"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s2-river.png",
+      "hand_group": "hand-2",
+      "viewport": [
+        1280,
+        720
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        1280,
+        720
+      ],
+      "targets": 7,
+      "proposals": 7,
+      "localized": 7,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 7,
+      "oracle_glyph_exact": 7,
+      "oracle_candidates": [
+        "9d",
+        "8h",
+        "Qd",
+        "Tc",
+        "Ad",
+        "6h",
+        "Kd"
+      ],
+      "confirmed_cards": 0
+    },
+    {
+      "image": "s3-river.png",
+      "hand_group": "hand-3",
+      "viewport": [
+        1280,
+        720
+      ],
+      "card_size": [
+        62,
+        78
+      ],
+      "screenshot_mapping": "normalized_viewport",
+      "coordinate_extent": [
+        1280,
+        720
+      ],
+      "targets": 7,
+      "proposals": 7,
+      "localized": 7,
+      "false_positives": 0,
+      "missed_cards": 0,
+      "end_to_end_exact": 7,
+      "oracle_glyph_exact": 7,
+      "oracle_candidates": [
+        "7c",
+        "Qh",
+        "4s",
+        "Ks",
+        "9d",
+        "6c",
+        "Ts"
+      ],
+      "confirmed_cards": 0
+    }
+  ],
+  "unique_visible_identities": 19,
+  "collection_sha256": "6e318dad98ec5a6d46fe1139e04986349670efc9cf950a083b490f72b14e2733",
+  "totals": {
+    "targets": 34,
+    "proposals": 34,
+    "localized": 34,
+    "false_positives": 0,
+    "missed_cards": 0,
+    "end_to_end_exact": 34,
+    "oracle_glyph_exact": 34,
+    "confirmed_cards": 0
+  },
+  "training_performed": false,
+  "full_table_readiness": false,
+  "checkpoint_sha256": {
+    "glyph-font-diversity-v1.pt": "8e2378365f47412a89d5c2f88d26deb3f716d387649be5a82b7d473703c1261a",
+    "card-locator-hardneg-v1.pt": "8168a0607d03bf0d3e22bb5679c6da82dec8fbae5eeba8434f514d5575fd1273"
+  },
+  "torch_version": "2.14.1+cpu",
+  "pair_extraction": "surface_two_band_then_corner",
+  "proposal_mode": "neural_locator_refined",
+  "surface_refinement": "adaptive_bounded",
+  "surface_refinement_version": "bounded_smaller_area_overlap_v2"
+}

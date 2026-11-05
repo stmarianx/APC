@@ -52,6 +52,17 @@ class SurfaceRefinementTests(unittest.TestCase):
         self.assertEqual(result["box_xyxy"], proposal["box_xyxy"])
         self.assertEqual(result["refinement"], "adaptive_no_bounded_surface")
 
+    def test_adaptive_recovers_bounded_card_inside_oversized_proposal(self):
+        image = Image.new("RGB", (200, 200), "#183b34")
+        draw = ImageDraw.Draw(image)
+        draw.rectangle((60, 40, 99, 119), fill="#f7f3e8")
+        # Card occupies only 59% of the detector area, still a majority so
+        # its median surface is meaningful. A neighboring card must not win.
+        draw.rectangle((110, 40, 149, 119), fill="#f7f3e8")
+        result = refine_card_surface(image, {"box_xyxy": [.27, .15, .53, .67]}, adaptive=True)
+        self.assertEqual(result["refinement"], "adaptive_bounded_surface")
+        self.assertEqual(result["box_xyxy"], [.3, .2, .5, .6])
+
     def test_adaptive_mode_requires_refinement_and_locator(self):
         from apc.perception.infer_card_locator import NeuralCardLocator
         from apc.perception.evaluate_card_reader import evaluate_reader
