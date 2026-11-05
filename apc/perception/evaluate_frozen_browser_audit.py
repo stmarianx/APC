@@ -70,6 +70,21 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
         if not source.is_relative_to(ROOT) or hashlib.sha256(source.read_bytes()).hexdigest() != expected:
             raise ValueError("Inference source does not match frozen audit plan")
     data, frames = load_collection(collection_path)
+    mappings = [frame["screenshot_mapping"] for frame in frames]
+    required_mapping = plan.get("required_screenshot_mapping")
+    if required_mapping is not None and (not isinstance(required_mapping,str)
+                                         or any(value != required_mapping for value in mappings)):
+        raise ValueError("Audit screenshot mapping differs from frozen plan")
+    measured_mapping = "measured_pixel_alignment_v1" in mappings
+    if measured_mapping:
+        if required_mapping != "measured_pixel_alignment_v1":
+            raise ValueError("Measured pixel alignment must be explicitly frozen before collection")
+        geometry_sources = {"apc/perception/"+name for name in
+                            ("pixel_alignment.py","evaluate_browser_collection.py","capture_stability.py")}
+        if not geometry_sources.issubset(sources):
+            raise ValueError("Measured alignment requires frozen geometry source fingerprints")
+        if plan.get("capture_stability_required") is not True:
+            raise ValueError("Measured alignment audit requires capture stability evidence")
     if data.get("use_policy") != "sealed_audit_no_training":
         raise ValueError("Audit collection must prohibit training")
     if plan.get("capture_stability_required") is True and data.get("capture_stability_required") is not True:
@@ -125,6 +140,13 @@ def run_audit(plan_path, collection_path, glyph_checkpoint, locator_checkpoint,
         report["frozen_surface_proposal_rescue"] = surface_rescue
     if "frame_viewports" in plan:
         report["audit_checks"]["planned_viewports_match"] = True
+    if required_mapping is not None:
+        report["frozen_screenshot_mapping"] = required_mapping
+        report["audit_checks"]["planned_screenshot_mapping_matches"] = True
+    if measured_mapping:
+        report["audit_checks"]["geometry_sources_match"] = True
+        report["frozen_geometry_source_sha256"] = {name:sources[name] for name in sorted(geometry_sources)}
+        report["pixel_alignment_scope"] = "Image-bound manually supplied correspondences; independent annotation review is not established by geometric consistency"
     return report
 
 

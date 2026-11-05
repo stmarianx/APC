@@ -19,6 +19,51 @@ LOCATOR = ROOT / "apc/checkpoints/card-locator-hardneg-v1.pt"
 
 
 class FrozenBrowserAuditTests(unittest.TestCase):
+    def test_measured_mapping_must_be_planned_and_geometry_sources_frozen(self):
+        data,frames = load_collection(COLLECTION)
+        data,frames = copy.deepcopy(data),copy.deepcopy(frames)
+        for frame in frames:
+            frame["screenshot_mapping"] = "measured_pixel_alignment_v1"
+        data["capture_stability_required"] = True
+        previous = copy.deepcopy(data)
+        previous["capture_session_id"] = "previous-fixture-session"
+        previous["frames"] = []
+        plan = json.loads(PLAN.read_text())
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"plan.json"
+            def run():
+                path.write_text(json.dumps(plan))
+                with patch("apc.perception.evaluate_frozen_browser_audit.load_collection",side_effect=[(data,frames),(previous,[])]), \
+                     patch("apc.perception.evaluate_frozen_browser_audit.CardReader") as reader, \
+                     patch("apc.perception.evaluate_frozen_browser_audit.evaluate",return_value={"full_table_readiness":False}):
+                    try:
+                        return run_audit(path,COLLECTION,GLYPH,LOCATOR)
+                    except ValueError:
+                        reader.assert_not_called()
+                        raise
+            with self.assertRaisesRegex(ValueError,"explicitly frozen"):
+                run()
+            plan["required_screenshot_mapping"] = "measured_pixel_alignment_v1"
+            with self.assertRaisesRegex(ValueError,"geometry source fingerprints"):
+                run()
+            plan["inference_source_sha256"] = {"apc/perception/"+name:
+                hashlib.sha256((ROOT/"apc/perception"/name).read_bytes()).hexdigest()
+                for name in ("pixel_alignment.py","evaluate_browser_collection.py","capture_stability.py")}
+            with self.assertRaisesRegex(ValueError,"stability evidence"):
+                run()
+            plan["capture_stability_required"] = True
+            result = run()
+            self.assertTrue(result["audit_checks"]["geometry_sources_match"])
+            self.assertEqual(result["frozen_geometry_source_sha256"],plan["inference_source_sha256"])
+            self.assertFalse(result["full_table_readiness"])
+            plan["required_screenshot_mapping"] = "uniform_width_scale_top_left_crop"
+            with self.assertRaisesRegex(ValueError,"mapping differs"):
+                run()
+            plan["required_screenshot_mapping"] = "measured_pixel_alignment_v1"
+            plan["inference_source_sha256"]["apc/perception/pixel_alignment.py"] = "0"*64
+            with self.assertRaisesRegex(ValueError,"source does not match"):
+                run()
+
     def test_v6_plan_preserves_full_street_and_distinct_negative_schedule(self):
         plan = json.loads((ROOT/"apc/perception/baselines/browser-fast-text-audit-v6.plan.json").read_text())
         self.assertTrue(plan["capture_stability_required"])

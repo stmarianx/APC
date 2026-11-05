@@ -76,3 +76,15 @@ its suggestion. The screen showed one frame, zero verified annotations, card
 outlines, and the unsaved-draft confirmation. No annotation was saved. Screenshot
 proof is local in that project's `ui-proof.jpg`; this is application integration
 evidence, not an additional training sample or independent label review.
+
+## Frozen evaluation contract
+
+A future scored audit using this mapping must declare
+`required_screenshot_mapping: "measured_pixel_alignment_v1"` and
+`capture_stability_required: true` before collection. It must fingerprint
+`pixel_alignment.py`, `evaluate_browser_collection.py`, and `capture_stability.py`
+in `inference_source_sha256`, in addition to all inference dependencies. The
+evaluator rejects an undeclared/mixed mapping, missing geometry-source lock,
+changed helper or missing stability requirement before constructing the reader.
+This protects reproducibility; it still does not independently certify manually
+supplied pixel correspondences. Existing sealed reports/plans are not rewritten.
